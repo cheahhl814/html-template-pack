@@ -1,7 +1,7 @@
 ---
 name: html-template-pack
 description: Three self-contained HTML templates — report (multi-tab, theme toggle, offset-anchored annotations, JSON export), slide deck (prev/next nav, theme toggle, inline annotations, JSON export), and htmx dashboard (topbar, KPI row, sparkline, activity feed, sortable table, demo-mode mock backend). Pick report for ≥3 long sections, slide for ≤12 visual beats, dashboard for live/polling data. Invoke for "HTML report", "HTML deck", "HTML page", "annotated report", "review-ready HTML", "slide deck", "HTML dashboard", "htmx dashboard", "ops dashboard", "admin panel", or MD/DOCX/PDF → HTML conversion. Report and slide ship the v2 annotation system; dashboard intentionally omits annotations (live data is not a stable anchor target).
-version: 0.4.0
+version: 0.5.0
 license: MIT
 ---
 
@@ -90,7 +90,7 @@ Interactive data dashboards now live in **this** skill (the dashboard template) 
 
 **Annotation system**: **v2** (offset-anchored, multi-tab aware, JSON import+export, orphaned-state detection, **4 annotation types**: comment / delete / insert / replace). The UI uses `mark.annot` / `#annot-toggle` / `.annot-drawer` / `.annot-toolbar` / `#annot-editor`. Panel uses `data-annot-storage` to namespace by report. Types: comment, delete, insert, replace — delete/replace strike the original inline and show the suggested replacement; insert drops a caret marker with the proposed text.
 
-**Component library**: tokens, cards, badges, stat grids, Mermaid diagrams (Mermaid 10+ via CDN), tables, theme toggle button.
+**Component library**: shared with the slide template (token-driven, so the same markup works in either template's brand palette): `.card` (with `.highlight`/`.warning`/`.success`/`.info` variants), `.badge` (with `.green`/`.teal`/`.amber`/`.blue` variants), `.stat-card` + `.stat-grid` for KPI blocks, `table` with navy header strip and slate borders, `.layer-stack` (with `.layer-1`..`.layer-5` color variants) for multi-stage processes, `.chain-step` + `.chain-arrow` for causal narratives, `.grid-2` / `.grid-3` for card layouts, `.eyebrow` (with `.eyebrow-teal`/`.coral`/`.amber`/`.green`/`.navy` variants) for section labels, `.badge-line` for above-title pills, `.meta-card` + `.meta-grid` for project/event metadata, Mermaid diagrams (Mermaid 10+ via CDN), theme toggle button.
 
 **Print**: `@media print` hides UI chrome. `beforeprint` event re-renders Mermaid. Tested with `google-chrome --headless --print-to-pdf`.
 
@@ -189,6 +189,7 @@ Positioning differs: report/slide float the button `position: fixed` top-right; 
 - `dashboard-template.html` (added 2026-07-11) — htmx dashboard shell, new template family for live/polling data views
 - v2 annotation engine + theme toggle (`features/{report,slide}/highlight-annotate.js`, `annotate.css`, `theme-toggle.js`, `theme-toggle.css`) — extracted from the original template on 2026-07-10 (renamed to `html-template-pack` from its previous internal codename; see the 2026-07-10 wiki entry on the v1→v2 offset-anchored annotation upgrade for the rename history)
 - v2 tracked-changes annotation types — `comment` / `delete` / `insert` / `replace` added 2026-07-30 to the report template (see `docs/specs/2026-07-30-tracked-changes-annotations-design.md` + `docs/plans/2026-07-30-tracked-changes-annotations.md`); selection-based delete/replace reuse the floating-pill flow, insert is caret-based via an `Insert here` arm/click toggle. The `replacement` field carries suggested new text for insert/replace; exported JSON includes `type` + `replacement` per annotation so a downstream (human or AI) revision agent can apply the changes without parsing free-text intent. The same v2 engine + tracked-changes types were ported into the slide template on 2026-07-30 (v0.4.0), with a small per-slide adapter: each `<section class="slide">` gets `data-panel="<id>"`; the inline adapter switches slides (`__deckGoTo`) before the engine's scrollIntoView when a drawer item is clicked.
+- Shared component library — `.card` / `.badge` / `.stat-card` / table / `.layer-stack` / `.chain-step` / `.grid-2` / `.eyebrow` / `.badge-line` / `.meta-card` originated in the slide template (extracted from the Tengah Islands gap-report on 2026-07). In v0.5.0 the same component CSS was pasted into the report template with a shared token palette (10-step `--slate-*` neutral scale + `--teal`/`--coral`/`--green`/`--amber`/`--deep-blue`/`--navy`/`--white` accent colors) so the same markup renders correctly in either template. The slide template's brand colors (teal/coral/green) and the report's blue/neutral palette both work; the components are token-driven, not template-specific.
 - `htmx` (BSD-2-Clause) — the hypermedia library driving the dashboard template's polling, debounced search, and partial swaps
 - `lumen-guide` — the multi-tab pattern used by the report template
 - `zarazhangrui/beautiful-html-templates` (MIT) — color token inspiration for the report template
