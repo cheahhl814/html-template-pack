@@ -387,32 +387,6 @@
 })();
 </script>
 
-<!-- ═══════════════════ THEME TOGGLE (light/dark; self-contained) ═══════════════════ -->
-<script>
-(function () {
-  'use strict';
-  var KEY = 'slide-template-theme-v1'; // must match the key set in <head>
-  var btn = document.getElementById('theme-toggle');
-  if (!btn) return;
-
-  function label(t) { return t === 'light' ? '◐ dark' : '◑ light'; }
-  function sync(t) {
-    btn.textContent = label(t);
-    btn.setAttribute('aria-pressed', t === 'dark' ? 'true' : 'false');
-  }
-
-  sync(document.documentElement.getAttribute('data-theme') || 'light');
-
-  btn.addEventListener('click', function () {
-    var current = document.documentElement.getAttribute('data-theme');
-    var next = current === 'light' ? 'dark' : 'light';
-    document.documentElement.setAttribute('data-theme', next);
-    localStorage.setItem(KEY, next);
-    sync(next);
-  });
-})();
-</script>
-
 <!-- ═══════════════════ ANNOTATION SYSTEM (v2; offset-anchored, 4 types: comment/delete/insert/replace) ═══════════════════ -->
 <style>
   /* Map the slide template's brand tokens to the v2 engine's expected token
@@ -422,7 +396,14 @@
      slide's brand palette. */
   :root {
     --bg: var(--slate-50, #f8fafc);
-    --surface: var(--surface, #ffffff);
+    /* NOTE: --surface must be a literal value, not a self-referential
+       var(--surface, …) — CSS invalidates self-referencing custom property
+       declarations, leaving the property unset (the drawer's
+       'background: var(--surface)' then resolves to transparent, showing
+       the slide gradient through it). The slide template defines
+       --surface: var(--white) = #ffffff in the main :root; this
+       literal keeps the drawer opaque. */
+    --surface: #ffffff;
     --surface2: var(--slate-100, #f1f5f9);
     --border: var(--slate-200, #e2e8f0);
     --border-bright: var(--slate-300, #cbd5e1);
@@ -499,9 +480,13 @@ ins.annot-insert-text.annot-focus { background: rgba(63, 185, 80, 0.26); }
 body.annot-insert-armed [data-annot-root],
 body.annot-insert-armed main.content { cursor: text; }
 
-/* ---- Floating toggle button (notes) ---- */
-.annot-toggle {
+/* ---- Floating toggle button stack (Notes + Insert) — flex column so a
+       growing count badge on Notes cannot push it into the Insert button. */
+.annot-toggle-stack {
   position: fixed; top: 3.75rem; right: 1rem; z-index: 60;
+  display: flex; flex-direction: column; gap: 0.4rem; align-items: flex-end;
+}
+.annot-toggle {
   display: inline-flex; align-items: center; gap: 0.4rem;
   font-family: var(--font-mono); font-size: 0.8125rem;
   background: var(--surface); color: var(--text-dim);
@@ -516,10 +501,13 @@ body.annot-insert-armed main.content { cursor: text; }
   background: var(--accent); color: var(--bg); border-radius: 999px;
 }
 .annot-toggle .annot-count[hidden] { display: none; }
-/* Stack the Insert toggle below the Notes toggle (both share .annot-toggle
-   so the generic rule above places them at the same fixed position).
-   Without this override the second button hides the first. */
-#annot-insert-toggle { top: 5.75rem; }
+/* The Insert toggle no longer needs a separate top offset: the
+   .annot-toggle-stack parent positions both buttons with a flex
+   column + gap, so a growing count badge on the Notes button can no
+   longer push it into the Insert button. The override below is kept
+   as a no-op in case a downstream page still relies on the old
+   #annot-insert-toggle id-selector. */
+#annot-insert-toggle { top: auto; }
 
 /* ---- Selection toolbar (floating "Comment" pill) ---- */
 .annot-toolbar {
@@ -677,10 +665,12 @@ body.annot-insert-armed main.content { cursor: text; }
 </style>
 
 <!-- ═══ Annotation UI markup (v2 wiring snippet) ═══ -->
-<button class="annot-toggle" id="annot-toggle" aria-label="Open annotations panel">
-  💬 Notes <span class="annot-count" id="annot-count" hidden>0</span>
-</button>
-<button class="annot-toggle" id="annot-insert-toggle" aria-label="Insert text at a point" aria-pressed="false">➕ Insert</button>
+<div class="annot-toggle-stack">
+  <button class="annot-toggle" id="annot-toggle" aria-label="Open annotations panel">
+    💬 Notes <span class="annot-count" id="annot-count" hidden>0</span>
+  </button>
+  <button class="annot-toggle" id="annot-insert-toggle" aria-label="Insert text at a point" aria-pressed="false">➕ Insert</button>
+</div>
 
 <div class="annot-toolbar" id="annot-toolbar" hidden>
   <button type="button" class="annot-toolbar-btn" id="annot-toolbar-comment">💬 Comment</button>

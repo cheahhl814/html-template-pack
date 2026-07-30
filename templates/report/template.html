@@ -132,9 +132,13 @@
     body.annot-insert-armed [data-annot-root],
     body.annot-insert-armed main.content { cursor: text; }
 
-    /* Toggle button (mirrors .theme-btn, sits just below it) */
-    .annot-toggle {
+    /* Toggle button stack (Notes + Insert) — flex column so a growing count
+       badge on Notes cannot push it into the Insert button. */
+    .annot-toggle-stack {
       position: fixed; top: 3.75rem; right: 1rem; z-index: 60;
+      display: flex; flex-direction: column; gap: 0.4rem; align-items: flex-end;
+    }
+    .annot-toggle {
       display: inline-flex; align-items: center; gap: 0.4rem;
       font-family: var(--font-mono); font-size: 0.8125rem;
       background: var(--surface); color: var(--text-dim);
@@ -149,10 +153,13 @@
       background: var(--accent); color: var(--bg); border-radius: 999px;
     }
     .annot-toggle .annot-count[hidden] { display: none; }
-    /* Stack the Insert toggle below the Notes toggle (both share .annot-toggle
-       so the generic rule above places them at the same fixed position).
-       Without this override the second button hides the first. */
-    #annot-insert-toggle { top: 5.75rem; }
+    /* The Insert toggle no longer needs a separate top offset: the
+       .annot-toggle-stack parent positions both buttons with a flex
+       column + gap, so a growing count badge on the Notes button can no
+       longer push it into the Insert button. The override below is kept
+       as a no-op in case a downstream page still relies on the old
+       #annot-insert-toggle id-selector. */
+    #annot-insert-toggle { top: auto; }
 
     /* Selection toolbar (floating "Comment" pill) */
     .annot-toolbar {
@@ -297,10 +304,12 @@
   <!-- ═══════════════════ « END feature: theme toggle » (HTML) ═════════════════════ -->
 
   <!-- ═══════════════════ « BEGIN feature: annotations » (HTML) ════════════════════ -->
-  <button class="annot-toggle" id="annot-toggle" aria-label="Open annotations panel">
-    💬 Notes <span class="annot-count" id="annot-count" hidden>0</span>
-  </button>
-  <button class="annot-toggle" id="annot-insert-toggle" aria-label="Insert text at a point" aria-pressed="false">➕ Insert</button>
+  <div class="annot-toggle-stack">
+    <button class="annot-toggle" id="annot-toggle" aria-label="Open annotations panel">
+      💬 Notes <span class="annot-count" id="annot-count" hidden>0</span>
+    </button>
+    <button class="annot-toggle" id="annot-insert-toggle" aria-label="Insert text at a point" aria-pressed="false">➕ Insert</button>
+  </div>
 
   <div class="annot-toolbar" id="annot-toolbar" hidden>
     <button type="button" class="annot-toolbar-btn" id="annot-toolbar-comment">💬 Comment</button>
