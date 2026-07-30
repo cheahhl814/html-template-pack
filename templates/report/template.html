@@ -244,11 +244,17 @@
   <button class="annot-toggle" id="annot-toggle" aria-label="Open annotations panel">
     💬 Notes <span class="annot-count" id="annot-count" hidden>0</span>
   </button>
+  <button class="annot-toggle" id="annot-insert-toggle" aria-label="Insert text at a point" aria-pressed="false">➕ Insert</button>
 
-  <button class="annot-toolbar" id="annot-toolbar" hidden>💬 Comment</button>
+  <div class="annot-toolbar" id="annot-toolbar" hidden>
+    <button type="button" class="annot-toolbar-btn" id="annot-toolbar-comment">💬 Comment</button>
+    <button type="button" class="annot-toolbar-btn" id="annot-toolbar-delete">✂ Delete</button>
+    <button type="button" class="annot-toolbar-btn" id="annot-toolbar-replace">✎ Replace</button>
+  </div>
 
-  <div class="annot-editor" id="annot-editor" hidden role="dialog" aria-label="Add comment">
+  <div class="annot-editor" id="annot-editor" hidden role="dialog" aria-label="Add annotation">
     <div class="annot-quote" id="annot-editor-quote"></div>
+    <textarea id="annot-editor-replacement" class="annot-editor-replacement" placeholder="Replacement text…" aria-label="Replacement text" hidden></textarea>
     <textarea id="annot-editor-text" placeholder="Write a comment…" aria-label="Comment text"></textarea>
     <div class="annot-editor-actions">
       <button class="annot-btn" id="annot-editor-cancel" type="button">Cancel</button>

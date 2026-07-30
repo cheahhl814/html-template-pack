@@ -63,10 +63,15 @@
   // ---- DOM refs (the new convention: mark.annot / .annot-drawer / .annot-toggle) ----
   var els = {
     toggle:        document.getElementById('annot-toggle'),
+    insertToggle:  document.getElementById('annot-insert-toggle'),
     count:         document.getElementById('annot-count'),
     toolbar:       document.getElementById('annot-toolbar'),
+    toolbarComment: document.getElementById('annot-toolbar-comment'),
+    toolbarDelete:  document.getElementById('annot-toolbar-delete'),
+    toolbarReplace: document.getElementById('annot-toolbar-replace'),
     editor:        document.getElementById('annot-editor'),
     editorQuote:   document.getElementById('annot-editor-quote'),
+    editorReplacement: document.getElementById('annot-editor-replacement'),
     editorText:    document.getElementById('annot-editor-text'),
     editorSave:    document.getElementById('annot-editor-save'),
     editorCancel:  document.getElementById('annot-editor-cancel'),
@@ -116,8 +121,10 @@
   var annotations = [];
   var pending = null;     // {start,end,quote,prefix,suffix,panel,heading,rect} for a new note
   var editingId = null;   // id currently being edited, or null for a new note
+  var editingType = null; // "comment" | "delete" | "insert" | "replace" | null
   var focusedId = null;
   var clearArmed = false;
+  var insertArmed = false;
 
   /* ── Persistence ──────────────────────────────────────── */
   function load() {
@@ -338,6 +345,18 @@
   }
 
   /* ── Selection → toolbar ─────────────────────────────── */
+  function caretRangeAt(x, y) {
+    if (document.caretRangeFromPoint) return document.caretRangeFromPoint(x, y);
+    if (document.caretPositionFromPoint) {
+      var pos = document.caretPositionFromPoint(x, y);
+      if (!pos || !pos.offsetNode) return null;
+      var r = document.createRange();
+      r.setStart(pos.offsetNode, pos.offset);
+      r.collapse(true);
+      return r;
+    }
+    return null;
+  }
   function readSelection() {
     var sel = window.getSelection();
     if (!sel || !sel.rangeCount || sel.isCollapsed) return null;
@@ -378,18 +397,65 @@
     if (!els.toolbar.contains(e.target)) hideToolbar();
   });
 
+  if (els.insertToggle) {
+    els.insertToggle.addEventListener('click', function () {
+      insertArmed = !insertArmed;
+      body.classList.toggle('annot-insert-armed', insertArmed);
+      els.insertToggle.textContent = insertArmed ? '➕ Click a point…' : '➕ Insert';
+      els.insertToggle.setAttribute('aria-pressed', insertArmed ? 'true' : 'false');
+    });
+    document.addEventListener('click', function (e) {
+      if (!insertArmed) return;
+      if (els.editor.contains(e.target) || els.toolbar.contains(e.target) || els.insertToggle.contains(e.target)) return;
+      if (!root.contains(e.target)) return;
+      var range = caretRangeAt(e.clientX, e.clientY);
+      if (!range) return;
+      insertArmed = false;
+      body.classList.remove('annot-insert-armed');
+      els.insertToggle.textContent = '➕ Insert';
+      els.insertToggle.setAttribute('aria-pressed', 'false');
+      var at = offsetOf(range.startContainer, range.startOffset);
+      var ft = fullText();
+      var ctx = contextOf(range.startContainer);
+      pending = {
+        start: at, end: at, quote: '',
+        prefix: ft.slice(Math.max(0, at - 48), at),
+        suffix: ft.slice(at, Math.min(ft.length, at + 48)),
+        panel: ctx.panel, heading: ctx.heading,
+        rect: (range.getClientRects()[0] || { left: e.clientX, top: e.clientY, width: 0, bottom: e.clientY })
+      };
+      editingId = null;
+      editingType = 'insert';
+      openEditor('', '', '', pending.rect);
+    });
+  }
+
   els.toolbar.addEventListener('mousedown', function (e) { e.preventDefault(); });
-  els.toolbar.addEventListener('click', function () {
+  function startNewAnnotation(type) {
     if (!pending) return;
     hideToolbar();
     editingId = null;
-    openEditor(pending.quote, '', pending.rect);
-  });
+    editingType = type;
+    openEditor(pending.quote, '', '', pending.rect);
+  }
+  if (els.toolbarComment) els.toolbarComment.addEventListener('click', function () { startNewAnnotation('comment'); });
+  if (els.toolbarDelete)  els.toolbarDelete.addEventListener('click',  function () { startNewAnnotation('delete'); });
+  if (els.toolbarReplace) els.toolbarReplace.addEventListener('click', function () { startNewAnnotation('replace'); });
 
   /* ── Comment editor ──────────────────────────────────── */
-  function openEditor(quote, comment, rect, centered) {
-    els.editorQuote.textContent = quote;
+  function openEditor(quote, comment, replacement, rect, centered) {
+    var type = editingId
+      ? ((annotations.find(function (x) { return x.id === editingId; }) || {}).type || 'comment')
+      : (editingType || 'comment');
+    els.editorQuote.textContent = type === 'insert' ? '(insertion point)' : quote;
+    var needsReplacement = (type === 'replace' || type === 'insert');
+    if (els.editorReplacement) {
+      els.editorReplacement.hidden = !needsReplacement;
+      els.editorReplacement.value = replacement || '';
+      els.editorReplacement.placeholder = type === 'insert' ? 'Text to insert…' : 'Replacement text…';
+    }
     els.editorText.value = comment || '';
+    els.editorSave.textContent = type === 'delete' ? 'Confirm delete' : 'Save';
     els.editor.hidden = false;
     if (centered || !rect) {
       els.editor.style.left = '50%';
@@ -400,20 +466,35 @@
       els.editor.style.left = left + 'px';
       els.editor.style.top  = (window.scrollY + rect.bottom + 10) + 'px';
     }
-    setTimeout(function () { els.editorText.focus(); }, 0);
+    setTimeout(function () {
+      (needsReplacement && els.editorReplacement ? els.editorReplacement : els.editorText).focus();
+    }, 0);
   }
-  function closeEditor() { els.editor.hidden = true; editingId = null; }
+  function closeEditor() {
+    els.editor.hidden = true;
+    editingId = null;
+    editingType = null;
+  }
   els.editorCancel.addEventListener('click', closeEditor);
   els.editorSave.addEventListener('click', function () {
     var text = els.editorText.value.trim();
-    if (!text) { els.editorText.focus(); return; }
+    var replacement = els.editorReplacement ? els.editorReplacement.value : '';
+    var existing = editingId ? annotations.find(function (x) { return x.id === editingId; }) : null;
+    var type = existing ? (existing.type || 'comment') : (editingType || 'comment');
+    if (type === 'comment' && !text) { els.editorText.focus(); return; }
+    if ((type === 'replace' || type === 'insert') && !replacement.trim()) {
+      if (els.editorReplacement) els.editorReplacement.focus();
+      return;
+    }
     var now = new Date().toISOString();
-    if (editingId) {
-      var a = annotations.find(function (x) { return x.id === editingId; });
-      if (a) { a.comment = text; a.updatedAt = now; }
+    if (existing) {
+      existing.comment = text;
+      if (type === 'replace' || type === 'insert') existing.replacement = replacement;
+      existing.updatedAt = now;
     } else if (pending) {
       annotations.push({
         id: uid(), quote: pending.quote, comment: text,
+        type: type, replacement: (type === 'replace' || type === 'insert') ? replacement : '',
         start: pending.start, end: pending.end,
         prefix: pending.prefix, suffix: pending.suffix,
         panel: pending.panel, heading: pending.heading,
@@ -527,7 +608,12 @@
       var edit = document.createElement('button');
       edit.className = 'annot-btn';
       edit.textContent = 'Edit';
-      edit.addEventListener('click', function () { editingId = a.id; pending = null; openEditor(a.quote, a.comment, null, true); });
+      edit.addEventListener('click', function () {
+        editingId = a.id;
+        pending = null;
+        editingType = a.type || 'comment';
+        openEditor(a.quote, a.comment, a.replacement, null, true);
+      });
       var del = document.createElement('button');
       del.className = 'annot-btn danger';
       del.textContent = 'Delete';
