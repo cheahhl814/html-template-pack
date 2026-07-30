@@ -4,7 +4,13 @@
   ║  REUSABLE REPORT / DECK TEMPLATE                                       ║
   ║  Two drop-in features, extracted from gap-report.html:                 ║
   ║    1. Light / dark theme toggle  (persists, honours system default)   ║
-  ║    2. Highlight-comment annotations with JSON export/import           ║
+  ║    2. Highlight-comment annotations (v2: comment/delete/insert/replace)║
+  ║                                                                        ║
+  ║  Shared with the slide template:                                       ║
+  ║    3. Component library — .card / .badge / .stat-card / table /       ║
+  ║       .grid-2 / .grid-3 / .stat-grid / .layer-stack / .chain-step /   ║
+  ║       .eyebrow-* / .badge-line / .meta-card. All token-driven, so the  ║
+  ║       same markup works in either template's brand palette.            ║
   ║                                                                        ║
   ║  HOW TO USE                                                            ║
   ║  • Start a new report/deck from this file and replace the content     ║
@@ -14,6 +20,9 @@
   ║  • Put annotatable prose inside the annotation root (default:         ║
   ║    .content). Anything you don't want annotated can live outside it,  ║
   ║    or be tagged with  data-annot-skip.                                ║
+  ║  • To retint, change the --teal / --coral / --green / --amber /       ║
+  ║    --deep-blue / --navy tokens in the :root block (component palette)║
+  ║    or the --accent / --bg / --surface tokens (v2 engine palette).     ║
   ║                                                                        ║
   ║  RETROFITTING AN EXISTING PAGE                                         ║
   ║  Each feature is wrapped in « BEGIN … / END … » comment banners in    ║
@@ -52,6 +61,35 @@
       --font-mono: ui-monospace, 'SF Mono', 'JetBrains Mono', 'Space Mono', Menlo, Consolas, monospace;
       --radius: 6px;
       --radius-sm: 4px;
+      /* Component palette — shared with the slide template so the
+         .card / .badge / .layer-stack / .chain-step / table / .stat-card
+         styles below can reference consistent role-based color names
+         regardless of which template the page is. The report's primary
+         accent stays --accent (blue); these are the accent colors for
+         the four card variants (highlight/warning/success/info) plus
+         table headers and badge pills. */
+      --teal: #14b8a6;
+      --coral: #ef6461;
+      --green: #10b981;
+      --amber: #f59e0b;
+      --deep-blue: #4f7cb8;
+      --navy: #1e3a5f;
+      --white: #ffffff;
+      /* 10-step neutral palette (matches the slide template's role names
+         so the shared .card / .badge / table / .layer / .chain-step
+         styles work in both templates). In dark mode the palette is
+         inverted so light-on-dark contrast holds for body text and
+         borders. */
+      --slate-50: #0f172a;
+      --slate-100: #1e293b;
+      --slate-200: #334155;
+      --slate-300: #475569;
+      --slate-400: #94a3b8;
+      --slate-500: #94a3b8;
+      --slate-600: #cbd5e1;
+      --slate-700: #cbd5e1;
+      --slate-800: #e2e8f0;
+      --slate-900: #f1f5f9;
     }
     [data-theme="light"] {
       --bg: #f6f8fa;
@@ -67,6 +105,26 @@
       --accent-glow: rgba(37,99,235,0.20);
       --error: #dc2626;
       --annot-insert: #1a7f37;
+      /* Component palette in light mode — slightly desaturated variants
+         so the cards/badges look right against the white surface. */
+      --teal: #0d9488;
+      --coral: #ef4444;
+      --green: #059669;
+      --amber: #d97706;
+      --deep-blue: #2563eb;
+      --navy: #1e3a5f;
+      --white: #ffffff;
+      /* Light-mode slate palette (matches the slide template). */
+      --slate-50: #f8fafc;
+      --slate-100: #f1f5f9;
+      --slate-200: #e2e8f0;
+      --slate-300: #cbd5e1;
+      --slate-400: #94a3b8;
+      --slate-500: #64748b;
+      --slate-600: #475569;
+      --slate-700: #334155;
+      --slate-800: #1e293b;
+      --slate-900: #0f172a;
     }
 
     /* ── Minimal base (replace with your own report/deck styles) ──── */
@@ -82,6 +140,79 @@
     p { margin: 0.75rem 0; color: var(--text-muted); }
     strong { color: var(--text); font-weight: 700; }
     a { color: var(--accent); }
+
+    /* ── Component library (shared with the slide template) ──
+       Picked up from features/.../slide-template.html — cards, badges,
+       stat cards, tables, layer diagrams, chain steps, grids, and
+       eyebrow labels. Token-driven (--slate-*, --teal, --coral, --green,
+       --amber, --deep-blue, --navy, --white, --surface, --text) so the
+       same rules render in the report's blue/neutral palette AND the
+       slide's teal palette without modification. */
+    .card { background: var(--surface); border: 1px solid var(--slate-200); border-radius: 11px; padding: 18px 22px; margin: 12px 0; box-shadow: 0 1px 4px rgba(0,0,0,0.04); }
+    .card.highlight { border-left: 4px solid var(--teal); background: linear-gradient(135deg, #f0fdfa 0%, var(--surface) 100%); }
+    .card.warning { border-left: 4px solid var(--coral); background: linear-gradient(135deg, #fff5f5 0%, var(--surface) 100%); }
+    .card.success { border-left: 4px solid var(--green); background: linear-gradient(135deg, #ecfdf5 0%, var(--surface) 100%); }
+    .card.info { border-left: 4px solid var(--deep-blue); background: linear-gradient(135deg, #eff6ff 0%, var(--surface) 100%); }
+    [data-theme="dark"] .card.highlight { background: linear-gradient(135deg, rgba(20,184,166,0.16) 0%, var(--surface) 100%); }
+    [data-theme="dark"] .card.warning { background: linear-gradient(135deg, rgba(239,100,97,0.16) 0%, var(--surface) 100%); }
+    [data-theme="dark"] .card.success { background: linear-gradient(135deg, rgba(16,185,129,0.16) 0%, var(--surface) 100%); }
+    [data-theme="dark"] .card.info { background: linear-gradient(135deg, rgba(79,124,184,0.22) 0%, var(--surface) 100%); }
+
+    table { width: 100%; border-collapse: separate; border-spacing: 0; margin: 10px 0; font-size: 0.88em; border-radius: 10px; overflow: hidden; border: 1px solid var(--slate-200); }
+    thead { background: var(--navy); color: var(--white); }
+    th { padding: 9px 12px; text-align: left; font-weight: 600; font-size: 0.82em; text-transform: uppercase; letter-spacing: 0.4px; }
+    td { padding: 8px 12px; border-bottom: 1px solid var(--slate-100); }
+    tbody tr:last-child td { border-bottom: none; }
+
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+
+    .stat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; margin: 12px 0; }
+    .stat-card { background: var(--surface); border: 1px solid var(--slate-200); border-radius: 10px; padding: 13px 15px; text-align: center; }
+    .stat-card .stat-value { font-size: 1.6em; font-weight: 800; color: var(--teal); line-height: 1.1; }
+    .stat-card .stat-label { font-size: 0.68em; color: var(--slate-500); text-transform: uppercase; letter-spacing: 0.4px; margin-top: 4px; }
+
+    .badge { display: inline-block; font-size: 0.7em; font-weight: 600; padding: 2px 9px; border-radius: 20px; margin: 2px 3px 2px 0; }
+    .badge-green { background: #d1fae5; color: #065f46; }
+    .badge-teal { background: #ccfbf1; color: var(--teal); }
+    .badge-amber { background: #fef3c7; color: #92400e; }
+    .badge-blue { background: #dbeafe; color: var(--navy); }
+    [data-theme="dark"] .badge-green { background: rgba(16,185,129,0.22); color: #6ee7b7; }
+    [data-theme="dark"] .badge-amber { background: rgba(245,158,11,0.22); color: #fcd34d; }
+
+    .layer-stack { display: flex; flex-direction: column; gap: 8px; margin: 14px 0; }
+    .layer { border-radius: 10px; padding: 13px 18px; display: flex; align-items: center; gap: 16px; }
+    .layer .layer-num { flex-shrink: 0; width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 0.9em; color: white; }
+    .layer .layer-title { font-weight: 700; font-size: 1em; }
+    .layer .layer-detail { font-size: 0.86em; color: var(--slate-600); }
+    .layer-1 { background: #ecfeff; border-left: 4px solid #06b6d4; } .layer-1 .layer-num { background: #06b6d4; }
+    .layer-2 { background: #eff6ff; border-left: 4px solid var(--deep-blue); } .layer-2 .layer-num { background: var(--deep-blue); }
+    .layer-3 { background: #fef3c7; border-left: 4px solid var(--amber); } .layer-3 .layer-num { background: var(--amber); }
+    .layer-4 { background: #f0fdfa; border-left: 4px solid var(--teal); } .layer-4 .layer-num { background: var(--teal); }
+    .layer-5 { background: #ede9fe; border-left: 4px solid #7c3aed; } .layer-5 .layer-num { background: #7c3aed; }
+    [data-theme="dark"] .layer-1 { background: rgba(6,182,212,0.12); }
+    [data-theme="dark"] .layer-2 { background: rgba(44,74,124,0.18); }
+    [data-theme="dark"] .layer-3 { background: rgba(245,158,11,0.14); }
+    [data-theme="dark"] .layer-4 { background: rgba(13,148,136,0.14); }
+    [data-theme="dark"] .layer-5 { background: rgba(124,58,237,0.16); }
+
+    .chain-step { border-radius: 10px; padding: 12px 18px; text-align: center; font-weight: 600; font-size: 0.92em; }
+    .chain-arrow { text-align: center; color: var(--slate-400); font-size: 1.2em; padding: 1px 0; }
+
+    .eyebrow-teal { background: #ccfbf1; color: var(--teal); }
+    .eyebrow-coral { background: #fee2e2; color: var(--coral); }
+    .eyebrow-amber { background: #fef3c7; color: #92400e; }
+    .eyebrow-green { background: #d1fae5; color: #065f46; }
+    .eyebrow-navy { background: #dbeafe; color: var(--navy); }
+    .eyebrow { display: inline-block; font-size: 0.78em; font-weight: 700; text-transform: uppercase; letter-spacing: 1.6px; padding: 5px 13px; border-radius: 20px; margin-bottom: 16px; }
+    [data-theme="dark"] .eyebrow-amber { background: rgba(245,158,11,0.22); color: #fcd34d; }
+    [data-theme="dark"] .eyebrow-green { background: rgba(16,185,129,0.22); color: #6ee7b7; }
+
+    .badge-line { display: inline-block; background: var(--coral); color: white; font-size: 0.78em; font-weight: 700; padding: 4px 12px; border-radius: 20px; margin-bottom: 16px; letter-spacing: 0.5px; }
+    .meta-card { background: var(--surface); border: 1px solid var(--slate-200); border-radius: 10px; padding: 12px 16px; }
+    .meta-card .label { font-size: 0.7em; text-transform: uppercase; letter-spacing: 1.2px; color: var(--slate-500); }
+    .meta-card .value { font-size: 1.2em; font-weight: 700; margin-top: 2px; color: var(--text); }
+    .meta-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 12px; margin: 12px 0; }
 
     /* ═══════════════════ « BEGIN feature: theme toggle » (CSS) ═══════════════════ */
     .theme-btn {
@@ -351,7 +482,9 @@
        ║  annotatable text).                                            ║
        ╚═══════════════════════════════════════════════════════════════╝ -->
   <main class="content" data-annot-root>
+    <span class="eyebrow eyebrow-teal">REPORT</span>
     <h1>Report Template</h1>
+    <p class="badge-line">PROJECT / EVENT LABEL</p>
     <p><strong>Select any of this text</strong> and three pills appear — <strong>💬 Comment</strong>,
       <strong>✂ Delete</strong>, and <strong>✎ Replace</strong>. Click one to leave a tracked-changes-style note
       (for delete/replace, optionally provide a comment explaining the change). For <em>insertion</em>, click the
@@ -359,6 +492,79 @@
       text. Your highlight is stored in this browser and reappears on reload. Open the <strong>💬 Notes</strong> panel
       (top-right) to review, jump to, edit, delete, and <strong>export every annotation as JSON</strong> so an AI agent
       (or a colleague) can act on your feedback and revise this document precisely.</p>
+
+    <h2>Key metrics</h2>
+    <p>A quick snapshot of the project status. Select any number to leave a comment for the team.</p>
+    <div class="stat-grid">
+      <div class="stat-card"><div class="stat-value">42</div><div class="stat-label">Species observed</div></div>
+      <div class="stat-card"><div class="stat-value">r = 0.91</div><div class="stat-label">Trend correlation</div></div>
+      <div class="stat-card"><div class="stat-value">3×</div><div class="stat-label">Survey coverage</div></div>
+      <div class="stat-card"><div class="stat-value">12</div><div class="stat-label">Sites revisited</div></div>
+    </div>
+
+    <h2>Status tags</h2>
+    <p>Use badge pills to mark up inline terms — they're picked up by the annotation walker just like regular text, so
+      reviewers can comment on a specific badge.</p>
+    <p>
+      <span class="badge badge-green">healthy</span>
+      <span class="badge badge-teal">monitoring</span>
+      <span class="badge badge-amber">at risk</span>
+      <span class="badge badge-blue">draft</span>
+    </p>
+
+    <h2>Highlights</h2>
+    <div class="grid-2">
+      <div class="card highlight">
+        <h3>🔑 Key Takeaway</h3>
+        <p style="margin-bottom:0;">Use the highlight card (teal accent) to surface the one finding you want remembered.
+          Select the text inside this card to comment on it directly.</p>
+      </div>
+      <div class="card warning">
+        <h3>⚠ Risk</h3>
+        <p style="margin-bottom:0;">Use the warning card (coral accent) for blockers, open questions, or
+          things the team needs to act on.</p>
+      </div>
+      <div class="card success">
+        <h3>✓ Resolved</h3>
+        <p style="margin-bottom:0;">Use the success card (green accent) for items that have been addressed
+          and need to be kept visible in the final report.</p>
+      </div>
+      <div class="card info">
+        <h3>ℹ Background</h3>
+        <p style="margin-bottom:0;">Use the info card (blue accent) for methodology, citations, or
+          contextual notes that don't fit in the main narrative.</p>
+      </div>
+    </div>
+
+    <h2>Data table</h2>
+    <p>Tables get a navy header strip and slate borders so they read as structured data, not body text.</p>
+    <table>
+      <thead>
+        <tr><th>Site</th><th>Species</th><th>Last survey</th><th>Status</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Sultan Iskandar Marine Park</td><td>187</td><td>2026-05-12</td><td><span class="badge badge-green">healthy</span></td></tr>
+        <tr><td>Mid-channel reef</td><td>92</td><td>2026-04-30</td><td><span class="badge badge-teal">monitoring</span></td></tr>
+        <tr><td>Tanjung Surat</td><td>41</td><td>2026-03-22</td><td><span class="badge badge-amber">at risk</span></td></tr>
+      </tbody>
+    </table>
+
+    <h2>Methodology stack</h2>
+    <p>Use the layer diagram to walk readers through the parts of a multi-stage process.</p>
+    <div class="layer-stack">
+      <div class="layer layer-1"><div class="layer-num">1</div><div><div class="layer-title">Field survey</div><div class="layer-detail">Quadrat + transect sampling across 12 sites, 2 visits each.</div></div></div>
+      <div class="layer layer-2"><div class="layer-num">2</div><div><div class="layer-title">Acoustic monitoring</div><div class="layer-detail">Continuous hydrophone deployment at 3 reference stations.</div></div></div>
+      <div class="layer layer-3"><div class="layer-num">3</div><div><div class="layer-title">eDNA cross-check</div><div class="layer-detail">Water-column sampling + metabarcoding for cryptic species.</div></div></div>
+      <div class="layer layer-4"><div class="layer-num">4</div><div><div class="layer-title">Synthesis</div><div class="layer-detail">Bayesian occupancy model + community trend analysis.</div></div></div>
+    </div>
+
+    <h2>Causal chain</h2>
+    <p>For a step-by-step narrative, the chain-step block lays out a one-liner per stage with arrows in between.</p>
+    <div class="chain-step" style="background:#fee2e2; color:#991b1b;">Driver — habitat loss accelerates edge effects</div>
+    <div class="chain-arrow">↓</div>
+    <div class="chain-step" style="background:#fef3c7; color:#92400e;">Mediator — predator-prey balance shifts toward generalists</div>
+    <div class="chain-arrow">↓</div>
+    <div class="chain-step" style="background:#ccfbf1; color:#0d9488;">Outcome — community diversity index drops 18% over 24 months</div>
 
     <h2>How annotations anchor</h2>
     <p>Each note stores the highlighted quote (or the caret position for inserts) plus its surrounding text and nearest
