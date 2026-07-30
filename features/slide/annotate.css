@@ -36,6 +36,8 @@
   --radius: 6px;
   --radius-sm: 4px;
   --ann-highlight: var(--accent);
+  --annot-delete: var(--error);
+  --annot-insert: #3fb950;
 }
 [data-theme="light"] {
   --bg: #f6f8fa;
@@ -50,6 +52,7 @@
   --accent-dim: rgba(37, 99, 235, 0.12);
   --accent-glow: rgba(37, 99, 235, 0.20);
   --error: #dc2626;
+  --annot-insert: #1a7f37;
 }
 
 /* ---- Highlights (the in-text wrapping) ---- */
@@ -66,6 +69,32 @@ mark.annot:hover,
 mark.annot.annot-focus {
   background: var(--accent-glow);
 }
+mark.annot.annot-delete,
+mark.annot.annot-replace {
+  background: rgba(248, 113, 113, 0.12);
+  border-bottom-color: var(--annot-delete);
+  text-decoration: line-through;
+  text-decoration-color: var(--annot-delete);
+}
+ins.annot-insert-text {
+  background: rgba(63, 185, 80, 0.14);
+  color: var(--annot-insert);
+  text-decoration: none;
+  border-bottom: 2px solid var(--annot-insert);
+  border-radius: 2px;
+  padding: 0.05em 0.05em;
+  cursor: pointer;
+  font-style: normal;
+}
+ins.annot-insert-text:hover,
+ins.annot-insert-text.annot-focus { background: rgba(63, 185, 80, 0.26); }
+.annot-caret {
+  display: inline-block; width: 2px; height: 1em; vertical-align: text-bottom;
+  background: var(--annot-insert); margin: 0 1px; cursor: pointer;
+}
+.annot-caret.annot-focus { width: 3px; }
+body.annot-insert-armed [data-annot-root],
+body.annot-insert-armed main.content { cursor: text; }
 
 /* ---- Floating toggle button (notes) ---- */
 .annot-toggle {
@@ -88,18 +117,15 @@ mark.annot.annot-focus {
 /* ---- Selection toolbar (floating "Comment" pill) ---- */
 .annot-toolbar {
   position: absolute; z-index: 70; transform: translate(-50%, -100%);
-  margin-top: -0.5rem;
-  background: var(--text); color: var(--bg);
-  border-radius: var(--radius); box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
-  padding: 0.35rem 0.6rem; font-family: var(--font-sans); font-size: 0.85rem;
-  font-weight: 600; cursor: pointer; white-space: nowrap; border: none;
+  margin-top: -0.5rem; display: flex; gap: 0.3rem;
 }
 .annot-toolbar[hidden] { display: none; }
-.annot-toolbar::after {
-  content: ""; position: absolute; left: 50%; bottom: -5px; transform: translateX(-50%);
-  border-left: 6px solid transparent; border-right: 6px solid transparent;
-  border-top: 6px solid var(--text);
+.annot-toolbar-btn {
+  background: var(--text); color: var(--bg); border: none; border-radius: var(--radius);
+  padding: 0.35rem 0.6rem; font-family: var(--font-sans); font-size: 0.85rem; font-weight: 600;
+  cursor: pointer; white-space: nowrap; box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
 }
+.annot-toolbar-btn:hover { filter: brightness(1.15); }
 
 /* ---- Comment editor popover ---- */
 .annot-editor {
@@ -123,6 +149,14 @@ mark.annot.annot-focus {
   padding: 0.5rem; box-sizing: border-box;
 }
 .annot-editor textarea:focus { outline: none; border-color: var(--accent); }
+.annot-editor-replacement {
+  width: 100%; min-height: 3rem; resize: vertical; margin-bottom: 0.5rem;
+  font-family: var(--font-sans); font-size: 0.9rem; line-height: 1.5;
+  background: var(--bg); color: var(--annot-insert);
+  border: 1px solid var(--annot-insert); border-radius: var(--radius-sm);
+  padding: 0.5rem; box-sizing: border-box;
+}
+.annot-editor-replacement[hidden] { display: none; }
 .annot-editor .annot-editor-actions {
   display: flex; justify-content: flex-end; gap: 0.5rem; margin-top: 0.6rem;
 }
@@ -184,6 +218,18 @@ mark.annot.annot-focus {
   cursor: pointer; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;
 }
 .annot-item.annot-orphan .annot-item-quote { border-left-color: var(--error); }
+.annot-item .annot-type-badge {
+  display: inline-block; font-size: 0.65rem; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 0.03em; padding: 0.1rem 0.4rem; border-radius: 999px; margin-bottom: 0.4rem;
+}
+.annot-item .annot-type-comment { background: var(--accent-dim); color: var(--accent); }
+.annot-item .annot-type-delete,
+.annot-item .annot-type-replace { background: rgba(248, 113, 113, 0.15); color: var(--annot-delete); }
+.annot-item .annot-type-insert { background: rgba(63, 185, 80, 0.15); color: var(--annot-insert); }
+.annot-item .annot-item-replacement {
+  font-size: 0.85rem; color: var(--annot-insert); margin: 0.2rem 0 0.5rem;
+  white-space: pre-wrap; word-break: break-word;
+}
 .annot-item .annot-item-comment {
   font-size: 0.9rem; color: var(--text); margin: 0.2rem 0 0.5rem;
   white-space: pre-wrap; word-break: break-word;
@@ -208,6 +254,11 @@ mark.annot.annot-focus {
     background: transparent; box-shadow: none;
     border-bottom: 1px solid #999; color: inherit;
   }
+  mark.annot.annot-delete, mark.annot.annot-replace {
+    background: transparent; text-decoration: line-through; border-bottom: none;
+  }
+  ins.annot-insert-text { background: transparent; text-decoration: underline; border-bottom: none; }
+  .annot-caret { background: #000; }
 }
 
 /* ---- Mobile ---- */

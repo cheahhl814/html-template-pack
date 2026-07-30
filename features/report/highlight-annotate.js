@@ -24,6 +24,8 @@
    {
      id, quote, comment, prefix, suffix,         // anchoring
      start, end,                                  // optional offsets (kept for migration)
+     type,                                         // "comment" | "delete" | "insert" | "replace" (default "comment")
+     replacement,                                  // suggested new text for "insert"/"replace" (unused otherwise)
      panel, sectionHeading,                       // multi-tab navigation
      createdAt, updatedAt,                        // ISO 8601
      orphaned                                      // true if re-anchor failed
@@ -63,10 +65,15 @@
   // ---- DOM refs (the new convention: mark.annot / .annot-drawer / .annot-toggle) ----
   var els = {
     toggle:        document.getElementById('annot-toggle'),
+    insertToggle:  document.getElementById('annot-insert-toggle'),
     count:         document.getElementById('annot-count'),
     toolbar:       document.getElementById('annot-toolbar'),
+    toolbarComment: document.getElementById('annot-toolbar-comment'),
+    toolbarDelete:  document.getElementById('annot-toolbar-delete'),
+    toolbarReplace: document.getElementById('annot-toolbar-replace'),
     editor:        document.getElementById('annot-editor'),
     editorQuote:   document.getElementById('annot-editor-quote'),
+    editorReplacement: document.getElementById('annot-editor-replacement'),
     editorText:    document.getElementById('annot-editor-text'),
     editorSave:    document.getElementById('annot-editor-save'),
     editorCancel:  document.getElementById('annot-editor-cancel'),
@@ -116,8 +123,10 @@
   var annotations = [];
   var pending = null;     // {start,end,quote,prefix,suffix,panel,heading,rect} for a new note
   var editingId = null;   // id currently being edited, or null for a new note
+  var editingType = null; // "comment" | "delete" | "insert" | "replace" | null
   var focusedId = null;
   var clearArmed = false;
+  var insertArmed = false;
 
   /* ── Persistence ──────────────────────────────────────── */
   function load() {
@@ -128,6 +137,7 @@
     } catch (e) {
       annotations = [];
     }
+    annotations.forEach(function (a) { if (!a.type) a.type = 'comment'; });
   }
   function persist() {
     try { localStorage.setItem(STORE_KEY, JSON.stringify(annotations)); } catch (e) {}
@@ -146,7 +156,7 @@
         if (!node.nodeValue || !node.nodeValue.length) return NodeFilter.FILTER_REJECT;
         var p = node.parentElement;
         if (!p) return NodeFilter.FILTER_REJECT;
-        if (p.closest('.mermaid, svg, script, style, [data-annot-skip]')) return NodeFilter.FILTER_REJECT;
+        if (p.closest('.mermaid, svg, script, style, .annot-insert-text, [data-annot-skip]')) return NodeFilter.FILTER_REJECT;
         return NodeFilter.FILTER_ACCEPT;
       }
     });
@@ -219,8 +229,12 @@
       parent.removeChild(m);
       parent.normalize();
     }
+    var extras = root.querySelectorAll('.annot-caret, ins.annot-insert-text');
+    for (var j = 0; j < extras.length; j++) {
+      extras[j].parentNode.removeChild(extras[j]);
+    }
   }
-  function wrapRange(range, id) {
+  function wrapRange(range, id, extraClass) {
     var nodes = [], ca = range.commonAncestorContainer;
     if (ca.nodeType === Node.TEXT_NODE) {
       nodes.push(ca);
@@ -228,12 +242,13 @@
       var w = document.createTreeWalker(ca, NodeFilter.SHOW_TEXT, {
         acceptNode: function (n) {
           if (!n.nodeValue.length) return NodeFilter.FILTER_REJECT;
-          if (n.parentElement && n.parentElement.closest('.mermaid, svg, script, style')) return NodeFilter.FILTER_REJECT;
+          if (n.parentElement && n.parentElement.closest('.mermaid, svg, script, style, .annot-insert-text, .annot-caret, [data-annot-skip]')) return NodeFilter.FILTER_REJECT;
           return range.intersectsNode(n) ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_REJECT;
         }
       });
       var n; while ((n = w.nextNode())) nodes.push(n);
     }
+    var lastMark = null;
     for (var i = 0; i < nodes.length; i++) {
       var node = nodes[i];
       var s = (node === range.startContainer) ? range.startOffset : 0;
@@ -243,14 +258,23 @@
       if (e < node.nodeValue.length) target.splitText(e);
       if (s > 0) target = target.splitText(s);
       var mark = document.createElement('mark');
-      mark.className = 'annot';
+      mark.className = 'annot' + (extraClass ? ' ' + extraClass : '');
       mark.setAttribute('data-annot-id', id);
       target.parentNode.insertBefore(mark, target);
       mark.appendChild(target);
+      lastMark = mark;
     }
+    return lastMark;
   }
   // Resolve an annotation to its current {start,end} or null.
   function resolve(a, ft) {
+    if (a.type === 'insert') {
+      var iprobe = (a.prefix || '') + (a.suffix || '');
+      var ii = ft.indexOf(iprobe);
+      if (ii < 0) return null;
+      var at = ii + (a.prefix || '').length;
+      return { start: at, end: at };
+    }
     var start = a.start, end = a.end;
     if (typeof start !== 'number' || typeof end !== 'number' || ft.slice(start, end) !== a.quote) {
       var probe = (a.prefix || '') + a.quote + (a.suffix || '');
@@ -260,22 +284,53 @@
     }
     return { start: start, end: end };
   }
+  function makeInsertNode(id, text) {
+    var ins = document.createElement('ins');
+    ins.className = 'annot-insert-text';
+    ins.setAttribute('data-annot-id', id);
+    ins.textContent = text || '';
+    return ins;
+  }
   function applyHighlights() {
     unwrapAll();
     var ft = fullText();
+    // Two-pass: insert annotations first (caret + ins go into the text stream,
+    // and the makeWalker excludes them from offset math so they don't perturb
+    // quote-based range resolution). Then wrap quote-based annotations.
+    var insertFirst = [], other = [];
     for (var i = 0; i < annotations.length; i++) {
-      var a = annotations[i];
+      (annotations[i].type === 'insert' ? insertFirst : other).push(annotations[i]);
+    }
+    function applyOne(a) {
       var pos = resolve(a, ft);
       a._orphan = !pos;
-      if (!pos) continue;
-      var range = buildRange(pos.start, pos.end);
-      if (range) {
-        try { wrapRange(range, a.id); }
-        catch (e) { a._orphan = true; }
-      } else {
-        a._orphan = true;
+      if (!pos) return;
+      if (a.type === 'insert') {
+        var iRange = buildRange(pos.start, pos.start);
+        if (!iRange) { a._orphan = true; return; }
+        try {
+          var caret = document.createElement('span');
+          caret.className = 'annot-caret';
+          caret.setAttribute('data-annot-id', a.id);
+          var frag = document.createDocumentFragment();
+          frag.appendChild(caret);
+          frag.appendChild(makeInsertNode(a.id, a.replacement));
+          iRange.insertNode(frag);
+        } catch (e) { a._orphan = true; }
+        return;
       }
+      var range = buildRange(pos.start, pos.end);
+      if (!range) { a._orphan = true; return; }
+      try {
+        var extraClass = a.type === 'delete' ? 'annot-delete' : a.type === 'replace' ? 'annot-replace' : '';
+        var mark = wrapRange(range, a.id, extraClass);
+        if (a.type === 'replace' && mark) {
+          mark.parentNode.insertBefore(makeInsertNode(a.id, a.replacement), mark.nextSibling);
+        }
+      } catch (e) { a._orphan = true; }
     }
+    insertFirst.forEach(applyOne);
+    other.forEach(applyOne);
   }
 
   /* ── Context: nearest [data-panel] + nearest heading ─── */
@@ -300,6 +355,18 @@
   }
 
   /* ── Selection → toolbar ─────────────────────────────── */
+  function caretRangeAt(x, y) {
+    if (document.caretRangeFromPoint) return document.caretRangeFromPoint(x, y);
+    if (document.caretPositionFromPoint) {
+      var pos = document.caretPositionFromPoint(x, y);
+      if (!pos || !pos.offsetNode) return null;
+      var r = document.createRange();
+      r.setStart(pos.offsetNode, pos.offset);
+      r.collapse(true);
+      return r;
+    }
+    return null;
+  }
   function readSelection() {
     var sel = window.getSelection();
     if (!sel || !sel.rangeCount || sel.isCollapsed) return null;
@@ -340,18 +407,65 @@
     if (!els.toolbar.contains(e.target)) hideToolbar();
   });
 
+  if (els.insertToggle) {
+    els.insertToggle.addEventListener('click', function () {
+      insertArmed = !insertArmed;
+      body.classList.toggle('annot-insert-armed', insertArmed);
+      els.insertToggle.textContent = insertArmed ? '➕ Click a point…' : '➕ Insert';
+      els.insertToggle.setAttribute('aria-pressed', insertArmed ? 'true' : 'false');
+    });
+    document.addEventListener('click', function (e) {
+      if (!insertArmed) return;
+      if (els.editor.contains(e.target) || els.toolbar.contains(e.target) || els.insertToggle.contains(e.target)) return;
+      if (!root.contains(e.target)) return;
+      var range = caretRangeAt(e.clientX, e.clientY);
+      if (!range) return;
+      insertArmed = false;
+      body.classList.remove('annot-insert-armed');
+      els.insertToggle.textContent = '➕ Insert';
+      els.insertToggle.setAttribute('aria-pressed', 'false');
+      var at = offsetOf(range.startContainer, range.startOffset);
+      var ft = fullText();
+      var ctx = contextOf(range.startContainer);
+      pending = {
+        start: at, end: at, quote: '',
+        prefix: ft.slice(Math.max(0, at - 48), at),
+        suffix: ft.slice(at, Math.min(ft.length, at + 48)),
+        panel: ctx.panel, heading: ctx.heading,
+        rect: (range.getClientRects()[0] || { left: e.clientX, top: e.clientY, width: 0, bottom: e.clientY })
+      };
+      editingId = null;
+      editingType = 'insert';
+      openEditor('', '', '', pending.rect);
+    });
+  }
+
   els.toolbar.addEventListener('mousedown', function (e) { e.preventDefault(); });
-  els.toolbar.addEventListener('click', function () {
+  function startNewAnnotation(type) {
     if (!pending) return;
     hideToolbar();
     editingId = null;
-    openEditor(pending.quote, '', pending.rect);
-  });
+    editingType = type;
+    openEditor(pending.quote, '', '', pending.rect);
+  }
+  if (els.toolbarComment) els.toolbarComment.addEventListener('click', function () { startNewAnnotation('comment'); });
+  if (els.toolbarDelete)  els.toolbarDelete.addEventListener('click',  function () { startNewAnnotation('delete'); });
+  if (els.toolbarReplace) els.toolbarReplace.addEventListener('click', function () { startNewAnnotation('replace'); });
 
   /* ── Comment editor ──────────────────────────────────── */
-  function openEditor(quote, comment, rect, centered) {
-    els.editorQuote.textContent = quote;
+  function openEditor(quote, comment, replacement, rect, centered) {
+    var type = editingId
+      ? ((annotations.find(function (x) { return x.id === editingId; }) || {}).type || 'comment')
+      : (editingType || 'comment');
+    els.editorQuote.textContent = type === 'insert' ? '(insertion point)' : quote;
+    var needsReplacement = (type === 'replace' || type === 'insert');
+    if (els.editorReplacement) {
+      els.editorReplacement.hidden = !needsReplacement;
+      els.editorReplacement.value = replacement || '';
+      els.editorReplacement.placeholder = type === 'insert' ? 'Text to insert…' : 'Replacement text…';
+    }
     els.editorText.value = comment || '';
+    els.editorSave.textContent = type === 'delete' ? 'Confirm delete' : 'Save';
     els.editor.hidden = false;
     if (centered || !rect) {
       els.editor.style.left = '50%';
@@ -362,20 +476,35 @@
       els.editor.style.left = left + 'px';
       els.editor.style.top  = (window.scrollY + rect.bottom + 10) + 'px';
     }
-    setTimeout(function () { els.editorText.focus(); }, 0);
+    setTimeout(function () {
+      (needsReplacement && els.editorReplacement ? els.editorReplacement : els.editorText).focus();
+    }, 0);
   }
-  function closeEditor() { els.editor.hidden = true; editingId = null; }
+  function closeEditor() {
+    els.editor.hidden = true;
+    editingId = null;
+    editingType = null;
+  }
   els.editorCancel.addEventListener('click', closeEditor);
   els.editorSave.addEventListener('click', function () {
     var text = els.editorText.value.trim();
-    if (!text) { els.editorText.focus(); return; }
+    var replacement = els.editorReplacement ? els.editorReplacement.value : '';
+    var existing = editingId ? annotations.find(function (x) { return x.id === editingId; }) : null;
+    var type = existing ? (existing.type || 'comment') : (editingType || 'comment');
+    if (type === 'comment' && !text) { els.editorText.focus(); return; }
+    if ((type === 'replace' || type === 'insert') && !replacement.trim()) {
+      if (els.editorReplacement) els.editorReplacement.focus();
+      return;
+    }
     var now = new Date().toISOString();
-    if (editingId) {
-      var a = annotations.find(function (x) { return x.id === editingId; });
-      if (a) { a.comment = text; a.updatedAt = now; }
+    if (existing) {
+      existing.comment = text;
+      if (type === 'replace' || type === 'insert') existing.replacement = replacement;
+      existing.updatedAt = now;
     } else if (pending) {
       annotations.push({
         id: uid(), quote: pending.quote, comment: text,
+        type: type, replacement: (type === 'replace' || type === 'insert') ? replacement : '',
         start: pending.start, end: pending.end,
         prefix: pending.prefix, suffix: pending.suffix,
         panel: pending.panel, heading: pending.heading,
@@ -421,7 +550,7 @@
   }
   function setFocus(id) {
     focusedId = id;
-    var marks = root.querySelectorAll('mark.annot');
+    var marks = root.querySelectorAll('mark.annot, .annot-caret, ins.annot-insert-text');
     for (var i = 0; i < marks.length; i++) {
       marks[i].classList.toggle('annot-focus', marks[i].getAttribute('data-annot-id') === id);
     }
@@ -433,13 +562,12 @@
   function jumpTo(id) {
     var a = annotations.find(function (x) { return x.id === id; });
     if (!a) return;
-    // Tab support: if the doc uses [data-tab]/[data-panel] tabs, switch first.
     if (a.panel) {
       var tabBtn = document.querySelector('[data-tab="' + a.panel + '"]');
       if (tabBtn && !tabBtn.classList.contains('active')) tabBtn.click();
     }
     setTimeout(function () {
-      var mark = root.querySelector('mark.annot[data-annot-id="' + id + '"]');
+      var mark = root.querySelector('mark.annot[data-annot-id="' + id + '"], .annot-caret[data-annot-id="' + id + '"]');
       if (mark) {
         mark.scrollIntoView({ behavior: 'smooth', block: 'center' });
         setFocus(id);
@@ -461,6 +589,12 @@
       li.setAttribute('data-id', a.id);
       if (a.id === focusedId) li.classList.add('annot-focus');
 
+      var badgeLabel = { comment: 'Comment', delete: 'Delete', insert: 'Insert', replace: 'Replace' }[a.type || 'comment'];
+      var badge = document.createElement('span');
+      badge.className = 'annot-type-badge annot-type-' + (a.type || 'comment');
+      badge.textContent = badgeLabel;
+      li.appendChild(badge);
+
       var q = document.createElement('div');
       q.className = 'annot-item-quote';
       q.title = 'Jump to highlight';
@@ -480,6 +614,13 @@
       c.textContent = a.comment;
       li.appendChild(c);
 
+      if (a.type === 'replace' || a.type === 'insert') {
+        var repl = document.createElement('div');
+        repl.className = 'annot-item-replacement';
+        repl.textContent = '→ ' + (a.replacement || '');
+        li.appendChild(repl);
+      }
+
       var meta = document.createElement('div');
       meta.className = 'annot-item-meta';
       meta.textContent = (a.heading ? a.heading + ' · ' : '') + fmtDate(a.updatedAt || a.createdAt);
@@ -490,7 +631,12 @@
       var edit = document.createElement('button');
       edit.className = 'annot-btn';
       edit.textContent = 'Edit';
-      edit.addEventListener('click', function () { editingId = a.id; pending = null; openEditor(a.quote, a.comment, null, true); });
+      edit.addEventListener('click', function () {
+        editingId = a.id;
+        pending = null;
+        editingType = a.type || 'comment';
+        openEditor(a.quote, a.comment, a.replacement, null, true);
+      });
       var del = document.createElement('button');
       del.className = 'annot-btn danger';
       del.textContent = 'Delete';
@@ -512,7 +658,7 @@
 
   /* ── Click a highlight → open drawer + focus ────────── */
   root.addEventListener('click', function (e) {
-    var mark = e.target.closest ? e.target.closest('mark.annot') : null;
+    var mark = e.target.closest ? e.target.closest('mark.annot, .annot-caret, ins.annot-insert-text') : null;
     if (!mark) return;
     var id = mark.getAttribute('data-annot-id');
     if (els.drawer.hidden) openDrawer();
@@ -530,6 +676,7 @@
       annotations: annotations.map(function (a) {
         return {
           id: a.id, quote: a.quote, comment: a.comment,
+          type: a.type || 'comment', replacement: a.replacement || '',
           panel: a.panel, sectionHeading: a.heading,
           prefix: a.prefix, suffix: a.suffix,
           start: a.start, end: a.end,
@@ -563,6 +710,7 @@
           if (!raw || !raw.quote) return;
           var a = {
             id: raw.id || uid(), quote: raw.quote, comment: raw.comment || '',
+            type: raw.type || 'comment', replacement: raw.replacement || '',
             start: typeof raw.start === 'number' ? raw.start : 0,
             end: typeof raw.end === 'number' ? raw.end : 0,
             prefix: raw.prefix || '', suffix: raw.suffix || '',
