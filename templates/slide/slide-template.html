@@ -1,0 +1,882 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<script>
+  /* ═══ Theme toggle: set data-theme before first paint to avoid a flash ═══ */
+  (function () {
+    var KEY = 'slide-template-theme-v1'; // unique per deck if you rename this file
+    var saved = localStorage.getItem(KEY);
+    var initial = saved || ((window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light');
+    document.documentElement.setAttribute('data-theme', initial);
+  })();
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- ══════════════════════════════════════════════════════════════════════
+     REUSABLE SLIDE-DECK TEMPLATE  ·  with highlight → comment → export-JSON
+     ----------------------------------------------------------------------
+     HOW TO USE
+       1. Change the <title> below.
+       2. Set DECK_CONFIG (near the bottom, in the annotation <script>):
+            storageKey   — unique per deck, so different decks don't share
+                           localStorage annotations.
+            exportName   — filename used when reviewers click "Export JSON".
+       3. Replace the <section class="slide"> blocks with your content.
+          Keep the FIRST slide's class as "slide slide-title active" and give
+          every slide a unique id. The nav/dots build themselves automatically.
+       4. Component reference slides (marked "TEMPLATE REFERENCE") show every
+          reusable block — copy from them, then delete them.
+
+     ANNOTATION FEATURE (works out of the box, no server needed)
+       • Select any text on a slide → a "+ Comment" tooltip appears.
+       • Add a note → the text is highlighted and saved to localStorage.
+       • The 💬 button (bottom-right) opens a side panel listing every note.
+       • "Export JSON" downloads all notes (and copies them to the clipboard).
+       • Highlights survive reload; if the underlying text later changes, the
+         note is kept but flagged "orphaned" so nothing is silently lost.
+     ══════════════════════════════════════════════════════════════════════ -->
+<title>Slide Deck Template — Highlight · Comment · Export</title>
+<style>
+  :root {
+    --navy: #1a2744;
+    --deep-blue: #2c4a7c;
+    --teal: #0d9488;
+    --teal-light: #14b8a6;
+    --coral: #ef6461;
+    --coral-light: #f9a8a8;
+    --amber: #f59e0b;
+    --amber-light: #fcd34d;
+    --green: #10b981;
+    --green-light: #6ee7b7;
+    --slate-50: #f8fafc;
+    --slate-100: #f1f5f9;
+    --slate-200: #e2e8f0;
+    --slate-300: #cbd5e1;
+    --slate-400: #94a3b8;
+    --slate-500: #64748b;
+    --slate-600: #475569;
+    --slate-700: #334155;
+    --slate-800: #1e293b;
+    --slate-900: #0f172a;
+    --white: #ffffff;
+    --surface: var(--white);
+    --heading: var(--navy);
+  }
+  html[data-theme="dark"] {
+    --slate-50: #0f172a;
+    --slate-100: #1e293b;
+    --slate-200: #334155;
+    --slate-300: #475569;
+    --slate-400: #64748b;
+    --slate-500: #94a3b8;
+    --slate-600: #cbd5e1;
+    --slate-700: #e2e8f0;
+    --slate-800: #f1f5f9;
+    --slate-900: #f8fafc;
+    --surface: #1b212c;
+    --heading: #dce8ff;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { height: 100%; }
+  body { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; background: var(--slate-900); color: var(--slate-800); line-height: 1.5; font-size: 16px; overflow: hidden; }
+
+  .deck { position: relative; width: 100vw; height: 100vh; }
+
+  .slide {
+    position: absolute; inset: 0;
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 64px 90px 90px;
+    background: var(--slate-50);
+    opacity: 0; transform: translateX(24px);
+    pointer-events: none;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    overflow-y: auto;
+  }
+  .slide.active { opacity: 1; transform: translateX(0); pointer-events: auto; z-index: 2; }
+  .slide-inner { max-width: 1180px; margin: 0 auto; width: 100%; }
+
+  .slide-eyebrow { display: inline-block; font-size: 0.78em; font-weight: 700; text-transform: uppercase; letter-spacing: 1.6px; padding: 5px 13px; border-radius: 20px; margin-bottom: 16px; }
+  .eyebrow-teal { background: #ccfbf1; color: var(--teal); }
+  .eyebrow-coral { background: #fee2e2; color: var(--coral); }
+  .eyebrow-amber { background: #fef3c7; color: #92400e; }
+  .eyebrow-green { background: #d1fae5; color: #065f46; }
+  .eyebrow-navy { background: #dbeafe; color: var(--navy); }
+
+  .slide h1 { font-size: 2.6em; font-weight: 800; color: var(--white); letter-spacing: -0.5px; line-height: 1.15; margin-bottom: 14px; }
+  .slide h2 { font-size: 2.05em; font-weight: 800; color: var(--heading); letter-spacing: -0.4px; line-height: 1.2; margin-bottom: 20px; }
+  .slide h3 { font-size: 1.15em; font-weight: 700; color: var(--slate-800); margin: 0 0 8px; }
+  .slide p { margin-bottom: 10px; color: var(--slate-700); font-size: 1.02em; }
+  .slide ul, .slide ol { margin: 6px 0 6px 22px; color: var(--slate-700); }
+  .slide li { margin-bottom: 7px; font-size: 1.02em; }
+
+  /* Title slide */
+  .slide-title { background: linear-gradient(135deg, var(--navy) 0%, var(--deep-blue) 40%, #0e7490 70%, var(--teal) 100%); justify-content: center; }
+  .slide-title::before { content: ''; position: absolute; inset: 0; background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"); opacity: 0.5; pointer-events: none; }
+  .slide-title .slide-inner { position: relative; z-index: 1; }
+  .slide-title .badge-line { display: inline-block; background: var(--coral); color: white; font-size: 0.78em; font-weight: 700; padding: 4px 12px; border-radius: 20px; margin-bottom: 16px; letter-spacing: 0.5px; }
+  .slide-title .subtitle { font-size: 1.2em; color: white; opacity: 0.92; margin-bottom: 20px; max-width: 900px; line-height: 1.5; }
+  .slide-title .meta-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 12px; margin-top: 10px; max-width: 950px; }
+  .slide-title .meta-card { background: rgba(255,255,255,0.12); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.2); border-radius: 10px; padding: 12px 16px; }
+  .slide-title .meta-card .label { font-size: 0.7em; text-transform: uppercase; letter-spacing: 1.2px; opacity: 0.75; color: white; }
+  .slide-title .meta-card .value { font-size: 1.2em; font-weight: 700; margin-top: 2px; color: white; }
+  .slide-title .footer-note { margin-top: 26px; font-size: 0.85em; color: rgba(255,255,255,0.75); }
+
+  /* Closing slide reuses title look */
+  .slide-closing { background: linear-gradient(135deg, var(--navy) 0%, var(--deep-blue) 60%, var(--teal) 100%); justify-content: center; }
+  .slide-closing::before { content: ''; position: absolute; inset: 0; background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"); opacity: 0.5; pointer-events: none; }
+  .slide-closing .slide-inner { position: relative; z-index: 1; }
+  .slide-closing p { color: rgba(255,255,255,0.9); }
+  .slide-closing h1 { margin-bottom: 20px; }
+
+  /* Shared components */
+  .card { background: var(--surface); border: 1px solid var(--slate-200); border-radius: 11px; padding: 18px 22px; margin: 12px 0; box-shadow: 0 1px 4px rgba(0,0,0,0.04); }
+  .card.highlight { border-left: 4px solid var(--teal); background: linear-gradient(135deg, #f0fdfa 0%, var(--surface) 100%); }
+  .card.warning { border-left: 4px solid var(--coral); background: linear-gradient(135deg, #fff5f5 0%, var(--surface) 100%); }
+  .card.success { border-left: 4px solid var(--green); background: linear-gradient(135deg, #ecfdf5 0%, var(--surface) 100%); }
+  .card.info { border-left: 4px solid var(--deep-blue); background: linear-gradient(135deg, #eff6ff 0%, var(--surface) 100%); }
+  html[data-theme="dark"] .card.highlight { background: linear-gradient(135deg, rgba(13,148,136,0.16) 0%, var(--surface) 100%); }
+  html[data-theme="dark"] .card.warning { background: linear-gradient(135deg, rgba(239,100,97,0.16) 0%, var(--surface) 100%); }
+  html[data-theme="dark"] .card.success { background: linear-gradient(135deg, rgba(16,185,129,0.16) 0%, var(--surface) 100%); }
+  html[data-theme="dark"] .card.info { background: linear-gradient(135deg, rgba(44,74,124,0.22) 0%, var(--surface) 100%); }
+
+  table { width: 100%; border-collapse: separate; border-spacing: 0; margin: 10px 0; font-size: 0.88em; border-radius: 10px; overflow: hidden; border: 1px solid var(--slate-200); }
+  thead { background: var(--navy); color: var(--white); }
+  th { padding: 9px 12px; text-align: left; font-weight: 600; font-size: 0.82em; text-transform: uppercase; letter-spacing: 0.4px; }
+  td { padding: 8px 12px; border-bottom: 1px solid var(--slate-100); }
+  tbody tr:last-child td { border-bottom: none; }
+
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+
+  .stat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; margin: 12px 0; }
+  .stat-card { background: var(--surface); border: 1px solid var(--slate-200); border-radius: 10px; padding: 13px 15px; text-align: center; }
+  .stat-card .stat-value { font-size: 1.6em; font-weight: 800; color: var(--teal); line-height: 1.1; }
+  .stat-card .stat-label { font-size: 0.68em; color: var(--slate-500); text-transform: uppercase; letter-spacing: 0.4px; margin-top: 4px; }
+
+  .badge { display: inline-block; font-size: 0.7em; font-weight: 600; padding: 2px 9px; border-radius: 20px; margin: 2px 3px 2px 0; }
+  .badge-green { background: #d1fae5; color: #065f46; }
+  .badge-teal { background: #ccfbf1; color: #0d9488; }
+  .badge-amber { background: #fef3c7; color: #92400e; }
+  .badge-blue { background: #dbeafe; color: var(--navy); }
+
+  /* Layer diagram */
+  .layer-stack { display: flex; flex-direction: column; gap: 8px; margin: 14px 0; }
+  .layer { border-radius: 10px; padding: 13px 18px; display: flex; align-items: center; gap: 16px; }
+  .layer .layer-num { flex-shrink: 0; width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 0.9em; color: white; }
+  .layer .layer-title { font-weight: 700; font-size: 1em; }
+  .layer .layer-detail { font-size: 0.86em; color: var(--slate-600); }
+  .layer-1 { background: #ecfeff; border-left: 4px solid #06b6d4; } .layer-1 .layer-num { background: #06b6d4; }
+  .layer-2 { background: #eff6ff; border-left: 4px solid var(--deep-blue); } .layer-2 .layer-num { background: var(--deep-blue); }
+  .layer-3 { background: #fef3c7; border-left: 4px solid var(--amber); } .layer-3 .layer-num { background: var(--amber); }
+  .layer-4 { background: #f0fdfa; border-left: 4px solid var(--teal); } .layer-4 .layer-num { background: var(--teal); }
+  .layer-5 { background: #ede9fe; border-left: 4px solid #7c3aed; } .layer-5 .layer-num { background: #7c3aed; }
+  html[data-theme="dark"] .layer-1 { background: rgba(6,182,212,0.12); }
+  html[data-theme="dark"] .layer-2 { background: rgba(44,74,124,0.18); }
+  html[data-theme="dark"] .layer-3 { background: rgba(245,158,11,0.14); }
+  html[data-theme="dark"] .layer-4 { background: rgba(13,148,136,0.14); }
+  html[data-theme="dark"] .layer-5 { background: rgba(124,58,237,0.16); }
+
+  /* Causal / process chain */
+  .chain-step { border-radius: 10px; padding: 12px 18px; text-align: center; font-weight: 600; font-size: 0.92em; }
+  .chain-arrow { text-align: center; color: var(--slate-400); font-size: 1.2em; padding: 1px 0; }
+
+  /* Nav controls */
+  .deck-nav { position: fixed; bottom: 22px; left: 0; right: 0; display: flex; align-items: center; justify-content: center; gap: 14px; z-index: 500; }
+  .deck-nav button { background: var(--navy); color: white; border: none; width: 42px; height: 42px; border-radius: 50%; font-size: 1.1em; cursor: pointer; box-shadow: 0 3px 10px rgba(0,0,0,0.25); display: flex; align-items: center; justify-content: center; }
+  .deck-nav button:hover { background: var(--deep-blue); }
+  .deck-nav button:disabled { opacity: 0.35; cursor: default; }
+  .deck-dots { display: flex; gap: 7px; }
+  .deck-dots .dot { width: 9px; height: 9px; border-radius: 50%; background: var(--slate-300); cursor: pointer; transition: background 0.2s, transform 0.2s; }
+  .deck-dots .dot.active { background: var(--teal); transform: scale(1.3); }
+  .deck-counter { position: fixed; top: 20px; right: 24px; z-index: 500; background: rgba(26,39,68,0.85); color: white; font-size: 0.8em; font-weight: 700; padding: 6px 13px; border-radius: 20px; }
+
+  /* ═══════════════ Theme toggle (light/dark) ═══════════════ */
+  .theme-toggle-btn { position: fixed; top: 20px; right: 132px; z-index: 500; background: rgba(26,39,68,0.85); color: white; border: none; font-family: inherit; font-size: 0.8em; font-weight: 700; padding: 6px 13px; border-radius: 20px; cursor: pointer; }
+  .theme-toggle-btn:hover { background: var(--deep-blue); }
+
+  @media print { .deck-nav, .deck-counter, .theme-toggle-btn, #ann-toggle, #ann-panel, #ann-tooltip, #ann-popup { display: none !important; } .slide { position: static; opacity: 1; transform: none; page-break-after: always; height: 100vh; } body { overflow: visible; } }
+</style>
+</head>
+<body>
+
+<main class="deck">
+
+  <!-- ═══════════════ SLIDE 1: TITLE (keep class "active" on the first slide) ═══════════════ -->
+  <section class="slide slide-title active" id="slide-title">
+    <div class="slide-inner">
+      <span class="badge-line">PROJECT / EVENT LABEL</span>
+      <h1>Presentation Title Goes Here</h1>
+      <h2 style="font-size: 0.5em; font-weight: 400; opacity: 0.8; margin-top: 0.5em;">A supporting subtitle line</h2>
+      <p class="subtitle">One or two sentences framing what this deck is about and who it is for.</p>
+      <div class="meta-grid">
+        <div class="meta-card"><div class="label">Metric A</div><div class="value">Value</div></div>
+        <div class="meta-card"><div class="label">Metric B</div><div class="value">Value</div></div>
+        <div class="meta-card"><div class="label">Metric C</div><div class="value">Value</div></div>
+      </div>
+      <p class="footer-note">Presenter · Affiliation · Use → and ← (or the arrows below) to navigate. Select any text to highlight and leave a comment for the team.</p>
+    </div>
+  </section>
+
+  <!-- ═══════════════ SLIDE 2: CONTENT (edit or duplicate) ═══════════════ -->
+  <section class="slide" id="slide-2">
+    <div class="slide-inner">
+      <span class="slide-eyebrow eyebrow-teal">Section Label</span>
+      <h2>A Content Slide Heading</h2>
+      <p>Introduce the point in a sentence or two. Reviewers can select any of this text and attach a comment.</p>
+      <ul>
+        <li>First supporting point.</li>
+        <li>Second supporting point, with <strong>emphasis</strong> where it helps.</li>
+        <li>Third supporting point.</li>
+      </ul>
+      <div class="card highlight">
+        <h3>🔑 Key Takeaway</h3>
+        <p style="margin-bottom:0;">Use a highlighted card to make the one thing you want remembered stand out.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ SLIDE 3: TEMPLATE REFERENCE — cards & badges (delete when done) ═══════════════ -->
+  <section class="slide" id="slide-ref-cards">
+    <div class="slide-inner">
+      <span class="slide-eyebrow eyebrow-navy">Template Reference</span>
+      <h2>Cards, Badges &amp; Stats</h2>
+      <div class="grid-2">
+        <div class="card highlight"><h3>Highlight card</h3><p style="margin-bottom:0;"><code>class="card highlight"</code> — teal accent.</p></div>
+        <div class="card warning"><h3>Warning card</h3><p style="margin-bottom:0;"><code>class="card warning"</code> — coral accent.</p></div>
+        <div class="card success"><h3>Success card</h3><p style="margin-bottom:0;"><code>class="card success"</code> — green accent.</p></div>
+        <div class="card info"><h3>Info card</h3><p style="margin-bottom:0;"><code>class="card info"</code> — blue accent.</p></div>
+      </div>
+      <p style="margin-top:12px;">
+        <span class="badge badge-green">green</span>
+        <span class="badge badge-teal">teal</span>
+        <span class="badge badge-amber">amber</span>
+        <span class="badge badge-blue">blue</span>
+      </p>
+      <div class="stat-grid">
+        <div class="stat-card"><div class="stat-value">42</div><div class="stat-label">A headline number</div></div>
+        <div class="stat-card"><div class="stat-value">r = 0.91</div><div class="stat-label">A statistic</div></div>
+        <div class="stat-card"><div class="stat-value">3×</div><div class="stat-label">A multiplier</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ SLIDE 4: TEMPLATE REFERENCE — table, layers & chain (delete when done) ═══════════════ -->
+  <section class="slide" id="slide-ref-blocks">
+    <div class="slide-inner">
+      <span class="slide-eyebrow eyebrow-amber">Template Reference</span>
+      <h2>Table, Layer Stack &amp; Chain</h2>
+      <table>
+        <thead><tr><th>Column A</th><th>Column B</th><th>Column C</th></tr></thead>
+        <tbody>
+          <tr><td>Row 1</td><td>Data</td><td>Data</td></tr>
+          <tr><td>Row 2</td><td>Data</td><td>Data</td></tr>
+        </tbody>
+      </table>
+      <div class="layer-stack">
+        <div class="layer layer-1"><div class="layer-num">1</div><div><div class="layer-title">Layer one</div><div class="layer-detail">Supporting detail for this layer.</div></div></div>
+        <div class="layer layer-2"><div class="layer-num">2</div><div><div class="layer-title">Layer two</div><div class="layer-detail">Supporting detail for this layer.</div></div></div>
+        <div class="layer layer-3"><div class="layer-num">3</div><div><div class="layer-title">Layer three</div><div class="layer-detail">Supporting detail for this layer.</div></div></div>
+      </div>
+      <div class="chain-step" style="background:#fee2e2; color:#991b1b;">Step A — the driver</div>
+      <div class="chain-arrow">↓</div>
+      <div class="chain-step" style="background:#ccfbf1; color:#0d9488;">Step B — the outcome</div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ SLIDE 5: CLOSING ═══════════════ -->
+  <section class="slide slide-closing" id="slide-closing">
+    <div class="slide-inner">
+      <h1>Thank You</h1>
+      <p style="margin-top:22px;"><strong>Presenter Name</strong><br>Role, Affiliation<br>Contact / event line</p>
+    </div>
+  </section>
+
+</main>
+
+<button class="theme-toggle-btn" id="theme-toggle" title="Toggle color theme" aria-label="Toggle color theme" aria-pressed="false">◐ dark</button>
+<div class="deck-counter" id="deck-counter">1 / 1</div>
+<div class="deck-nav">
+  <button id="nav-home" title="Go to first slide (Home)">⏮</button>
+  <button id="nav-prev" title="Previous slide">←</button>
+  <div class="deck-dots" id="deck-dots"></div>
+  <button id="nav-next" title="Next slide">→</button>
+  <button id="nav-fullscreen" title="Toggle full screen (F)">⛶</button>
+</div>
+
+<script>
+/* ── Deck navigation: builds dots + counter from whatever slides exist ── */
+(function () {
+  'use strict';
+  var slides = Array.prototype.slice.call(document.querySelectorAll('.slide'));
+  var current = 0;
+  var counterEl = document.getElementById('deck-counter');
+  var dotsEl = document.getElementById('deck-dots');
+  var prevBtn = document.getElementById('nav-prev');
+  var nextBtn = document.getElementById('nav-next');
+  var homeBtn = document.getElementById('nav-home');
+  var fsBtn = document.getElementById('nav-fullscreen');
+
+  slides.forEach(function (_, i) {
+    var dot = document.createElement('div');
+    dot.className = 'dot' + (i === 0 ? ' active' : '');
+    dot.addEventListener('click', function () { goTo(i); });
+    dotsEl.appendChild(dot);
+  });
+  var dots = Array.prototype.slice.call(dotsEl.children);
+
+  function goTo(i) {
+    if (i < 0 || i >= slides.length) return;
+    slides[current].classList.remove('active');
+    dots[current].classList.remove('active');
+    current = i;
+    slides[current].classList.add('active');
+    dots[current].classList.add('active');
+    counterEl.textContent = (current + 1) + ' / ' + slides.length;
+    prevBtn.disabled = current === 0;
+    nextBtn.disabled = current === slides.length - 1;
+    slides[current].scrollTop = 0;
+  }
+
+  prevBtn.addEventListener('click', function () { goTo(current - 1); });
+  nextBtn.addEventListener('click', function () { goTo(current + 1); });
+  homeBtn.addEventListener('click', function () { goTo(0); });
+  window.__deckGoTo = goTo;
+
+  // ── Fullscreen toggle (with vendor-prefixed fallbacks) ──
+  function isFullscreen() {
+    return document.fullscreenElement || document.webkitFullscreenElement || document.msFullscreenElement;
+  }
+  function toggleFullscreen() {
+    if (!isFullscreen()) {
+      var el = document.documentElement;
+      var req = el.requestFullscreen || el.webkitRequestFullscreen || el.msRequestFullscreen;
+      if (req) req.call(el);
+    } else {
+      var exit = document.exitFullscreen || document.webkitExitFullscreen || document.msExitFullscreen;
+      if (exit) exit.call(document);
+    }
+  }
+  function syncFsIcon() {
+    var on = !!isFullscreen();
+    fsBtn.textContent = on ? '✖' : '⛶';
+    fsBtn.title = on ? 'Exit full screen (F)' : 'Toggle full screen (F)';
+  }
+  fsBtn.addEventListener('click', toggleFullscreen);
+  document.addEventListener('fullscreenchange', syncFsIcon);
+  document.addEventListener('webkitfullscreenchange', syncFsIcon);
+  document.addEventListener('msfullscreenchange', syncFsIcon);
+
+  document.addEventListener('keydown', function (e) {
+    var tag = (document.activeElement && document.activeElement.tagName) || '';
+    if (tag === 'TEXTAREA' || tag === 'INPUT') return;
+    if (e.key === 'ArrowRight' || e.key === 'PageDown' || e.key === ' ') { goTo(current + 1); e.preventDefault(); }
+    else if (e.key === 'ArrowLeft' || e.key === 'PageUp') { goTo(current - 1); e.preventDefault(); }
+    else if (e.key === 'Home') { goTo(0); }
+    else if (e.key === 'End') { goTo(slides.length - 1); }
+    else if (e.key === 'f' || e.key === 'F') { toggleFullscreen(); e.preventDefault(); }
+  });
+
+  goTo(0);
+})();
+</script>
+
+<!-- ═══════════════════ THEME TOGGLE (light/dark; self-contained) ═══════════════════ -->
+<script>
+(function () {
+  'use strict';
+  var KEY = 'slide-template-theme-v1'; // must match the key set in <head>
+  var btn = document.getElementById('theme-toggle');
+  if (!btn) return;
+
+  function label(t) { return t === 'light' ? '◐ dark' : '◑ light'; }
+  function sync(t) {
+    btn.textContent = label(t);
+    btn.setAttribute('aria-pressed', t === 'dark' ? 'true' : 'false');
+  }
+
+  sync(document.documentElement.getAttribute('data-theme') || 'light');
+
+  btn.addEventListener('click', function () {
+    var current = document.documentElement.getAttribute('data-theme');
+    var next = current === 'light' ? 'dark' : 'light';
+    document.documentElement.setAttribute('data-theme', next);
+    localStorage.setItem(KEY, next);
+    sync(next);
+  });
+})();
+</script>
+
+<!-- ═══════════════════ ANNOTATION SYSTEM (self-contained; no server) ═══════════════════ -->
+<style>
+  .ann-highlight { background: #fde68a; cursor: pointer; border-radius: 2px; padding: 0 1px; box-shadow: 0 0 0 1px rgba(245,158,11,0.35); }
+  .ann-highlight.ann-orphaned { background: #fecdd3; box-shadow: 0 0 0 1px rgba(225,29,72,0.35); }
+  .ann-highlight .ann-badge { display: inline-flex; align-items: center; justify-content: center; min-width: 15px; height: 15px; padding: 0 3px; background: var(--coral, #ef6461); color: #fff; font-size: 0.62em; font-weight: 800; border-radius: 50%; vertical-align: super; margin-left: 1px; font-style: normal; }
+
+  #ann-tooltip { position: absolute; z-index: 9999; display: none; }
+  #ann-tooltip button { background: var(--navy, #1a2744); color: #fff; border: none; padding: 7px 13px; border-radius: 7px; font-size: 0.82em; font-weight: 700; cursor: pointer; box-shadow: 0 4px 14px rgba(0,0,0,0.25); font-family: inherit; }
+  #ann-tooltip button:hover { background: var(--deep-blue, #2c4a7c); }
+
+  #ann-popup { position: absolute; z-index: 10000; display: none; width: 300px; background: var(--surface, #fff); border-radius: 10px; box-shadow: 0 8px 30px rgba(0,0,0,0.25); border: 1px solid var(--slate-200, #e2e8f0); padding: 14px 16px; font-family: inherit; }
+  #ann-popup .ann-quote { font-size: 0.8em; color: var(--slate-500, #64748b); background: var(--slate-50, #f8fafc); border-left: 3px solid #fde68a; padding: 6px 9px; border-radius: 0 6px 6px 0; margin-bottom: 9px; max-height: 60px; overflow-y: auto; }
+  #ann-popup textarea { width: 100%; min-height: 70px; resize: vertical; border: 1px solid var(--slate-300, #cbd5e1); border-radius: 7px; padding: 8px 10px; font-size: 0.88em; font-family: inherit; margin-bottom: 10px; }
+  #ann-popup textarea:focus { outline: none; border-color: var(--teal, #0d9488); }
+  #ann-popup .ann-popup-actions { display: flex; gap: 8px; justify-content: flex-end; }
+  #ann-popup .ann-popup-actions button { border: none; padding: 6px 14px; border-radius: 6px; font-size: 0.82em; font-weight: 700; cursor: pointer; font-family: inherit; }
+  #ann-popup .ann-save { background: var(--teal, #0d9488); color: #fff; }
+  #ann-popup .ann-save:hover { background: #0b7d72; }
+  #ann-popup .ann-cancel { background: var(--slate-100, #f1f5f9); color: var(--slate-600, #475569); }
+  #ann-popup .ann-cancel:hover { background: var(--slate-200, #e2e8f0); }
+
+  #ann-toggle { position: fixed; bottom: 24px; right: 24px; z-index: 9998; background: var(--navy, #1a2744); color: #fff; border: none; width: 54px; height: 54px; border-radius: 50%; font-size: 1.3em; cursor: pointer; box-shadow: 0 4px 16px rgba(0,0,0,0.3); display: flex; align-items: center; justify-content: center; }
+  #ann-toggle:hover { background: var(--deep-blue, #2c4a7c); }
+  #ann-toggle .ann-count { position: absolute; top: -4px; right: -4px; background: var(--coral, #ef6461); color: #fff; font-size: 0.62em; font-weight: 800; min-width: 18px; height: 18px; border-radius: 50%; display: flex; align-items: center; justify-content: center; padding: 0 3px; }
+
+  #ann-panel { position: fixed; top: 0; right: -380px; width: 360px; height: 100%; background: var(--surface, #fff); box-shadow: -4px 0 24px rgba(0,0,0,0.15); z-index: 9997; transition: right 0.25s ease; display: flex; flex-direction: column; font-family: inherit; }
+  #ann-panel.ann-open { right: 0; }
+  #ann-panel .ann-panel-header { padding: 18px 18px 14px; border-bottom: 1px solid var(--slate-200, #e2e8f0); }
+  #ann-panel .ann-panel-header h3 { font-size: 1.05em; font-weight: 800; color: var(--navy, #1a2744); margin-bottom: 3px; }
+  #ann-panel .ann-panel-header p { font-size: 0.78em; color: var(--slate-500, #64748b); }
+  #ann-panel .ann-panel-actions { display: flex; gap: 8px; padding: 12px 18px; border-bottom: 1px solid var(--slate-200, #e2e8f0); }
+  #ann-panel .ann-panel-actions button { flex: 1; border: none; padding: 8px 10px; border-radius: 7px; font-size: 0.78em; font-weight: 700; cursor: pointer; font-family: inherit; }
+  #ann-export-btn { background: var(--teal, #0d9488); color: #fff; }
+  #ann-export-btn:hover { background: #0b7d72; }
+  #ann-clear-btn { background: #fee2e2; color: #991b1b; }
+  #ann-clear-btn:hover { background: #fecaca; }
+  #ann-panel .ann-list { flex: 1; overflow-y: auto; padding: 10px 14px; }
+  #ann-panel .ann-empty { color: var(--slate-400, #94a3b8); font-size: 0.85em; text-align: center; padding: 40px 20px; }
+  #ann-panel .ann-item { border: 1px solid var(--slate-200, #e2e8f0); border-radius: 9px; padding: 11px 13px; margin-bottom: 9px; font-size: 0.85em; }
+  #ann-panel .ann-item.ann-item-orphaned { border-color: #fecdd3; background: #fff5f5; }
+  #ann-panel .ann-item .ann-item-section { font-size: 0.72em; font-weight: 700; color: var(--teal, #0d9488); text-transform: uppercase; letter-spacing: 0.4px; margin-bottom: 4px; }
+  #ann-panel .ann-item .ann-item-quote { font-style: italic; color: var(--slate-600, #475569); border-left: 2px solid #fde68a; padding-left: 8px; margin-bottom: 6px; }
+  #ann-panel .ann-item .ann-item-comment { color: var(--slate-800, #1e293b); margin-bottom: 8px; white-space: pre-wrap; }
+  #ann-panel .ann-item .ann-item-meta { font-size: 0.72em; color: var(--slate-400, #94a3b8); margin-bottom: 6px; }
+  #ann-panel .ann-item .ann-item-actions { display: flex; gap: 10px; }
+  #ann-panel .ann-item .ann-item-actions a { font-size: 0.78em; font-weight: 700; cursor: pointer; text-decoration: none; }
+  #ann-panel .ann-jump { color: var(--teal, #0d9488); }
+  #ann-panel .ann-delete { color: var(--coral, #ef6461); }
+  #ann-panel .ann-orphan-flag { color: #991b1b; font-weight: 700; }
+
+  @media print { #ann-toggle, #ann-panel, #ann-tooltip, #ann-popup { display: none !important; } }
+</style>
+
+<button id="ann-toggle" title="Toggle annotations panel">💬<span class="ann-count" id="ann-count" style="display:none;">0</span></button>
+
+<div id="ann-panel">
+  <div class="ann-panel-header">
+    <h3>📝 Annotations</h3>
+    <p>Select text on any slide to highlight &amp; comment.</p>
+  </div>
+  <div class="ann-panel-actions">
+    <button id="ann-export-btn">⬇ Export JSON</button>
+    <button id="ann-clear-btn">🗑 Clear All</button>
+  </div>
+  <div class="ann-list" id="ann-list"></div>
+</div>
+
+<div id="ann-tooltip"><button id="ann-add-btn">+ Comment</button></div>
+
+<div id="ann-popup">
+  <div class="ann-quote" id="ann-popup-quote"></div>
+  <textarea id="ann-popup-textarea" placeholder="What should be revised here?"></textarea>
+  <div class="ann-popup-actions">
+    <button class="ann-cancel" id="ann-popup-cancel">Cancel</button>
+    <button class="ann-save" id="ann-popup-save">Save</button>
+  </div>
+</div>
+
+<script>
+(function () {
+  'use strict';
+
+  /* ┌──────────────────────────────────────────────────────────────┐
+     │  DECK_CONFIG — the only two things to change per deck.        │
+     │  storageKey : unique id so each deck keeps its own notes.     │
+     │  exportName : filename for the downloaded JSON.               │
+     └──────────────────────────────────────────────────────────────┘ */
+  var DECK_CONFIG = {
+    storageKey: 'slide-template-annotations-v1',
+    exportName: 'slide-template-annotations.json'
+  };
+
+  var STORAGE_KEY = DECK_CONFIG.storageKey;
+  var annotations = [];
+  var pendingRange = null;
+
+  var toggleBtn = document.getElementById('ann-toggle');
+  var countBadge = document.getElementById('ann-count');
+  var panel = document.getElementById('ann-panel');
+  var listEl = document.getElementById('ann-list');
+  var tooltip = document.getElementById('ann-tooltip');
+  var addBtn = document.getElementById('ann-add-btn');
+  var popup = document.getElementById('ann-popup');
+  var popupQuote = document.getElementById('ann-popup-quote');
+  var popupTextarea = document.getElementById('ann-popup-textarea');
+  var popupSave = document.getElementById('ann-popup-save');
+  var popupCancel = document.getElementById('ann-popup-cancel');
+  var exportBtn = document.getElementById('ann-export-btn');
+  var clearBtn = document.getElementById('ann-clear-btn');
+
+  function load() {
+    try {
+      var raw = localStorage.getItem(STORAGE_KEY);
+      annotations = raw ? JSON.parse(raw) : [];
+    } catch (e) {
+      annotations = [];
+    }
+  }
+
+  function persist() {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(annotations));
+  }
+
+  function genId() {
+    return 'ann_' + Date.now().toString(36) + '_' + Math.random().toString(36).slice(2, 8);
+  }
+
+  function findSection(node) {
+    var el = node.nodeType === 3 ? node.parentElement : node;
+    var section = el ? el.closest('section') : null;
+    if (!section) return { id: '', heading: '' };
+    var h = section.querySelector('h1, h2, h3');
+    return { id: section.id || '', heading: h ? h.textContent.trim() : (section.id || '') };
+  }
+
+  function getContext(range) {
+    var full = document.body.textContent;
+    var quoted = range.toString();
+    var idx = full.indexOf(quoted);
+    if (idx === -1) return '';
+    var start = Math.max(0, idx - 80);
+    var end = Math.min(full.length, idx + quoted.length + 80);
+    return full.slice(start, end).replace(/\s+/g, ' ').trim();
+  }
+
+  function isInsideAnnUi(node) {
+    var el = node.nodeType === 3 ? node.parentElement : node;
+    return !!(el && el.closest('#ann-panel, #ann-toggle, #ann-tooltip, #ann-popup, .deck-nav, .deck-counter'));
+  }
+
+  // ── Selection handling ──
+  document.addEventListener('mouseup', function (e) {
+    if (isInsideAnnUi(e.target)) return;
+    var sel = window.getSelection();
+    if (!sel || sel.isCollapsed || sel.rangeCount === 0) {
+      tooltip.style.display = 'none';
+      return;
+    }
+    var text = sel.toString().trim();
+    if (!text) {
+      tooltip.style.display = 'none';
+      return;
+    }
+    var range = sel.getRangeAt(0);
+    if (isInsideAnnUi(range.startContainer) || isInsideAnnUi(range.endContainer)) return;
+    pendingRange = range.cloneRange();
+    var rect = range.getBoundingClientRect();
+    tooltip.style.left = (rect.left + window.scrollX + rect.width / 2 - 45) + 'px';
+    var tooltipTop = rect.top + window.scrollY - 40;
+    tooltip.style.top = Math.max(10, tooltipTop) + 'px';
+    tooltip.style.display = 'block';
+  });
+
+  document.addEventListener('mousedown', function (e) {
+    if (e.target === addBtn || e.target.closest('#ann-tooltip')) return;
+    if (e.target.closest('#ann-popup')) return;
+    tooltip.style.display = 'none';
+  });
+
+  addBtn.addEventListener('click', function () {
+    if (!pendingRange) return;
+    var text = pendingRange.toString().trim();
+    popupQuote.textContent = text.length > 200 ? text.slice(0, 200) + '…' : text;
+    popupTextarea.value = '';
+    var rect = pendingRange.getBoundingClientRect();
+
+    // Default: position below selection
+    var top = rect.bottom + window.scrollY + 8;
+    var left = Math.min(rect.left + window.scrollX, window.innerWidth - 320);
+
+    popup.style.top = top + 'px';
+    popup.style.left = Math.max(10, left) + 'px';
+    popup.style.display = 'block';
+
+    // Collision detection: if popup extends beyond viewport bottom, flip to above
+    var popupHeight = popup.offsetHeight;
+    var viewportBottom = window.innerHeight + window.scrollY;
+    if (top + popupHeight > viewportBottom) {
+      top = rect.top + window.scrollY - popupHeight - 8;
+      popup.style.top = top + 'px';
+    }
+    // Ensure it doesn't go off the top of the screen
+    if (top < 0) {
+      popup.style.top = '10px';
+    }
+
+    tooltip.style.display = 'none';
+    popupTextarea.focus();
+  });
+
+  popupCancel.addEventListener('click', function () {
+    popup.style.display = 'none';
+    pendingRange = null;
+  });
+
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') {
+      popup.style.display = 'none';
+      tooltip.style.display = 'none';
+      pendingRange = null;
+    }
+  });
+
+  popupSave.addEventListener('click', function () {
+    var comment = popupTextarea.value.trim();
+    if (!comment || !pendingRange) return;
+    var id = genId();
+    var sectionInfo = findSection(pendingRange.startContainer);
+    var quotedText = pendingRange.toString();
+    var context = getContext(pendingRange);
+
+    wrapRange(pendingRange, id);
+
+    annotations.push({
+      id: id,
+      sectionId: sectionInfo.id,
+      sectionHeading: sectionInfo.heading,
+      quotedText: quotedText,
+      context: context,
+      comment: comment,
+      timestamp: new Date().toISOString(),
+      orphaned: false
+    });
+    persist();
+    renderList();
+    popup.style.display = 'none';
+    pendingRange = null;
+    window.getSelection().removeAllRanges();
+  });
+
+  // ── Wrap a Range in highlight spans, splitting across element boundaries ──
+  function wrapRange(range, id) {
+    var span = document.createElement('span');
+    span.className = 'ann-highlight';
+    span.setAttribute('data-annotation-id', id);
+    span.title = 'Click to view/edit comment';
+    try {
+      range.surroundContents(span);
+    } catch (e) {
+      // Range spans multiple elements — split into per-text-node ranges
+      var nodes = getTextNodesInRange(range);
+      nodes.forEach(function (n) {
+        var s = document.createElement('span');
+        s.className = 'ann-highlight';
+        s.setAttribute('data-annotation-id', id);
+        s.title = 'Click to view/edit comment';
+        n.range.surroundContents(s);
+      });
+      return;
+    }
+    var badge = document.createElement('sup');
+    badge.className = 'ann-badge';
+    badge.textContent = '💬';
+    span.appendChild(badge);
+  }
+
+  function getTextNodesInRange(range) {
+    var result = [];
+    var walker = document.createTreeWalker(range.commonAncestorContainer, NodeFilter.SHOW_TEXT, null);
+    var node;
+    while ((node = walker.nextNode())) {
+      if (!range.intersectsNode(node)) continue;
+      var nodeRange = document.createRange();
+      nodeRange.selectNodeContents(node);
+      if (node === range.startContainer) nodeRange.setStart(node, range.startOffset);
+      if (node === range.endContainer) nodeRange.setEnd(node, range.endOffset);
+      if (nodeRange.collapsed) continue;
+      result.push({ node: node, range: nodeRange });
+    }
+    return result;
+  }
+
+  // ── Click on existing highlight → jump to sidebar entry ──
+  document.addEventListener('click', function (e) {
+    var hl = e.target.closest('.ann-highlight');
+    if (!hl) return;
+    var id = hl.getAttribute('data-annotation-id');
+    openPanel();
+    var item = listEl.querySelector('[data-item-id="' + id + '"]');
+    if (item) {
+      item.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      item.style.outline = '2px solid var(--teal, #0d9488)';
+      setTimeout(function () { item.style.outline = ''; }, 1200);
+    }
+  });
+
+  // ── Panel rendering ──
+  function renderList() {
+    countBadge.textContent = annotations.length;
+    countBadge.style.display = annotations.length ? 'flex' : 'none';
+    if (!annotations.length) {
+      listEl.innerHTML = '<div class="ann-empty">No annotations yet.<br>Select text on a slide to get started.</div>';
+      return;
+    }
+    listEl.innerHTML = annotations.map(function (a) {
+      var orphanClass = a.orphaned ? ' ann-item-orphaned' : '';
+      var orphanFlag = a.orphaned ? '<div class="ann-orphan-flag">⚠️ Orphaned — original text not found on page</div>' : '';
+      var jumpLink = a.orphaned ? '' : '<a class="ann-jump" data-jump-id="' + a.id + '">↳ Jump to</a>';
+      return '<div class="ann-item' + orphanClass + '" data-item-id="' + a.id + '">' +
+        '<div class="ann-item-section">' + escapeHtml(a.sectionHeading || 'Untitled slide') + '</div>' +
+        '<div class="ann-item-quote">"' + escapeHtml(truncate(a.quotedText, 140)) + '"</div>' +
+        '<div class="ann-item-comment">' + escapeHtml(a.comment) + '</div>' +
+        '<div class="ann-item-meta">' + new Date(a.timestamp).toLocaleString() + '</div>' +
+        orphanFlag +
+        '<div class="ann-item-actions">' + jumpLink + '<a class="ann-delete" data-delete-id="' + a.id + '">🗑 Delete</a></div>' +
+        '</div>';
+    }).join('');
+  }
+
+  function truncate(s, n) { return s.length > n ? s.slice(0, n) + '…' : s; }
+  function escapeHtml(s) {
+    var d = document.createElement('div');
+    d.textContent = s || '';
+    return d.innerHTML;
+  }
+
+  function activateSlideFor(el) {
+    var slide = el.closest('.slide');
+    if (!slide) return;
+    var idx = Array.prototype.indexOf.call(document.querySelectorAll('.slide'), slide);
+    if (idx !== -1 && window.__deckGoTo) window.__deckGoTo(idx);
+  }
+
+  listEl.addEventListener('click', function (e) {
+    var jump = e.target.closest('[data-jump-id]');
+    if (jump) {
+      var id = jump.getAttribute('data-jump-id');
+      var el = document.querySelector('.ann-highlight[data-annotation-id="' + id + '"]');
+      if (el) {
+        activateSlideFor(el);
+        setTimeout(function () {
+          el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          el.style.boxShadow = '0 0 0 3px var(--teal, #0d9488)';
+          setTimeout(function () { el.style.boxShadow = ''; }, 1200);
+        }, 50);
+      }
+      return;
+    }
+    var del = e.target.closest('[data-delete-id]');
+    if (del) {
+      var delId = del.getAttribute('data-delete-id');
+      annotations = annotations.filter(function (a) { return a.id !== delId; });
+      persist();
+      document.querySelectorAll('.ann-highlight[data-annotation-id="' + delId + '"]').forEach(function (span) {
+        var parent = span.parentNode;
+        while (span.firstChild) {
+          if (span.firstChild.nodeType === 1 && span.firstChild.className === 'ann-badge') {
+            span.removeChild(span.firstChild);
+            continue;
+          }
+          parent.insertBefore(span.firstChild, span);
+        }
+        parent.removeChild(span);
+        parent.normalize();
+      });
+      renderList();
+    }
+  });
+
+  // ── Panel toggle ──
+  function openPanel() { panel.classList.add('ann-open'); }
+  toggleBtn.addEventListener('click', function () {
+    panel.classList.toggle('ann-open');
+  });
+
+  // ── Export ──
+  exportBtn.addEventListener('click', function () {
+    var json = JSON.stringify(annotations, null, 2);
+    var blob = new Blob([json], { type: 'application/json' });
+    var url = URL.createObjectURL(blob);
+    var a = document.createElement('a');
+    a.href = url;
+    a.download = DECK_CONFIG.exportName;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(json).catch(function () {});
+    }
+  });
+
+  // ── Clear all ──
+  clearBtn.addEventListener('click', function () {
+    if (!annotations.length) return;
+    if (!confirm('Delete all ' + annotations.length + ' annotation(s)? This cannot be undone.')) return;
+    document.querySelectorAll('.ann-highlight').forEach(function (span) {
+      var parent = span.parentNode;
+      while (span.firstChild) {
+        if (span.firstChild.nodeType === 1 && span.firstChild.className === 'ann-badge') {
+          span.removeChild(span.firstChild);
+          continue;
+        }
+        parent.insertBefore(span.firstChild, span);
+      }
+      parent.removeChild(span);
+      parent.normalize();
+    });
+    annotations = [];
+    persist();
+    renderList();
+  });
+
+  // ── Restore on load: re-find quoted text and re-wrap; mark orphaned if not found ──
+  function restoreHighlights() {
+    annotations.forEach(function (a) {
+      var found = findTextRange(a.quotedText);
+      if (found) {
+        wrapRange(found, a.id);
+        a.orphaned = false;
+      } else {
+        a.orphaned = true;
+      }
+    });
+    persist();
+  }
+
+  function findTextRange(quoted) {
+    if (!quoted) return null;
+    var main = document.querySelector('main');
+    if (!main) return null;
+    var walker = document.createTreeWalker(main, NodeFilter.SHOW_TEXT, {
+      acceptNode: function (n) {
+        return isInsideAnnUi(n) ? NodeFilter.FILTER_REJECT : NodeFilter.FILTER_ACCEPT;
+      }
+    });
+    var node, fullText = '', map = [];
+    while ((node = walker.nextNode())) {
+      map.push({ node: node, start: fullText.length, end: fullText.length + node.textContent.length });
+      fullText += node.textContent;
+    }
+    var idx = fullText.indexOf(quoted);
+    if (idx === -1) return null;
+    var endIdx = idx + quoted.length;
+    var startNode = null, startOffset = 0, endNode = null, endOffset = 0;
+    map.forEach(function (m) {
+      if (idx >= m.start && idx < m.end) { startNode = m.node; startOffset = idx - m.start; }
+      if (endIdx > m.start && endIdx <= m.end) { endNode = m.node; endOffset = endIdx - m.start; }
+    });
+    if (!startNode || !endNode) return null;
+    var range = document.createRange();
+    range.setStart(startNode, startOffset);
+    range.setEnd(endNode, endOffset);
+    return range;
+  }
+
+  load();
+  restoreHighlights();
+  renderList();
+})();
+</script>
+
+</body>
+</html>
