@@ -24,6 +24,8 @@
    {
      id, quote, comment, prefix, suffix,         // anchoring
      start, end,                                  // optional offsets (kept for migration)
+     type,                                         // "comment" | "delete" | "insert" | "replace" (default "comment")
+     replacement,                                  // suggested new text for "insert"/"replace" (unused otherwise)
      panel, sectionHeading,                       // multi-tab navigation
      createdAt, updatedAt,                        // ISO 8601
      orphaned                                      // true if re-anchor failed
@@ -579,6 +581,12 @@
       li.setAttribute('data-id', a.id);
       if (a.id === focusedId) li.classList.add('annot-focus');
 
+      var badgeLabel = { comment: 'Comment', delete: 'Delete', insert: 'Insert', replace: 'Replace' }[a.type || 'comment'];
+      var badge = document.createElement('span');
+      badge.className = 'annot-type-badge annot-type-' + (a.type || 'comment');
+      badge.textContent = badgeLabel;
+      li.appendChild(badge);
+
       var q = document.createElement('div');
       q.className = 'annot-item-quote';
       q.title = 'Jump to highlight';
@@ -597,6 +605,13 @@
       c.className = 'annot-item-comment';
       c.textContent = a.comment;
       li.appendChild(c);
+
+      if (a.type === 'replace' || a.type === 'insert') {
+        var repl = document.createElement('div');
+        repl.className = 'annot-item-replacement';
+        repl.textContent = '→ ' + (a.replacement || '');
+        li.appendChild(repl);
+      }
 
       var meta = document.createElement('div');
       meta.className = 'annot-item-meta';
@@ -653,6 +668,7 @@
       annotations: annotations.map(function (a) {
         return {
           id: a.id, quote: a.quote, comment: a.comment,
+          type: a.type || 'comment', replacement: a.replacement || '',
           panel: a.panel, sectionHeading: a.heading,
           prefix: a.prefix, suffix: a.suffix,
           start: a.start, end: a.end,
@@ -686,6 +702,7 @@
           if (!raw || !raw.quote) return;
           var a = {
             id: raw.id || uid(), quote: raw.quote, comment: raw.comment || '',
+            type: raw.type || 'comment', replacement: raw.replacement || '',
             start: typeof raw.start === 'number' ? raw.start : 0,
             end: typeof raw.end === 'number' ? raw.end : 0,
             prefix: raw.prefix || '', suffix: raw.suffix || '',
