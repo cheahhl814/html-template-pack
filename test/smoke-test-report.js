@@ -34,9 +34,9 @@ exec(cmd, { maxBuffer: 50 * 1024 * 1024 }, (err, stdout, stderr) => {
     { name: 'data-annot-root wrapper',         re: /data-annot-root/,                  expect: 1 },
     // Multi-tab sidebar (new in v0.6.0)
     { name: 'report-sidebar nav',              re: /class="report-sidebar"/,         expect: 1 },
-    { name: 'multi-tab buttons (5)',           re: /<button[^>]+data-tab=/,            expect: 5 },
-    { name: 'multi-tab panels (5)',            re: /<[^>]+data-panel=/,               expect: 5 },
-    { name: 'report-shell flex container',     re: /class="report-shell"/,           expect: 1 },
+    { name: 'multi-tab buttons (5)',           re: /<button class="report-tab"[^>]+data-tab=/g,            expect: 5 },
+    { name: 'multi-tab panels (5)',            re: /<section[^>]+data-panel=/g,               expect: 5 },
+    { name: 'report-shell flex container',     re: /class="content report-shell"/,           expect: 1 },
     { name: 'report-panels container',         re: /class="report-panels"/,          expect: 1 },
     { name: 'theme-toggle button (v2)',        re: /id="theme-toggle"/,                expect: 1 },
     { name: 'annot-toggle button (v2)',        re: /id="annot-toggle"/,                expect: 1 },
