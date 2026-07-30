@@ -242,7 +242,7 @@
       var w = document.createTreeWalker(ca, NodeFilter.SHOW_TEXT, {
         acceptNode: function (n) {
           if (!n.nodeValue.length) return NodeFilter.FILTER_REJECT;
-          if (n.parentElement && n.parentElement.closest('.mermaid, svg, script, style')) return NodeFilter.FILTER_REJECT;
+          if (n.parentElement && n.parentElement.closest('.mermaid, svg, script, style, .annot-insert-text, .annot-caret, [data-annot-skip]')) return NodeFilter.FILTER_REJECT;
           return range.intersectsNode(n) ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_REJECT;
         }
       });
@@ -294,14 +294,20 @@
   function applyHighlights() {
     unwrapAll();
     var ft = fullText();
+    // Two-pass: insert annotations first (caret + ins go into the text stream,
+    // and the makeWalker excludes them from offset math so they don't perturb
+    // quote-based range resolution). Then wrap quote-based annotations.
+    var insertFirst = [], other = [];
     for (var i = 0; i < annotations.length; i++) {
-      var a = annotations[i];
+      (annotations[i].type === 'insert' ? insertFirst : other).push(annotations[i]);
+    }
+    function applyOne(a) {
       var pos = resolve(a, ft);
       a._orphan = !pos;
-      if (!pos) continue;
+      if (!pos) return;
       if (a.type === 'insert') {
         var iRange = buildRange(pos.start, pos.start);
-        if (!iRange) { a._orphan = true; continue; }
+        if (!iRange) { a._orphan = true; return; }
         try {
           var caret = document.createElement('span');
           caret.className = 'annot-caret';
@@ -311,10 +317,10 @@
           frag.appendChild(makeInsertNode(a.id, a.replacement));
           iRange.insertNode(frag);
         } catch (e) { a._orphan = true; }
-        continue;
+        return;
       }
       var range = buildRange(pos.start, pos.end);
-      if (!range) { a._orphan = true; continue; }
+      if (!range) { a._orphan = true; return; }
       try {
         var extraClass = a.type === 'delete' ? 'annot-delete' : a.type === 'replace' ? 'annot-replace' : '';
         var mark = wrapRange(range, a.id, extraClass);
@@ -323,6 +329,8 @@
         }
       } catch (e) { a._orphan = true; }
     }
+    insertFirst.forEach(applyOne);
+    other.forEach(applyOne);
   }
 
   /* ── Context: nearest [data-panel] + nearest heading ─── */
