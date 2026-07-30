@@ -220,8 +220,12 @@
       parent.removeChild(m);
       parent.normalize();
     }
+    var extras = root.querySelectorAll('.annot-caret, ins.annot-insert-text');
+    for (var j = 0; j < extras.length; j++) {
+      extras[j].parentNode.removeChild(extras[j]);
+    }
   }
-  function wrapRange(range, id) {
+  function wrapRange(range, id, extraClass) {
     var nodes = [], ca = range.commonAncestorContainer;
     if (ca.nodeType === Node.TEXT_NODE) {
       nodes.push(ca);
@@ -235,6 +239,7 @@
       });
       var n; while ((n = w.nextNode())) nodes.push(n);
     }
+    var lastMark = null;
     for (var i = 0; i < nodes.length; i++) {
       var node = nodes[i];
       var s = (node === range.startContainer) ? range.startOffset : 0;
@@ -244,11 +249,13 @@
       if (e < node.nodeValue.length) target.splitText(e);
       if (s > 0) target = target.splitText(s);
       var mark = document.createElement('mark');
-      mark.className = 'annot';
+      mark.className = 'annot' + (extraClass ? ' ' + extraClass : '');
       mark.setAttribute('data-annot-id', id);
       target.parentNode.insertBefore(mark, target);
       mark.appendChild(target);
+      lastMark = mark;
     }
+    return lastMark;
   }
   // Resolve an annotation to its current {start,end} or null.
   function resolve(a, ft) {
@@ -268,6 +275,13 @@
     }
     return { start: start, end: end };
   }
+  function makeInsertNode(id, text) {
+    var ins = document.createElement('ins');
+    ins.className = 'annot-insert-text';
+    ins.setAttribute('data-annot-id', id);
+    ins.textContent = text || '';
+    return ins;
+  }
   function applyHighlights() {
     unwrapAll();
     var ft = fullText();
@@ -276,13 +290,29 @@
       var pos = resolve(a, ft);
       a._orphan = !pos;
       if (!pos) continue;
-      var range = buildRange(pos.start, pos.end);
-      if (range) {
-        try { wrapRange(range, a.id); }
-        catch (e) { a._orphan = true; }
-      } else {
-        a._orphan = true;
+      if (a.type === 'insert') {
+        var iRange = buildRange(pos.start, pos.start);
+        if (!iRange) { a._orphan = true; continue; }
+        try {
+          var caret = document.createElement('span');
+          caret.className = 'annot-caret';
+          caret.setAttribute('data-annot-id', a.id);
+          var frag = document.createDocumentFragment();
+          frag.appendChild(caret);
+          frag.appendChild(makeInsertNode(a.id, a.replacement));
+          iRange.insertNode(frag);
+        } catch (e) { a._orphan = true; }
+        continue;
       }
+      var range = buildRange(pos.start, pos.end);
+      if (!range) { a._orphan = true; continue; }
+      try {
+        var extraClass = a.type === 'delete' ? 'annot-delete' : a.type === 'replace' ? 'annot-replace' : '';
+        var mark = wrapRange(range, a.id, extraClass);
+        if (a.type === 'replace' && mark) {
+          mark.parentNode.insertBefore(makeInsertNode(a.id, a.replacement), mark.nextSibling);
+        }
+      } catch (e) { a._orphan = true; }
     }
   }
 
@@ -429,7 +459,7 @@
   }
   function setFocus(id) {
     focusedId = id;
-    var marks = root.querySelectorAll('mark.annot');
+    var marks = root.querySelectorAll('mark.annot, .annot-caret, ins.annot-insert-text');
     for (var i = 0; i < marks.length; i++) {
       marks[i].classList.toggle('annot-focus', marks[i].getAttribute('data-annot-id') === id);
     }
@@ -441,13 +471,12 @@
   function jumpTo(id) {
     var a = annotations.find(function (x) { return x.id === id; });
     if (!a) return;
-    // Tab support: if the doc uses [data-tab]/[data-panel] tabs, switch first.
     if (a.panel) {
       var tabBtn = document.querySelector('[data-tab="' + a.panel + '"]');
       if (tabBtn && !tabBtn.classList.contains('active')) tabBtn.click();
     }
     setTimeout(function () {
-      var mark = root.querySelector('mark.annot[data-annot-id="' + id + '"]');
+      var mark = root.querySelector('mark.annot[data-annot-id="' + id + '"], .annot-caret[data-annot-id="' + id + '"]');
       if (mark) {
         mark.scrollIntoView({ behavior: 'smooth', block: 'center' });
         setFocus(id);
@@ -520,7 +549,7 @@
 
   /* ── Click a highlight → open drawer + focus ────────── */
   root.addEventListener('click', function (e) {
-    var mark = e.target.closest ? e.target.closest('mark.annot') : null;
+    var mark = e.target.closest ? e.target.closest('mark.annot, .annot-caret, ins.annot-insert-text') : null;
     if (!mark) return;
     var id = mark.getAttribute('data-annot-id');
     if (els.drawer.hidden) openDrawer();
