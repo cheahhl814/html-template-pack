@@ -141,6 +141,84 @@
     strong { color: var(--text); font-weight: 700; }
     a { color: var(--accent); }
 
+    /* ── Multi-tab layout (left-side sidebar + content panels) ──
+       The .report-shell wraps the sidebar and the panel container in a
+       flex row. The sidebar is sticky on desktop and collapses to a
+       horizontal strip on screens <720px (responsive). Each .report-tab
+       is a button with an icon + label; the active tab gets a coloured
+       left border + a soft background using --accent tokens. The
+       .report-panel container holds <section data-panel="..."> children;
+       only the panel matching the active tab is shown (the rest are
+       hidden via [hidden]). */
+    .report-shell { display: flex; gap: 0; align-items: stretch; max-width: 1180px; margin: 0 auto; }
+    .report-sidebar {
+      position: sticky; top: 1rem; align-self: flex-start;
+      width: 240px; min-width: 240px; flex-shrink: 0;
+      padding: 0.5rem 0;
+      display: flex; flex-direction: column; gap: 0.15rem;
+    }
+    .report-tab {
+      display: flex; align-items: center; gap: 0.7rem;
+      font-family: var(--font-sans); font-size: 0.92rem; font-weight: 500;
+      background: transparent; color: var(--text-muted);
+      border: 1px solid transparent; border-left: 3px solid transparent;
+      border-radius: 0 var(--radius) var(--radius) 0;
+      padding: 0.65rem 0.85rem;
+      cursor: pointer; text-align: left;
+      transition: color 0.15s, background 0.15s, border-color 0.15s;
+    }
+    .report-tab:hover { color: var(--text); background: var(--surface2); }
+    .report-tab:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
+    .report-tab[aria-selected="true"] {
+      color: var(--text); font-weight: 700;
+      background: var(--accent-dim);
+      border-left-color: var(--accent);
+    }
+    .report-tab .tab-icon {
+      flex-shrink: 0; width: 1.4em; text-align: center; font-size: 1.05em;
+      color: var(--accent);
+    }
+    .report-tab .tab-count {
+      margin-left: auto; font-size: 0.75rem; font-weight: 700;
+      color: var(--text-dim); background: var(--surface2);
+      padding: 1px 7px; border-radius: 999px;
+    }
+    .report-panels { flex: 1; min-width: 0; padding: 0 1.5rem; }
+    .report-panels > [data-panel] { padding-top: 4rem; }
+    .report-panels > [data-panel][hidden] { display: none; }
+    .report-panels > [data-panel]:first-of-type { padding-top: 4rem; }
+
+    /* Responsive: collapse the sidebar to a horizontal tab strip on
+       narrow screens. <720px was picked because below that, a 240px
+       sidebar leaves <480px for the content which is too cramped for
+       data tables. */
+    @media (max-width: 720px) {
+      .report-shell { flex-direction: column; }
+      .report-sidebar {
+        position: static; width: 100%; min-width: 0;
+        flex-direction: row; gap: 0.25rem;
+        padding: 0.5rem 0; overflow-x: auto;
+        border-bottom: 1px solid var(--border);
+      }
+      .report-tab {
+        border: 1px solid var(--border-bright);
+        border-radius: var(--radius);
+        border-left: 1px solid var(--border-bright);
+        flex-shrink: 0;
+      }
+      .report-tab[aria-selected="true"] {
+        border-color: var(--accent);
+        border-left-color: var(--accent);
+      }
+      .report-panels { padding: 0 0.5rem; }
+    }
+
+    /* Print: collapse the sidebar to a flat list, show all panels. */
+    @media print {
+      .report-sidebar { position: static; display: block; width: 100%; }
+      .report-panels > [data-panel] { display: block !important; page-break-before: always; }
+    }
+
     /* ── Component library (shared with the slide template) ──
        Picked up from features/.../slide-template.html — cards, badges,
        stat cards, tables, layer diagrams, chain steps, grids, and
@@ -434,6 +512,81 @@
   <button class="theme-btn" id="theme-toggle" aria-label="Toggle color theme" aria-pressed="false">◐ dark</button>
   <!-- ═══════════════════ « END feature: theme toggle » (HTML) ═════════════════════ -->
 
+  <!-- ═══════════════════ « BEGIN feature: tabs » (JS) ══════════════════════════════ -->
+  <script>
+  document.addEventListener('DOMContentLoaded', function () {
+    'use strict';
+    var tabs = Array.prototype.slice.call(document.querySelectorAll('.report-tab'));
+    var panels = Array.prototype.slice.call(document.querySelectorAll('.report-panels > [data-panel]'));
+    if (!tabs.length || !panels.length) return;
+
+    function showTab(id, opts) {
+      opts = opts || {};
+      var targetPanel = document.getElementById('panel-' + id);
+      if (!targetPanel) return;
+      // Hide all panels, show target
+      for (var i = 0; i < panels.length; i++) panels[i].hidden = true;
+      targetPanel.hidden = false;
+      // Update aria-selected on tabs
+      for (var j = 0; j < tabs.length; j++) {
+        var isActive = tabs[j].getAttribute('data-tab') === id;
+        tabs[j].setAttribute('aria-selected', isActive ? 'true' : 'false');
+        if (isActive) tabs[j].setAttribute('tabindex', '0');
+        else tabs[j].setAttribute('tabindex', '-1');
+      }
+      // Scroll to top of content area on user click (not on engine-driven jump)
+      if (!opts.skipScroll) {
+        var shell = document.querySelector('.report-shell');
+        if (shell) {
+          var top = shell.getBoundingClientRect().top + window.scrollY - 80;
+          window.scrollTo({ top: top, behavior: 'smooth' });
+        }
+      }
+      // Persist the active tab so reloads land on the same one
+      try { localStorage.setItem(ACTIVE_KEY, id); } catch (e) {}
+    }
+    // Expose for the v2 engine adapter and for the print mode
+    window.__reportGoTo = showTab;
+
+    // Click handlers
+    for (var k = 0; k < tabs.length; k++) {
+      tabs[k].addEventListener('click', function (e) {
+        showTab(e.currentTarget.getAttribute('data-tab'));
+      });
+    }
+
+    // Keyboard nav: Up/Down for sidebar buttons (WAI-ARIA), Home/End
+    function moveFocus(delta) {
+      var i = 0;
+      for (var j = 0; j < tabs.length; j++) if (tabs[j].getAttribute('aria-selected') === 'true') { i = j; break; }
+      var next = (i + delta + tabs.length) % tabs.length;
+      tabs[next].focus();
+      showTab(tabs[next].getAttribute('data-tab'));
+    }
+    var sidebar = document.querySelector('.report-sidebar');
+    if (sidebar) {
+      sidebar.addEventListener('keydown', function (e) {
+        var tag = (document.activeElement && document.activeElement.tagName) || '';
+        if (tag !== 'BUTTON') return;
+        if (e.key === 'ArrowDown' || e.key === 'ArrowRight') { e.preventDefault(); moveFocus(1); }
+        else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') { e.preventDefault(); moveFocus(-1); }
+        else if (e.key === 'Home') { e.preventDefault(); tabs[0].focus(); showTab(tabs[0].getAttribute('data-tab')); }
+        else if (e.key === 'End') { e.preventDefault(); var last = tabs[tabs.length - 1]; last.focus(); showTab(last.getAttribute('data-tab')); }
+      });
+    }
+
+    // Restore last active tab (or default to "summary")
+    var ACTIVE_KEY = 'report-active-tab';
+    var initial = 'summary';
+    try {
+      var saved = localStorage.getItem(ACTIVE_KEY);
+      if (saved && document.getElementById('panel-' + saved)) initial = saved;
+    } catch (e) {}
+    showTab(initial, { skipScroll: true });
+  });
+  </script>
+  <!-- ═══════════════════ « END feature: tabs » (JS) ════════════════════════════════ -->
+
   <!-- ═══════════════════ « BEGIN feature: annotations » (HTML) ════════════════════ -->
   <div class="annot-toggle-stack">
     <button class="annot-toggle" id="annot-toggle" aria-label="Open annotations panel">
@@ -481,103 +634,203 @@
        ║  the [data-annot-root] attribute to whatever should hold       ║
        ║  annotatable text).                                            ║
        ╚═══════════════════════════════════════════════════════════════╝ -->
-  <main class="content" data-annot-root>
-    <span class="eyebrow eyebrow-teal">REPORT</span>
-    <h1>Report Template</h1>
-    <p class="badge-line">PROJECT / EVENT LABEL</p>
-    <p><strong>Select any of this text</strong> and three pills appear — <strong>💬 Comment</strong>,
-      <strong>✂ Delete</strong>, and <strong>✎ Replace</strong>. Click one to leave a tracked-changes-style note
-      (for delete/replace, optionally provide a comment explaining the change). For <em>insertion</em>, click the
-      <strong>➕ Insert</strong> button (top-right) then click any point in the text to drop a caret and propose new
-      text. Your highlight is stored in this browser and reappears on reload. Open the <strong>💬 Notes</strong> panel
-      (top-right) to review, jump to, edit, delete, and <strong>export every annotation as JSON</strong> so an AI agent
-      (or a colleague) can act on your feedback and revise this document precisely.</p>
+  <main class="content report-shell" data-annot-root>
+    <nav class="report-sidebar" aria-label="Report sections">
+      <button class="report-tab" data-tab="summary" aria-selected="true" aria-controls="panel-summary">
+        <span class="tab-icon" aria-hidden="true">■</span>
+        <span class="tab-label">Summary</span>
+      </button>
+      <button class="report-tab" data-tab="metrics" aria-selected="false" aria-controls="panel-metrics">
+        <span class="tab-icon" aria-hidden="true">▶</span>
+        <span class="tab-label">Metrics</span>
+      </button>
+      <button class="report-tab" data-tab="methodology" aria-selected="false" aria-controls="panel-methodology">
+        <span class="tab-icon" aria-hidden="true">⛓</span>
+        <span class="tab-label">Methodology</span>
+      </button>
+      <button class="report-tab" data-tab="findings" aria-selected="false" aria-controls="panel-findings">
+        <span class="tab-icon" aria-hidden="true">✎</span>
+        <span class="tab-label">Findings</span>
+      </button>
+      <button class="report-tab" data-tab="annotations" aria-selected="false" aria-controls="panel-annotations">
+        <span class="tab-icon" aria-hidden="true">◆</span>
+        <span class="tab-label">Annotations</span>
+        <span class="tab-count" id="report-annot-count" hidden>0</span>
+      </button>
+    </nav>
 
-    <h2>Key metrics</h2>
-    <p>A quick snapshot of the project status. Select any number to leave a comment for the team.</p>
-    <div class="stat-grid">
-      <div class="stat-card"><div class="stat-value">42</div><div class="stat-label">Species observed</div></div>
-      <div class="stat-card"><div class="stat-value">r = 0.91</div><div class="stat-label">Trend correlation</div></div>
-      <div class="stat-card"><div class="stat-value">3×</div><div class="stat-label">Survey coverage</div></div>
-      <div class="stat-card"><div class="stat-value">12</div><div class="stat-label">Sites revisited</div></div>
+    <div class="report-panels">
+      <!-- ─── Panel 1: Summary ─── -->
+      <section data-panel="summary" id="panel-summary">
+        <span class="eyebrow eyebrow-teal">REPORT</span>
+        <h1>Report Template</h1>
+        <p class="badge-line">PROJECT / EVENT LABEL</p>
+        <p><strong>Select any of this text</strong> and three pills appear — <strong>💬 Comment</strong>,
+          <strong>✂ Delete</strong>, and <strong>✎ Replace</strong>. Click one to leave a tracked-changes-style note
+          (for delete/replace, optionally provide a comment explaining the change). For <em>insertion</em>, click the
+          <strong>➕ Insert</strong> button (top-right) then click any point in the text to drop a caret and propose new
+          text. Your highlight is stored in this browser and reappears on reload. Open the <strong>💬 Notes</strong> panel
+          (top-right) to review, jump to, edit, delete, and <strong>export every annotation as JSON</strong> so an AI agent
+          (or a colleague) can act on your feedback and revise this document precisely.</p>
+
+        <h2>Status tags</h2>
+        <p>Use badge pills to mark up inline terms — they're picked up by the annotation walker just like regular text, so
+          reviewers can comment on a specific badge.</p>
+        <p>
+          <span class="badge badge-green">healthy</span>
+          <span class="badge badge-teal">monitoring</span>
+          <span class="badge badge-amber">at risk</span>
+          <span class="badge badge-blue">draft</span>
+        </p>
+
+        <h2>Highlights</h2>
+        <div class="grid-2">
+          <div class="card highlight">
+            <h3>🔑 Key Takeaway</h3>
+            <p style="margin-bottom:0;">Use the highlight card (teal accent) to surface the one finding you want remembered.
+              Select the text inside this card to comment on it directly.</p>
+          </div>
+          <div class="card warning">
+            <h3>⚠ Risk</h3>
+            <p style="margin-bottom:0;">Use the warning card (coral accent) for blockers, open questions, or
+              things the team needs to act on.</p>
+          </div>
+          <div class="card success">
+            <h3>✓ Resolved</h3>
+            <p style="margin-bottom:0;">Use the success card (green accent) for items that have been addressed
+              and need to be kept visible in the final report.</p>
+          </div>
+          <div class="card info">
+            <h3>ℹ Background</h3>
+            <p style="margin-bottom:0;">Use the info card (blue accent) for methodology, citations, or
+              contextual notes that don't fit in the main narrative.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ─── Panel 2: Metrics ─── -->
+      <section data-panel="metrics" id="panel-metrics" hidden>
+        <span class="eyebrow eyebrow-coral">METRICS</span>
+        <h1>Key metrics</h1>
+        <p class="badge-line">PROJECT / EVENT LABEL</p>
+        <p>A quick snapshot of the project status. Select any number to leave a comment for the team.</p>
+        <div class="stat-grid">
+          <div class="stat-card"><div class="stat-value">42</div><div class="stat-label">Species observed</div></div>
+          <div class="stat-card"><div class="stat-value">r = 0.91</div><div class="stat-label">Trend correlation</div></div>
+          <div class="stat-card"><div class="stat-value">3×</div><div class="stat-label">Survey coverage</div></div>
+          <div class="stat-card"><div class="stat-value">12</div><div class="stat-label">Sites revisited</div></div>
+        </div>
+
+        <h2>Data table</h2>
+        <p>Tables get a navy header strip and slate borders so they read as structured data, not body text.</p>
+        <table>
+          <thead>
+            <tr><th>Site</th><th>Species</th><th>Last survey</th><th>Status</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Sultan Iskandar Marine Park</td><td>187</td><td>2026-05-12</td><td><span class="badge badge-green">healthy</span></td></tr>
+            <tr><td>Mid-channel reef</td><td>92</td><td>2026-04-30</td><td><span class="badge badge-teal">monitoring</span></td></tr>
+            <tr><td>Tanjung Surat</td><td>41</td><td>2026-03-22</td><td><span class="badge badge-amber">at risk</span></td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- ─── Panel 3: Methodology ─── -->
+      <section data-panel="methodology" id="panel-methodology" hidden>
+        <span class="eyebrow eyebrow-amber">METHODOLOGY</span>
+        <h1>Methodology</h1>
+        <p class="badge-line">PROJECT / EVENT LABEL</p>
+        <p>Use the layer diagram to walk readers through the parts of a multi-stage process.</p>
+        <div class="layer-stack">
+          <div class="layer layer-1"><div class="layer-num">1</div><div><div class="layer-title">Field survey</div><div class="layer-detail">Quadrat + transect sampling across 12 sites, 2 visits each.</div></div></div>
+          <div class="layer layer-2"><div class="layer-num">2</div><div><div class="layer-title">Acoustic monitoring</div><div class="layer-detail">Continuous hydrophone deployment at 3 reference stations.</div></div></div>
+          <div class="layer layer-3"><div class="layer-num">3</div><div><div class="layer-title">eDNA cross-check</div><div class="layer-detail">Water-column sampling + metabarcoding for cryptic species.</div></div></div>
+          <div class="layer layer-4"><div class="layer-num">4</div><div><div class="layer-title">Synthesis</div><div class="layer-detail">Bayesian occupancy model + community trend analysis.</div></div></div>
+        </div>
+
+        <h2>Causal chain</h2>
+        <p>For a step-by-step narrative, the chain-step block lays out a one-liner per stage with arrows in between.</p>
+        <div class="chain-step" style="background:#fee2e2; color:#991b1b;">Driver — habitat loss accelerates edge effects</div>
+        <div class="chain-arrow">↓</div>
+        <div class="chain-step" style="background:#fef3c7; color:#92400e;">Mediator — predator-prey balance shifts toward generalists</div>
+        <div class="chain-arrow">↓</div>
+        <div class="chain-step" style="background:#ccfbf1; color:#0d9488;">Outcome — community diversity index drops 18% over 24 months</div>
+      </section>
+
+      <!-- ─── Panel 4: Findings ─── -->
+      <section data-panel="findings" id="panel-findings" hidden>
+        <span class="eyebrow eyebrow-green">FINDINGS</span>
+        <h1>Findings</h1>
+        <p class="badge-line">PROJECT / EVENT LABEL</p>
+        <p>This tab is the place for the actual analysis — what the data means, what action items fall out of
+          the metrics and methodology shown in the other tabs. Use cards to break out individual findings, the
+          chain-step for an executive-summary flow, and badges to mark confidence levels.</p>
+
+        <h2>Headline result</h2>
+        <div class="card highlight">
+          <h3>📈 Community diversity index drops 18% over 24 months</h3>
+          <p style="margin-bottom:0;">Bayesian occupancy model, controlling for survey effort and seasonal noise, shows
+            a significant negative trend (β = −0.91, 95% CI [−1.12, −0.70]) across the 12 re-surveyed sites. The
+            effect is strongest at edge-affected sites and absent at the marine-park reference.</p>
+        </div>
+
+        <h2>Secondary findings</h2>
+        <div class="grid-2">
+          <div class="card success">
+            <h3>✓ Generalist species resilient</h3>
+            <p style="margin-bottom:0;">Three generalist species (A. fulva, C. auritus, M. musculus) maintained
+              or increased occupancy across all 12 sites despite the overall diversity decline.</p>
+          </div>
+          <div class="card warning">
+            <h3>⚠ Edge-effect threshold</h3>
+            <p style="margin-bottom:0;">Sites within 800m of land-use change boundaries show the steepest decline. Below
+              200m the effect plateaus, suggesting a saturation effect that may be reversible with active management.</p>
+          </div>
+          <div class="card info">
+            <h3>ℹ Acoustic baseline established</h3>
+            <p style="margin-bottom:0;">Continuous hydrophone deployment at 3 reference stations generated 4.2 TB of
+              raw audio. A 6-month pilot analysis shows a 12% increase in anthropogenic noise events vs. the
+              2023 baseline.</p>
+          </div>
+          <div class="card info">
+            <h3>ℹ eDNA detection rate</h3>
+            <p style="margin-bottom:0;">Metabarcoding recovered 41% more species per litre than visual census
+              alone, including 3 cryptic species not previously recorded at the survey sites.</p>
+          </div>
+        </div>
+
+        <h2>Confidence</h2>
+        <p>
+          <span class="badge badge-green">high confidence</span>
+          <span class="badge badge-teal">moderate confidence</span>
+          <span class="badge badge-amber">low confidence</span>
+          <span class="badge badge-blue">preliminary</span>
+        </p>
+      </section>
+
+      <!-- ─── Panel 5: Annotations (engine-facing) ─── -->
+      <section data-panel="annotations" id="panel-annotations" hidden>
+        <span class="eyebrow eyebrow-navy">ANNOTATIONS</span>
+        <h1>How annotations work</h1>
+        <p class="badge-line">PROJECT / EVENT LABEL</p>
+        <p>Each note stores the highlighted quote (or the caret position for inserts) plus its surrounding text and
+          nearest heading, so it re-anchors even if the document is regenerated with minor changes. Diagrams and
+          code (anything inside <code>.mermaid</code>, <code>svg</code>, or a <code>data-annot-skip</code>
+          element) are ignored, so rendering them never shifts your highlights. Exported JSON carries the
+          <code>type</code> (<code>comment</code> / <code>delete</code> / <code>insert</code> / <code>replace</code>) and a
+          <code>replacement</code> field for structured edits — downstream revision agents don't need to parse
+          free-text intent.</p>
+        <p>The v2 engine reads each <code>[data-panel]</code> to know which section a highlight belongs to.
+          When you click a drawer entry, the engine switches the matching tab before scrolling the highlight
+          into view, so reviews can hop between findings and methodology without losing their place.</p>
+
+        <h2>Replace me</h2>
+        <p>Delete this placeholder section and build your report or slide deck here. Add or remove tabs by
+          editing the <code>&lt;nav class="report-sidebar"&gt;</code> and adding/removing
+          <code>&lt;section data-panel="..."&gt;</code> blocks below. Both <code>data-tab</code> and
+          <code>data-panel</code> use the same string id (the engine uses them interchangeably).</p>
+      </section>
     </div>
-
-    <h2>Status tags</h2>
-    <p>Use badge pills to mark up inline terms — they're picked up by the annotation walker just like regular text, so
-      reviewers can comment on a specific badge.</p>
-    <p>
-      <span class="badge badge-green">healthy</span>
-      <span class="badge badge-teal">monitoring</span>
-      <span class="badge badge-amber">at risk</span>
-      <span class="badge badge-blue">draft</span>
-    </p>
-
-    <h2>Highlights</h2>
-    <div class="grid-2">
-      <div class="card highlight">
-        <h3>🔑 Key Takeaway</h3>
-        <p style="margin-bottom:0;">Use the highlight card (teal accent) to surface the one finding you want remembered.
-          Select the text inside this card to comment on it directly.</p>
-      </div>
-      <div class="card warning">
-        <h3>⚠ Risk</h3>
-        <p style="margin-bottom:0;">Use the warning card (coral accent) for blockers, open questions, or
-          things the team needs to act on.</p>
-      </div>
-      <div class="card success">
-        <h3>✓ Resolved</h3>
-        <p style="margin-bottom:0;">Use the success card (green accent) for items that have been addressed
-          and need to be kept visible in the final report.</p>
-      </div>
-      <div class="card info">
-        <h3>ℹ Background</h3>
-        <p style="margin-bottom:0;">Use the info card (blue accent) for methodology, citations, or
-          contextual notes that don't fit in the main narrative.</p>
-      </div>
-    </div>
-
-    <h2>Data table</h2>
-    <p>Tables get a navy header strip and slate borders so they read as structured data, not body text.</p>
-    <table>
-      <thead>
-        <tr><th>Site</th><th>Species</th><th>Last survey</th><th>Status</th></tr>
-      </thead>
-      <tbody>
-        <tr><td>Sultan Iskandar Marine Park</td><td>187</td><td>2026-05-12</td><td><span class="badge badge-green">healthy</span></td></tr>
-        <tr><td>Mid-channel reef</td><td>92</td><td>2026-04-30</td><td><span class="badge badge-teal">monitoring</span></td></tr>
-        <tr><td>Tanjung Surat</td><td>41</td><td>2026-03-22</td><td><span class="badge badge-amber">at risk</span></td></tr>
-      </tbody>
-    </table>
-
-    <h2>Methodology stack</h2>
-    <p>Use the layer diagram to walk readers through the parts of a multi-stage process.</p>
-    <div class="layer-stack">
-      <div class="layer layer-1"><div class="layer-num">1</div><div><div class="layer-title">Field survey</div><div class="layer-detail">Quadrat + transect sampling across 12 sites, 2 visits each.</div></div></div>
-      <div class="layer layer-2"><div class="layer-num">2</div><div><div class="layer-title">Acoustic monitoring</div><div class="layer-detail">Continuous hydrophone deployment at 3 reference stations.</div></div></div>
-      <div class="layer layer-3"><div class="layer-num">3</div><div><div class="layer-title">eDNA cross-check</div><div class="layer-detail">Water-column sampling + metabarcoding for cryptic species.</div></div></div>
-      <div class="layer layer-4"><div class="layer-num">4</div><div><div class="layer-title">Synthesis</div><div class="layer-detail">Bayesian occupancy model + community trend analysis.</div></div></div>
-    </div>
-
-    <h2>Causal chain</h2>
-    <p>For a step-by-step narrative, the chain-step block lays out a one-liner per stage with arrows in between.</p>
-    <div class="chain-step" style="background:#fee2e2; color:#991b1b;">Driver — habitat loss accelerates edge effects</div>
-    <div class="chain-arrow">↓</div>
-    <div class="chain-step" style="background:#fef3c7; color:#92400e;">Mediator — predator-prey balance shifts toward generalists</div>
-    <div class="chain-arrow">↓</div>
-    <div class="chain-step" style="background:#ccfbf1; color:#0d9488;">Outcome — community diversity index drops 18% over 24 months</div>
-
-    <h2>How annotations anchor</h2>
-    <p>Each note stores the highlighted quote (or the caret position for inserts) plus its surrounding text and nearest
-      heading, so it re-anchors even if the document is regenerated with minor changes. Diagrams and code
-      (anything inside <code>.mermaid</code>, <code>svg</code>, or a <code>data-annot-skip</code>
-      element) are ignored, so rendering them never shifts your highlights. Exported JSON carries the
-      <code>type</code> (<code>comment</code> / <code>delete</code> / <code>insert</code> / <code>replace</code>) and a
-      <code>replacement</code> field for structured edits — downstream revision agents don't need to parse free-text
-      intent.</p>
-
-    <h2>Replace me</h2>
-    <p>Delete this placeholder section and build your report or slide deck here. Both features —
-      the theme toggle and the annotation system — keep working with whatever content you add.</p>
   </main>
 
   <!-- ═══════════════════ « BEGIN feature: theme toggle » (JS) ═════════════════════ -->
@@ -1152,6 +1405,14 @@
         var n = annotations.length;
         els.count.textContent = n;
         els.count.hidden = n === 0;
+        // Mirror the count on the sidebar's "Annotations" tab if the report
+        // uses the .report-sidebar multi-tab layout. Keeps the badge in sync
+        // without adding a wrapper to the engine's els object.
+        var sidebarBadge = document.getElementById('report-annot-count');
+        if (sidebarBadge) {
+          sidebarBadge.textContent = n;
+          sidebarBadge.hidden = n === 0;
+        }
       }
 
       /* ── Click a highlight → open drawer & focus ─────────────── */
