@@ -32,10 +32,12 @@ exec(cmd, { maxBuffer: 50 * 1024 * 1024 }, (err, stdout, stderr) => {
     { name: 'title set',                       re: /<title>Report Template<\/title>/, expect: 1 },
     { name: 'data-report-id on body',          re: /data-report-id="report-template"/, expect: 1 },
     { name: 'data-annot-root wrapper',         re: /data-annot-root/,                  expect: 1 },
-    // Note: template itself is single-page; multi-tab support is optional
-    // — the annotation system captures [data-panel] if/when present.
-    { name: 'no multi-tab buttons',            re: /<button[^>]+data-tab=/,            expect: 0 },
-    { name: 'no multi-tab panels',             re: /<[^>]+data-panel=/,               expect: 0 },
+    // Multi-tab sidebar (new in v0.6.0)
+    { name: 'report-sidebar nav',              re: /class="report-sidebar"/,         expect: 1 },
+    { name: 'multi-tab buttons (5)',           re: /<button[^>]+data-tab=/,            expect: 5 },
+    { name: 'multi-tab panels (5)',            re: /<[^>]+data-panel=/,               expect: 5 },
+    { name: 'report-shell flex container',     re: /class="report-shell"/,           expect: 1 },
+    { name: 'report-panels container',         re: /class="report-panels"/,          expect: 1 },
     { name: 'theme-toggle button (v2)',        re: /id="theme-toggle"/,                expect: 1 },
     { name: 'annot-toggle button (v2)',        re: /id="annot-toggle"/,                expect: 1 },
     { name: 'annot-toolbar (v2)',              re: /id="annot-toolbar"/,               expect: 1 },
@@ -52,6 +54,8 @@ exec(cmd, { maxBuffer: 50 * 1024 * 1024 }, (err, stdout, stderr) => {
     { name: 'self-contained (no link href)',   re: /<link[^>]+href="(?!data:)/,     expect: 0 },
     { name: 'theme toggle (inline)',           re: /data-theme="light"/,           expect: 1 },
     { name: 'localStorage usage',              re: /localStorage/,                 expect: 1 },
+    { name: '__reportGoTo exposed',            re: /__reportGoTo/,                   expect: 1 },
+    { name: 'report-tab ARIA attrs',           re: /aria-selected="true"/,          expect: 1 },
   ];
 
   let passed = 0, failed = 0;

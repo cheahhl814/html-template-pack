@@ -1,7 +1,7 @@
 ---
 name: html-template-pack
-description: Three self-contained HTML templates — report (multi-tab, theme toggle, offset-anchored annotations, JSON export), slide deck (prev/next nav, theme toggle, inline annotations, JSON export), and htmx dashboard (topbar, KPI row, sparkline, activity feed, sortable table, demo-mode mock backend). Pick report for ≥3 long sections, slide for ≤12 visual beats, dashboard for live/polling data. Invoke for "HTML report", "HTML deck", "HTML page", "annotated report", "review-ready HTML", "slide deck", "HTML dashboard", "htmx dashboard", "ops dashboard", "admin panel", or MD/DOCX/PDF → HTML conversion. Report and slide ship the v2 annotation system; dashboard intentionally omits annotations (live data is not a stable anchor target).
-version: 0.5.0
+description: Three self-contained HTML templates — report (left-side sticky sidebar with 5 icon+label tabs, theme toggle, offset-anchored annotations, JSON export), slide deck (prev/next nav, theme toggle, inline annotations, JSON export), and htmx dashboard (topbar, KPI row, sparkline, activity feed, sortable table, demo-mode mock backend). Pick report for ≥3 long sections, slide for ≤12 visual beats, dashboard for live/polling data. Invoke for "HTML report", "HTML deck", "HTML page", "annotated report", "review-ready HTML", "slide deck", "HTML dashboard", "htmx dashboard", "ops dashboard", "admin panel", or MD/DOCX/PDF → HTML conversion. Report and slide ship the v2 annotation system; dashboard intentionally omits annotations (live data is not a stable anchor target).
+version: 0.6.0
 license: MIT
 ---
 
@@ -86,13 +86,13 @@ Interactive data dashboards now live in **this** skill (the dashboard template) 
 
 ### Report template (`templates/report/template.html`)
 
-**Pattern**: lumen-guide multi-tab (5 tabs default: Executive Summary / Tier 1 / Tier 2 / Tier 3 / References & Appendix)
+**Pattern**: left-side sticky sidebar (240px, 5 tabs: Summary / Metrics / Methodology / Findings / Annotations) with icon + label per tab; collapses to horizontal strip on screens `<720px`. Each tab maps to a `<section data-panel="..." id="panel-...">` panel in the content area. Active tab gets a coloured left border (`--accent`) and dimmed background (`--accent-dim`).
 
-**Annotation system**: **v2** (offset-anchored, multi-tab aware, JSON import+export, orphaned-state detection, **4 annotation types**: comment / delete / insert / replace). The UI uses `mark.annot` / `#annot-toggle` / `.annot-drawer` / `.annot-toolbar` / `#annot-editor`. Panel uses `data-annot-storage` to namespace by report. Types: comment, delete, insert, replace — delete/replace strike the original inline and show the suggested replacement; insert drops a caret marker with the proposed text.
+**Annotation system**: **v2** (offset-anchored, multi-tab aware, JSON import+export, orphaned-state detection, **4 annotation types**: comment / delete / insert / replace). The UI uses `mark.annot` / `#annot-toggle` / `.annot-drawer` / `.annot-toolbar` / `#annot-editor`. Panel uses `data-annot-storage` to namespace by report. Types: comment, delete, insert, replace — delete/replace strike the original inline and show the suggested replacement; insert drops a caret marker with the proposed text. The v2 engine's `jumpTo` activates the correct tab/panel via `[data-tab]` buttons before scrolling — seamless cross-tab navigation from the annotation drawer.
 
 **Component library**: shared with the slide template (token-driven, so the same markup works in either template's brand palette): `.card` (with `.highlight`/`.warning`/`.success`/`.info` variants), `.badge` (with `.green`/`.teal`/`.amber`/`.blue` variants), `.stat-card` + `.stat-grid` for KPI blocks, `table` with navy header strip and slate borders, `.layer-stack` (with `.layer-1`..`.layer-5` color variants) for multi-stage processes, `.chain-step` + `.chain-arrow` for causal narratives, `.grid-2` / `.grid-3` for card layouts, `.eyebrow` (with `.eyebrow-teal`/`.coral`/`.amber`/`.green`/`.navy` variants) for section labels, `.badge-line` for above-title pills, `.meta-card` + `.meta-grid` for project/event metadata, Mermaid diagrams (Mermaid 10+ via CDN), theme toggle button.
 
-**Print**: `@media print` hides UI chrome. `beforeprint` event re-renders Mermaid. Tested with `google-chrome --headless --print-to-pdf`.
+**Print**: `@media print` hides sidebar, shows all panels sequentially with page breaks. `beforeprint` event re-renders Mermaid. Tested with `google-chrome --headless --print-to-pdf`.
 
 **Self-contained**: All CSS inline, scripts are local (in `features/report/`), Mermaid via CDN. Single-file output when you copy the CSS/JS in.
 
