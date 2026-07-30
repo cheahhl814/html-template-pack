@@ -1,7 +1,7 @@
 ---
 name: html-template-pack
 description: Three self-contained HTML templates — report (multi-tab, theme toggle, offset-anchored annotations, JSON export), slide deck (prev/next nav, theme toggle, inline annotations, JSON export), and htmx dashboard (topbar, KPI row, sparkline, activity feed, sortable table, demo-mode mock backend). Pick report for ≥3 long sections, slide for ≤12 visual beats, dashboard for live/polling data. Invoke for "HTML report", "HTML deck", "HTML page", "annotated report", "review-ready HTML", "slide deck", "HTML dashboard", "htmx dashboard", "ops dashboard", "admin panel", or MD/DOCX/PDF → HTML conversion. Report and slide ship the v2 annotation system; dashboard intentionally omits annotations (live data is not a stable anchor target).
-version: 0.3.0
+version: 0.4.0
 license: MIT
 ---
 
@@ -102,7 +102,7 @@ Interactive data dashboards now live in **this** skill (the dashboard template) 
 
 **Pattern**: single-page prev/next deck with dots, counter, fullscreen, home button, slide-per-page print.
 
-**Annotation system**: **v1** (surround-only with 80-char context fallback). Inline CSS + JS. The UI uses `.ann-highlight` / `#ann-tooltip` / `#ann-popup` / `#ann-panel` / `#ann-toggle`. Panel uses localStorage key `slide-template-annotations-v1`.
+**Annotation system**: **v2** (offset-anchored, 4 types: comment/delete/insert/replace, JSON import+export, orphaned-state detection, per-slide `data-panel` for cross-slide navigation). Inline CSS + JS (inlined from `features/slide/{annotate.css,highlight-annotate.js}`). The UI uses `mark.annot` / `.annot-toggle` / `.annot-toolbar` / `.annot-editor` / `.annot-drawer` / `.annot-insert-toggle`. Panel uses localStorage key `annotations:slide-template` (set via `data-annot-storage` on `<body>`; change the body attribute to namespace per deck). A small inline adapter wraps `__deckGoTo` so clicking a drawer item switches slides first, then scrollIntoView fires.
 
 **Component library**: tokens (slate-50 to slate-900 + brand teal/coral/amber/navy), `.card.highlight/warning/success/info`, `.badge-*`, `.stat-card`, `.layer-stack`, `.chain-step`, `+ 2 component reference slides` showing every reusable block.
 
@@ -148,21 +148,21 @@ Interactive data dashboards now live in **this** skill (the dashboard template) 
 
 The report and slide templates ship with a full annotation system; the dashboard template intentionally ships **none** (see its section above for why).
 
-| Feature                                        | Report template (v2)     | Slide template (v1)             |
+| Feature                                        | Report template (v2)     | Slide template (v2)               |
 | ---------------------------------------------- | ------------------------ | ------------------------------- |
-| Select text → floating comment pill            | ✓                        | ✓                               |
-| Side drawer with list of annotations           | ✓ (right-side drawer)    | ✓ (right-side panel)            |
-| Click highlight to jump to drawer entry        | ✓                        | ✓                               |
+| Select text → floating comment pill            | ✓ (3-button toolbar)     | ✓ (3-button toolbar)            |
+| Side drawer with list of annotations           | ✓ (right-side drawer)    | ✓ (right-side drawer)            |
+| Click highlight to jump to drawer entry        | ✓                        | ✓ (with slide-jump adapter)     |
 | Edit + delete existing annotations             | ✓                        | ✓                               |
 | Export JSON                                    | ✓ (download + clipboard) | ✓ (download + clipboard)        |
-| Import JSON (merge by id)                      | ✓                        | ✗                               |
-| Orphaned-state detection                       | ✓ (red border + warning) | ✓ (red border)                  |
-| Multi-tab panel activation on jump             | ✓ (uses `[data-tab]`)    | ✗ (single deck)                 |
-| Anchor on offsets (survives Mermaid re-render) | ✓                        | ✗ (surround-only)               |
-| Annotation types: comment / delete / insert / replace | ✓ (v2 only)         | ✗ (comment only)                |
-| localStorage namespace                         | `annotations:<id>`       | `slide-template-annotations-v1` |
+| Import JSON (merge by id)                      | ✓                        | ✓                               |
+| Orphaned-state detection                       | ✓ (red border + warning) | ✓ (red border + warning)        |
+| Multi-tab panel activation on jump             | ✓ (uses `[data-tab]`)    | ✓ (uses `[data-panel]` per slide) |
+| Anchor on offsets (survives Mermaid re-render) | ✓                        | ✓                               |
+| Annotation types: comment / delete / insert / replace | ✓                  | ✓                                |
+| localStorage namespace                         | `annotations:<id>`       | `annotations:slide-template`    |
 
-**If the slide template's v1 annotation ever feels limiting** (e.g. you want a deck that survives Mermaid/SVG content), swap in `features/slide/highlight-annotate.js` and `features/slide/annotate.css` and update the inline UI block to the v2 wiring snippet. The 2 files are drop-in replacements for the inline annotation block in `slide-template.html`.
+**Both report and slide templates ship the v2 annotation engine as of v0.4.0.** The slide template's inline CSS+JS are kept in sync with `features/slide/{annotate.css,highlight-annotate.js}` (the two `features/*` copies are also byte-identical to the report's `features/report/*` — see the invariant below). If you want a different annotation UI surface (e.g. a tooltip instead of a drawer, or a comment-only single-button toolbar), edit one place: the inline block in `templates/slide/slide-template.html`.
 
 ## Theme toggle
 
@@ -188,7 +188,7 @@ Positioning differs: report/slide float the button `position: fixed` top-right; 
 - `template.html` and `slide-template.html` (Dr. Cheah Hong Leong, Tengah Islands gap-report, 2026-07) — battle-tested templates
 - `dashboard-template.html` (added 2026-07-11) — htmx dashboard shell, new template family for live/polling data views
 - v2 annotation engine + theme toggle (`features/{report,slide}/highlight-annotate.js`, `annotate.css`, `theme-toggle.js`, `theme-toggle.css`) — extracted from the original template on 2026-07-10 (renamed to `html-template-pack` from its previous internal codename; see the 2026-07-10 wiki entry on the v1→v2 offset-anchored annotation upgrade for the rename history)
-- v2 tracked-changes annotation types — `comment` / `delete` / `insert` / `replace` added 2026-07-30 (see `docs/specs/2026-07-30-tracked-changes-annotations-design.md` + `docs/plans/2026-07-30-tracked-changes-annotations.md`); selection-based delete/replace reuse the floating-pill flow, insert is caret-based via an `Insert here` arm/click toggle. The `replacement` field carries suggested new text for insert/replace; exported JSON includes `type` + `replacement` per annotation so a downstream (human or AI) revision agent can apply the changes without parsing free-text intent.
+- v2 tracked-changes annotation types — `comment` / `delete` / `insert` / `replace` added 2026-07-30 to the report template (see `docs/specs/2026-07-30-tracked-changes-annotations-design.md` + `docs/plans/2026-07-30-tracked-changes-annotations.md`); selection-based delete/replace reuse the floating-pill flow, insert is caret-based via an `Insert here` arm/click toggle. The `replacement` field carries suggested new text for insert/replace; exported JSON includes `type` + `replacement` per annotation so a downstream (human or AI) revision agent can apply the changes without parsing free-text intent. The same v2 engine + tracked-changes types were ported into the slide template on 2026-07-30 (v0.4.0), with a small per-slide adapter: each `<section class="slide">` gets `data-panel="<id>"`; the inline adapter switches slides (`__deckGoTo`) before the engine's scrollIntoView when a drawer item is clicked.
 - `htmx` (BSD-2-Clause) — the hypermedia library driving the dashboard template's polling, debounced search, and partial swaps
 - `lumen-guide` — the multi-tab pattern used by the report template
 - `zarazhangrui/beautiful-html-templates` (MIT) — color token inspiration for the report template
