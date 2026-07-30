@@ -1,7 +1,8 @@
 #!/usr/bin/env node
 // Smoke-test the slide template in headless Chrome.
-// Verifies: page loads, all 5 slides render, inline annotation system
+// Verifies: page loads, all 5 slides render, inline v2 annotation system
 // initializes, theme toggle initializes, print CSS applied, no console errors.
+// v2 system carries 4 annotation types: comment/delete/insert/replace.
 
 const { exec } = require('child_process');
 const path = require('path');
@@ -32,22 +33,42 @@ exec(cmd, { maxBuffer: 50 * 1024 * 1024 }, (err, stdout, stderr) => {
     { name: 'title set',                       re: /<title>Slide Deck Template/, expect: 1 },
     { name: '5 slides present',                re: /<section class="slide[^"]*"/g, expect: 5 },
     { name: 'first slide is .active',          re: /slide-title active/,        expect: 1 },
-    { name: 'DECK_CONFIG block',               re: /DECK_CONFIG\s*=\s*\{/,      expect: 1 },
-    { name: 'storageKey in DECK_CONFIG',       re: /storageKey:/,               expect: 1 },
-    { name: 'exportName in DECK_CONFIG',       re: /exportName:/,               expect: 1 },
+    { name: 'data-panel on slides (v2)',       re: /data-panel="slide-/g,        expect: 5 },
+    { name: 'data-annot-storage on body',      re: /data-annot-storage="slide-template"/, expect: 1 },
+    { name: 'data-annot-theme-key on body',    re: /data-annot-theme-key="slide-template-theme-v1"/, expect: 1 },
+    { name: 'data-annot-export on body',       re: /data-annot-export=/,         expect: 1 },
     { name: 'theme-toggle button (inline)',    re: /id="theme-toggle"/,         expect: 1 },
     { name: 'data-theme="light" default',      re: /<html[^>]*>/, expect: 1 },
-    // Inline v1 annotation system
-    { name: '#ann-toggle (v1)',                re: /id="ann-toggle"/,           expect: 1 },
-    { name: '#ann-panel (v1)',                 re: /id="ann-panel"/,            expect: 1 },
-    { name: '#ann-tooltip (v1)',               re: /id="ann-tooltip"/,          expect: 1 },
-    { name: '#ann-popup (v1)',                 re: /id="ann-popup"/,            expect: 1 },
-    { name: '#ann-export-btn (v1)',            re: /id="ann-export-btn"/,       expect: 1 },
-    { name: '#ann-clear-btn (v1)',             re: /id="ann-clear-btn"/,        expect: 1 },
+    // v2 annotation UI (inlined from features/slide/{annotate.css,highlight-annotate.js})
+    { name: 'annot-toggle (v2)',               re: /id="annot-toggle"/,         expect: 1 },
+    { name: 'annot-insert-toggle (v2)',        re: /id="annot-insert-toggle"/,  expect: 1 },
+    { name: 'annot-toolbar (v2)',              re: /id="annot-toolbar"/,        expect: 1 },
+    { name: 'annot-toolbar-comment (v2)',      re: /id="annot-toolbar-comment"/, expect: 1 },
+    { name: 'annot-toolbar-delete (v2)',       re: /id="annot-toolbar-delete"/,  expect: 1 },
+    { name: 'annot-toolbar-replace (v2)',      re: /id="annot-toolbar-replace"/, expect: 1 },
+    { name: 'annot-editor (v2)',               re: /id="annot-editor"/,         expect: 1 },
+    { name: 'annot-editor-replacement (v2)',   re: /id="annot-editor-replacement"/, expect: 1 },
+    { name: 'annot-drawer (v2)',               re: /id="annot-drawer"/,         expect: 1 },
+    { name: 'annot-export (v2)',               re: /id="annot-export"/,         expect: 1 },
+    { name: 'annot-import (v2)',               re: /id="annot-import"/,         expect: 1 },
+    { name: 'annot-clear (v2)',                re: /id="annot-clear"/,          expect: 1 },
+    // v1 markers must be absent
+    { name: 'no v1 #ann-toggle',               re: /id="ann-toggle"/,           expect: 0 },
+    { name: 'no v1 #ann-panel',                re: /id="ann-panel"/,            expect: 0 },
+    { name: 'no v1 #ann-tooltip',              re: /id="ann-tooltip"/,          expect: 0 },
+    { name: 'no v1 #ann-popup',                re: /id="ann-popup"/,            expect: 0 },
+    { name: 'no v1 #ann-export-btn',           re: /id="ann-export-btn"/,       expect: 0 },
+    { name: 'no v1 #ann-clear-btn',            re: /id="ann-clear-btn"/,        expect: 0 },
+    { name: 'no v1 .ann-highlight styles',     re: /\.ann-highlight \{/,        expect: 0 },
+    // v2 types in engine source
+    { name: 'type schema in engine (v2)',      re: /type.*delete.*insert.*replace/, expect: 1 },
+    { name: 'replacement field in engine (v2)', re: /replacement/,              expect: 1 },
+    // Deck nav still works
     { name: 'navigation bar (prev/next/dots)', re: /id="nav-prev"/,             expect: 1 },
     { name: 'nav-next button',                 re: /id="nav-next"/,             expect: 1 },
     { name: 'nav-fullscreen button',           re: /id="nav-fullscreen"/,       expect: 1 },
     { name: '__deckGoTo exposed',              re: /__deckGoTo/,                expect: 1 },
+    // Components
     { name: 'card component',                  re: /class="card highlight"/,    expect: 1 },
     { name: 'badge component',                 re: /class="badge /,             expect: 1 },
     { name: 'stat-card component',             re: /class="stat-card"/,         expect: 1 },
@@ -59,6 +80,8 @@ exec(cmd, { maxBuffer: 50 * 1024 * 1024 }, (err, stdout, stderr) => {
     { name: 'localStorage usage',              re: /localStorage/,              expect: 1 },
     { name: 'Template reference slide 1',      re: /id="slide-ref-cards"/,      expect: 1 },
     { name: 'Template reference slide 2',      re: /id="slide-ref-blocks"/,     expect: 1 },
+    // Slide-template adapter
+    { name: 'slide adapter present',           re: /Slide-template adapter/,    expect: 1 },
   ];
 
   let passed = 0, failed = 0;
