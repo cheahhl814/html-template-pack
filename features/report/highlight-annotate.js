@@ -128,6 +128,7 @@
     } catch (e) {
       annotations = [];
     }
+    annotations.forEach(function (a) { if (!a.type) a.type = 'comment'; });
   }
   function persist() {
     try { localStorage.setItem(STORE_KEY, JSON.stringify(annotations)); } catch (e) {}
@@ -146,7 +147,7 @@
         if (!node.nodeValue || !node.nodeValue.length) return NodeFilter.FILTER_REJECT;
         var p = node.parentElement;
         if (!p) return NodeFilter.FILTER_REJECT;
-        if (p.closest('.mermaid, svg, script, style, [data-annot-skip]')) return NodeFilter.FILTER_REJECT;
+        if (p.closest('.mermaid, svg, script, style, .annot-insert-text, [data-annot-skip]')) return NodeFilter.FILTER_REJECT;
         return NodeFilter.FILTER_ACCEPT;
       }
     });
@@ -251,6 +252,13 @@
   }
   // Resolve an annotation to its current {start,end} or null.
   function resolve(a, ft) {
+    if (a.type === 'insert') {
+      var iprobe = (a.prefix || '') + (a.suffix || '');
+      var ii = ft.indexOf(iprobe);
+      if (ii < 0) return null;
+      var at = ii + (a.prefix || '').length;
+      return { start: at, end: at };
+    }
     var start = a.start, end = a.end;
     if (typeof start !== 'number' || typeof end !== 'number' || ft.slice(start, end) !== a.quote) {
       var probe = (a.prefix || '') + a.quote + (a.suffix || '');
