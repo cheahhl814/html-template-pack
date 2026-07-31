@@ -119,21 +119,11 @@ The skill ships three HTML templates. Pick the one that matches your content.
 
 A long-form reading document with a sticky left sidebar of tabs. The reviewer clicks between tabs to read different sections (Summary, Metrics, Methodology, Findings, Annotations), selects text to leave tracked-changes-style notes, and exports the notes as a JSON file when finished. The sidebar collapses to a horizontal tab strip on narrow screens. When printed, the sidebar hides and all sections flow sequentially with page breaks.
 
-**What it includes:**
-- A v2 annotation engine with four note types (comment, delete, insert, replace) and JSON import/export
-- A shared component library (cards, badges, stat cards, tables, layer stacks, chain steps, grids, eyebrows, meta cards) that you can mix and match
-- Support for Mermaid diagrams embedded inline
-
 **Best for**: research reports, grant progress reports, manuscript reading versions, gap analyses, EOI drafts — anything a human will read end-to-end and leave comments on.
 
 ### Slide template
 
 A single-page scrolling deck with prev/next navigation, slide dots, a counter, a fullscreen toggle, and a home button. Each slide is a section with v2 annotations (notes you can leave on any text) and a per-slide identifier so a notes drawer click jumps directly to that slide. When printed, each slide becomes one PDF page.
-
-**What it includes:**
-- A v2 annotation engine identical to the report's (with a small adapter for cross-slide jumps)
-- The same shared component library as the report
-- Two reference slides showing every reusable block
 
 **Best for**: pitch decks, conference talks, lightning talks, internal readouts, research summary decks — any sequential presentation of 12 or fewer visual beats.
 
@@ -142,8 +132,6 @@ A single-page scrolling deck with prev/next navigation, slide dots, a counter, a
 A fixed-topbar shell with a sidebar navigation and a content area laid out as a grid: a row of KPI stat cards, a sparkline chart panel, a recent-activity feed, and a sortable/filterable/searchable data table. The interactions are wired with htmx — the table polls every few seconds, search is debounced, and sort state carries across requests. The four data endpoints (`/api/stats`, `/api/chart`, `/api/activity`, `/api/table`) are expected to return HTML fragments, not JSON.
 
 The template ships in **demo mode** out of the box: a small mock backend intercepts every request to `/api/*` and answers from an embedded dataset, so the file opens in a browser and is fully interactive (filter, sort, poll, pause/resume) before any real backend exists. Once you have a real server, delete the `data-demo-mode` attribute on the body and the `« BEGIN/END DEMO MODE »` script block at the end of the file. Nothing else in the markup changes.
-
-**What it intentionally doesn't include**: an annotation system. Live/polling data shifts underneath its anchors, so highlights would lose their position on every refresh. If you need reviewer comments on a snapshot of dashboard data, export a static report instead.
 
 **Best for**: ops dashboards, admin panels, status pages, internal metrics views — anything meant to be watched and interacted with live, not read and annotated.
 
