@@ -144,54 +144,30 @@ The template ships in **demo mode** out of the box: a small mock backend interce
 
 When you open a report or slide in a browser, you can leave tracked-changes-style notes directly on the text. Select any passage, choose what kind of note you want to leave, and a small floating toolbar appears with options. Your notes are saved in your browser automatically and can be exported as a file to send to an AI coding agent for revision.
 
-### How to leave a note
+### The Review Cycle
 
-1. **Select any text** in a panel or slide. A small toolbar appears next to your selection with these options:
+```mermaid
+sequenceDiagram
+    autonumber
+    actor Human as Human Reviewer
+    participant Browser as Browser (HTML Template)
+    participant Agent as AI Agent
 
-   - 💬 **Comment** — attach a note to the text (no text changes)
-   - ✂ **Delete** — strike through the text and explain why it should go
-   - ➕ **Insert** — drop a caret at any point (click the **Insert** button top-right first) and write the new text you want added there
-   - ✎ **Replace** — strike through the text and write what should go in its place
+    Human->>Browser: Select text & add note (💬/✂/➕/✎)
+    Browser->>Browser: Persist to localStorage
+    Human->>Browser: Click 💾 Export
+    Browser-->>Human: annotations-id.json
+    Human->>Agent: Provide JSON + Original HTML
+    Agent->>Agent: Parse notes & apply changes
+    Agent-->>Human: Revised HTML file
+```
 
-2. **Open the Notes panel** by clicking the **💬 Notes** button at the top-right. You'll see every note you (or someone else) made, sorted by position. Each entry shows the highlighted quote, the note type, and the section it belongs to.
+### Advanced Note Management
 
-3. **Click a note in the panel** to jump straight back to that text. In the report template, if the note is in a different tab, that tab opens automatically.
+- **Import**: Use **⬆ Import** to merge JSON files from other reviewers.
+- **Orphans**: If the document text changes, some notes may no longer point to the exact text. These appear with a **red border and warning** in the Notes panel.
+- **Storage**: Notes live in `localStorage` under `annotations:<id>`. For a multi-document project, give each one a unique id (e.g., `<body data-annot-storage="my-report-2026">`) so reviews don't overwrite each other.
 
-4. **Edit or delete** any note by clicking the edit/delete icons in the Notes panel.
-
-### Exporting your notes
-
-Once you've finished reviewing, you have two options:
-
-- **Export to a file**: Click **💾 Export** in the Notes panel. The browser downloads a file called `annotations-<id>.json`. This file contains every note with its type, the highlighted text, the surrounding context, the section heading, and (for insert/replace) the suggested replacement text.
-- **Copy to clipboard**: Same as above, but the JSON goes to your clipboard instead of a file.
-
-### Sending notes to an AI for revision
-
-After exporting, **give the JSON file to your AI coding agent/harness** along with the HTML file. The agent will:
-
-1. Read the JSON and understand each note (`comment`, `delete`, `insert`, or `replace`)
-2. Apply the changes to the document content
-3. Produce a revised HTML file
-
-The agent doesn't need to guess what you meant — the JSON includes the exact replacement text for `insert` and `replace` notes. Just hand over the file and tell the agent to apply the annotations.
-
-### Importing existing notes
-
-If you have a JSON file from a previous review session (or from another reviewer), click **⬆ Import** in the Notes panel. The notes will be merged by their unique id, so you can combine reviews from multiple people without conflicts.
-
-### When notes get "orphaned"
-
-If the document text changes between exports (e.g., the agent revises the HTML), some notes might no longer point to the exact text they referred to. These appear with a **red border and a warning** in the Notes panel — they're still readable but the highlight in the document may be missing or shifted. You can edit or delete them manually.
-
-### Where your notes are stored
-
-Notes live in your browser's `localStorage` under a key specific to each document:
-
-- **Report**: `localStorage["annotations:<id>"]` where `<id>` comes from `<body data-annot-storage="...">`. Default is `"report-template"`.
-- **Slide**: `localStorage["annotations:slide-template"]` (set via `DECK_CONFIG.storageKey`).
-
-For a multi-document project, give each one a unique id like `data-annot-storage="my-report-2026-q3"` so reviews don't overwrite each other.
 
 ### Feature reference
 
