@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>html-template-pack demo</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+      max-width: 900px;
+      margin: 2rem auto;
+      padding: 0 1.5rem 4rem;
+      line-height: 1.6;
+      color: #1f2937;
+      background: #fafafa;
+    }
+    h1 {
+      font-size: 2.2rem;
+      border-bottom: 2px solid #2563eb;
+      padding-bottom: 0.5rem;
+      margin-bottom: 0.5rem;
+    }
+    .lead {
+      color: #4b5563;
+      font-size: 1.05rem;
+      margin-bottom: 1.5rem;
+    }
+    .card {
+      background: white;
+      border: 1px solid #e5e7eb;
+      border-radius: 8px;
+      padding: 1.5rem;
+      margin: 1.25rem 0;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    }
+    .card h2 { margin: 0 0 0.5rem; font-size: 1.3rem; }
+    .card p { margin: 0.5rem 0; color: #374151; }
+    .meta { color: #6b7280; font-size: 0.875rem; }
+    .btn {
+      display: inline-block;
+      background: #2563eb;
+      color: white;
+      padding: 0.55rem 1.1rem;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 600;
+      margin: 0.75rem 0.5rem 0.5rem 0;
+      transition: background 0.15s;
+    }
+    .btn:hover { background: #1d4ed8; }
+    .btn.secondary { background: #6b7280; }
+    .btn.secondary:hover { background: #4b5563; }
+    h2.section {
+      margin-top: 2.5rem;
+      font-size: 1.5rem;
+      border-bottom: 1px solid #e5e7eb;
+      padding-bottom: 0.4rem;
+    }
+    ul { padding-left: 1.5rem; }
+    li { margin-bottom: 0.4rem; }
+    code {
+      background: #f3f4f6;
+      padding: 0.1rem 0.35rem;
+      border-radius: 3px;
+      font-size: 0.9em;
+      font-family: 'SF Mono', Monaco, 'Cascadia Code', monospace;
+    }
+    .toc {
+      background: #eff6ff;
+      border-left: 4px solid #2563eb;
+      padding: 1rem 1.25rem;
+      margin: 1.5rem 0;
+      border-radius: 0 6px 6px 0;
+    }
+    .toc strong { display: block; margin-bottom: 0.5rem; color: #1e40af; }
+  </style>
+</head>
+<body>
+  <h1>html-template-pack</h1>
+  <p class="lead">Three self-contained HTML templates — open any of them below in a new tab to interact with the live demo. No setup, no build step, no backend.</p>
+
+  <div class="toc">
+    <strong>What you can try in each demo</strong>
+    <ul>
+      <li><strong>Theme toggle</strong> — Click <code>◐</code> / <code>◑</code> (top-right) to switch themes. Reload to confirm it persists.</li>
+      <li><strong>Density toggle</strong> — Click <code>▤</code> / <code>▥</code> to switch between comfortable and compact spacing.</li>
+      <li><strong>Font size toggle</strong> — Click <code>S</code> / <code>M</code> / <code>L</code> to scale text.</li>
+      <li><strong>Annotations</strong> (report + slide) — Select text to leave comment / delete / insert / replace notes. Click 💬 Notes to open the drawer. Export JSON via 💾 Export.</li>
+      <li><strong>Tab switching</strong> (report) — Click sidebar tabs to navigate between sections.</li>
+      <li><strong>Slide navigation</strong> (slide) — Use <code>←</code> <code>→</code> arrow keys, dots, or <code>F</code> for fullscreen.</li>
+      <li><strong>Print preview</strong> — <code>Ctrl/Cmd+P</code> to see how each template looks as a PDF.</li>
+    </ul>
+  </div>
+
+  <h2 class="section">Templates</h2>
+
+  <div class="card">
+    <h2>📄 Report template</h2>
+    <p>A long-form reading document with a sticky left sidebar of tabs. The reviewer clicks between tabs to read different sections, selects text to leave tracked-changes-style notes, and exports the notes as a JSON file when finished.</p>
+    <p>
+      <a class="btn" href="../templates/report/template.html" target="_blank">Open report →</a>
+    </p>
+    <p class="meta">Single file. Sidebar collapses to a horizontal tab strip on narrow screens. Print hides the sidebar and flows all sections with page breaks.</p>
+  </div>
+
+  <div class="card">
+    <h2>🎞️ Slide template</h2>
+    <p>A single-page scrolling deck with prev/next navigation, slide dots, a counter, a fullscreen toggle, and a home button. Each slide supports v2 annotations.</p>
+    <p>
+      <a class="btn" href="../templates/slide/slide-template.html" target="_blank">Open slides →</a>
+    </p>
+    <p class="meta">Single file. Print: one slide per page PDF.</p>
+  </div>
+
+  <div class="card">
+    <h2>📊 Dashboard template</h2>
+    <p>An htmx-driven shell with a KPI row, sparkline chart panel, recent-activity feed, and a sortable/filterable/searchable data table. Ships in demo mode — works instantly without a backend.</p>
+    <p>
+      <a class="btn" href="../templates/dashboard/dashboard-template.html" target="_blank">Open dashboard →</a>
+    </p>
+    <p class="meta">Single file with mock backend. Try: sort table headers, pause polling, type in search box.</p>
+  </div>
+
+  <h2 class="section">About</h2>
+  <p>This is a live demo of <a href="https://github.com/cheahhl814/html-template-pack">html-template-pack</a> — an agent skill (not a user-facing library) that auto-invokes when an AI coding agent is asked to build an HTML report, slide deck, or dashboard.</p>
+  <p>All three templates are self-contained HTML files. They work offline (after the first CDN fetch), print cleanly, and persist user state via <code>localStorage</code>.</p>
+</body>
+</html>
