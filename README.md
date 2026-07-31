@@ -17,16 +17,15 @@ Each demo is a curated showcase with realistic content (not a blank template). T
 
 **Source files** (for starting your own document): see [`templates/`](./templates/) and follow the usage examples below.
 
-## 🛠️ Installation (for the agent/harness)
+## 🛠️ Installation
 
-This is an **agent skill**, not a user-facing library. The skill is loaded by the pi coding agent harness at `~/.pi/agent/skills/html-template-pack/`.
+This is an **agent skill**, not a user-facing library. The skill is loaded by the agent harness at startup.
 
-**For the agent/harness to discover this skill:**
+**To install, give your AI agent this prompt:**
 
-1. Provide the repo URL to the agent harness (e.g. via skill configuration or AGENTS.md routing).
-2. The harness clones the repo into its skills directory and picks up `SKILL.md` at startup.
+> Install the [html-template-pack skill](https://github.com/cheahhl814/html-template-pack) into your skills directory and load `SKILL.md` at startup. Once installed, the skill is auto-invoked when I ask for an HTML report, slide deck, or dashboard — the global AGENTS.md routes the request here automatically. No manual copy needed; you copy the appropriate template, fill in the content, and hand me a ready-to-review `.html` file.
 
-Once installed, the skill is **auto-invoked**: when a user asks the agent for an HTML report, slide deck, or dashboard, the global `AGENTS.md` routes the request here automatically. No manual `cp` needed — the agent copies the appropriate template, fills in the content, and hands the user a ready-to-review `.html` file.
+Once installed, the skill is **auto-invoked**: when you ask the agent for an HTML report, slide deck, or dashboard, the agent routes the request here automatically. No manual `cp` needed — the agent copies the appropriate template, fills in the content, and hands you a ready-to-review `.html` file.
 
 ## 💡 Usage examples
 
