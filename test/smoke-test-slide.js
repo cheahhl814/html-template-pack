@@ -42,6 +42,7 @@ exec(cmd, { maxBuffer: 50 * 1024 * 1024 }, (err, stdout, stderr) => {
     { name: 'font-toggle button',               re: /id="font-toggle"/,         expect: 1 },
     { name: 'data-density default',             re: /data-density="comfortable"/, expect: 1 },
     { name: 'data-font-size default',           re: /data-font-size="M"/,       expect: 1 },
+    { name: 'toggle-cluster wrapper',           re: /class="toggle-cluster"/,   expect: 1 },
     { name: 'data-theme="light" default',      re: /<html[^>]*>/, expect: 1 },
     // v2 annotation UI (inlined from features/slide/{annotate.css,highlight-annotate.js})
     { name: 'annot-toggle (v2)',               re: /id="annot-toggle"/,         expect: 1 },
