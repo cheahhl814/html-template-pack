@@ -149,9 +149,9 @@ When you open a report or slide in a browser, you can leave tracked-changes-styl
 ```mermaid
 sequenceDiagram
     autonumber
-    actor Human as Human Reviewer
-    participant Page as HTML Page
     participant Agent as AI Agent
+    participant Page as HTML Page
+    actor Human as Human Reviewer
 
     Human->>Page: Add annotations (💬/✂/➕/✎)
     Page-->>Human: Export JSON file
