@@ -135,14 +135,6 @@ The template ships in **demo mode** out of the box: a small mock backend interce
 
 **Best for**: ops dashboards, admin panels, status pages, internal metrics views — anything meant to be watched and interacted with live, not read and annotated.
 
-## ⚙️ Pipeline (what the agent does)
-
-1. **Decide** — apply decision rubric (see SKILL.md)
-2. **Copy** — `cp templates/<type>/*.html` to project; set `<title>` + `data-report-id` / `DECK_CONFIG` / topbar title
-3. **Adapt** — replace demo content with real content
-4. **Render** — open in browser; verify theme toggle, annotations, print
-5. **Wire** — unique `data-annot-storage` (report), `DECK_CONFIG.storageKey` (slide), remove demo-mode + connect real `/api/*` (dashboard)
-
 ## 💬 Annotation system (report + slide)
 
 > **Audience: human reviewers.** The other sections of this README document what
