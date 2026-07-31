@@ -197,8 +197,10 @@
   .deck-dots .dot.active { background: var(--teal); transform: scale(1.3); }
   .deck-counter { position: fixed; top: 20px; right: 24px; z-index: 500; background: rgba(26,39,68,0.85); color: white; font-size: 0.8em; font-weight: 700; padding: 6px 13px; border-radius: 20px; }
 
-  /* Toggle cluster: theme + density + font buttons, single fixed container */
-  .toggle-cluster { position: fixed; top: 20px; right: 110px; z-index: 500; display: flex; gap: 8px; align-items: center; }
+  /* Toggle cluster: theme + density + font buttons, single fixed container.
+   z-index: 100 matches the annotation drawer (also z: 100) so the drawer
+   covers the cluster when it slides in — same pattern as the report. */
+  .toggle-cluster { position: fixed; top: 20px; right: 110px; z-index: 100; display: flex; gap: 8px; align-items: center; }
   .toggle-cluster .theme-toggle-btn,
   .toggle-cluster .density-toggle-btn,
   .toggle-cluster .font-toggle-btn { position: static; background: rgba(26,39,68,0.85); color: white; border: none; font-family: inherit; font-size: 0.8em; font-weight: 700; padding: 6px 13px; border-radius: 20px; cursor: pointer; }
