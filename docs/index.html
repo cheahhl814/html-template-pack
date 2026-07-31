@@ -3,192 +3,434 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>html-template-pack demo</title>
+  <title>html-template-pack — live demo</title>
   <style>
+    /* Design tokens — kept in sync with templates/report/template.html so the
+       launcher visually matches what reviewers see when they open a demo. */
+    :root, [data-theme="light"] {
+      --bg: #f6f8fa;
+      --surface: #ffffff;
+      --surface2: #f0f3f6;
+      --border: #d8dee4;
+      --border-bright: #b6bec8;
+      --text: #1a1f26;
+      --text-dim: #4b5563;
+      --text-muted: #6b7280;
+      --accent: #6ea8fe;
+      --accent-dim: rgba(110,168,254,0.18);
+      --teal: #14b8a6;
+      --coral: #ef6461;
+      --green: #10b981;
+      --amber: #f59e0b;
+      --deep-blue: #4f7cb8;
+      --navy: #1e3a5f;
+      --radius: 8px;
+      --shadow-sm: 0 1px 3px rgba(15,23,42,0.06), 0 1px 2px rgba(15,23,42,0.04);
+      --shadow-md: 0 6px 20px rgba(15,23,42,0.08), 0 2px 6px rgba(15,23,42,0.04);
+      --shadow-lg: 0 16px 40px rgba(15,23,42,0.10), 0 4px 12px rgba(15,23,42,0.05);
+    }
+    [data-theme="dark"] {
+      --bg: #0e1116;
+      --surface: #161b22;
+      --surface2: #1c2230;
+      --border: #262c36;
+      --border-bright: #333b47;
+      --text: #f5f7fa;
+      --text-dim: #c2cad4;
+      --text-muted: #9aa4b2;
+      --accent: #6ea8fe;
+      --accent-dim: rgba(110,168,254,0.18);
+      --teal: #2dd4bf;
+      --coral: #fb7185;
+      --green: #34d399;
+      --amber: #fbbf24;
+      --deep-blue: #6ea8fe;
+      --navy: #3b82f6;
+      --radius: 8px;
+      --shadow-sm: 0 1px 3px rgba(0,0,0,0.4);
+      --shadow-md: 0 6px 20px rgba(0,0,0,0.5);
+      --shadow-lg: 0 16px 40px rgba(0,0,0,0.55);
+    }
+
     * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
     body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
-      background: linear-gradient(135deg, #1e3a8a 0%, #3730a3 50%, #1e293b 100%);
+      font-family: var(--font-sans, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif);
+      background: var(--bg);
+      color: var(--text);
       min-height: 100vh;
-      color: #1f2937;
-      padding: 3rem 1.5rem;
+      padding: 4rem 1.5rem 5rem;
+      line-height: 1.55;
+      transition: background 0.2s, color 0.2s;
     }
-    .container { max-width: 1100px; margin: 0 auto; }
-    header {
+    .container { max-width: 1140px; margin: 0 auto; }
+
+    /* ── Top toolbar (theme toggle) ── */
+    .toolbar {
+      position: fixed; top: 1rem; right: 1rem; z-index: 100;
+      display: flex; gap: 0.4rem; align-items: center;
+    }
+    .toolbar-btn {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 0.45rem 0.85rem;
+      font-family: inherit; font-size: 0.825rem; font-weight: 600;
+      color: var(--text-dim); cursor: pointer;
+      box-shadow: var(--shadow-sm);
+      transition: all 0.15s;
+    }
+    .toolbar-btn:hover { color: var(--accent); border-color: var(--accent); }
+    .toolbar-btn[aria-pressed="true"] { color: var(--accent); border-color: var(--accent); background: var(--accent-dim); }
+
+    /* ── Header (matches report template's eyebrow + title + subtitle) ── */
+    .page-header {
       text-align: center;
-      color: white;
-      margin-bottom: 3rem;
+      margin-bottom: 3.5rem;
+      position: relative;
     }
-    header h1 {
-      font-size: 3rem;
-      font-weight: 800;
+    .eyebrow {
+      display: inline-block;
+      font-size: 0.78rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 1.6px;
+      padding: 5px 14px; border-radius: 20px;
+      background: var(--accent-dim); color: var(--accent);
+      margin-bottom: 1.25rem;
+    }
+    .page-title {
+      font-size: 3.2rem; font-weight: 800;
       letter-spacing: -0.03em;
-      margin-bottom: 0.5rem;
-      background: linear-gradient(135deg, #fff 0%, #c7d2fe 100%);
+      margin-bottom: 0.75rem;
+      line-height: 1.1;
+      color: var(--text);
+    }
+    .page-title .accent {
+      background: linear-gradient(135deg, var(--teal) 0%, var(--accent) 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
     }
-    header .lead {
-      font-size: 1.2rem;
-      opacity: 0.9;
-      max-width: 600px;
-      margin: 0 auto;
-      line-height: 1.5;
+    .page-subtitle {
+      font-size: 1.15rem;
+      color: var(--text-dim);
+      max-width: 620px;
+      margin: 0 auto 1.5rem;
+      line-height: 1.55;
     }
+    .page-meta {
+      display: inline-flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      justify-content: center;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+    .page-meta span {
+      display: inline-flex; align-items: center; gap: 0.35rem;
+    }
+    .page-meta strong { color: var(--text); font-weight: 600; }
+
+    /* ── Guide panel ── */
     .guide {
-      background: rgba(255, 255, 255, 0.08);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      border: 1px solid rgba(255, 255, 255, 0.15);
+      background: var(--surface);
+      border: 1px solid var(--border);
       border-radius: 12px;
-      padding: 1.5rem 1.75rem;
+      padding: 1.75rem 2rem;
       margin-bottom: 2.5rem;
-      color: white;
+      box-shadow: var(--shadow-sm);
     }
-    .guide strong { display: block; margin-bottom: 0.75rem; font-size: 1.1rem; opacity: 0.95; }
-    .guide ul { padding-left: 0; list-style: none; columns: 2; column-gap: 2rem; }
-    .guide li {
-      margin-bottom: 0.6rem;
-      font-size: 0.92rem;
-      opacity: 0.9;
-      break-inside: avoid;
+    .guide-header {
+      display: flex; align-items: center; gap: 0.6rem;
+      margin-bottom: 1rem;
     }
-    .guide code {
-      background: rgba(255, 255, 255, 0.15);
+    .guide-header .icon {
+      width: 32px; height: 32px; border-radius: 8px;
+      background: var(--accent-dim); color: var(--accent);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.05rem;
+    }
+    .guide-header h2 {
+      font-size: 1.05rem; font-weight: 700; color: var(--text);
+    }
+    .guide-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 0.6rem 1.5rem;
+    }
+    .guide-item {
+      display: flex; align-items: flex-start; gap: 0.5rem;
+      font-size: 0.875rem;
+      color: var(--text-dim);
+    }
+    .guide-item strong { color: var(--text); font-weight: 600; }
+    .guide-item code {
+      background: var(--surface2);
       padding: 0.1rem 0.4rem;
       border-radius: 3px;
       font-size: 0.85em;
-      font-family: 'SF Mono', Monaco, 'Cascadia Code', monospace;
+      color: var(--accent);
+      font-family: ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
     }
+
+    /* ── Section heading ── */
+    .section-heading {
+      display: flex; align-items: center; gap: 0.75rem;
+      margin: 0 0 1.5rem 0;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .section-heading h2 {
+      font-size: 1.25rem; font-weight: 700;
+      color: var(--text);
+    }
+    .section-heading .meta {
+      margin-left: auto; font-size: 0.82rem; color: var(--text-muted);
+    }
+
+    /* ── Card grid ── */
     .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
       gap: 1.5rem;
       margin-bottom: 3rem;
     }
     .card {
-      background: white;
+      background: var(--surface);
+      border: 1px solid var(--border);
       border-radius: 12px;
-      padding: 2rem;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-      transition: transform 0.2s, box-shadow 0.2s;
-      display: flex;
-      flex-direction: column;
+      padding: 1.75rem;
+      box-shadow: var(--shadow-md);
+      transition: transform 0.18s, box-shadow 0.18s, border-color 0.18s;
+      display: flex; flex-direction: column;
+      position: relative;
+      overflow: hidden;
+    }
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; height: 3px;
+      background: var(--card-accent, var(--accent));
     }
     .card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-lg);
+      border-color: var(--card-accent, var(--accent));
     }
+    .card.report { --card-accent: var(--deep-blue); }
+    .card.slide { --card-accent: var(--coral); }
+    .card.dashboard { --card-accent: var(--green); }
+
     .card .icon {
-      width: 56px;
-      height: 56px;
-      border-radius: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 2rem;
+      width: 48px; height: 48px;
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.5rem;
       margin-bottom: 1rem;
+      background: var(--card-accent);
+      color: var(--surface);
     }
-    .card.report .icon { background: #dbeafe; color: #1e40af; }
-    .card.slide .icon { background: #fce7f3; color: #be185d; }
-    .card.dashboard .icon { background: #d1fae5; color: #047857; }
-    .card h2 { margin: 0 0 0.75rem; font-size: 1.4rem; color: #111827; }
-    .card p { color: #4b5563; margin-bottom: 1rem; line-height: 1.55; flex-grow: 1; }
+    .card h3 { margin: 0 0 0.5rem; font-size: 1.15rem; color: var(--text); font-weight: 700; }
+    .card .tag {
+      display: inline-block;
+      font-size: 0.7rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.8px;
+      padding: 3px 10px; border-radius: 999px;
+      background: var(--card-accent); color: var(--surface);
+      margin-bottom: 0.85rem;
+    }
+    .card p { color: var(--text-dim); font-size: 0.9rem; margin-bottom: 1rem; line-height: 1.6; flex-grow: 1; }
     .card .meta {
-      color: #6b7280;
-      font-size: 0.82rem;
-      padding: 0.75rem 0;
-      border-top: 1px solid #f3f4f6;
-      margin-bottom: 0.75rem;
+      font-size: 0.78rem; color: var(--text-muted);
+      padding: 0.85rem 0;
+      border-top: 1px solid var(--border);
+      margin-bottom: 1rem;
+      display: flex; flex-wrap: wrap; gap: 0.5rem;
+    }
+    .card .meta span {
+      background: var(--surface2);
+      padding: 0.2rem 0.6rem;
+      border-radius: 4px;
     }
     .btn {
-      display: inline-block;
-      background: #2563eb;
-      color: white;
+      display: inline-flex;
+      align-items: center; justify-content: center;
+      gap: 0.4rem;
+      background: var(--card-accent, var(--accent));
+      color: var(--surface);
       padding: 0.7rem 1.4rem;
-      border-radius: 8px;
+      border-radius: var(--radius);
       text-decoration: none;
       font-weight: 600;
-      text-align: center;
-      transition: background 0.15s;
-    }
-    .btn:hover { background: #1d4ed8; }
-    .btn.report { background: #1e40af; }
-    .btn.report:hover { background: #1e3a8a; }
-    .btn.slide { background: #be185d; }
-    .btn.slide:hover { background: #9d174d; }
-    .btn.dashboard { background: #047857; }
-    .btn.dashboard:hover { background: #065f46; }
-    footer {
-      text-align: center;
-      color: rgba(255, 255, 255, 0.7);
       font-size: 0.9rem;
-      padding-top: 2rem;
-      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      transition: filter 0.15s, transform 0.15s;
     }
-    footer a { color: #c7d2fe; text-decoration: none; }
-    footer a:hover { color: white; text-decoration: underline; }
-    @media (max-width: 640px) {
-      header h1 { font-size: 2rem; }
-      header .lead { font-size: 1rem; }
-      .guide ul { columns: 1; }
+    .btn:hover { filter: brightness(1.1); transform: translateX(2px); }
+    .btn::after { content: '→'; transition: transform 0.15s; }
+    .btn:hover::after { transform: translateX(2px); }
+
+    /* ── Footer ── */
+    footer {
+      margin-top: 4rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--border);
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      text-align: center;
+    }
+    footer a { color: var(--accent); text-decoration: none; font-weight: 600; }
+    footer a:hover { text-decoration: underline; }
+    footer .note {
+      margin-top: 0.75rem;
+      padding: 0.65rem 1rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      display: inline-block;
+      font-size: 0.78rem;
+    }
+    footer code {
+      background: var(--surface2);
+      padding: 0.1rem 0.35rem;
+      border-radius: 3px;
+      color: var(--accent);
+      font-family: ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+      font-size: 0.92em;
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 720px) {
+      body { padding: 3rem 1rem 4rem; }
+      .page-title { font-size: 2.1rem; }
+      .page-subtitle { font-size: 1rem; }
+      .guide-grid { grid-template-columns: 1fr; }
       .grid { grid-template-columns: 1fr; }
+      .page-meta { gap: 1rem; font-size: 0.8rem; }
     }
   </style>
 </head>
 <body>
+
+  <!-- Toolbar: theme toggle -->
+  <div class="toolbar">
+    <button class="toolbar-btn" id="theme-toggle" aria-label="Toggle color theme" aria-pressed="false">◐ Dark</button>
+  </div>
+
   <div class="container">
-    <header>
-      <h1>html-template-pack</h1>
-      <p class="lead">Three self-contained HTML templates — open any of them to interact with the live demo. No setup, no build step, no backend.</p>
+
+    <!-- Header: matches report template's eyebrow + title + subtitle pattern -->
+    <header class="page-header">
+      <span class="eyebrow">html-template-pack · live demo</span>
+      <h1 class="page-title">Three self-contained <span class="accent">HTML templates</span></h1>
+      <p class="page-subtitle">Open any of them below to interact with the live demo. No setup, no build step, no backend — just open and click around.</p>
+      <div class="page-meta">
+        <span>📦 <strong>Self-contained</strong> HTML</span>
+        <span>🎨 <strong>Light + dark</strong> themes</span>
+        <span>💬 <strong>v2 annotations</strong> with JSON export</span>
+        <span>🖨️ <strong>Print-ready</strong> PDF output</span>
+      </div>
     </header>
 
+    <!-- Guide: what reviewers can try -->
     <div class="guide">
-      <strong>💡 What you can try in each demo</strong>
-      <ul>
-        <li><strong>Theme toggle</strong> — click <code>◐</code> / <code>◑</code> top-right to switch themes</li>
-        <li><strong>Density toggle</strong> — click <code>▤</code> / <code>▥</code> for compact spacing</li>
-        <li><strong>Font size toggle</strong> — click <code>S</code> / <code>M</code> / <code>L</code> to scale text</li>
-        <li><strong>Annotations</strong> (report + slide) — select text to leave notes</li>
-        <li><strong>Tab switching</strong> (report) — click sidebar tabs to navigate</li>
-        <li><strong>Slide nav</strong> — use <code>←</code> <code>→</code> arrows or <code>F</code> for fullscreen</li>
-        <li><strong>Print preview</strong> — <code>Ctrl/Cmd+P</code> for PDF output</li>
-        <li><strong>Export</strong> — click 💬 Notes → 💾 Export to download JSON</li>
-      </ul>
+      <div class="guide-header">
+        <div class="icon">💡</div>
+        <h2>What you can try in each demo</h2>
+      </div>
+      <div class="guide-grid">
+        <div class="guide-item"><strong>Theme toggle</strong> — <code>◐</code> top-right</div>
+        <div class="guide-item"><strong>Density toggle</strong> — <code>▤</code> / <code>▥</code></div>
+        <div class="guide-item"><strong>Font size</strong> — <code>S</code> / <code>M</code> / <code>L</code></div>
+        <div class="guide-item"><strong>Annotations</strong> — select text → 💬 / ✂ / ➕ / ✎</div>
+        <div class="guide-item"><strong>Tab switching</strong> (report) — sidebar tabs</div>
+        <div class="guide-item"><strong>Slide nav</strong> — <code>←</code> <code>→</code> arrows or <code>F</code></div>
+        <div class="guide-item"><strong>Print preview</strong> — <code>Ctrl/Cmd+P</code></div>
+        <div class="guide-item"><strong>Export</strong> — 💬 Notes → 💾 Export JSON</div>
+      </div>
     </div>
 
+    <!-- Section: templates -->
+    <div class="section-heading">
+      <h2>Templates</h2>
+      <span class="meta">3 single-file HTML files · copy from <code>templates/</code> to start your own</span>
+    </div>
+
+    <!-- Template cards -->
     <div class="grid">
       <div class="card report">
         <div class="icon">📄</div>
-        <h2>Report template</h2>
-        <p>A long-form reading document with a sticky left sidebar of tabs. Reviewers click between tabs to read different sections, select text to leave tracked-changes-style notes, and export the notes as a JSON file when finished.</p>
-        <div class="meta">Single file. Sidebar collapses on narrow screens. Print hides sidebar and flows all sections with page breaks.</div>
-        <a class="btn report" href="report/" target="_blank">Open report →</a>
+        <span class="tag">Report</span>
+        <h3>Long-form reading document</h3>
+        <p>A sticky left sidebar of tabs lets reviewers navigate between sections, select text to leave tracked-changes-style notes, and export the notes as a JSON file when finished.</p>
+        <div class="meta">
+          <span>240px sidebar</span>
+          <span>v2 annotations</span>
+          <span>5 tabs default</span>
+          <span>Print-friendly</span>
+        </div>
+        <a class="btn" href="report/" target="_blank">Open report</a>
       </div>
 
       <div class="card slide">
         <div class="icon">🎞️</div>
-        <h2>Slide template</h2>
+        <span class="tag">Slide</span>
+        <h3>Sequential presentation deck</h3>
         <p>A single-page scrolling deck with prev/next navigation, slide dots, a counter, a fullscreen toggle, and a home button. Each slide supports v2 annotations.</p>
-        <div class="meta">Single file. Print: one slide per page PDF.</div>
-        <a class="btn slide" href="slide/" target="_blank">Open slides →</a>
+        <div class="meta">
+          <span>≤ 12 slides</span>
+          <span>v2 annotations</span>
+          <span>Fullscreen (F)</span>
+          <span>1 slide/page PDF</span>
+        </div>
+        <a class="btn" href="slide/" target="_blank">Open slides</a>
       </div>
 
       <div class="card dashboard">
         <div class="icon">📊</div>
-        <h2>Dashboard template</h2>
-        <p>An htmx-driven shell with a KPI row, sparkline chart panel, recent-activity feed, and a sortable/filterable/searchable data table. Ships in demo mode — works instantly without a backend.</p>
-        <div class="meta">Single file with mock backend. Try sorting, searching, pausing polling.</div>
-        <a class="btn dashboard" href="dashboard/" target="_blank">Open dashboard →</a>
+        <span class="tag">Dashboard</span>
+        <h3>Live-data ops dashboard</h3>
+        <p>An htmx-driven shell with a KPI row, sparkline chart panel, recent-activity feed, and a sortable/filterable/searchable data table. Ships in demo mode — works without a backend.</p>
+        <div class="meta">
+          <span>htmx-driven</span>
+          <span>Demo mode</span>
+          <span>Sortable table</span>
+          <span>Live polling</span>
+        </div>
+        <a class="btn" href="dashboard/" target="_blank">Open dashboard</a>
       </div>
     </div>
 
+    <!-- Footer -->
     <footer>
-      <p>Live demo of <a href="https://github.com/cheahhl814/html-template-pack">html-template-pack</a> — an agent skill (not a user-facing library) that auto-invokes when an AI coding agent is asked to build an HTML report, slide deck, or dashboard.</p>
-      <p style="margin-top: 0.5rem;">All three templates are self-contained HTML files. They work offline (after the first CDN fetch), print cleanly, and persist user state via localStorage.</p>
-      <p style="margin-top: 0.5rem; font-size: 0.82rem; opacity: 0.7;">Note: the demos above are copies of <code>templates/&lt;name&gt;/*.html</code> served from <code>docs/&lt;name&gt;/index.html</code>. For the canonical source files, see the repo.</p>
+      <p>Live demo of <a href="https://github.com/cheahhl814/html-template-pack">html-template-pack</a> — an agent skill that auto-invokes when an AI coding agent is asked to build an HTML report, slide deck, or dashboard.</p>
+      <div class="note">
+        The demos above are <strong>curated showcases</strong> served from <code>docs/&lt;name&gt;/index.html</code>. For canonical source files, see <code>templates/</code> in the repo.
+      </div>
     </footer>
+
   </div>
+
+  <script>
+    // Theme toggle (matches the v2 pattern from the templates)
+    (function () {
+      var KEY = 'html-template-pack-launcher-theme';
+      var saved = null;
+      try { saved = localStorage.getItem(KEY); } catch (e) {}
+      var initial = saved || (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', initial);
+      var btn = document.getElementById('theme-toggle');
+      if (btn) {
+        btn.textContent = initial === 'dark' ? '◑ Light' : '◐ Dark';
+        btn.setAttribute('aria-pressed', initial === 'dark' ? 'true' : 'false');
+        btn.addEventListener('click', function () {
+          var cur = document.documentElement.getAttribute('data-theme');
+          var next = cur === 'dark' ? 'light' : 'dark';
+          document.documentElement.setAttribute('data-theme', next);
+          try { localStorage.setItem(KEY, next); } catch (e) {}
+          btn.textContent = next === 'dark' ? '◑ Light' : '◐ Dark';
+          btn.setAttribute('aria-pressed', next === 'dark' ? 'true' : 'false');
+        });
+      }
+    })();
+  </script>
+
 </body>
 </html>
