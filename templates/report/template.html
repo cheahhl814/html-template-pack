@@ -294,14 +294,59 @@
 
     /* ═══════════════════ « BEGIN feature: theme toggle » (CSS) ═══════════════════ */
     .theme-btn {
-      position: fixed; top: 1rem; right: 1rem; z-index: 100;
       background: var(--surface); border: 1px solid var(--border);
       border-radius: var(--radius); padding: 0.5rem 0.875rem;
       font-family: var(--font-sans); font-size: 0.875rem;
       color: var(--text-dim); cursor: pointer;
     }
     .theme-btn:hover { color: var(--accent); border-color: var(--accent); }
+    .theme-cluster {
+      position: fixed; top: 1rem; right: 1rem; z-index: 100;
+      display: flex; gap: 0.4rem; align-items: center;
+    }
+    .theme-cluster .theme-btn { position: static; }
+    .theme-cluster .sep { width: 1px; height: 1.25rem; background: var(--border); }
     /* ═══════════════════ « END feature: theme toggle » (CSS) ═════════════════════ */
+
+    /* ═══════════════════ « BEGIN feature: density + font-size » (CSS) ═════════════ */
+    /* Density tokens — overridden by [data-density="compact"] */
+    :root, [data-density="comfortable"] {
+      --pad-card: 1.25rem;
+      --pad-cell: 0.6rem 0.85rem;
+      --pad-stat: 1.1rem;
+      --gap-table: 0.5rem;
+      --gap-grid: 1.25rem;
+      --gap-layer: 0.6rem;
+      --gap-stack: 0.85rem;
+      --pad-panel-top: 4rem;
+    }
+    [data-density="compact"] {
+      --pad-card: 0.7rem;
+      --pad-cell: 0.32rem 0.55rem;
+      --pad-stat: 0.6rem;
+      --gap-table: 0.2rem;
+      --gap-grid: 0.6rem;
+      --gap-layer: 0.3rem;
+      --gap-stack: 0.45rem;
+      --pad-panel-top: 2rem;
+    }
+
+    /* Font size tokens — overridden by [data-font-size="S|L"] */
+    :root, [data-font-size="M"] { font-size: 16px; }
+    [data-font-size="S"] { font-size: 14px; }
+    [data-font-size="L"] { font-size: 18px; }
+
+    /* Apply density tokens to components */
+    .card { padding: var(--pad-card); }
+    .stat-card { padding: var(--pad-stat); }
+    table { border-collapse: collapse; }
+    table th, table td { padding: var(--pad-cell); }
+    .layer-stack { gap: var(--gap-layer); }
+    .chain-step { padding: var(--pad-card); }
+    .grid-2, .grid-3 { gap: var(--gap-grid); }
+    .meta-grid { gap: var(--gap-table); }
+    .report-panels > [data-panel] { padding-top: var(--pad-panel-top); }
+    /* ═══════════════════ « END feature: density + font-size » (CSS) ═══════════════ */
 
     /* ═══════════════════ « BEGIN feature: annotations » (CSS) ════════════════════ */
     mark.annot {
@@ -490,7 +535,11 @@
     /* ── Print: hide all UI chrome, keep highlights subtle ────────── */
     @media print {
       .theme-btn,
+      .theme-cluster,
       .annot-toggle, .annot-toolbar, .annot-editor, .annot-drawer, .annot-backdrop { display: none !important; }
+      /* Reset density + font-size for predictable print layout */
+      [data-density="compact"] { --pad-card: 1.25rem; --pad-cell: 0.6rem 0.85rem; --pad-stat: 1.1rem; --pad-panel-top: 4rem; --gap-grid: 1.25rem; }
+      [data-font-size="S"], [data-font-size="L"] { font-size: 16px; }
       mark.annot { background: transparent; box-shadow: none; border-bottom: 1px solid #999; color: inherit; }
       mark.annot.annot-delete, mark.annot.annot-replace {
         background: transparent; text-decoration: line-through; border-bottom: none;
@@ -509,7 +558,13 @@
 <body data-report-id="report-template">
 
   <!-- ═══════════════════ « BEGIN feature: theme toggle » (HTML) ═══════════════════ -->
-  <button class="theme-btn" id="theme-toggle" aria-label="Toggle color theme" aria-pressed="false">◐ dark</button>
+  <div class="theme-cluster">
+    <button class="theme-btn" id="theme-toggle" aria-label="Toggle color theme" aria-pressed="false">◐ dark</button>
+    <span class="sep" aria-hidden="true"></span>
+    <button class="theme-btn" id="density-toggle" aria-label="Toggle density">▤ comfortable</button>
+    <span class="sep" aria-hidden="true"></span>
+    <button class="theme-btn" id="font-toggle" aria-label="Cycle font size">M</button>
+  </div>
   <!-- ═══════════════════ « END feature: theme toggle » (HTML) ═════════════════════ -->
 
   <!-- ═══════════════════ « BEGIN feature: tabs » (JS) ══════════════════════════════ -->
@@ -857,6 +912,63 @@
     })();
   </script>
   <!-- ═══════════════════ « END feature: theme toggle » (JS) ═══════════════════════ -->
+
+  <!-- ═══════════════════ « BEGIN feature: density + font-size » (JS) ═════════════ -->
+  <script>
+  // density-toggle.js (inlined for single-file portability)
+  (function () {
+    'use strict';
+    var KEY = 'report-density';
+    var MODES = ['comfortable', 'compact'];
+    var LABELS = { comfortable: '▤ comfortable', compact: '▥ compact' };
+    var btn = document.getElementById('density-toggle');
+    if (!btn) return;
+    function readSaved() { try { return localStorage.getItem(KEY); } catch (e) { return null; } }
+    function writeSaved(v) { try { localStorage.setItem(KEY, v); } catch (e) {} }
+    var saved = readSaved();
+    var initial = (saved && MODES.indexOf(saved) >= 0) ? saved : 'comfortable';
+    document.documentElement.setAttribute('data-density', initial);
+    btn.textContent = LABELS[initial];
+    btn.setAttribute('aria-pressed', initial === 'compact' ? 'true' : 'false');
+    btn.addEventListener('click', function () {
+      var cur = document.documentElement.getAttribute('data-density') || 'comfortable';
+      var idx = MODES.indexOf(cur);
+      var next = MODES[(idx + 1) % MODES.length];
+      document.documentElement.setAttribute('data-density', next);
+      writeSaved(next);
+      btn.textContent = LABELS[next];
+      btn.setAttribute('aria-pressed', next === 'compact' ? 'true' : 'false');
+    });
+  })();
+  </script>
+
+  <script>
+  // font-toggle.js (inlined for single-file portability)
+  (function () {
+    'use strict';
+    var KEY = 'report-font-size';
+    var SIZES = ['S', 'M', 'L'];
+    var btn = document.getElementById('font-toggle');
+    if (!btn) return;
+    function readSaved() { try { return localStorage.getItem(KEY); } catch (e) { return null; } }
+    function writeSaved(v) { try { localStorage.setItem(KEY, v); } catch (e) {} }
+    var saved = readSaved();
+    var initial = (saved && SIZES.indexOf(saved) >= 0) ? saved : 'M';
+    document.documentElement.setAttribute('data-font-size', initial);
+    btn.textContent = initial;
+    btn.setAttribute('aria-label', 'Font size: ' + initial + ' (click to change)');
+    btn.addEventListener('click', function () {
+      var cur = document.documentElement.getAttribute('data-font-size') || 'M';
+      var idx = SIZES.indexOf(cur);
+      var next = SIZES[(idx + 1) % SIZES.length];
+      document.documentElement.setAttribute('data-font-size', next);
+      writeSaved(next);
+      btn.textContent = next;
+      btn.setAttribute('aria-label', 'Font size: ' + next + ' (click to change)');
+    });
+  })();
+  </script>
+  <!-- ═══════════════════ « END feature: density + font-size » (JS) ═══════════════ -->
 
   <!-- ═══════════════════ « BEGIN feature: annotations » (JS) ══════════════════════ -->
   <script>

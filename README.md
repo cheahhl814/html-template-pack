@@ -134,6 +134,17 @@ Reviewers can leave tracked-changes-style notes on any text in the rendered HTML
 
 All three: `◐`/`◑` button, persists to localStorage, honours `prefers-color-scheme`, switches via `[data-theme]` on `<html>`, hidden in print. Report/slide: fixed top-right; dashboard: inline in topbar.
 
+## Density and font-size toggles (report only)
+
+Two optional toggles in the report template's top-right cluster, independent of the theme toggle:
+
+| Toggle | Cycles | Storage key | Affects |
+|--------|--------|-------------|---------|
+| `▤` / `▥` | `comfortable` ↔ `compact` | `report-density` | Spacing tokens (`--pad-card`, `--pad-cell`, `--gap-grid`) for data-heavy reports |
+| `S` / `M` / `L` | `S` → `M` → `L` → `S` | `report-font-size` | Root `font-size` (14 / 16 / 18px) — all `rem` text scales proportionally |
+
+Both persist to `localStorage` independently of the theme and reset to defaults on print for predictable layout.
+
 ## Hard invariants
 
 - UI always reachable (theme, annotations, navigation)
