@@ -4,6 +4,19 @@ Three self-contained HTML templates — **report** (left-side sticky sidebar wit
 
 > **Repository**: https://github.com/cheahhl814/html-template-pack
 
+## 🚀 Live demo
+
+All three templates are deployed as a working demo on GitHub Pages. Open any of them to interact with the live UI — no setup, no build step, no backend.
+
+- 🌐 **Launcher**: https://cheahhl814.github.io/html-template-pack/
+- 📄 **[Report demo](https://cheahhl814.github.io/html-template-pack/report/)** — "Q3 Operations Review — Northwind Logistics" (5 tabs, custom content)
+- 🎞️ **[Slide demo](https://cheahhl814.github.io/html-template-pack/slide/)** — "Helios 2 — Real-Time Inference for the Edge" (5 slides, product launch)
+- 📊 **[Dashboard demo](https://cheahhl814.github.io/html-template-pack/dashboard/)** — "Northwind Logistics — Operations Dashboard" (mock data, live polling)
+
+Each demo is a curated showcase with realistic content (not a blank template). Try the **◐ theme toggle**, **▤ density toggle**, **S/M/L font size toggle** in the top-right of every demo. In the report and slide demos, select any text to leave tracked-changes-style annotations, then export them as JSON from the 💬 Notes panel.
+
+**Source files** (for starting your own document): see [`templates/`](./templates/) and follow the usage examples below.
+
 ## Installation (for the agent/harness)
 
 This is an **agent skill**, not a user-facing library. The skill is loaded by the pi coding agent harness at `~/.pi/agent/skills/html-template-pack/`.
