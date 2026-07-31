@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>html-template-pack — live demo</title>
+  <title>html-template-pack · single-file HTML templates for AI agents</title>
   <style>
     /* Design tokens — kept in sync with templates/report/template.html so the
        launcher visually matches what reviewers see when they open a demo. */
@@ -128,6 +128,23 @@
       display: inline-flex; align-items: center; gap: 0.35rem;
     }
     .page-meta strong { color: var(--text); font-weight: 600; }
+    .page-meta .github-link {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      padding: 0.3rem 0.75rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      color: var(--text-dim);
+      text-decoration: none;
+      font-size: 0.85rem;
+      transition: all 0.15s;
+    }
+    .page-meta .github-link:hover {
+      color: var(--accent);
+      border-color: var(--accent);
+      background: var(--accent-dim);
+    }
+    [data-theme="dark"] .page-meta .github-link { background: var(--surface); }
 
     /* ── Guide panel ── */
     .guide {
@@ -319,13 +336,14 @@
     <!-- Header: matches report template's eyebrow + title + subtitle pattern -->
     <header class="page-header">
       <span class="eyebrow">html-template-pack · live demo</span>
-      <h1 class="page-title">Three self-contained <span class="accent">HTML templates</span></h1>
-      <p class="page-subtitle">Open any of them below to interact with the live demo. No setup, no build step, no backend — just open and click around.</p>
+      <h1 class="page-title">Single-file <span class="accent">HTML templates</span> for AI agents</h1>
+      <p class="page-subtitle">Drop-in templates for reports, slides, and dashboards. No setup, no build step, no backend — just open and click around.</p>
       <div class="page-meta">
         <span>📦 <strong>Self-contained</strong> HTML</span>
         <span>🎨 <strong>Light + dark</strong> themes</span>
         <span>💬 <strong>v2 annotations</strong> with JSON export</span>
         <span>🖨️ <strong>Print-ready</strong> PDF output</span>
+        <a class="github-link" href="https://github.com/cheahhl814/html-template-pack" target="_blank" rel="noopener">⭐ <strong>github.com/cheahhl814/html-template-pack</strong></a>
       </div>
     </header>
 
