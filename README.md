@@ -23,7 +23,9 @@ This is an **agent skill**, not a user-facing library. The skill is loaded by th
 
 **To install, give your AI agent this prompt:**
 
-> Import the following skill: https://github.com/cheahhl814/html-template-pack
+```
+Import the following skill: https://github.com/cheahhl814/html-template-pack
+```
 
 Once installed, the skill is **auto-invoked**: when you ask the agent for an HTML report, slide deck, or dashboard, the agent routes the request here automatically. No manual `cp` needed — the agent copies the appropriate template, fills in the content, and hands you a ready-to-review `.html` file.
 
@@ -54,35 +56,31 @@ These phrases auto-invoke the skill via the global `AGENTS.md` decision matrix:
 
 **Report** (≥3 long sections, prose, charts, references):
 
-> "Build me an HTML report from `path/to/source.md`."
->
-> "Convert this Markdown into a reviewable HTML page."
->
-> "Make a reading version of my manuscript for the team to comment on."
->
-> "I need a single-file HTML the team can annotate."
->
-> "Generate the grant submission recap as HTML."
+```
+Build me an HTML report from path/to/source.md.
+Convert this Markdown into a reviewable HTML page.
+Make a reading version of my manuscript for the team to comment on.
+I need a single-file HTML the team can annotate.
+Generate the grant submission recap as HTML.
+```
 
 **Slide deck** (≤12 visual beats, bullets, one idea per slide):
 
-> "Create a slide deck about X."
->
-> "Convert this DOCX / PDF into a deck."
->
-> "Make a pitch deck from this outline."
->
-> "Build a 5-slide internal readout on the latest experiment results."
+```
+Create a slide deck about X.
+Convert this DOCX / PDF into a deck.
+Make a pitch deck from this outline.
+Build a 5-slide internal readout on the latest experiment results.
+```
 
 **Dashboard** (live data, KPIs, ops metrics):
 
-> "Build me a dashboard for tracking X."
->
-> "Set up an ops dashboard with these KPIs."
->
-> "Create an admin panel showing the live state of the system."
->
-> "Wire up an htmx dashboard against `/api/stats`, `/api/activity`, etc."
+```
+Build me a dashboard for tracking X.
+Set up an ops dashboard with these KPIs.
+Create an admin panel showing the live state of the system.
+Wire up an htmx dashboard against /api/stats, /api/activity, etc.
+```
 
 ### Multi-step review workflow
 
@@ -100,17 +98,18 @@ The exported JSON is the bridge between human reviewers and the AI — it's the 
 
 If the agent picks the wrong template, you can be explicit:
 
-> "Use the slide template, not the report template."
->
-> "That's a dashboard, not a report."
->
-> "Don't use the report template here — the content has 8 discrete bullets, use the slide deck."
+```
+Use the slide template, not the report template.
+That's a dashboard, not a report.
+Don't use the report template here — the content has 8 discrete bullets, use the slide deck.
+```
 
 Or steer away from this skill entirely:
 
-> "Don't build a full HTML report — just give me a Markdown summary."
->
-> "Skip the HTML, write a plain text outline instead."
+```
+Don't build a full HTML report — just give me a Markdown summary.
+Skip the HTML, write a plain text outline instead.
+```
 
 ## 🎯 What this skill does
 
