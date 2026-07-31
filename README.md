@@ -23,7 +23,7 @@ This is an **agent skill**, not a user-facing library. The skill is loaded by th
 
 **To install, give your AI agent this prompt:**
 
-> Install the [html-template-pack skill](https://github.com/cheahhl814/html-template-pack) into your skills directory and load `SKILL.md` at startup. Once installed, the skill is auto-invoked when I ask for an HTML report, slide deck, or dashboard — the global AGENTS.md routes the request here automatically. No manual copy needed; you copy the appropriate template, fill in the content, and hand me a ready-to-review `.html` file.
+> Install the html-template-pack skill at https://github.com/cheahhl814/html-template-pack. Clone it into your skills directory and load SKILL.md at startup.
 
 Once installed, the skill is **auto-invoked**: when you ask the agent for an HTML report, slide deck, or dashboard, the agent routes the request here automatically. No manual `cp` needed — the agent copies the appropriate template, fills in the content, and hands you a ready-to-review `.html` file.
 
