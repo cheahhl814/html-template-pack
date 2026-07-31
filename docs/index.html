@@ -171,7 +171,24 @@
     .guide-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 0.6rem 1.5rem;
+      grid-auto-rows: 1fr;
+      gap: 0.4rem 1.5rem;
+    }
+    .guide-row-label {
+      grid-column: 1 / -1;
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-muted);
+      padding: 0.7rem 0 0.3rem;
+      margin-top: 0.4rem;
+      border-top: 1px solid var(--border);
+    }
+    .guide-row-label:first-of-type {
+      border-top: none;
+      margin-top: 0;
+      padding-top: 0.2rem;
     }
     .guide-item {
       display: flex; align-items: flex-start; gap: 0.5rem;
@@ -354,12 +371,17 @@
         <h2>What you can try in each demo</h2>
       </div>
       <div class="guide-grid">
+        <div class="guide-row-label">Display</div>
         <div class="guide-item"><strong>Theme toggle</strong> — <code>◐</code> top-right</div>
         <div class="guide-item"><strong>Density toggle</strong> — <code>▤</code> / <code>▥</code></div>
         <div class="guide-item"><strong>Font size</strong> — <code>S</code> / <code>M</code> / <code>L</code></div>
+
+        <div class="guide-row-label">Interactions</div>
         <div class="guide-item"><strong>Annotations</strong> — select text → 💬 / ✂ / ➕ / ✎</div>
         <div class="guide-item"><strong>Tab switching</strong> (report) — sidebar tabs</div>
         <div class="guide-item"><strong>Slide nav</strong> — <code>←</code> <code>→</code> arrows or <code>F</code></div>
+
+        <div class="guide-row-label">Output</div>
         <div class="guide-item"><strong>Print preview</strong> — <code>Ctrl/Cmd+P</code></div>
         <div class="guide-item"><strong>Export</strong> — 💬 Notes → 💾 Export JSON</div>
       </div>
