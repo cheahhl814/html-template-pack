@@ -149,27 +149,6 @@ The template ships in **demo mode** out of the box: a small mock backend interce
 
 **Best for**: ops dashboards, admin panels, status pages, internal metrics views — anything meant to be watched and interacted with live, not read and annotated.
 
-## 📁 Files
-
-```
-html-template-pack/
-├── SKILL.md                         ← agent instructions (this skill)
-├── AGENTS.md                        ← human wiring guide
-├── templates/
-│   ├── report/template.html         ← report template (~812 lines)
-│   ├── slide/slide-template.html    ← slide template (~817 lines)
-│   └── dashboard/dashboard-template.html ← dashboard template
-├── features/
-│   ├── report/                      ← v2 annotation engine + theme toggle
-│   ├── slide/                       ← same v2 engine (kept in sync)
-│   └── dashboard/                   ← theme toggle only (no fixed positioning)
-└── test/
-    ├── smoke-test-report.js
-    ├── smoke-test-slide.js
-    ├── smoke-test-dashboard.js
-    └── run-all.js
-```
-
 ## ⚙️ Pipeline (what the agent does)
 
 1. **Decide** — apply decision rubric (see SKILL.md)
