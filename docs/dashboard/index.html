@@ -40,7 +40,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Dashboard Template</title>
+  <title>Northwind Logistics — Operations Dashboard (Demo)</title>
   <!-- htmx: the one external dependency this template needs beyond the
        Mermaid/Google-Fonts precedent set by the report/slide templates.
        Pin the version; bump deliberately. -->
@@ -247,7 +247,21 @@
     table th, table td { padding: var(--pad-cell); }
     .content { padding: var(--pad-content); }
 
-    @media print { .topbar, .sidebar, .table-toolbar .btn, .htmx-indicator, .theme-btn { display: none !important; } [data-density="compact"] { --pad-card: 1rem; --pad-stat: 1rem; --pad-cell: 0.5rem 0.75rem; --gap-grid: 1rem; --pad-content: 1.5rem; } [data-font-size="S"], [data-font-size="L"] { font-size: 16px; } }
+    @media print { .topbar, .sidebar, .table-toolbar .btn, .htmx-indicator, .demo-banner, .theme-btn { display: none !important; } [data-density="compact"] { --pad-card: 1rem; --pad-stat: 1rem; --pad-cell: 0.5rem 0.75rem; --gap-grid: 1rem; --pad-content: 1.5rem; } [data-font-size="S"], [data-font-size="L"] { font-size: 16px; } }
+    /* Demo banner (only in docs/ demo copies) */
+    .demo-banner {
+      position: fixed; bottom: 12px; right: 12px; z-index: 60;
+      background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+      border: 1px solid #fbbf24; border-radius: 8px;
+      padding: 0.55rem 0.95rem; font-size: 0.8rem; color: #422006;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.15); max-width: 460px;
+    }
+    .demo-banner strong { color: #422006; }
+    [data-theme="dark"] .demo-banner {
+      background: linear-gradient(135deg, rgba(251, 191, 36, 0.25) 0%, rgba(245, 158, 11, 0.25) 100%);
+      border-color: rgba(251, 191, 36, 0.5); color: #fcd34d;
+    }
+    [data-theme="dark"] .demo-banner strong { color: #fde68a; }
     @media (max-width: 768px) {
       .shell { grid-template-columns: 1fr; }
       .sidebar { display: none; }
@@ -257,10 +271,14 @@
 </head>
 <body data-report-id="dashboard-template" data-demo-mode>
 
+  <div class="demo-banner">
+    <strong>📢 Live demo</strong> — Curated showcase with mock data. To start your own dashboard, copy <code>templates/dashboard/dashboard-template.html</code> from the repo and connect real <code>/api/*</code> endpoints.
+  </div>
+
   <div class="shell">
     <!-- ═══════════════════ Topbar ═══════════════════ -->
     <header class="topbar">
-      <h1>Ops Dashboard <span class="subtitle">— demo data source</span></h1>
+      <h1>Northwind Logistics <span class="subtitle">— Operations Dashboard (Live Demo)</span></h1>
       <div class="topbar-spacer"></div>
       <div class="topbar-meta">
         <span class="live-dot" id="live-dot"></span>
