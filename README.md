@@ -150,8 +150,8 @@ When you open a report or slide in a browser, you can leave tracked-changes-styl
 sequenceDiagram
     autonumber
     participant Agent as AI Agent
-    participant Page as HTML Page
     actor Human as Human Reviewer
+    participant Page as HTML Page
 
     Human->>Page: Add annotations (💬/✂/➕/✎)
     Page-->>Human: Export JSON file
