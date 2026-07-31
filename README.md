@@ -17,7 +17,7 @@ Each demo is a curated showcase with realistic content (not a blank template). T
 
 **Source files** (for starting your own document): see [`templates/`](./templates/) and follow the usage examples below.
 
-## Installation (for the agent/harness)
+## 🛠️ Installation (for the agent/harness)
 
 This is an **agent skill**, not a user-facing library. The skill is loaded by the pi coding agent harness at `~/.pi/agent/skills/html-template-pack/`.
 
@@ -28,7 +28,7 @@ This is an **agent skill**, not a user-facing library. The skill is loaded by th
 
 Once installed, the skill is **auto-invoked**: when a user asks the agent for an HTML report, slide deck, or dashboard, the global `AGENTS.md` routes the request here automatically. No manual `cp` needed — the agent copies the appropriate template, fills in the content, and hands the user a ready-to-review `.html` file.
 
-## Usage examples
+## 💡 Usage examples
 
 ### Slash commands and explicit invocation
 
@@ -113,7 +113,7 @@ Or steer away from this skill entirely:
 >
 > "Skip the HTML, write a plain text outline instead."
 
-## What this skill does
+## 🎯 What this skill does
 
 The skill ships three HTML templates. Pick the one that matches your content.
 
@@ -149,7 +149,7 @@ The template ships in **demo mode** out of the box: a small mock backend interce
 
 **Best for**: ops dashboards, admin panels, status pages, internal metrics views — anything meant to be watched and interacted with live, not read and annotated.
 
-## Files
+## 📁 Files
 
 ```
 html-template-pack/
@@ -170,7 +170,7 @@ html-template-pack/
     └── run-all.js
 ```
 
-## Pipeline (what the agent does)
+## ⚙️ Pipeline (what the agent does)
 
 1. **Decide** — apply decision rubric (see SKILL.md)
 2. **Copy** — `cp templates/<type>/*.html` to project; set `<title>` + `data-report-id` / `DECK_CONFIG` / topbar title
@@ -178,7 +178,7 @@ html-template-pack/
 4. **Render** — open in browser; verify theme toggle, annotations, print
 5. **Wire** — unique `data-annot-storage` (report), `DECK_CONFIG.storageKey` (slide), remove demo-mode + connect real `/api/*` (dashboard)
 
-## Annotation system (report + slide)
+## 💬 Annotation system (report + slide)
 
 > **Audience: human reviewers.** The other sections of this README document what
 > the agent/harness should do. This section is for the *human* who opens the
@@ -253,11 +253,11 @@ For quick reference, here's the full feature matrix across the two templates:
 | Auto-switch to the right tab/slide on jump | ✓ | ✓ |
 | Notes survive Mermaid diagram re-renders | ✓ | ✓ |
 
-## Theme toggle
+## 🎨 Theme toggle
 
 All three templates have a **◐ dark / ◑ light** button at the top-right (dashboard has it inline in the topbar). Click it to switch between light and dark themes. The choice is remembered in your browser and follows your operating system's dark-mode preference on first visit. The theme toggle is hidden when you print the document.
 
-## Density and font-size toggles (all three templates)
+## ⚡ Density and font-size toggles (all three templates)
 
 Two extra buttons appear next to the theme toggle. They help reviewers read dense content more comfortably:
 
@@ -285,7 +285,7 @@ The **dashboard** template's toggles are especially useful when viewing dense da
 
 **Why these toggles work**: every element in each template uses proportional units (`rem` or `em`) relative to the root font size. Changing the root font size cascades through every element. The slide template had a bug where `body { font-size: 16px }` blocked this cascade; that's been fixed so all three templates behave the same way.
 
-## Hard invariants
+## 🔒 Hard invariants
 
 - UI always reachable (theme, annotations, navigation)
 - Annotations persist across reloads (valid JSON or fresh start)
