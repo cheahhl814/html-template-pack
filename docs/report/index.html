@@ -310,17 +310,20 @@
 
     /* ═══════════════════ « BEGIN feature: demo banner » (CSS) ═════════════════════ */
     .demo-banner {
+      position: fixed; bottom: 14px; left: 14px; z-index: 60;
       background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
-      border: 1px solid #fbbf24; border-radius: var(--radius);
-      padding: 0.75rem 1rem; margin: 1rem 0 0 0; font-size: 0.875rem;
-      color: #78350f;
+      border: 1px solid #fbbf24; border-radius: 999px;
+      padding: 0.6rem 1.1rem; font-size: 0.8rem; color: #422006;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.18); max-width: 540px;
     }
     .demo-banner strong { color: #422006; }
+    .demo-banner code { background: rgba(255,255,255,0.6); padding: 0.05rem 0.3rem; border-radius: 3px; font-size: 0.85em; }
     html[data-theme="dark"] .demo-banner {
-      background: linear-gradient(135deg, rgba(251, 191, 36, 0.18) 0%, rgba(245, 158, 11, 0.18) 100%);
-      border-color: rgba(251, 191, 36, 0.4); color: #fcd34d;
+      background: linear-gradient(135deg, rgba(251, 191, 36, 0.25) 0%, rgba(245, 158, 11, 0.25) 100%);
+      border-color: rgba(251, 191, 36, 0.5); color: #fcd34d;
     }
     html[data-theme="dark"] .demo-banner strong { color: #fde68a; }
+    html[data-theme="dark"] .demo-banner code { background: rgba(0,0,0,0.3); }
     /* ═══════════════════ « END feature: demo banner » (CSS) ═══════════════════════ */
 
     /* ═══════════════════ « BEGIN feature: density + font-size » (CSS) ═════════════ */
@@ -551,6 +554,7 @@
     @media print {
       .theme-btn,
       .theme-cluster,
+      .demo-banner,
       .annot-toggle, .annot-toolbar, .annot-editor, .annot-drawer, .annot-backdrop { display: none !important; }
       /* Reset density + font-size for predictable print layout */
       [data-density="compact"] { --pad-card: 1.25rem; --pad-cell: 0.6rem 0.85rem; --pad-stat: 1.1rem; --pad-panel-top: 4rem; --gap-grid: 1.25rem; }
@@ -571,6 +575,10 @@
   </style>
 </head>
 <body data-report-id="report-template">
+
+  <div class="demo-banner">
+    <strong>📢 Live demo</strong> — Curated showcase with realistic content. To start your own report, copy <code>templates/report/template.html</code> from the repo.
+  </div>
 
   <!-- ═══════════════════ « BEGIN feature: theme toggle » (HTML) ═══════════════════ -->
   <div class="theme-cluster">
@@ -730,9 +738,6 @@
     </nav>
 
     <div class="report-panels">
-      <div class="demo-banner">
-        <strong>📢 Live demo</strong> — This is a curated showcase with realistic content. To start your own report, copy <code>templates/report/template.html</code> from the repo.
-      </div>
       <!-- ─── Panel 1: Summary ─── -->
       <section data-panel="summary" id="panel-summary">
         <span class="eyebrow eyebrow-teal">REPORT</span>
