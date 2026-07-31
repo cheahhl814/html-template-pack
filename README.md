@@ -4,35 +4,20 @@ Three self-contained HTML templates — **report** (left-side sticky sidebar wit
 
 > **Repository**: https://github.com/cheahhl814/html-template-pack
 
-## Quick start
+## Installation (for the agent/harness)
 
-```bash
-# Copy a template to your project
-cp ~/.pi/agent/skills/html-template-pack/templates/report/template.html ./my-report.html
-# Edit the title, data-report-id, and replace the demo content
-# Open in browser — theme toggle, annotations, print all work out of the box
-```
+This is an **agent skill**, not a user-facing library. The skill is loaded by the pi coding agent harness at `~/.pi/agent/skills/html-template-pack/`.
 
-## When to use which template
+**For the agent/harness to discover this skill:**
 
-| Content shape | Template | Why |
-|---------------|----------|-----|
-| ≥3 long sections, prose, charts, references, appendices | **Report** | Multi-tab sidebar handles 20+ sections; reviewer switches tabs, leaves comments per tab, exports one JSON |
-| ≤12 visual beats, bullets + headings, one idea per slide | **Slide** | Single-page deck, prev/next nav, fullscreen, slide-per-page PDF |
-| Live/polling data — KPIs, status tables, ops metrics | **Dashboard** | htmx-driven shell wired to `/api/*` endpoints; demo-mode works instantly |
+1. Provide the repo URL to the agent harness (e.g. via skill configuration or AGENTS.md routing).
+2. The harness clones the repo into its skills directory and picks up `SKILL.md` at startup.
 
-**Decision**: if ≥3 sections > 1 page each → **report**; if bullets + one idea per slide → **slide**; if "dashboard", "admin panel", "live metrics" → **dashboard**.
+Once installed, the skill is **auto-invoked**: when a user asks the agent for an HTML report, slide deck, or dashboard, the global `AGENTS.md` routes the request here automatically. No manual `cp` needed — the agent copies the appropriate template, fills in the content, and hands the user a ready-to-review `.html` file.
 
-## Cross-skill routing
+## What this skill does
 
-| User asks for… | Route to… |
-|----------------|-----------|
-| Web app (forms, login, interactivity) | [`pi-frontend-create`](https://github.com/cheahhl814/pi-frontend-create) |
-| One-shot diagram (no review) | [`lumen-mermaid`](https://github.com/the-forge-flow/lumen) |
-| Live presentation only (no review) | [`lumen-slides`](https://github.com/the-forge-flow/lumen) |
-| Diagram/chart *embedded* in report | [`lumen-diagram`](https://github.com/the-forge-flow/lumen) / [`lumen-chart`](https://github.com/the-forge-flow/lumen) |
-
-## Report template details
+### Report template (`templates/report/template.html`)
 
 - **Sidebar**: 240px sticky left, 5 tabs (Summary / Metrics / Methodology / Findings / Annotations), collapses to horizontal strip <720px
 - **Panels**: `<section data-panel="..." id="panel-...">` inside `.report-panels`
@@ -41,7 +26,7 @@ cp ~/.pi/agent/skills/html-template-pack/templates/report/template.html ./my-rep
 - **Print**: sidebar hidden, all panels sequential with page breaks
 - **Best for**: research reports, grant progress, manuscript reading versions, gap analyses, EOI drafts
 
-## Slide template details
+### Slide template (`templates/slide/slide-template.html`)
 
 - **Pattern**: single-page prev/next deck with dots, counter, fullscreen, home button
 - **Annotations**: v2 with per-slide `data-panel` for cross-slide navigation
@@ -49,7 +34,7 @@ cp ~/.pi/agent/skills/html-template-pack/templates/report/template.html ./my-rep
 - **Print**: one slide per page PDF
 - **Best for**: pitch decks, conference talks, lightning talks, summary decks (≤12 slides)
 
-## Dashboard template details
+### Dashboard template (`templates/dashboard/dashboard-template.html`)
 
 - **Pattern**: fixed topbar + sidebar + content grid (KPI row, sparkline, feed, sortable table)
 - **htmx wiring**: `hx-get` + `hx-trigger="load, every Ns"` (polling), `hx-trigger="keyup changed delay:300ms"` (debounced search), `hx-vals` (sort state)
@@ -57,6 +42,14 @@ cp ~/.pi/agent/skills/html-template-pack/templates/report/template.html ./my-rep
 - **Demo mode**: ships on by default — works instantly without a backend; delete `data-demo-mode` and the `« BEGIN/END DEMO MODE »` block once real endpoints exist
 - **Annotations**: intentionally none (live data shifts under anchors)
 - **Best for**: ops dashboards, admin panels, status pages, internal metrics
+
+## When to use which template
+
+| Content shape | Template | Why |
+|---------------|----------|-----|
+| ≥3 long sections, prose, charts, references, appendices | **Report** | Multi-tab sidebar handles 20+ sections; reviewer switches tabs, leaves comments per tab, exports one JSON |
+| ≤12 visual beats, bullets + headings, one idea per slide | **Slide** | Single-page deck, prev/next nav, fullscreen, slide-per-page PDF |
+| Live/polling data — KPIs, status tables, ops metrics | **Dashboard** | htmx-driven shell wired to `/api/*` endpoints; demo-mode works instantly |
 
 ## Files
 
@@ -79,7 +72,7 @@ html-template-pack/
     └── run-all.js
 ```
 
-## Pipeline
+## Pipeline (what the agent does)
 
 1. **Decide** — apply decision rubric (see SKILL.md)
 2. **Copy** — `cp templates/<type>/*.html` to project; set `<title>` + `data-report-id` / `DECK_CONFIG` / topbar title
@@ -88,6 +81,42 @@ html-template-pack/
 5. **Wire** — unique `data-annot-storage` (report), `DECK_CONFIG.storageKey` (slide), remove demo-mode + connect real `/api/*` (dashboard)
 
 ## Annotation system (report + slide)
+
+> **Audience: human reviewers.** The other sections of this README document what
+> the agent/harness should do. This section is for the *human* who opens the
+> rendered HTML in a browser and wants to leave review notes. The agent does
+> not interact with the annotation UI directly.
+
+Reviewers can leave tracked-changes-style notes on any text in the rendered HTML. Annotations persist to localStorage and can be exported as JSON for downstream revision.
+
+### How to leave an annotation
+
+1. **Select text** in any panel/slide. A floating toolbar appears with 4 pills:
+   - 💬 **Comment** — leave a note on the selected text
+   - ✂ **Delete** — strike the text, optionally provide a comment explaining why
+   - ➕ **Insert** — click the `Insert` button (top-right), then click any point to drop a caret marker with proposed new text
+   - ✎ **Replace** — strike the text and show a suggested replacement
+
+2. **Open the Notes panel** (top-right `💬 Notes` button) to see all annotations. The drawer shows a sorted list with quotes, types, and headings.
+
+3. **Click a drawer entry** to jump back to the highlighted text in the document. In the report template, this also activates the correct tab if the annotation is in a different panel.
+
+4. **Edit or delete** any annotation from the drawer entry.
+
+### Exporting and importing
+
+- **Export**: `Notes panel → 💾 Export` downloads `annotations-<id>.json` (or copies to clipboard). The JSON includes `type`, `quote`, `prefix`, `suffix`, `heading`, `panel`, plus `replacement` for insert/replace.
+- **Hand-off to AI**: Once you have the exported JSON, **pass it to your AI coding agent/harness** along with the HTML file. The agent will read the JSON, apply each annotation (`comment` / `delete` / `insert` / `replace`) to the source content, and produce a revised HTML file. Each annotation's `replacement` field carries the suggested new text for insert/replace — the agent does not need to parse free-text intent.
+- **Import**: `Notes panel → ⬆ Import` merges by annotation id. Useful for syncing review state across machines, or for re-loading annotations after the HTML has been revised.
+- **Orphaned annotations** (text changed and offsets no longer resolve) show with a red border + warning in the drawer.
+
+### Storage and namespaces
+
+- Report: `localStorage["annotations:<id>"]` where `<id>` is the value of `<body data-annot-storage>` (default `report-template`)
+- Slide: `localStorage["annotations:slide-template"]` (set via `DECK_CONFIG.storageKey`)
+- Set a unique `<body data-annot-storage="my-report-2026-q3">` per project so reviews don't collide
+
+### Feature matrix
 
 | Feature | Report | Slide |
 |---------|--------|-------|
@@ -100,7 +129,6 @@ html-template-pack/
 | Orphaned-state detection | ✓ | ✓ |
 | Multi-tab/slide activation on jump | ✓ (`[data-tab]`) | ✓ (`[data-panel]`) |
 | Offset anchors (survive Mermaid re-render) | ✓ | ✓ |
-| localStorage namespace | `annotations:<id>` | `annotations:slide-template` |
 
 ## Theme toggle
 
@@ -113,23 +141,3 @@ All three: `◐`/`◑` button, persists to localStorage, honours `prefers-color-
 - Print works cleanly (report/slide primary; dashboard secondary)
 - Single-file portable (only Google Fonts + pinned htmx SRI allowed external)
 - Dashboard demo-mode never ships to production
-
-## Related skills
-
-- [`pi-frontend-create`](https://github.com/cheahhl814/pi-frontend-create) — production-grade web components/apps
-- [`lumen-mermaid`](https://github.com/the-forge-flow/lumen) — one-shot Mermaid diagrams
-- [`lumen-slides`](https://github.com/the-forge-flow/lumen) — presentation-only slide decks
-- [`lumen-diagram`](https://github.com/the-forge-flow/lumen) — architecture/flow/sequence diagrams
-- [`lumen-chart`](https://github.com/the-forge-flow/lumen) — data charts (bar/pie/line/table)
-- [`lumen-guide`](https://github.com/the-forge-flow/lumen) — multi-tab guides (pattern used by report template)
-
-## Sources
-
-- `template.html` + `slide-template.html` (Tengah Islands gap-report, 2026-07) — battle-tested
-- `dashboard-template.html` (2026-07-11) — htmx dashboard shell
-- v2 annotation engine + theme toggle (`features/{report,slide}/*`) — extracted 2026-07-10
-- v2 tracked-changes types (comment/delete/insert/replace) — added 2026-07-30 to report, ported to slide 2026-07-30 (v0.4.0)
-- Shared component library — originated in slide (2026-07), pasted to report v0.5.0 with shared token palette
-- `htmx` (BSD-2-Clause) — hypermedia library for dashboard
-- `lumen-guide` — multi-tab pattern for report
-- `zarazhangrui/beautiful-html-templates` (MIT) — color token inspiration
