@@ -150,15 +150,12 @@ When you open a report or slide in a browser, you can leave tracked-changes-styl
 sequenceDiagram
     autonumber
     actor Human as Human Reviewer
-    participant Browser as Browser (HTML Template)
+    participant Page as HTML Page
     participant Agent as AI Agent
 
-    Human->>Browser: Select text & add note (💬/✂/➕/✎)
-    Browser->>Browser: Persist to localStorage
-    Human->>Browser: Click 💾 Export
-    Browser-->>Human: annotations-id.json
-    Human->>Agent: Provide JSON + Original HTML
-    Agent->>Agent: Parse notes & apply changes
+    Human->>Page: Add annotations (💬/✂/➕/✎)
+    Page-->>Human: Export JSON file
+    Human->>Agent: Submit JSON + HTML
     Agent-->>Human: Revised HTML file
 ```
 
