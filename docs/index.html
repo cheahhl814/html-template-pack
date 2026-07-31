@@ -7,123 +7,188 @@
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
-      font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
-      max-width: 900px;
-      margin: 2rem auto;
-      padding: 0 1.5rem 4rem;
-      line-height: 1.6;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+      background: linear-gradient(135deg, #1e3a8a 0%, #3730a3 50%, #1e293b 100%);
+      min-height: 100vh;
       color: #1f2937;
-      background: #fafafa;
+      padding: 3rem 1.5rem;
     }
-    h1 {
-      font-size: 2.2rem;
-      border-bottom: 2px solid #2563eb;
-      padding-bottom: 0.5rem;
+    .container { max-width: 1100px; margin: 0 auto; }
+    header {
+      text-align: center;
+      color: white;
+      margin-bottom: 3rem;
+    }
+    header h1 {
+      font-size: 3rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
       margin-bottom: 0.5rem;
+      background: linear-gradient(135deg, #fff 0%, #c7d2fe 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
     }
-    .lead {
-      color: #4b5563;
-      font-size: 1.05rem;
-      margin-bottom: 1.5rem;
+    header .lead {
+      font-size: 1.2rem;
+      opacity: 0.9;
+      max-width: 600px;
+      margin: 0 auto;
+      line-height: 1.5;
+    }
+    .guide {
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 12px;
+      padding: 1.5rem 1.75rem;
+      margin-bottom: 2.5rem;
+      color: white;
+    }
+    .guide strong { display: block; margin-bottom: 0.75rem; font-size: 1.1rem; opacity: 0.95; }
+    .guide ul { padding-left: 0; list-style: none; columns: 2; column-gap: 2rem; }
+    .guide li {
+      margin-bottom: 0.6rem;
+      font-size: 0.92rem;
+      opacity: 0.9;
+      break-inside: avoid;
+    }
+    .guide code {
+      background: rgba(255, 255, 255, 0.15);
+      padding: 0.1rem 0.4rem;
+      border-radius: 3px;
+      font-size: 0.85em;
+      font-family: 'SF Mono', Monaco, 'Cascadia Code', monospace;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 3rem;
     }
     .card {
       background: white;
-      border: 1px solid #e5e7eb;
-      border-radius: 8px;
-      padding: 1.5rem;
-      margin: 1.25rem 0;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+      border-radius: 12px;
+      padding: 2rem;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      transition: transform 0.2s, box-shadow 0.2s;
+      display: flex;
+      flex-direction: column;
     }
-    .card h2 { margin: 0 0 0.5rem; font-size: 1.3rem; }
-    .card p { margin: 0.5rem 0; color: #374151; }
-    .meta { color: #6b7280; font-size: 0.875rem; }
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+    }
+    .card .icon {
+      width: 56px;
+      height: 56px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+    .card.report .icon { background: #dbeafe; color: #1e40af; }
+    .card.slide .icon { background: #fce7f3; color: #be185d; }
+    .card.dashboard .icon { background: #d1fae5; color: #047857; }
+    .card h2 { margin: 0 0 0.75rem; font-size: 1.4rem; color: #111827; }
+    .card p { color: #4b5563; margin-bottom: 1rem; line-height: 1.55; flex-grow: 1; }
+    .card .meta {
+      color: #6b7280;
+      font-size: 0.82rem;
+      padding: 0.75rem 0;
+      border-top: 1px solid #f3f4f6;
+      margin-bottom: 0.75rem;
+    }
     .btn {
       display: inline-block;
       background: #2563eb;
       color: white;
-      padding: 0.55rem 1.1rem;
-      border-radius: 6px;
+      padding: 0.7rem 1.4rem;
+      border-radius: 8px;
       text-decoration: none;
       font-weight: 600;
-      margin: 0.75rem 0.5rem 0.5rem 0;
+      text-align: center;
       transition: background 0.15s;
     }
     .btn:hover { background: #1d4ed8; }
-    .btn.secondary { background: #6b7280; }
-    .btn.secondary:hover { background: #4b5563; }
-    h2.section {
-      margin-top: 2.5rem;
-      font-size: 1.5rem;
-      border-bottom: 1px solid #e5e7eb;
-      padding-bottom: 0.4rem;
+    .btn.report { background: #1e40af; }
+    .btn.report:hover { background: #1e3a8a; }
+    .btn.slide { background: #be185d; }
+    .btn.slide:hover { background: #9d174d; }
+    .btn.dashboard { background: #047857; }
+    .btn.dashboard:hover { background: #065f46; }
+    footer {
+      text-align: center;
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 0.9rem;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
     }
-    ul { padding-left: 1.5rem; }
-    li { margin-bottom: 0.4rem; }
-    code {
-      background: #f3f4f6;
-      padding: 0.1rem 0.35rem;
-      border-radius: 3px;
-      font-size: 0.9em;
-      font-family: 'SF Mono', Monaco, 'Cascadia Code', monospace;
+    footer a { color: #c7d2fe; text-decoration: none; }
+    footer a:hover { color: white; text-decoration: underline; }
+    @media (max-width: 640px) {
+      header h1 { font-size: 2rem; }
+      header .lead { font-size: 1rem; }
+      .guide ul { columns: 1; }
+      .grid { grid-template-columns: 1fr; }
     }
-    .toc {
-      background: #eff6ff;
-      border-left: 4px solid #2563eb;
-      padding: 1rem 1.25rem;
-      margin: 1.5rem 0;
-      border-radius: 0 6px 6px 0;
-    }
-    .toc strong { display: block; margin-bottom: 0.5rem; color: #1e40af; }
   </style>
 </head>
 <body>
-  <h1>html-template-pack</h1>
-  <p class="lead">Three self-contained HTML templates — open any of them below in a new tab to interact with the live demo. No setup, no build step, no backend.</p>
+  <div class="container">
+    <header>
+      <h1>html-template-pack</h1>
+      <p class="lead">Three self-contained HTML templates — open any of them to interact with the live demo. No setup, no build step, no backend.</p>
+    </header>
 
-  <div class="toc">
-    <strong>What you can try in each demo</strong>
-    <ul>
-      <li><strong>Theme toggle</strong> — Click <code>◐</code> / <code>◑</code> (top-right) to switch themes. Reload to confirm it persists.</li>
-      <li><strong>Density toggle</strong> — Click <code>▤</code> / <code>▥</code> to switch between comfortable and compact spacing.</li>
-      <li><strong>Font size toggle</strong> — Click <code>S</code> / <code>M</code> / <code>L</code> to scale text.</li>
-      <li><strong>Annotations</strong> (report + slide) — Select text to leave comment / delete / insert / replace notes. Click 💬 Notes to open the drawer. Export JSON via 💾 Export.</li>
-      <li><strong>Tab switching</strong> (report) — Click sidebar tabs to navigate between sections.</li>
-      <li><strong>Slide navigation</strong> (slide) — Use <code>←</code> <code>→</code> arrow keys, dots, or <code>F</code> for fullscreen.</li>
-      <li><strong>Print preview</strong> — <code>Ctrl/Cmd+P</code> to see how each template looks as a PDF.</li>
-    </ul>
+    <div class="guide">
+      <strong>💡 What you can try in each demo</strong>
+      <ul>
+        <li><strong>Theme toggle</strong> — click <code>◐</code> / <code>◑</code> top-right to switch themes</li>
+        <li><strong>Density toggle</strong> — click <code>▤</code> / <code>▥</code> for compact spacing</li>
+        <li><strong>Font size toggle</strong> — click <code>S</code> / <code>M</code> / <code>L</code> to scale text</li>
+        <li><strong>Annotations</strong> (report + slide) — select text to leave notes</li>
+        <li><strong>Tab switching</strong> (report) — click sidebar tabs to navigate</li>
+        <li><strong>Slide nav</strong> — use <code>←</code> <code>→</code> arrows or <code>F</code> for fullscreen</li>
+        <li><strong>Print preview</strong> — <code>Ctrl/Cmd+P</code> for PDF output</li>
+        <li><strong>Export</strong> — click 💬 Notes → 💾 Export to download JSON</li>
+      </ul>
+    </div>
+
+    <div class="grid">
+      <div class="card report">
+        <div class="icon">📄</div>
+        <h2>Report template</h2>
+        <p>A long-form reading document with a sticky left sidebar of tabs. Reviewers click between tabs to read different sections, select text to leave tracked-changes-style notes, and export the notes as a JSON file when finished.</p>
+        <div class="meta">Single file. Sidebar collapses on narrow screens. Print hides sidebar and flows all sections with page breaks.</div>
+        <a class="btn report" href="report/" target="_blank">Open report →</a>
+      </div>
+
+      <div class="card slide">
+        <div class="icon">🎞️</div>
+        <h2>Slide template</h2>
+        <p>A single-page scrolling deck with prev/next navigation, slide dots, a counter, a fullscreen toggle, and a home button. Each slide supports v2 annotations.</p>
+        <div class="meta">Single file. Print: one slide per page PDF.</div>
+        <a class="btn slide" href="slide/" target="_blank">Open slides →</a>
+      </div>
+
+      <div class="card dashboard">
+        <div class="icon">📊</div>
+        <h2>Dashboard template</h2>
+        <p>An htmx-driven shell with a KPI row, sparkline chart panel, recent-activity feed, and a sortable/filterable/searchable data table. Ships in demo mode — works instantly without a backend.</p>
+        <div class="meta">Single file with mock backend. Try sorting, searching, pausing polling.</div>
+        <a class="btn dashboard" href="dashboard/" target="_blank">Open dashboard →</a>
+      </div>
+    </div>
+
+    <footer>
+      <p>Live demo of <a href="https://github.com/cheahhl814/html-template-pack">html-template-pack</a> — an agent skill (not a user-facing library) that auto-invokes when an AI coding agent is asked to build an HTML report, slide deck, or dashboard.</p>
+      <p style="margin-top: 0.5rem;">All three templates are self-contained HTML files. They work offline (after the first CDN fetch), print cleanly, and persist user state via localStorage.</p>
+      <p style="margin-top: 0.5rem; font-size: 0.82rem; opacity: 0.7;">Note: the demos above are copies of <code>templates/&lt;name&gt;/*.html</code> served from <code>docs/&lt;name&gt;/index.html</code>. For the canonical source files, see the repo.</p>
+    </footer>
   </div>
-
-  <h2 class="section">Templates</h2>
-
-  <div class="card">
-    <h2>📄 Report template</h2>
-    <p>A long-form reading document with a sticky left sidebar of tabs. The reviewer clicks between tabs to read different sections, selects text to leave tracked-changes-style notes, and exports the notes as a JSON file when finished.</p>
-    <p>
-      <a class="btn" href="../templates/report/template.html" target="_blank">Open report →</a>
-    </p>
-    <p class="meta">Single file. Sidebar collapses to a horizontal tab strip on narrow screens. Print hides the sidebar and flows all sections with page breaks.</p>
-  </div>
-
-  <div class="card">
-    <h2>🎞️ Slide template</h2>
-    <p>A single-page scrolling deck with prev/next navigation, slide dots, a counter, a fullscreen toggle, and a home button. Each slide supports v2 annotations.</p>
-    <p>
-      <a class="btn" href="../templates/slide/slide-template.html" target="_blank">Open slides →</a>
-    </p>
-    <p class="meta">Single file. Print: one slide per page PDF.</p>
-  </div>
-
-  <div class="card">
-    <h2>📊 Dashboard template</h2>
-    <p>An htmx-driven shell with a KPI row, sparkline chart panel, recent-activity feed, and a sortable/filterable/searchable data table. Ships in demo mode — works instantly without a backend.</p>
-    <p>
-      <a class="btn" href="../templates/dashboard/dashboard-template.html" target="_blank">Open dashboard →</a>
-    </p>
-    <p class="meta">Single file with mock backend. Try: sort table headers, pause polling, type in search box.</p>
-  </div>
-
-  <h2 class="section">About</h2>
-  <p>This is a live demo of <a href="https://github.com/cheahhl814/html-template-pack">html-template-pack</a> — an agent skill (not a user-facing library) that auto-invokes when an AI coding agent is asked to build an HTML report, slide deck, or dashboard.</p>
-  <p>All three templates are self-contained HTML files. They work offline (after the first CDN fetch), print cleanly, and persist user state via <code>localStorage</code>.</p>
 </body>
 </html>
