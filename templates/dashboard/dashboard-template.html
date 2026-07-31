@@ -227,7 +227,27 @@
     }
     @keyframes spin { to { transform: rotate(360deg); } }
 
-    @media print { .topbar, .sidebar, .table-toolbar .btn, .htmx-indicator { display: none !important; } }
+    /* Theme toggle buttons */
+    .theme-btn {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--radius-sm); padding: 0.4rem 0.75rem;
+      font-family: var(--font-sans); font-size: 0.825rem;
+      color: var(--text-dim); cursor: pointer; font-weight: 600;
+    }
+    .theme-btn:hover { color: var(--accent); border-color: var(--accent); }
+
+    /* Density + font-size tokens */
+    :root, [data-density="comfortable"] { --pad-card: 1rem; --pad-stat: 1rem; --pad-cell: 0.5rem 0.75rem; --gap-grid: 1rem; --pad-content: 1.5rem; }
+    [data-density="compact"] { --pad-card: 0.5rem; --pad-stat: 0.6rem; --pad-cell: 0.3rem 0.5rem; --gap-grid: 0.5rem; --pad-content: 0.85rem; }
+    :root, [data-font-size="M"] { font-size: 16px; }
+    [data-font-size="S"] { font-size: 14px; }
+    [data-font-size="L"] { font-size: 18px; }
+    .stat-card { padding: var(--pad-stat); }
+    .panel { padding: var(--pad-card); }
+    table th, table td { padding: var(--pad-cell); }
+    .content { padding: var(--pad-content); }
+
+    @media print { .topbar, .sidebar, .table-toolbar .btn, .htmx-indicator, .theme-btn { display: none !important; } [data-density="compact"] { --pad-card: 1rem; --pad-stat: 1rem; --pad-cell: 0.5rem 0.75rem; --gap-grid: 1rem; --pad-content: 1.5rem; } [data-font-size="S"], [data-font-size="L"] { font-size: 16px; } }
     @media (max-width: 768px) {
       .shell { grid-template-columns: 1fr; }
       .sidebar { display: none; }
@@ -254,6 +274,8 @@
       </button>
       <!-- ═══════════════════ « BEGIN feature: theme toggle » (HTML) ═══════════════════ -->
       <button class="theme-btn" id="theme-toggle" aria-label="Toggle color theme" aria-pressed="false">◐ dark</button>
+      <button class="theme-btn" id="density-toggle" aria-label="Toggle density">▤ comfortable</button>
+      <button class="theme-btn" id="font-toggle" aria-label="Cycle font size">M</button>
       <!-- ═══════════════════ « END feature: theme toggle » (HTML) ═════════════════════ -->
     </header>
 
@@ -364,6 +386,51 @@
           localStorage.setItem(KEY, next);
           this.textContent = label(next);
           this.setAttribute('aria-pressed', next === 'dark' ? 'true' : 'false');
+        });
+      }
+    })();
+
+    // Density toggle
+    (function() {
+      var DKEY = 'dashboard-density';
+      var DMODES = ['comfortable', 'compact'];
+      var DLABELS = { comfortable: '▤ comfortable', compact: '▥ compact' };
+      var dsaved = localStorage.getItem(DKEY);
+      var dinitial = (dsaved && DMODES.indexOf(dsaved) >= 0) ? dsaved : 'comfortable';
+      document.documentElement.setAttribute('data-density', dinitial);
+      var dbtn = document.getElementById('density-toggle');
+      if (dbtn) {
+        dbtn.textContent = DLABELS[dinitial];
+        dbtn.setAttribute('aria-pressed', dinitial === 'compact' ? 'true' : 'false');
+        dbtn.addEventListener('click', function() {
+          var cur = document.documentElement.getAttribute('data-density') || 'comfortable';
+          var next = DMODES[(DMODES.indexOf(cur) + 1) % DMODES.length];
+          document.documentElement.setAttribute('data-density', next);
+          localStorage.setItem(DKEY, next);
+          this.textContent = DLABELS[next];
+          this.setAttribute('aria-pressed', next === 'compact' ? 'true' : 'false');
+        });
+      }
+    })();
+
+    // Font size toggle
+    (function() {
+      var FKEY = 'dashboard-font-size';
+      var FSIZES = ['S', 'M', 'L'];
+      var fsaved = localStorage.getItem(FKEY);
+      var finitial = (fsaved && FSIZES.indexOf(fsaved) >= 0) ? fsaved : 'M';
+      document.documentElement.setAttribute('data-font-size', finitial);
+      var fbtn = document.getElementById('font-toggle');
+      if (fbtn) {
+        fbtn.textContent = finitial;
+        fbtn.setAttribute('aria-label', 'Font size: ' + finitial + ' (click to change)');
+        fbtn.addEventListener('click', function() {
+          var cur = document.documentElement.getAttribute('data-font-size') || 'M';
+          var next = FSIZES[(FSIZES.indexOf(cur) + 1) % FSIZES.length];
+          document.documentElement.setAttribute('data-font-size', next);
+          localStorage.setItem(FKEY, next);
+          this.textContent = next;
+          this.setAttribute('aria-label', 'Font size: ' + next + ' (click to change)');
         });
       }
     })();

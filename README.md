@@ -134,16 +134,16 @@ Reviewers can leave tracked-changes-style notes on any text in the rendered HTML
 
 All three: `◐`/`◑` button, persists to localStorage, honours `prefers-color-scheme`, switches via `[data-theme]` on `<html>`, hidden in print. Report/slide: fixed top-right; dashboard: inline in topbar.
 
-## Density and font-size toggles (report only)
+## Density and font-size toggles (all three templates)
 
-Two optional toggles in the report template's top-right cluster, independent of the theme toggle:
+Three optional toggles in each template's chrome, independent of the theme toggle:
 
 | Toggle | Cycles | Storage key | Affects |
 |--------|--------|-------------|---------|
-| `▤` / `▥` | `comfortable` ↔ `compact` | `report-density` | Spacing tokens (`--pad-card`, `--pad-cell`, `--gap-grid`) for data-heavy reports |
-| `S` / `M` / `L` | `S` → `M` → `L` → `S` | `report-font-size` | Root `font-size` (14 / 16 / 18px) — all `rem` text scales proportionally |
+| `▤` / `▥` | `comfortable` ↔ `compact` | `report-density` / `slide-density` / `dashboard-density` | Spacing tokens (`--pad-card`, `--pad-cell`, `--gap-grid`) for data-heavy views |
+| `S` / `M` / `L` | `S` → `M` → `L` → `S` | `report-font-size` / `slide-font-size` / `dashboard-font-size` | Root `font-size` (14 / 16 / 18px) — all `rem` text scales proportionally |
 
-Both persist to `localStorage` independently of the theme and reset to defaults on print for predictable layout.
+All three persist to `localStorage` independently and reset to defaults on print for predictable layout. The dashboard template's density/font-size toggles are particularly useful for high-density data tables.
 
 ## Hard invariants
 

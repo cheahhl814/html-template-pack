@@ -38,6 +38,10 @@ exec(cmd, { maxBuffer: 50 * 1024 * 1024 }, (err, stdout, stderr) => {
     { name: 'data-annot-theme-key on body',    re: /data-annot-theme-key="slide-template-theme-v1"/, expect: 1 },
     { name: 'data-annot-export on body',       re: /data-annot-export=/,         expect: 1 },
     { name: 'theme-toggle button (inline)',    re: /id="theme-toggle"/,         expect: 1 },
+    { name: 'density-toggle button',            re: /id="density-toggle"/,      expect: 1 },
+    { name: 'font-toggle button',               re: /id="font-toggle"/,         expect: 1 },
+    { name: 'data-density default',             re: /data-density="comfortable"/, expect: 1 },
+    { name: 'data-font-size default',           re: /data-font-size="M"/,       expect: 1 },
     { name: 'data-theme="light" default',      re: /<html[^>]*>/, expect: 1 },
     // v2 annotation UI (inlined from features/slide/{annotate.css,highlight-annotate.js})
     { name: 'annot-toggle (v2)',               re: /id="annot-toggle"/,         expect: 1 },

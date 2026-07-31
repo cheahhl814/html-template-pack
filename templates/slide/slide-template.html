@@ -201,7 +201,24 @@
   .theme-toggle-btn { position: fixed; top: 20px; right: 132px; z-index: 500; background: rgba(26,39,68,0.85); color: white; border: none; font-family: inherit; font-size: 0.8em; font-weight: 700; padding: 6px 13px; border-radius: 20px; cursor: pointer; }
   .theme-toggle-btn:hover { background: var(--deep-blue); }
 
-  @media print { .deck-nav, .deck-counter, .theme-toggle-btn, .annot-toggle, .annot-insert-toggle, .annot-toolbar, .annot-editor, .annot-drawer, .annot-backdrop { display: none !important; } .slide { position: static; opacity: 1; transform: none; page-break-after: always; height: 100vh; } body { overflow: visible; } }
+  /* ═══════════════ Density + font-size toggles ═══════════════ */
+  .density-toggle-btn { position: fixed; top: 20px; right: 64px; z-index: 500; background: rgba(26,39,68,0.85); color: white; border: none; font-family: inherit; font-size: 0.8em; font-weight: 700; padding: 6px 13px; border-radius: 20px; cursor: pointer; }
+  .density-toggle-btn:hover { background: var(--deep-blue); }
+  .font-toggle-btn { position: fixed; top: 20px; right: 8px; z-index: 500; background: rgba(26,39,68,0.85); color: white; border: none; font-family: inherit; font-size: 0.8em; font-weight: 700; padding: 6px 13px; border-radius: 20px; cursor: pointer; }
+  .font-toggle-btn:hover { background: var(--deep-blue); }
+
+  /* Density tokens */
+  :root, [data-density="comfortable"] { --slide-pad-card: 22px; --slide-pad-stat: 18px; --slide-gap-grid: 18px; }
+  [data-density="compact"] { --slide-pad-card: 12px; --slide-pad-stat: 10px; --slide-gap-grid: 10px; }
+  /* Font size tokens */
+  :root, [data-font-size="M"] { font-size: 16px; }
+  [data-font-size="S"] { font-size: 14px; }
+  [data-font-size="L"] { font-size: 18px; }
+  .slide .card { padding: var(--slide-pad-card); }
+  .slide .stat-card { padding: var(--slide-pad-stat); }
+  .slide .grid-2, .slide .grid-3 { gap: var(--slide-gap-grid); }
+
+  @media print { .deck-nav, .deck-counter, .theme-toggle-btn, .density-toggle-btn, .font-toggle-btn, .annot-toggle, .annot-insert-toggle, .annot-toolbar, .annot-editor, .annot-drawer, .annot-backdrop { display: none !important; } [data-density="compact"] { --slide-pad-card: 22px; --slide-pad-stat: 18px; --slide-gap-grid: 18px; } [data-font-size="S"], [data-font-size="L"] { font-size: 16px; } .slide { position: static; opacity: 1; transform: none; page-break-after: always; height: 100vh; } body { overflow: visible; } }
 </style>
 </head>
 <body data-annot-storage="slide-template" data-annot-theme-key="slide-template-theme-v1" data-annot-export="slide-template-annotations.json">
@@ -301,6 +318,8 @@
 </main>
 
 <button class="theme-toggle-btn" id="theme-toggle" title="Toggle color theme" aria-label="Toggle color theme" aria-pressed="false">◐ dark</button>
+<button class="density-toggle-btn" id="density-toggle" title="Toggle density" aria-label="Toggle density">▤ comfortable</button>
+<button class="font-toggle-btn" id="font-toggle" title="Cycle font size" aria-label="Cycle font size">M</button>
 <div class="deck-counter" id="deck-counter">1 / 1</div>
 <div class="deck-nav">
   <button id="nav-home" title="Go to first slide (Home)">⏮</button>
@@ -829,6 +848,53 @@ body.annot-insert-armed main.content { cursor: text; }
     });
   }
   initTheme();
+
+  // ---- Density toggle ----
+  (function () {
+    var KEY = 'slide-density';
+    var MODES = ['comfortable', 'compact'];
+    var LABELS = { comfortable: '▤ comfortable', compact: '▥ compact' };
+    var btn = document.getElementById('density-toggle');
+    if (!btn) return;
+    function read() { try { return localStorage.getItem(KEY); } catch (e) { return null; } }
+    function write(v) { try { localStorage.setItem(KEY, v); } catch (e) {} }
+    var saved = read();
+    var initial = (saved && MODES.indexOf(saved) >= 0) ? saved : 'comfortable';
+    document.documentElement.setAttribute('data-density', initial);
+    btn.textContent = LABELS[initial];
+    btn.setAttribute('aria-pressed', initial === 'compact' ? 'true' : 'false');
+    btn.addEventListener('click', function () {
+      var cur = document.documentElement.getAttribute('data-density') || 'comfortable';
+      var next = MODES[(MODES.indexOf(cur) + 1) % MODES.length];
+      document.documentElement.setAttribute('data-density', next);
+      write(next);
+      btn.textContent = LABELS[next];
+      btn.setAttribute('aria-pressed', next === 'compact' ? 'true' : 'false');
+    });
+  })();
+
+  // ---- Font size toggle ----
+  (function () {
+    var KEY = 'slide-font-size';
+    var SIZES = ['S', 'M', 'L'];
+    var btn = document.getElementById('font-toggle');
+    if (!btn) return;
+    function read() { try { return localStorage.getItem(KEY); } catch (e) { return null; } }
+    function write(v) { try { localStorage.setItem(KEY, v); } catch (e) {} }
+    var saved = read();
+    var initial = (saved && SIZES.indexOf(saved) >= 0) ? saved : 'M';
+    document.documentElement.setAttribute('data-font-size', initial);
+    btn.textContent = initial;
+    btn.setAttribute('aria-label', 'Font size: ' + initial + ' (click to change)');
+    btn.addEventListener('click', function () {
+      var cur = document.documentElement.getAttribute('data-font-size') || 'M';
+      var next = SIZES[(SIZES.indexOf(cur) + 1) % SIZES.length];
+      document.documentElement.setAttribute('data-font-size', next);
+      write(next);
+      btn.textContent = next;
+      btn.setAttribute('aria-label', 'Font size: ' + next + ' (click to change)');
+    });
+  })();
 
   // ---- Bail out of annotation logic if UI not wired ----
   if (!hasAnnotationUi) return;
