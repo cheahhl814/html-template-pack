@@ -239,8 +239,9 @@
   .deck-nav button:hover { background: var(--deep-blue); }
   .deck-nav button:disabled { opacity: 0.35; cursor: default; }
   .deck-dots { display: flex; gap: 7px; }
-  .deck-dots .dot { width: 9px; height: 9px; border-radius: 50%; background: var(--slate-300); cursor: pointer; transition: background 0.2s, transform 0.2s; }
-  .deck-dots .dot.active { background: var(--teal); transform: scale(1.3); }
+  .deck-dots .dot { width: 9px; height: 9px; border-radius: 50%; background: var(--text-dim); cursor: pointer; transition: background 0.2s, transform 0.2s; opacity: 0.5; }
+  .deck-dots .dot:hover { opacity: 0.85; transform: scale(1.15); }
+  .deck-dots .dot.active { background: var(--teal); opacity: 1; transform: scale(1.3); }
   .deck-counter { position: fixed; top: 20px; right: 24px; z-index: 500; background: rgba(26,39,68,0.85); color: white; font-size: 0.8em; font-weight: 700; padding: 6px 13px; border-radius: 20px; }
 
   /* Toggle cluster: theme + density + font buttons, single fixed container.
