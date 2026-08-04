@@ -110,6 +110,7 @@
     --slate-700: #cbd5e1;
     --slate-800: #f1f5f9;
     --slate-900: #f8fafc;
+    --heading: #f1f5f9;
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html, body { height: 100%; }
@@ -278,10 +279,11 @@
   }
   .demo-banner strong { color: #422006; }
   html[data-theme="dark"] .demo-banner {
-    background: linear-gradient(135deg, rgba(251, 191, 36, 0.25) 0%, rgba(245, 158, 11, 0.25) 100%);
-    border-color: rgba(251, 191, 36, 0.5); color: #fcd34d;
+    background: linear-gradient(135deg, rgba(20, 184, 166, 0.12) 0%, rgba(13, 148, 136, 0.18) 100%);
+    border-color: rgba(20, 184, 166, 0.4); color: var(--text-muted);
   }
-  html[data-theme="dark"] .demo-banner strong { color: #fde68a; }
+  html[data-theme="dark"] .demo-banner strong { color: var(--text); }
+  html[data-theme="dark"] .demo-banner code { background: rgba(20, 184, 166, 0.15); color: var(--text); }
 
   @media print { .deck-nav, .deck-counter, .toggle-cluster, .demo-banner, .annot-toggle, .annot-insert-toggle, .annot-toolbar, .annot-editor, .annot-drawer, .annot-backdrop { display: none !important; } [data-density="compact"] { --slide-pad-card: 22px; --slide-pad-stat: 18px; --slide-gap-grid: 18px; } [data-font-size="S"], [data-font-size="L"] { font-size: 16px; } .slide { position: static; opacity: 1; transform: none; page-break-after: always; height: 100vh; } body { overflow: visible; } }
 </style>
