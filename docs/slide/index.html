@@ -1239,6 +1239,16 @@ body.annot-insert-armed main.content { cursor: text; }
     els.toolbar.hidden = false;
     els.toolbar.style.left = (window.scrollX + rect.left + rect.width / 2) + 'px';
     els.toolbar.style.top  = (window.scrollY + rect.top) + 'px';
+    var overflowTop = rect.top < 60;
+    els.toolbar.style.transform = overflowTop
+      ? 'translate(-50%, 0)'
+      : 'translate(-50%, -100%)';
+    els.toolbar.style.marginTop = overflowTop ? '0.5rem' : '-0.5rem';
+    var halfW = 140;
+    var vw = document.documentElement.clientWidth;
+    var centerX = rect.left + rect.width / 2;
+    var clampedCenter = Math.max(halfW, Math.min(centerX, vw - halfW));
+    els.toolbar.style.left = (window.scrollX + clampedCenter) + 'px';
   }
   function hideToolbar() { els.toolbar.hidden = true; }
 
@@ -1320,9 +1330,22 @@ body.annot-insert-armed main.content { cursor: text; }
       els.editor.style.top = (window.scrollY + Math.max(80, window.innerHeight / 2 - 120)) + 'px';
     } else {
       var left = window.scrollX + rect.left + rect.width / 2;
-      left = Math.max(window.scrollX + 170, Math.min(left, window.scrollX + document.documentElement.clientWidth - 170));
+      var halfEditorW = 160;
+      var vw = document.documentElement.clientWidth;
+      left = Math.max(window.scrollX + halfEditorW,
+                      Math.min(left, window.scrollX + vw - halfEditorW));
       els.editor.style.left = left + 'px';
-      els.editor.style.top  = (window.scrollY + rect.bottom + 10) + 'px';
+      var editorH = els.editor.offsetHeight || 220;
+      var desiredTop = window.scrollY + rect.bottom + 10;
+      var viewportBottom = window.scrollY + window.innerHeight;
+      var wouldOverflowBottom = (desiredTop + editorH + 16) > viewportBottom;
+      if (wouldOverflowBottom) {
+        var aboveTop = window.scrollY + rect.top - editorH - 10;
+        var minTop = window.scrollY + 8;
+        els.editor.style.top = Math.max(minTop, aboveTop) + 'px';
+      } else {
+        els.editor.style.top = desiredTop + 'px';
+      }
     }
     setTimeout(function () {
       (needsReplacement && els.editorReplacement ? els.editorReplacement : els.editorText).focus();
