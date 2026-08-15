@@ -42,16 +42,20 @@ exec(cmd, { maxBuffer: 50 * 1024 * 1024 }, (err, stdout, stderr) => {
     { name: 'font-toggle button',               re: /id="font-toggle"/,         expect: 1 },
     { name: 'data-density default',             re: /data-density="comfortable"/, expect: 1 },
     { name: 'data-font-size default',           re: /data-font-size="M"/,       expect: 1 },
-    { name: 'toggle-cluster wrapper',           re: /class="toggle-cluster"/,   expect: 1 },
-    { name: 'toggle-cluster z-index (drawer-coverage fix)', re: /toggle-cluster \{ position: fixed; top: 20px; right: 110px; z-index: 100/, expect: 1 },
+    { name: 'icon-rail wrapper',                re: /class="icon-rail"/,        expect: 1 },
+    { name: 'icon-rail z-index (drawer-coverage fix)', re: /\.icon-rail \{ position: fixed; top: 20px; right: 24px; z-index: 100/, expect: 1 },
     { name: 'data-theme="light" default',      re: /<html[^>]*>/, expect: 1 },
     // v2 annotation UI (inlined from features/slide/{annotate.css,highlight-annotate.js})
     { name: 'annot-toggle (v2)',               re: /id="annot-toggle"/,         expect: 1 },
     { name: 'annot-insert-toggle (v2)',        re: /id="annot-insert-toggle"/,  expect: 1 },
     { name: 'annot-toolbar (v2)',              re: /id="annot-toolbar"/,        expect: 1 },
     { name: 'annot-toolbar-comment (v2)',      re: /id="annot-toolbar-comment"/, expect: 1 },
+    { name: 'annot-toolbar-ask',               re: /id="annot-toolbar-ask"/,    expect: 1 },
     { name: 'annot-toolbar-delete (v2)',       re: /id="annot-toolbar-delete"/,  expect: 1 },
     { name: 'annot-toolbar-replace (v2)',      re: /id="annot-toolbar-replace"/, expect: 1 },
+    { name: 'annot-toolbar-format',            re: /id="annot-toolbar-format"/, expect: 1 },
+    { name: 'annot-format-popover',            re: /id="annot-format-popover"/, expect: 1 },
+    { name: 'annot-swatch buttons',            re: /class="annot-swatch"/g,     expect: 10 },
     { name: 'annot-editor (v2)',               re: /id="annot-editor"/,         expect: 1 },
     { name: 'annot-editor-replacement (v2)',   re: /id="annot-editor-replacement"/, expect: 1 },
     { name: 'annot-drawer (v2)',               re: /id="annot-drawer"/,         expect: 1 },
@@ -73,7 +77,12 @@ exec(cmd, { maxBuffer: 50 * 1024 * 1024 }, (err, stdout, stderr) => {
     { name: 'navigation bar (prev/next/dots)', re: /id="nav-prev"/,             expect: 1 },
     { name: 'nav-next button',                 re: /id="nav-next"/,             expect: 1 },
     { name: 'nav-fullscreen button',           re: /id="nav-fullscreen"/,       expect: 1 },
+    { name: 'nav buttons use SVG icons',       re: /<button id="nav-(home|prev|next|fullscreen)"[^>]*>\s*<svg/g, expect: 4 },
     { name: '__deckGoTo exposed',              re: /__deckGoTo/,                expect: 1 },
+    // Question + format annotation types
+    { name: 'question type in engine',         re: /'annot-question'/,          expect: 1 },
+    { name: 'format type in engine',           re: /a\.type === 'format'/,      expect: 1 },
+    { name: 'answer field in engine',          re: /answered/,                  expect: 1 },
     // Components
     { name: 'card component',                  re: /class="card highlight"/,    expect: 1 },
     { name: 'badge component',                 re: /class="badge /,             expect: 1 },
@@ -93,7 +102,7 @@ exec(cmd, { maxBuffer: 50 * 1024 * 1024 }, (err, stdout, stderr) => {
   let passed = 0, failed = 0;
   checks.forEach(({ name, re, expect }) => {
     const matches = (stdout.match(re) || []).length;
-    const ok = matches >= expect;
+    const ok = expect === 0 ? matches === 0 : matches >= expect;
     console.log(`  ${ok ? '✓' : '✗'} ${name.padEnd(40)} (${matches} match${matches === 1 ? '' : 'es'})`);
     ok ? passed++ : failed++;
   });

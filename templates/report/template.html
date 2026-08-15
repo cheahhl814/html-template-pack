@@ -326,21 +326,46 @@
     .meta-card .value { font-size: 1.1rem; font-weight: 700; margin-top: 4px; color: var(--text); }
     .meta-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 1rem; margin: 1rem 0; }
 
-    /* ═══════════════════ « BEGIN feature: theme toggle » (CSS) ═══════════════════ */
-    .theme-btn {
-      background: var(--surface); border: 1px solid var(--border);
-      border-radius: var(--radius); padding: 0.5rem 0.875rem;
-      font-family: var(--font-sans); font-size: 0.875rem;
-      color: var(--text-dim); cursor: pointer;
-    }
-    .theme-btn:hover { color: var(--accent); border-color: var(--accent); }
-    .theme-cluster {
+    /* ═══════════════════ « BEGIN feature: icon rail » (CSS) ═══════════════════ */
+    /* Unified vertical icon-only control rail — theme / density / font-size /
+       notes / insert. One flex column, fixed top-right, consistent square
+       buttons with a CSS-driven tooltip bubble on hover/focus (the label
+       lives in data-tooltip, not as visible text, so every control reads
+       as glyph-only). */
+    .icon-rail {
       position: fixed; top: 1rem; right: 1rem; z-index: 100;
-      display: flex; gap: 0.4rem; align-items: center;
+      display: flex; flex-direction: column; gap: 0.4rem; align-items: flex-end;
     }
-    .theme-cluster .theme-btn { position: static; }
-    .theme-cluster .sep { width: 1px; height: 1.25rem; background: var(--border); }
-    /* ═══════════════════ « END feature: theme toggle » (CSS) ═════════════════════ */
+    .icon-btn {
+      position: relative;
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 2.25rem; height: 2.25rem; padding: 0;
+      font-family: var(--font-sans); font-size: 1rem; font-weight: 600;
+      background: var(--surface); color: var(--text-dim);
+      border: 1px solid var(--border-bright); border-radius: var(--radius);
+      cursor: pointer; transition: color 0.15s, border-color 0.15s, background 0.15s;
+    }
+    .icon-btn:hover, .icon-btn:focus-visible { color: var(--accent); border-color: var(--accent); }
+    .icon-btn[aria-pressed="true"] { color: var(--accent); border-color: var(--accent); background: var(--accent-dim); }
+    .icon-btn::after {
+      content: attr(data-tooltip);
+      position: absolute; top: 50%; right: calc(100% + 0.5rem); transform: translateY(-50%);
+      background: var(--text); color: var(--bg);
+      font-size: 0.75rem; font-weight: 600; white-space: nowrap;
+      padding: 0.3rem 0.55rem; border-radius: var(--radius-sm);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+      opacity: 0; pointer-events: none; transition: opacity 0.12s ease;
+    }
+    .icon-btn:hover::after, .icon-btn:focus-visible::after { opacity: 1; }
+    .icon-btn .annot-count {
+      position: absolute; top: -0.35rem; right: -0.35rem;
+      display: inline-flex; align-items: center; justify-content: center;
+      min-width: 1.15rem; height: 1.15rem; padding: 0 0.3rem;
+      font-size: 0.65rem; font-weight: 700; line-height: 1;
+      background: var(--accent); color: var(--bg); border-radius: 999px;
+    }
+    .icon-btn .annot-count[hidden] { display: none; }
+    /* ═══════════════════ « END feature: icon rail » (CSS) ═════════════════════ */
 
     /* ═══════════════════ « BEGIN feature: density + font-size » (CSS) ═════════════ */
     /* Density tokens — overridden by [data-density="compact"] */
@@ -412,6 +437,13 @@
     }
     ins.annot-insert-text:hover,
     ins.annot-insert-text.annot-focus { background: rgba(63, 185, 80, 0.26); }
+    mark.annot.annot-question {
+      background: rgba(124, 58, 237, 0.12);
+      border-bottom-color: #7c3aed;
+    }
+    mark.annot.annot-question:hover, mark.annot.annot-question.annot-focus { background: rgba(124, 58, 237, 0.22); }
+    .format-annot { cursor: pointer; }
+    .format-annot:hover, .format-annot.annot-focus { outline: 1px dashed var(--accent); outline-offset: 1px; }
     .annot-caret {
       display: inline-block; width: 2px; height: 1em; vertical-align: text-bottom;
       background: var(--annot-insert); margin: 0 1px; cursor: pointer;
@@ -420,40 +452,11 @@
     body.annot-insert-armed [data-annot-root],
     body.annot-insert-armed main.content { cursor: text; }
 
-    /* Toggle button stack (Notes + Insert) — flex column so a growing count
-       badge on Notes cannot push it into the Insert button. */
-    .annot-toggle-stack {
-      position: fixed; top: 3.75rem; right: 1rem; z-index: 60;
-      display: flex; flex-direction: column; gap: 0.4rem; align-items: flex-end;
-    }
-    .annot-toggle {
-      display: inline-flex; align-items: center; gap: 0.4rem;
-      font-family: var(--font-mono); font-size: 0.8125rem;
-      background: var(--surface); color: var(--text-dim);
-      border: 1px solid var(--border-bright); border-radius: var(--radius);
-      padding: 0.4rem 0.7rem; cursor: pointer; transition: color 0.15s, border-color 0.15s;
-    }
-    .annot-toggle:hover { color: var(--accent); border-color: var(--accent); }
-    .annot-toggle .annot-count {
-      display: inline-flex; align-items: center; justify-content: center;
-      min-width: 1.25rem; height: 1.25rem; padding: 0 0.35rem;
-      font-size: 0.7rem; font-weight: 700; line-height: 1;
-      background: var(--accent); color: var(--bg); border-radius: 999px;
-    }
-    .annot-toggle .annot-count[hidden] { display: none; }
-    /* The Insert toggle no longer needs a separate top offset: the
-       .annot-toggle-stack parent positions both buttons with a flex
-       column + gap, so a growing count badge on the Notes button can no
-       longer push it into the Insert button. The override below is kept
-       as a no-op in case a downstream page still relies on the old
-       #annot-insert-toggle id-selector. */
-    #annot-insert-toggle { top: auto; }
-
-    /* Selection toolbar (floating "Comment" pill) */
+    /* Selection toolbar (floating action pill) */
     .annot-toolbar {
       position: absolute; z-index: 70; transform: translate(-50%, -100%);
       margin-top: -0.5rem;
-      display: flex; gap: 0.3rem;
+      display: flex; gap: 0.3rem; flex-wrap: wrap; max-width: min(320px, 92vw);
     }
     .annot-toolbar[hidden] { display: none; }
     .annot-toolbar-btn {
@@ -462,6 +465,31 @@
       cursor: pointer; white-space: nowrap; box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
     }
     .annot-toolbar-btn:hover { filter: brightness(1.15); }
+
+    /* Format popover — opened from the "Aa Format ▾" toolbar button */
+    .annot-format-popover {
+      position: absolute; z-index: 80; transform: translate(-50%, -100%);
+      background: var(--surface); border: 1px solid var(--border-bright); border-radius: var(--radius);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.4); padding: 0.6rem;
+      display: flex; flex-direction: column; gap: 0.4rem; width: max-content;
+    }
+    .annot-format-popover[hidden] { display: none; }
+    .annot-format-row { display: flex; gap: 0.3rem; }
+    .annot-format-btn {
+      width: 2rem; height: 2rem; display: inline-flex; align-items: center; justify-content: center;
+      background: var(--surface2); color: var(--text); border: 1px solid var(--border-bright);
+      border-radius: var(--radius-sm); cursor: pointer; font-size: 0.85rem;
+    }
+    .annot-format-btn:hover { border-color: var(--accent); color: var(--accent); }
+    .annot-format-label {
+      font-size: 0.65rem; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.04em; color: var(--text-dim); margin-top: 0.15rem;
+    }
+    .annot-swatch {
+      width: 1.5rem; height: 1.5rem; border-radius: 999px; cursor: pointer;
+      border: 2px solid var(--border-bright); background: var(--swatch); padding: 0;
+    }
+    .annot-swatch:hover { border-color: var(--text); transform: scale(1.1); }
 
     /* Comment editor popover */
     .annot-editor {
@@ -524,7 +552,10 @@
       display: flex; align-items: center; justify-content: space-between;
       padding: 1rem 1.1rem; border-bottom: 1px solid var(--border);
     }
+    .annot-drawer-title { display: flex; flex-direction: column; gap: 0.15rem; }
     .annot-drawer-head h3 { margin: 0; font-size: 1.05rem; }
+    .annot-open-questions { font-size: 0.7rem; font-weight: 700; color: #7c3aed; }
+    .annot-open-questions[hidden] { display: none; }
     .annot-drawer-close {
       background: none; border: none; color: var(--text-dim); cursor: pointer;
       font-size: 1.4rem; line-height: 1; padding: 0.1rem 0.35rem; border-radius: var(--radius-sm);
@@ -556,10 +587,19 @@
     .annot-item .annot-type-delete,
     .annot-item .annot-type-replace { background: rgba(248, 113, 113, 0.15); color: var(--annot-delete); }
     .annot-item .annot-type-insert { background: rgba(63, 185, 80, 0.15); color: var(--annot-insert); }
+    .annot-item .annot-type-question { background: rgba(124, 58, 237, 0.15); color: #7c3aed; }
+    .annot-item .annot-type-format { background: var(--surface3); color: var(--text-dim); }
     .annot-item .annot-item-replacement {
       font-size: 0.85rem; color: var(--annot-insert); margin: 0.2rem 0 0.5rem;
       white-space: pre-wrap; word-break: break-word;
     }
+    .annot-item .annot-item-answer {
+      font-size: 0.85rem; color: var(--text); margin: 0.2rem 0 0.5rem;
+      white-space: pre-wrap; word-break: break-word;
+      border-left: 3px solid #7c3aed; padding-left: 0.55rem;
+    }
+    .annot-item .annot-item-answer strong { display: block; font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.04em; color: #7c3aed; margin-bottom: 0.2rem; }
+    .annot-item.annot-answered { border-color: #7c3aed; }
     .annot-item .annot-item-meta { font-size: 0.7rem; color: var(--text-muted); font-family: var(--font-mono); margin-bottom: 0.5rem; }
     .annot-item .annot-item-actions { display: flex; gap: 0.4rem; }
     .annot-item .annot-btn { font-size: 0.75rem; padding: 0.28rem 0.55rem; }
@@ -568,9 +608,8 @@
 
     /* ── Print: hide all UI chrome, keep highlights subtle ────────── */
     @media print {
-      .theme-btn,
-      .theme-cluster,
-      .annot-toggle, .annot-toolbar, .annot-editor, .annot-drawer, .annot-backdrop { display: none !important; }
+      .icon-rail,
+      .annot-toolbar, .annot-format-popover, .annot-editor, .annot-drawer, .annot-backdrop { display: none !important; }
       /* Reset density + font-size for predictable print layout */
       [data-density="compact"] { --pad-card: 1.25rem; --pad-cell: 0.6rem 0.85rem; --pad-stat: 1.1rem; --pad-panel-top: 4rem; --gap-grid: 1.25rem; }
       [data-font-size="S"], [data-font-size="L"] { font-size: 16px; }
@@ -591,15 +630,21 @@
 </head>
 <body data-report-id="report-template">
 
-  <!-- ═══════════════════ « BEGIN feature: theme toggle » (HTML) ═══════════════════ -->
-  <div class="theme-cluster">
-    <button class="theme-btn" id="theme-toggle" aria-label="Toggle color theme" aria-pressed="false">◐ dark</button>
-    <span class="sep" aria-hidden="true"></span>
-    <button class="theme-btn" id="density-toggle" aria-label="Toggle density">▤ comfortable</button>
-    <span class="sep" aria-hidden="true"></span>
-    <button class="theme-btn" id="font-toggle" aria-label="Cycle font size">M</button>
+  <!-- ═══════════════════ « BEGIN feature: icon rail » (HTML) ═══════════════════ -->
+  <!-- Unified icon-only control rail: theme, density, font-size, notes,
+       insert. All five buttons are icon-only; the label shows as a CSS
+       tooltip on hover/focus (see data-tooltip) and via aria-label for
+       screen readers. -->
+  <div class="icon-rail" role="toolbar" aria-label="View toggles and annotation controls">
+    <button class="icon-btn" id="theme-toggle" aria-label="Toggle color theme" aria-pressed="false" data-tooltip="Toggle theme">◐</button>
+    <button class="icon-btn" id="density-toggle" aria-label="Toggle density" data-tooltip="Toggle density">▤</button>
+    <button class="icon-btn" id="font-toggle" aria-label="Cycle font size" data-tooltip="Font size">M</button>
+    <button class="icon-btn" id="annot-toggle" aria-label="Open annotations panel" data-tooltip="Notes">
+      💬<span class="annot-count" id="annot-count" hidden>0</span>
+    </button>
+    <button class="icon-btn" id="annot-insert-toggle" aria-label="Insert text at a point" aria-pressed="false" data-tooltip="Insert text">➕</button>
   </div>
-  <!-- ═══════════════════ « END feature: theme toggle » (HTML) ═════════════════════ -->
+  <!-- ═══════════════════ « END feature: icon rail » (HTML) ═════════════════════ -->
 
   <!-- ═══════════════════ « BEGIN feature: tabs » (JS) ══════════════════════════════ -->
   <script>
@@ -677,17 +722,40 @@
   <!-- ═══════════════════ « END feature: tabs » (JS) ════════════════════════════════ -->
 
   <!-- ═══════════════════ « BEGIN feature: annotations » (HTML) ════════════════════ -->
-  <div class="annot-toggle-stack">
-    <button class="annot-toggle" id="annot-toggle" aria-label="Open annotations panel">
-      💬 Notes <span class="annot-count" id="annot-count" hidden>0</span>
-    </button>
-    <button class="annot-toggle" id="annot-insert-toggle" aria-label="Insert text at a point" aria-pressed="false">➕ Insert</button>
-  </div>
+  <!-- Notes + Insert toggle buttons now live in the .icon-rail near <body>. -->
 
   <div class="annot-toolbar" id="annot-toolbar" hidden>
     <button type="button" class="annot-toolbar-btn" id="annot-toolbar-comment">💬 Comment</button>
+    <button type="button" class="annot-toolbar-btn" id="annot-toolbar-ask">❓ Ask</button>
     <button type="button" class="annot-toolbar-btn" id="annot-toolbar-delete">✂ Delete</button>
     <button type="button" class="annot-toolbar-btn" id="annot-toolbar-replace">✎ Replace</button>
+    <button type="button" class="annot-toolbar-btn" id="annot-toolbar-format" aria-haspopup="true" aria-expanded="false">Aa Format ▾</button>
+  </div>
+
+  <div class="annot-format-popover" id="annot-format-popover" hidden role="menu" aria-label="Text formatting">
+    <div class="annot-format-row">
+      <button type="button" class="annot-format-btn" id="annot-format-bold" data-style="bold" title="Bold"><b>B</b></button>
+      <button type="button" class="annot-format-btn" id="annot-format-italic" data-style="italic" title="Italic"><i>I</i></button>
+      <button type="button" class="annot-format-btn" id="annot-format-underline" data-style="underline" title="Underline"><u>U</u></button>
+      <button type="button" class="annot-format-btn" id="annot-format-sup" data-style="sup" title="Superscript">x²</button>
+      <button type="button" class="annot-format-btn" id="annot-format-sub" data-style="sub" title="Subscript">x₂</button>
+    </div>
+    <div class="annot-format-label">Highlight</div>
+    <div class="annot-format-row annot-format-swatches" data-swatch-kind="highlight">
+      <button type="button" class="annot-swatch" data-color="teal" style="--swatch: var(--teal);" title="Teal"></button>
+      <button type="button" class="annot-swatch" data-color="coral" style="--swatch: var(--coral);" title="Coral"></button>
+      <button type="button" class="annot-swatch" data-color="amber" style="--swatch: var(--amber);" title="Amber"></button>
+      <button type="button" class="annot-swatch" data-color="green" style="--swatch: var(--green);" title="Green"></button>
+      <button type="button" class="annot-swatch" data-color="deep-blue" style="--swatch: var(--deep-blue);" title="Blue"></button>
+    </div>
+    <div class="annot-format-label">Text color</div>
+    <div class="annot-format-row annot-format-swatches" data-swatch-kind="color">
+      <button type="button" class="annot-swatch" data-color="teal" style="--swatch: var(--teal);" title="Teal"></button>
+      <button type="button" class="annot-swatch" data-color="coral" style="--swatch: var(--coral);" title="Coral"></button>
+      <button type="button" class="annot-swatch" data-color="amber" style="--swatch: var(--amber);" title="Amber"></button>
+      <button type="button" class="annot-swatch" data-color="green" style="--swatch: var(--green);" title="Green"></button>
+      <button type="button" class="annot-swatch" data-color="deep-blue" style="--swatch: var(--deep-blue);" title="Blue"></button>
+    </div>
   </div>
 
   <div class="annot-editor" id="annot-editor" hidden role="dialog" aria-label="Add annotation">
@@ -703,7 +771,10 @@
   <div class="annot-backdrop" id="annot-backdrop" hidden></div>
   <aside class="annot-drawer" id="annot-drawer" hidden aria-label="Annotations">
     <div class="annot-drawer-head">
-      <h3>Annotations</h3>
+      <div class="annot-drawer-title">
+        <h3>Annotations</h3>
+        <span class="annot-open-questions" id="annot-open-questions" hidden></span>
+      </div>
       <button class="annot-drawer-close" id="annot-drawer-close" aria-label="Close panel">×</button>
     </div>
     <div class="annot-drawer-tools">
@@ -754,13 +825,16 @@
         <span class="eyebrow eyebrow-teal">REPORT</span>
         <h1>Report Template</h1>
         <p class="badge-line">PROJECT / EVENT LABEL</p>
-        <p><strong>Select any of this text</strong> and three pills appear — <strong>💬 Comment</strong>,
-          <strong>✂ Delete</strong>, and <strong>✎ Replace</strong>. Click one to leave a tracked-changes-style note
-          (for delete/replace, optionally provide a comment explaining the change). For <em>insertion</em>, click the
-          <strong>➕ Insert</strong> button (top-right) then click any point in the text to drop a caret and propose new
-          text. Your highlight is stored in this browser and reappears on reload. Open the <strong>💬 Notes</strong> panel
+        <p><strong>Select any of this text</strong> and a toolbar appears — <strong>💬 Comment</strong>,
+          <strong>❓ Ask</strong>, <strong>✂ Delete</strong>, <strong>✎ Replace</strong>, and <strong>Aa Format ▾</strong>.
+          Comment/Delete/Replace/Ask leave a tracked-changes-style note (for delete/replace, optionally explain the
+          change; Ask marks the note as a question rather than an edit request). Format opens bold/italic/underline/
+          superscript/subscript plus highlight and text-color swatches, applied instantly with no comment needed. For
+          <em>insertion</em>, click the ➕ icon in the top-right rail then click any point in the text to drop a caret
+          and propose new text. Your highlight is stored in this browser and reappears on reload. Open the 💬 icon
           (top-right) to review, jump to, edit, delete, and <strong>export every annotation as JSON</strong> so an AI agent
-          (or a colleague) can act on your feedback and revise this document precisely.</p>
+          (or a colleague) can act on your feedback and revise this document precisely — including importing a
+          JSON file of answers to your ❓ questions.</p>
 
         <h2>Status tags</h2>
         <p>Use badge pills to mark up inline terms — they're picked up by the annotation walker just like regular text, so
@@ -906,9 +980,14 @@
           nearest heading, so it re-anchors even if the document is regenerated with minor changes. Diagrams and
           code (anything inside <code>.mermaid</code>, <code>svg</code>, or a <code>data-annot-skip</code>
           element) are ignored, so rendering them never shifts your highlights. Exported JSON carries the
-          <code>type</code> (<code>comment</code> / <code>delete</code> / <code>insert</code> / <code>replace</code>) and a
-          <code>replacement</code> field for structured edits — downstream revision agents don't need to parse
-          free-text intent.</p>
+          <code>type</code> (<code>comment</code> / <code>delete</code> / <code>insert</code> / <code>replace</code> /
+          <code>question</code> / <code>format</code>) and a <code>replacement</code> field for structured edits —
+          downstream revision agents don't need to parse free-text intent. <code>question</code> notes carry
+          <code>answer</code>/<code>answered</code> fields: an agent can answer them by re-importing a JSON file
+          containing just the matching <code>id</code> plus <code>answer</code> — the importer merges it onto the
+          existing note instead of overwriting it. <code>format</code> notes carry a <code>style</code> field
+          (<code>bold</code> / <code>italic</code> / <code>underline</code> / <code>sup</code> / <code>sub</code> /
+          <code>highlight:&lt;color&gt;</code> / <code>color:&lt;color&gt;</code>).</p>
         <p>The v2 engine reads each <code>[data-panel]</code> to know which section a highlight belongs to.
           When you click a drawer entry, the engine switches the matching tab before scrolling the highlight
           into view, so reviews can hop between findings and methodology without losing their place.</p>
@@ -929,17 +1008,20 @@
       var saved = localStorage.getItem(KEY);
       var initial = saved || ((window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light');
       document.documentElement.setAttribute('data-theme', initial);
-      function label(t) { return t === 'light' ? '◐ dark' : '◑ light'; }
+      function icon(t) { return t === 'light' ? '◐' : '◑'; }
+      function tooltip(t) { return t === 'light' ? 'Switch to dark theme' : 'Switch to light theme'; }
       var btn = document.getElementById('theme-toggle');
       if (btn) {
-        btn.textContent = label(initial);
+        btn.textContent = icon(initial);
+        btn.setAttribute('data-tooltip', tooltip(initial));
         btn.setAttribute('aria-pressed', initial === 'dark' ? 'true' : 'false');
         btn.addEventListener('click', function() {
           var cur = document.documentElement.getAttribute('data-theme');
           var next = cur === 'light' ? 'dark' : 'light';
           document.documentElement.setAttribute('data-theme', next);
           localStorage.setItem(KEY, next);
-          this.textContent = label(next);
+          this.textContent = icon(next);
+          this.setAttribute('data-tooltip', tooltip(next));
           this.setAttribute('aria-pressed', next === 'dark' ? 'true' : 'false');
         });
       }
@@ -954,7 +1036,8 @@
     'use strict';
     var KEY = 'report-density';
     var MODES = ['comfortable', 'compact'];
-    var LABELS = { comfortable: '▤ comfortable', compact: '▥ compact' };
+    var ICONS = { comfortable: '▤', compact: '▥' };
+    var TOOLTIPS = { comfortable: 'Density: comfortable', compact: 'Density: compact' };
     var btn = document.getElementById('density-toggle');
     if (!btn) return;
     function readSaved() { try { return localStorage.getItem(KEY); } catch (e) { return null; } }
@@ -962,7 +1045,8 @@
     var saved = readSaved();
     var initial = (saved && MODES.indexOf(saved) >= 0) ? saved : 'comfortable';
     document.documentElement.setAttribute('data-density', initial);
-    btn.textContent = LABELS[initial];
+    btn.textContent = ICONS[initial];
+    btn.setAttribute('data-tooltip', TOOLTIPS[initial]);
     btn.setAttribute('aria-pressed', initial === 'compact' ? 'true' : 'false');
     btn.addEventListener('click', function () {
       var cur = document.documentElement.getAttribute('data-density') || 'comfortable';
@@ -970,7 +1054,8 @@
       var next = MODES[(idx + 1) % MODES.length];
       document.documentElement.setAttribute('data-density', next);
       writeSaved(next);
-      btn.textContent = LABELS[next];
+      btn.textContent = ICONS[next];
+      btn.setAttribute('data-tooltip', TOOLTIPS[next]);
       btn.setAttribute('aria-pressed', next === 'compact' ? 'true' : 'false');
     });
   })();
@@ -991,6 +1076,7 @@
     document.documentElement.setAttribute('data-font-size', initial);
     btn.textContent = initial;
     btn.setAttribute('aria-label', 'Font size: ' + initial + ' (click to change)');
+    btn.setAttribute('data-tooltip', 'Font size: ' + initial);
     btn.addEventListener('click', function () {
       var cur = document.documentElement.getAttribute('data-font-size') || 'M';
       var idx = SIZES.indexOf(cur);
@@ -999,6 +1085,7 @@
       writeSaved(next);
       btn.textContent = next;
       btn.setAttribute('aria-label', 'Font size: ' + next + ' (click to change)');
+      btn.setAttribute('data-tooltip', 'Font size: ' + next);
     });
   })();
   </script>
@@ -1020,8 +1107,12 @@
         count: document.getElementById('annot-count'),
         toolbar: document.getElementById('annot-toolbar'),
         toolbarComment: document.getElementById('annot-toolbar-comment'),
+        toolbarAsk: document.getElementById('annot-toolbar-ask'),
         toolbarDelete: document.getElementById('annot-toolbar-delete'),
         toolbarReplace: document.getElementById('annot-toolbar-replace'),
+        toolbarFormat: document.getElementById('annot-toolbar-format'),
+        formatPopover: document.getElementById('annot-format-popover'),
+        openQuestions: document.getElementById('annot-open-questions'),
         editor: document.getElementById('annot-editor'),
         editorQuote: document.getElementById('annot-editor-quote'),
         editorReplacement: document.getElementById('annot-editor-replacement'),
@@ -1053,13 +1144,27 @@
           annotations = raw ? JSON.parse(raw) : [];
           if (!Array.isArray(annotations)) annotations = [];
         } catch (e) { annotations = []; }
-        annotations.forEach(function(a) { if (!a.type) a.type = 'comment'; });
+        annotations.forEach(function(a) {
+          if (!a.type) a.type = 'comment';
+          if (a.answer === undefined) a.answer = '';
+          a.answered = toAnswered(a.answered);
+          if (a.style === undefined) a.style = '';
+        });
+        annotations = annotations.filter(function(a) {
+          return a.type !== 'format' || isValidFormatStyle(a.style);
+        });
       }
       function save() {
         try { localStorage.setItem(STORE_KEY, JSON.stringify(annotations)); } catch (e) {}
       }
       function uid() {
         return 'a' + Date.now().toString(36) + Math.random().toString(36).slice(2, 7);
+      }
+      // Normalize an "answered" value (from import JSON or localStorage) to a
+      // strict boolean. Hand-written JSON often carries the string "false",
+      // which !! would coerce to true; only boolean/string true count.
+      function toAnswered(v) {
+        return v === true || v === 'true';
       }
 
       /* ── Filtered text walker (skips Mermaid/SVG/code so offsets stay
@@ -1117,7 +1222,7 @@
 
       /* ── Highlight rendering ─────────────────────────────────── */
       function unwrapAll() {
-        var marks = root.querySelectorAll('mark.annot');
+        var marks = root.querySelectorAll('mark.annot, b.annot, i.annot, u.annot, sup.annot, sub.annot, span.annot.format-annot');
         marks.forEach(function(m) {
           var parent = m.parentNode;
           while (m.firstChild) parent.insertBefore(m.firstChild, m);
@@ -1193,6 +1298,63 @@
         ins.textContent = text || '';
         return ins;
       }
+      /* ── Format annotations (bold/italic/underline/sup/sub/highlight/color) ──
+         Same node-splitting approach as wrapRange, but the wrapper element
+         depends on a.style — a semantic tag for the text-decoration styles,
+         or a <mark>/<span> with an inline color for highlight/text-color. */
+      var FORMAT_TAGS = { bold: 'b', italic: 'i', underline: 'u', sup: 'sup', sub: 'sub' };
+      var FORMAT_COLORS = { teal: true, coral: true, amber: true, green: true, 'deep-blue': true };
+      function isValidFormatStyle(style) {
+        if (FORMAT_TAGS[style]) return true;
+        if (typeof style !== 'string') return false;
+        var match = style.match(/^(highlight|color):([a-z0-9-]+)$/);
+        return !!(match && FORMAT_COLORS[match[2]]);
+      }
+      function applyFormat(range, a) {
+        var style = a.style || '';
+        if (!isValidFormatStyle(style)) return;
+        var tagName = FORMAT_TAGS[style];
+        var isHighlight = style.indexOf('highlight:') === 0;
+        var isColor = style.indexOf('color:') === 0;
+        var nodes = [], ca = range.commonAncestorContainer;
+        if (ca.nodeType === Node.TEXT_NODE) {
+          nodes.push(ca);
+        } else {
+          var w = document.createTreeWalker(ca, NodeFilter.SHOW_TEXT, {
+            acceptNode: function(n) {
+              if (!n.nodeValue.length) return NodeFilter.FILTER_REJECT;
+              if (n.parentElement && n.parentElement.closest('.mermaid, svg, script, style, .annot-insert-text, .annot-caret, [data-annot-skip]')) return NodeFilter.FILTER_REJECT;
+              return range.intersectsNode(n) ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_REJECT;
+            }
+          });
+          var n; while ((n = w.nextNode())) nodes.push(n);
+        }
+        nodes.forEach(function(node) {
+          var s = (node === range.startContainer) ? range.startOffset : 0;
+          var e = (node === range.endContainer) ? range.endOffset : node.nodeValue.length;
+          if (e <= s) return;
+          var target = node;
+          if (e < node.nodeValue.length) target.splitText(e);
+          if (s > 0) target = target.splitText(s);
+          var wrap;
+          if (tagName) {
+            wrap = document.createElement(tagName);
+          } else if (isHighlight) {
+            wrap = document.createElement('mark');
+            wrap.style.background = 'var(--' + style.slice('highlight:'.length) + ')';
+            wrap.style.color = 'inherit';
+          } else if (isColor) {
+            wrap = document.createElement('span');
+            wrap.style.color = 'var(--' + style.slice('color:'.length) + ')';
+          } else {
+            wrap = document.createElement('mark');
+          }
+          wrap.className = 'annot format-annot';
+          wrap.setAttribute('data-annot-id', a.id);
+          target.parentNode.insertBefore(wrap, target);
+          wrap.appendChild(target);
+        });
+      }
       function applyHighlights() {
         unwrapAll();
         var ft = fullText();
@@ -1221,10 +1383,16 @@
             } catch (e) { a._orphan = true; }
             return;
           }
+          if (a.type === 'format') {
+            var fRange = buildRange(pos.start, pos.end);
+            if (!fRange) { a._orphan = true; return; }
+            try { applyFormat(fRange, a); } catch (e) { a._orphan = true; }
+            return;
+          }
           var range = buildRange(pos.start, pos.end);
           if (!range) { a._orphan = true; return; }
           try {
-            var extraClass = a.type === 'delete' ? 'annot-delete' : a.type === 'replace' ? 'annot-replace' : '';
+            var extraClass = a.type === 'delete' ? 'annot-delete' : a.type === 'replace' ? 'annot-replace' : a.type === 'question' ? 'annot-question' : '';
             var mark = wrapRange(range, a.id, extraClass);
             if (a.type === 'replace' && mark) {
               mark.parentNode.insertBefore(makeInsertNode(a.id, a.replacement), mark.nextSibling);
@@ -1301,6 +1469,7 @@
 
       document.addEventListener('mouseup', function(e) {
         if (els.editor.contains(e.target) || els.toolbar.contains(e.target) ||
+            els.formatPopover.contains(e.target) ||
             els.drawer.contains(e.target) || els.toggle.contains(e.target)) return;
         setTimeout(function() {
           var info = readSelection();
@@ -1310,6 +1479,7 @@
       });
       document.addEventListener('mousedown', function(e) {
         if (!els.toolbar.contains(e.target)) hideToolbar();
+        if (!els.formatPopover.contains(e.target) && !(els.toolbarFormat && els.toolbarFormat.contains(e.target))) hideFormatPopover();
       });
 
       els.toolbar.addEventListener('mousedown', function(e) { e.preventDefault(); });
@@ -1321,8 +1491,69 @@
         openEditor(pending.quote, '', '', pending.rect);
       }
       if (els.toolbarComment) els.toolbarComment.addEventListener('click', function() { startNewAnnotation('comment'); });
+      if (els.toolbarAsk)     els.toolbarAsk.addEventListener('click',     function() { startNewAnnotation('question'); });
       if (els.toolbarDelete)  els.toolbarDelete.addEventListener('click',  function() { startNewAnnotation('delete'); });
       if (els.toolbarReplace) els.toolbarReplace.addEventListener('click', function() { startNewAnnotation('replace'); });
+
+      /* ── Format popover: bold/italic/underline/sup/sub + color swatches ── */
+      function showFormatPopover(rect) {
+        els.formatPopover.hidden = false;
+        if (els.toolbarFormat) els.toolbarFormat.setAttribute('aria-expanded', 'true');
+        var halfW = 130;
+        var vw = document.documentElement.clientWidth;
+        var centerX = rect.left + rect.width / 2;
+        var clampedCenter = Math.max(halfW, Math.min(centerX, vw - halfW));
+        els.formatPopover.style.left = (window.scrollX + clampedCenter) + 'px';
+        var overflowTop = rect.top < 140;
+        if (overflowTop) {
+          els.formatPopover.style.top = (window.scrollY + rect.bottom + 10) + 'px';
+          els.formatPopover.style.transform = 'translate(-50%, 0)';
+        } else {
+          els.formatPopover.style.top = (window.scrollY + rect.top - 10) + 'px';
+          els.formatPopover.style.transform = 'translate(-50%, -100%)';
+        }
+      }
+      function hideFormatPopover() {
+        els.formatPopover.hidden = true;
+        if (els.toolbarFormat) els.toolbarFormat.setAttribute('aria-expanded', 'false');
+        pending = null;
+      }
+      if (els.toolbarFormat) {
+        els.toolbarFormat.addEventListener('click', function(e) {
+          e.stopPropagation();
+          if (!pending) return;
+          var wasHidden = els.formatPopover.hidden;
+          hideToolbar();
+          if (wasHidden) showFormatPopover(pending.rect); else hideFormatPopover();
+        });
+      }
+      els.formatPopover.addEventListener('mousedown', function(e) { e.preventDefault(); });
+      function saveDirectAnnotation(type, style) {
+        if (!pending) return;
+        if (type === 'format' && !isValidFormatStyle(style)) return;
+        var now = new Date().toISOString();
+        annotations.push({
+          id: uid(), quote: pending.quote, comment: '',
+          type: type, style: style || '', replacement: '',
+          answer: '', answered: false,
+          start: pending.start, end: pending.end,
+          prefix: pending.prefix, suffix: pending.suffix,
+          panel: pending.panel, heading: pending.heading,
+          createdAt: now, updatedAt: now
+        });
+        save(); applyHighlights(); renderList(); updateCount();
+        hideToolbar();
+      }
+      Array.prototype.slice.call(document.querySelectorAll('.annot-format-btn')).forEach(function(btn) {
+        btn.addEventListener('click', function() { saveDirectAnnotation('format', btn.getAttribute('data-style')); });
+      });
+      Array.prototype.slice.call(document.querySelectorAll('.annot-swatch')).forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          var kind = btn.closest('.annot-format-swatches').getAttribute('data-swatch-kind');
+          var color = btn.getAttribute('data-color');
+          saveDirectAnnotation('format', (kind === 'highlight' ? 'highlight:' : 'color:') + color);
+        });
+      });
 
       // Caret-range helper for insert-mode (used by arm/click flow below)
       function caretRangeAt(x, y) {
@@ -1341,7 +1572,7 @@
         els.insertToggle.addEventListener('click', function() {
           insertArmed = !insertArmed;
           document.body.classList.toggle('annot-insert-armed', insertArmed);
-          els.insertToggle.textContent = insertArmed ? '➕ Click a point…' : '➕ Insert';
+          els.insertToggle.setAttribute('data-tooltip', insertArmed ? 'Click a point to insert…' : 'Insert text');
           els.insertToggle.setAttribute('aria-pressed', insertArmed ? 'true' : 'false');
         });
         document.addEventListener('click', function(e) {
@@ -1352,7 +1583,7 @@
           if (!range) return;
           insertArmed = false;
           document.body.classList.remove('annot-insert-armed');
-          els.insertToggle.textContent = '➕ Insert';
+          els.insertToggle.setAttribute('data-tooltip', 'Insert text');
           els.insertToggle.setAttribute('aria-pressed', 'false');
           var at = offsetOf(range.startContainer, range.startOffset);
           var ft = fullText();
@@ -1383,6 +1614,7 @@
           els.editorReplacement.value = replacement || '';
           els.editorReplacement.placeholder = type === 'insert' ? 'Text to insert…' : 'Replacement text…';
         }
+        els.editorText.placeholder = type === 'question' ? 'Write your question…' : 'Write a comment…';
         els.editorText.value = comment || '';
         els.editorSave.textContent = type === 'delete' ? 'Confirm delete' : 'Save';
         els.editor.hidden = false;
@@ -1431,7 +1663,7 @@
         var replacement = els.editorReplacement ? els.editorReplacement.value : '';
         var existing = editingId ? annotations.find(function(x) { return x.id === editingId; }) : null;
         var type = existing ? (existing.type || 'comment') : (editingType || 'comment');
-        if (type === 'comment' && !text) { els.editorText.focus(); return; }
+        if ((type === 'comment' || type === 'question') && !text) { els.editorText.focus(); return; }
         if ((type === 'replace' || type === 'insert') && !replacement.trim()) {
           if (els.editorReplacement) els.editorReplacement.focus();
           return;
@@ -1446,6 +1678,7 @@
             id: uid(), quote: pending.quote, comment: text,
             type: type,
             replacement: (type === 'replace' || type === 'insert') ? replacement : '',
+            style: '', answer: '', answered: false,
             start: pending.start, end: pending.end,
             prefix: pending.prefix, suffix: pending.suffix,
             panel: pending.panel, heading: pending.heading,
@@ -1491,7 +1724,7 @@
       }
       function setFocus(id) {
         focusedId = id;
-        var marks = root.querySelectorAll('mark.annot, .annot-caret, ins.annot-insert-text');
+        var marks = root.querySelectorAll('mark.annot, .format-annot[data-annot-id], .annot-caret, ins.annot-insert-text');
         marks.forEach(function(m) {
           m.classList.toggle('annot-focus', m.getAttribute('data-annot-id') === id);
         });
@@ -1509,7 +1742,7 @@
           if (tabBtn && !tabBtn.classList.contains('active')) tabBtn.click();
         }
         setTimeout(function() {
-          var mark = root.querySelector('mark.annot[data-annot-id="' + id + '"], .annot-caret[data-annot-id="' + id + '"]');
+          var mark = root.querySelector('mark.annot[data-annot-id="' + id + '"], .format-annot[data-annot-id="' + id + '"], .annot-caret[data-annot-id="' + id + '"]');
           if (mark) { mark.scrollIntoView({ behavior: 'smooth', block: 'center' }); setFocus(id); }
         }, 60);
       }
@@ -1527,12 +1760,14 @@
           li.className = 'annot-item';
           li.setAttribute('data-id', a.id);
           if (a.id === focusedId) li.classList.add('annot-focus');
+          if (a.type === 'question' && a.answered) li.classList.add('annot-answered');
 
-          var badgeLabels = { comment: 'Comment', delete: 'Delete', insert: 'Insert', replace: 'Replace' };
+          var badgeLabels = { comment: 'Comment', delete: 'Delete', insert: 'Insert', replace: 'Replace', question: '❓ Question', format: 'Aa Format' };
           var type = a.type || 'comment';
           var badge = document.createElement('span');
           badge.className = 'annot-type-badge annot-type-' + type;
           badge.textContent = badgeLabels[type] || 'Comment';
+          if (type === 'question' && a.answered) badge.textContent += ' ✓ answered';
           li.appendChild(badge);
 
           var q = document.createElement('div');
@@ -1550,10 +1785,32 @@
             li.appendChild(repl);
           }
 
-          var c = document.createElement('div');
-          c.className = 'annot-item-comment';
-          c.textContent = a.comment || '';
-          li.appendChild(c);
+          if (a.type === 'format') {
+            var styleLabels = { bold: 'Bold', italic: 'Italic', underline: 'Underline', sup: 'Superscript', sub: 'Subscript' };
+            var styleText = styleLabels[a.style] ||
+              (a.style && a.style.indexOf('highlight:') === 0 ? 'Highlight (' + a.style.slice(10) + ')' : '') ||
+              (a.style && a.style.indexOf('color:') === 0 ? 'Text color (' + a.style.slice(6) + ')' : '') ||
+              a.style || '';
+            var st = document.createElement('div');
+            st.className = 'annot-item-replacement';
+            st.textContent = styleText;
+            li.appendChild(st);
+          } else {
+            var c = document.createElement('div');
+            c.className = 'annot-item-comment';
+            c.textContent = a.comment || '';
+            li.appendChild(c);
+          }
+
+          if (a.type === 'question' && a.answer) {
+            var ans = document.createElement('div');
+            ans.className = 'annot-item-answer';
+            var ansLabel = document.createElement('strong');
+            ansLabel.textContent = 'Answer';
+            ans.appendChild(ansLabel);
+            ans.appendChild(document.createTextNode(a.answer));
+            li.appendChild(ans);
+          }
 
           var meta = document.createElement('div');
           meta.className = 'annot-item-meta';
@@ -1596,11 +1853,16 @@
           sidebarBadge.textContent = n;
           sidebarBadge.hidden = n === 0;
         }
+        if (els.openQuestions) {
+          var openQ = annotations.filter(function(a) { return a.type === 'question' && !a.answered; }).length;
+          els.openQuestions.textContent = openQ + (openQ === 1 ? ' open question' : ' open questions');
+          els.openQuestions.hidden = openQ === 0;
+        }
       }
 
       /* ── Click a highlight → open drawer & focus ─────────────── */
       root.addEventListener('click', function(e) {
-        var mark = e.target.closest ? e.target.closest('mark.annot, .annot-caret, ins.annot-insert-text') : null;
+        var mark = e.target.closest ? e.target.closest('mark.annot, .format-annot[data-annot-id], .annot-caret, ins.annot-insert-text') : null;
         if (!mark) return;
         var id = mark.getAttribute('data-annot-id');
         if (els.drawer.hidden) openDrawer();
@@ -1620,6 +1882,8 @@
               id: a.id, quote: a.quote, comment: a.comment,
               type: a.type || 'comment',
               replacement: a.replacement || '',
+              style: a.style || '',
+              answer: a.answer || '', answered: !!a.answered,
               panel: a.panel, sectionHeading: a.heading,
               prefix: a.prefix, suffix: a.suffix,
               start: a.start, end: a.end,
@@ -1648,24 +1912,46 @@
           try {
             var data = JSON.parse(reader.result);
             var incoming = Array.isArray(data) ? data : (data.annotations || []);
-            var byId = {};
+            // Null-prototype map: ids are used as raw keys, so a plain {}
+            // would let "__proto__"/"constructor"/"toString" hit Object's
+            // prototype chain (phantom lookups, prototype write on __proto__).
+            var byId = Object.create(null);
             annotations.forEach(function(a) { byId[a.id] = a; });
             incoming.forEach(function(raw) {
               if (!raw) return;
-              if (!raw.type && !raw.quote && !raw.prefix && !raw.suffix) return;
+              var existing = raw.id ? byId[raw.id] : null;
+              // Answers-only payloads (id + answer/answered, no quote/type)
+              // must merge onto the existing annotation rather than being
+              // skipped or overwriting its quote/comment/type with blanks —
+              // this is how an agent answers a "question" annotation via
+              // Import without re-supplying the full record.
+              var aType = raw.type || (existing && existing.type) || 'comment';
+              // Reject stubs for ids with no existing record: a quote-based
+              // annotation needs a quote (or an existing record) to anchor —
+              // only 'insert' can anchor on prefix/suffix alone. Otherwise a
+              // minimal answers-only payload for a typo'd/non-local id (e.g.
+              // {id, type:'question', answer, answered}) would silently create
+              // a persisted empty-quote phantom annotation.
+              if (!existing && aType !== 'insert' && !raw.quote) return;
               var a = {
                 id: raw.id || uid(),
-                quote: raw.quote || '',
-                comment: raw.comment || '',
-                type: raw.type || 'comment',
-                replacement: raw.replacement || '',
-                start: typeof raw.start === 'number' ? raw.start : 0,
-                end: typeof raw.end === 'number' ? raw.end : 0,
-                prefix: raw.prefix || '', suffix: raw.suffix || '',
-                panel: raw.panel || null, heading: raw.sectionHeading || raw.heading || '',
-                createdAt: raw.createdAt || new Date().toISOString(),
+                quote: raw.quote !== undefined ? raw.quote : (existing ? existing.quote : ''),
+                comment: raw.comment !== undefined ? raw.comment : (existing ? existing.comment : ''),
+                type: aType,
+                replacement: raw.replacement !== undefined ? raw.replacement : (existing ? existing.replacement : ''),
+                style: raw.style !== undefined ? raw.style : (existing ? existing.style : ''),
+                answer: raw.answer !== undefined ? raw.answer : (existing ? existing.answer : ''),
+                answered: raw.answered !== undefined ? toAnswered(raw.answered) : (existing ? toAnswered(existing.answered) : false),
+                start: typeof raw.start === 'number' ? raw.start : (existing ? existing.start : 0),
+                end: typeof raw.end === 'number' ? raw.end : (existing ? existing.end : 0),
+                prefix: raw.prefix !== undefined ? raw.prefix : (existing ? existing.prefix : ''),
+                suffix: raw.suffix !== undefined ? raw.suffix : (existing ? existing.suffix : ''),
+                panel: raw.panel !== undefined ? raw.panel : (existing ? existing.panel : null),
+                heading: (raw.sectionHeading || raw.heading) || (existing ? existing.heading : '') || '',
+                createdAt: raw.createdAt || (existing ? existing.createdAt : new Date().toISOString()),
                 updatedAt: raw.updatedAt || raw.createdAt || new Date().toISOString()
               };
+              if (a.type === 'format' && !isValidFormatStyle(a.style)) return;
               byId[a.id] = a;
             });
             annotations = Object.keys(byId).map(function(k) { return byId[k]; });

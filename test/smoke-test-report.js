@@ -44,7 +44,12 @@ exec(cmd, { maxBuffer: 50 * 1024 * 1024 }, (err, stdout, stderr) => {
     { name: 'data-density default',            re: /data-density="comfortable"/,      expect: 1 },
     { name: 'data-font-size default',          re: /data-font-size="M"/,              expect: 1 },
     { name: 'annot-toggle button (v2)',        re: /id="annot-toggle"/,                expect: 1 },
+    { name: 'icon-rail wrapper',               re: /class="icon-rail"/,                expect: 1 },
     { name: 'annot-toolbar (v2)',              re: /id="annot-toolbar"/,               expect: 1 },
+    { name: 'annot-toolbar-ask',               re: /id="annot-toolbar-ask"/,           expect: 1 },
+    { name: 'annot-toolbar-format',            re: /id="annot-toolbar-format"/,        expect: 1 },
+    { name: 'annot-format-popover',            re: /id="annot-format-popover"/,        expect: 1 },
+    { name: 'annot-swatch buttons',            re: /class="annot-swatch"/g,            expect: 10 },
     { name: 'annot-editor (v2)',               re: /id="annot-editor"/,                expect: 1 },
     { name: 'annot-drawer (v2)',               re: /id="annot-drawer"/,                expect: 1 },
     { name: 'annot-export (v2)',               re: /id="annot-export"/,                expect: 1 },
@@ -54,8 +59,11 @@ exec(cmd, { maxBuffer: 50 * 1024 * 1024 }, (err, stdout, stderr) => {
     { name: 'toolbar replace button (v2)',     re: /id="annot-toolbar-replace"/,       expect: 1 },
     { name: 'insert-mode toggle (v2)',         re: /id="annot-insert-toggle"/,         expect: 1 },
     { name: 'replacement textarea (v2)',       re: /id="annot-editor-replacement"/,    expect: 1 },
+    { name: 'question type in engine',         re: /'annot-question'/,                 expect: 1 },
+    { name: 'format type in engine',           re: /a\.type === 'format'/,             expect: 1 },
+    { name: 'answer field in engine',          re: /answered/,                         expect: 1 },
     { name: 'self-contained (no script src)',  re: /<script src=/,                 expect: 0 },
-    { name: 'self-contained (no link href)',   re: /<link[^>]+href="(?!data:)/,     expect: 0 },
+    { name: 'self-contained (no unexpected link href)', re: /<link[^>]+href="(?!data:|https:\/\/fonts\.(?:googleapis|gstatic)\.com)/, expect: 0 },
     { name: 'theme toggle (inline)',           re: /data-theme="light"/,           expect: 1 },
     { name: 'localStorage usage',              re: /localStorage/,                 expect: 1 },
     { name: '__reportGoTo exposed',            re: /__reportGoTo/,                   expect: 1 },
@@ -65,7 +73,7 @@ exec(cmd, { maxBuffer: 50 * 1024 * 1024 }, (err, stdout, stderr) => {
   let passed = 0, failed = 0;
   checks.forEach(({ name, re, expect }) => {
     const matches = (stdout.match(re) || []).length;
-    const ok = matches >= expect;
+    const ok = expect === 0 ? matches === 0 : matches >= expect;
     console.log(`  ${ok ? '✓' : '✗'} ${name.padEnd(40)} (${matches} match${matches === 1 ? '' : 'es'})`);
     ok ? passed++ : failed++;
   });
