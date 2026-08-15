@@ -298,6 +298,7 @@
   }
   .icon-btn:hover, .icon-btn:focus-visible { background: var(--deep-blue); }
   .icon-btn[aria-pressed="true"] { background: var(--teal); }
+  .icon-btn svg { width: 20px; height: 20px; stroke: currentColor; fill: none; display: block; }
   .icon-btn::after {
     content: attr(data-tooltip);
     position: absolute; top: 50%; right: calc(100% + 0.5rem); transform: translateY(-50%);
@@ -439,7 +440,9 @@
   <button class="icon-btn" id="annot-toggle" aria-label="Open annotations panel" data-tooltip="Notes">
     💬<span class="annot-count" id="annot-count" hidden>0</span>
   </button>
-  <button class="icon-btn" id="annot-insert-toggle" aria-label="Insert text at a point" aria-pressed="false" data-tooltip="Insert text">➕</button>
+  <button class="icon-btn" id="annot-insert-toggle" aria-label="Insert text at a point" aria-pressed="false" data-tooltip="Insert text">
+    <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 5h6M6 19h6M9 5v14"></path><path d="M19 2v6M16 5h6"></path></svg>
+  </button>
 </div>
 <div class="deck-nav">
   <button id="nav-home" title="Go to first slide (Home)" aria-label="Go to first slide">
