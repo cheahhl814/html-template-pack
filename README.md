@@ -1,17 +1,34 @@
 # html-template-pack
 
-Three self-contained HTML templates — **report** (left-side sticky sidebar with 5 icon+label tabs, v2 offset-anchored annotations, theme toggle), **slide deck** (prev/next nav, inline v2 annotations, theme toggle), and **htmx dashboard** (topbar, KPI row, sparkline chart, activity feed, sortable table, demo-mode mock backend). All three are single-file, review-ready HTML with no external CDN dependencies beyond Google Fonts (report/slide) and pinned htmx with SRI (dashboard).
+[![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+[![Live demo](https://img.shields.io/badge/demo-GitHub%20Pages-2ea44f)](https://cheahhl814.github.io/html-template-pack/)
+[![Type](https://img.shields.io/badge/type-agent%20skill-blueviolet)](#-installation)
 
-> **Repository**: https://github.com/cheahhl814/html-template-pack
+Three self-contained HTML templates — **report** (sticky sidebar, 5 icon+label tabs, v2 offset-anchored annotations, theme toggle), **slide deck** (prev/next nav, inline v2 annotations, theme toggle), and **htmx dashboard** (topbar, KPI row, sparkline chart, activity feed, sortable table, demo-mode mock backend). All three are single-file, review-ready HTML with no external CDN dependencies beyond Google Fonts (report/slide) and pinned htmx with SRI (dashboard).
+
+**Repository**: https://github.com/cheahhl814/html-template-pack
+
+## Contents
+
+- [Live demo](#-live-demo)
+- [Installation](#-installation)
+- [Usage examples](#-usage-examples)
+- [What this skill does](#-what-this-skill-does)
+- [Annotation system](#-annotation-system-report--slide)
+- [Theme toggle](#-theme-toggle)
+- [Density and font-size toggles](#-density-and-font-size-toggles-all-three-templates)
+- [Hard invariants](#-hard-invariants)
 
 ## 🚀 Live demo
 
 All three templates are deployed as a working demo on GitHub Pages. Open any of them to interact with the live UI — no setup, no build step, no backend.
 
-- 🌐 **Launcher**: https://cheahhl814.github.io/html-template-pack/
-- 📄 **[Report demo](https://cheahhl814.github.io/html-template-pack/report/)** — "Q3 Operations Review — Northwind Logistics" (5 tabs, custom content)
-- 🎞️ **[Slide demo](https://cheahhl814.github.io/html-template-pack/slide/)** — "Helios 2 — Real-Time Inference for the Edge" (5 slides, product launch)
-- 📊 **[Dashboard demo](https://cheahhl814.github.io/html-template-pack/dashboard/)** — "Northwind Logistics — Operations Dashboard" (mock data, live polling)
+| | |
+|---|---|
+| 🌐 **Launcher** | https://cheahhl814.github.io/html-template-pack/ |
+| 📄 **[Report demo](https://cheahhl814.github.io/html-template-pack/report/)** | "Q3 Operations Review — Northwind Logistics" (5 tabs, custom content) |
+| 🎞️ **[Slide demo](https://cheahhl814.github.io/html-template-pack/slide/)** | "Helios 2 — Real-Time Inference for the Edge" (5 slides, product launch) |
+| 📊 **[Dashboard demo](https://cheahhl814.github.io/html-template-pack/dashboard/)** | "Northwind Logistics — Operations Dashboard" (mock data, live polling) |
 
 Each demo is a curated showcase with realistic content (not a blank template). Try the **◐ theme toggle**, **▤ density toggle**, **S/M/L font size toggle** in the top-right of every demo. In the report and slide demos, select any text to leave tracked-changes-style annotations, then export them as JSON from the 💬 Notes panel.
 
@@ -54,7 +71,8 @@ If auto-detection works, you can just use natural language prompts — the harne
 
 These phrases auto-invoke the skill via the global `AGENTS.md` decision matrix:
 
-**Report** (≥3 long sections, prose, charts, references):
+<details>
+<summary><b>Report</b> (≥3 long sections, prose, charts, references)</summary>
 
 ```
 Build me an HTML report from path/to/source.md.
@@ -63,8 +81,10 @@ Make a reading version of my manuscript for the team to comment on.
 I need a single-file HTML the team can annotate.
 Generate the grant submission recap as HTML.
 ```
+</details>
 
-**Slide deck** (≤12 visual beats, bullets, one idea per slide):
+<details>
+<summary><b>Slide deck</b> (≤12 visual beats, bullets, one idea per slide)</summary>
 
 ```
 Create a slide deck about X.
@@ -72,8 +92,10 @@ Convert this DOCX / PDF into a deck.
 Make a pitch deck from this outline.
 Build a 5-slide internal readout on the latest experiment results.
 ```
+</details>
 
-**Dashboard** (live data, KPIs, ops metrics):
+<details>
+<summary><b>Dashboard</b> (live data, KPIs, ops metrics)</summary>
 
 ```
 Build me a dashboard for tracking X.
@@ -81,6 +103,7 @@ Set up an ops dashboard with these KPIs.
 Create an admin panel showing the live state of the system.
 Wire up an htmx dashboard against /api/stats, /api/activity, etc.
 ```
+</details>
 
 ### Multi-step review workflow
 
@@ -123,7 +146,7 @@ A long-form reading document with a sticky left sidebar of tabs. The reviewer cl
 
 ### Slide template
 
-A single-page scrolling deck with prev/next navigation, slide dots, a counter, a fullscreen toggle, and a home button. Each slide is a section with v2 annotations (notes you can leave on any text) and a per-slide identifier so a notes drawer click jumps directly to that slide. When printed, each slide becomes one PDF page.
+A single-page scrolling deck with prev/next navigation, a page counter, a fullscreen toggle, and a home button. Each slide is a section with v2 annotations (notes you can leave on any text) and a per-slide identifier so a notes drawer click jumps directly to that slide. When printed, each slide becomes one PDF page.
 
 **Best for**: pitch decks, conference talks, lightning talks, internal readouts, research summary decks — any sequential presentation of 12 or fewer visual beats.
 
@@ -144,7 +167,7 @@ The template ships in **demo mode** out of the box: a small mock backend interce
 
 When you open a report or slide in a browser, you can leave tracked-changes-style notes directly on the text. Select any passage, choose what kind of note you want to leave, and a small floating toolbar appears with options. Your notes are saved in your browser automatically and can be exported as a file to send to an AI coding agent for revision.
 
-### The Review Cycle
+### The review cycle
 
 ```mermaid
 sequenceDiagram
@@ -159,29 +182,28 @@ sequenceDiagram
     Agent-->>Human: Revised HTML file
 ```
 
-### Advanced Note Management
+### Advanced note management
 
 - **Import**: Use **⬆ Import** to merge JSON files from other reviewers.
 - **Orphans**: If the document text changes, some notes may no longer point to the exact text. These appear with a **red border and warning** in the Notes panel.
 - **Storage**: Notes live in `localStorage` under `annotations:<id>`. For a multi-document project, give each one a unique id (e.g., `<body data-annot-storage="my-report-2026">`) so reviews don't overwrite each other.
-
 
 ### Feature reference
 
 For quick reference, here's the full feature matrix across the two templates:
 
 | Feature | Report | Slide |
-|---------|--------|-------|
-| Select text → floating toolbar (4 options) | ✓ | ✓ |
-| Right-side Notes panel with all notes | ✓ | ✓ |
-| Click a note to jump back to its text | ✓ | ✓ |
-| Edit or delete a note | ✓ | ✓ |
-| Export to JSON file | ✓ | ✓ |
-| Export to clipboard | ✓ | ✓ |
-| Import JSON (merge by id) | ✓ | ✓ |
-| Flag orphaned notes (text shifted) | ✓ | ✓ |
-| Auto-switch to the right tab/slide on jump | ✓ | ✓ |
-| Notes survive Mermaid diagram re-renders | ✓ | ✓ |
+|---------|:------:|:-----:|
+| Select text → floating toolbar (4 options) | ✅ | ✅ |
+| Right-side Notes panel with all notes | ✅ | ✅ |
+| Click a note to jump back to its text | ✅ | ✅ |
+| Edit or delete a note | ✅ | ✅ |
+| Export to JSON file | ✅ | ✅ |
+| Export to clipboard | ✅ | ✅ |
+| Import JSON (merge by id) | ✅ | ✅ |
+| Flag orphaned notes (text shifted) | ✅ | ✅ |
+| Auto-switch to the right tab/slide on jump | ✅ | ✅ |
+| Notes survive Mermaid diagram re-renders | ✅ | ✅ |
 
 ## 🎨 Theme toggle
 
@@ -189,21 +211,23 @@ All three templates have a **◐ dark / ◑ light** button at the top-right (das
 
 ## ⚡ Density and font-size toggles (all three templates)
 
-Two extra buttons appear next to the theme toggle. They help reviewers read dense content more comfortably:
+Two extra buttons appear next to the theme toggle. They help reviewers read dense content more comfortably.
 
-### Density toggle (`▤` / `▥`)
-
-Switches between **comfortable** (default) and **compact** spacing. Useful when a report has lots of data tables or dense cards — compact mode shrinks the padding so you can fit more on screen.
-
-- Storage key: `report-density`, `slide-density`, or `dashboard-density` (one per template)
-- Affects: card padding, table cell padding, stat-card padding, grid gaps, panel top spacing
-
-### Font size toggle (`S` / `M` / `L`)
-
-Cycles between **Small** (14px), **Medium** (16px, default), and **Large** (18px). Changes the base font size, which scales every proportional text size in the document.
-
-- Storage key: `report-font-size`, `slide-font-size`, or `dashboard-font-size` (one per template)
-- Affects: every text element that uses proportional units
+<table>
+<tr><th>Toggle</th><th>States</th><th>Storage key</th><th>Affects</th></tr>
+<tr>
+  <td><b>Density</b> (<code>▤</code> / <code>▥</code>)</td>
+  <td>comfortable (default) → compact</td>
+  <td><code>report-density</code>, <code>slide-density</code>, <code>dashboard-density</code></td>
+  <td>Card padding, table cell padding, stat-card padding, grid gaps, panel top spacing</td>
+</tr>
+<tr>
+  <td><b>Font size</b> (<code>S</code> / <code>M</code> / <code>L</code>)</td>
+  <td>Small (14px) → Medium (16px, default) → Large (18px)</td>
+  <td><code>report-font-size</code>, <code>slide-font-size</code>, <code>dashboard-font-size</code></td>
+  <td>Every text element using proportional units</td>
+</tr>
+</table>
 
 Both toggles:
 
@@ -222,3 +246,7 @@ The **dashboard** template's toggles are especially useful when viewing dense da
 - Print works cleanly (report/slide primary; dashboard secondary)
 - Single-file portable (only Google Fonts + pinned htmx SRI allowed external)
 - Dashboard demo-mode never ships to production
+
+## License
+
+MIT — see the `license` field in [`SKILL.md`](./SKILL.md).
