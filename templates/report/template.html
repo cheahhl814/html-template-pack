@@ -1514,6 +1514,12 @@
         }
       }
       function hideFormatPopover() {
+        // No-op when already hidden: the global mousedown listener calls this on
+        // every mousedown outside the popover, including on the selection
+        // toolbar's own Comment/Ask/Delete/Replace buttons — clobbering
+        // `pending` there before their click handlers run would silently no-op
+        // those buttons.
+        if (els.formatPopover.hidden) return;
         els.formatPopover.hidden = true;
         if (els.toolbarFormat) els.toolbarFormat.setAttribute('aria-expanded', 'false');
         pending = null;
