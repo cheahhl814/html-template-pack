@@ -63,7 +63,7 @@ exec(cmd, { maxBuffer: 50 * 1024 * 1024 }, (err, stdout, stderr) => {
     { name: 'format type in engine',           re: /a\.type === 'format'/,             expect: 1 },
     { name: 'answer field in engine',          re: /answered/,                         expect: 1 },
     { name: 'self-contained (no script src)',  re: /<script src=/,                 expect: 0 },
-    { name: 'self-contained (no unexpected link href)', re: /<link[^>]+href="(?!data:|https:\/\/fonts\.(?:googleapis|gstatic)\.com)/, expect: 0 },
+    { name: 'self-contained (no unexpected link href)', re: /<link[^>]+href="(?!data:|https:\/\/fonts\.(?:googleapis|gstatic)\.com|features\/graphics\/)/, expect: 0 },
     { name: 'theme toggle (inline)',           re: /data-theme="light"/,           expect: 1 },
     { name: 'localStorage usage',              re: /localStorage/,                 expect: 1 },
     { name: '__reportGoTo exposed',            re: /__reportGoTo/,                   expect: 1 },

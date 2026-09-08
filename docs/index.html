@@ -89,12 +89,12 @@
 </head>
 <body>
   <div class="wrap">
-    <span class="eyebrow">v0.7.0 · Live demos</span>
+    <span class="eyebrow">v0.8.0 · Live demos</span>
     <h1>html-template-pack</h1>
-    <p class="lede">Four self-contained annotated HTML templates: report, slide deck, htmx dashboard, and the new bento one-pager. Every template carries inline review annotations, a theme toggle, and density + font-size controls. Dark-first by default; light mode one click away.</p>
+    <p class="lede">Four self-contained annotated HTML templates + a zero-dependency graphics pack. Every template carries inline review annotations, a theme toggle, and density + font-size controls. Dark-first by default; light mode one click away.</p>
 
     <div class="guide">
-      <b>What's new in v0.7.0</b> — all templates are now <b>dark-first</b> (dark is the starting theme), with <b>refined glass</b> chrome (translucent surfaces, ambient accent glow), <b>fluid display typography</b> (clamp() type scale), and <b>hover-glow micro-interactions</b>. New: the <b>bento brief</b> — a one-page snapshot briefing in the 2026 bento-grid style, carrying the full v2 annotation engine. Annotation features are unchanged.
+      <b>What's new in v0.8.0</b> — <b>graphics pack</b> (donut, radial gauge, horizontal bars, heatmap, data-bar cells, pure-CSS flowchart, milestone strip, comparison table, pull-quote, scroll-driven reveals, reading-progress bar) inlined into report, slide, and bento. All charts carry accessible data fallbacks; motion is strictly @supports + prefers-reduced-motion guarded. v0.7.0 dark-first glass aesthetic preserved.
     </div>
 
     <div class="grid">
@@ -112,9 +112,15 @@
       </a>
       <a class="card" style="--c: #f59e0b; --c-glow: rgba(245,158,11,0.35)" href="bento/">
         <div class="icon">🍱</div>
-        <h2>Bento brief <span style="font-size:0.65em; color: var(--amber)">NEW</span></h2>
+        <h2>Bento brief</h2>
         <p>One-page snapshot briefing in the 2026 bento-grid style — modular glass cards, pure-CSS chart, full annotation engine.</p>
         <span class="tag">one-pager · annotated</span>
+      </a>
+      <a class="card" style="--c: #a78bfa; --c-glow: rgba(167,139,250,0.35)" href="components/">
+        <div class="icon">🧩</div>
+        <h2>Components <span style="font-size:0.65em; color: var(--c)">NEW</span></h2>
+        <p>Zero-dependency graphics pack: donut, gauges, bars, heatmap, flowchart, comparison table, pull-quote, scroll-driven motion.</p>
+        <span class="tag">reference gallery</span>
       </a>
       <a class="card" style="--c: #10b981; --c-glow: rgba(16,185,129,0.35)" href="dashboard/">
         <div class="icon">📊</div>

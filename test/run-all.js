@@ -12,7 +12,8 @@ const suites = [
   { name: 'Report template (multi-tab capable, v2 annotation, theme toggle)', script: 'test/smoke-test-report.js' },
   { name: 'Slide template (5-slide deck, v1 inline annotation, theme toggle, print)', script: 'test/smoke-test-slide.js' },
   { name: 'Bento template (one-page bento grid, v2 inline annotation, dark-first glass)', script: 'test/smoke-test-bento.js' },
-  { name: 'Dashboard template (htmx panels, demo-mode mock backend, theme toggle)', script: 'test/smoke-test-dashboard.js' }
+  { name: 'Dashboard template (htmx panels, demo-mode mock backend, theme toggle)', script: 'test/smoke-test-dashboard.js' },
+  { name: 'Graphics pack (v0.8.0 shared component library in report + slide + bento)', script: 'test/smoke-test-graphics.js' }
 ];
 
 console.log('html-template-pack · test suite\n' + '─'.repeat(60));

@@ -661,9 +661,364 @@
       .content { padding: 3.5rem 1rem 5rem; }
       h1 { font-size: 1.75rem; }
     }
-  </style>
+  
+/* ═══ Inlined features/graphics/graphics.css (zero-dependency charts/diagrams/tables/motion) ═══ */
+/* ═══════════════════════════════════════════════════════════════════════
+   html-template-pack · graphics.css
+   Shared zero-dependency graphics pack for the report, slide, bento
+   templates. Pure CSS/HTML — no JS, no canvas, no SVG libraries.
+
+   COMPONENTS
+   ──────────
+     A. Charts:        donut / pie · radial gauge · horizontal bars ·
+                       heatmap table · data bars in table cells
+     B. Diagrams:      pure-CSS flowchart · horizontal milestone strip
+     C. Tables/quote:  feature comparison table · pull-quote
+     D. Motion:        reading progress bar · scroll-driven reveals ·
+                       gauge sweep (all @supports + prefers-reduced-motion
+                       guarded)
+
+   ACCESSIBILITY
+   ─────────────
+     Every visual chart is built either from a real <table> (heatmap,
+     data bars) or paired with a visually-hidden <table> fallback (donut).
+     role="img" + aria-label on conic charts. Numbers stay visible in
+     every heatmap cell (never color-alone). Motion is opt-in for both
+     browser support and user preference.
+
+   INTEGRATION
+   ───────────
+     This file is meant to be inlined into the template's <style> block
+     OR linked via <link rel="stylesheet" href="features/graphics/graphics.css">.
+     Token names (--accent, --surface, --teal, --amber, etc.) come from
+     the host template's design tokens; the graphics components adapt to
+     either the report's blue palette, the slide's teal palette, or the
+     bento's mixed accent palette without modification.
+   ═══════════════════════════════════════════════════════════════════════ */
+
+/* ── Visually-hidden helper (data-table fallbacks) ─────────────────── */
+.sr-only {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+}
+
+/* ══════ A1 · DONUT / PIE CHART ══════════════════════════════════════
+   Usage:
+     <div class="donut" data-center="248" role="img" aria-label="…">
+     <ol class="legend">
+       <li><span class="sw"></span>Screening <b>42%</b></li> × n
+     </ol>
+     <table class="sr-only">…data mirror…</table>
+   Slices driven by 4 CSS custom properties (--a --b --c --d); they MUST
+   sum to 100. The chart is decoration; the legend + sr-only table carry
+   the data for screen readers. */
+.donut {
+  --a: 42; --b: 31; --c: 18; --d: 9;
+  flex: 0 0 auto; width: 170px; aspect-ratio: 1; border-radius: 50%;
+  background: conic-gradient(
+    var(--teal)       0 calc(var(--a) * 1%),
+    var(--deep-blue)  0 calc((var(--a) + var(--b)) * 1%),
+    var(--amber)      0 calc((var(--a) + var(--b) + var(--c)) * 1%),
+    var(--surface3)   0 100%
+  );
+  -webkit-mask: radial-gradient(closest-side, transparent 61%, #000 61.5%);
+          mask: radial-gradient(closest-side, transparent 61%, #000 61.5%);
+  position: relative;
+}
+.donut::after {
+  content: attr(data-center);
+  position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-head); font-weight: 800; font-size: 1.5rem; color: var(--text);
+  -webkit-mask: none; mask: none;
+}
+.donut-wrap { display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap; }
+.legend { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.5rem; font-size: 0.9rem; }
+.legend li { display: flex; align-items: center; gap: 0.6rem; color: var(--text-muted); }
+.legend .sw { width: 12px; height: 12px; border-radius: 3px; flex-shrink: 0; }
+.legend b { color: var(--text); margin-left: auto; font-variant-numeric: tabular-nums; }
+/* The four legend swatches pick up template tokens via nth-child — add
+   more slots by extending the conic-gradient stop and nth-child rules. */
+.legend li:nth-child(1) .sw { background: var(--teal); }
+.legend li:nth-child(2) .sw { background: var(--deep-blue); }
+.legend li:nth-child(3) .sw { background: var(--amber); }
+.legend li:nth-child(4) .sw { background: var(--surface3); }
+.legend li:nth-child(5) .sw { background: var(--green); }
+
+/* ══════ A2 · RADIAL GAUGE / PROGRESS RING ════════════════════════════
+   Usage:
+     <div class="gauge animated" style="--progress: 73" role="img" aria-label="…">
+       <div class="gauge-label">
+         <div class="gauge-value">73%</div>
+         <div class="gauge-cap">Coverage</div>
+       </div>
+     </div>
+   Color variant classes: .g-green .g-amber .g-coral. */
+.gauge {
+  --progress: 73;
+  --gauge-color: var(--accent);
+  width: 130px; aspect-ratio: 1; border-radius: 50%; position: relative;
+  display: grid; place-items: center;
+  background:
+    radial-gradient(closest-side, var(--surface) 74%, transparent 74% 100%),
+    conic-gradient(var(--gauge-color) calc(var(--progress) * 1%), var(--surface3) 0);
+}
+.gauge .gauge-label { text-align: center; line-height: 1.15; }
+.gauge .gauge-value { font-family: var(--font-head); font-size: 1.7rem; font-weight: 800; color: var(--gauge-color); }
+.gauge .gauge-cap   { font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-dim); }
+.gauge.g-green { --gauge-color: var(--green); }
+.gauge.g-amber { --gauge-color: var(--amber); }
+.gauge.g-coral { --gauge-color: var(--coral); }
+.gauge-row { display: flex; gap: 1.5rem; flex-wrap: wrap; }
+
+/* ══════ A3 · HORIZONTAL BAR ROWS ═════════════════════════════════════
+   Usage:
+     <div class="hbar"><span class="h-label">Screening</span>
+       <div class="h-track"><div class="h-fill" style="width: 92%"></div></div>
+       <span class="h-value">92%</span>
+     </div>
+   Variants: .c-teal .c-amber .c-coral .c-green. */
+.hbars { display: grid; gap: 0.8rem; }
+.hbar { display: grid; grid-template-columns: minmax(90px, 34%) 1fr 3.2rem; align-items: center; gap: 0.75rem; }
+.hbar .h-label  { font-size: 0.85rem; font-weight: 600; color: var(--text); text-align: right; }
+.hbar .h-track  { height: 14px; background: var(--surface2); border: 1px solid var(--border); border-radius: 999px; overflow: hidden; }
+.hbar .h-fill   { height: 100%; border-radius: 999px; background: var(--bar-color, var(--accent)); min-width: 4px; }
+.hbar .h-value  { font-size: 0.8rem; font-weight: 700; color: var(--text-muted); font-variant-numeric: tabular-nums; }
+.hbar .h-fill.c-teal  { --bar-color: var(--teal); }
+.hbar .h-fill.c-amber { --bar-color: var(--amber); }
+.hbar .h-fill.c-coral { --bar-color: var(--coral); }
+.hbar .h-fill.c-green { --bar-color: var(--green); }
+
+/* ══════ A4 · HEATMAP TABLE ════════════════════════════════════════════
+   Usage:
+     <table class="heat"> … <td data-level="0-4">N</td> </table>
+   Numbers stay visible in every cell — color is intensity, not the value.
+   The .heat-legend swatches below the table show the scale. */
+.heat { width: 100%; border-collapse: collapse; font-size: 0.82rem; }
+.heat caption { caption-side: bottom; text-align: left; color: var(--text-dim); font-size: 0.75rem; padding-top: 0.5rem; }
+.heat th, .heat td { border: 1px solid var(--border); padding: 0.45rem 0.55rem; text-align: center; }
+.heat thead th { background: var(--surface2); font-weight: 700; color: var(--text); }
+.heat tbody th { font-weight: 600; text-align: left; color: var(--text-muted); background: var(--surface2); }
+.heat td[data-level="0"] { background: var(--surface); color: var(--text-dim); }
+.heat td[data-level="1"] { background: color-mix(in srgb, var(--accent) 18%, var(--surface)); }
+.heat td[data-level="2"] { background: color-mix(in srgb, var(--accent) 40%, var(--surface)); color: var(--text); }
+.heat td[data-level="3"] { background: color-mix(in srgb, var(--accent) 65%, var(--surface)); color: var(--bg); font-weight: 700; }
+.heat td[data-level="4"] { background: var(--accent); color: var(--bg); font-weight: 700; }
+.heat-legend { display: flex; align-items: center; gap: 0.4rem; font-size: 0.75rem; color: var(--text-dim); margin-top: 0.6rem; }
+.heat-legend i { width: 14px; height: 14px; border-radius: 3px; border: 1px solid var(--border); display: inline-block; }
+.heat-legend i:nth-child(2) { background: color-mix(in srgb, var(--accent) 18%, var(--surface)); }
+.heat-legend i:nth-child(3) { background: color-mix(in srgb, var(--accent) 40%, var(--surface)); }
+.heat-legend i:nth-child(4) { background: color-mix(in srgb, var(--accent) 65%, var(--surface)); }
+.heat-legend i:nth-child(5) { background: var(--accent); }
+
+/* ══════ A5 · DATA BARS IN TABLE CELLS ════════════════════════════════
+   Usage:
+     <td class="db-cell" style="--v: 88%">
+       <div class="db-bar"></div>
+       <span>88%</span>
+     </td> */
+.db-cell { position: relative; min-width: 120px; }
+.db-bar {
+  position: absolute; inset: 3px auto 3px 0; width: var(--v);
+  background: color-mix(in srgb, var(--accent) 28%, transparent);
+  border-right: 2px solid var(--accent); border-radius: 3px;
+}
+.db-cell span { position: relative; padding-left: 0.35rem; }
+
+/* ══════ B1 · PURE-CSS FLOWCHART ══════════════════════════════════════
+   Usage:
+     <ol class="flow">
+       <li><div class="flow-node start">Start</div></li>
+       <li><div class="flow-node">Step</div></li>
+       <li>
+         <div class="flow-node decision">Q?</div>
+         <div class="flow-branch">
+           <div><div class="flow-tag">no · N</div><div class="flow-node" style="border-color: var(--coral)">Left</div></div>
+           <div><div class="flow-tag">yes · M</div><div class="flow-node">Right</div></div>
+         </div>
+       </li>
+       <li><div class="flow-node end">End</div></li>
+     </ol>
+   Print-perfect, CDN-free; complements Mermaid for simple flows. */
+.flow { list-style: none; margin: 0; padding: 0; display: grid; justify-items: center; gap: 1.75rem; }
+.flow > li { position: relative; width: 100%; display: grid; justify-items: center; }
+/* connector arrow between stacked nodes */
+.flow > li + li::before {
+  content: ""; position: absolute; top: -1.55rem; width: 2px; height: 1.05rem;
+  background: var(--border-bright);
+}
+.flow > li + li::after {
+  content: ""; position: absolute; top: -0.55rem; width: 8px; height: 8px;
+  border-right: 2px solid var(--border-bright); border-bottom: 2px solid var(--border-bright);
+  transform: rotate(45deg);
+}
+.flow-node {
+  background: var(--surface2); border: 1px solid var(--border-bright); border-radius: var(--radius);
+  padding: 0.7rem 1.2rem; text-align: center; max-width: 320px;
+  font-size: 0.9rem; font-weight: 600; color: var(--text);
+}
+.flow-node > span, .flow-node > small { display: block; font-weight: 400; color: var(--text-muted); margin-top: 0.2rem; }
+.flow-node.start    { border-color: var(--green); }
+.flow-node.end      { border-color: var(--accent); background: var(--accent-dim); }
+.flow-node.decision { border-radius: 999px; border-style: dashed; border-color: var(--amber); }
+.flow-branch { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; width: 100%; }
+.flow-branch > div { display: grid; justify-items: center; gap: 0; position: relative; }
+.flow-branch > div::before {
+  content: ""; position: absolute; top: -1.05rem; height: 1.05rem; width: 2px; background: var(--border-bright);
+}
+.flow-tag { font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-dim); margin: 0.35rem 0; }
+
+/* ══════ B2 · HORIZONTAL MILESTONE STRIP ══════════════════════════════
+   Usage:
+     <ol class="mstrip">
+       <li class="done"><div class="ms-title">…</div><div class="ms-date">…</div></li>
+       <li class="now"><div class="ms-title">…</div><div class="ms-date">…</div></li>
+       <li><div class="ms-title">…</div><div class="ms-date">…</div></li>
+     </ol>
+   States: .done (✓), .now (filled numbered circle), default (upcoming). */
+.mstrip { display: flex; margin: 0; padding: 0; list-style: none; counter-reset: ms; }
+.mstrip li { flex: 1; text-align: center; position: relative; padding: 1.4rem 0.6rem 0; }
+.mstrip li::before {
+  content: ""; position: absolute; top: 9px; left: -50%; width: 100%; height: 2px; background: var(--border-bright);
+}
+.mstrip li:first-child::before { display: none; }
+.mstrip li::after {
+  content: ""; counter-increment: ms;
+  position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+  width: 20px; height: 20px; border-radius: 50%;
+  background: var(--surface); border: 2px solid var(--accent);
+  display: grid; place-items: center; font-size: 0.65rem; font-weight: 800; color: var(--accent);
+}
+.mstrip li.done::after { content: "✓"; background: var(--green); border-color: var(--green); color: #fff; }
+.mstrip li.now::after  { content: counter(ms); background: var(--accent); color: var(--bg); }
+.mstrip .ms-title { font-size: 0.85rem; font-weight: 700; color: var(--text); }
+.mstrip .ms-date  { font-size: 0.72rem; color: var(--text-dim); }
+
+/* ══════ C1 · FEATURE COMPARISON TABLE ════════════════════════════════
+   Usage:
+     <table class="compare">
+       <thead><tr><th scope="col">Capability</th>
+         <th scope="col">Manual</th>
+         <th scope="col" class="rec-col">This <span class="rec-badge">RECOMMENDED</span></th>
+         <th scope="col">Vendor</th></tr></thead>
+       <tbody><tr><th scope="row">…</th>
+         <td class="no" aria-label="not included">—</td>
+         <td class="rec-col"><span class="yes">✓</span></td>
+         <td>…</td></tr></tbody>
+     </table>
+   Stacks to card list on mobile via @media (max-width: 720px) (data-label
+   attributes are added by the author or with the .data-label utility below). */
+.compare-wrap { overflow-x: auto; }
+.compare { width: 100%; border-collapse: separate; border-spacing: 0; font-size: 0.88rem; }
+.compare th, .compare td { border-bottom: 1px solid var(--border); padding: 0.6rem 0.8rem; text-align: center; }
+.compare thead th { position: sticky; top: 0; background: var(--surface2); font-weight: 700; z-index: 1; }
+.compare tbody th { text-align: left; font-weight: 600; color: var(--text-muted); }
+.compare .yes { color: var(--green); font-weight: 800; }
+.compare .no  { color: var(--text-dim); }
+.compare .rec-col { background: color-mix(in srgb, var(--accent) 7%, var(--surface)); }
+.compare thead .rec-col { color: var(--accent); border-top: 2px solid var(--accent); }
+.compare .rec-badge {
+  display: inline-block; font-size: 0.62rem; font-weight: 800; letter-spacing: 0.08em;
+  background: var(--accent); color: var(--bg); border-radius: 999px;
+  padding: 0.1rem 0.5rem; margin-left: 0.4rem;
+}
+@media (max-width: 720px) {
+  .compare thead { display: none; }
+  .compare tr { display: block; border: 1px solid var(--border-bright); border-radius: var(--radius); margin-bottom: 0.8rem; overflow: hidden; }
+  .compare td { display: flex; justify-content: space-between; text-align: right; border-bottom: 1px solid var(--border); }
+  .compare td::before { content: attr(data-label); font-weight: 600; color: var(--text-muted); text-align: left; }
+}
+
+/* ══════ C2 · PULL-QUOTE ══════════════════════════════════════════════
+   Usage:
+     <blockquote class="pull-quote">
+       <p>…</p>
+       <cite>— …</cite>
+     </blockquote> */
+.pull-quote {
+  margin: 1.5rem 0; padding: 1.5rem 2rem 1.5rem 3.2rem; position: relative;
+  border-left: 4px solid var(--accent); background: var(--accent-dim);
+  border-radius: 0 var(--radius) var(--radius) 0;
+}
+.pull-quote::before {
+  content: "\201C";   /* " */
+  position: absolute; left: 0.6rem; top: 0.1rem;
+  font-family: var(--font-head); font-size: 3.2rem; font-weight: 800; color: var(--accent); opacity: 0.55; line-height: 1;
+}
+.pull-quote p { margin: 0; font-family: var(--font-head); font-size: 1.3rem; font-weight: 600; line-height: 1.45; color: var(--text); letter-spacing: -0.01em; }
+.pull-quote cite { display: block; margin-top: 0.6rem; font-size: 0.85rem; font-style: normal; color: var(--text-dim); font-weight: 600; }
+
+/* ══════ D · MOTION ════════════════════════════════════════════════════
+   All three motion components below are progressively enhanced:
+     · @supports + prefers-reduced-motion guarded
+     · Static fallback = the final visible state, so nothing depends on
+       motion to be readable
+     · No JS, no scroll listeners, no IntersectionObserver
+*/
+
+@keyframes reveal-in {
+  from { opacity: 0; translate: 0 28px; }
+  to   { opacity: 1; translate: 0 0; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    .reveal {
+      animation: reveal-in linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 55%;
+    }
+  }
+}
+
+/* Reading progress bar — pinned to the top edge of the page. Drop the
+   element once anywhere in <body> and it scales from 0→1 with scroll. */
+.reading-progress {
+  position: fixed; top: 0; left: 0; right: 0; height: 3px; z-index: 200;
+  background: linear-gradient(90deg, var(--accent), var(--teal));
+  transform-origin: 0 50%; transform: scaleX(0); pointer-events: none;
+}
+@supports (animation-timeline: scroll()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .reading-progress { animation: rp-grow linear; animation-timeline: scroll(root); }
+  }
+}
+@keyframes rp-grow { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+
+/* Gauge sweep — animates the conic-gradient stop from 0 to --progress
+   on first view. Add the class .animated to a .gauge to opt in.
+   Browsers without @property (broadly supported since 2024) show the
+   static final value instead. */
+@property --sweep { syntax: '<percentage>'; inherits: false; initial-value: 0%; }
+@keyframes gauge-sweep { from { --sweep: 0%; } to { --sweep: calc(var(--progress) * 1%); } }
+@media (prefers-reduced-motion: no-preference) {
+  @supports (background: conic-gradient(red 0 1%)) {
+    .gauge.animated {
+      background:
+        radial-gradient(closest-side, var(--surface) 74%, transparent 74% 100%),
+        conic-gradient(var(--gauge-color) var(--sweep), var(--surface3) 0);
+      animation: gauge-sweep 1.2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    }
+  }
+}
+
+/* ══════ PRINT ════════════════════════════════════════════════════════
+   Motion is always off in print; the reading-progress bar hides; gauges
+   and reveals show their final state. */
+@media print {
+  .reading-progress { display: none !important; }
+  .reveal { animation: none !important; opacity: 1 !important; translate: none !important; }
+  .gauge.animated { animation: none !important;
+    background:
+      radial-gradient(closest-side, var(--surface) 74%, transparent 74% 100%),
+      conic-gradient(var(--gauge-color) calc(var(--progress) * 1%), var(--surface3) 0);
+  }
+  .mstrip li::after, .mstrip li.done::after, .mstrip li.now::after { background: var(--text) !important; color: var(--bg) !important; border-color: var(--text) !important; }
+}
+
+</style>
 </head>
 <body data-report-id="report-template">
+  <!-- Reading progress bar (scroll-driven, progressive enhancement) -->
+  <div class="reading-progress" aria-hidden="true"></div>
 
   <!-- ═══════════════════ « BEGIN feature: icon rail » (HTML) ═══════════════════ -->
   <!-- Unified icon-only control rail: theme, density, font-size, notes,
@@ -931,6 +1286,66 @@
             <tr><td>Tanjung Surat</td><td>41</td><td>2026-03-22</td><td><span class="badge badge-amber">at risk</span></td></tr>
           </tbody>
         </table>
+
+        <!-- ── Graphics pack: charts (zero-dependency, conic-gradient + CSS bars) ── -->
+        <h2>Effort distribution</h2>
+        <p>The donut below is a <code>conic-gradient</code> with four CSS custom properties driving the slice sizes; the legend + a visually-hidden <code>&lt;table&gt;</code> mirror the data for screen readers.</p>
+        <div class="donut-wrap">
+          <div class="donut" data-center="248" role="img" aria-label="Donut chart: Screening 42 percent, Extraction 31 percent, Synthesis 18 percent, Writing 9 percent"></div>
+          <ol class="legend">
+            <li><span class="sw"></span>Screening <b>42%</b></li>
+            <li><span class="sw"></span>Extraction <b>31%</b></li>
+            <li><span class="sw"></span>Synthesis <b>18%</b></li>
+            <li><span class="sw"></span>Writing <b>9%</b></li>
+          </ol>
+          <table class="sr-only">
+            <caption>Effort distribution by phase</caption>
+            <tr><th scope="col">Phase</th><th scope="col">Share</th></tr>
+            <tr><th scope="row">Screening</th><td>42%</td></tr>
+            <tr><th scope="row">Extraction</th><td>31%</td></tr>
+            <tr><th scope="row">Synthesis</th><td>18%</td></tr>
+            <tr><th scope="row">Writing</th><td>9%</td></tr>
+          </table>
+        </div>
+
+        <h2>Coverage gauges</h2>
+        <p>Radial gauges are one <code>--progress</code> custom property each. Add <code>class="animated"</code> to opt into the on-load conic sweep.</p>
+        <div class="gauge-row">
+          <div class="gauge animated" style="--progress: 73" role="img" aria-label="Coverage: 73 percent"><div class="gauge-label"><div class="gauge-value">73%</div><div class="gauge-cap">Coverage</div></div></div>
+          <div class="gauge g-green animated" style="--progress: 91" role="img" aria-label="Uptime: 91 percent"><div class="gauge-label"><div class="gauge-value">91%</div><div class="gauge-cap">Uptime</div></div></div>
+          <div class="gauge g-amber" style="--progress: 48" role="img" aria-label="Consent rate: 48 percent"><div class="gauge-label"><div class="gauge-value">48%</div><div class="gauge-cap">Consent</div></div></div>
+        </div>
+
+        <h2>Workflow status — horizontal bars</h2>
+        <div class="hbars">
+          <div class="hbar"><span class="h-label">Screening</span><div class="h-track"><div class="h-fill" style="width: 92%"></div></div><span class="h-value">92%</span></div>
+          <div class="hbar"><span class="h-label">Extraction</span><div class="h-track"><div class="h-fill c-teal" style="width: 64%"></div></div><span class="h-value">64%</span></div>
+          <div class="hbar"><span class="h-label">Synthesis</span><div class="h-track"><div class="h-fill c-amber" style="width: 31%"></div></div><span class="h-value">31%</span></div>
+          <div class="hbar"><span class="h-label">Writing</span><div class="h-track"><div class="h-fill c-coral" style="width: 12%"></div></div><span class="h-value">12%</span></div>
+        </div>
+
+        <h2>Sightings by region &amp; quarter — heatmap</h2>
+        <p>Numbers stay visible in every cell (never color-alone); the legend below shows the intensity scale.</p>
+        <table class="heat">
+          <thead><tr><th scope="col">Region</th><th scope="col">Q1</th><th scope="col">Q2</th><th scope="col">Q3</th><th scope="col">Q4</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">EU-West</th><td data-level="2">14</td><td data-level="3">22</td><td data-level="4">31</td><td data-level="3">26</td></tr>
+            <tr><th scope="row">US-East</th><td data-level="1">6</td><td data-level="2">12</td><td data-level="3">19</td><td data-level="4">29</td></tr>
+            <tr><th scope="row">APAC</th><td data-level="0">2</td><td data-level="1">5</td><td data-level="2">11</td><td data-level="2">13</td></tr>
+          </tbody>
+        </table>
+        <div class="heat-legend" aria-hidden="true"><span>low</span><i></i><i></i><i></i><i></i><span>high</span></div>
+
+        <h2>Data-bar cells</h2>
+        <p>Inline bars behind the value; the bar's width is one <code>--v</code> custom property.</p>
+        <table>
+          <thead><tr><th scope="col">Dataset</th><th scope="col">Records</th><th scope="col">Screened</th><th scope="col">Included</th></tr></thead>
+          <tbody>
+            <tr><td>PubMed</td><td>612</td><td class="db-cell" style="--v: 88%"><div class="db-bar"></div><span>88%</span></td><td>34</td></tr>
+            <tr><td>arXiv</td><td>421</td><td class="db-cell" style="--v: 64%"><div class="db-bar"></div><span>64%</span></td><td>31</td></tr>
+            <tr><td>OpenAlex</td><td>215</td><td class="db-cell" style="--v: 46%"><div class="db-bar"></div><span>46%</span></td><td>21</td></tr>
+          </tbody>
+        </table>
       </section>
 
       <!-- ─── Panel 3: Methodology ─── -->
@@ -953,6 +1368,31 @@
         <div class="chain-step" style="background:#fef3c7; color:#92400e;">Mediator — predator-prey balance shifts toward generalists</div>
         <div class="chain-arrow">↓</div>
         <div class="chain-step" style="background:#ccfbf1; color:#0d9488;">Outcome — community diversity index drops 18% over 24 months</div>
+
+        <!-- ── Graphics pack: pure-CSS flowchart + milestone strip ── -->
+        <h2>Screening pipeline — flowchart</h2>
+        <p>Print-perfect, CDN-free flowchart with a decision branch. For complex diagrams prefer Mermaid; for simple flows this prints cleanly without an external library.</p>
+        <ol class="flow">
+          <li><div class="flow-node start">Search executed<span>3 databases · 1,248 records</span></div></li>
+          <li><div class="flow-node">De-duplication<span>1,102 unique records</span></div></li>
+          <li>
+            <div class="flow-node decision">Title/abstract screen passes?</div>
+            <div class="flow-branch">
+              <div><div class="flow-tag">no · 812</div><div class="flow-node" style="border-color: var(--coral)">Excluded</div></div>
+              <div><div class="flow-tag">yes · 290</div><div class="flow-node">Full-text review<span>86 included</span></div></div>
+            </div>
+          </li>
+          <li><div class="flow-node end">Synthesis &amp; meta-analysis</div></li>
+        </ol>
+
+        <h2>Project milestones</h2>
+        <ol class="mstrip">
+          <li class="done"><div class="ms-title">Protocol</div><div class="ms-date">Jul 14</div></li>
+          <li class="done"><div class="ms-title">Search</div><div class="ms-date">Jul 28</div></li>
+          <li class="now"><div class="ms-title">Screening</div><div class="ms-date">due Sep 20</div></li>
+          <li><div class="ms-title">Findings</div><div class="ms-date">due Oct 15</div></li>
+          <li><div class="ms-title">Final</div><div class="ms-date">due Nov 30</div></li>
+        </ol>
       </section>
 
       <!-- ─── Panel 4: Findings ─── -->
@@ -963,6 +1403,34 @@
         <p>This tab is the place for the actual analysis — what the data means, what action items fall out of
           the metrics and methodology shown in the other tabs. Use cards to break out individual findings, the
           chain-step for an executive-summary flow, and badges to mark confidence levels.</p>
+
+        <!-- ── Graphics pack: comparison table + pull-quote ── -->
+        <blockquote class="pull-quote reveal">
+          <p>The screening funnel is finally converging — coverage is consistent across all three databases.</p>
+          <cite>— External reviewer, mid-sprint check</cite>
+        </blockquote>
+
+        <h2>Review tooling — comparison</h2>
+        <p>Real <code>&lt;table&gt;</code> with <code>scope</code>, sticky header, recommended column highlighted, ✓/— never color-alone. Stacks to cards on screens &lt;720px (resize to test).</p>
+        <div class="compare-wrap">
+          <table class="compare">
+            <thead>
+              <tr>
+                <th scope="col">Capability</th>
+                <th scope="col">Manual review</th>
+                <th scope="col" class="rec-col">This pipeline<span class="rec-badge">RECOMMENDED</span></th>
+                <th scope="col">Vendor tool</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><th scope="row">Offset-anchored notes</th><td class="no" data-label="Manual">—</td><td class="rec-col" data-label="This pipeline"><span class="yes">✓</span></td><td class="no" data-label="Vendor">—</td></tr>
+              <tr><th scope="row">JSON export for revision agents</th><td class="no" data-label="Manual">—</td><td class="rec-col" data-label="This pipeline"><span class="yes">✓</span></td><td class="no" data-label="Vendor">—</td></tr>
+              <tr><th scope="row">Multi-tab jump-to-note</th><td class="no" data-label="Manual">—</td><td class="rec-col" data-label="This pipeline"><span class="yes">✓</span></td><td data-label="Vendor"><span class="yes">✓</span></td></tr>
+              <tr><th scope="row">Works offline / single file</th><td data-label="Manual"><span class="yes">✓</span></td><td class="rec-col" data-label="This pipeline"><span class="yes">✓</span></td><td class="no" data-label="Vendor">—</td></tr>
+              <tr><th scope="row">Cost per report</th><td data-label="Manual">hours</td><td class="rec-col" data-label="This pipeline"><strong>minutes</strong></td><td data-label="Vendor">$$$</td></tr>
+            </tbody>
+          </table>
+        </div>
 
         <h2>Headline result</h2>
         <div class="card highlight">

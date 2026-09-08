@@ -1,0 +1,166 @@
+<!--
+  ╔══════════════════════════════════════════════════════════════════════╗
+  ║  features/graphics/snippets.html — copy-paste reference            ║
+  ║                                                                        ║
+  ║  Every component below is in features/graphics/graphics.css.           ║
+  ║  Drop the markup into any report/slide/bento template and the         ║
+  ║  tokens from the host template take care of the rest.                 ║
+  ║                                                                        ║
+  ║  Layout convention: each example is a <figure> with a figcaption     ║
+  ║  describing the component and a class hint, so they can be lifted    ║
+  ║  directly into a panel or a slide.                                    ║
+  ╚══════════════════════════════════════════════════════════════════════╝
+-->
+
+<!-- ═══════ A1 · DONUT / PIE CHART ═══════════════════════════════════ -->
+<figure>
+  <figcaption><strong>Donut chart</strong> · class: <code>.donut</code> + <code>.legend</code></figcaption>
+  <div class="donut-wrap">
+    <div class="donut" data-center="248" role="img" aria-label="Donut: Screening 42%, Extraction 31%, Synthesis 18%, Writing 9%"></div>
+    <ol class="legend">
+      <li><span class="sw"></span>Screening <b>42%</b></li>
+      <li><span class="sw"></span>Extraction <b>31%</b></li>
+      <li><span class="sw"></span>Synthesis <b>18%</b></li>
+      <li><span class="sw"></span>Writing <b>9%</b></li>
+    </ol>
+  </div>
+  <table class="sr-only">
+    <caption>Effort distribution by phase</caption>
+    <tr><th scope="col">Phase</th><th scope="col">Share</th></tr>
+    <tr><th scope="row">Screening</th><td>42%</td></tr>
+    <tr><th scope="row">Extraction</th><td>31%</td></tr>
+    <tr><th scope="row">Synthesis</th><td>18%</td></tr>
+    <tr><th scope="row">Writing</th><td>9%</td></tr>
+  </table>
+</figure>
+
+<!-- ═══════ A2 · RADIAL GAUGE ════════════════════════════════════════ -->
+<figure>
+  <figcaption><strong>Radial gauges</strong> · class: <code>.gauge</code> (variants: <code>.g-green .g-amber .g-coral</code>; opt-in sweep: <code>.animated</code>)</figcaption>
+  <div class="gauge-row">
+    <div class="gauge animated" style="--progress: 73" role="img" aria-label="Coverage: 73 percent">
+      <div class="gauge-label"><div class="gauge-value">73%</div><div class="gauge-cap">Coverage</div></div>
+    </div>
+    <div class="gauge g-green" style="--progress: 91" role="img" aria-label="Uptime: 91 percent">
+      <div class="gauge-label"><div class="gauge-value">91%</div><div class="gauge-cap">Uptime</div></div>
+    </div>
+    <div class="gauge g-amber" style="--progress: 48" role="img" aria-label="Consent: 48 percent">
+      <div class="gauge-label"><div class="gauge-value">48%</div><div class="gauge-cap">Consent</div></div>
+    </div>
+  </div>
+</figure>
+
+<!-- ═══════ A3 · HORIZONTAL BAR ROWS ════════════════════════════════ -->
+<figure>
+  <figcaption><strong>Horizontal bars</strong> · class: <code>.hbar</code> + <code>.h-fill</code> (color variants: <code>.c-teal .c-amber .c-coral .c-green</code>)</figcaption>
+  <div class="hbars">
+    <div class="hbar"><span class="h-label">Screening</span><div class="h-track"><div class="h-fill" style="width: 92%"></div></div><span class="h-value">92%</span></div>
+    <div class="hbar"><span class="h-label">Extraction</span><div class="h-track"><div class="h-fill c-teal" style="width: 64%"></div></div><span class="h-value">64%</span></div>
+    <div class="hbar"><span class="h-label">Synthesis</span><div class="h-track"><div class="h-fill c-amber" style="width: 31%"></div></div><span class="h-value">31%</span></div>
+    <div class="hbar"><span class="h-label">Writing</span><div class="h-track"><div class="h-fill c-coral" style="width: 12%"></div></div><span class="h-value">12%</span></div>
+  </div>
+</figure>
+
+<!-- ═══════ A4 · HEATMAP TABLE ══════════════════════════════════════ -->
+<figure>
+  <figcaption><strong>Heatmap</strong> · class: <code>.heat</code> on a real <code>&lt;table&gt;</code>; cells use <code>data-level="0-4"</code> (never color-alone: numbers stay visible)</figcaption>
+  <table class="heat">
+    <thead><tr><th scope="col">Region</th><th scope="col">Q1</th><th scope="col">Q2</th><th scope="col">Q3</th><th scope="col">Q4</th></tr></thead>
+    <tbody>
+      <tr><th scope="row">EU-West</th><td data-level="2">14</td><td data-level="3">22</td><td data-level="4">31</td><td data-level="3">26</td></tr>
+      <tr><th scope="row">US-East</th><td data-level="1">6</td><td data-level="2">12</td><td data-level="3">19</td><td data-level="4">29</td></tr>
+      <tr><th scope="row">APAC</th><td data-level="0">2</td><td data-level="1">5</td><td data-level="2">11</td><td data-level="2">13</td></tr>
+    </tbody>
+  </table>
+  <div class="heat-legend" aria-hidden="true"><span>low</span><i></i><i></i><i></i><i></i><span>high</span></div>
+</figure>
+
+<!-- ═══════ A5 · DATA BARS IN TABLE CELLS ════════════════════════════ -->
+<figure>
+  <figcaption><strong>Data bars in table cells</strong> · class: <code>.db-cell</code> + <code>.db-bar</code> (value drives <code>--v</code>)</figcaption>
+  <table class="data-table">
+    <thead><tr><th scope="col">Dataset</th><th scope="col">Records</th><th scope="col">Screened</th><th scope="col">Included</th></tr></thead>
+    <tbody>
+      <tr><td>PubMed</td><td>612</td><td class="db-cell" style="--v: 88%"><div class="db-bar"></div><span>88%</span></td><td>34</td></tr>
+      <tr><td>arXiv</td><td>421</td><td class="db-cell" style="--v: 64%"><div class="db-bar"></div><span>64%</span></td><td>31</td></tr>
+    </tbody>
+  </table>
+</figure>
+
+<!-- ═══════ B1 · PURE-CSS FLOWCHART ══════════════════════════════════ -->
+<figure>
+  <figcaption><strong>Flowchart</strong> · class: <code>.flow</code> on an <code>&lt;ol&gt;</code>; nodes use <code>.flow-node</code> (variants: <code>.start .end .decision</code>); branches via <code>.flow-branch</code></figcaption>
+  <ol class="flow">
+    <li><div class="flow-node start">Search executed<span>3 databases · 1,248 records</span></div></li>
+    <li><div class="flow-node">De-duplication<span>1,102 unique records</span></div></li>
+    <li>
+      <div class="flow-node decision">Title/abstract screen passes?</div>
+      <div class="flow-branch">
+        <div><div class="flow-tag">no · 812</div><div class="flow-node" style="border-color: var(--coral)">Excluded</div></div>
+        <div><div class="flow-tag">yes · 290</div><div class="flow-node">Full-text review<span>86 included</span></div></div>
+      </div>
+    </li>
+    <li><div class="flow-node end">Synthesis &amp; meta-analysis</div></li>
+  </ol>
+</figure>
+
+<!-- ═══════ B2 · HORIZONTAL MILESTONE STRIP ══════════════════════════ -->
+<figure>
+  <figcaption><strong>Milestone strip</strong> · class: <code>.mstrip</code> on an <code>&lt;ol&gt;</code>; states: <code>.done</code> (✓), <code>.now</code> (filled number), default (upcoming)</figcaption>
+  <ol class="mstrip">
+    <li class="done"><div class="ms-title">Protocol</div><div class="ms-date">Jul 14</div></li>
+    <li class="done"><div class="ms-title">Search</div><div class="ms-date">Jul 28</div></li>
+    <li class="now"><div class="ms-title">Screening</div><div class="ms-date">due Sep 20</div></li>
+    <li><div class="ms-title">Findings</div><div class="ms-date">due Oct 15</div></li>
+    <li><div class="ms-title">Final</div><div class="ms-date">due Nov 30</div></li>
+  </ol>
+</figure>
+
+<!-- ═══════ C1 · COMPARISON TABLE ════════════════════════════════════ -->
+<figure>
+  <figcaption><strong>Comparison table</strong> · class: <code>.compare</code> on a real <code>&lt;table&gt;</code>; recommended column: <code>class="rec-col"</code>; ✓: <code>class="yes"</code>, —: <code>class="no"</code>; mobile stack adds <code>data-label</code> per cell</figcaption>
+  <div class="compare-wrap">
+    <table class="compare">
+      <thead>
+        <tr>
+          <th scope="col">Capability</th>
+          <th scope="col">Manual</th>
+          <th scope="col" class="rec-col">This pipeline<span class="rec-badge">RECOMMENDED</span></th>
+          <th scope="col">Vendor</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><th scope="row">Offset-anchored notes</th><td class="no" data-label="Manual">—</td><td class="rec-col yes" data-label="This pipeline"><span class="yes">✓</span></td><td class="no" data-label="Vendor">—</td></tr>
+        <tr><th scope="row">JSON export</th><td class="no" data-label="Manual">—</td><td class="rec-col yes" data-label="This pipeline"><span class="yes">✓</span></td><td class="no" data-label="Vendor">—</td></tr>
+        <tr><th scope="row">Multi-tab jump-to-note</th><td class="no" data-label="Manual">—</td><td class="rec-col yes" data-label="This pipeline"><span class="yes">✓</span></td><td data-label="Vendor"><span class="yes">✓</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+</figure>
+
+<!-- ═══════ C2 · PULL-QUOTE ══════════════════════════════════════════ -->
+<figure>
+  <figcaption><strong>Pull-quote</strong> · class: <code>.pull-quote</code> on a <code>&lt;blockquote&gt;</code></figcaption>
+  <blockquote class="pull-quote">
+    <p>The screening funnel is finally converging — coverage is consistent across all three databases.</p>
+    <cite>— External reviewer, mid-sprint check</cite>
+  </blockquote>
+</figure>
+
+<!-- ═══════ D1 · READING PROGRESS BAR ════════════════════════════════ -->
+<!-- Drop this <div> anywhere in <body> (e.g. immediately after <body>).
+     Renders as a 3px gradient line pinned to the top edge that grows
+     from 0% to 100% as the user scrolls. Static in unsupported browsers. -->
+<div class="reading-progress" aria-hidden="true"></div>
+
+<!-- ═══════ D2 · SCROLL-DRIVEN REVEAL ═════════════════════════════════ -->
+<!-- Add class="reveal" to any block; it fades/slides in as it enters
+     the viewport. Static in unsupported browsers. -->
+<div class="reveal">
+  <p>This block fades in as it crosses into view.</p>
+</div>
+
+<!-- ═══════ D3 · GAUGE SWEEP ══════════════════════════════════════════ -->
+<!-- Add class="animated" to any .gauge; the conic-gradient stop sweeps
+     from 0% to its final --progress on first view. -->
+<div class="gauge animated" style="--progress: 73" role="img" aria-label="…">…</div>

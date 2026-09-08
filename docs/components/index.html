@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<!--
+  ╔══════════════════════════════════════════════════════════════════════╗
+  ║  COMPONENT GALLERY — proposed graphics pack for report + slide        ║
+  ║  Zero-dependency (pure CSS/HTML), token-driven, accessible.           ║
+  ║  Review page only — nothing here is in the skill yet.                 ║
+  ║                                                                        ║
+  ║  Packs:                                                                ║
+  ║   A. Charts:    donut/pie, radial gauge, horizontal bars,             ║
+  ║                 heatmap table, data-bar table cells                    ║
+  ║   B. Diagrams:  pure-CSS flowchart (print-perfect, no CDN),           ║
+  ║                 horizontal milestone strip                             ║
+  ║   C. Tables:    feature comparison table, pull-quote callout          ║
+  ║   D. Motion:    scroll-driven reveals, reading progress bar,          ║
+  ║                 animated gauge sweep (@property, reduced-motion safe)  ║
+  ║                                                                        ║
+  ║  Accessibility: every chart is a real <figure> whose data lives in a  ║
+  ║  real <table> (visually hidden or structural); role="img" + labels;   ║
+  ║  no meaning encoded by color alone; motion guarded by                 ║
+  ║  @supports + prefers-reduced-motion.                                  ║
+  ╚══════════════════════════════════════════════════════════════════════╝
+-->
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Component Gallery — graphics pack for report + slide templates</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
+  <style>
+    /* ═══ Report-template tokens (same palette as templates/report) ══ */
+    :root, [data-theme="dark"] {
+      color-scheme: light dark;
+      --bg: #0b0e14; --surface: #131820; --surface2: #1c2230; --surface3: #252b3d;
+      --border: #232a35; --border-bright: #313a4a;
+      --text: #f8fafc; --text-muted: #94a3b8; --text-dim: #64748b;
+      --accent: #60a5fa; --accent-dim: rgba(96,165,250,0.1); --accent-glow: rgba(96,165,250,0.2);
+      --teal: #14b8a6; --coral: #ef4444; --green: #10b981; --amber: #f59e0b;
+      --deep-blue: #3b82f6; --navy: #1e3a5f;
+      --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      --font-head: 'Outfit', sans-serif;
+      --radius: 12px; --radius-sm: 6px;
+    }
+    [data-theme="light"] {
+      --bg: #f8fafc; --surface: #ffffff; --surface2: #f1f5f9; --surface3: #e2e8f0;
+      --border: #e2e8f0; --border-bright: #cbd5e1;
+      --text: #0f172a; --text-muted: #64748b; --text-dim: #94a3b8;
+      --accent: #2563eb; --accent-dim: rgba(37,99,235,0.08); --accent-glow: rgba(37,99,235,0.15);
+      --teal: #0d9488; --coral: #ef4444; --green: #059669; --amber: #d97706;
+      --deep-blue: #2563eb; --navy: #1e3a5f;
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    body {
+      margin: 0; font-family: var(--font-sans); font-size: 1rem; line-height: 1.6;
+      color: var(--text); background: var(--bg); -webkit-font-smoothing: antialiased;
+    }
+    body::before {
+      content: ""; position: fixed; inset: 0; z-index: -1; pointer-events: none;
+      background:
+        radial-gradient(640px circle at 12% -8%, var(--accent-glow), transparent 62%),
+        radial-gradient(860px circle at 108% 12%, var(--accent-glow), transparent 66%);
+    }
+    .content { max-width: 900px; margin: 0 auto; padding: 4rem 2rem 6rem; }
+    .eyebrow {
+      display: inline-block; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--accent); background: var(--accent-dim);
+      padding: 0.3rem 0.75rem; border-radius: 999px; margin-bottom: 1rem;
+    }
+    h1 { font-family: var(--font-head); font-size: clamp(2rem, 4.5vw, 2.75rem); font-weight: 800; letter-spacing: -0.03em; margin: 0 0 0.75rem; line-height: 1.1; }
+    h2 { font-family: var(--font-head); font-size: 1.6rem; font-weight: 700; margin: 3.5rem 0 0.5rem; letter-spacing: -0.02em; }
+    h2 .pack { font-size: 0.65em; color: var(--accent); background: var(--accent-dim); border-radius: 999px; padding: 0.15rem 0.6rem; vertical-align: middle; letter-spacing: 0.05em; }
+    .sub { color: var(--text-muted); margin: 0 0 1.25rem; }
+    .note { font-size: 0.8rem; color: var(--text-dim); margin-top: -0.5rem; margin-bottom: 1rem; }
+    code { font-family: ui-monospace, 'SF Mono', Menlo, Consolas, monospace; font-size: 0.85em; background: var(--surface2); border: 1px solid var(--border); border-radius: 4px; padding: 0.1em 0.4em; }
+
+    /* Visually-hidden (for data-table fallbacks) */
+    .sr-only {
+      position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+      overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+    }
+
+    /* Shared figure card */
+    .demo {
+      background: var(--surface); border: 1px solid var(--border-bright); border-radius: var(--radius);
+      padding: 1.5rem; margin: 1rem 0; box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    }
+    .demo-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem; }
+
+    /* ══════════════ A1. DONUT / PIE CHART (conic-gradient) ══════════════ */
+    .donut-wrap { display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap; }
+    .donut {
+      --a: 42; --b: 31; --c: 18; --d: 9;   /* slices must sum to 100 */
+      flex: 0 0 auto; width: 170px; aspect-ratio: 1; border-radius: 50%;
+      background: conic-gradient(
+        var(--teal)       0 calc(var(--a) * 1%),
+        var(--deep-blue)  0 calc((var(--a) + var(--b)) * 1%),
+        var(--amber)      0 calc((var(--a) + var(--b) + var(--c)) * 1%),
+        var(--surface3)   0 100%
+      );
+      -webkit-mask: radial-gradient(closest-side, transparent 61%, #000 61.5%);
+      mask: radial-gradient(closest-side, transparent 61%, #000 61.5%);
+      position: relative;
+    }
+    .donut::after {  /* center label */
+      content: attr(data-center);
+      position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-head); font-weight: 800; font-size: 1.5rem; color: var(--text);
+      -webkit-mask: none; mask: none;
+    }
+    .legend { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.5rem; font-size: 0.9rem; }
+    .legend li { display: flex; align-items: center; gap: 0.6rem; color: var(--text-muted); }
+    .legend .sw { width: 12px; height: 12px; border-radius: 3px; flex-shrink: 0; }
+    .legend b { color: var(--text); margin-left: auto; font-variant-numeric: tabular-nums; }
+    .legend li:nth-child(1) .sw { background: var(--teal); }
+    .legend li:nth-child(2) .sw { background: var(--deep-blue); }
+    .legend li:nth-child(3) .sw { background: var(--amber); }
+    .legend li:nth-child(4) .sw { background: var(--surface3); }
+
+    /* ══════════════ A2. RADIAL GAUGE (progress ring) ══════════════ */
+    .gauge-row { display: flex; gap: 1.5rem; flex-wrap: wrap; }
+    .gauge {
+      --progress: 73;                        /* 0–100 */
+      --gauge-color: var(--accent);
+      width: 130px; aspect-ratio: 1; border-radius: 50%; position: relative;
+      display: grid; place-items: center;
+      background:
+        radial-gradient(closest-side, var(--surface) 74%, transparent 74% 100%),
+        conic-gradient(var(--gauge-color) calc(var(--progress) * 1%), var(--surface3) 0);
+    }
+    .gauge .gauge-label { text-align: center; line-height: 1.15; }
+    .gauge .gauge-value { font-family: var(--font-head); font-size: 1.7rem; font-weight: 800; color: var(--gauge-color); }
+    .gauge .gauge-cap { font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-dim); }
+    .gauge.g-green { --gauge-color: var(--green); }
+    .gauge.g-amber { --gauge-color: var(--amber); }
+    .gauge.g-coral { --gauge-color: var(--coral); }
+
+    /* Animated sweep — @property animates the conic stop itself.
+       Guarded: browsers without @property show the static ring. */
+    @property --sweep { syntax: '<percentage>'; inherits: false; initial-value: 0%; }
+    @keyframes gauge-sweep { from { --sweep: 0%; } to { --sweep: calc(var(--progress) * 1%); } }
+    @media (prefers-reduced-motion: no-preference) {
+      @supports (background: conic-gradient(red 0 1%)) and (animation-timeline: scroll()) {
+        .gauge.animated {
+          background:
+            radial-gradient(closest-side, var(--surface) 74%, transparent 74% 100%),
+            conic-gradient(var(--gauge-color) var(--sweep), var(--surface3) 0);
+          animation: gauge-sweep 1.2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+      }
+    }
+
+    /* ══════════════ A3. HORIZONTAL BAR ROWS ══════════════ */
+    .hbars { display: grid; gap: 0.8rem; }
+    .hbar { display: grid; grid-template-columns: minmax(90px, 34%) 1fr 3.2rem; align-items: center; gap: 0.75rem; }
+    .hbar .h-label { font-size: 0.85rem; font-weight: 600; color: var(--text); text-align: right; }
+    .hbar .h-track { height: 14px; background: var(--surface2); border: 1px solid var(--border); border-radius: 999px; overflow: hidden; }
+    .hbar .h-fill { height: 100%; border-radius: 999px; background: var(--bar-color, var(--accent)); min-width: 4px; }
+    .hbar .h-value { font-size: 0.8rem; font-weight: 700; color: var(--text-muted); font-variant-numeric: tabular-nums; }
+    .hbar .h-fill.c-teal { --bar-color: var(--teal); }
+    .hbar .h-fill.c-amber { --bar-color: var(--amber); }
+    .hbar .h-fill.c-coral { --bar-color: var(--coral); }
+    .hbar .h-fill.c-green { --bar-color: var(--green); }
+
+    /* ══════════════ A4. HEATMAP TABLE ══════════════ */
+    .heat { width: 100%; border-collapse: collapse; font-size: 0.82rem; }
+    .heat caption { caption-side: bottom; text-align: left; color: var(--text-dim); font-size: 0.75rem; padding-top: 0.5rem; }
+    .heat th, .heat td { border: 1px solid var(--border); padding: 0.45rem 0.55rem; text-align: center; }
+    .heat thead th { background: var(--surface2); font-weight: 700; color: var(--text); }
+    .heat tbody th { font-weight: 600; text-align: left; color: var(--text-muted); background: var(--surface2); }
+    .heat td[data-level="0"] { background: var(--surface); color: var(--text-dim); }
+    .heat td[data-level="1"] { background: color-mix(in srgb, var(--accent) 18%, var(--surface)); }
+    .heat td[data-level="2"] { background: color-mix(in srgb, var(--accent) 40%, var(--surface)); color: var(--text); }
+    .heat td[data-level="3"] { background: color-mix(in srgb, var(--accent) 65%, var(--surface)); color: var(--bg); font-weight: 700; }
+    .heat td[data-level="4"] { background: var(--accent); color: var(--bg); font-weight: 700; }
+    .heat-legend { display: flex; align-items: center; gap: 0.4rem; font-size: 0.75rem; color: var(--text-dim); margin-top: 0.6rem; }
+    .heat-legend i { width: 14px; height: 14px; border-radius: 3px; border: 1px solid var(--border); }
+    .heat-legend i:nth-child(2) { background: color-mix(in srgb, var(--accent) 18%, var(--surface)); }
+    .heat-legend i:nth-child(3) { background: color-mix(in srgb, var(--accent) 40%, var(--surface)); }
+    .heat-legend i:nth-child(4) { background: color-mix(in srgb, var(--accent) 65%, var(--surface)); }
+    .heat-legend i:nth-child(5) { background: var(--accent); }
+
+    /* ══════════════ A5. DATA BARS IN TABLE CELLS ══════════════ */
+    .data-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+    .data-table th, .data-table td { border: 1px solid var(--border); padding: 0.5rem 0.7rem; text-align: left; }
+    .data-table thead th { background: var(--navy); color: #fff; font-weight: 700; }
+    [data-theme="dark"] .data-table thead th { background: var(--surface3); color: var(--text); }
+    .data-table .num { text-align: right; font-variant-numeric: tabular-nums; }
+    .db-cell { position: relative; min-width: 120px; }
+    .db-bar {
+      position: absolute; inset: 3px auto 3px 0; width: var(--v);
+      background: color-mix(in srgb, var(--accent) 28%, transparent);
+      border-right: 2px solid var(--accent); border-radius: 3px;
+    }
+    .db-cell span { position: relative; padding-left: 0.35rem; }
+
+    /* ══════════════ B1. PURE-CSS FLOWCHART ══════════════ */
+    .flow { list-style: none; margin: 0; padding: 0; display: grid; justify-items: center; gap: 1.75rem; }
+    .flow > li { position: relative; width: 100%; display: grid; justify-items: center; }
+    /* connector arrow between stacked nodes */
+    .flow > li + li::before {
+      content: ""; position: absolute; top: -1.55rem; width: 2px; height: 1.05rem;
+      background: var(--border-bright);
+    }
+    .flow > li + li::after {
+      content: ""; position: absolute; top: -0.55rem; width: 8px; height: 8px;
+      border-right: 2px solid var(--border-bright); border-bottom: 2px solid var(--border-bright);
+      transform: rotate(45deg);
+    }
+    .flow-node {
+      background: var(--surface2); border: 1px solid var(--border-bright); border-radius: var(--radius);
+      padding: 0.7rem 1.2rem; text-align: center; max-width: 320px;
+      font-size: 0.9rem; font-weight: 600; color: var(--text);
+    }
+    .flow-node small, .flow-node > span { display: block; font-weight: 400; color: var(--text-muted); margin-top: 0.2rem; }
+    .flow-node.start { border-color: var(--green); }
+    .flow-node.end { border-color: var(--accent); background: var(--accent-dim); }
+    .flow-node.decision { border-radius: 999px; border-style: dashed; border-color: var(--amber); }
+    /* branch row: two parallel paths */
+    .flow-branch { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; width: 100%; }
+    .flow-branch > div { display: grid; justify-items: center; gap: 0; position: relative; }
+    .flow-branch > div::before {
+      content: ""; position: absolute; top: -1.05rem; height: 1.05rem; width: 2px; background: var(--border-bright);
+    }
+    .flow-tag { font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-dim); margin: 0.35rem 0; }
+
+    /* ══════════════ B2. HORIZONTAL MILESTONE STRIP (for slides) ══════════════ */
+    .mstrip { display: flex; margin: 0; padding: 0; list-style: none; counter-reset: ms; }
+    .mstrip li { flex: 1; text-align: center; position: relative; padding: 1.4rem 0.6rem 0; }
+    .mstrip li::before {  /* connector line */
+      content: ""; position: absolute; top: 9px; left: -50%; width: 100%; height: 2px; background: var(--border-bright);
+    }
+    .mstrip li:first-child::before { display: none; }
+    .mstrip li::after {  /* dot */
+      content: ""; counter-increment: ms;
+      position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+      width: 20px; height: 20px; border-radius: 50%;
+      background: var(--surface); border: 2px solid var(--accent);
+      display: grid; place-items: center; font-size: 0.65rem; font-weight: 800; color: var(--accent);
+    }
+    .mstrip li.done::after { content: "✓"; background: var(--green); border-color: var(--green); color: #fff; }
+    .mstrip li.now::after { content: counter(ms); background: var(--accent); color: var(--bg); }
+    .mstrip .ms-title { font-size: 0.85rem; font-weight: 700; color: var(--text); }
+    .mstrip .ms-date { font-size: 0.72rem; color: var(--text-dim); }
+
+    /* ══════════════ C1. COMPARISON TABLE ══════════════ */
+    .compare-wrap { overflow-x: auto; }
+    .compare { width: 100%; border-collapse: separate; border-spacing: 0; font-size: 0.88rem; }
+    .compare th, .compare td { border-bottom: 1px solid var(--border); padding: 0.6rem 0.8rem; text-align: center; }
+    .compare thead th { position: sticky; top: 0; background: var(--surface2); font-weight: 700; z-index: 1; }
+    .compare tbody th { text-align: left; font-weight: 600; color: var(--text-muted); }
+    .compare .yes { color: var(--green); font-weight: 800; }
+    .compare .no { color: var(--text-dim); }
+    .compare .rec-col { background: color-mix(in srgb, var(--accent) 7%, var(--surface)); }
+    .compare thead .rec-col { color: var(--accent); border-top: 2px solid var(--accent); }
+    .compare .rec-badge {
+      display: inline-block; font-size: 0.62rem; font-weight: 800; letter-spacing: 0.08em;
+      background: var(--accent); color: var(--bg); border-radius: 999px; padding: 0.1rem 0.5rem; margin-left: 0.4rem;
+    }
+    /* mobile: stack to cards */
+    @media (max-width: 720px) {
+      .compare thead { display: none; }
+      .compare tr { display: block; border: 1px solid var(--border-bright); border-radius: var(--radius); margin-bottom: 0.8rem; overflow: hidden; }
+      .compare td { display: flex; justify-content: space-between; text-align: right; border-bottom: 1px solid var(--border); }
+      .compare td::before { content: attr(data-label); font-weight: 600; color: var(--text-muted); text-align: left; }
+    }
+
+    /* ══════════════ C2. PULL-QUOTE ══════════════ */
+    .pull-quote {
+      margin: 1.5rem 0; padding: 1.5rem 2rem 1.5rem 3.2rem; position: relative;
+      border-left: 4px solid var(--accent); background: var(--accent-dim);
+      border-radius: 0 var(--radius) var(--radius) 0;
+    }
+    .pull-quote::before {
+      content: "“"; position: absolute; left: 0.6rem; top: 0.1rem;
+      font-family: var(--font-head); font-size: 3.2rem; font-weight: 800; color: var(--accent); opacity: 0.55; line-height: 1;
+    }
+    .pull-quote p { margin: 0; font-family: var(--font-head); font-size: 1.3rem; font-weight: 600; line-height: 1.45; color: var(--text); letter-spacing: -0.01em; }
+    .pull-quote cite { display: block; margin-top: 0.6rem; font-size: 0.85rem; font-style: normal; color: var(--text-dim); font-weight: 600; }
+
+    /* ══════════════ D1. SCROLL-DRIVEN REVEAL (progressive enhancement) ═══ */
+    @keyframes reveal-in { from { opacity: 0; translate: 0 28px; } to { opacity: 1; translate: 0 0; } }
+    @media (prefers-reduced-motion: no-preference) {
+      @supports (animation-timeline: view()) {
+        .reveal {
+          animation: reveal-in linear both;
+          animation-timeline: view();
+          animation-range: entry 0% entry 55%;
+        }
+      }
+    }
+
+    /* ══════════════ D2. READING PROGRESS BAR (scroll timeline) ══════════ */
+    .reading-progress {
+      position: fixed; top: 0; left: 0; right: 0; height: 3px; z-index: 200;
+      background: linear-gradient(90deg, var(--accent), var(--teal));
+      transform-origin: 0 50%; transform: scaleX(0); pointer-events: none;
+    }
+    @supports (animation-timeline: scroll()) {
+      @media (prefers-reduced-motion: no-preference) {
+        .reading-progress { animation: rp-grow linear; animation-timeline: scroll(root); }
+      }
+    }
+    @keyframes rp-grow { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+
+    /* ── Motion legend (static illustrations of pack D) ── */
+    .state-matrix { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
+    .state-matrix th, .state-matrix td { border-bottom: 1px solid var(--border); padding: 0.55rem 0.7rem; text-align: left; }
+    .state-matrix thead th { background: var(--surface2); font-weight: 700; }
+    .state-matrix td.ok { color: var(--green); }
+    .state-matrix td.ok::before { content: "✓ "; font-weight: 700; }
+    .state-matrix td.off { color: var(--text-dim); }
+    .state-matrix td.off::before { content: "· "; font-weight: 700; }
+
+    /* Reading-progress bar keyframes (static, 4 stops) */
+    .rp-strip { list-style: none; padding: 0; margin: 0; display: grid; gap: 0.7rem; }
+    .rp-strip li { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 0.6rem; }
+    .rp-strip .rp-bar {
+      display: block; height: 6px; border-radius: 999px;
+      background: linear-gradient(90deg, var(--accent), var(--teal));
+      width: var(--v); max-width: 100%;
+    }
+    .rp-strip .rp-cap { font-size: 0.75rem; font-weight: 700; color: var(--text-dim); font-variant-numeric: tabular-nums; }
+
+    /* Reveal keyframes (before/after pair) */
+    .reveal-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .reveal-state {
+      border: 1px dashed var(--border-bright); border-radius: var(--radius);
+      padding: 1rem; min-height: 120px; display: grid; place-items: center;
+      font-size: 0.85rem; font-weight: 600; color: var(--text);
+      transition: none;  /* static illustration — no real animation here */
+    }
+    .reveal-state.before { opacity: 0.18; transform: translateY(28px); }
+    .reveal-state.after  { opacity: 1; transform: translateY(0); }
+    .reveal-state .rs-label { text-align: center; line-height: 1.35; }
+    .reveal-state .rs-label span { display: block; font-weight: 400; color: var(--text-muted); font-size: 0.78rem; margin-top: 0.2rem; }
+
+    /* Gauge sweep keyframes (4 stops) — reuse .gauge; add a static
+       --sweep-static variant so we can render arbitrary stops without
+       re-keying the conic-gradient. */
+    .gauge[style*="--sweep-static"] {
+      background:
+        radial-gradient(closest-side, var(--surface) 74%, transparent 74% 100%),
+        conic-gradient(var(--gauge-color) var(--sweep-static), var(--surface3) 0);
+    }
+    .sweep-strip { display: flex; gap: 1.2rem; flex-wrap: wrap; align-items: flex-end; }
+    .sweep-step { display: grid; justify-items: center; gap: 0.3rem; }
+    .sweep-step .gauge { width: 90px; }
+    .sweep-step .gauge .gauge-value { font-size: 1.2rem; }
+    .sw-cap { font-size: 0.72rem; font-weight: 700; color: var(--text-dim); font-variant-numeric: tabular-nums; }
+
+    .foot { margin-top: 4rem; text-align: center; font-size: 0.8rem; color: var(--text-dim); }
+  </style>
+</head>
+<body data-annot-storage="component-gallery">
+<div class="reading-progress" aria-hidden="true"></div>
+
+<main class="content">
+  <span class="eyebrow">Graphics pack · Review draft</span>
+  <h1>Component Gallery</h1>
+  <p class="sub">Proposed zero-dependency graphics for the <strong>report</strong> and <strong>slide</strong> templates. Everything below is pure HTML + CSS — no Mermaid, no htmx, no JS libraries. Each visual carries an accessible data fallback. Scroll to see the motion pack.</p>
+
+  <!-- ═══════════ A. CHARTS ═══════════ -->
+  <h2>A · Charts <span class="pack">charts pack</span></h2>
+  <p class="sub">Built with conic-gradients and real tables — no canvas, no SVG libraries.</p>
+
+  <div class="demo-grid">
+    <figure class="demo" role="group" aria-labelledby="donut-cap">
+      <figcaption id="donut-cap" class="sub" style="margin-bottom:1rem"><strong>Donut chart</strong> — <code>conic-gradient</code>, slice sizes via CSS custom properties</figcaption>
+      <div class="donut-wrap">
+        <div class="donut" data-center="248" role="img" aria-label="Donut chart: Screening 42%, Extraction 31%, Synthesis 18%, Writing 9%"></div>
+        <ol class="legend">
+          <li><span class="sw"></span>Screening <b>42%</b></li>
+          <li><span class="sw"></span>Extraction <b>31%</b></li>
+          <li><span class="sw"></span>Synthesis <b>18%</b></li>
+          <li><span class="sw"></span>Writing <b>9%</b></li>
+        </ol>
+      </div>
+      <table class="sr-only">
+        <caption>Effort distribution by phase</caption>
+        <tr><th scope="col">Phase</th><th scope="col">Share</th></tr>
+        <tr><th scope="row">Screening</th><td>42%</td></tr>
+        <tr><th scope="row">Extraction</th><td>31%</td></tr>
+        <tr><th scope="row">Synthesis</th><td>18%</td></tr>
+        <tr><th scope="row">Writing</th><td>9%</td></tr>
+      </table>
+    </figure>
+
+    <figure class="demo" role="group" aria-labelledby="gauge-cap">
+      <figcaption id="gauge-cap" class="sub" style="margin-bottom:1rem"><strong>Radial gauges</strong> — one <code>--progress</code> custom property each</figcaption>
+      <div class="gauge-row">
+        <div class="gauge animated" role="img" aria-label="Coverage: 73 percent"><div class="gauge-label"><div class="gauge-value">73%</div><div class="gauge-cap">Coverage</div></div></div>
+        <div class="gauge g-green animated" style="--progress: 91" role="img" aria-label="Uptime: 91 percent"><div class="gauge-label"><div class="gauge-value">91%</div><div class="gauge-cap">Uptime</div></div></div>
+        <div class="gauge g-amber" style="--progress: 48" role="img" aria-label="Consent rate: 48 percent"><div class="gauge-label"><div class="gauge-value">48%</div><div class="gauge-cap">Consent</div></div></div>
+      </div>
+    </figure>
+  </div>
+
+  <figure class="demo" role="group" aria-labelledby="hbar-cap">
+    <figcaption id="hbar-cap" class="sub"><strong>Horizontal bars</strong> — one row per datum, value drives <code>--w</code></figcaption>
+    <div class="hbars">
+      <div class="hbar"><span class="h-label">Screening</span><div class="h-track"><div class="h-fill" style="width: 92%"></div></div><span class="h-value">92%</span></div>
+      <div class="hbar"><span class="h-label">Extraction</span><div class="h-track"><div class="h-fill c-teal" style="width: 64%"></div></div><span class="h-value">64%</span></div>
+      <div class="hbar"><span class="h-label">Synthesis</span><div class="h-track"><div class="h-fill c-amber" style="width: 31%"></div></div><span class="h-value">31%</span></div>
+      <div class="hbar"><span class="h-label">Writing</span><div class="h-track"><div class="h-fill c-coral" style="width: 12%"></div></div><span class="h-value">12%</span></div>
+    </div>
+  </figure>
+
+  <figure class="demo" role="group" aria-labelledby="heat-cap">
+    <figcaption id="heat-cap" class="sub"><strong>Heatmap table</strong> — intensity via <code>data-level="0-4"</code>, legend included (not color alone: numbers stay visible)</figcaption>
+    <table class="heat">
+      <thead><tr><th scope="col">Region</th><th scope="col">Q1</th><th scope="col">Q2</th><th scope="col">Q3</th><th scope="col">Q4</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">EU-West</th><td data-level="2">14</td><td data-level="3">22</td><td data-level="4">31</td><td data-level="3">26</td></tr>
+        <tr><th scope="row">US-East</th><td data-level="1">6</td><td data-level="2">12</td><td data-level="3">19</td><td data-level="4">29</td></tr>
+        <tr><th scope="row">APAC</th><td data-level="0">2</td><td data-level="1">5</td><td data-level="2">11</td><td data-level="2">13</td></tr>
+      </tbody>
+    </table>
+    <div class="heat-legend" aria-hidden="true"><span>low</span><i></i><i></i><i></i><i></i><span>high</span></div>
+  </figure>
+
+  <figure class="demo" role="group" aria-labelledby="dbar-cap">
+    <figcaption id="dbar-cap" class="sub"><strong>Data bars in table cells</strong> — the bar sits behind the number via <code>--v</code></figcaption>
+    <table class="data-table">
+      <thead><tr><th scope="col">Dataset</th><th scope="col">Records</th><th scope="col">Screened</th><th scope="col">Included</th></tr></thead>
+      <tbody>
+        <tr><td>PubMed</td><td class="num">612</td><td class="db-cell" style="--v: 88%"><div class="db-bar"></div><span>88%</span></td><td class="num">34</td></tr>
+        <tr><td>arXiv</td><td class="num">421</td><td class="db-cell" style="--v: 64%"><div class="db-bar"></div><span>64%</span></td><td class="num">31</td></tr>
+        <tr><td>OpenAlex</td><td class="num">215</td><td class="db-cell" style="--v: 46%"><div class="db-bar"></div><span>46%</span></td><td class="num">21</td></tr>
+      </tbody>
+    </table>
+  </figure>
+
+  <!-- ═══════════ B. DIAGRAMS ═══════════ -->
+  <h2>B · Diagrams <span class="pack">diagrams pack</span></h2>
+  <p class="sub">Print-perfect, CDN-free alternatives to Mermaid for simple flows.</p>
+
+  <figure class="demo" role="group" aria-labelledby="flow-cap">
+    <figcaption id="flow-cap" class="sub"><strong>Pure-CSS flowchart</strong> — nested lists, CSS connectors, decision branch. Prints cleanly and needs no external library.</figcaption>
+    <ol class="flow">
+      <li><div class="flow-node start">Search executed<span>3 databases · 1,248 records</span></div></li>
+      <li><div class="flow-node">De-duplication<span>1,102 unique records</span></div></li>
+      <li>
+        <div class="flow-node decision">Title/abstract screen passes?</div>
+        <div class="flow-branch" style="margin-top: 1.75rem">
+          <div>
+            <div class="flow-tag">no · 812</div>
+            <div class="flow-node" style="border-color: var(--coral)">Excluded</div>
+          </div>
+          <div>
+            <div class="flow-tag">yes · 290</div>
+            <div class="flow-node">Full-text review<span>86 included</span></div>
+          </div>
+        </div>
+      </li>
+      <li style="margin-top: 1.75rem"><div class="flow-node end">Synthesis &amp; meta-analysis</div></li>
+    </ol>
+  </figure>
+
+  <figure class="demo" role="group" aria-labelledby="ms-cap">
+    <figcaption id="ms-cap" class="sub"><strong>Horizontal milestone strip</strong> — slide-friendly; states: done ✓ / current (filled number) / upcoming</figcaption>
+    <ol class="mstrip">
+      <li class="done"><div class="ms-title">Protocol</div><div class="ms-date">Jul 14</div></li>
+      <li class="done"><div class="ms-title">Search</div><div class="ms-date">Jul 28</div></li>
+      <li class="now"><div class="ms-title">Screening</div><div class="ms-date">due Sep 20</div></li>
+      <li><div class="ms-title">Findings</div><div class="ms-date">due Oct 15</div></li>
+      <li><div class="ms-title">Final</div><div class="ms-date">due Nov 30</div></li>
+    </ol>
+  </figure>
+
+  <!-- ═══════════ C. TABLES + PULL-QUOTE ═══════════ -->
+  <h2>C · Tables + pull-quote <span class="pack">tables pack</span></h2>
+
+  <figure class="demo" role="group" aria-labelledby="cmp-cap">
+    <figcaption id="cmp-cap" class="sub"><strong>Feature comparison table</strong> — real <code>&lt;table&gt;</code> with <code>scope</code>, sticky header, recommended column, ✓/— never color-alone; stacks to cards on mobile (resize to test)</figcaption>
+    <div class="compare-wrap">
+      <table class="compare">
+        <thead>
+          <tr>
+            <th scope="col">Capability</th>
+            <th scope="col">Manual review</th>
+            <th scope="col" class="rec-col">This pipeline<span class="rec-badge">RECOMMENDED</span></th>
+            <th scope="col">Vendor tool</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><th scope="row">Offset-anchored notes</th><td class="no" aria-label="not included">—</td><td class="rec-col"><span class="yes">✓</span></td><td class="no" aria-label="not included">—</td></tr>
+          <tr><th scope="row">JSON export for revision agents</th><td class="no" aria-label="not included">—</td><td class="rec-col"><span class="yes">✓</span></td><td class="no" aria-label="not included">—</td></tr>
+          <tr><th scope="row">Multi-tab jump-to-note</th><td class="no" aria-label="not included">—</td><td class="rec-col"><span class="yes">✓</span></td><td><span class="yes">✓</span></td></tr>
+          <tr><th scope="row">Works offline / single file</th><td><span class="yes">✓</span></td><td class="rec-col"><span class="yes">✓</span></td><td class="no" aria-label="not included">—</td></tr>
+          <tr><th scope="row">Cost per report</th><td>hours</td><td class="rec-col"><strong>minutes</strong></td><td>$$$</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </figure>
+
+  <blockquote class="pull-quote reveal">
+    <p>The screening funnel is finally converging — coverage is consistent across all three databases.</p>
+    <cite>— External reviewer, mid-sprint check</cite>
+  </blockquote>
+
+  <!-- ═══════════ D. MOTION ═══════════ -->
+  <h2>D · Motion <span class="pack">motion pack</span></h2>
+  <p class="sub">All motion is <strong>progressively enhanced</strong>: <code>@supports (animation-timeline: …)</code> + <code>prefers-reduced-motion</code>. Unsupported browsers just see the final state.</p>
+
+  <!-- Motion legend: makes pack D obvious without needing to scroll. -->
+  <div class="demo">
+    <p class="sub" style="margin-top:0"><strong>What you'll see — the browser-state matrix.</strong> Each cell shows what the user actually perceives in that combination. Every animated component ships an identical static fallback so nothing depends on motion to be readable.</p>
+    <table class="state-matrix">
+      <thead><tr><th scope="col">Browser</th><th scope="col">Reduced-motion setting</th><th scope="col">Reading progress bar</th><th scope="col">Scroll reveals</th><th scope="col">Gauge sweep</th></tr></thead>
+      <tbody>
+        <tr><td>Modern*</td><td>default (motion ok)</td><td class="ok">animates with scroll</td><td class="ok">fades/slides in on view</td><td class="ok">sweeps 0% → value</td></tr>
+        <tr><td>Modern*</td><td><code>prefers-reduced-motion: reduce</code></td><td class="off">static (always)</td><td class="off">static (always visible)</td><td class="off">static (final value shown)</td></tr>
+        <tr><td>Older**</td><td>either</td><td class="off">static (always)</td><td class="off">static (always visible)</td><td class="ok">if <code>@property</code> supported</td></tr>
+      </tbody>
+    </table>
+    <p class="note" style="margin-top:0.6rem">* Chrome/Edge 115+, Safari 18+, Firefox 138+ (supports <code>animation-timeline</code>). ** Any browser without that support — static rendering is identical to the reduced-motion case.</p>
+  </div>
+
+  <div class="demo-grid">
+    <figure class="demo">
+      <figcaption class="sub" style="margin-bottom:0.8rem"><strong>Progress bar at four scroll positions.</strong> The real bar grows from 0 to 100% as the user scrolls. Here it is shown at 4 checkpoints so you can see the visual progression without scrolling.</figcaption>
+      <ul class="rp-strip" aria-hidden="true">
+        <li><span class="rp-bar" style="--v: 25%"></span><span class="rp-cap">25%</span></li>
+        <li><span class="rp-bar" style="--v: 50%"></span><span class="rp-cap">50%</span></li>
+        <li><span class="rp-bar" style="--v: 75%"></span><span class="rp-cap">75%</span></li>
+        <li><span class="rp-bar" style="--v: 100%"></span><span class="rp-cap">100%</span></li>
+      </ul>
+    </figure>
+
+    <figure class="demo">
+      <figcaption class="sub" style="margin-bottom:0.8rem"><strong>Reveal: two keyframes.</strong> Left: the card just before it enters the viewport (opacity 0, translated 28px down). Right: the card once it's fully visible (opacity 1, in place). The browser interpolates between these via <code>animation-timeline: view()</code>.</figcaption>
+      <div class="reveal-pair">
+        <div class="reveal-state before" role="img" aria-label="Reveal keyframe before entry: opacity 0, translated down"><div class="rs-label">entry 0%<br><span>(just before view)</span></div></div>
+        <div class="reveal-state after" role="img" aria-label="Reveal keyframe after entry: opacity 1, in place"><div class="rs-label">entry 100%<br><span>(fully in view)</span></div></div>
+      </div>
+    </figure>
+  </div>
+
+  <figure class="demo">
+    <figcaption class="sub" style="margin-bottom:0.8rem"><strong>Gauge sweep: four keyframes.</strong> On first view, the conic-gradient stop animates from 0% to its final <code>--progress</code> over 1.2s. Shown below at 25/50/75/100% of the sweep so you can picture the motion.</figcaption>
+    <div class="sweep-strip">
+      <div class="sweep-step"><div class="gauge g-green" style="--progress: 100" aria-hidden="true"><div class="gauge-label"><div class="gauge-value">91%</div><div class="gauge-cap">Uptime</div></div></div><span class="sw-cap">0%</span></div>
+      <div class="sweep-step"><div class="gauge g-green" style="--sweep-static: 23%" aria-hidden="true"><div class="gauge-label"><div class="gauge-value">91%</div><div class="gauge-cap">Uptime</div></div></div><span class="sw-cap">25%</span></div>
+      <div class="sweep-step"><div class="gauge g-green" style="--sweep-static: 46%" aria-hidden="true"><div class="gauge-label"><div class="gauge-value">91%</div><div class="gauge-cap">Uptime</div></div></div><span class="sw-cap">50%</span></div>
+      <div class="sweep-step"><div class="gauge g-green" style="--sweep-static: 68%" aria-hidden="true"><div class="gauge-label"><div class="gauge-value">91%</div><div class="gauge-cap">Uptime</div></div></div><span class="sw-cap">75%</span></div>
+      <div class="sweep-step"><div class="gauge g-green" style="--progress: 91" aria-hidden="true"><div class="gauge-label"><div class="gauge-value">91%</div><div class="gauge-cap">Uptime</div></div></div><span class="sw-cap">100%</span></div>
+    </div>
+  </figure>
+
+  <div class="demo">
+    <p class="sub" style="margin-top:0"><strong>1 · Reading progress bar</strong> — the gradient line pinned to the top of this page grows with scroll (<code>animation-timeline: scroll()</code>). Zero JS.</p>
+    <p class="sub" style="margin-bottom:0"><strong>2 · Scroll reveals</strong> — every card below fades/slides in as it enters the viewport (<code>animation-timeline: view()</code>). Scroll back up and down.</p>
+  </div>
+
+  <div class="demo reveal">
+    <p class="sub" style="margin:0"><strong>Reveal demo card 1.</strong> If this faded in as you scrolled to it, the <code>view()</code> timeline is active in your browser.</p>
+  </div>
+  <div class="demo reveal">
+    <p class="sub" style="margin:0"><strong>Reveal demo card 2.</strong> The gauges at the top also ran their <code>@property</code> sweep animation on load.</p>
+  </div>
+  <div class="demo reveal">
+    <p class="sub" style="margin:0"><strong>Reveal demo card 3.</strong> All motion is compositor-thread — no INP impact, no scroll listeners.</p>
+  </div>
+
+  <p class="foot">Component gallery · review draft for html-template-pack v0.8.0 · nothing applied to the skill yet</p>
+</main>
+</body>
+</html>

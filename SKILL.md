@@ -66,8 +66,11 @@ Interactive data dashboards now live in **this** skill (the dashboard template) 
 │   │   └── slide-template.html                 ← finalized slide template (817 lines)
 │   ├── bento/
 │   │   └── bento-template.html                 ← bento one-pager (2026 bento grid, dark-first glass, v2 annotation engine inline)
-│   └── dashboard/
-│       └── dashboard-template.html              ← finalized dashboard template (htmx + demo-mode mock backend)
+│   ├── dashboard/
+│   │   └── dashboard-template.html              ← finalized dashboard template (htmx + demo-mode mock backend)
+│   └── graphics/
+│       ├── graphics.css                        ← v0.8.0 shared graphics pack (donut, gauge, bars, heatmap, flow, mstrip, compare, pull-quote, motion; inlined into each template)
+│       └── snippets.html                       ← copy-paste reference for every component
 ├── features/
 │   ├── report/
 │   │   ├── highlight-annotate.js               ← v2 offset-anchored annotations (602 lines)
@@ -151,6 +154,31 @@ Interactive data dashboards now live in **this** skill (the dashboard template) 
 
 **Best for**: ops dashboards, admin panels, status pages, internal metrics views — anything meant to be watched/interacted with live, not read and annotated.
 
+## Graphics pack (`features/graphics/graphics.css` + `snippets.html`)
+
+In **v0.8.0**, all four templates gain a shared **zero-dependency graphics pack** — eleven components, all pure CSS/HTML (no JS, no canvas, no SVG libraries). The pack lives in `features/graphics/graphics.css` (inlined into each template's `<style>` block at build time) with a copy-paste reference at `features/graphics/snippets.html`. The same component class renders correctly in any template because the styles only reference shared design tokens (`--accent`, `--surface`, `--teal`, `--amber`, etc.) that every template defines.
+
+| | Component | Class | One-line technique |
+|---|---|---|---|
+| A1 | **Donut / pie chart** | `.donut` + `.legend` | `conic-gradient()` with 4 slice `--var`s + sr-only `<table>` fallback |
+| A2 | **Radial gauge** | `.gauge` (variants `.g-green .g-amber .g-coral`) | conic + radial mask; one `--progress` per ring; `@property` sweep via `.animated` |
+| A3 | **Horizontal bars** | `.hbar` + `.h-fill` | grid rows; `width: var(--w)`; colour via `.c-teal .c-amber .c-coral .c-green` |
+| A4 | **Heatmap table** | `.heat` on a real `<table>` | `td[data-level="0-4"]` colors; numbers stay visible (never color-alone) |
+| A5 | **Data bars in cells** | `.db-cell` + `.db-bar` | bar behind number via `--v` |
+| B1 | **Pure-CSS flowchart** | `.flow` on `<ol>` + `.flow-node` (.start .end .decision) | nested lists + CSS connectors; decision branch via `.flow-branch` |
+| B2 | **Milestone strip** | `.mstrip` on `<ol>` | flex row; `.done` / `.now` / default states |
+| C1 | **Comparison table** | `.compare` on `<table>` + `.rec-col` | sticky header; ✓/— via `.yes`/`.no`; mobile stacks to cards via `data-label` |
+| C2 | **Pull-quote** | `.pull-quote` on `<blockquote>` | oversized opening quote, accent left border |
+| D1 | **Reading progress bar** | `.reading-progress` | `animation-timeline: scroll()` |
+| D2 | **Scroll-driven reveal** | `.reveal` | `animation-timeline: view()` + `animation-range: entry` |
+| D3 | **Gauge sweep** | `.gauge.animated` | `@property --sweep` interpolates conic-gradient stops |
+
+**Accessibility baked in**: every visual chart is either built *from* a real `<table>` (heatmap, data bars) or paired with a visually-hidden `<table>` fallback (donut); `role="img"` + `aria-label` on conic charts; numbers stay visible in heatmap cells; motion is `@supports` + `prefers-reduced-motion` guarded, and the static fallback = the final visible state.
+
+**Motion pack details**: each motion component is opt-in for both browser support (`@supports (animation-timeline: …)`) and user preference (`@media (prefers-reduced-motion: no-preference)`). Browsers without `animation-timeline` support (~15% in late 2026) just see the final state — no animation, no fallback JS needed. The reading-progress bar drops in anywhere as a single `<div class="reading-progress" aria-hidden="true"></div>`. The reveal class is just `class="reveal"` on any block.
+
+**Print**: the graphics pack includes `@media print` rules — reading-progress bar hidden, reveals shown at their final state, gauge sweep frozen at the final value, milestone strip dots monochrome.
+
 ## Pipeline (Decide → Copy → Adapt → Render → Wire annotation / backend)
 
 1. **Decide** — apply the decision rubric above. If unsure, ask the user.
@@ -211,6 +239,7 @@ Positioning differs: report/slide float the button `position: fixed` top-right; 
 - `dashboard-template.html` (added 2026-07-11) — htmx dashboard shell, new template family for live/polling data views
 - `bento-template.html` (added 2026-09-08, v0.7.0) — bento-grid one-pager. The full v2 annotation engine is inlined from the slide template with its token-mapping `:root` block stripped (the bento defines generic token names directly); density/font-size IIFEs reused with `bento-density`/`bento-font-size` storage keys. Bar chart is pure CSS, no Mermaid/htmx. Aesthetic sourced from the 2026 UI-trends research pass (bento grids as the default snapshot pattern, dark-first design, restrained glass, hover-glow micro-interactions).
 - v0.7.0 aesthetic pass (2026-09-08) — all four templates: dark-first defaults (theme scripts now `saved || 'dark'`), glass chrome (`color-mix` translucent surfaces + `backdrop-filter` on sidebar/panels/cards in dark mode), ambient radial accent glow (`body::before`, hidden in print), fluid `clamp()` type scale on display headings, hover lift + accent-glow shadows. Fixed a corrupted CSS line in the dashboard template's light token block (`--error: #dc2 la l’T.` → `--error: #dc2626`). Annotation systems untouched.
+- v0.8.0 graphics pack (2026-09-08) — `features/graphics/graphics.css` + `snippets.html` added; the pack is inlined into each template's `<style>` block. Eleven zero-dependency components: donut/pie + radial gauge + horizontal bars + heatmap table + data-bar table cells + pure-CSS flowchart + horizontal milestone strip + feature comparison table + pull-quote + scroll-driven reveals + reading-progress bar + `@property`-animated gauge sweep. Every chart carries an accessible data fallback (real `<table>` or sr-only mirror); every motion component is `@supports (animation-timeline: …)` + `prefers-reduced-motion` guarded. Sources for the techniques: CSS-Tricks pie chart articles, MDN conic-gradient + scroll-driven animations docs, chaarts (CSS-only charts from tables), WAI accessibility.build charts guide, coryrylan anchor-positioning flowcharts.
 - v2 annotation engine + theme toggle (`features/{report,slide}/highlight-annotate.js`, `annotate.css`, `theme-toggle.js`, `theme-toggle.css`) — extracted from the original template on 2026-07-10 (renamed to `html-template-pack` from its previous internal codename; see the 2026-07-10 wiki entry on the v1→v2 offset-anchored annotation upgrade for the rename history)
 - v2 tracked-changes annotation types — `comment` / `delete` / `insert` / `replace` added 2026-07-30 to the report template; selection-based delete/replace reuse the floating-pill flow, insert is caret-based via an `Insert here` arm/click toggle. The `replacement` field carries suggested new text for insert/replace; exported JSON includes `type` + `replacement` per annotation so a downstream (human or AI) revision agent can apply the changes without parsing free-text intent. The same v2 engine + tracked-changes types were ported into the slide template on 2026-07-30 (v0.4.0), with a small per-slide adapter: each `<section class="slide">` gets `data-panel="<id>"`; the inline adapter switches slides (`__deckGoTo`) before the engine's scrollIntoView when a drawer item is clicked.
 - Shared component library — `.card` / `.badge` / `.stat-card` / table / `.layer-stack` / `.chain-step` / `.grid-2` / `.eyebrow` / `.badge-line` / `.meta-card` originated in the slide template (extracted from a research report project on 2026-07). In v0.5.0 the same component CSS was pasted into the report template with a shared token palette (10-step `--slate-*` neutral scale + `--teal`/`--coral`/`--green`/`--amber`/`--deep-blue`/`--navy`/`--white` accent colors) so the same markup renders correctly in either template. The slide template's brand colors (teal/coral/green) and the report's blue/neutral palette both work; the components are token-driven, not template-specific.

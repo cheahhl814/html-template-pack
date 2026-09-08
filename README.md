@@ -4,7 +4,7 @@
 [![Live demo](https://img.shields.io/badge/demo-GitHub%20Pages-2ea44f)](https://cheahhl814.github.io/html-template-pack/)
 [![Type](https://img.shields.io/badge/type-agent%20skill-blueviolet)](#-installation)
 
-Four self-contained HTML templates — **report** (sticky sidebar, 5 icon+label tabs, v2 offset-anchored annotations, theme toggle), **slide deck** (prev/next nav, inline v2 annotations, theme toggle), **bento brief** (2026 bento-grid one-page snapshot briefing, dark-first glass, full v2 annotation engine), and **htmx dashboard** (topbar, KPI row, sparkline chart, activity feed, sortable table, demo-mode mock backend). All four are single-file, review-ready HTML with no external CDN dependencies beyond Google Fonts (report/slide/bento) and pinned htmx with SRI (dashboard). All four are **dark-first** with refined glass chrome, fluid display typography, and hover-glow micro-interactions (v0.7.0 aesthetic pass).
+Four self-contained HTML templates — **report** (sticky sidebar, 5 icon+label tabs, v2 offset-anchored annotations, theme toggle), **slide deck** (prev/next nav, inline v2 annotations, theme toggle), **bento brief** (2026 bento-grid one-page snapshot briefing, dark-first glass, full v2 annotation engine), and **htmx dashboard** (topbar, KPI row, sparkline chart, activity feed, sortable table, demo-mode mock backend). All four ship the **v0.8.0 zero-dependency graphics pack** (donut, radial gauge, horizontal bars, heatmap, data-bar cells, pure-CSS flowchart, milestone strip, comparison table, pull-quote, scroll-driven motion) and are single-file, review-ready HTML with no external CDN dependencies beyond Google Fonts (report/slide/bento) and pinned htmx with SRI (dashboard). All four are **dark-first** with refined glass chrome, fluid display typography, and hover-glow micro-interactions (v0.7.0 aesthetic pass).
 
 **Repository**: https://github.com/cheahhl814/html-template-pack
 
@@ -17,6 +17,7 @@ Four self-contained HTML templates — **report** (sticky sidebar, 5 icon+label 
 - [Annotation system](#-annotation-system-report--slide)
 - [Theme toggle](#-theme-toggle)
 - [Density and font-size toggles](#-density-and-font-size-toggles-all-three-templates)
+- [Graphics pack](#-graphics-pack-v080)
 - [Hard invariants](#-hard-invariants)
 
 ## 🚀 Live demo
@@ -27,8 +28,9 @@ All four templates are deployed as a working demo on GitHub Pages. Open any of t
 |---|---|
 | 🌐 **Launcher** | https://cheahhl814.github.io/html-template-pack/ |
 | 📄 **[Report demo](https://cheahhl814.github.io/html-template-pack/report/)** | "Q3 Operations Review — Northwind Logistics" (5 tabs, custom content) |
-| 🎞️ **[Slide demo](https://cheahhl814.github.io/html-template-pack/slide/)** | "Helios 2 — Real-Time Inference for the Edge" (5 slides, product launch) |
+| 🎞️ **[Slide demo](https://cheahhl814.github.io/html-template-pack/slide/)** | "Helios 2 — Real-Time Inference for the Edge" (7 slides incl. graphics-pack demos) |
 | 🍱 **[Bento demo](https://cheahhl814.github.io/html-template-pack/bento/)** | "Project Phoenix — One-page Recap" (bento grid, full annotation engine) |
+| 🧩 **[Components demo](https://cheahhl814.github.io/html-template-pack/components/)** | The graphics pack in one page — donut, gauge, bars, heatmap, flow, compare, pull-quote, motion legend |
 | 📊 **[Dashboard demo](https://cheahhl814.github.io/html-template-pack/dashboard/)** | "Northwind Logistics — Operations Dashboard" (mock data, live polling) |
 
 Each demo is a curated showcase with realistic content (not a blank template). Try the **◐ theme toggle**, **▤ density toggle**, **S/M/L font size toggle** in the top-right of every demo. In the report, slide, and bento demos, select any text to leave tracked-changes-style annotations, then export them as JSON from the 💬 Notes panel.
@@ -246,6 +248,29 @@ The **dashboard** template's toggles are especially useful when viewing dense da
 
 **Why these toggles work**: every element in each template uses proportional units (`rem` or `em`) relative to the root font size. Changing the root font size cascades through every element. The slide template had a bug where `body { font-size: 16px }` blocked this cascade; that's been fixed so all three templates behave the same way.
 
+## 🧩 Graphics pack (v0.8.0)
+
+All four templates ship with a shared **zero-dependency graphics pack** — eleven components, pure CSS/HTML, no JS, no chart library, no canvas. Lives in [`features/graphics/graphics.css`](./features/graphics/graphics.css) (inlined into each template) with a copy-paste reference at [`features/graphics/snippets.html`](./features/graphics/snippets.html).
+
+| | Component | Class |
+|---|---|---|
+| 📊 | **Donut / pie chart** | `.donut` + `.legend` |
+| 🎯 | **Radial gauge** | `.gauge` (variants `.g-green .g-amber .g-coral`) |
+| 📶 | **Horizontal bars** | `.hbar` (colours `.c-teal .c-amber .c-coral .c-green`) |
+| 🟦 | **Heatmap table** | `.heat` on a real `<table>` with `td[data-level="0-4"]` |
+| 🟫 | **Data bars in cells** | `.db-cell` + `.db-bar` |
+| 🔀 | **Pure-CSS flowchart** | `.flow` + `.flow-node` (.start .end .decision) + `.flow-branch` |
+| 🚩 | **Milestone strip** | `.mstrip` |
+| ⊞ | **Comparison table** | `.compare` (`.rec-col`, ✓/— via `.yes`/`.no`) |
+| ❝ | **Pull-quote** | `.pull-quote` |
+| ▰ | **Reading progress bar** | `<div class="reading-progress">` |
+| ⤓ | **Scroll-driven reveal** | `.reveal` |
+| ⌖ | **Gauge sweep** | `.gauge.animated` |
+
+**Live reference**: see every component at **[…/components/](https://cheahhl814.github.io/html-template-pack/components/)** — the same file also inlines a *motion legend* (browser-state matrix + 4-keyframe progress strip + before/after reveal pair + 5-step gauge sweep) so pack D is obvious from a single screenshot.
+
+**Accessibility baked in**: every visual chart is built from a real `<table>` (heatmap, data bars) or paired with a visually-hidden `<table>` fallback (donut); `role="img"` + `aria-label` on conic charts; numbers stay visible in heatmap cells; motion is `@supports (animation-timeline: …)` + `prefers-reduced-motion` guarded — browsers without support just see the final state, no JS fallback needed.
+
 ## 🔒 Hard invariants
 
 - UI always reachable (theme, annotations, navigation)
@@ -253,6 +278,7 @@ The **dashboard** template's toggles are especially useful when viewing dense da
 - Print works cleanly (report/slide primary; dashboard secondary)
 - Single-file portable (only Google Fonts + pinned htmx SRI allowed external)
 - Dashboard demo-mode never ships to production
+- Graphics pack ships with no JS dependencies (conic-gradient + CSS grid only)
 
 ## License
 
