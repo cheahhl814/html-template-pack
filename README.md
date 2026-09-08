@@ -145,11 +145,15 @@ The skill ships four HTML templates. Pick the one that matches your content.
 
 A long-form reading document with a sticky left sidebar of tabs. The reviewer clicks between tabs to read different sections (Summary, Metrics, Methodology, Findings, Annotations), selects text to leave tracked-changes-style notes, and exports the notes as a JSON file when finished. The sidebar collapses to a horizontal tab strip on narrow screens. When printed, the sidebar hides and all sections flow sequentially with page breaks.
 
+As of **v0.8.0**, the Metrics panel includes a donut chart, three animated radial gauges, horizontal workflow bars, a sightings heatmap, and data-bar table cells; the Methodology panel adds a pure-CSS screening-flowchart and a horizontal milestone strip; the Findings panel adds a pull-quote and a feature-comparison table. A scroll-tied reading-progress bar is pinned to the top edge of the page (the same `animation-timeline: scroll()` API used by [Medium](https://medium.com)-style readers).
+
 **Best for**: research reports, grant progress reports, manuscript reading versions, gap analyses, EOI drafts — anything a human will read end-to-end and leave comments on.
 
 ### Slide template
 
 A single-page scrolling deck with prev/next navigation, a page counter, a fullscreen toggle, and a home button. Each slide is a section with v2 annotations (notes you can leave on any text) and a per-slide identifier so a notes drawer click jumps directly to that slide. When printed, each slide becomes one PDF page.
+
+The current starter deck ships **7 slides**: a title, two content slides, two template-reference slides for cards/badges/blocks, two new **v0.8.0** graphics-pack demos (charts on slide 5: donut, gauges, bars; diagrams + pull-quote on slide 6), and a closing. Animated gauges replay each time you navigate to slide 5 (the `goTo()` hook in the deck script restarts `.gauge.animated` children).
 
 **Best for**: pitch decks, conference talks, lightning talks, internal readouts, research summary decks — any sequential presentation of 12 or fewer visual beats.
 
@@ -161,9 +165,11 @@ The template ships in **demo mode** out of the box: a small mock backend interce
 
 **Best for**: ops dashboards, admin panels, status pages, internal metrics views — anything meant to be watched and interacted with live, not read and annotated.
 
-### Bento brief template (NEW in v0.7.0)
+### Bento brief template (v0.7.0; v0.8.0 adds graphics)
 
 A one-page snapshot briefing in the 2026 bento-grid style: a hero header (eyebrow pill, gradient display title, meta chips) above a 12-column grid of modular glass cards — KPI row, pure-CSS bar chart, progress bars, gradient quote card, milestone timeline, key highlights, and a CTA card. Dark-first glass surfaces with an ambient accent glow; cards lift with an accent-glow shadow on hover. It carries the full v2 annotation engine (select any text to leave tracked-changes-style notes, export/import JSON), plus the theme, density, and font-size toggles with bento-specific storage keys. No JS dependencies at all — the chart is pure CSS.
+
+As of **v0.8.0**, a fourth row adds donut + gauges (animated), a sightings heatmap, a feature-comparison table, and a pull-quote card — same component classes as the report/slide graphics pack, just packaged into the bento grid.
 
 **Best for**: sprint recaps, weekly readouts, one-page proposals, status snapshots for review panels — anything the reader should grasp in 60 seconds and annotate inline. If the content grows past one page, graduate to the report template; if the numbers need to refresh from a server, it's the dashboard.
 
@@ -279,6 +285,7 @@ All four templates ship with a shared **zero-dependency graphics pack** — elev
 - Single-file portable (only Google Fonts + pinned htmx SRI allowed external)
 - Dashboard demo-mode never ships to production
 - Graphics pack ships with no JS dependencies (conic-gradient + CSS grid only)
+- Motion triggers on visibility, not page load: animated gauges (`.gauge.animated`) replay when a slide becomes active (slide `goTo()`) or a report panel is shown (`showTab()`), so the sweep is visible to the reader instead of completing before they navigate to it. Honors `prefers-reduced-motion` (skips the restart; static fallback applies).
 
 ## License
 
