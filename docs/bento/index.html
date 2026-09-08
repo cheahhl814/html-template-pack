@@ -1,585 +1,314 @@
 <!DOCTYPE html>
+<!--
+  ╔══════════════════════════════════════════════════════════════════════╗
+  ║  BENTO BRIEF TEMPLATE (one-pager)                                     ║
+  ║  A single-page project briefing / summary in the 2026 bento-grid      ║
+  ║  style: modular cards of varying span on a dark-first glass surface.  ║
+  ║  Carries the same v2 annotation system as the report/slide templates  ║
+  ║  (select text → comment / ask / delete / replace / format; drawer     ║
+  ║  with export/import JSON) plus the v0.6.1 chrome parity toggles:      ║
+  ║  theme (◐/◑), density (▤/▥ comfortable↔compact), font size (S/M/L).   ║
+  ║                                                                        ║
+  ║  WHEN TO USE                                                          ║
+  ║  Content that is a snapshot summary — status recaps, sprint briefs,   ║
+  ║  weekly readouts, one-page proposals — where the reader should see    ║
+  ║  everything at a glance and can still leave inline review notes.      ║
+  ║  For ≥3 long sections use the report template; for live data the      ║
+  ║  dashboard; for ≤12 sequential beats the slide deck.                  ║
+  ║                                                                        ║
+  ║  HOW TO ADAPT                                                         ║
+  ║  1. Set <title>, body data-annot-storage (unique per brief), and      ║
+  ║     data-annot-theme-key.                                             ║
+  ║  2. Replace the .b-card contents. Card variants: .kpi, .chart,        ║
+  ║     .list, .quote, .timeline, .accent-card. Spans: .span-4/5/6/7/8.   ║
+  ║  3. Keep at least one [data-annot-root] main — annotations need it.   ║
+  ║  4. Storage keys: bento-density / bento-font-size / annotations:<id>  ║
+  ║     (unique per template; rename if you fork this file).              ║
+  ╚══════════════════════════════════════════════════════════════════════╝
+-->
 <html lang="en" data-theme="dark">
 <head>
-<script>
-  /* ═══ Theme toggle: set data-theme before first paint to avoid a flash ═══ */
-  (function () {
-    var KEY = 'slide-template-theme-v1'; // unique per deck if you rename this file
-    var saved = localStorage.getItem(KEY);
-    var initial = saved || 'dark';
-    document.documentElement.setAttribute('data-theme', initial);
-  })();
-</script>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
-<!-- ══════════════════════════════════════════════════════════════════════
-     REUSABLE SLIDE-DECK TEMPLATE  ·  with v2 annotations (4 types)
-     ----------------------------------------------------------------------
-     HOW TO USE
-       1. Change the <title> below.
-       2. On <body>, set data-annot-storage to a unique id per deck so
-          different decks keep their own localStorage annotations. Update
-          data-annot-export for a custom JSON filename.
-       3. Replace the <section class="slide"> blocks with your content.
-          Keep the FIRST slide's class as "slide slide-title active" and give
-          every slide a unique id. The nav/counter build themselves automatically.
-       4. Component reference slides (marked "TEMPLATE REFERENCE") show every
-          reusable block — copy from them, then delete them.
-
-     ANNOTATION FEATURE (works out of the box, no server needed; v2 engine)
-       • Select any text on a slide → a toolbar appears: 💬 Comment, ❓ Ask,
-         ✂ Delete, ✎ Replace, Aa Format ▾ (bold/italic/underline/superscript/
-         subscript + highlight/text-color swatches, applied instantly). For
-         inserts, click the ➕ icon in the top-right rail then click a point
-         in the text.
-       • Add a note → the text is highlighted (or struck-through + replaced
-         / caret-inserted / styled) and saved to localStorage.
-       • The 💬 icon (top-right) opens a side drawer listing every note,
-         with type badges (Comment / Delete / Insert / Replace / Question /
-         Format) and "→ replacement text" previews.
-       • "Export JSON" downloads all notes (and copies them to the clipboard);
-         "Import" merges by id — including answering a ❓ question by
-         re-importing just its id + answer; "Clear all" wipes (with
-         two-click confirm).
-       • Annotations survive reload; if the underlying text later changes,
-         the note is kept but flagged "orphaned" so nothing is silently lost.
-       • Clicking a drawer item jumps to the right slide first, then to the
-         highlight (the per-slide `data-panel` attribute drives the jump).
-     ══════════════════════════════════════════════════════════════════════ -->
-<title>Slide Deck Template — Highlight · Comment · Export</title>
-<style>
-  :root {
-    --bg: #f8fafc;
-    --surface: #ffffff;
-    --surface2: #f1f5f9;
-    --surface3: #e2e8f0;
-    --border: #e2e8f0;
-    --border-bright: #cbd5e1;
-    --text: #0f172a;
-    --text-muted: #64748b;
-    --text-dim: #94a3b8;
-    --accent: #0d9488;
-    --accent-dim: rgba(13, 148, 136, 0.1);
-    --accent-glow: rgba(13, 148, 136, 0.2);
-    --error: #ef4444;
-    --annot-delete: var(--error);
-    --annot-insert: #16a34a;
-    --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-    --font-head: 'Outfit', sans-serif;
-    --font-mono: ui-monospace, 'SF Mono', 'JetBrains Mono', 'Space Mono', Menlo, Consolas, monospace;
-    --radius: 12px;
-    --radius-sm: 6px;
-    --navy: #1a2744;
-    --deep-blue: #2c4a7c;
-    --teal: #0d9488;
-    --teal-light: #14b8a6;
-    --coral: #ef4444;
-    --coral-light: #f9a8a8;
-    --amber: #f59e0b;
-    --amber-light: #fcd34d;
-    --green: #10b981;
-    --green-light: #6ee7b7;
-    --slate-50: #f8fafc;
-    --slate-100: #f1f5f9;
-    --slate-200: #e2e8f0;
-    --slate-300: #cbd5e1;
-    --slate-400: #94a3b8;
-    --slate-500: #64748b;
-    --slate-600: #475569;
-    --slate-700: #334155;
-    --slate-800: #1e293b;
-    --slate-900: #0f172a;
-    --white: #ffffff;
-    --heading: var(--navy);
-  }
-  html[data-theme="dark"] {
-    --bg: #0b0e14;
-    --surface: #131820;
-    --surface2: #1c2230;
-    --surface3: #252b3d;
-    --border: #232a35;
-    --border-bright: #313a4a;
-    --text: #f8fafc;
-    --text-muted: #94a3b8;
-    --text-dim: #64748b;
-    --accent: #14b8a6;
-    --accent-dim: rgba(20, 184, 166, 0.1);
-    --accent-glow: rgba(20, 184, 166, 0.2);
-    --error: #f87171;
-    --annot-insert: #4ade80;
-    --slate-50: #0f172a;
-    --slate-100: #1e293b;
-    --slate-200: #334155;
-    --slate-300: #475569;
-    --slate-400: #64748b;
-    --slate-500: #94a3b8;
-    --slate-600: #cbd5e1;
-    --slate-700: #e2e8f0;
-    --slate-800: #f1f5f9;
-    --slate-900: #f8fafc;
-    --heading: #f1f5f9;
-  }
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  html, body { height: 100%; }
-  body { 
-    font-family: var(--font-sans); 
-    background: var(--bg); 
-    color: var(--text); 
-    line-height: 1.6; 
-    overflow: hidden; 
-    transition: background 0.3s ease, color 0.3s ease;
-  }
-
-  .deck { position: relative; width: 100vw; height: 100vh; }
-
-  .slide {
-    position: absolute; inset: 0;
-    display: flex; flex-direction: column; justify-content: center;
-    padding: 64px 90px;
-    background: var(--surface);
-    opacity: 0; transform: translateX(24px);
-    pointer-events: none;
-    transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1), transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    overflow-y: auto;
-  }
-  .slide.active { opacity: 1; transform: translateX(0); pointer-events: auto; z-index: 2; }
-  .slide-inner { max-width: 1180px; margin: 0 auto; width: 100%; }
-
-  .slide-eyebrow { display: inline-block; font-size: 0.7rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.1em; padding: 4px 10px; border-radius: 999px; margin-bottom: 1rem; }
-  .eyebrow-teal { background: var(--accent-dim); color: var(--teal); }
-  .eyebrow-coral { background: rgba(239, 68, 68, 0.1); color: var(--coral); }
-  .eyebrow-amber { background: rgba(245, 158, 11, 0.1); color: var(--amber); }
-  .eyebrow-green { background: rgba(16, 185, 129, 0.1); color: var(--green); }
-  .eyebrow-navy { background: rgba(30, 58, 95, 0.1); color: var(--navy); }
-
-  .slide h1 { font-family: var(--font-head); font-size: clamp(2em, 4.5vw, 3.4em); font-weight: 800; color: var(--white); letter-spacing: -0.035em; line-height: 1.08; margin-bottom: 1rem; }
-  .slide h2 { font-family: var(--font-head); font-size: clamp(1.8em, 3.5vw, 2.5em); font-weight: 700; color: var(--heading); letter-spacing: -0.025em; line-height: 1.15; margin-bottom: 1.2rem; }
-  .slide h3 { font-size: 1.2em; font-weight: 700; color: var(--text); margin: 0 0 0.75rem; }
-  .slide p { margin-bottom: 1rem; color: var(--text-muted); font-size: 1.1em; }
-  .slide ul, .slide ol { margin: 0 0 1rem 22px; color: var(--text-muted); }
-  .slide li { margin-bottom: 8px; font-size: 1.1em; }
-
-  /* Title slide */
-  .slide-title { background: linear-gradient(135deg, var(--navy) 0%, var(--deep-blue) 40%, #0e7490 70%, var(--teal) 100%); justify-content: center; }
-  .slide-title::before { content: ''; position: absolute; inset: 0; background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"); opacity: 0.5; pointer-events: none; }
-  .slide-title .slide-inner { position: relative; z-index: 1; }
-  .slide-title .badge-line { display: inline-block; background: var(--coral); color: white; font-size: 0.78em; font-weight: 700; padding: 4px 12px; border-radius: 20px; margin-bottom: 16px; letter-spacing: 0.5px; }
-  .slide-title .subtitle { font-size: 1.2em; color: white; opacity: 0.92; margin-bottom: 20px; max-width: 900px; line-height: 1.5; }
-  .slide-title .meta-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 12px; margin-top: 10px; max-width: 950px; }
-  .slide-title .meta-card { background: rgba(255,255,255,0.12); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.2); border-radius: 10px; padding: 12px 16px; }
-  .slide-title .meta-card .label { font-size: 0.7em; text-transform: uppercase; letter-spacing: 1.2px; opacity: 0.75; color: white; }
-  .slide-title .meta-card .value { font-size: 1.2em; font-weight: 700; margin-top: 2px; color: white; }
-  .slide-title .footer-note { margin-top: 26px; font-size: 0.85em; color: rgba(255,255,255,0.75); }
-
-  /* Closing slide reuses title look */
-  .slide-closing { background: linear-gradient(135deg, var(--navy) 0%, var(--deep-blue) 60%, var(--teal) 100%); justify-content: center; }
-  .slide-closing::before { content: ''; position: absolute; inset: 0; background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"); opacity: 0.5; pointer-events: none; }
-  .slide-closing .slide-inner { position: relative; z-index: 1; }
-  .slide-closing p { color: rgba(255,255,255,0.9); }
-  .slide-closing h1 { margin-bottom: 20px; }
-
-  /* Shared components */
-  .card { 
-    background: var(--surface); 
-    border: 1px solid var(--border-bright); 
-    border-radius: var(--radius); 
-    margin: 1rem 0; 
-    box-shadow: 0 4px 12px rgba(0,0,0,0.05); 
-    overflow: hidden;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-  }
-  .card:hover { transform: translateY(-3px); box-shadow: 0 10px 28px -8px var(--accent-glow), 0 8px 20px rgba(0,0,0,0.08); }
-  .card-header { 
-    padding: 1rem 1.25rem; 
-    border-bottom: 1px solid var(--border); 
-    display: flex; align-items: center; justify-content: space-between;
-    background: var(--surface2);
-  }
-  .card-header h3 { margin: 0; font-family: var(--font-head); font-size: 1.1rem; font-weight: 700; color: var(--text); }
-  .card-body { padding: 1.25rem; }
-  .card-footer { 
-    padding: 0.75rem 1.25rem; 
-    border-top: 1px solid var(--border); 
-    background: var(--surface2); 
-    font-size: 0.8rem; 
-    color: var(--text-dim); 
-    display: flex; align-items: center; gap: 0.5rem;
-  }
-  .card.highlight { border-left: 4px solid var(--teal); }
-  .card.warning { border-left: 4px solid var(--coral); }
-  .card.success { border-left: 4px solid var(--green); }
-  .card.info { border-left: 4px solid var(--deep-blue); }
-  html[data-theme="dark"] .card.highlight { background: linear-gradient(135deg, rgba(13,148,136,0.16) 0%, var(--surface) 100%); }
-  html[data-theme="dark"] .card.warning { background: linear-gradient(135deg, rgba(239,100,97,0.16) 0%, var(--surface) 100%); }
-  html[data-theme="dark"] .card.success { background: linear-gradient(135deg, rgba(16,185,129,0.16) 0%, var(--surface) 100%); }
-  html[data-theme="dark"] .card.info { background: linear-gradient(135deg, rgba(44,74,124,0.22) 0%, var(--surface) 100%); }
-
-  table { 
-    width: 100%; border-collapse: separate; border-spacing: 0; 
-    margin: 1rem 0; font-size: 0.9rem; border-radius: var(--radius); 
-    overflow: hidden; border: 1px solid var(--border); 
-    transition: box-shadow 0.2s ease;
-  }
-  table:hover { box-shadow: 0 0 0 1px var(--accent); }
-  thead { background: var(--surface3); color: var(--text); }
-  th { padding: 12px 16px; text-align: left; font-weight: 600; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; border-bottom: 2px solid var(--border); }
-  td { padding: 10px 16px; border-bottom: 1px solid var(--border); color: var(--text-muted); }
-  tbody tr:last-child td { border-bottom: none; }
-  tbody tr:hover td { background: var(--surface2); color: var(--text); }
-
-  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-  .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
-
-  .stat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 1rem; margin: 1rem 0; }
-  .stat-card { background: var(--surface); border: 1px solid var(--border-bright); border-radius: var(--radius); padding: 1.25rem; text-align: center; box-shadow: 0 2px 6px rgba(0,0,0,0.04); transition: all 0.2s ease; }
-  .stat-card:hover { border-color: var(--accent); transform: scale(1.02); }
-  .stat-card .stat-value { font-family: var(--font-head); font-size: 1.8rem; font-weight: 800; color: var(--accent); line-height: 1; }
-  .stat-card .stat-label { font-size: 0.75rem; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.05em; margin-top: 8px; font-weight: 600; }
-
-  .badge { display: inline-flex; align-items: center; font-size: 0.75rem; font-weight: 600; padding: 3px 10px; border-radius: 999px; margin: 2px 4px 2px 0; }
-  .badge-green { background: #dcfce7; color: #166534; }
-  .badge-teal { background: #ccfbf1; color: #0d9488; }
-  .badge-amber { background: #fef3c7; color: #92400e; }
-  .badge-blue { background: #dbeafe; color: #1e40af; }
-
-  /* Layer diagram */
-  .layer-stack { display: flex; flex-direction: column; gap: 8px; margin: 14px 0; }
-  .layer { border-radius: 10px; padding: 13px 18px; display: flex; align-items: center; gap: 16px; }
-  .layer .layer-num { flex-shrink: 0; width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 0.9em; color: white; }
-  .layer .layer-title { font-weight: 700; font-size: 1em; }
-  .layer .layer-detail { font-size: 0.86em; color: var(--slate-600); }
-  .layer-1 { background: #ecfeff; border-left: 4px solid #06b6d4; } .layer-1 .layer-num { background: #06b6d4; }
-  .layer-2 { background: #eff6ff; border-left: 4px solid var(--deep-blue); } .layer-2 .layer-num { background: var(--deep-blue); }
-  .layer-3 { background: #fef3c7; border-left: 4px solid var(--amber); } .layer-3 .layer-num { background: var(--amber); }
-  .layer-4 { background: #f0fdfa; border-left: 4px solid var(--teal); } .layer-4 .layer-num { background: var(--teal); }
-  .layer-5 { background: #ede9fe; border-left: 4px solid #7c3aed; } .layer-5 .layer-num { background: #7c3aed; }
-  html[data-theme="dark"] .layer-1 { background: rgba(6,182,212,0.12); }
-  html[data-theme="dark"] .layer-2 { background: rgba(44,74,124,0.18); }
-  html[data-theme="dark"] .layer-3 { background: rgba(245,158,11,0.14); }
-  html[data-theme="dark"] .layer-4 { background: rgba(13,148,136,0.14); }
-  html[data-theme="dark"] .layer-5 { background: rgba(124,58,237,0.16); }
-
-  /* Layout Patterns */
-  .layout-split { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; }
-  .layout-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
-  .layout-hero { text-align: center; padding: 4rem 2rem; background: var(--surface2); border-radius: var(--radius); border: 1px solid var(--border); }
-  .layout-hero h2 { margin-top: 0; }
-
-  /* Causal / process chain */
-  .chain-step { border-radius: 10px; padding: 12px 18px; text-align: center; font-weight: 600; font-size: 0.92em; }
-  .chain-arrow { text-align: center; color: var(--slate-400); font-size: 1.2em; padding: 1px 0; }
-
-
-  /* Nav controls */
-  .deck-nav { position: fixed; bottom: 22px; left: 0; right: 0; display: flex; align-items: center; justify-content: center; gap: 14px; z-index: 500; }
-  .deck-nav button { background: var(--navy); color: white; border: none; width: 42px; height: 42px; border-radius: 50%; font-size: 1.1em; cursor: pointer; box-shadow: 0 3px 10px rgba(0,0,0,0.25); display: flex; align-items: center; justify-content: center; }
-  .deck-nav button:hover { background: var(--deep-blue); }
-  .deck-nav button:disabled { opacity: 0.35; cursor: default; }
-  .deck-nav button svg { width: 18px; height: 18px; stroke: currentColor; fill: none; display: block; }
-  .deck-counter { background: rgba(26,39,68,0.85); color: white; font-size: 0.8em; font-weight: 700; padding: 6px 13px; border-radius: 20px; min-width: 52px; text-align: center; }
-
-  /* Unified vertical icon-only control rail — theme / density / font-size /
-     notes / insert. One flex column, fixed top-right (the deck counter
-     now lives in the bottom nav bar, so the rail owns this corner),
-     consistent square buttons with a CSS-driven tooltip bubble on
-     hover/focus. z-index: 100 matches the annotation drawer (also z: 100)
-     so the drawer covers the rail when it slides in. */
-  .icon-rail { position: fixed; top: 20px; right: 24px; z-index: 100; display: flex; flex-direction: column; gap: 8px; align-items: flex-end; }
-  .icon-btn {
-    position: relative;
-    display: inline-flex; align-items: center; justify-content: center;
-    width: 36px; height: 36px; padding: 0;
-    font-family: inherit; font-size: 1rem; font-weight: 700;
-    background: rgba(26,39,68,0.85); color: white; border: none; border-radius: 50%;
-    cursor: pointer; transition: background 0.15s;
-  }
-  .icon-btn:hover, .icon-btn:focus-visible { background: var(--deep-blue); }
-  .icon-btn[aria-pressed="true"] { background: var(--teal); }
-  .icon-btn svg { width: 20px; height: 20px; stroke: currentColor; fill: none; display: block; }
-  .icon-btn::after {
-    content: attr(data-tooltip);
-    position: absolute; top: 50%; right: calc(100% + 0.5rem); transform: translateY(-50%);
-    background: var(--text); color: var(--bg);
-    font-size: 0.75rem; font-weight: 600; white-space: nowrap;
-    padding: 0.3rem 0.55rem; border-radius: var(--radius-sm);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.25);
-    opacity: 0; pointer-events: none; transition: opacity 0.12s ease;
-  }
-  .icon-btn:hover::after, .icon-btn:focus-visible::after { opacity: 1; }
-  .icon-btn .annot-count {
-    position: absolute; top: -0.3rem; right: -0.3rem;
-    display: inline-flex; align-items: center; justify-content: center;
-    min-width: 1.1rem; height: 1.1rem; padding: 0 0.3rem;
-    font-size: 0.65rem; font-weight: 700; line-height: 1;
-    background: var(--coral); color: white; border-radius: 999px;
-  }
-  .icon-btn .annot-count[hidden] { display: none; }
-
-  /* Density tokens */
-  :root, [data-density="comfortable"] { --slide-pad-card: 22px; --slide-pad-stat: 18px; --slide-gap-grid: 18px; }
-  [data-density="compact"] { --slide-pad-card: 12px; --slide-pad-stat: 10px; --slide-gap-grid: 10px; }
-  /* Font size tokens */
-  :root, [data-font-size="M"] { font-size: 16px; }
-  [data-font-size="S"] { font-size: 14px; }
-  [data-font-size="L"] { font-size: 18px; }
-  .slide .card { padding: var(--slide-pad-card); }
-  .slide .stat-card { padding: var(--slide-pad-stat); }
-  .slide .grid-2, .slide .grid-3 { gap: var(--slide-gap-grid); }
-
-  @media print { .deck-nav, .deck-counter, .icon-rail, .annot-toolbar, .annot-format-popover, .annot-editor, .annot-drawer, .annot-backdrop { display: none !important; } [data-density="compact"] { --slide-pad-card: 22px; --slide-pad-stat: 18px; --slide-gap-grid: 18px; } [data-font-size="S"], [data-font-size="L"] { font-size: 16px; } .slide { position: static; opacity: 1; transform: none; page-break-after: always; height: 100vh; } body { overflow: visible; } }
-</style>
-</head>
-<body data-annot-storage="slide-template" data-annot-theme-key="slide-template-theme-v1" data-annot-export="slide-template-annotations.json">
-
-<main class="deck">
-
-  <!-- ═══════════════ SLIDE 1: TITLE (keep class "active" on the first slide) ═══════════════ -->
-  <section class="slide slide-title active" id="slide-title" data-panel="slide-title">
-    <div class="slide-inner">
-      <span class="badge-line">PROJECT / EVENT LABEL</span>
-      <h1>Presentation Title Goes Here</h1>
-      <h2 style="font-size: 0.5em; font-weight: 400; opacity: 0.8; margin-top: 0.5em;">A supporting subtitle line</h2>
-      <p class="subtitle">One or two sentences framing what this deck is about and who it is for.</p>
-      <div class="meta-grid">
-        <div class="meta-card"><div class="label">Metric A</div><div class="value">Value</div></div>
-        <div class="meta-card"><div class="label">Metric B</div><div class="value">Value</div></div>
-        <div class="meta-card"><div class="label">Metric C</div><div class="value">Value</div></div>
-      </div>
-      <p class="footer-note">Presenter · Affiliation · Use → and ← (or the arrows below) to navigate. Select any text to highlight and leave a comment for the team.</p>
-    </div>
-  </section>
-
-  <!-- ═══════════════ SLIDE 2: CONTENT (edit or duplicate) ═══════════════ -->
-  <section class="slide" id="slide-2" data-panel="slide-2">
-    <div class="slide-inner">
-      <span class="slide-eyebrow eyebrow-teal">Section Label</span>
-      <h2>A Content Slide Heading</h2>
-      <p>Introduce the point in a sentence or two. Reviewers can select any of this text and attach a comment.</p>
-      <ul>
-        <li>First supporting point.</li>
-        <li>Second supporting point, with <strong>emphasis</strong> where it helps.</li>
-        <li>Third supporting point.</li>
-      </ul>
-      <div class="card highlight">
-        <h3>🔑 Key Takeaway</h3>
-        <p style="margin-bottom:0;">Use a highlighted card to make the one thing you want remembered stand out.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- ═══════════════ SLIDE 3: TEMPLATE REFERENCE — cards & badges (delete when done) ═══════════════ -->
-  <section class="slide" id="slide-ref-cards" data-panel="slide-ref-cards">
-    <div class="slide-inner">
-      <span class="slide-eyebrow eyebrow-navy">Template Reference</span>
-      <h2>Cards, Badges &amp; Stats</h2>
-      <div class="grid-2">
-        <div class="card highlight"><h3>Highlight card</h3><p style="margin-bottom:0;"><code>class="card highlight"</code> — teal accent.</p></div>
-        <div class="card warning"><h3>Warning card</h3><p style="margin-bottom:0;"><code>class="card warning"</code> — coral accent.</p></div>
-        <div class="card success"><h3>Success card</h3><p style="margin-bottom:0;"><code>class="card success"</code> — green accent.</p></div>
-        <div class="card info"><h3>Info card</h3><p style="margin-bottom:0;"><code>class="card info"</code> — blue accent.</p></div>
-      </div>
-      <p style="margin-top:12px;">
-        <span class="badge badge-green">green</span>
-        <span class="badge badge-teal">teal</span>
-        <span class="badge badge-amber">amber</span>
-        <span class="badge badge-blue">blue</span>
-      </p>
-      <div class="stat-grid">
-        <div class="stat-card"><div class="stat-value">42</div><div class="stat-label">A headline number</div></div>
-        <div class="stat-card"><div class="stat-value">r = 0.91</div><div class="stat-label">A statistic</div></div>
-        <div class="stat-card"><div class="stat-value">3×</div><div class="stat-label">A multiplier</div></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ═══════════════ SLIDE 4: TEMPLATE REFERENCE — table, layers & chain (delete when done) ═══════════════ -->
-  <section class="slide" id="slide-ref-blocks" data-panel="slide-ref-blocks">
-    <div class="slide-inner">
-      <span class="slide-eyebrow eyebrow-amber">Template Reference</span>
-      <h2>Table, Layer Stack &amp; Chain</h2>
-      <table>
-        <thead><tr><th>Column A</th><th>Column B</th><th>Column C</th></tr></thead>
-        <tbody>
-          <tr><td>Row 1</td><td>Data</td><td>Data</td></tr>
-          <tr><td>Row 2</td><td>Data</td><td>Data</td></tr>
-        </tbody>
-      </table>
-      <div class="layer-stack">
-        <div class="layer layer-1"><div class="layer-num">1</div><div><div class="layer-title">Layer one</div><div class="layer-detail">Supporting detail for this layer.</div></div></div>
-        <div class="layer layer-2"><div class="layer-num">2</div><div><div class="layer-title">Layer two</div><div class="layer-detail">Supporting detail for this layer.</div></div></div>
-        <div class="layer layer-3"><div class="layer-num">3</div><div><div class="layer-title">Layer three</div><div class="layer-detail">Supporting detail for this layer.</div></div></div>
-      </div>
-      <div class="chain-step" style="background:#fee2e2; color:#991b1b;">Step A — the driver</div>
-      <div class="chain-arrow">↓</div>
-      <div class="chain-step" style="background:#ccfbf1; color:#0d9488;">Step B — the outcome</div>
-    </div>
-  </section>
-
-  <!-- ═══════════════ SLIDE 5: CLOSING ═══════════════ -->
-  <section class="slide slide-closing" id="slide-closing" data-panel="slide-closing">
-    <div class="slide-inner">
-      <h1>Thank You</h1>
-      <p style="margin-top:22px;"><strong>Presenter Name</strong><br>Role, Affiliation<br>Contact / event line</p>
-    </div>
-  </section>
-
-</main>
-
-<!-- Unified icon-only control rail: theme, density, font-size, notes,
-     insert. All five buttons are icon-only; the label shows as a CSS
-     tooltip on hover/focus (data-tooltip) and via aria-label for screen
-     readers. Notes/Insert live here too (moved out of the old separate
-     .annot-toggle-stack so every control reads as one consistent rail). -->
-<div class="icon-rail" role="toolbar" aria-label="View toggles and annotation controls">
-  <button class="icon-btn" id="theme-toggle" aria-label="Toggle color theme" aria-pressed="false" data-tooltip="Toggle theme">◐</button>
-  <button class="icon-btn" id="density-toggle" aria-label="Toggle density" data-tooltip="Toggle density">▤</button>
-  <button class="icon-btn" id="font-toggle" aria-label="Cycle font size" data-tooltip="Font size">M</button>
-  <button class="icon-btn" id="annot-toggle" aria-label="Open annotations panel" data-tooltip="Notes">
-    💬<span class="annot-count" id="annot-count" hidden>0</span>
-  </button>
-  <button class="icon-btn" id="annot-insert-toggle" aria-label="Insert text at a point" aria-pressed="false" data-tooltip="Insert text">
-    <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 5h6M6 19h6M9 5v14"></path><path d="M19 2v6M16 5h6"></path></svg>
-  </button>
-</div>
-<div class="deck-nav">
-  <button id="nav-home" title="Go to first slide (Home)" aria-label="Go to first slide">
-    <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="6" y1="5" x2="6" y2="19"></line><path d="M18 6 9 12l9 6z"></path></svg>
-  </button>
-  <button id="nav-prev" title="Previous slide" aria-label="Previous slide">
-    <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5 8 12l7 7"></path></svg>
-  </button>
-  <div class="deck-counter" id="deck-counter">1 / 1</div>
-  <button id="nav-next" title="Next slide" aria-label="Next slide">
-    <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 5 7 7-7 7"></path></svg>
-  </button>
-  <button id="nav-fullscreen" title="Toggle full screen (F)" aria-label="Toggle full screen">
-    <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 0 0-2 2v3M16 3h3a2 2 0 0 1 2 2v3M8 21H5a2 2 0 0 1-2-2v-3M16 21h3a2 2 0 0 0 2-2v-3"></path></svg>
-  </button>
-</div>
-
-<script>
-/* ── Deck navigation: builds counter from whatever slides exist ── */
-(function () {
-  'use strict';
-  var slides = Array.prototype.slice.call(document.querySelectorAll('.slide'));
-  var current = 0;
-  var counterEl = document.getElementById('deck-counter');
-  var prevBtn = document.getElementById('nav-prev');
-  var nextBtn = document.getElementById('nav-next');
-  var homeBtn = document.getElementById('nav-home');
-  var fsBtn = document.getElementById('nav-fullscreen');
-
-  function goTo(i) {
-    if (i < 0 || i >= slides.length) return;
-    slides[current].classList.remove('active');
-    current = i;
-    slides[current].classList.add('active');
-    counterEl.textContent = (current + 1) + ' / ' + slides.length;
-    prevBtn.disabled = current === 0;
-    nextBtn.disabled = current === slides.length - 1;
-    slides[current].scrollTop = 0;
-  }
-
-  prevBtn.addEventListener('click', function () { goTo(current - 1); });
-  nextBtn.addEventListener('click', function () { goTo(current + 1); });
-  homeBtn.addEventListener('click', function () { goTo(0); });
-  window.__deckGoTo = goTo;
-
-  // ── Fullscreen toggle (with vendor-prefixed fallbacks) ──
-  function isFullscreen() {
-    return document.fullscreenElement || document.webkitFullscreenElement || document.msFullscreenElement;
-  }
-  function toggleFullscreen() {
-    if (!isFullscreen()) {
-      var el = document.documentElement;
-      var req = el.requestFullscreen || el.webkitRequestFullscreen || el.msRequestFullscreen;
-      if (req) req.call(el);
-    } else {
-      var exit = document.exitFullscreen || document.webkitExitFullscreen || document.msExitFullscreen;
-      if (exit) exit.call(document);
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bento Brief Template — One-page · Annotatable · Export</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
+  <style>
+    /* ═══════════════════════════════════════════════════════════════
+       Design tokens — dark-first + glass (2026 pattern: dark is the
+       design you start from; light is the alternate). Token names are
+       shared with the v2 annotation engine.
+       ═══════════════════════════════════════════════════════════════ */
+    :root, [data-theme="dark"] {
+      color-scheme: light dark;
+      --bg: #0b0e14;
+      --surface: #131820;
+      --surface2: #1c2230;
+      --surface3: #252b3d;
+      --border: #232a35;
+      --border-bright: #313a4a;
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+      --text-dim: #64748b;
+      --accent: #60a5fa;
+      --accent-dim: rgba(96, 165, 250, 0.1);
+      --accent-glow: rgba(96, 165, 250, 0.2);
+      --error: #f87171;
+      --annot-delete: var(--error);
+      --annot-insert: #4ade80;
+      --ann-highlight: #60a5fa;
+      --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      --font-head: 'Outfit', sans-serif;
+      --font-mono: ui-monospace, 'SF Mono', 'JetBrains Mono', 'Space Mono', Menlo, Consolas, monospace;
+      --radius: 18px;
+      --radius-sm: 8px;
+      /* component palette (annotation format swatches) */
+      --teal: #14b8a6;
+      --coral: #ef4444;
+      --amber: #f59e0b;
+      --green: #10b981;
+      --deep-blue: #3b82f6;
+      --navy: #1e3a5f;
+      --white: #ffffff;
     }
-  }
-  var FS_ICON_ENTER = '<svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 0 0-2 2v3M16 3h3a2 2 0 0 1 2 2v3M8 21H5a2 2 0 0 1-2-2v-3M16 21h3a2 2 0 0 0 2-2v-3"></path></svg>';
-  var FS_ICON_EXIT = '<svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8V5a2 2 0 0 1 2-2h3M21 8V5a2 2 0 0 0-2-2h-3M3 16v3a2 2 0 0 0 2 2h3M21 16v3a2 2 0 0 1-2 2h-3"></path></svg>';
-  function syncFsIcon() {
-    var on = !!isFullscreen();
-    fsBtn.innerHTML = on ? FS_ICON_EXIT : FS_ICON_ENTER;
-    fsBtn.title = on ? 'Exit full screen (F)' : 'Toggle full screen (F)';
-    fsBtn.setAttribute('aria-label', on ? 'Exit full screen' : 'Toggle full screen');
-  }
-  fsBtn.addEventListener('click', toggleFullscreen);
-  document.addEventListener('fullscreenchange', syncFsIcon);
-  document.addEventListener('webkitfullscreenchange', syncFsIcon);
-  document.addEventListener('msfullscreenchange', syncFsIcon);
+    [data-theme="light"] {
+      color-scheme: light;
+      --bg: #f8fafc;
+      --surface: #ffffff;
+      --surface2: #f1f5f9;
+      --surface3: #e2e8f0;
+      --border: #e2e8f0;
+      --border-bright: #cbd5e1;
+      --text: #0f172a;
+      --text-muted: #64748b;
+      --text-dim: #94a3b8;
+      --accent: #2563eb;
+      --accent-dim: rgba(37, 99, 235, 0.08);
+      --accent-glow: rgba(37, 99, 235, 0.15);
+      --error: #dc2626;
+      --annot-insert: #16a34a;
+      --ann-highlight: #2563eb;
+      --teal: #0d9488;
+      --coral: #ef4444;
+      --amber: #d97706;
+      --green: #059669;
+      --deep-blue: #2563eb;
+      --navy: #1e3a5f;
+    }
 
-  document.addEventListener('keydown', function (e) {
-    var tag = (document.activeElement && document.activeElement.tagName) || '';
-    if (tag === 'TEXTAREA' || tag === 'INPUT') return;
-    if (e.key === 'ArrowRight' || e.key === 'PageDown' || e.key === ' ') { goTo(current + 1); e.preventDefault(); }
-    else if (e.key === 'ArrowLeft' || e.key === 'PageUp') { goTo(current - 1); e.preventDefault(); }
-    else if (e.key === 'Home') { goTo(0); }
-    else if (e.key === 'End') { goTo(slides.length - 1); }
-    else if (e.key === 'f' || e.key === 'F') { toggleFullscreen(); e.preventDefault(); }
-  });
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; } }
+    body {
+      margin: 0; font-family: var(--font-sans); font-size: 1rem; line-height: 1.6;
+      color: var(--text); background: var(--bg);
+      -webkit-font-smoothing: antialiased;
+      transition: background 0.3s ease, color 0.3s ease;
+      padding: 0 1.5rem 5rem;
+    }
+    /* Ambient accent glow behind the bento grid */
+    body::before {
+      content: ""; position: fixed; inset: 0; z-index: -1; pointer-events: none;
+      background:
+        radial-gradient(720px circle at 15% -10%, var(--accent-glow), transparent 62%),
+        radial-gradient(900px circle at 105% 18%, var(--accent-glow), transparent 66%);
+    }
 
-  goTo(0);
-})();
-</script>
+    /* ── Icon rail (theme / notes / insert) ─────────────────────── */
+    .icon-rail { position: fixed; top: 20px; right: 24px; z-index: 100; display: flex; flex-direction: column; gap: 8px; align-items: flex-end; }
+    .icon-btn {
+      position: relative; width: 42px; height: 42px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-family: inherit; font-size: 1rem; font-weight: 700;
+      background: var(--surface3); color: var(--text); border: 1px solid var(--border-bright);
+      cursor: pointer; transition: background 0.15s, border-color 0.15s, transform 0.15s;
+      backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+    }
+    .icon-btn:hover, .icon-btn:focus-visible { border-color: var(--accent); color: var(--accent); transform: translateY(-1px); }
+    .icon-btn[aria-pressed="true"] { background: var(--accent-dim); border-color: var(--accent); }
+    .icon-btn svg { width: 20px; height: 20px; stroke: currentColor; fill: none; display: block; }
+    .icon-btn::after {
+      content: attr(data-tooltip);
+      position: absolute; top: 50%; right: calc(100% + 0.5rem); transform: translateY(-50%);
+      background: var(--text); color: var(--bg);
+      font-size: 0.75rem; font-weight: 600; white-space: nowrap;
+      padding: 0.3rem 0.55rem; border-radius: var(--radius-sm);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+      opacity: 0; pointer-events: none; transition: opacity 0.12s ease;
+    }
+    .icon-btn:hover::after, .icon-btn:focus-visible::after { opacity: 1; }
+    .icon-btn .annot-count {
+      position: absolute; top: -0.3rem; right: -0.3rem;
+      display: inline-flex; align-items: center; justify-content: center;
+      min-width: 1.1rem; height: 1.1rem; padding: 0 0.3rem;
+      font-size: 0.65rem; font-weight: 700; line-height: 1;
+      background: var(--coral); color: white; border-radius: 999px;
+    }
+    .icon-btn .annot-count[hidden] { display: none; }
 
-<!-- ═══════════════════ ANNOTATION SYSTEM (v2; offset-anchored, 4 types: comment/delete/insert/replace) ═══════════════════ -->
-<style>
-  /* Map the slide template's brand tokens to the v2 engine's expected token
-     names. The slide template already provides --navy, --teal, --surface,
-     --slate-*, etc. We translate them to --bg/--text/--accent/etc here so the
-     inlined v2 stylesheet (which uses the generic names) renders with the
-     slide's brand palette. */
-  :root {
-    --bg: var(--slate-50, #f8fafc);
-    /* NOTE: --surface must be a literal value, not a self-referential
-       var(--surface, …) — CSS invalidates self-referencing custom property
-       declarations, leaving the property unset (the drawer's
-       'background: var(--surface)' then resolves to transparent, showing
-       the slide gradient through it). The slide template defines
-       --surface: var(--white) = #ffffff in the main :root; this
-       literal keeps the drawer opaque. */
-    --surface: #ffffff;
-    --surface2: var(--slate-100, #f1f5f9);
-    --border: var(--slate-200, #e2e8f0);
-    --border-bright: var(--slate-300, #cbd5e1);
-    --text: var(--slate-800, #1e293b);
-    --text-muted: var(--slate-500, #64748b);
-    --text-dim: var(--slate-600, #475569);
-    --accent: var(--teal, #0d9488);
-    --accent-dim: rgba(13, 148, 136, 0.15);
-    --accent-glow: rgba(13, 148, 136, 0.28);
-    --error: var(--coral, #ef6461);
-    --annot-delete: var(--coral, #ef6461);
-    --annot-insert: var(--green, #10b981);
-    --font-sans: 'Segoe UI', system-ui, -apple-system, sans-serif;
-    --font-mono: ui-monospace, 'SF Mono', 'JetBrains Mono', 'Space Mono', Menlo, Consolas, monospace;
-    --radius: 7px;
-    --radius-sm: 4px;
-    --ann-highlight: var(--teal, #0d9488);
-  }
-  [data-theme="dark"] {
-    --bg: #1b212c;
-    --surface: #1b212c;
-    --surface2: #232a36;
-    --border: #334155;
-    --border-bright: #475569;
-    --text: #f1f5f9;
-    --text-muted: #94a3b8;
-    --text-dim: #cbd5e1;
-    --accent: var(--teal-light, #14b8a6);
-    --accent-dim: rgba(20, 184, 166, 0.18);
-    --accent-glow: rgba(20, 184, 166, 0.30);
-    --annot-insert: var(--green-light, #6ee7b7);
-  }
+    /* ── Hero header ─────────────────────────────────────────────── */
+    .content { max-width: 1200px; margin: 0 auto; }
+    .hero { padding: 4.5rem 0 2rem; }
+    .eyebrow {
+      display: inline-block; font-size: 0.72rem; font-weight: 700;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--accent); background: var(--accent-dim);
+      padding: 0.3rem 0.75rem; border-radius: 999px; margin-bottom: 1rem;
+    }
+    .hero h1 {
+      font-family: var(--font-head); font-size: clamp(2.25rem, 5.5vw, 3.5rem);
+      font-weight: 800; letter-spacing: -0.035em; line-height: 1.05;
+      margin: 0 0 0.75rem;
+      background: linear-gradient(120deg, var(--text) 55%, var(--accent) 110%);
+      -webkit-background-clip: text; background-clip: text;
+      -webkit-text-fill-color: transparent; color: transparent;
+    }
+    .hero .lede { font-size: 1.15rem; color: var(--text-muted); max-width: 62ch; margin: 0 0 1.25rem; }
+    .meta-chips { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+    .chip {
+      font-size: 0.8rem; font-weight: 600; color: var(--text-muted);
+      border: 1px solid var(--border-bright); background: color-mix(in srgb, var(--surface) 60%, transparent);
+      padding: 0.3rem 0.8rem; border-radius: 999px;
+      backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+    }
+    .chip b { color: var(--text); font-weight: 700; }
 
-  /* v2 annotate stylesheet inlined (from features/slide/annotate.css) — the
+    /* ── Bento grid ──────────────────────────────────────────────── */
+    /* Density + font-size tokens (v0.6.1 chrome pattern, same as the
+       other three templates: [data-density] adjusts spacing, [data-font-size]
+       scales the root so all rem text follows). */
+    :root, [data-density="comfortable"] { --bento-pad: 1.5rem; --bento-gap: 1rem; --bento-kpi-gap: 1rem; }
+    [data-density="compact"] { --bento-pad: 1rem; --bento-gap: 0.65rem; --bento-kpi-gap: 0.65rem; }
+    :root, [data-font-size="M"] { font-size: 16px; }
+    [data-font-size="S"] { font-size: 14px; }
+    [data-font-size="L"] { font-size: 18px; }
+    .bento { display: grid; grid-template-columns: repeat(12, 1fr); gap: var(--bento-gap); }
+    .b-card {
+      grid-column: span 4;
+      background: color-mix(in srgb, var(--surface) 88%, transparent);
+      border: 1px solid var(--border-bright);
+      border-radius: var(--radius);
+      padding: var(--bento-pad);
+      backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+      box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+      transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.25s ease, border-color 0.25s ease;
+      min-width: 0;
+    }
+    .b-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--accent);
+      box-shadow: 0 14px 36px -10px var(--accent-glow), 0 10px 24px rgba(0,0,0,0.09);
+    }
+    .span-4 { grid-column: span 4; } .span-5 { grid-column: span 5; }
+    .span-6 { grid-column: span 6; } .span-7 { grid-column: span 7; }
+    .span-8 { grid-column: span 8; } .span-12 { grid-column: span 12; }
+    .b-card h2 {
+      font-family: var(--font-head); font-size: 1.05rem; font-weight: 700;
+      letter-spacing: -0.01em; margin: 0 0 1rem; color: var(--text);
+      display: flex; align-items: center; gap: 0.5rem;
+    }
+    .b-card h2 .card-icon { color: var(--accent); font-size: 1.1em; }
+    .b-card p { margin: 0 0 0.75rem; color: var(--text-muted); font-size: 0.95rem; }
+    .b-card p:last-child { margin-bottom: 0; }
+    .b-card strong { color: var(--text); font-weight: 600; }
+
+    /* KPI card */
+    .kpi-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--bento-kpi-gap); }
+    .kpi { text-align: left; }
+    .kpi .kpi-label { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-dim); }
+    .kpi .kpi-value { font-family: var(--font-head); font-size: 2.2rem; font-weight: 800; line-height: 1.1; color: var(--text); margin: 0.3rem 0 0.15rem; }
+    .kpi .kpi-delta { font-size: 0.8rem; font-weight: 600; }
+    .kpi .up { color: var(--green); } .kpi .down { color: var(--coral); }
+
+    /* Progress list card */
+    .progress-item { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.8rem; }
+    .progress-item:last-child { margin-bottom: 0; }
+    .progress-item .p-label { flex: 0 0 34%; font-size: 0.85rem; font-weight: 600; color: var(--text); }
+    .p-track { flex: 1; height: 8px; background: var(--surface3); border-radius: 999px; overflow: hidden; }
+    .p-fill { height: 100%; border-radius: 999px; background: linear-gradient(90deg, var(--accent), var(--teal)); transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1); }
+    .p-value { flex: 0 0 2.6rem; text-align: right; font-size: 0.8rem; font-weight: 700; color: var(--text-muted); font-variant-numeric: tabular-nums; }
+
+    /* Bar chart card (pure CSS, no libs) */
+    .bars { display: flex; align-items: flex-end; gap: 0.6rem; height: 150px; padding-top: 0.5rem; }
+    .bar-col { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 0.4rem; height: 100%; justify-content: flex-end; }
+    .bar { width: 100%; max-width: 46px; border-radius: 8px 8px 3px 3px; background: var(--accent-dim); position: relative; transition: transform 0.2s ease, filter 0.2s ease; transform-origin: bottom; }
+    .bar:hover { filter: brightness(1.25); transform: scaleY(1.03); }
+    .bar.hot { background: linear-gradient(180deg, var(--accent), var(--deep-blue)); }
+    .bar-label { font-size: 0.7rem; font-weight: 600; color: var(--text-dim); }
+
+    /* Quote card */
+    .b-card.quote { background: linear-gradient(140deg, var(--navy) 0%, var(--deep-blue) 100%); border-color: transparent; }
+    .b-card.quote h2 { color: var(--white); }
+    .b-card.quote blockquote { margin: 0; font-family: var(--font-head); font-size: 1.2rem; line-height: 1.5; color: var(--white); font-weight: 600; letter-spacing: -0.01em; }
+    .b-card.quote cite { display: block; margin-top: 0.75rem; font-size: 0.8rem; font-style: normal; color: rgba(255,255,255,0.75); font-weight: 600; }
+
+    /* Timeline card */
+    .tl { position: relative; padding-left: 1.4rem; margin: 0; }
+    .tl::before { content: ""; position: absolute; left: 5px; top: 6px; bottom: 6px; width: 2px; background: var(--border-bright); border-radius: 2px; }
+    .tl-item { position: relative; padding-bottom: 1rem; }
+    .tl-item:last-child { padding-bottom: 0; }
+    .tl-item::before {
+      content: ""; position: absolute; left: -1.4rem; top: 5px;
+      width: 12px; height: 12px; border-radius: 50%;
+      background: var(--surface); border: 2px solid var(--accent);
+    }
+    .tl-item.done::before { background: var(--green); border-color: var(--green); }
+    .tl-item .tl-title { font-size: 0.9rem; font-weight: 600; color: var(--text); }
+    .tl-item .tl-date { font-size: 0.75rem; font-weight: 600; color: var(--text-dim); }
+
+    /* List card */
+    .key-list { margin: 0; padding: 0; list-style: none; }
+    .key-list li { display: flex; gap: 0.6rem; margin-bottom: 0.7rem; font-size: 0.9rem; color: var(--text-muted); }
+    .key-list li:last-child { margin-bottom: 0; }
+    .key-list .dot { flex-shrink: 0; width: 8px; height: 8px; border-radius: 50%; background: var(--accent); margin-top: 0.45rem; }
+    .key-list .dot.teal { background: var(--teal); } .key-list .dot.amber { background: var(--amber); }
+    .key-list .dot.coral { background: var(--coral); } .key-list .dot.green { background: var(--green); }
+
+    /* Badges */
+    .badge { display: inline-block; font-size: 0.7rem; font-weight: 700; padding: 0.2rem 0.6rem; border-radius: 999px; background: var(--accent-dim); color: var(--accent); }
+    .badge.green { background: rgba(16,185,129,0.15); color: var(--green); }
+    .badge.amber { background: rgba(245,158,11,0.15); color: var(--amber); }
+    .badge.coral { background: rgba(239,68,68,0.15); color: var(--coral); }
+
+    /* CTA card */
+    .b-card.cta { background: linear-gradient(140deg, var(--accent) 0%, var(--deep-blue) 100%); border-color: transparent; }
+    .b-card.cta h2 { color: var(--white); }
+    .b-card.cta p { color: rgba(255,255,255,0.85); }
+    .cta-btn {
+      display: inline-block; margin-top: 0.5rem; padding: 0.6rem 1.2rem;
+      background: var(--white); color: var(--navy); font-weight: 700; font-size: 0.9rem;
+      border-radius: 999px; text-decoration: none; transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+    .cta-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(0,0,0,0.25); }
+
+    /* Footer strip */
+    .b-foot { margin-top: 2rem; text-align: center; font-size: 0.8rem; color: var(--text-dim); }
+
+    /* ── Responsive ──────────────────────────────────────────────── */
+    @media (max-width: 980px) {
+      .span-4, .span-5, .span-6, .span-7, .span-8 { grid-column: span 12; }
+      .b-card { padding: 1.25rem; }
+    }
+    @media (max-width: 720px) {
+      body { padding: 0 1rem 3rem; }
+      .hero { padding-top: 3.5rem; }
+      .kpi-row { grid-template-columns: 1fr; }
+    }
+
+    /* ── Print ───────────────────────────────────────────────────── */
+    @media print {
+      .icon-rail, .annot-toolbar, .annot-format-popover, .annot-editor,
+      .annot-drawer, .annot-backdrop { display: none !important; }
+      /* Print resets density + font size to defaults (same as siblings) */
+      [data-density="compact"] { --bento-pad: 1.5rem; --bento-gap: 1rem; --bento-kpi-gap: 1rem; }
+      [data-font-size="S"], [data-font-size="L"] { font-size: 16px; }
+      body { padding: 0; }
+      body::before { display: none; }
+      .b-card { break-inside: avoid; box-shadow: none; background: var(--surface); }
+      .hero h1 { -webkit-text-fill-color: currentColor; }
+    }
+
      :root/[data-theme] block above supersedes its own token declarations. */
 
 mark.annot {
@@ -819,7 +548,111 @@ body.annot-insert-armed main.content { cursor: text; }
 }
 
   /* ── END inlined annotate.css ── */
-</style>
+
+  </style>
+</head>
+<body data-annot-storage="bento-template" data-annot-theme-key="bento-template-theme-v1" data-annot-default-theme="dark">
+
+  <!-- ═══ Icon rail: theme / notes / insert ═══ -->
+  <div class="icon-rail" role="toolbar" aria-label="View toggles and annotation controls">
+    <button class="icon-btn" id="theme-toggle" aria-label="Toggle color theme" aria-pressed="false" data-tooltip="Toggle theme">◐</button>
+    <button class="icon-btn" id="density-toggle" aria-label="Toggle density" data-tooltip="Toggle density">▤</button>
+    <button class="icon-btn" id="font-toggle" aria-label="Cycle font size" data-tooltip="Font size">M</button>
+    <button class="icon-btn" id="annot-toggle" aria-label="Open annotations panel" data-tooltip="Notes">
+      💬<span class="annot-count" id="annot-count" hidden>0</span>
+    </button>
+    <button class="icon-btn" id="annot-insert-toggle" aria-label="Insert text at a point" aria-pressed="false" data-tooltip="Insert text">
+      <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 5h6M6 19h6M9 5v14"></path><path d="M19 2v6M16 5h6"></path></svg>
+    </button>
+  </div>
+
+  <main class="content" data-annot-root>
+    <header class="hero">
+      <span class="eyebrow">Sprint 28 · Briefing</span>
+      <h1>Project Phoenix — One-page Recap</h1>
+      <p class="lede">Everything the review panel needs on a single page: where the project stands, what moved this sprint, and what lands next. Select any text to leave a review note.</p>
+      <div class="meta-chips">
+        <span class="chip">Owner <b>A. Researcher</b></span>
+        <span class="chip">Period <b>Jul–Sep 2026</b></span>
+        <span class="chip">Status <b style="color: var(--green)">On track</b></span>
+        <span class="chip">Last updated <b>2026-09-08</b></span>
+      </div>
+    </header>
+
+    <section class="bento">
+      <!-- Row 1: KPIs + chart -->
+      <div class="b-card span-8">
+        <h2><span class="card-icon">◆</span>Headline numbers</h2>
+        <div class="kpi-row">
+          <div class="kpi">
+            <div class="kpi-label">Sources screened</div>
+            <div class="kpi-value">1,248</div>
+            <div class="kpi-delta up">▲ 18% vs last sprint</div>
+          </div>
+          <div class="kpi">
+            <div class="kpi-label">Included studies</div>
+            <div class="kpi-value">86</div>
+            <div class="kpi-delta up">▲ 12 new</div>
+          </div>
+          <div class="kpi">
+            <div class="kpi-label">Open questions</div>
+            <div class="kpi-value">4</div>
+            <div class="kpi-delta down">▼ 2 resolved</div>
+          </div>
+        </div>
+      </div>
+      <div class="b-card span-4">
+        <h2><span class="card-icon">▙</span>Screening per week</h2>
+        <div class="bars">
+          <div class="bar-col"><div class="bar" style="height: 35%"></div><span class="bar-label">W1</span></div>
+          <div class="bar-col"><div class="bar" style="height: 52%"></div><span class="bar-label">W2</span></div>
+          <div class="bar-col"><div class="bar" style="height: 48%"></div><span class="bar-label">W3</span></div>
+          <div class="bar-col"><div class="bar hot" style="height: 78%"></div><span class="bar-label">W4</span></div>
+          <div class="bar-col"><div class="bar hot" style="height: 92%"></div><span class="bar-label">W5</span></div>
+        </div>
+      </div>
+
+      <!-- Row 2: highlights + progress + quote -->
+      <div class="b-card span-4">
+        <h2><span class="card-icon">✦</span>This sprint</h2>
+        <ul class="key-list">
+          <li><span class="dot green"></span><span>Dedup pipeline reran clean on the full corpus — zero orphaned records.</span></li>
+          <li><span class="dot"></span><span>Gap analysis draft circulated; 9 reviewers invited via the annotation export.</span></li>
+          <li><span class="dot amber"></span><span>Two conflicting effect sizes flagged for author follow-up.</span></li>
+        </ul>
+      </div>
+      <div class="b-card span-4">
+        <h2><span class="card-icon">▤</span>Workflow status</h2>
+        <div class="progress-item"><span class="p-label">Screening</span><div class="p-track"><div class="p-fill" style="width: 92%"></div></div><span class="p-value">92%</span></div>
+        <div class="progress-item"><span class="p-label">Extraction</span><div class="p-track"><div class="p-fill" style="width: 64%"></div></div><span class="p-value">64%</span></div>
+        <div class="progress-item"><span class="p-label">Synthesis</span><div class="p-track"><div class="p-fill" style="width: 31%"></div></div><span class="p-value">31%</span></div>
+        <div class="progress-item"><span class="p-label">Writing</span><div class="p-track"><div class="p-fill" style="width: 12%"></div></div><span class="p-value">12%</span></div>
+      </div>
+      <div class="b-card quote span-4">
+        <h2><span class="card-icon">❝</span>Reviewer signal</h2>
+        <blockquote>“The screening funnel is finally converging — coverage is consistent across all three databases.”</blockquote>
+        <cite>— External reviewer, mid-sprint check</cite>
+      </div>
+
+      <!-- Row 3: timeline + next steps -->
+      <div class="b-card span-7">
+        <h2><span class="card-icon">◷</span>Milestones</h2>
+        <div class="tl">
+          <div class="tl-item done"><div class="tl-title">Protocol registered <span class="badge green">done</span></div><div class="tl-date">2026-07-14</div></div>
+          <div class="tl-item done"><div class="tl-title">Search strings finalised <span class="badge green">done</span></div><div class="tl-date">2026-07-28</div></div>
+          <div class="tl-item"><div class="tl-title">Full-text screening complete <span class="badge amber">in progress</span></div><div class="tl-date">due 2026-09-20</div></div>
+          <div class="tl-item"><div class="tl-title">Draft findings to reviewers</div><div class="tl-date">due 2026-10-15</div></div>
+        </div>
+      </div>
+      <div class="b-card cta span-5">
+        <h2><span class="card-icon">➜</span>Next steps</h2>
+        <p>Close out the remaining <strong>full-text reviews</strong>, resolve the two flagged effect sizes, and lock the extraction template before the October milestone.</p>
+        <a class="cta-btn" href="#annot-drawer" onclick="document.getElementById('annot-toggle').click(); return false;">Review &amp; annotate →</a>
+      </div>
+    </section>
+
+    <p class="b-foot">Bento brief · built from html-template-pack · annotations persist locally and export as JSON</p>
+  </main>
 
 <!-- ═══ Annotation UI markup (v2 wiring snippet) ═══ -->
 <!-- Notes + Insert toggle buttons now live in the .icon-rail above. -->
@@ -885,6 +718,7 @@ body.annot-insert-armed main.content { cursor: text; }
   </div>
   <ul class="annot-list" id="annot-list"></ul>
 </aside>
+
 
 <script>
 /* ── v2 annotation engine (offset-anchored, 4 types) ─────────────────────
@@ -1022,7 +856,7 @@ body.annot-insert-armed main.content { cursor: text; }
 
   // ---- Density toggle ----
   (function () {
-    var KEY = 'slide-density';
+    var KEY = 'bento-density';
     var MODES = ['comfortable', 'compact'];
     var ICONS = { comfortable: '▤', compact: '▥' };
     var TOOLTIPS = { comfortable: 'Density: comfortable', compact: 'Density: compact' };
@@ -1049,7 +883,7 @@ body.annot-insert-armed main.content { cursor: text; }
 
   // ---- Font size toggle ----
   (function () {
-    var KEY = 'slide-font-size';
+    var KEY = 'bento-font-size';
     var SIZES = ['S', 'M', 'L'];
     var btn = document.getElementById('font-toggle');
     if (!btn) return;
@@ -1937,41 +1771,5 @@ body.annot-insert-armed main.content { cursor: text; }
 /* ── END inlined highlight-annotate.js ── */
 </script>
 
-<script>
-/* ── Slide-template adapter: wire drawer jumps → deck navigation ──────────
-   The v2 engine's jumpTo() expects [data-tab] buttons (the report template's
-   multi-tab pattern). A slide deck has __deckGoTo(idx) instead. This
-   adapter maps the engine's `a.panel` (set to each slide's data-panel id)
-   to a slide index, switches slides first, then lets the engine's built-in
-   scrollIntoView do its thing. */
-(function () {
-  'use strict';
-  function goToPanel(panelId) {
-    if (!panelId || !window.__deckGoTo) return;
-    var slide = document.querySelector('[data-panel="' + panelId + '"]');
-    if (!slide) return;
-    var idx = Array.prototype.indexOf.call(document.querySelectorAll('.slide'), slide);
-    if (idx >= 0) window.__deckGoTo(idx);
-  }
-  // Capture-phase listener on the drawer list. When the user clicks an
-  // .annot-item, this runs BEFORE the engine's own click handler (which
-  // calls jumpTo). It switches to the right slide first so scrollIntoView
-  // actually scrolls the right slide into view.
-  document.addEventListener('click', function (e) {
-    var item = e.target && e.target.closest && e.target.closest('.annot-item');
-    if (!item) return;
-    var id = item.getAttribute('data-id');
-    if (!id) return;
-    try {
-      var raw = localStorage.getItem(
-        'annotations:' + (document.body.getAttribute('data-annot-storage') || 'slide-template')
-      );
-      var arr = raw ? JSON.parse(raw) : [];
-      var a = arr.find(function (x) { return x.id === id; });
-      if (a && a.panel) goToPanel(a.panel);
-    } catch (err) { /* ignore */ }
-  }, true);
-})();
-</script>
 </body>
 </html>

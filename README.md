@@ -4,7 +4,7 @@
 [![Live demo](https://img.shields.io/badge/demo-GitHub%20Pages-2ea44f)](https://cheahhl814.github.io/html-template-pack/)
 [![Type](https://img.shields.io/badge/type-agent%20skill-blueviolet)](#-installation)
 
-Three self-contained HTML templates — **report** (sticky sidebar, 5 icon+label tabs, v2 offset-anchored annotations, theme toggle), **slide deck** (prev/next nav, inline v2 annotations, theme toggle), and **htmx dashboard** (topbar, KPI row, sparkline chart, activity feed, sortable table, demo-mode mock backend). All three are single-file, review-ready HTML with no external CDN dependencies beyond Google Fonts (report/slide) and pinned htmx with SRI (dashboard).
+Four self-contained HTML templates — **report** (sticky sidebar, 5 icon+label tabs, v2 offset-anchored annotations, theme toggle), **slide deck** (prev/next nav, inline v2 annotations, theme toggle), **bento brief** (2026 bento-grid one-page snapshot briefing, dark-first glass, full v2 annotation engine), and **htmx dashboard** (topbar, KPI row, sparkline chart, activity feed, sortable table, demo-mode mock backend). All four are single-file, review-ready HTML with no external CDN dependencies beyond Google Fonts (report/slide/bento) and pinned htmx with SRI (dashboard). All four are **dark-first** with refined glass chrome, fluid display typography, and hover-glow micro-interactions (v0.7.0 aesthetic pass).
 
 **Repository**: https://github.com/cheahhl814/html-template-pack
 
@@ -21,16 +21,17 @@ Three self-contained HTML templates — **report** (sticky sidebar, 5 icon+label
 
 ## 🚀 Live demo
 
-All three templates are deployed as a working demo on GitHub Pages. Open any of them to interact with the live UI — no setup, no build step, no backend.
+All four templates are deployed as a working demo on GitHub Pages. Open any of them to interact with the live UI — no setup, no build step, no backend.
 
 | | |
 |---|---|
 | 🌐 **Launcher** | https://cheahhl814.github.io/html-template-pack/ |
 | 📄 **[Report demo](https://cheahhl814.github.io/html-template-pack/report/)** | "Q3 Operations Review — Northwind Logistics" (5 tabs, custom content) |
 | 🎞️ **[Slide demo](https://cheahhl814.github.io/html-template-pack/slide/)** | "Helios 2 — Real-Time Inference for the Edge" (5 slides, product launch) |
+| 🍱 **[Bento demo](https://cheahhl814.github.io/html-template-pack/bento/)** | "Project Phoenix — One-page Recap" (bento grid, full annotation engine) |
 | 📊 **[Dashboard demo](https://cheahhl814.github.io/html-template-pack/dashboard/)** | "Northwind Logistics — Operations Dashboard" (mock data, live polling) |
 
-Each demo is a curated showcase with realistic content (not a blank template). Try the **◐ theme toggle**, **▤ density toggle**, **S/M/L font size toggle** in the top-right of every demo. In the report and slide demos, select any text to leave tracked-changes-style annotations, then export them as JSON from the 💬 Notes panel.
+Each demo is a curated showcase with realistic content (not a blank template). Try the **◐ theme toggle**, **▤ density toggle**, **S/M/L font size toggle** in the top-right of every demo. In the report, slide, and bento demos, select any text to leave tracked-changes-style annotations, then export them as JSON from the 💬 Notes panel.
 
 **Source files** (for starting your own document): see [`templates/`](./templates/) and follow the usage examples below.
 
@@ -136,7 +137,7 @@ Skip the HTML, write a plain text outline instead.
 
 ## 🎯 What this skill does
 
-The skill ships three HTML templates. Pick the one that matches your content.
+The skill ships four HTML templates. Pick the one that matches your content.
 
 ### Report template
 
@@ -158,7 +159,13 @@ The template ships in **demo mode** out of the box: a small mock backend interce
 
 **Best for**: ops dashboards, admin panels, status pages, internal metrics views — anything meant to be watched and interacted with live, not read and annotated.
 
-## 💬 Annotation system (report + slide)
+### Bento brief template (NEW in v0.7.0)
+
+A one-page snapshot briefing in the 2026 bento-grid style: a hero header (eyebrow pill, gradient display title, meta chips) above a 12-column grid of modular glass cards — KPI row, pure-CSS bar chart, progress bars, gradient quote card, milestone timeline, key highlights, and a CTA card. Dark-first glass surfaces with an ambient accent glow; cards lift with an accent-glow shadow on hover. It carries the full v2 annotation engine (select any text to leave tracked-changes-style notes, export/import JSON), plus the theme, density, and font-size toggles with bento-specific storage keys. No JS dependencies at all — the chart is pure CSS.
+
+**Best for**: sprint recaps, weekly readouts, one-page proposals, status snapshots for review panels — anything the reader should grasp in 60 seconds and annotate inline. If the content grows past one page, graduate to the report template; if the numbers need to refresh from a server, it's the dashboard.
+
+## 💬 Annotation system (report, slide + bento)
 
 > **Audience: human reviewers.** The other sections of this README document what
 > the agent/harness should do. This section is for the *human* who opens the
@@ -209,7 +216,7 @@ For quick reference, here's the full feature matrix across the two templates:
 
 All three templates have a **◐ dark / ◑ light** button at the top-right (dashboard has it inline in the topbar). Click it to switch between light and dark themes. The choice is remembered in your browser and follows your operating system's dark-mode preference on first visit. The theme toggle is hidden when you print the document.
 
-## ⚡ Density and font-size toggles (all three templates)
+## ⚡ Density and font-size toggles (all four templates)
 
 Two extra buttons appear next to the theme toggle. They help reviewers read dense content more comfortably.
 

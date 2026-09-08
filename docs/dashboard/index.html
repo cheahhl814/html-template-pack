@@ -36,11 +36,11 @@
   ║  same skill) rather than annotating this page.                       ║
   ╚══════════════════════════════════════════════════════════════════════╝
 -->
-<html lang="en" data-theme="light">
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Northwind Logistics — Operations Dashboard (Demo)</title>
+  <title>Dashboard Template</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
@@ -106,6 +106,14 @@
       -webkit-font-smoothing: antialiased;
       transition: background 0.3s ease, color 0.3s ease;
     }
+    /* Ambient accent glow — two soft radial washes behind the shell. */
+    body::before {
+      content: ""; position: fixed; inset: 0; z-index: -1; pointer-events: none;
+      background:
+        radial-gradient(700px circle at 10% -10%, var(--accent-glow), transparent 60%),
+        radial-gradient(900px circle at 110% 20%, var(--accent-glow), transparent 65%);
+    }
+    @media print { body::before { display: none; } }
     a { color: var(--accent); text-decoration: none; }
     button { font-family: inherit; }
     ::-webkit-scrollbar { width: 10px; height: 10px; }
@@ -129,6 +137,18 @@
     .sidebar {
       background: var(--surface); border-right: 1px solid var(--border);
       padding: 1rem 0.75rem; display: flex; flex-direction: column; gap: 0.25rem;
+    }
+    /* Frosted chrome in dark mode — glass sidebar + panels that pick up
+       the ambient glow; light mode stays opaque for print contrast. */
+    [data-theme="dark"] .sidebar {
+      background: color-mix(in srgb, var(--surface) 62%, transparent);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+    }
+    [data-theme="dark"] .panel {
+      background: color-mix(in srgb, var(--surface) 86%, transparent);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
     }
     .sidebar a {
       display: flex; align-items: center; gap: 0.6rem; padding: 0.6rem 0.75rem;
@@ -162,7 +182,7 @@
     .input:focus, .select:focus { outline: none; border-color: var(--accent); }
 
     /* ── KPI stat cards ─────────────────────────────────────────── */
-    .stat-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 0.9rem; margin-bottom: 1.25rem; }
+    .stat-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem; margin-bottom: 1.5rem; }
     .stat-card { 
       background: var(--surface); 
       border: 1px solid var(--border-bright); 
@@ -172,10 +192,10 @@
       box-shadow: 0 4px 12px rgba(0,0,0,0.05);
       transition: all 0.2s ease;
     }
-    .stat-card:hover { border-color: var(--accent); transform: scale(1.02); }
+    .stat-card:hover { border-color: var(--accent); transform: scale(1.02); box-shadow: 0 8px 24px -8px var(--accent-glow); }
     .stat-card .stat-label { font-family: var(--font-sans); font-size: 0.75rem; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.05em; font-weight: 600; }
     .stat-card .stat-value { font-family: var(--font-head); font-size: 1.8rem; font-weight: 800; color: var(--accent); line-height: 1; margin-top: 0.3rem; }
-    .stat-card .stat-delta { font-size: 0.78rem; font-weight: 600; margin-top: 0.3rem; }
+    .stat-card .stat-delta { font-size: 0.78rem; font-weight: 600; margin-top: 0.4rem; }
     .stat-delta.up { color: var(--success); }
     .stat-delta.down { color: var(--error); }
     .stat-delta.flat { color: var(--text-muted); }
@@ -194,7 +214,7 @@
     .panel:hover { border-color: var(--accent); }
     .panel-head { display: flex; align-items: center; justify-content: space-between; padding: 0.9rem 1.1rem; border-bottom: 1px solid var(--border); background: var(--surface2); }
     .panel-head h2 { font-family: var(--font-head); font-size: 0.95rem; font-weight: 700; margin: 0; color: var(--text); }
-    .panel-body { padding: 1.1rem; }
+    .panel-body { padding: 1.25rem; }
 
     /* ── Sparkline chart (fragment returned as inline <svg>) ──────── */
     .chart-wrap { display: flex; align-items: flex-end; gap: 0.3rem; }
@@ -237,13 +257,13 @@
     tbody tr:hover { background: var(--surface2); }
     tbody tr:hover td { color: var(--text); }
     .badge {
-      display: inline-flex; align-items: center; gap: 0.3rem; padding: 0.2rem 0.55rem;
-      border-radius: 999px; font-size: 0.72rem; font-weight: 700;
+      display: inline-flex; align-items: center; gap: 0.3rem; padding: 3px 10px;
+      border-radius: 999px; font-size: 0.72rem; font-weight: 600;
     }
-    .badge.success { background: color-mix(in srgb, var(--success) 16%, transparent); color: var(--success); }
-    .badge.warning { background: color-mix(in srgb, var(--warning) 16%, transparent); color: var(--warning); }
-    .badge.error   { background: color-mix(in srgb, var(--error) 16%, transparent); color: var(--error); }
-    .badge.info    { background: color-mix(in srgb, var(--info) 16%, transparent); color: var(--info); }
+    .badge.success { background: rgba(20, 184, 166, 0.15); color: var(--success); }
+    .badge.warning { background: rgba(245, 158, 11, 0.15); color: var(--warning); }
+    .badge.error   { background: rgba(239, 68, 68, 0.15); color: var(--error); }
+    .badge.info    { background: rgba(96, 165, 250, 0.15); color: var(--info); }
     .table-empty { padding: 2.5rem 1rem; text-align: center; color: var(--text-muted); font-size: 0.85rem; }
 
     /* ── htmx loading indicator ─────────────────────────────────── */
@@ -276,21 +296,7 @@
     table th, table td { padding: var(--pad-cell); }
     .content { padding: var(--pad-content); }
 
-    @media print { .topbar, .sidebar, .table-toolbar .btn, .htmx-indicator, .demo-banner, .theme-btn { display: none !important; } [data-density="compact"] { --pad-card: 1rem; --pad-stat: 1rem; --pad-cell: 0.5rem 0.75rem; --gap-grid: 1rem; --pad-content: 1.5rem; } [data-font-size="S"], [data-font-size="L"] { font-size: 16px; } }
-    /* Demo banner (only in docs/ demo copies) */
-    .demo-banner {
-      position: fixed; bottom: 12px; right: 12px; z-index: 60;
-      background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
-      border: 1px solid #fbbf24; border-radius: 8px;
-      padding: 0.55rem 0.95rem; font-size: 0.8rem; color: #422006;
-      box-shadow: 0 4px 14px rgba(0,0,0,0.15); max-width: 460px;
-    }
-    .demo-banner strong { color: #422006; }
-    [data-theme="dark"] .demo-banner {
-      background: linear-gradient(135deg, rgba(251, 191, 36, 0.25) 0%, rgba(245, 158, 11, 0.25) 100%);
-      border-color: rgba(251, 191, 36, 0.5); color: #fcd34d;
-    }
-    [data-theme="dark"] .demo-banner strong { color: #fde68a; }
+    @media print { .topbar, .sidebar, .table-toolbar .btn, .htmx-indicator, .theme-btn { display: none !important; } [data-density="compact"] { --pad-card: 1rem; --pad-stat: 1rem; --pad-cell: 0.5rem 0.75rem; --gap-grid: 1rem; --pad-content: 1.5rem; } [data-font-size="S"], [data-font-size="L"] { font-size: 16px; } }
     @media (max-width: 768px) {
       .shell { grid-template-columns: 1fr; }
       .sidebar { display: none; }
@@ -300,14 +306,10 @@
 </head>
 <body data-report-id="dashboard-template" data-demo-mode>
 
-  <div class="demo-banner">
-    <strong>📢 Live demo</strong> — Curated showcase with mock data. To start your own dashboard, copy <code>templates/dashboard/dashboard-template.html</code> from the repo and connect real <code>/api/*</code> endpoints.
-  </div>
-
   <div class="shell">
     <!-- ═══════════════════ Topbar ═══════════════════ -->
     <header class="topbar">
-      <h1>Northwind Logistics <span class="subtitle">— Operations Dashboard (Live Demo)</span></h1>
+      <h1>Ops Dashboard <span class="subtitle">— demo data source</span></h1>
       <div class="topbar-spacer"></div>
       <div class="topbar-meta">
         <span class="live-dot" id="live-dot"></span>
@@ -419,7 +421,7 @@
     (function() {
       var KEY = 'dashboard-theme';
       var saved = localStorage.getItem(KEY);
-      var initial = saved || ((window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light');
+      var initial = saved || 'dark';
       document.documentElement.setAttribute('data-theme', initial);
       function label(t) { return t === 'light' ? '◐ dark' : '◑ light'; }
       var btn = document.getElementById('theme-toggle');

@@ -36,7 +36,7 @@
   ║  same skill) rather than annotating this page.                       ║
   ╚══════════════════════════════════════════════════════════════════════╝
 -->
-<html lang="en" data-theme="light">
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -93,7 +93,6 @@
       --accent: #2563eb;
       --accent-dim: rgba(37, 99, 235, 0.08);
       --accent-glow: rgba(37, 99, 235, 0.15);
-      --error: #dc2 la l’T.
       --error: #dc2626;
       --success: #16a34a;
       --warning: #d97706;
@@ -107,6 +106,14 @@
       -webkit-font-smoothing: antialiased;
       transition: background 0.3s ease, color 0.3s ease;
     }
+    /* Ambient accent glow — two soft radial washes behind the shell. */
+    body::before {
+      content: ""; position: fixed; inset: 0; z-index: -1; pointer-events: none;
+      background:
+        radial-gradient(700px circle at 10% -10%, var(--accent-glow), transparent 60%),
+        radial-gradient(900px circle at 110% 20%, var(--accent-glow), transparent 65%);
+    }
+    @media print { body::before { display: none; } }
     a { color: var(--accent); text-decoration: none; }
     button { font-family: inherit; }
     ::-webkit-scrollbar { width: 10px; height: 10px; }
@@ -130,6 +137,18 @@
     .sidebar {
       background: var(--surface); border-right: 1px solid var(--border);
       padding: 1rem 0.75rem; display: flex; flex-direction: column; gap: 0.25rem;
+    }
+    /* Frosted chrome in dark mode — glass sidebar + panels that pick up
+       the ambient glow; light mode stays opaque for print contrast. */
+    [data-theme="dark"] .sidebar {
+      background: color-mix(in srgb, var(--surface) 62%, transparent);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+    }
+    [data-theme="dark"] .panel {
+      background: color-mix(in srgb, var(--surface) 86%, transparent);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
     }
     .sidebar a {
       display: flex; align-items: center; gap: 0.6rem; padding: 0.6rem 0.75rem;
@@ -173,7 +192,7 @@
       box-shadow: 0 4px 12px rgba(0,0,0,0.05);
       transition: all 0.2s ease;
     }
-    .stat-card:hover { border-color: var(--accent); transform: scale(1.02); }
+    .stat-card:hover { border-color: var(--accent); transform: scale(1.02); box-shadow: 0 8px 24px -8px var(--accent-glow); }
     .stat-card .stat-label { font-family: var(--font-sans); font-size: 0.75rem; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.05em; font-weight: 600; }
     .stat-card .stat-value { font-family: var(--font-head); font-size: 1.8rem; font-weight: 800; color: var(--accent); line-height: 1; margin-top: 0.3rem; }
     .stat-card .stat-delta { font-size: 0.78rem; font-weight: 600; margin-top: 0.4rem; }
@@ -402,7 +421,7 @@
     (function() {
       var KEY = 'dashboard-theme';
       var saved = localStorage.getItem(KEY);
-      var initial = saved || ((window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light');
+      var initial = saved || 'dark';
       document.documentElement.setAttribute('data-theme', initial);
       function label(t) { return t === 'light' ? '◐ dark' : '◑ light'; }
       var btn = document.getElementById('theme-toggle');

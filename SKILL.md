@@ -1,13 +1,13 @@
 ---
 name: html-template-pack
-description: Three self-contained HTML templates — report (left-side sticky sidebar with 5 icon+label tabs, theme toggle, offset-anchored annotations, JSON export), slide deck (prev/next nav, theme toggle, inline annotations, JSON export), and htmx dashboard (topbar, KPI row, sparkline, activity feed, sortable table, demo-mode mock backend). Pick report for ≥3 long sections, slide for ≤12 visual beats, dashboard for live/polling data. Invoke for "HTML report", "HTML deck", "HTML page", "annotated report", "review-ready HTML", "slide deck", "HTML dashboard", "htmx dashboard", "ops dashboard", "admin panel", or MD/DOCX/PDF → HTML conversion. Report and slide ship the v2 annotation system; dashboard intentionally omits annotations (live data is not a stable anchor target).
-version: 0.6.1
+description: Four self-contained HTML templates — report (left-side sticky sidebar with 5 icon+label tabs, theme toggle, offset-anchored annotations, JSON export), slide deck (prev/next nav, theme toggle, inline annotations, JSON export), bento one-pager (2026 bento-grid snapshot briefing, dark-first glass, full v2 annotation engine), and htmx dashboard (topbar, KPI row, sparkline, activity feed, sortable table, demo-mode mock backend). Pick report for ≥3 long sections, slide for ≤12 visual beats, bento for a one-page snapshot briefing someone should grasp at a glance and comment on, dashboard for live/polling data. Invoke for "HTML report", "HTML deck", "HTML page", "annotated report", "review-ready HTML", "slide deck", "HTML dashboard", "htmx dashboard", "ops dashboard", "admin panel", "one-pager", "briefing", "recap page", or MD/DOCX/PDF → HTML conversion. Report, slide, and bento ship the v2 annotation system; dashboard intentionally omits annotations (live data is not a stable anchor target). All four are dark-first with glass chrome, fluid display typography, and density + font-size toggles.
+version: 0.7.0
 license: MIT
 ---
 
 # html-template-pack
 
-Three production-grade HTML templates, each self-contained (no external CDN dependencies beyond Google Fonts / htmx when used). The report and slide templates carry the v2 review/annotation system and the light/dark theme toggle; the dashboard template carries the theme toggle plus an htmx-driven live-data shell. The report and slide templates were battle-tested on a long-form research report with multiple sections and a companion slide deck in 2026.
+Four production-grade HTML templates, each self-contained (no external CDN dependencies beyond Google Fonts / htmx when used). The report, slide, and bento templates carry the v2 review/annotation system and the light/dark theme toggle; the dashboard template carries the theme toggle plus an htmx-driven live-data shell. All four are **dark-first** (dark is the starting theme, refined glass chrome, fluid display typography — the v0.7.0 aesthetic pass), and all four carry the density + font-size toggles from v0.6.1. The report and slide templates were battle-tested on a long-form research report with multiple sections and a companion slide deck in 2026; the bento template follows the 2026 bento-grid trend for snapshot summaries.
 
 ## When to invoke
 
@@ -20,6 +20,8 @@ Three production-grade HTML templates, each self-contained (no external CDN depe
 - "I need a single-file HTML the team can comment on"
 - "Generate the grant submission recap as HTML"
 - "Make a reading version of my manuscript"
+- "Give me a one-page briefing/recap of this sprint"
+- "Summarize this into a one-pager the panel can comment on"
 
 **Do not invoke** for:
 
@@ -36,6 +38,7 @@ Interactive data dashboards now live in **this** skill (the dashboard template) 
 | ≥3 long sections, lots of prose, charts, references, appendices          | **report template** (`templates/report/template.html`)                            | Multi-tab lumen-guide pattern handles 20+ sections cleanly. Tab navigation + Mermaid diagrams work together. Reviewer can switch tabs, leave comments per tab, export one JSON.     |
 | ≤12 discrete visual beats, one idea per slide, mostly bullets + headings | **slide template** (`templates/slide/slide-template.html`)                        | Single-page deck with prev/next nav, fullscreen mode, slide-per-page print. Reviewer scrolls through slides linearly.                                                               |
 | Live/polling data — KPIs, status tables, ops metrics, admin views        | **dashboard template** (`templates/dashboard/dashboard-template.html`)            | htmx-driven shell (topbar, stat row, sparkline chart, activity feed, sortable/filterable table) wired to `/api/*` endpoints. Not for review/annotation — for monitoring live state. |
+| One-page snapshot briefing — sprint recap, weekly readout, one-page proposal, everything at a glance + reviewer comments | **bento template** (`templates/bento/bento-template.html`)                        | 2026 bento-grid one-pager: modular glass cards (KPIs, pure-CSS chart, progress, timeline, quote, CTA) on a dark-first surface. Full v2 annotation engine. Static snapshot — numbers live in the file, not a server. |
 | Mixed: both a long-form report AND a summary deck                        | **report template as the canonical**, link to the deck as a downloadable artifact | Don't ship two HTMLs. The report template is the review surface; if the user also wants a separate deck, build that as a second file in the same project directory.                 |
 
 ### Decision rubric (use this in your first response)
@@ -46,7 +49,9 @@ Interactive data dashboards now live in **this** skill (the dashboard template) 
 4. **If user says "report" or "manuscript reading version" or "review page"**, → **report template**.
 5. **If user says "deck" or "slides" or "presentation"**, → **slide template** (unless they say "review deck", which means a long-form reading artifact — use the report template).
 6. **If user says "dashboard", "admin panel", "ops view", "htmx dashboard", or wants filtering/sorting/polling against live data**, → **dashboard template**.
-7. **When in doubt, ask the user** with `ask_user_question` offering the template options.
+7. **If the content is a one-page snapshot summary** — sprint recap, weekly readout, one-page proposal, status snapshot — where the reader should see everything at a glance and leave inline review notes → **bento template**. (If it grows past one page or needs long prose sections, it graduates to the report template; if the numbers need to refresh from a server, it's a dashboard.)
+8. **If user says "one-pager", "briefing", "snapshot", "recap page", or "everything on one page"** → bento template.
+9. **When in doubt, ask the user** with `ask_user_question` offering the template options.
 
 ## Files in this skill
 
@@ -59,6 +64,8 @@ Interactive data dashboards now live in **this** skill (the dashboard template) 
 │   │   └── template.html                       ← finalized report template (812 lines)
 │   ├── slide/
 │   │   └── slide-template.html                 ← finalized slide template (817 lines)
+│   ├── bento/
+│   │   └── bento-template.html                 ← bento one-pager (2026 bento grid, dark-first glass, v2 annotation engine inline)
 │   └── dashboard/
 │       └── dashboard-template.html              ← finalized dashboard template (htmx + demo-mode mock backend)
 ├── features/
@@ -82,7 +89,7 @@ Interactive data dashboards now live in **this** skill (the dashboard template) 
     └── run-all.js
 ```
 
-## The three templates at a glance
+## The four templates at a glance
 
 ### Report template (`templates/report/template.html`)
 
@@ -112,6 +119,20 @@ Interactive data dashboards now live in **this** skill (the dashboard template) 
 
 **Best for**: pitch decks, conference talks, lightning talks, research summary decks, internal readouts (≤12 slides).
 
+### Bento brief template (`templates/bento/bento-template.html`)
+
+**Pattern**: single-page bento grid — a hero header (eyebrow pill, gradient display title, lede, meta chips) above a 12-column grid of modular glass cards. Card variants: KPI row (`.kpi-row`), pure-CSS bar chart (`.bars`), progress list (`.progress-item`), gradient quote card (`.quote`), timeline (`.tl`), key-list (`.key-list`), gradient CTA (`.cta`); spans `.span-4`–`.span-12` (collapse to full width <980px). Dark-first glass: translucent `color-mix` surfaces + `backdrop-filter`, ambient radial accent glow behind the grid, hover lift + accent-glow shadow.
+
+**Annotation system**: **v2** — the full engine inlined from the slide template (the token-mapping `:root` block was stripped; the bento defines the generic token names directly). Select text → comment/ask/delete/replace/format; drawer with JSON export/import; localStorage namespace via `data-annot-storage="bento-template"` on `<body>` (change it per brief).
+
+**Chrome parity**: theme toggle (◐), density toggle (▤/▥ — `[data-density]` drives `--bento-pad`/`--bento-gap`/`--bento-kpi-gap`), font-size toggle (S/M/L root scaling), all with bento-specific storage keys (`bento-density`, `bento-font-size`) and print resets.
+
+**No JS dependencies**: the bar chart is pure CSS (`height` percentages), no Mermaid, no htmx — the most dependency-free of the four.
+
+**Print**: `@media print` hides chrome, flattens cards (break-inside: avoid), resets density/font.
+
+**Best for**: sprint recaps, weekly readouts, one-page proposals, status snapshots for review panels — anything the reader should grasp in 60 seconds and annotate inline.
+
 ### Dashboard template (`templates/dashboard/dashboard-template.html`)
 
 **Pattern**: fixed topbar + sidebar nav + content grid — KPI stat row, a sparkline chart panel, a recent-activity feed, and a sortable/filterable/searchable data table. Everything is wired with **htmx** (`hx-get` + `hx-trigger="load, every Ns"` for polling, `hx-trigger="keyup changed delay:300ms"` for debounced search, `hx-vals` for carrying sort state) instead of a JS framework.
@@ -138,6 +159,7 @@ Interactive data dashboards now live in **this** skill (the dashboard template) 
    - Report: replace each `<main class="content" data-annot-root data-panel="...">` with the section content.
    - Slide: replace each `<section class="slide slide-title active" id="...">` with the slide content. The reference slides can be deleted after the user has copied the components they need.
    - Dashboard: adjust the sidebar nav links, stat/table/chart column meaning to match the real data, and — once a backend exists — replace `DASHBOARD_MOCK`'s four routes with real server routes returning the same fragment shapes.
+   - Bento: replace the hero (eyebrow/title/lede/meta chips) and each `.b-card` with the brief's content; keep card spans roughly balanced (8/4, 4/4/4, 7/5 works well); set `data-annot-storage` to a unique per-brief key.
 4. **Render** — open the HTML in a browser. Check that the theme toggle works; for report/slide, that the annotation drawer opens and keyboard nav works (slides) and print preview looks clean; for dashboard, that the KPI row/chart/feed/table populate and that search/sort/filter/pause-resume all work.
 5. **Wire annotation / backend**:
    - Report: verify the storage key is unique (don't reuse keys from other reports); set `data-annot-storage="my-report-2026-q3"` on `<body>`.
@@ -146,7 +168,7 @@ Interactive data dashboards now live in **this** skill (the dashboard template) 
 
 ## Annotation system — what ships in the box
 
-The report and slide templates ship with a full annotation system; the dashboard template intentionally ships **none** (see its section above for why).
+The report, slide, and bento templates ship with a full annotation system; the dashboard template intentionally ships **none** (see its section above for why).
 
 | Feature                                               | Report template (v2)     | Slide template (v2)               |
 | ----------------------------------------------------- | ------------------------ | --------------------------------- |
@@ -160,7 +182,7 @@ The report and slide templates ship with a full annotation system; the dashboard
 | Multi-tab panel activation on jump                    | ✓ (uses `[data-tab]`)    | ✓ (uses `[data-panel]` per slide) |
 | Anchor on offsets (survives Mermaid re-render)        | ✓                        | ✓                                 |
 | Annotation types: comment / delete / insert / replace | ✓                        | ✓                                 |
-| localStorage namespace                                | `annotations:<id>`       | `annotations:slide-template`      |
+| localStorage namespace                                | `annotations:<id>`       | `annotations:slide-template`      | `annotations:bento-template`     |
 
 **Both report and slide templates ship the v2 annotation engine as of v0.4.0.** The slide template's inline CSS+JS are kept in sync with `features/slide/{annotate.css,highlight-annotate.js}` (the two `features/*` copies are also byte-identical to the report's `features/report/*` — see the invariant below). If you want a different annotation UI surface (e.g. a tooltip instead of a drawer, or a comment-only single-button toolbar), edit one place: the inline block in `templates/slide/slide-template.html`.
 
@@ -177,7 +199,7 @@ Positioning differs: report/slide float the button `position: fixed` top-right; 
 
 ## Hard invariants (do not lower)
 
-- **All UI must remain reachable**: theme toggle (◐), annotation panel (💬, report/slide only), navigation (slide template: prev/next/dots, report template: tab strip, dashboard: sidebar + table toolbar). Never hide these without a visible alternative.
+- **All UI must remain reachable**: theme toggle (◐), density toggle (▤), font-size toggle (M), annotation panel (💬, report/slide/bento only), navigation (slide template: prev/next/dots, report template: tab strip, dashboard: sidebar + table toolbar). Never hide these without a visible alternative.
 - **Annotations must persist across reloads** (report/slide). localStorage must remain valid JSON at all times. If parsing fails, start fresh — never crash the page.
 - **Print must work cleanly** (report/slide; dashboard hides topbar/sidebar/table actions in `@media print` but is not designed as a primary print artifact — recommend the report template for anything that must be printed/PDF'd).
 - **Single-file portability**: when a user copies the HTML to a new project, all CSS/JS must work without external CDN (Google Fonts and the pinned htmx CDN script with SRI are the only allowed exceptions; everything else must be inlined or local).
@@ -187,9 +209,12 @@ Positioning differs: report/slide float the button `position: fixed` top-right; 
 
 - `template.html` and `slide-template.html` (research report + slide deck, 2026-07) — battle-tested templates
 - `dashboard-template.html` (added 2026-07-11) — htmx dashboard shell, new template family for live/polling data views
+- `bento-template.html` (added 2026-09-08, v0.7.0) — bento-grid one-pager. The full v2 annotation engine is inlined from the slide template with its token-mapping `:root` block stripped (the bento defines generic token names directly); density/font-size IIFEs reused with `bento-density`/`bento-font-size` storage keys. Bar chart is pure CSS, no Mermaid/htmx. Aesthetic sourced from the 2026 UI-trends research pass (bento grids as the default snapshot pattern, dark-first design, restrained glass, hover-glow micro-interactions).
+- v0.7.0 aesthetic pass (2026-09-08) — all four templates: dark-first defaults (theme scripts now `saved || 'dark'`), glass chrome (`color-mix` translucent surfaces + `backdrop-filter` on sidebar/panels/cards in dark mode), ambient radial accent glow (`body::before`, hidden in print), fluid `clamp()` type scale on display headings, hover lift + accent-glow shadows. Fixed a corrupted CSS line in the dashboard template's light token block (`--error: #dc2 la l’T.` → `--error: #dc2626`). Annotation systems untouched.
 - v2 annotation engine + theme toggle (`features/{report,slide}/highlight-annotate.js`, `annotate.css`, `theme-toggle.js`, `theme-toggle.css`) — extracted from the original template on 2026-07-10 (renamed to `html-template-pack` from its previous internal codename; see the 2026-07-10 wiki entry on the v1→v2 offset-anchored annotation upgrade for the rename history)
 - v2 tracked-changes annotation types — `comment` / `delete` / `insert` / `replace` added 2026-07-30 to the report template; selection-based delete/replace reuse the floating-pill flow, insert is caret-based via an `Insert here` arm/click toggle. The `replacement` field carries suggested new text for insert/replace; exported JSON includes `type` + `replacement` per annotation so a downstream (human or AI) revision agent can apply the changes without parsing free-text intent. The same v2 engine + tracked-changes types were ported into the slide template on 2026-07-30 (v0.4.0), with a small per-slide adapter: each `<section class="slide">` gets `data-panel="<id>"`; the inline adapter switches slides (`__deckGoTo`) before the engine's scrollIntoView when a drawer item is clicked.
 - Shared component library — `.card` / `.badge` / `.stat-card` / table / `.layer-stack` / `.chain-step` / `.grid-2` / `.eyebrow` / `.badge-line` / `.meta-card` originated in the slide template (extracted from a research report project on 2026-07). In v0.5.0 the same component CSS was pasted into the report template with a shared token palette (10-step `--slate-*` neutral scale + `--teal`/`--coral`/`--green`/`--amber`/`--deep-blue`/`--navy`/`--white` accent colors) so the same markup renders correctly in either template. The slide template's brand colors (teal/coral/green) and the report's blue/neutral palette both work; the components are token-driven, not template-specific.
 - `htmx` (BSD-2-Clause) — the hypermedia library driving the dashboard template's polling, debounced search, and partial swaps
 - `lumen-guide` — the multi-tab pattern used by the report template
 - `zarazhangrui/beautiful-html-templates` (MIT) — color token inspiration for the report template
+- 2026 UI-trend research (2026-09-08) — bento grids, dark-first design, glassmorphism depth, typography-led headings (sources: Midrocket "UI Design Trends for 2026", Landdding "State of Landing Pages 2026", zero-dependency CSS systems keel/shadcss/purissimo); see the wiki observation on the v3 demo pass

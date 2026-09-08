@@ -1,477 +1,130 @@
 <!DOCTYPE html>
-<html lang="en">
+<!--
+  ╔══════════════════════════════════════════════════════════════════════╗
+  ║  html-template-pack · GitHub Pages launcher                           ║
+  ║                                                                        ║
+  ║  This launcher + the four subdirectory demos are DEMO COPIES.         ║
+  ║  The canonical templates live in templates/ at the repo root:         ║
+  ║    templates/report/template.html        → docs/report/index.html     ║
+  ║    templates/slide/slide-template.html   → docs/slide/index.html      ║
+  ║    templates/dashboard/dashboard-template.html → docs/dashboard/      ║
+  ║    templates/bento/bento-template.html   → docs/bento/index.html      ║
+  ║                                                                        ║
+  ║  DRIFT RISK: if templates/* change, re-copy into docs/<name>/index.  ║
+  ║  (GitHub Pages /docs serving only reaches files inside docs/, so     ║
+  ║  each demo needs its own subdirectory index.html for clean URLs.)    ║
+  ╚══════════════════════════════════════════════════════════════════════╝
+-->
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>html-template-pack · single-file HTML templates for AI agents</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>html-template-pack — self-contained annotated HTML templates</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
   <style>
-    /* Design tokens — kept in sync with templates/report/template.html so the
-       launcher visually matches what reviewers see when they open a demo. */
-    :root, [data-theme="light"] {
-      --bg: #f6f8fa;
-      --surface: #ffffff;
-      --surface2: #f0f3f6;
-      --border: #d8dee4;
-      --border-bright: #b6bec8;
-      --text: #1a1f26;
-      --text-dim: #4b5563;
-      --text-muted: #6b7280;
-      --accent: #6ea8fe;
-      --accent-dim: rgba(110,168,254,0.18);
-      --teal: #14b8a6;
-      --coral: #ef6461;
-      --green: #10b981;
-      --amber: #f59e0b;
-      --deep-blue: #4f7cb8;
-      --navy: #1e3a5f;
-      --radius: 8px;
-      --shadow-sm: 0 1px 3px rgba(15,23,42,0.06), 0 1px 2px rgba(15,23,42,0.04);
-      --shadow-md: 0 6px 20px rgba(15,23,42,0.08), 0 2px 6px rgba(15,23,42,0.04);
-      --shadow-lg: 0 16px 40px rgba(15,23,42,0.10), 0 4px 12px rgba(15,23,42,0.05);
+    :root, [data-theme="dark"] {
+      color-scheme: light dark;
+      --bg: #0b0e14; --surface: #131820; --border: #232a35; --border-bright: #313a4a;
+      --text: #f8fafc; --text-muted: #94a3b8; --text-dim: #64748b;
+      --accent: #60a5fa; --accent-dim: rgba(96,165,250,0.1); --accent-glow: rgba(96,165,250,0.2);
+      --teal: #14b8a6; --coral: #ef4444; --amber: #f59e0b; --green: #10b981;
     }
-    [data-theme="dark"] {
-      --bg: #0e1116;
-      --surface: #161b22;
-      --surface2: #1c2230;
-      --border: #262c36;
-      --border-bright: #333b47;
-      --text: #f5f7fa;
-      --text-dim: #c2cad4;
-      --text-muted: #9aa4b2;
-      --accent: #6ea8fe;
-      --accent-dim: rgba(110,168,254,0.18);
-      --teal: #2dd4bf;
-      --coral: #fb7185;
-      --green: #34d399;
-      --amber: #fbbf24;
-      --deep-blue: #6ea8fe;
-      --navy: #3b82f6;
-      --radius: 8px;
-      --shadow-sm: 0 1px 3px rgba(0,0,0,0.4);
-      --shadow-md: 0 6px 20px rgba(0,0,0,0.5);
-      --shadow-lg: 0 16px 40px rgba(0,0,0,0.55);
-    }
-
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
+    * { box-sizing: border-box; }
     body {
-      font-family: var(--font-sans, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif);
-      background: var(--bg);
-      color: var(--text);
-      min-height: 100vh;
-      padding: 4rem 1.5rem 5rem;
-      line-height: 1.55;
-      transition: background 0.2s, color 0.2s;
+      margin: 0; font-family: 'Inter', system-ui, sans-serif; line-height: 1.6;
+      color: var(--text); background: var(--bg); min-height: 100vh;
+      padding: 4rem 2rem 5rem;
+      background-image:
+        radial-gradient(700px circle at 15% -10%, var(--accent-glow), transparent 62%),
+        radial-gradient(900px circle at 105% 15%, var(--accent-glow), transparent 66%);
     }
-    .container { max-width: 1140px; margin: 0 auto; }
-
-    /* ── Top toolbar (theme toggle) ── */
-    .toolbar {
-      position: fixed; top: 1rem; right: 1rem; z-index: 100;
-      display: flex; gap: 0.4rem; align-items: center;
-    }
-    .toolbar-btn {
-      background: var(--surface); border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 0.45rem 0.85rem;
-      font-family: inherit; font-size: 0.825rem; font-weight: 600;
-      color: var(--text-dim); cursor: pointer;
-      box-shadow: var(--shadow-sm);
-      transition: all 0.15s;
-    }
-    .toolbar-btn:hover { color: var(--accent); border-color: var(--accent); }
-    .toolbar-btn[aria-pressed="true"] { color: var(--accent); border-color: var(--accent); background: var(--accent-dim); }
-
-    /* ── Header (matches report template's eyebrow + title + subtitle) ── */
-    .page-header {
-      text-align: center;
-      margin-bottom: 3.5rem;
-      position: relative;
-    }
+    .wrap { max-width: 1080px; margin: 0 auto; }
     .eyebrow {
-      display: inline-block;
-      font-size: 0.78rem; font-weight: 700;
-      text-transform: uppercase; letter-spacing: 1.6px;
-      padding: 5px 14px; border-radius: 20px;
-      background: var(--accent-dim); color: var(--accent);
-      margin-bottom: 1.25rem;
+      display: inline-block; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--accent); background: var(--accent-dim);
+      padding: 0.3rem 0.75rem; border-radius: 999px; margin-bottom: 1rem;
     }
-    .page-title {
-      font-size: 3.2rem; font-weight: 800;
-      letter-spacing: -0.03em;
-      margin-bottom: 0.75rem;
-      line-height: 1.1;
-      color: var(--text);
+    h1 {
+      font-family: 'Outfit', sans-serif; font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 800; letter-spacing: -0.035em; margin: 0 0 0.75rem; line-height: 1.08;
+      background: linear-gradient(120deg, var(--text) 55%, var(--accent) 110%);
+      -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
     }
-    .page-title .accent {
-      background: linear-gradient(135deg, var(--teal) 0%, var(--accent) 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-    .page-subtitle {
-      font-size: 1.15rem;
-      color: var(--text-dim);
-      max-width: 620px;
-      margin: 0 auto 1.5rem;
-      line-height: 1.55;
-    }
-    .page-meta {
-      display: inline-flex;
-      gap: 1.5rem;
-      flex-wrap: wrap;
-      justify-content: center;
-      font-size: 0.85rem;
-      color: var(--text-muted);
-    }
-    .page-meta span {
-      display: inline-flex; align-items: center; gap: 0.35rem;
-    }
-    .page-meta strong { color: var(--text); font-weight: 600; }
-    .page-meta .github-link {
-      display: inline-flex; align-items: center; gap: 0.4rem;
-      padding: 0.3rem 0.75rem;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 999px;
-      color: var(--text-dim);
-      text-decoration: none;
-      font-size: 0.85rem;
-      transition: all 0.15s;
-    }
-    .page-meta .github-link:hover {
-      color: var(--accent);
-      border-color: var(--accent);
-      background: var(--accent-dim);
-    }
-    [data-theme="dark"] .page-meta .github-link { background: var(--surface); }
-
-    /* ── Guide panel ── */
+    .lede { color: var(--text-muted); max-width: 64ch; margin: 0 0 2.5rem; font-size: 1.05rem; }
     .guide {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 1.75rem 2rem;
-      margin-bottom: 2.5rem;
-      box-shadow: var(--shadow-sm);
+      border: 1px solid var(--border-bright); border-radius: 14px; padding: 1rem 1.25rem;
+      background: color-mix(in srgb, var(--surface) 70%, transparent);
+      backdrop-filter: blur(10px); margin-bottom: 2.5rem; font-size: 0.9rem; color: var(--text-muted);
     }
-    .guide-header {
-      display: flex; align-items: center; gap: 0.6rem;
-      margin-bottom: 1rem;
-    }
-    .guide-header .icon {
-      width: 32px; height: 32px; border-radius: 8px;
-      background: var(--accent-dim); color: var(--accent);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1.05rem;
-    }
-    .guide-header h2 {
-      font-size: 1.05rem; font-weight: 700; color: var(--text);
-    }
-    .guide-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-      grid-auto-rows: 1fr;
-      gap: 0.4rem 1.5rem;
-    }
-    .guide-row-label {
-      grid-column: 1 / -1;
-      font-size: 0.72rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: var(--text-muted);
-      padding: 0.7rem 0 0.3rem;
-      margin-top: 0.4rem;
-      border-top: 1px solid var(--border);
-    }
-    .guide-row-label:first-of-type {
-      border-top: none;
-      margin-top: 0;
-      padding-top: 0.2rem;
-    }
-    .guide-item {
-      display: flex; align-items: center; gap: 0.5rem;
-      font-size: 0.875rem;
-      color: var(--text-dim);
-      white-space: nowrap;
-    }
-    .guide-item strong { color: var(--text); font-weight: 600; }
-    .guide-item code {
-      background: var(--surface2);
-      padding: 0.1rem 0.4rem;
-      border-radius: 3px;
-      font-size: 0.85em;
-      color: var(--accent);
-      font-family: ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
-    }
-
-    /* ── Section heading ── */
-    .section-heading {
-      display: flex; align-items: center; gap: 0.75rem;
-      margin: 0 0 1.5rem 0;
-      padding-bottom: 0.75rem;
-      border-bottom: 1px solid var(--border);
-    }
-    .section-heading h2 {
-      font-size: 1.25rem; font-weight: 700;
-      color: var(--text);
-    }
-    .section-heading .meta {
-      margin-left: auto; font-size: 0.82rem; color: var(--text-muted);
-    }
-
-    /* ── Card grid ── */
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
-      gap: 1.5rem;
-      margin-bottom: 3rem;
-    }
+    .guide b { color: var(--text); }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem; }
     .card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 1.75rem;
-      box-shadow: var(--shadow-md);
-      transition: transform 0.18s, box-shadow 0.18s, border-color 0.18s;
-      display: flex; flex-direction: column;
-      position: relative;
-      overflow: hidden;
-    }
-    .card::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0; height: 3px;
-      background: var(--card-accent, var(--accent));
+      display: block; text-decoration: none; color: var(--text);
+      border: 1px solid var(--border-bright); border-radius: 16px; padding: 1.5rem;
+      background: color-mix(in srgb, var(--surface) 88%, transparent);
+      backdrop-filter: blur(10px);
+      transition: transform 0.25s cubic-bezier(0.4,0,0.2,1), border-color 0.25s, box-shadow 0.25s;
     }
     .card:hover {
-      transform: translateY(-3px);
-      box-shadow: var(--shadow-lg);
-      border-color: var(--card-accent, var(--accent));
+      transform: translateY(-4px); border-color: var(--c, var(--accent));
+      box-shadow: 0 14px 36px -10px var(--c-glow, var(--accent-glow));
     }
-    .card.report { --card-accent: var(--deep-blue); }
-    .card.slide { --card-accent: var(--coral); }
-    .card.dashboard { --card-accent: var(--green); }
-
     .card .icon {
-      width: 48px; height: 48px;
-      border-radius: 10px;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1.5rem;
-      margin-bottom: 1rem;
-      background: var(--card-accent);
-      color: var(--surface);
+      width: 44px; height: 44px; border-radius: 12px; display: flex; align-items: center;
+      justify-content: center; font-size: 1.3rem; margin-bottom: 1rem;
+      background: color-mix(in srgb, var(--c, var(--accent)) 15%, transparent); color: var(--c, var(--accent));
     }
-    .card h3 { margin: 0 0 0.5rem; font-size: 1.15rem; color: var(--text); font-weight: 700; }
+    .card h2 { font-family: 'Outfit', sans-serif; font-size: 1.15rem; margin: 0 0 0.5rem; }
+    .card p { margin: 0; color: var(--text-muted); font-size: 0.88rem; }
     .card .tag {
-      display: inline-block;
-      font-size: 0.7rem; font-weight: 700;
-      text-transform: uppercase; letter-spacing: 0.8px;
-      padding: 3px 10px; border-radius: 999px;
-      background: var(--card-accent); color: var(--surface);
-      margin-bottom: 0.85rem;
+      display: inline-block; margin-top: 1rem; font-size: 0.72rem; font-weight: 700;
+      color: var(--c, var(--accent)); background: color-mix(in srgb, var(--c, var(--accent)) 12%, transparent);
+      padding: 0.25rem 0.6rem; border-radius: 999px;
     }
-    .card p { color: var(--text-dim); font-size: 0.9rem; margin-bottom: 1rem; line-height: 1.6; flex-grow: 1; }
-    .card .meta {
-      font-size: 0.78rem; color: var(--text-muted);
-      padding: 0.85rem 0;
-      border-top: 1px solid var(--border);
-      margin-bottom: 1rem;
-      display: flex; flex-wrap: wrap; gap: 0.5rem;
-    }
-    .card .meta span {
-      background: var(--surface2);
-      padding: 0.2rem 0.6rem;
-      border-radius: 4px;
-    }
-    .btn {
-      display: inline-flex;
-      align-items: center; justify-content: center;
-      gap: 0.4rem;
-      background: var(--card-accent, var(--accent));
-      color: var(--surface);
-      padding: 0.7rem 1.4rem;
-      border-radius: var(--radius);
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 0.9rem;
-      transition: filter 0.15s, transform 0.15s;
-    }
-    .btn:hover { filter: brightness(1.1); transform: translateX(2px); }
-    .btn::after { content: '→'; transition: transform 0.15s; }
-    .btn:hover::after { transform: translateX(2px); }
-
-    /* ── Footer ── */
-    footer {
-      margin-top: 4rem;
-      padding-top: 2rem;
-      border-top: 1px solid var(--border);
-      color: var(--text-muted);
-      font-size: 0.85rem;
-      text-align: center;
-    }
-    footer a { color: var(--accent); text-decoration: none; font-weight: 600; }
-    footer a:hover { text-decoration: underline; }
-    footer .note {
-      margin-top: 0.75rem;
-      padding: 0.65rem 1rem;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      display: inline-block;
-      font-size: 0.78rem;
-    }
-    footer code {
-      background: var(--surface2);
-      padding: 0.1rem 0.35rem;
-      border-radius: 3px;
-      color: var(--accent);
-      font-family: ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
-      font-size: 0.92em;
-    }
-
-    /* ── Responsive ── */
-    @media (max-width: 720px) {
-      body { padding: 3rem 1rem 4rem; }
-      .page-title { font-size: 2.1rem; }
-      .page-subtitle { font-size: 1rem; }
-      .guide-grid { grid-template-columns: 1fr; }
-      .grid { grid-template-columns: 1fr; }
-      .page-meta { gap: 1rem; font-size: 0.8rem; }
-    }
+    .foot { margin-top: 2.5rem; text-align: center; font-size: 0.8rem; color: var(--text-dim); }
+    @media (max-width: 640px) { body { padding: 2.5rem 1rem 3rem; } }
   </style>
 </head>
 <body>
+  <div class="wrap">
+    <span class="eyebrow">v0.7.0 · Live demos</span>
+    <h1>html-template-pack</h1>
+    <p class="lede">Four self-contained annotated HTML templates: report, slide deck, htmx dashboard, and the new bento one-pager. Every template carries inline review annotations, a theme toggle, and density + font-size controls. Dark-first by default; light mode one click away.</p>
 
-  <!-- Toolbar: theme toggle -->
-  <div class="toolbar">
-    <button class="toolbar-btn" id="theme-toggle" aria-label="Toggle color theme" aria-pressed="false">◐ Dark</button>
-  </div>
-
-  <div class="container">
-
-    <!-- Header: matches report template's eyebrow + title + subtitle pattern -->
-    <header class="page-header">
-      <span class="eyebrow">html-template-pack · live demo</span>
-      <h1 class="page-title">Single-file <span class="accent">HTML templates</span> for AI agents</h1>
-      <p class="page-subtitle">Drop-in templates for reports, slides, and dashboards. No setup, no build step, no backend — just open and click around.</p>
-      <div class="page-meta">
-        <span>📦 <strong>Self-contained</strong> HTML</span>
-        <span>🎨 <strong>Light + dark</strong> themes</span>
-        <span>💬 <strong>v2 annotations</strong> with JSON export</span>
-        <span>🖨️ <strong>Print-ready</strong> PDF output</span>
-        <a class="github-link" href="https://github.com/cheahhl814/html-template-pack" target="_blank" rel="noopener">⭐ <strong>github.com/cheahhl814/html-template-pack</strong></a>
-      </div>
-    </header>
-
-    <!-- Guide: what reviewers can try -->
     <div class="guide">
-      <div class="guide-header">
-        <div class="icon">💡</div>
-        <h2>What you can try in each demo</h2>
-      </div>
-      <div class="guide-grid">
-        <div class="guide-row-label">Display</div>
-        <div class="guide-item"><strong>Theme toggle</strong> — <code>◐</code> top-right</div>
-        <div class="guide-item"><strong>Density toggle</strong> — <code>▤</code> / <code>▥</code></div>
-        <div class="guide-item"><strong>Font size</strong> — <code>S</code> / <code>M</code> / <code>L</code></div>
-
-        <div class="guide-row-label">Interactions</div>
-        <div class="guide-item"><strong>Annotations</strong> — select text → 💬 / ✂ / ➕ / ✎</div>
-        <div class="guide-item"><strong>Tab switching</strong> (report) — sidebar tabs</div>
-        <div class="guide-item"><strong>Slide nav</strong> — <code>←</code> <code>→</code> arrows or <code>F</code></div>
-
-        <div class="guide-row-label">Output</div>
-        <div class="guide-item"><strong>Print preview</strong> — <code>Ctrl/Cmd+P</code></div>
-        <div class="guide-item"><strong>Export</strong> — 💬 Notes → 💾 Export JSON</div>
-      </div>
+      <b>What's new in v0.7.0</b> — all templates are now <b>dark-first</b> (dark is the starting theme), with <b>refined glass</b> chrome (translucent surfaces, ambient accent glow), <b>fluid display typography</b> (clamp() type scale), and <b>hover-glow micro-interactions</b>. New: the <b>bento brief</b> — a one-page snapshot briefing in the 2026 bento-grid style, carrying the full v2 annotation engine. Annotation features are unchanged.
     </div>
 
-    <!-- Section: templates -->
-    <div class="section-heading">
-      <h2>Templates</h2>
-      <span class="meta">3 single-file HTML files · copy from <code>templates/</code> to start your own</span>
-    </div>
-
-    <!-- Template cards -->
     <div class="grid">
-      <div class="card report">
+      <a class="card" style="--c: #60a5fa; --c-glow: rgba(96,165,250,0.35)" href="report/">
         <div class="icon">📄</div>
-        <span class="tag">Report</span>
-        <h3>Long-form reading document</h3>
-        <p>A sticky left sidebar of tabs lets reviewers navigate between sections, select text to leave tracked-changes-style notes, and export the notes as a JSON file when finished.</p>
-        <div class="meta">
-          <span>240px sidebar</span>
-          <span>v2 annotations</span>
-          <span>5 tabs default</span>
-          <span>Print-friendly</span>
-        </div>
-        <a class="btn" href="report/" target="_blank">Open report</a>
-      </div>
-
-      <div class="card slide">
+        <h2>Report</h2>
+        <p>Multi-tab review report for ≥3 long sections — sticky sidebar, offset-anchored annotations, JSON export, print/PDF.</p>
+        <span class="tag">long-form · annotated</span>
+      </a>
+      <a class="card" style="--c: #14b8a6; --c-glow: rgba(20,184,166,0.35)" href="slide/">
         <div class="icon">🎞️</div>
-        <span class="tag">Slide</span>
-        <h3>Sequential presentation deck</h3>
-        <p>A single-page scrolling deck with prev/next navigation, slide dots, a counter, a fullscreen toggle, and a home button. Each slide supports v2 annotations.</p>
-        <div class="meta">
-          <span>≤ 12 slides</span>
-          <span>v2 annotations</span>
-          <span>Fullscreen (F)</span>
-          <span>1 slide/page PDF</span>
-        </div>
-        <a class="btn" href="slide/" target="_blank">Open slides</a>
-      </div>
-
-      <div class="card dashboard">
+        <h2>Slide deck</h2>
+        <p>Prev/next deck for ≤12 visual beats — fullscreen mode, one-slide-per-page print, inline annotations.</p>
+        <span class="tag">deck · annotated</span>
+      </a>
+      <a class="card" style="--c: #f59e0b; --c-glow: rgba(245,158,11,0.35)" href="bento/">
+        <div class="icon">🍱</div>
+        <h2>Bento brief <span style="font-size:0.65em; color: var(--amber)">NEW</span></h2>
+        <p>One-page snapshot briefing in the 2026 bento-grid style — modular glass cards, pure-CSS chart, full annotation engine.</p>
+        <span class="tag">one-pager · annotated</span>
+      </a>
+      <a class="card" style="--c: #10b981; --c-glow: rgba(16,185,129,0.35)" href="dashboard/">
         <div class="icon">📊</div>
-        <span class="tag">Dashboard</span>
-        <h3>Live-data ops dashboard</h3>
-        <p>An htmx-driven shell with a KPI row, sparkline chart panel, recent-activity feed, and a sortable/filterable/searchable data table. Ships in demo mode — works without a backend.</p>
-        <div class="meta">
-          <span>htmx-driven</span>
-          <span>Demo mode</span>
-          <span>Sortable table</span>
-          <span>Live polling</span>
-        </div>
-        <a class="btn" href="dashboard/" target="_blank">Open dashboard</a>
-      </div>
+        <h2>Dashboard</h2>
+        <p>htmx ops dashboard — KPI row, sparkline, activity feed, sortable table. Demo-mode mock backend; no annotations by design.</p>
+        <span class="tag">live data · htmx</span>
+      </a>
     </div>
 
-    <!-- Footer -->
-    <footer>
-      <p>Live demo of <a href="https://github.com/cheahhl814/html-template-pack">html-template-pack</a> — an agent skill that auto-invokes when an AI coding agent is asked to build an HTML report, slide deck, or dashboard.</p>
-      <div class="note">
-        The demos above are <strong>curated showcases</strong> served from <code>docs/&lt;name&gt;/index.html</code>. For canonical source files, see <code>templates/</code> in the repo.
-      </div>
-    </footer>
-
+    <p class="foot">These pages are demo copies of templates/ at the repo root · MIT license</p>
   </div>
-
-  <script>
-    // Theme toggle (matches the v2 pattern from the templates)
-    (function () {
-      var KEY = 'html-template-pack-launcher-theme';
-      var saved = null;
-      try { saved = localStorage.getItem(KEY); } catch (e) {}
-      var initial = saved || (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-      document.documentElement.setAttribute('data-theme', initial);
-      var btn = document.getElementById('theme-toggle');
-      if (btn) {
-        btn.textContent = initial === 'dark' ? '◑ Light' : '◐ Dark';
-        btn.setAttribute('aria-pressed', initial === 'dark' ? 'true' : 'false');
-        btn.addEventListener('click', function () {
-          var cur = document.documentElement.getAttribute('data-theme');
-          var next = cur === 'dark' ? 'light' : 'dark';
-          document.documentElement.setAttribute('data-theme', next);
-          try { localStorage.setItem(KEY, next); } catch (e) {}
-          btn.textContent = next === 'dark' ? '◑ Light' : '◐ Dark';
-          btn.setAttribute('aria-pressed', next === 'dark' ? 'true' : 'false');
-        });
-      }
-    })();
-  </script>
-
 </body>
 </html>

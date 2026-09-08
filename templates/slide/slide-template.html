@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en" data-theme="dark">
 <head>
 <script>
   /* ═══ Theme toggle: set data-theme before first paint to avoid a flash ═══ */
   (function () {
     var KEY = 'slide-template-theme-v1'; // unique per deck if you rename this file
     var saved = localStorage.getItem(KEY);
-    var initial = saved || ((window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light');
+    var initial = saved || 'dark';
     document.documentElement.setAttribute('data-theme', initial);
   })();
 </script>
@@ -155,8 +155,8 @@
   .eyebrow-green { background: rgba(16, 185, 129, 0.1); color: var(--green); }
   .eyebrow-navy { background: rgba(30, 58, 95, 0.1); color: var(--navy); }
 
-  .slide h1 { font-family: var(--font-head); font-size: 2.8em; font-weight: 800; color: var(--white); letter-spacing: -0.03em; line-height: 1.1; margin-bottom: 1rem; }
-  .slide h2 { font-family: var(--font-head); font-size: 2.2em; font-weight: 700; color: var(--heading); letter-spacing: -0.02em; line-height: 1.2; margin-bottom: 1.2rem; }
+  .slide h1 { font-family: var(--font-head); font-size: clamp(2em, 4.5vw, 3.4em); font-weight: 800; color: var(--white); letter-spacing: -0.035em; line-height: 1.08; margin-bottom: 1rem; }
+  .slide h2 { font-family: var(--font-head); font-size: clamp(1.8em, 3.5vw, 2.5em); font-weight: 700; color: var(--heading); letter-spacing: -0.025em; line-height: 1.15; margin-bottom: 1.2rem; }
   .slide h3 { font-size: 1.2em; font-weight: 700; color: var(--text); margin: 0 0 0.75rem; }
   .slide p { margin-bottom: 1rem; color: var(--text-muted); font-size: 1.1em; }
   .slide ul, .slide ol { margin: 0 0 1rem 22px; color: var(--text-muted); }
@@ -191,7 +191,7 @@
     overflow: hidden;
     transition: transform 0.2s ease, box-shadow 0.2s ease;
   }
-  .card:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(0,0,0,0.08); }
+  .card:hover { transform: translateY(-3px); box-shadow: 0 10px 28px -8px var(--accent-glow), 0 8px 20px rgba(0,0,0,0.08); }
   .card-header { 
     padding: 1rem 1.25rem; 
     border-bottom: 1px solid var(--border); 

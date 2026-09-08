@@ -31,7 +31,7 @@
   ║  [data-annot-root] on the element whose text should be annotatable.   ║
   ╚══════════════════════════════════════════════════════════════════════╝
 -->
-<html lang="en" data-theme="light">
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -141,9 +141,21 @@
       -webkit-font-smoothing: antialiased;
       transition: background 0.3s ease, color 0.3s ease;
     }
+    html { scroll-behavior: smooth; }
+    /* Ambient accent glow — 2026 "depth without noise" pattern. Two soft
+       radial washes behind the content; invisible in print, subtle in
+       light mode (accent-glow is only 8–20% alpha). */
+    body::before {
+      content: ""; position: fixed; inset: 0; z-index: -1; pointer-events: none;
+      background:
+        radial-gradient(640px circle at 12% -8%, var(--accent-glow), transparent 62%),
+        radial-gradient(860px circle at 108% 12%, var(--accent-glow), transparent 66%);
+    }
+    @media print { body::before { display: none; } }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
     .content { max-width: 840px; margin: 0 auto; padding: 4rem 2rem 6rem; }
-    h1 { font-family: var(--font-head); font-size: 2.5rem; font-weight: 800; letter-spacing: -0.03em; margin: 0 0 1rem; line-height: 1.1; }
-    h2 { font-family: var(--font-head); font-size: 1.75rem; font-weight: 700; margin: 3rem 0 1rem; letter-spacing: -0.02em; }
+    h1 { font-family: var(--font-head); font-size: clamp(2.25rem, 5vw, 3rem); font-weight: 800; letter-spacing: -0.035em; margin: 0 0 1rem; line-height: 1.08; }
+    h2 { font-family: var(--font-head); font-size: clamp(1.5rem, 3vw, 1.9rem); font-weight: 700; margin: 3rem 0 1rem; letter-spacing: -0.025em; }
     p { margin: 0 0 1rem; color: var(--text-muted); }
     strong { color: var(--text); font-weight: 600; }
     a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: 3px; }
@@ -192,6 +204,21 @@
       padding: 1px 6px; border-radius: 999px;
     }
     .report-panels { flex: 1; min-width: 0; padding: 0 2rem; }
+
+    /* Glass sidebar — translucent surface + blur (2026 glassmorphism,
+       restrained: only the chrome gets depth, content stays opaque). */
+    [data-theme="dark"] .report-sidebar {
+      background: color-mix(in srgb, var(--surface) 62%, transparent);
+      border-right: 1px solid var(--border);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+    }
+    [data-theme="light"] .report-sidebar {
+      background: color-mix(in srgb, var(--surface) 72%, transparent);
+      border-right: 1px solid var(--border);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+    }
     .report-panels > [data-panel] { padding-top: 4rem; }
     .report-panels > [data-panel][hidden] { display: none; }
     .report-panels > [data-panel]:first-of-type { padding-top: 4rem; }
@@ -237,7 +264,15 @@
       overflow: hidden;
       transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
-    .card:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(0,0,0,0.08); }
+    .card:hover { transform: translateY(-3px); box-shadow: 0 10px 28px -8px var(--accent-glow), 0 8px 20px rgba(0,0,0,0.08); }
+
+    /* Frosted cards in dark mode — the surfaces pick up the ambient
+       glow; blur keeps overlaid text legible. */
+    [data-theme="dark"] .card {
+      background: color-mix(in srgb, var(--surface) 86%, transparent);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
     
     .card-header { 
       padding: 1rem 1.25rem; 
