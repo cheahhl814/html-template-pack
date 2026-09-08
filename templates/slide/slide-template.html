@@ -899,6 +899,19 @@
     prevBtn.disabled = current === 0;
     nextBtn.disabled = current === slides.length - 1;
     slides[current].scrollTop = 0;
+    // Restart any .gauge.animated inside the newly active slide so the
+    // sweep animation plays each time the slide is shown (not just on
+    // initial page load). Skipped when prefers-reduced-motion is on or
+    // @supports is missing — the gauges still show their final value.
+    if (window.matchMedia && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      try {
+        slides[current].querySelectorAll('.gauge.animated').forEach(function (g) {
+          g.style.animation = 'none';
+          void g.offsetWidth;            // force reflow so the reset takes effect
+          g.style.animation = '';
+        });
+      } catch (e) { /* ignore */ }
+    }
   }
 
   prevBtn.addEventListener('click', function () { goTo(current - 1); });

@@ -1058,6 +1058,18 @@
         if (isActive) tabs[j].setAttribute('tabindex', '0');
         else tabs[j].setAttribute('tabindex', '-1');
       }
+      // Restart any .gauge.animated inside the newly visible panel so the
+      // sweep animation plays each time the panel is shown (not just on
+      // initial page load). Skipped under prefers-reduced-motion.
+      if (window.matchMedia && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        try {
+          targetPanel.querySelectorAll('.gauge.animated').forEach(function (g) {
+            g.style.animation = 'none';
+            void g.offsetWidth;            // force reflow so the reset takes effect
+            g.style.animation = '';
+          });
+        } catch (e) { /* ignore */ }
+      }
       // Scroll to top of content area on user click (not on engine-driven jump)
       if (!opts.skipScroll) {
         var shell = document.querySelector('.report-shell');
