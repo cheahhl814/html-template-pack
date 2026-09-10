@@ -163,23 +163,24 @@
   .slide li { margin-bottom: 8px; font-size: 1.1em; }
 
   /* Title slide */
-  .slide-title { background: linear-gradient(135deg, var(--navy) 0%, var(--deep-blue) 40%, #0e7490 70%, var(--teal) 100%); justify-content: center; }
-  .slide-title::before { content: ''; position: absolute; inset: 0; background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"); opacity: 0.5; pointer-events: none; }
+  .slide-title { background: var(--surface); justify-content: center; }
+  .slide-title::before { content: ''; position: absolute; inset: 0; background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23888888' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"); opacity: 0.5; pointer-events: none; }
   .slide-title .slide-inner { position: relative; z-index: 1; }
+  .slide-title h1 { color: var(--heading); }
   .slide-title .badge-line { display: inline-block; background: var(--coral); color: white; font-size: 0.78em; font-weight: 700; padding: 4px 12px; border-radius: 20px; margin-bottom: 16px; letter-spacing: 0.5px; }
-  .slide-title .subtitle { font-size: 1.2em; color: white; opacity: 0.92; margin-bottom: 20px; max-width: 900px; line-height: 1.5; }
+  .slide-title .subtitle { font-size: 1.2em; color: var(--text); opacity: 0.92; margin-bottom: 20px; max-width: 900px; line-height: 1.5; }
   .slide-title .meta-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 12px; margin-top: 10px; max-width: 950px; }
-  .slide-title .meta-card { background: rgba(255,255,255,0.12); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.2); border-radius: 10px; padding: 12px 16px; }
-  .slide-title .meta-card .label { font-size: 0.7em; text-transform: uppercase; letter-spacing: 1.2px; opacity: 0.75; color: white; }
-  .slide-title .meta-card .value { font-size: 1.2em; font-weight: 700; margin-top: 2px; color: white; }
-  .slide-title .footer-note { margin-top: 26px; font-size: 0.85em; color: rgba(255,255,255,0.75); }
+  .slide-title .meta-card { background: var(--surface2); backdrop-filter: blur(10px); border: 1px solid var(--border); border-radius: 10px; padding: 12px 16px; }
+  .slide-title .meta-card .label { font-size: 0.7em; text-transform: uppercase; letter-spacing: 1.2px; opacity: 0.75; color: var(--text-muted); }
+  .slide-title .meta-card .value { font-size: 1.2em; font-weight: 700; margin-top: 2px; color: var(--text); }
+  .slide-title .footer-note { margin-top: 26px; font-size: 0.85em; color: var(--text-muted); }
 
   /* Closing slide reuses title look */
-  .slide-closing { background: linear-gradient(135deg, var(--navy) 0%, var(--deep-blue) 60%, var(--teal) 100%); justify-content: center; }
-  .slide-closing::before { content: ''; position: absolute; inset: 0; background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"); opacity: 0.5; pointer-events: none; }
+  .slide-closing { background: var(--surface); justify-content: center; }
+  .slide-closing::before { content: ''; position: absolute; inset: 0; background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23888888' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"); opacity: 0.5; pointer-events: none; }
   .slide-closing .slide-inner { position: relative; z-index: 1; }
-  .slide-closing p { color: rgba(255,255,255,0.9); }
-  .slide-closing h1 { margin-bottom: 20px; }
+  .slide-closing h1 { color: var(--heading); margin-bottom: 20px; }
+  .slide-closing p { color: var(--text-muted); }
 
   /* Shared components */
   .card { 
@@ -267,6 +268,16 @@
   .layout-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
   .layout-hero { text-align: center; padding: 4rem 2rem; background: var(--surface2); border-radius: var(--radius); border: 1px solid var(--border); }
   .layout-hero h2 { margin-top: 0; }
+
+  /* Image frame — drop a base64 or URL <img> straight in; keeps consistent chrome */
+  .img-frame { position: relative; border-radius: var(--radius); border: 1px solid var(--border-bright); background: var(--surface2); overflow: hidden; }
+  .img-frame img { display: block; width: 100%; height: 100%; object-fit: cover; }
+  .img-frame.placeholder { display: flex; align-items: center; justify-content: center; min-height: 220px; padding: 1.5rem; text-align: center; font-size: 0.85em; color: var(--text-dim); border: 1px dashed var(--border-bright); background: transparent; }
+  .img-caption { margin-top: 10px; font-size: 0.85em; color: var(--text-muted); text-align: center; }
+  .slide-img-only .img-frame { max-height: 60vh; margin: 0 auto; }
+  .layout-split .img-frame { height: 100%; min-height: 280px; }
+  .grid-2 .img-frame, .grid-3 .img-frame, .layout-grid .img-frame { min-height: 180px; }
+  .img-stack .img-frame { max-height: 42vh; margin: 0 auto 14px; }
 
   /* Causal / process chain */
   .chain-step { border-radius: 10px; padding: 12px 18px; text-align: center; font-weight: 600; font-size: 0.92em; }
@@ -694,7 +705,6 @@
     <div class="slide-inner">
       <span class="badge-line">PROJECT / EVENT LABEL</span>
       <h1>Presentation Title Goes Here</h1>
-      <h2 style="font-size: 0.5em; font-weight: 400; opacity: 0.8; margin-top: 0.5em;">A supporting subtitle line</h2>
       <p class="subtitle">One or two sentences framing what this deck is about and who it is for.</p>
       <div class="meta-grid">
         <div class="meta-card"><div class="label">Metric A</div><div class="value">Value</div></div>
@@ -836,7 +846,115 @@
     </div>
   </section>
 
-  <!-- ═══════════════ SLIDE 7: CLOSING ═══════════════ -->
+  <!-- ═══════════════ SLIDE 7: TEMPLATE REFERENCE — image only (delete when done) ═══════════════
+       Swap in an image by replacing the placeholder div with:
+       <img src="data:image/png;base64,...">  (or a plain URL src)
+       inside .img-frame — the frame's border/radius/background stay put either way. -->
+  <section class="slide slide-img-only" id="slide-ref-img-full" data-panel="slide-ref-img-full">
+    <div class="slide-inner">
+      <span class="slide-eyebrow eyebrow-teal">Template Reference</span>
+      <h2>Full-Width Image</h2>
+      <div class="img-frame placeholder" style="aspect-ratio: 16/9;">
+        Replace with &lt;img src="data:image/png;base64,..."&gt; inside .img-frame
+      </div>
+      <p class="img-caption">Caption or source line goes here.</p>
+    </div>
+  </section>
+
+  <!-- ═══════════════ SLIDE 8: TEMPLATE REFERENCE — image + text (delete when done) ═══════════════ -->
+  <section class="slide" id="slide-ref-img-split" data-panel="slide-ref-img-split">
+    <div class="slide-inner">
+      <span class="slide-eyebrow eyebrow-navy">Template Reference</span>
+      <h2>Image + Text</h2>
+      <div class="layout-split">
+        <div class="img-frame placeholder" style="aspect-ratio: 4/3;">
+          Replace with &lt;img src="data:image/png;base64,..."&gt; inside .img-frame
+        </div>
+        <div>
+          <p>Pair a figure, screenshot, or diagram with a short explanation. Swap <code>.layout-split</code> column order to put the image on the right instead.</p>
+          <ul>
+            <li>First supporting point.</li>
+            <li>Second supporting point.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ SLIDE 9: TEMPLATE REFERENCE — image stacked over text (delete when done) ═══════════════ -->
+  <section class="slide" id="slide-ref-img-stack" data-panel="slide-ref-img-stack">
+    <div class="slide-inner img-stack">
+      <span class="slide-eyebrow eyebrow-teal">Template Reference</span>
+      <h2>Image Stacked Over Text</h2>
+      <div class="img-frame placeholder" style="aspect-ratio: 21/9;">
+        Replace with &lt;img src="data:image/png;base64,..."&gt; inside .img-frame
+      </div>
+      <p>Use this when the image is the headline and the text below just adds context — a screenshot walkthrough, a wide chart, a photo.</p>
+    </div>
+  </section>
+
+  <!-- ═══════════════ SLIDE 10: TEMPLATE REFERENCE — two images side by side (delete when done) ═══════════════ -->
+  <section class="slide" id="slide-ref-img-compare" data-panel="slide-ref-img-compare">
+    <div class="slide-inner">
+      <span class="slide-eyebrow eyebrow-navy">Template Reference</span>
+      <h2>Two Images: Before / After</h2>
+      <div class="grid-2">
+        <div>
+          <div class="img-frame placeholder" style="aspect-ratio: 4/3;">Image A</div>
+          <p class="img-caption">Before</p>
+        </div>
+        <div>
+          <div class="img-frame placeholder" style="aspect-ratio: 4/3;">Image B</div>
+          <p class="img-caption">After</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ SLIDE 11: TEMPLATE REFERENCE — three-image grid + text (delete when done) ═══════════════ -->
+  <section class="slide" id="slide-ref-img-grid" data-panel="slide-ref-img-grid">
+    <div class="slide-inner">
+      <span class="slide-eyebrow eyebrow-amber">Template Reference</span>
+      <h2>Image Grid + Text</h2>
+      <p>Use <code>.grid-3</code> (or <code>.grid-2</code> for two) when you need several supporting images at once — screenshots of a flow, sample outputs, a small gallery.</p>
+      <div class="grid-3">
+        <div>
+          <div class="img-frame placeholder" style="aspect-ratio: 1/1;">Image A</div>
+          <p class="img-caption">Step one</p>
+        </div>
+        <div>
+          <div class="img-frame placeholder" style="aspect-ratio: 1/1;">Image B</div>
+          <p class="img-caption">Step two</p>
+        </div>
+        <div>
+          <div class="img-frame placeholder" style="aspect-ratio: 1/1;">Image C</div>
+          <p class="img-caption">Step three</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ SLIDE 12: TEMPLATE REFERENCE — hero image + two supporting images (delete when done) ═══════════════ -->
+  <section class="slide" id="slide-ref-img-hero-support" data-panel="slide-ref-img-hero-support">
+    <div class="slide-inner">
+      <span class="slide-eyebrow eyebrow-coral">Template Reference</span>
+      <h2>Hero Image + Supporting Images &amp; Text</h2>
+      <div class="layout-split">
+        <div class="img-frame placeholder" style="aspect-ratio: 4/3;">
+          Hero image
+        </div>
+        <div>
+          <p>Lead with the main figure on one side, then back it up with a couple of smaller supporting shots and a short note.</p>
+          <div class="grid-2">
+            <div class="img-frame placeholder" style="aspect-ratio: 1/1; min-height: 120px;">Detail A</div>
+            <div class="img-frame placeholder" style="aspect-ratio: 1/1; min-height: 120px;">Detail B</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ SLIDE 13: CLOSING ═══════════════ -->
   <section class="slide slide-closing" id="slide-closing" data-panel="slide-closing">
     <div class="slide-inner">
       <h1>Thank You</h1>
