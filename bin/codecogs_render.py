@@ -71,11 +71,24 @@ def fetch_svg(tex: str) -> str:
 
 def inline_equations(html: str) -> tuple:
     """Replace all placeholders with inline SVG. Returns (html, [tex...]).
-    Unresolvable equations are left in place and warned about on stderr."""
+    Unresolvable equations are left in place and warned about on stderr.
+    Processes at most MAX_EQS unique equations per document (documented cap)."""
     eqs = []
-    for tex in SPAN_RE.findall(html) + COMMENT_RE.findall(html):
+    for tex in SPAN_RE.findall(html):
+        tex = _unescape(tex)
         if tex not in eqs:
             eqs.append(tex)
+    for tex in COMMENT_RE.findall(html):
+        if tex not in eqs:
+            eqs.append(tex)
+    skipped = eqs[MAX_EQS:]
+    if skipped:
+        sys.stderr.write(f"WARN: {len(skipped)} unique equation(s) exceed the "
+                         f"MAX_EQS={MAX_EQS} per-document cap and were left as placeholders; "
+                         "render them in a second pass or reduce equation count.\n")
+        for tex in skipped:
+            sys.stderr.write(f"  skipped: {tex!r}\n")
+    eqs = eqs[:MAX_EQS]
     out = html
     for tex in eqs:
         try:
@@ -155,8 +168,11 @@ def main():
         sys.exit(1)
     target = args.out or path
     open(target, "w", encoding="utf-8").write(out)
-    print(f"inlined {len(eqs)} equation(s) -> {target}")
-    sys.exit(0 if eqs else 1)
+    total = len(SPAN_RE.findall(html)) + len(COMMENT_RE.findall(html))
+    remaining = len(SPAN_RE.findall(out)) + len(COMMENT_RE.findall(out))
+    print(f"inlined {total - remaining} of {total} equation occurrence(s) -> {target}"
+          + (f"; {remaining} placeholder(s) left (see stderr warnings)" if remaining else ""))
+    sys.exit(0 if remaining == 0 and total > 0 else 1)
 
 
 if __name__ == "__main__":
