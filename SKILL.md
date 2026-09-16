@@ -1,7 +1,7 @@
 ---
 name: html-template-pack
 description: Four self-contained HTML templates — report (left-side sticky sidebar with 5 icon+label tabs, theme toggle, offset-anchored annotations, JSON export), slide deck (prev/next nav, theme toggle, inline annotations, JSON export), bento one-pager (2026 bento-grid snapshot briefing, dark-first glass, full v2 annotation engine), and htmx dashboard (topbar, KPI row, sparkline, activity feed, sortable table, demo-mode mock backend). Pick report for ≥3 long sections, slide for ≤12 visual beats, bento for a one-page snapshot briefing someone should grasp at a glance and comment on, dashboard for live/polling data. Invoke for "HTML report", "HTML deck", "HTML page", "annotated report", "review-ready HTML", "slide deck", "HTML dashboard", "htmx dashboard", "ops dashboard", "admin panel", "one-pager", "briefing", "recap page", or MD/DOCX/PDF → HTML conversion. Report, slide, and bento ship the v2 annotation system; dashboard intentionally omits annotations (live data is not a stable anchor target). All four are dark-first with glass chrome, fluid display typography, and density + font-size toggles.
-version: 0.7.0
+version: 0.9.0
 license: MIT
 ---
 

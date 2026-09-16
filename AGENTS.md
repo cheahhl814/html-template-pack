@@ -69,6 +69,8 @@ This skill **composes with**:
 
 Each template is **portable**: copy the file (plus its `features/<report|slide|dashboard>/` JS/CSS if you want to keep them out-of-line) to any directory, and it works without other files in the tree. The report template has all CSS inline; the slide template has all CSS and JS inline; the dashboard template has all CSS/JS inline or local except the pinned, SRI-verified htmx CDN script. Mermaid, Google Fonts, and htmx are the only external dependencies, all CDN-served.
 
+For math, do NOT add MathJax/KaTeX — render LaTeX with CodeCogs and inline the SVG: author `<span class="math" data-tex="..."></span>` (or `<!-- eq: ... -->`) placeholders, then run `python3 bin/codecogs_render.py page.html`. The script themes every fill to `currentColor` so the theme toggle keeps working. Full guide: [`docs/latex-equations.md`](./docs/latex-equations.md).
+
 ## Known limitations
 
 - The slide template's v1 annotation system doesn't survive Mermaid re-renders inside slides. Workaround: don't put Mermaid in slides (put them in the report template instead), OR swap in the v2 features (see SKILL.md "What ships in the box").

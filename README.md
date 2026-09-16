@@ -18,6 +18,7 @@ Four self-contained HTML templates — **report** (sticky sidebar, 5 icon+label 
 - [Theme toggle](#-theme-toggle)
 - [Density and font-size toggles](#-density-and-font-size-toggles-all-three-templates)
 - [Graphics pack](#-graphics-pack-v080)
+- [LaTeX equations (CodeCogs)](#-latex-equations-codecogs-v090)
 - [Hard invariants](#-hard-invariants)
 
 ## 🚀 Live demo
@@ -276,6 +277,23 @@ All four templates ship with a shared **zero-dependency graphics pack** — elev
 **Live reference**: see every component at **[…/components/](https://cheahhl814.github.io/html-template-pack/components/)** — the same file also inlines a *motion legend* (browser-state matrix + 4-keyframe progress strip + before/after reveal pair + 5-step gauge sweep) so pack D is obvious from a single screenshot.
 
 **Accessibility baked in**: every visual chart is built from a real `<table>` (heatmap, data bars) or paired with a visually-hidden `<table>` fallback (donut); `role="img"` + `aria-label` on conic charts; numbers stay visible in heatmap cells; motion is `@supports (animation-timeline: …)` + `prefers-reduced-motion` guarded — browsers without support just see the final state, no JS fallback needed.
+
+## 🧮 LaTeX equations (CodeCogs, v0.9.0)
+
+MathJax/KaTeX would break the no-external-CDN guarantee, so equations are rendered server-side by **CodeCogs** (keyless) and **inlined as SVG** with `fill="currentColor"` so the dark/light theme toggle keeps working:
+
+```html
+<span class="math" data-tex="\frac{d[A]}{dt}=-k[A]"></span>
+<!-- eq: E = mc^2 -->
+```
+
+```bash
+python3 bin/codecogs_render.py page.html                  # inline in place
+python3 bin/codecogs_render.py --url '\int_0^1 f(x)\,dx'  # print the URL
+python3 bin/codecogs_render.py --selftest                 # 5-check offline test
+```
+
+Full workflow, draft-mode (hotlink) caveat, and placeholder syntax: [`docs/latex-equations.md`](./docs/latex-equations.md).
 
 ## 🔒 Hard invariants
 
