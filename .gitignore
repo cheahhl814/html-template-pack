@@ -1,6 +1,3 @@
-node_modules/
-*.log
-.DS_Store
-test/screenshots/
-test/.cache/
-.worktrees/
+__pycache__/
+*.pyc
+.codebase-index/
