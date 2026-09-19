@@ -1,7 +1,7 @@
 ---
 name: html-template-pack
 description: Four self-contained HTML templates — report (left-side sticky sidebar with 5 icon+label tabs, theme toggle, offset-anchored annotations, JSON export), slide deck (prev/next nav, theme toggle, inline annotations, JSON export), bento one-pager (2026 bento-grid snapshot briefing, dark-first glass, full v2 annotation engine), and htmx dashboard (topbar, KPI row, sparkline, activity feed, sortable table, demo-mode mock backend). Pick report for ≥3 long sections, slide for ≤12 visual beats, bento for a one-page snapshot briefing someone should grasp at a glance and comment on, dashboard for live/polling data. Invoke for "HTML report", "HTML deck", "HTML page", "annotated report", "review-ready HTML", "slide deck", "HTML dashboard", "htmx dashboard", "ops dashboard", "admin panel", "one-pager", "briefing", "recap page", or MD/DOCX/PDF → HTML conversion. Report, slide, and bento ship the v2 annotation system; dashboard intentionally omits annotations (live data is not a stable anchor target). All four are dark-first with glass chrome, fluid display typography, and density + font-size toggles.
-version: 0.9.0
+version: 0.10.0
 license: MIT
 ---
 
@@ -29,7 +29,7 @@ Four production-grade HTML templates, each self-contained (no external CDN depen
 - One-shot visual diagrams (no review needed) → use `lumen-mermaid`
 - Slide decks for live presentation / screen sharing only (no review) → use `lumen-slides`
 
-Interactive data dashboards now live in **this** skill (the dashboard template) rather than being routed elsewhere — see the table below. Still route to `lumen-diagram` / `lumen-chart` if the user wants a diagram/chart *embedded inside* the report template, not a standalone dashboard page.
+Interactive data dashboards now live in **this** skill (the dashboard template) rather than being routed elsewhere — see the table below. Still route to `lumen-diagram` / `lumen-chart` if the user wants a diagram/chart *embedded inside* the report template, not a standalone dashboard page. For **real data charts** (interactive tooltips, box/violin plots, sankey, treemap, network graphs — anything beyond the pure-CSS graphics pack), route to the [chartz](https://github.com/cheahhl814/chartz) skill, render the chart there, and embed it per `features/graphics/chartz-embed.md`.
 
 ## Which template to use
 
@@ -72,6 +72,8 @@ Interactive data dashboards now live in **this** skill (the dashboard template) 
 │       ├── graphics.css                        ← v0.8.0 shared graphics pack (donut, gauge, bars, heatmap, flow, mstrip, compare, pull-quote, motion; inlined into each template)
 │       └── snippets.html                       ← copy-paste reference for every component
 ├── features/
+│   ├── graphics/
+│   │   └── chartz-embed.md                     ← v0.10.0 how to embed chartz-rendered data charts (iframe pattern, single-file exception)
 │   ├── report/
 │   │   ├── highlight-annotate.js               ← v2 offset-anchored annotations (602 lines)
 │   │   ├── annotate.css                        ← annotation styles (216 lines)
@@ -238,6 +240,7 @@ Positioning differs: report/slide float the button `position: fixed` top-right; 
 - `template.html` and `slide-template.html` (research report + slide deck, 2026-07) — battle-tested templates
 - `dashboard-template.html` (added 2026-07-11) — htmx dashboard shell, new template family for live/polling data views
 - `bento-template.html` (added 2026-09-08, v0.7.0) — bento-grid one-pager. The full v2 annotation engine is inlined from the slide template with its token-mapping `:root` block stripped (the bento defines generic token names directly); density/font-size IIFEs reused with `bento-density`/`bento-font-size` storage keys. Bar chart is pure CSS, no Mermaid/htmx. Aesthetic sourced from the 2026 UI-trends research pass (bento grids as the default snapshot pattern, dark-first design, restrained glass, hover-glow micro-interactions).
+- v0.10.0 chartz interlink (2026-09-19) — routing: real/interactive data charts (box/violin, sankey, treemap, network graphs, tooltip-heavy series) beyond the pure-CSS graphics pack now route to the [chartz](https://github.com/cheahhl814/chartz) skill; `features/graphics/chartz-embed.md` documents the embed patterns (iframe by default — keeps templates dependency-free; documented single-file exception that extends the invariant's CDN-exception list with the pinned chart-engine tag). Static/snapshot charts stay on the graphics pack.
 - v0.7.0 aesthetic pass (2026-09-08) — all four templates: dark-first defaults (theme scripts now `saved || 'dark'`), glass chrome (`color-mix` translucent surfaces + `backdrop-filter` on sidebar/panels/cards in dark mode), ambient radial accent glow (`body::before`, hidden in print), fluid `clamp()` type scale on display headings, hover lift + accent-glow shadows. Fixed a corrupted CSS line in the dashboard template's light token block (`--error: #dc2 la l’T.` → `--error: #dc2626`). Annotation systems untouched.
 - v0.8.0 graphics pack (2026-09-08) — `features/graphics/graphics.css` + `snippets.html` added; the pack is inlined into each template's `<style>` block. Eleven zero-dependency components: donut/pie + radial gauge + horizontal bars + heatmap table + data-bar table cells + pure-CSS flowchart + horizontal milestone strip + feature comparison table + pull-quote + scroll-driven reveals + reading-progress bar + `@property`-animated gauge sweep. Every chart carries an accessible data fallback (real `<table>` or sr-only mirror); every motion component is `@supports (animation-timeline: …)` + `prefers-reduced-motion` guarded. Sources for the techniques: CSS-Tricks pie chart articles, MDN conic-gradient + scroll-driven animations docs, chaarts (CSS-only charts from tables), WAI accessibility.build charts guide, coryrylan anchor-positioning flowcharts.
 - v2 annotation engine + theme toggle (`features/{report,slide}/highlight-annotate.js`, `annotate.css`, `theme-toggle.js`, `theme-toggle.css`) — extracted from the original template on 2026-07-10 (renamed to `html-template-pack` from its previous internal codename; see the 2026-07-10 wiki entry on the v1→v2 offset-anchored annotation upgrade for the rename history)

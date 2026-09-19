@@ -278,6 +278,10 @@ All four templates ship with a shared **zero-dependency graphics pack** — elev
 
 **Accessibility baked in**: every visual chart is built from a real `<table>` (heatmap, data bars) or paired with a visually-hidden `<table>` fallback (donut); `role="img"` + `aria-label` on conic charts; numbers stay visible in heatmap cells; motion is `@supports (animation-timeline: …)` + `prefers-reduced-motion` guarded — browsers without support just see the final state, no JS fallback needed.
 
+### Interactive data charts (v0.10.0)
+
+When a template needs more than static/snapshot charts — interactive tooltips, box/violin plots, sankey, treemap, or network graphs — render the chart with the [chartz](https://github.com/cheahhl814/chartz) skill (Chart.js / Plotly.js / ECharts / Cytoscape.js, CDN-pinned) and embed it via `<iframe>`, keeping the pack's templates dependency-free. Patterns, when-to-use table, and the single-file exception are documented in [`features/graphics/chartz-embed.md`](./features/graphics/chartz-embed.md).
+
 ## 🧮 LaTeX equations (CodeCogs, v0.9.0)
 
 MathJax/KaTeX would break the no-external-CDN guarantee, so equations are rendered server-side by **CodeCogs** (keyless) and **inlined as SVG** with `fill="currentColor"` so the dark/light theme toggle keeps working:
