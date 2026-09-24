@@ -164,3 +164,66 @@
 <!-- Add class="animated" to any .gauge; the conic-gradient stop sweeps
      from 0% to its final --progress on first view. -->
 <div class="gauge animated" style="--progress: 73" role="img" aria-label="…">…</div>
+
+<!-- ═══════ B3 · CONVERSION FUNNEL ═════════════════════════════════ -->
+<figure>
+  <figcaption><strong>Conversion funnel</strong> · class: <code>.funnel</code> — v0.12.0</figcaption>
+  <ol class="funnel">
+    <li style="--w:100%"><span class="f-label">Visitors</span><small class="f-pct">100%</small><b class="f-val">24,180</b></li>
+    <li style="--w:82%"><span class="f-label">Engaged</span><small class="f-pct">82%</small><b class="f-val">19,806</b></li>
+    <li style="--w:61%"><span class="f-label">Qualified</span><small class="f-pct">61%</small><b class="f-val">14,750</b></li>
+    <li style="--w:44%"><span class="f-label">Purchased</span><small class="f-pct">44%</small><b class="f-val">10,639</b></li>
+    <li style="--w:30%"><span class="f-label">Retained</span><small class="f-pct">30%</small><b class="f-val">7,254</b></li>
+  </ol>
+</figure>
+
+<!-- ═══════ B4 · VENN (2-WAY / 3-WAY) ═══════════════════════════════ -->
+<figure>
+  <figcaption><strong>Venn diagram</strong> · class: <code>.venn</code> / <code>.venn.triple</code> — v0.12.0</figcaption>
+  <div class="venn" role="img" aria-label="Sales 120, Support 96, overlap 34">
+    <i class="venn-set a"></i><i class="venn-set b"></i>
+    <span class="v-tag a"><b>Sales</b><small>120</small></span>
+    <span class="v-tag b"><b>Support</b><small>96</small></span>
+    <span class="v-tag ab"><b>Both</b><small>34</small></span>
+  </div>
+  <p class="venn-caption">34 accounts are brought by both sales <em>and</em> support teams.</p>
+</figure>
+
+<!-- ═══════ B5 · SWOT GRID ═══════════════════════════════════════════ -->
+<figure>
+  <figcaption><strong>SWOT grid</strong> · class: <code>.swot</code> + <code>.swot-q s/w/o/t</code> — v0.12.0</figcaption>
+  <div class="swot">
+    <section class="swot-q s"><h4>Strengths</h4><ul><li>Proprietary corpus of 12k docs</li><li>Two-reviewer protocol</li></ul></section>
+    <section class="swot-q w"><h4>Weaknesses</h4><ul><li>Extraction not yet automated</li></ul></section>
+    <section class="swot-q o"><h4>Opportunities</h4><ul><li>Mid-market segment in APAC</li></ul></section>
+    <section class="swot-q t"><h4>Threats</h4><ul><li>Two funded competitors</li></ul></section>
+  </div>
+</figure>
+
+<!-- ═══════ B6 · ORG TREE ════════════════════════════════════════════ -->
+<figure>
+  <figcaption><strong>Org tree</strong> · class: <code>.otree</code> + <code>.o-node</code> — v0.12.0</figcaption>
+  <div class="otree"><ul><li>
+    <div class="o-node root">CEO<span class="o-role">Board</span></div>
+    <ul>
+      <li><div class="o-node">CTO<span class="o-role">Technology</span></div>
+        <ul><li><div class="o-node">Eng Lead</div></li><li><div class="o-node">QA</div></li></ul></li>
+      <li><div class="o-node">CFO<span class="o-role">Finance</span></div></li>
+<li><div class="o-node">CMO<span class="o-role">Marketing</span></div></li>
+    </ul>
+  </li></ul></div>
+</figure>
+
+<!-- ═══════ B7 · CYCLE LOOP ══════════════════════════════════════════ -->
+<figure>
+  <figcaption><strong>Cycle loop</strong> · class: <code>.cycle</code> + <code>.cyc-step c1..c4</code> — v0.12.0</figcaption>
+  <div class="cycle" role="group" aria-label="Sprint cycle">
+    <div class="cyc-step c1"><b>1</b><span>Plan</span></div>
+    <div class="cyc-arrow top" aria-hidden="true">&rarr;</div>
+    <div class="cyc-step c2"><b>2</b><span>Build</span></div>
+    <div class="cyc-step c3"><b>3</b><span>Test</span></div>
+    <div class="cyc-arrow bot" aria-hidden="true">&larr;</div>
+    <div class="cyc-step c4"><b>4</b><span>Deploy</span></div>
+  </div>
+  <p class="cyc-repeat">&#8635; repeats every two-week sprint</p>
+</figure>

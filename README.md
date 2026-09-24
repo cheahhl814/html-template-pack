@@ -4,7 +4,7 @@
 [![Live demo](https://img.shields.io/badge/demo-GitHub%20Pages-2ea44f)](https://cheahhl814.github.io/html-template-pack/)
 [![Type](https://img.shields.io/badge/type-agent%20skill-blueviolet)](#-installation)
 
-Four self-contained HTML templates — **report** (sticky sidebar, 5 icon+label tabs, v2 offset-anchored annotations, theme toggle), **slide deck** (prev/next nav, inline v2 annotations, theme toggle), **bento brief** (2026 bento-grid one-page snapshot briefing, dark-first glass, full v2 annotation engine), and **htmx dashboard** (topbar, KPI row, sparkline chart, activity feed, sortable table, demo-mode mock backend). All four ship the **v0.8.0 zero-dependency graphics pack** (donut, radial gauge, horizontal bars, heatmap, data-bar cells, pure-CSS flowchart, milestone strip, comparison table, pull-quote, scroll-driven motion) and are single-file, review-ready HTML with no external CDN dependencies beyond Google Fonts (report/slide/bento) and pinned htmx with SRI (dashboard). All four are **dark-first** with refined glass chrome, fluid display typography, and hover-glow micro-interactions (v0.7.0 aesthetic pass).
+Four self-contained HTML templates — **report** (sticky sidebar, 5 icon+label tabs, v2 offset-anchored annotations, theme toggle), **slide deck** (prev/next nav, inline v2 annotations, theme toggle), **bento brief** (2026 bento-grid one-page snapshot briefing, dark-first glass, full v2 annotation engine), and **htmx dashboard** (topbar, KPI row, sparkline chart, activity feed, sortable table, demo-mode mock backend). All four ship the **v0.12.0 zero-dependency graphics pack** (donut, radial gauge, horizontal bars, heatmap, data-bar cells, pure-CSS flowchart, milestone strip, conversion funnel, venn, SWOT grid, org tree, cycle loop, comparison table, pull-quote, scroll-driven motion) and are single-file, review-ready HTML with no external CDN dependencies beyond Google Fonts (report/slide/bento) and pinned htmx with SRI (dashboard). All four are **dark-first** with refined glass chrome, fluid display typography, and hover-glow micro-interactions (v0.7.0 aesthetic pass).
 
 **Repository**: https://github.com/cheahhl814/html-template-pack
 
@@ -277,6 +277,9 @@ All four templates ship with a shared **zero-dependency graphics pack** — elev
 **Live reference**: see every component at **[…/components/](https://cheahhl814.github.io/html-template-pack/components/)** — the same file also inlines a *motion legend* (browser-state matrix + 4-keyframe progress strip + before/after reveal pair + 5-step gauge sweep) so pack D is obvious from a single screenshot.
 
 **Accessibility baked in**: every visual chart is built from a real `<table>` (heatmap, data bars) or paired with a visually-hidden `<table>` fallback (donut); `role="img"` + `aria-label` on conic charts; numbers stay visible in heatmap cells; motion is `@supports (animation-timeline: …)` + `prefers-reduced-motion` guarded — browsers without support just see the final state, no JS fallback needed.
+
+### Diagram pack polish + new diagrams (v0.12.0)
+The pure-CSS diagram set got the Canva-quality polish pass (card shadows, gradient fills, arrowheads on every connector, pill tags, progress-filled milestone rail) and five new zero-dependency components: **conversion funnel** (`.funnel`), **venn** 2-way/3-way (`.venn`), **SWOT grid** (`.swot`), **org tree** (`.otree`), and **cycle loop** (`.cycle`). All token-driven, dark-first, print-safe, with text-equivalent a11y fallbacks — usage headers in `features/graphics/graphics.css`, copy-paste markup in `features/graphics/snippets.html`. The report template's `.layer-stack` / `.chain-step` blocks got the same treatment (drawn connector arrows replace the bare ▼ glyph).
 
 ### Interactive data charts (v0.10.0)
 
