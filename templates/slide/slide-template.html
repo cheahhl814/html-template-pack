@@ -859,22 +859,32 @@
    Root is the single top <li>; every deeper level is a nested <ul> in a flex
    row with connector rail + stubs from pure borders. Nodes are .card-style
    chips (surface2 / border-bright / radius). .root tints the top node accent. */
+
 .otree, .otree ul { list-style: none; margin: 0; padding: 0; }
 .otree { overflow-x: auto; }
-.otree { overflow-x: auto; }
-.otree ul { position: relative; display: flex; justify-content: center; gap: 0 1rem; padding: 1.4rem 0.1rem 0; }
-.otree > ul { padding: 0; }
+.otree ul { position: relative; display: flex; justify-content: center; padding-top: 1.5rem; }
+.otree > ul { padding-top: 0; }
+.otree li { position: relative; display: flex; flex-direction: column; align-items: center; padding: 1.5rem 0.4rem 0; }
 .otree > ul > li { padding-top: 0; }
-.otree li { position: relative; display: flex; flex-direction: column; align-items: center; padding: 1.4rem 0.3rem 0; }
-/* horizontal rail joining a sibling row */
-.otree ul::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--border-bright); }
+/* parent drop: from the parent node's bottom down to the sibling rail */
+.otree ul::before {
+  content: ""; position: absolute; top: 0; left: 50%;
+  width: 2px; height: 1.5rem; background: var(--border-bright);
+}
 .otree > ul::before { display: none; }
-/* vertical stub from parent node down to that rail */
-.otree ul::after { content: ""; position: absolute; top: -1.4rem; left: 50%; margin-left: -1px; width: 2px; height: 1.4rem; background: var(--border-bright); }
-.otree > ul::after { display: none; }
-/* vertical stub from rail down into each node */
-.otree li::before { content: ""; position: absolute; top: 0; left: 50%; margin-left: -1px; width: 2px; height: 1.4rem; background: var(--border-bright); }
-.otree > ul > li::before { display: none; }
+/* per-child connectors: half-rails along the sibling rail + stub into the
+   node. Rails span EXACTLY between adjacent sibling centers — no overshoot.
+   Each child draws: ::before = left half-rail, ::after = right half-rail
+   plus the center stub down into its own node. */
+.otree li::before, .otree li::after {
+  content: ""; position: absolute; top: 0; width: 50%; height: 1.5rem;
+  border-top: 2px solid var(--border-bright);
+}
+.otree li::before { right: 50%; }
+.otree li::after { left: 50%; border-left: 2px solid var(--border-bright); }
+.otree li:first-child::before { border-top: 0; }
+.otree li:last-child::after { border-top: 0; }
+.otree > ul > li::before, .otree > ul > li::after { display: none; }
 .o-node {
   position: relative; z-index: 1; white-space: nowrap;
   padding: 0.45rem 0.85rem; text-align: center;
