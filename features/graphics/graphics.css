@@ -549,23 +549,23 @@
    Usage:
      <div class="cycle" role="group" aria-label="Product cycle">
        <div class="cyc-step c1"><b>1</b><span>Plan</span></div>
-       <div class="cyc-arrow top" aria-hidden="true">→</div>
        <div class="cyc-step c2"><b>2</b><span>Build</span></div>
        <div class="cyc-step c3"><b>3</b><span>Test</span></div>
-       <div class="cyc-arrow bot" aria-hidden="true">←</div>
        <div class="cyc-step c4"><b>4</b><span>Deploy</span></div>
      </div>
      <p class="cyc-repeat">↻ repeats every sprint</p>
-   Approved pattern: two rows (top L→R, bottom R→L), straight arrows in the
-   center column, curved connector elbows (pure borders) on both sides, and a
-   ↻ return-note strip beneath. Stays intact at 360px. */
+   Two-row clockwise loop: Plan → Build (top L→R), a vertical connector down
+   to Test, Test → Deploy (bottom R→L), a vertical connector up to Plan. The
+   connectors are drawn on the steps themselves (pseudo-elements anchored to
+   the cards they join). No extra markup: just four .cyc-step divs. */
 .cycle {
   position: relative; display: grid;
-  grid-template-columns: 1fr 2.4rem 1fr; grid-template-rows: 1fr 1fr;
-  gap: 0.85rem 0; align-items: center; max-width: 460px;
-  padding: 0 2.4rem; margin: 0 auto;
+  grid-template-columns: 1fr 1fr;
+  gap: 2.2rem 1.4rem; align-items: stretch; max-width: 520px;
+  margin: 0 auto;
 }
 .cyc-step {
+  position: relative;
   display: flex; align-items: center; justify-content: center; gap: 0.6rem;
   padding: 0.85rem 1rem; min-height: 3.6rem;
   background: linear-gradient(180deg, var(--surface2), var(--surface));
@@ -582,32 +582,38 @@
   box-shadow: inset 0 1px 0 rgba(255,255,255,.08);
 }
 .cyc-step.c1 { grid-area: 1 / 1; }
-.cyc-step.c2 { grid-area: 1 / 3; }
-.cyc-step.c3 { grid-area: 2 / 3; }
+.cyc-step.c2 { grid-area: 1 / 2; }
+.cyc-step.c3 { grid-area: 2 / 2; }
 .cyc-step.c4 { grid-area: 2 / 1; }
-.cyc-arrow { justify-self: center; align-self: center; font-size: 1.15rem; color: var(--text-dim); line-height: 1; }
-.cyc-arrow.top { grid-area: 1 / 2; }
-.cyc-arrow.bot { grid-area: 2 / 2; }
-/* curved elbows — right side turns down into the next row */
-.cycle::before {
-  content: ""; position: absolute; right: 0.4rem; top: 50%; translate: 0 -50%;
-  width: 2.1rem; height: 2rem;
+/* vertical connectors, anchored to the steps they join (never floating):
+   Build ↓ Test on the right, Deploy ↑ Plan on the left */
+.cyc-step.c2::before, .cyc-step.c4::before {
+  content: ""; position: absolute; left: 50%; transform: translateX(-50%);
+  width: 2px; height: 2.2rem;
+  background: linear-gradient(180deg, var(--border-bright), var(--text-dim));
+}
+.cyc-step.c2::before { top: 100%; margin-top: 1px; }
+.cyc-step.c4::before { bottom: 100%; margin-bottom: 1px; }
+.cyc-step.c2::after, .cyc-step.c4::after {
+  content: ""; position: absolute; left: 50%;
+  width: 8px; height: 8px;
   border-right: 2px solid var(--text-dim); border-bottom: 2px solid var(--text-dim);
-  border-radius: 0 0 1.1rem 0;
 }
-/* left side elbow turns up into the top row */
-.cycle::after {
-  content: ""; position: absolute; left: 0.4rem; top: 50%; translate: 0 -50%;
-  width: 2.1rem; height: 2rem;
-  border-left: 2px solid var(--text-dim); border-top: 2px solid var(--text-dim);
-  border-radius: 1.1rem 0 0 0;
+.cyc-step.c2::after { top: calc(100% + 2.2rem - 6px); transform: translateX(-50%) rotate(45deg); }
+.cyc-step.c4::after { bottom: calc(100% + 2.2rem - 6px); transform: translateX(-50%) rotate(-135deg); }
+/* horizontal legs: Plan → Build (right chevron), Test → Deploy (left chevron) */
+.cyc-step.c1::after, .cyc-step.c3::after {
+  content: ""; position: absolute; top: 50%;
+  width: 8px; height: 8px;
+  border-top: 2px solid var(--text-dim); border-right: 2px solid var(--text-dim);
 }
+.cyc-step.c1::after { right: -1.35rem; transform: translateY(-50%) rotate(45deg); }
+.cyc-step.c3::after { left: -1.35rem; transform: translateY(-50%) rotate(-135deg); border-right-color: transparent; }
 .cyc-repeat { margin: 1.1rem auto 0; max-width: 460px; text-align: center;
   font-size: 0.75rem; color: var(--text-dim); padding: 0.3rem 0; }
 
 /* narrow screens: reclaim side padding so the loop never clips (360px-safe) */
 @media (max-width: 400px) {
-  .cycle { padding: 0 0.6rem; }
   .cyc-step { padding: 0.7rem 0.6rem; gap: 0.35rem; }
 }
 
