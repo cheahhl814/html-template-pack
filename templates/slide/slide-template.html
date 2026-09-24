@@ -1123,6 +1123,45 @@
     </div>
   </section>
 
+  <!-- ═══════════════ SLIDE 6B: GRAPHICS PACK — new diagrams (v0.12) ═══════════════ -->
+  <section class="slide" id="slide-ref-diagrams-v12" data-panel="slide-ref-diagrams-v12">
+    <div class="slide-inner">
+      <span class="slide-eyebrow eyebrow-teal">Template Reference</span>
+      <h2>Graphics: new diagrams <small style="color:var(--slate-400);font-weight:500">v0.12</small></h2>
+      <p>Five new zero-dependency diagram components — funnel, venn, SWOT, org tree, cycle. Copy-paste markup in <code>features/graphics/snippets.html</code>.</p>
+      <div class="grid-2" style="align-items:start;">
+        <div>
+          <p style="font-size:0.8em;color:var(--slate-400);margin:0 0 8px;">Conversion funnel · <code>.funnel</code></p>
+          <ol class="funnel">
+            <li style="--w:100%"><span class="f-label">Visitors</span><small class="f-pct">100%</small><b class="f-val">24,180</b></li>
+            <li style="--w:72%"><span class="f-label">Signed up</span><small class="f-pct">72%</small><b class="f-val">17,410</b></li>
+            <li style="--w:45%"><span class="f-label">Activated</span><small class="f-pct">45%</small><b class="f-val">10,881</b></li>
+            <li style="--w:28%"><span class="f-label">Retained</span><small class="f-pct">28%</small><b class="f-val">6,770</b></li>
+          </ol>
+        </div>
+        <div>
+          <p style="font-size:0.8em;color:var(--slate-400);margin:0 0 10px;">SWOT grid · <code>.swot</code></p>
+          <div class="swot" style="font-size:0.85em;">
+            <section class="swot-q s"><h4>Strengths</h4><ul><li>Zero-CDN engine</li><li>Theme tokens</li></ul></section>
+            <section class="swot-q w"><h4>Weaknesses</h4><ul><li>Manual markup</li></ul></section>
+            <section class="swot-q o"><h4>Opportunities</h4><ul><li>Print-ready decks</li></ul></section>
+            <section class="swot-q t"><h4>Threats</h4><ul><li>Editor drift</li></ul></section>
+          </div>
+        </div>
+      </div>
+      <p style="font-size:0.8em;color:var(--slate-400);margin:14px 0 6px;">Cycle loop · <code>.cycle</code> — also new: <code>.venn</code> / <code>.venn.triple</code> and <code>.otree</code> org tree</p>
+      <div class="cycle" role="group" aria-label="Sprint cycle">
+        <div class="cyc-step c1"><b>1</b><span>Plan</span></div>
+        <div class="cyc-arrow top" aria-hidden="true">&rarr;</div>
+        <div class="cyc-step c2"><b>2</b><span>Build</span></div>
+        <div class="cyc-step c3"><b>3</b><span>Test</span></div>
+        <div class="cyc-arrow bot" aria-hidden="true">&larr;</div>
+        <div class="cyc-step c4"><b>4</b><span>Deploy</span></div>
+      </div>
+      <p class="cyc-repeat">&#8635; repeats every two-week sprint</p>
+    </div>
+  </section>
+
   <!-- ═══════════════ SLIDE 7: TEMPLATE REFERENCE — image only (delete when done) ═══════════════
        Swap in an image by replacing the placeholder div with:
        <img src="data:image/png;base64,...">  (or a plain URL src)

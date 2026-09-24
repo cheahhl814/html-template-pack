@@ -1765,7 +1765,44 @@
           <span class="badge badge-amber">low confidence</span>
           <span class="badge badge-blue">preliminary</span>
         </p>
-      </section>
+
+      <h2>New diagram components (v0.12)</h2>
+      <p>
+        The graphics pack now also ships a conversion funnel, venn, SWOT grid,
+        org tree, and cycle loop — all pure CSS, zero dependencies. Copy-paste
+        markup: <code>features/graphics/snippets.html</code>.
+      </p>
+      <div class="grid-2" style="align-items:start;">
+        <div>
+          <p class="eyebrow eyebrow-teal" style="margin-bottom:0.75rem;">CONVERSION FUNNEL · .funnel</p>
+          <ol class="funnel">
+            <li style="--w:100%"><span class="f-label">Records screened</span><small class="f-pct">100%</small><b class="f-val">12,412</b></li>
+            <li style="--w:64%"><span class="f-label">Full-text reviewed</span><small class="f-pct">64%</small><b class="f-val">7,944</b></li>
+            <li style="--w:38%"><span class="f-label">Included</span><small class="f-pct">38%</small><b class="f-val">4,717</b></li>
+            <li style="--w:21%"><span class="f-label">Meta-analyzed</span><small class="f-pct">21%</small><b class="f-val">2,606</b></li>
+          </ol>
+        </div>
+        <div>
+          <p class="eyebrow eyebrow-navy" style="margin-bottom:0.75rem;">SWOT GRID · .swot</p>
+          <div class="swot">
+            <section class="swot-q s"><h4>Strengths</h4><ul><li>Two-reviewer protocol</li><li>Pre-registered</li></ul></section>
+            <section class="swot-q w"><h4>Weaknesses</h4><ul><li>Heterogeneity I² 71%</li></ul></section>
+            <section class="swot-q o"><h4>Opportunities</h4><ul><li>IPD re-analysis</li></ul></section>
+            <section class="swot-q t"><h4>Threats</h4><ul><li>Small-study bias</li></ul></section>
+          </div>
+        </div>
+      </div>
+      <p class="eyebrow eyebrow-teal" style="margin:1.25rem 0 0.5rem;">CYCLE LOOP · .cycle — also new: .venn / .venn.triple, .otree</p>
+      <div class="cycle" role="group" aria-label="Review update cycle">
+        <div class="cyc-step c1"><b>1</b><span>Search</span></div>
+        <div class="cyc-arrow top" aria-hidden="true">&rarr;</div>
+        <div class="cyc-step c2"><b>2</b><span>Screen</span></div>
+        <div class="cyc-step c3"><b>3</b><span>Extract</span></div>
+        <div class="cyc-arrow bot" aria-hidden="true">&larr;</div>
+        <div class="cyc-step c4"><b>4</b><span>Synthesize</span></div>
+      </div>
+      <p class="cyc-repeat">&#8635; top-ups run every 6 months</p>
+    </section>
 
       <!-- ─── Panel 5: Annotations (engine-facing) ─── -->
       <section data-panel="annotations" id="panel-annotations" hidden>

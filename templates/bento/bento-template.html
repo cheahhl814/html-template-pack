@@ -1348,6 +1348,36 @@ body.annot-insert-armed main.content { cursor: text; }
           <cite>— External reviewer, mid-sprint check</cite>
         </blockquote>
       </div>
+
+      <!-- Row 5: new diagram components (v0.12) -->
+      <div class="b-card span-6">
+        <h2><span class="card-icon">⌷</span>Conversion funnel <small style="font-weight:500;color:var(--text-dim)">v0.12 · .funnel</small></h2>
+        <ol class="funnel">
+          <li style="--w:100%"><span class="f-label">Sources screened</span><small class="f-pct">100%</small><b class="f-val">12,412</b></li>
+          <li style="--w:64%"><span class="f-label">Full-text</span><small class="f-pct">64%</small><b class="f-val">7,944</b></li>
+          <li style="--w:38%"><span class="f-label">Included</span><small class="f-pct">38%</small><b class="f-val">4,717</b></li>
+          <li style="--w:21%"><span class="f-label">Pooled</span><small class="f-pct">21%</small><b class="f-val">2,606</b></li>
+        </ol>
+        <p style="margin-top:0.9rem;">Also new: <strong>.venn</strong> / <strong>.venn.triple</strong> overlap diagrams and the <strong>.otree</strong> org tree — markup in <code>features/graphics/snippets.html</code>.</p>
+      </div>
+      <div class="b-card span-6">
+        <h2><span class="card-icon">⊞</span>SWOT + cycle <small style="font-weight:500;color:var(--text-dim)">v0.12 · .swot / .cycle</small></h2>
+        <div class="swot" style="font-size:0.9em;">
+          <section class="swot-q s"><h4>Strengths</h4><ul><li>Zero-CDN pack</li><li>Dark + light</li></ul></section>
+          <section class="swot-q w"><h4>Weaknesses</h4><ul><li>Manual markup</li></ul></section>
+          <section class="swot-q o"><h4>Opportunities</h4><ul><li>Print-ready</li></ul></section>
+          <section class="swot-q t"><h4>Threats</h4><ul><li>Editor drift</li></ul></section>
+        </div>
+        <div class="cycle" role="group" aria-label="Review cycle" style="margin-top:1rem;">
+          <div class="cyc-step c1"><b>1</b><span>Plan</span></div>
+          <div class="cyc-arrow top" aria-hidden="true">&rarr;</div>
+          <div class="cyc-step c2"><b>2</b><span>Build</span></div>
+          <div class="cyc-step c3"><b>3</b><span>Test</span></div>
+          <div class="cyc-arrow bot" aria-hidden="true">&larr;</div>
+          <div class="cyc-step c4"><b>4</b><span>Deploy</span></div>
+        </div>
+        <p class="cyc-repeat">&#8635; repeats every sprint</p>
+      </div>
     </section>
 
     <p class="b-foot">Bento brief · built from html-template-pack · annotations persist locally and export as JSON</p>
