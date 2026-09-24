@@ -1382,6 +1382,29 @@ body.annot-insert-armed main.content { cursor: text; }
         </div>
         <p class="cyc-repeat">&#8635; repeats every sprint</p>
       </div>
+
+      <!-- Row 6: venn + org tree (v0.12) -->
+      <div class="b-card span-6">
+        <h2><span class="card-icon">◍</span>Set overlap <small style="font-weight:500;color:var(--text-dim)">v0.12 · .venn</small></h2>
+        <div class="venn" role="img" aria-label="Embase 86, Medline 74, both 41">
+          <i class="venn-set a"></i><i class="venn-set b"></i>
+          <span class="v-tag a"><b>Embase</b><small>86</small></span>
+          <span class="v-tag b"><b>Medline</b><small>74</small></span>
+          <span class="v-tag ab"><b>Both</b><small>41</small></span>
+        </div>
+        <p class="venn-caption">41 studies indexed in both databases. Add <code>.triple</code> for 3 sets.</p>
+      </div>
+      <div class="b-card span-6">
+        <h2><span class="card-icon">⑂</span>Org tree <small style="font-weight:500;color:var(--text-dim)">v0.12 · .otree</small></h2>
+        <div class="otree"><ul><li>
+          <div class="o-node root">Steering<span class="o-role">Committee</span></div>
+          <ul>
+            <li><div class="o-node">Evidence<span class="o-role">2 reviewers</span></div>
+              <ul><li><div class="o-node">Screening</div></li><li><div class="o-node">Extraction</div></li></ul></li>
+            <li><div class="o-node">Analysis<span class="o-role">Thematic</span></div></li>
+          </ul>
+        </li></ul></div>
+      </div>
     </section>
 
     <p class="b-foot">Bento brief · built from html-template-pack · annotations persist locally and export as JSON</p>
