@@ -146,7 +146,7 @@ The skill ships four HTML templates. Pick the one that matches your content.
 
 A long-form reading document with a sticky left sidebar of tabs. The reviewer clicks between tabs to read different sections (Summary, Metrics, Methodology, Findings, Annotations), selects text to leave tracked-changes-style notes, and exports the notes as a JSON file when finished. The sidebar collapses to a horizontal tab strip on narrow screens. When printed, the sidebar hides and all sections flow sequentially with page breaks.
 
-As of **v0.8.0**, the Metrics panel includes a donut chart, three animated radial gauges, horizontal workflow bars, a sightings heatmap, and data-bar table cells; the Methodology panel adds a pure-CSS screening-flowchart and a horizontal milestone strip; the Findings panel adds a pull-quote and a feature-comparison table. A scroll-tied reading-progress bar is pinned to the top edge of the page (the same `animation-timeline: scroll()` API used by [Medium](https://medium.com)-style readers).
+As of **v0.8.0**, the Metrics panel includes a donut chart, three animated radial gauges, horizontal workflow bars, a sightings heatmap, and data-bar table cells; the Methodology panel adds a pure-CSS screening-flowchart and a horizontal milestone strip; the Findings panel adds a pull-quote and a feature-comparison table. The Methodology panel also carries a plain `<pre><code>` code-block example (no highlighter; reviewers can annotate any line). A scroll-tied reading-progress bar is pinned to the top edge of the page (the same `animation-timeline: scroll()` API used by [Medium](https://medium.com)-style readers).
 
 **Best for**: research reports, grant progress reports, manuscript reading versions, gap analyses, EOI drafts — anything a human will read end-to-end and leave comments on.
 
@@ -154,7 +154,7 @@ As of **v0.8.0**, the Metrics panel includes a donut chart, three animated radia
 
 A single-page scrolling deck with prev/next navigation, a page counter, a fullscreen toggle, and a home button. Each slide is a section with v2 annotations (notes you can leave on any text) and a per-slide identifier so a notes drawer click jumps directly to that slide. When printed, each slide becomes one PDF page.
 
-The current starter deck ships **7 slides**: a title, two content slides, two template-reference slides for cards/badges/blocks, two new **v0.8.0** graphics-pack demos (charts on slide 5: donut, gauges, bars; diagrams + pull-quote on slide 6), and a closing. Animated gauges replay each time you navigate to slide 5 (the `goTo()` hook in the deck script restarts `.gauge.animated` children).
+The current starter deck ships **7 slides**: a title, two content slides, two template-reference slides for cards/badges/blocks, two new **v0.8.0** graphics-pack demos (charts on slide 5: donut, gauges, bars; diagrams + pull-quote on slide 6), and a closing. Animated gauges replay each time you navigate to slide 5 (the `goTo()` hook in the deck script restarts `.gauge.animated` children). A `slide-ref-code` reference slide shows a `<pre><code>` block in a `.layout-split` (keep slide snippets to ~8 lines).
 
 **Best for**: pitch decks, conference talks, lightning talks, internal readouts, research summary decks — any sequential presentation of 12 or fewer visual beats.
 

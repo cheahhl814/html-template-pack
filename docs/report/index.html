@@ -159,6 +159,10 @@
     p { margin: 0 0 1rem; color: var(--text-muted); }
     strong { color: var(--text); font-weight: 600; }
     a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+    code { font-family: var(--font-mono); font-size: 0.9em; }
+    pre { margin: 0 0 1.25rem; padding: 1rem 1.25rem; background: var(--surface2); border: 1px solid var(--border); border-radius: 10px; overflow-x: auto; line-height: 1.55; }
+    pre code { font-size: 0.85rem; color: var(--text); }
+    @media print { pre { white-space: pre-wrap; overflow-wrap: anywhere; } }
 
     /* ── Multi-tab layout (left-side sidebar + content panels) ──
        The .report-shell wraps the sidebar and the panel container in a
@@ -1694,6 +1698,13 @@
           </li>
           <li><div class="flow-node end">Synthesis &amp; meta-analysis</div></li>
         </ol>
+
+        <h2>Code block</h2>
+        <p>Plain <code>&lt;pre&gt;&lt;code&gt;</code>, no syntax highlighter. Long lines scroll horizontally on screen and wrap in print; reviewers can highlight and comment on any line.</p>
+        <pre><code>nextflow run main.nf -profile docker \
+  --input samplesheet.csv \
+  --outdir results/ \
+  -resume</code></pre>
 
         <h2>Project milestones</h2>
         <ol class="mstrip">

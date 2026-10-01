@@ -162,6 +162,10 @@
   .slide p { margin-bottom: 1rem; color: var(--text-muted); font-size: 1.1em; }
   .slide ul, .slide ol { margin: 0 0 1rem 22px; color: var(--text-muted); }
   .slide li { margin-bottom: 8px; font-size: 1.1em; }
+  code { font-family: var(--font-mono); font-size: 0.9em; }
+  .slide pre { margin: 0 0 1rem; padding: 1.1rem 1.4rem; background: var(--surface2); border: 1px solid var(--border); border-radius: 10px; overflow-x: auto; line-height: 1.55; }
+  .slide pre code { font-size: 0.95em; color: var(--text); }
+  @media print { .slide pre { white-space: pre-wrap; overflow-wrap: anywhere; } }
 
   /* Title slide */
   .slide-title { background: var(--surface); justify-content: center; }
@@ -1072,6 +1076,27 @@
       <div class="chain-step" style="background:#fee2e2; color:#991b1b;">Step A — the driver</div>
       <div class="chain-arrow">↓</div>
       <div class="chain-step" style="background:#ccfbf1; color:#0d9488;">Step B — the outcome</div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ SLIDE 4b: TEMPLATE REFERENCE — code block (delete when done) ═══════════════ -->
+  <section class="slide" id="slide-ref-code" data-panel="slide-ref-code">
+    <div class="slide-inner">
+      <span class="slide-eyebrow eyebrow-teal">Template Reference</span>
+      <h2>Code Block</h2>
+      <div class="layout-split">
+        <div>
+          <p>Plain <code>&lt;pre&gt;&lt;code&gt;</code> — no highlighter, no CDN. Keep it to ~8 lines on a slide.</p>
+          <ul>
+            <li>Long lines scroll on screen, wrap in print.</li>
+            <li>Highlight any line to comment on it.</li>
+          </ul>
+        </div>
+        <pre><code>nextflow run main.nf -profile docker \
+  --input samplesheet.csv \
+  --outdir results/ \
+  -resume</code></pre>
+      </div>
     </div>
   </section>
 

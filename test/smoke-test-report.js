@@ -40,6 +40,7 @@ exec(cmd, { maxBuffer: 50 * 1024 * 1024 }, (err, stdout, stderr) => {
     { name: 'report-panels container',         re: /class="report-panels"/,          expect: 1 },
     { name: 'theme-toggle button (v2)',        re: /id="theme-toggle"/,                expect: 1 },
     { name: 'density-toggle button',           re: /id="density-toggle"/,             expect: 1 },
+    { name: 'code block example',              re: /<pre><code>/g,                     expect: 1 },
     { name: 'font-toggle button',              re: /id="font-toggle"/,                expect: 1 },
     { name: 'data-density default',            re: /data-density="comfortable"/,      expect: 1 },
     { name: 'data-font-size default',          re: /data-font-size="M"/,              expect: 1 },

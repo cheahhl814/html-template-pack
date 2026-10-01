@@ -95,6 +95,7 @@ exec(cmd, { maxBuffer: 50 * 1024 * 1024 }, (err, stdout, stderr) => {
     { name: 'localStorage usage',              re: /localStorage/,              expect: 1 },
     { name: 'Template reference slide 1',      re: /id="slide-ref-cards"/,      expect: 1 },
     { name: 'Template reference slide 2',      re: /id="slide-ref-blocks"/,     expect: 1 },
+    { name: 'Code block reference slide',      re: /id="slide-ref-code"[\s\S]*?<pre><code>/, expect: 1 },
     // Slide-template adapter
     { name: 'slide adapter present',           re: /Slide-template adapter/,    expect: 1 },
   ];
