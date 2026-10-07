@@ -1,0 +1,73 @@
+<!--
+html-template-pack · svg-library · matrix-nine-box
+  Nine-box (3×3) matrix: two graded axes, nine tinted cells that warm from
+  coral (low/low) to green (high/high) — talent grids, GE-McKinsey portfolio,
+  risk likelihood × impact.
+  Tokens: coral amber deep-blue teal green text text-muted surface font-head
+  font-sans.
+  Edit: nine titles + captions (≤ 26 chars), axis names, low/moderate/high
+  ticks. Cell (row r from top, col c) sits at x = 124 + c*218, y = 24 + r*118;
+  its hue = c + (2 - r) on the coral→green scale.
+  No ids/markers/defs — safe to paste multiples.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-label="Three-by-three matrix of Potential against Performance with nine labelled cells from Risk at bottom left to Star at top right" style="width:100%;height:auto">
+  <title>Nine-box matrix</title>
+  <rect x="124" y="24" width="210" height="110" rx="12" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 22%, transparent);stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 45%, transparent);stroke-width:1.5"/>
+  <rect x="124" y="24" width="210" height="110" rx="12" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 11%, var(--surface,#ffffff));stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:2"/>
+  <rect x="144" y="61" width="6" height="36" rx="3" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a))"/>
+  <text x="162" y="76" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">Rough diamond</text>
+  <text x="162" y="95" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">high potential, low output</text>
+  <rect x="342" y="24" width="210" height="110" rx="12" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--teal,#0d9488) 22%, transparent);stroke:color-mix(in srgb, var(--teal,#0d9488) 45%, transparent);stroke-width:1.5"/>
+  <rect x="342" y="24" width="210" height="110" rx="12" style="fill:color-mix(in srgb, var(--teal,#0d9488) 11%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:2"/>
+  <rect x="362" y="61" width="6" height="36" rx="3" style="fill:var(--teal,#0d9488)"/>
+  <text x="380" y="76" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">Future star</text>
+  <text x="380" y="95" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">ready to stretch</text>
+  <rect x="560" y="24" width="210" height="110" rx="12" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--green,#10b981) 22%, transparent);stroke:color-mix(in srgb, var(--green,#10b981) 45%, transparent);stroke-width:1.5"/>
+  <rect x="560" y="24" width="210" height="110" rx="12" style="fill:color-mix(in srgb, var(--green,#10b981) 22%, var(--surface,#ffffff));stroke:var(--green,#10b981);stroke-width:2"/>
+  <rect x="580" y="61" width="6" height="36" rx="3" style="fill:var(--green,#10b981)"/>
+  <text x="598" y="76" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">Star</text>
+  <text x="598" y="95" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">retain and promote</text>
+  <rect x="124" y="142" width="210" height="110" rx="12" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 22%, transparent);stroke:color-mix(in srgb, var(--amber,#f59e0b) 45%, transparent);stroke-width:1.5"/>
+  <rect x="124" y="142" width="210" height="110" rx="12" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 11%, var(--surface,#ffffff));stroke:var(--amber,#f59e0b);stroke-width:2"/>
+  <rect x="144" y="179" width="6" height="36" rx="3" style="fill:var(--amber,#f59e0b)"/>
+  <text x="162" y="194" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">Inconsistent</text>
+  <text x="162" y="213" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">coach for focus</text>
+  <rect x="342" y="142" width="210" height="110" rx="12" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 22%, transparent);stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 45%, transparent);stroke-width:1.5"/>
+  <rect x="342" y="142" width="210" height="110" rx="12" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 11%, var(--surface,#ffffff));stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:2"/>
+  <rect x="362" y="179" width="6" height="36" rx="3" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a))"/>
+  <text x="380" y="194" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">Core player</text>
+  <text x="380" y="213" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">steady contributor</text>
+  <rect x="560" y="142" width="210" height="110" rx="12" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--teal,#0d9488) 22%, transparent);stroke:color-mix(in srgb, var(--teal,#0d9488) 45%, transparent);stroke-width:1.5"/>
+  <rect x="560" y="142" width="210" height="110" rx="12" style="fill:color-mix(in srgb, var(--teal,#0d9488) 11%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:2"/>
+  <rect x="580" y="179" width="6" height="36" rx="3" style="fill:var(--teal,#0d9488)"/>
+  <text x="598" y="194" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">High performer</text>
+  <text x="598" y="213" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">give more scope</text>
+  <rect x="124" y="260" width="210" height="110" rx="12" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--coral,#ef4444) 22%, transparent);stroke:color-mix(in srgb, var(--coral,#ef4444) 45%, transparent);stroke-width:1.5"/>
+  <rect x="124" y="260" width="210" height="110" rx="12" style="fill:color-mix(in srgb, var(--coral,#ef4444) 11%, var(--surface,#ffffff));stroke:var(--coral,#ef4444);stroke-width:2"/>
+  <rect x="144" y="297" width="6" height="36" rx="3" style="fill:var(--coral,#ef4444)"/>
+  <text x="162" y="312" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">Risk</text>
+  <text x="162" y="331" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">act now</text>
+  <rect x="342" y="260" width="210" height="110" rx="12" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 22%, transparent);stroke:color-mix(in srgb, var(--amber,#f59e0b) 45%, transparent);stroke-width:1.5"/>
+  <rect x="342" y="260" width="210" height="110" rx="12" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 11%, var(--surface,#ffffff));stroke:var(--amber,#f59e0b);stroke-width:2"/>
+  <rect x="362" y="297" width="6" height="36" rx="3" style="fill:var(--amber,#f59e0b)"/>
+  <text x="380" y="312" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">Effective</text>
+  <text x="380" y="331" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">solid in role</text>
+  <rect x="560" y="260" width="210" height="110" rx="12" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 22%, transparent);stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 45%, transparent);stroke-width:1.5"/>
+  <rect x="560" y="260" width="210" height="110" rx="12" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 11%, var(--surface,#ffffff));stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:2"/>
+  <rect x="580" y="297" width="6" height="36" rx="3" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a))"/>
+  <text x="598" y="312" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">Trusted pro</text>
+  <text x="598" y="331" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">deep expertise</text>
+  <!-- axes -->
+  <line x1="124" y1="386" x2="766" y2="386" style="stroke:var(--text-muted,#64748b);stroke-width:2" stroke-linecap="round"/>
+  <polygon points="778,386 766,392 766,380" style="fill:var(--text-muted,#64748b)"/>
+  <line x1="100" y1="370" x2="100" y2="34" style="stroke:var(--text-muted,#64748b);stroke-width:2" stroke-linecap="round"/>
+  <polygon points="100,22 106,34 94,34" style="fill:var(--text-muted,#64748b)"/>
+  <text x="229" y="406" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">low</text>
+  <text x="447" y="406" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">moderate</text>
+  <text x="665" y="406" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">high</text>
+  <text x="447" y="432" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--text-muted,#64748b)">Performance</text>
+  <text x="0" y="0" text-anchor="middle" transform="translate(84 79.0) rotate(-90)" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">high</text>
+  <text x="0" y="0" text-anchor="middle" transform="translate(84 197.0) rotate(-90)" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">moderate</text>
+  <text x="0" y="0" text-anchor="middle" transform="translate(84 315.0) rotate(-90)" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">low</text>
+  <text x="0" y="0" text-anchor="middle" transform="translate(56 197.0) rotate(-90)" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--text-muted,#64748b)">Potential</text>
+</svg>

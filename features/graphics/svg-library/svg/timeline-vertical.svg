@@ -1,0 +1,62 @@
+<!--
+html-template-pack · svg-library · timeline-vertical
+  Vertical zigzag timeline: a central spine with five dated events whose cards
+  alternate left/right; the date sits on the opposite side of each node.
+  Tokens: teal deep-blue amber coral green border-bright text text-muted surface
+  font-head font-sans.
+  Edit: date eyebrows, card titles + captions. Event i sits at y = 60 + i*80;
+  even events use the left card (x 130), odd ones the right card (x 430).
+  Drop the last event group and shorten the spine for four events.
+  No ids/markers/defs — safe to paste multiples.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-label="Vertical timeline of five dated events alternating left and right of a central spine, from Founded in 2022 to Scale-up in 2025" style="width:100%;height:auto">
+  <title>Vertical zigzag timeline</title>
+  <!-- spine -->
+  <line x1="400" y1="26" x2="400" y2="420" style="stroke:var(--border-bright,#cbd5e1);stroke-width:3" stroke-linecap="round"/>
+  <polygon points="400,434 393.5,421 406.5,421" style="fill:var(--border-bright,#cbd5e1)"/>
+  <!-- event 1 -->
+  <line x1="370" y1="60" x2="400" y2="60" style="stroke:var(--teal,#0d9488);stroke-width:2" stroke-linecap="round"/>
+  <rect x="130" y="30" width="240" height="60" rx="12" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--teal,#0d9488) 22%, transparent);stroke:color-mix(in srgb, var(--teal,#0d9488) 45%, transparent);stroke-width:1.5"/>
+  <rect x="130" y="30" width="240" height="60" rx="12" style="fill:color-mix(in srgb, var(--teal,#0d9488) 12%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:2"/>
+  <rect x="364" y="30" width="6" height="60" rx="3" style="fill:var(--teal,#0d9488)"/>
+  <text x="352" y="57" text-anchor="end" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">Founded</text>
+  <text x="352" y="76" text-anchor="end" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">three people, one idea</text>
+  <circle cx="400" cy="60" r="9" style="fill:var(--teal,#0d9488);stroke:var(--surface,#ffffff);stroke-width:3"/>
+  <text x="424" y="64" letter-spacing="1.2" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:11px;font-weight:700;fill:color-mix(in srgb, var(--teal,#0d9488) 70%, var(--text,#0f172a))">2022 · Q1</text>
+  <!-- event 2 -->
+  <line x1="430" y1="140" x2="400" y2="140" style="stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:2" stroke-linecap="round"/>
+  <rect x="430" y="110" width="240" height="60" rx="12" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 22%, transparent);stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 45%, transparent);stroke-width:1.5"/>
+  <rect x="430" y="110" width="240" height="60" rx="12" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 12%, var(--surface,#ffffff));stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:2"/>
+  <rect x="430" y="110" width="6" height="60" rx="3" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a))"/>
+  <text x="452" y="137" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">First pilot</text>
+  <text x="452" y="156" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">two partner labs</text>
+  <circle cx="400" cy="140" r="9" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke:var(--surface,#ffffff);stroke-width:3"/>
+  <text x="376" y="144" text-anchor="end" letter-spacing="1.2" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:11px;font-weight:700;fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a))">2022 · Q4</text>
+  <!-- event 3 -->
+  <line x1="370" y1="220" x2="400" y2="220" style="stroke:var(--amber,#f59e0b);stroke-width:2" stroke-linecap="round"/>
+  <rect x="130" y="190" width="240" height="60" rx="12" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 22%, transparent);stroke:color-mix(in srgb, var(--amber,#f59e0b) 45%, transparent);stroke-width:1.5"/>
+  <rect x="130" y="190" width="240" height="60" rx="12" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 12%, var(--surface,#ffffff));stroke:var(--amber,#f59e0b);stroke-width:2"/>
+  <rect x="364" y="190" width="6" height="60" rx="3" style="fill:var(--amber,#f59e0b)"/>
+  <text x="352" y="217" text-anchor="end" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">Seed round</text>
+  <text x="352" y="236" text-anchor="end" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">team grows to twelve</text>
+  <circle cx="400" cy="220" r="9" style="fill:var(--amber,#f59e0b);stroke:var(--surface,#ffffff);stroke-width:3"/>
+  <text x="424" y="224" letter-spacing="1.2" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:11px;font-weight:700;fill:color-mix(in srgb, var(--amber,#f59e0b) 70%, var(--text,#0f172a))">2023 · Q3</text>
+  <!-- event 4 -->
+  <line x1="430" y1="300" x2="400" y2="300" style="stroke:var(--coral,#ef4444);stroke-width:2" stroke-linecap="round"/>
+  <rect x="430" y="270" width="240" height="60" rx="12" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--coral,#ef4444) 22%, transparent);stroke:color-mix(in srgb, var(--coral,#ef4444) 45%, transparent);stroke-width:1.5"/>
+  <rect x="430" y="270" width="240" height="60" rx="12" style="fill:color-mix(in srgb, var(--coral,#ef4444) 12%, var(--surface,#ffffff));stroke:var(--coral,#ef4444);stroke-width:2"/>
+  <rect x="430" y="270" width="6" height="60" rx="3" style="fill:var(--coral,#ef4444)"/>
+  <text x="452" y="297" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">Public launch</text>
+  <text x="452" y="316" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">open to all researchers</text>
+  <circle cx="400" cy="300" r="9" style="fill:var(--coral,#ef4444);stroke:var(--surface,#ffffff);stroke-width:3"/>
+  <text x="376" y="304" text-anchor="end" letter-spacing="1.2" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:11px;font-weight:700;fill:color-mix(in srgb, var(--coral,#ef4444) 70%, var(--text,#0f172a))">2024 · Q2</text>
+  <!-- event 5 -->
+  <line x1="370" y1="380" x2="400" y2="380" style="stroke:var(--green,#10b981);stroke-width:2" stroke-linecap="round"/>
+  <rect x="130" y="350" width="240" height="60" rx="12" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--green,#10b981) 22%, transparent);stroke:color-mix(in srgb, var(--green,#10b981) 45%, transparent);stroke-width:1.5"/>
+  <rect x="130" y="350" width="240" height="60" rx="12" style="fill:color-mix(in srgb, var(--green,#10b981) 12%, var(--surface,#ffffff));stroke:var(--green,#10b981);stroke-width:2"/>
+  <rect x="364" y="350" width="6" height="60" rx="3" style="fill:var(--green,#10b981)"/>
+  <text x="352" y="377" text-anchor="end" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">Scale-up</text>
+  <text x="352" y="396" text-anchor="end" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">five regions, 40k users</text>
+  <circle cx="400" cy="380" r="9" style="fill:var(--green,#10b981);stroke:var(--surface,#ffffff);stroke-width:3"/>
+  <text x="424" y="384" letter-spacing="1.2" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:11px;font-weight:700;fill:color-mix(in srgb, var(--green,#10b981) 70%, var(--text,#0f172a))">2025 · Q1</text>
+</svg>

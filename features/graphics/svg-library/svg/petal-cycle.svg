@@ -1,0 +1,57 @@
+<!--
+html-template-pack · svg-library · petal-cycle
+  Six-petal cycle: leaf-shaped petals around a hub with small clockwise flow
+  cues — a softer, more visual alternative to cycle-loop for 6 stages.
+  Tokens: teal deep-blue amber green coral accent text text-muted surface
+  font-head font-sans.
+  Edit: petal numbers + labels (≤ 9 chars), hub title + caption. Petal i is
+  the same leaf path rotated by i*60°; its label sits at radius 128 on the
+  same angle. For 5 petals rotate by i*72° and move the labels accordingly.
+  No ids/markers/defs — safe to paste multiples.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-label="Six petals around a central Cycle hub, Plan, Build, Test, Release, Measure and Learn, with clockwise arrows between them" style="width:100%;height:auto">
+  <title>Six-petal cycle</title>
+  <!-- petals: each is one leaf path rotated about the centre -->
+  <path d="M 0 -54 C 66 -84 66 -168 0 -200 C -66 -168 -66 -84 0 -54 Z" transform="translate(4 5) translate(400 225) rotate(0)" style="fill:color-mix(in srgb, var(--teal,#0d9488) 22%, transparent);stroke:color-mix(in srgb, var(--teal,#0d9488) 45%, transparent);stroke-width:1.5" stroke-linejoin="round"/>
+  <path d="M 0 -54 C 66 -84 66 -168 0 -200 C -66 -168 -66 -84 0 -54 Z" transform="translate(400 225) rotate(0)" style="fill:color-mix(in srgb, var(--teal,#0d9488) 14%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:2" stroke-linejoin="round"/>
+  <path d="M 0 -54 C 66 -84 66 -168 0 -200 C -66 -168 -66 -84 0 -54 Z" transform="translate(4 5) translate(400 225) rotate(60)" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 22%, transparent);stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 45%, transparent);stroke-width:1.5" stroke-linejoin="round"/>
+  <path d="M 0 -54 C 66 -84 66 -168 0 -200 C -66 -168 -66 -84 0 -54 Z" transform="translate(400 225) rotate(60)" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 14%, var(--surface,#ffffff));stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:2" stroke-linejoin="round"/>
+  <path d="M 0 -54 C 66 -84 66 -168 0 -200 C -66 -168 -66 -84 0 -54 Z" transform="translate(4 5) translate(400 225) rotate(120)" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 22%, transparent);stroke:color-mix(in srgb, var(--amber,#f59e0b) 45%, transparent);stroke-width:1.5" stroke-linejoin="round"/>
+  <path d="M 0 -54 C 66 -84 66 -168 0 -200 C -66 -168 -66 -84 0 -54 Z" transform="translate(400 225) rotate(120)" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 14%, var(--surface,#ffffff));stroke:var(--amber,#f59e0b);stroke-width:2" stroke-linejoin="round"/>
+  <path d="M 0 -54 C 66 -84 66 -168 0 -200 C -66 -168 -66 -84 0 -54 Z" transform="translate(4 5) translate(400 225) rotate(180)" style="fill:color-mix(in srgb, var(--green,#10b981) 22%, transparent);stroke:color-mix(in srgb, var(--green,#10b981) 45%, transparent);stroke-width:1.5" stroke-linejoin="round"/>
+  <path d="M 0 -54 C 66 -84 66 -168 0 -200 C -66 -168 -66 -84 0 -54 Z" transform="translate(400 225) rotate(180)" style="fill:color-mix(in srgb, var(--green,#10b981) 14%, var(--surface,#ffffff));stroke:var(--green,#10b981);stroke-width:2" stroke-linejoin="round"/>
+  <path d="M 0 -54 C 66 -84 66 -168 0 -200 C -66 -168 -66 -84 0 -54 Z" transform="translate(4 5) translate(400 225) rotate(240)" style="fill:color-mix(in srgb, var(--coral,#ef4444) 22%, transparent);stroke:color-mix(in srgb, var(--coral,#ef4444) 45%, transparent);stroke-width:1.5" stroke-linejoin="round"/>
+  <path d="M 0 -54 C 66 -84 66 -168 0 -200 C -66 -168 -66 -84 0 -54 Z" transform="translate(400 225) rotate(240)" style="fill:color-mix(in srgb, var(--coral,#ef4444) 14%, var(--surface,#ffffff));stroke:var(--coral,#ef4444);stroke-width:2" stroke-linejoin="round"/>
+  <path d="M 0 -54 C 66 -84 66 -168 0 -200 C -66 -168 -66 -84 0 -54 Z" transform="translate(4 5) translate(400 225) rotate(300)" style="fill:color-mix(in srgb, var(--accent,#0d9488) 22%, transparent);stroke:color-mix(in srgb, var(--accent,#0d9488) 45%, transparent);stroke-width:1.5" stroke-linejoin="round"/>
+  <path d="M 0 -54 C 66 -84 66 -168 0 -200 C -66 -168 -66 -84 0 -54 Z" transform="translate(400 225) rotate(300)" style="fill:color-mix(in srgb, var(--accent,#0d9488) 14%, var(--surface,#ffffff));stroke:var(--accent,#0d9488);stroke-width:2" stroke-linejoin="round"/>
+  <!-- labels (unrotated, at radius 128) -->
+  <text x="400" y="91" text-anchor="middle" letter-spacing="1.2" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:11px;font-weight:700;fill:color-mix(in srgb, var(--teal,#0d9488) 70%, var(--text,#0f172a))">01</text>
+  <text x="400" y="111" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">Plan</text>
+  <text x="510.9" y="155" text-anchor="middle" letter-spacing="1.2" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:11px;font-weight:700;fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a))">02</text>
+  <text x="510.9" y="175" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">Build</text>
+  <text x="510.9" y="283" text-anchor="middle" letter-spacing="1.2" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:11px;font-weight:700;fill:color-mix(in srgb, var(--amber,#f59e0b) 70%, var(--text,#0f172a))">03</text>
+  <text x="510.9" y="303" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">Test</text>
+  <text x="400" y="347" text-anchor="middle" letter-spacing="1.2" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:11px;font-weight:700;fill:color-mix(in srgb, var(--green,#10b981) 70%, var(--text,#0f172a))">04</text>
+  <text x="400" y="367" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">Release</text>
+  <text x="289.1" y="283" text-anchor="middle" letter-spacing="1.2" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:11px;font-weight:700;fill:color-mix(in srgb, var(--coral,#ef4444) 70%, var(--text,#0f172a))">05</text>
+  <text x="289.1" y="303" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">Measure</text>
+  <text x="289.1" y="155" text-anchor="middle" letter-spacing="1.2" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:11px;font-weight:700;fill:color-mix(in srgb, var(--accent,#0d9488) 70%, var(--text,#0f172a))">06</text>
+  <text x="289.1" y="175" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">Learn</text>
+  <!-- clockwise flow cues between petals -->
+  <path d="M 457.3 58.6 A 176 176 0 0 1 515.5 92.2" fill="none" style="stroke:var(--text-muted,#64748b);stroke-width:2" stroke-linecap="round" stroke-linejoin="round"/>
+  <polygon points="523.2,99.3 512.6,95.9 519.6,88.8" style="fill:var(--text-muted,#64748b)"/>
+  <path d="M 572.8 191.4 A 176 176 0 0 1 572.8 258.6" fill="none" style="stroke:var(--text-muted,#64748b);stroke-width:2" stroke-linecap="round" stroke-linejoin="round"/>
+  <polygon points="570.4,268.9 568.1,258 577.8,260.4" style="fill:var(--text-muted,#64748b)"/>
+  <path d="M 515.5 357.8 A 176 176 0 0 1 457.3 391.4" fill="none" style="stroke:var(--text-muted,#64748b);stroke-width:2" stroke-linecap="round" stroke-linejoin="round"/>
+  <polygon points="447.2,394.5 455.5,387 458.2,396.7" style="fill:var(--text-muted,#64748b)"/>
+  <path d="M 342.7 391.4 A 176 176 0 0 1 284.5 357.8" fill="none" style="stroke:var(--text-muted,#64748b);stroke-width:2" stroke-linecap="round" stroke-linejoin="round"/>
+  <polygon points="276.8,350.7 287.4,354.1 280.4,361.2" style="fill:var(--text-muted,#64748b)"/>
+  <path d="M 227.2 258.6 A 176 176 0 0 1 227.2 191.4" fill="none" style="stroke:var(--text-muted,#64748b);stroke-width:2" stroke-linecap="round" stroke-linejoin="round"/>
+  <polygon points="229.6,181.1 231.9,192 222.2,189.6" style="fill:var(--text-muted,#64748b)"/>
+  <path d="M 284.5 92.2 A 176 176 0 0 1 342.7 58.6" fill="none" style="stroke:var(--text-muted,#64748b);stroke-width:2" stroke-linecap="round" stroke-linejoin="round"/>
+  <polygon points="352.8,55.5 344.5,63 341.8,53.3" style="fill:var(--text-muted,#64748b)"/>
+  <circle cx="400" cy="225" r="46" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--accent,#0d9488) 22%, transparent);stroke:color-mix(in srgb, var(--accent,#0d9488) 45%, transparent);stroke-width:1.5"/>
+  <circle cx="400" cy="225" r="46" style="fill:var(--surface,#ffffff);stroke:var(--accent,#0d9488);stroke-width:2"/>
+  <text x="400" y="227" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:20px;font-weight:700;fill:var(--text,#0f172a)">Cycle</text>
+  <text x="400" y="245" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">six stages</text>
+</svg>

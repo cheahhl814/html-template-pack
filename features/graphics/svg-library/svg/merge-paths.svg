@@ -1,0 +1,45 @@
+<!--
+html-template-pack · svg-library · merge-paths
+  Merge paths: three input streams curve into one fat arrow that ends at a
+  single outcome — data integration, mergers, synthesis, combined workstreams.
+  Tokens: teal deep-blue amber accent text text-muted surface font-head
+  font-sans.
+  Edit: input labels + captions, arrow eyebrow, outcome text, bottom note.
+  Stream i is one cubic path from (206, y) to (486, 225) drawn twice (24px
+  translucent band + 2px centre line); inputs sit at y = 96 / 225 / 354.
+  No ids/markers/defs — safe to paste multiples.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-label="Three input streams, Field data, Lab results and Literature, curve together into one arrow that ends at a single outcome" style="width:100%;height:auto">
+  <title>Merging paths</title>
+  <!-- streams (translucent so they blend where they merge) -->
+  <path d="M 206 96 C 350 96 360 225 486 225" fill="none" style="stroke:color-mix(in srgb, var(--teal,#0d9488) 35%, transparent);stroke-width:24" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M 206 96 C 350 96 360 225 486 225" fill="none" style="stroke:var(--teal,#0d9488);stroke-width:2" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M 206 225 C 350 225 360 225 486 225" fill="none" style="stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 35%, transparent);stroke-width:24" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M 206 225 C 350 225 360 225 486 225" fill="none" style="stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:2" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M 206 354 C 350 354 360 225 486 225" fill="none" style="stroke:color-mix(in srgb, var(--amber,#f59e0b) 35%, transparent);stroke-width:24" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M 206 354 C 350 354 360 225 486 225" fill="none" style="stroke:var(--amber,#f59e0b);stroke-width:2" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- merged arrow -->
+  <polygon points="470,193 566,193 566,168 622,225 566,282 566,257 470,257" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--accent,#0d9488) 22%, transparent);stroke:color-mix(in srgb, var(--accent,#0d9488) 45%, transparent);stroke-width:1.5" stroke-linejoin="round"/>
+  <polygon points="470,193 566,193 566,168 622,225 566,282 566,257 470,257" style="fill:color-mix(in srgb, var(--accent,#0d9488) 22%, var(--surface,#ffffff));stroke:var(--accent,#0d9488);stroke-width:2" stroke-linejoin="round"/>
+  <text x="530" y="230" text-anchor="middle" letter-spacing="1.2" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:11px;font-weight:700;fill:color-mix(in srgb, var(--accent,#0d9488) 70%, var(--text,#0f172a))">MERGE</text>
+  <!-- inputs -->
+  <rect x="30" y="66" width="176" height="60" rx="12" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--teal,#0d9488) 22%, transparent);stroke:color-mix(in srgb, var(--teal,#0d9488) 45%, transparent);stroke-width:1.5"/>
+  <rect x="30" y="66" width="176" height="60" rx="12" style="fill:color-mix(in srgb, var(--teal,#0d9488) 14%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:2"/>
+  <text x="118" y="93" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">Field data</text>
+  <text x="118" y="111" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">sensors + surveys</text>
+  <rect x="30" y="195" width="176" height="60" rx="12" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 22%, transparent);stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 45%, transparent);stroke-width:1.5"/>
+  <rect x="30" y="195" width="176" height="60" rx="12" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 14%, var(--surface,#ffffff));stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:2"/>
+  <text x="118" y="222" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">Lab results</text>
+  <text x="118" y="240" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">sequencing runs</text>
+  <rect x="30" y="324" width="176" height="60" rx="12" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 22%, transparent);stroke:color-mix(in srgb, var(--amber,#f59e0b) 45%, transparent);stroke-width:1.5"/>
+  <rect x="30" y="324" width="176" height="60" rx="12" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 14%, var(--surface,#ffffff));stroke:var(--amber,#f59e0b);stroke-width:2"/>
+  <text x="118" y="351" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">Literature</text>
+  <text x="118" y="369" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">200 papers screened</text>
+  <!-- outcome -->
+  <rect x="636" y="160" width="134" height="130" rx="14" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--accent,#0d9488) 22%, transparent);stroke:color-mix(in srgb, var(--accent,#0d9488) 45%, transparent);stroke-width:1.5"/>
+  <rect x="636" y="160" width="134" height="130" rx="14" style="fill:color-mix(in srgb, var(--accent,#0d9488) 16%, var(--surface,#ffffff));stroke:var(--accent,#0d9488);stroke-width:2"/>
+  <text x="703" y="214" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">One model</text>
+  <text x="703" y="234" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">single source</text>
+  <text x="703" y="250" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">of truth</text>
+  <text x="400" y="420" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:13px;fill:var(--text-muted,#64748b)">three evidence streams become one decision base</text>
+</svg>

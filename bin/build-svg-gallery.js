@@ -11,7 +11,7 @@
  * Validation (fails the build):
  *   - well-formed tags (balanced <g>), has viewBox, role="img", aria-label, <title>
  *   - no id= attributes (id collisions when several SVGs are pasted into one page)
- *   - no <defs>/<marker>/<filter> (same collision reason)
+ *   - no <defs>/<marker>/<filter>/<mask>/<pattern> (same collision reason)
  *   - no <script>
  */
 const fs = require('fs');
@@ -43,11 +43,35 @@ const META = {
   'converging-forces': { desc: 'Four corner drivers with fat arrows converging on one central subject', use: 'External pressures, drivers of change, stakeholder influence' },
   'puzzle-pieces': { desc: '2×2 interlocking jigsaw with the final piece lifted out', use: 'Parts of a whole, integrated solutions, the missing element' },
   'gear-mechanism': { desc: 'Three meshing gears with rotation cues (driver → driven)', use: 'Interdependent parts, operating models, what drives what' },
+  'timeline-vertical': { desc: 'Central spine with five dated events alternating left and right', use: 'Company histories, project chronologies, release history' },
+  'swimlane-gantt': { desc: 'Four workstream lanes with bars across six quarters, a today marker and a milestone', use: 'Roadmaps by team, Gantt-lite plans, parallel workstreams' },
+  'honeycomb-cluster': { desc: 'Seven packed hexagons with one solid focus cell', use: 'Capability maps, building blocks, product modules' },
+  'dual-hub': { desc: 'Two hubs with three satellites each, bridged by a shared goal', use: 'Comparing two options or teams that share an objective' },
+  'petal-cycle': { desc: 'Six leaf-shaped petals around a hub with clockwise flow cues', use: 'Six-stage cycles, continuous-improvement loops, lifecycles' },
+  'decision-tree': { desc: 'Root question splitting yes/no through two follow-ups into four outcome cards', use: 'Decision guides, triage rules, build-vs-buy logic' },
+  'snake-path': { desc: 'Winding road with seven numbered stations, a U-turn and a goal flag', use: 'Long processes (6–9 steps), learning paths, programme journeys' },
+  'onion-layers': { desc: 'Four nested half-rings from outer context to inner core, with leader descriptions', use: 'Spheres of influence, nested scopes, system boundaries' },
+  'pillars-foundation': { desc: 'Roof carried by four pillars standing on a foundation slab', use: 'Strategy houses, guiding principles, pillars of a programme' },
+  'versus-columns': { desc: 'Two option cards with a VS badge, strengths, trade-offs and a best-for verdict', use: 'A vs B comparisons, option appraisals, before/after choices' },
+  'lightbulb-layers': { desc: 'Lightbulb sliced into four numbered bands, each leading to a description card', use: 'Idea maturation, innovation stages, layers of an insight' },
+  'matrix-nine-box': { desc: '3×3 matrix on two graded axes, cells warming from coral to green', use: 'Talent nine-box, portfolio grids, likelihood × impact risk' },
+  's-curve-adoption': { desc: 'Logistic S-curve over four phase bands with a rate bell and a we-are-here marker', use: 'Technology adoption, product life-cycle, maturity curves' },
+  'growth-tree': { desc: 'Canopy of outcomes fed by labelled roots below a soil line', use: 'Roots-and-fruits, inputs vs outcomes, theory of change' },
+  'spiral-growth': { desc: 'Outward spiral through five numbered stations keyed to a legend', use: 'Compounding growth, iterative deepening, learning spirals' },
+  'domino-chain': { desc: 'Five growing dominoes, the first tipping, with a chain-reaction arc', use: 'Cause chains, knock-on effects, small trigger → big outcome' },
+  'network-mesh': { desc: 'Central node with strong ties and influence-sized outer nodes linked by weak ties', use: 'Stakeholder maps, ecosystems, collaboration networks' },
+  'merge-paths': { desc: 'Three input streams curving into one arrow that ends at a single outcome', use: 'Data integration, synthesis, merging workstreams' },
+  'five-w-agenda': { desc: 'Who / What / When / Where / Why tiles with answer cards and tags', use: 'Project briefs, kick-off agendas, incident summaries' },
+  'orbit-satellites': { desc: 'Core with three dashed orbits of labelled satellites and a distance legend', use: 'Stakeholder proximity, engagement tiers, spheres of influence' },
 };
 
 function validate(name, src) {
   const errs = [];
-  const balanced = (tag) => (src.match(new RegExp(`<${tag}[\\s>]`, 'g')) || []).length ===
+  // XML comments may not contain `--` (breaks ET.parse / strict XML); catch it at build time
+  for (const c of (src.match(/<!--[\s\S]*?-->/g) || [])) {
+    if (/--/.test(c.slice(4, -3))) errs.push('illegal `--` inside XML comment');
+  }
+const balanced = (tag) => (src.match(new RegExp(`<${tag}[\\s>]`, 'g')) || []).length ===
                             (src.match(new RegExp(`</${tag}>`, 'g')) || []).length;
   if (!balanced('g')) errs.push('unbalanced <g>');
   if (!balanced('text')) errs.push('unbalanced <text>');
@@ -56,7 +80,8 @@ function validate(name, src) {
   if (!/aria-label=/.test(src)) errs.push('missing aria-label');
   if (!/<title>/.test(src)) errs.push('missing <title>');
   if (/\bid=/.test(src)) errs.push('contains id= (collision risk — use none)');
-  if (/<defs|<marker|<filter|<script/.test(src)) errs.push('contains defs/marker/filter/script');
+  if (/<defs|<marker|<filter|<mask|<pattern|<clipPath|<script/.test(src)) errs.push('contains defs/marker/filter/mask/pattern/clipPath/script');
+  if (/\s(fill|stroke)="var\(/.test(src)) errs.push('var() in a presentation attribute (silently fails — use style=)');
   return errs;
 }
 

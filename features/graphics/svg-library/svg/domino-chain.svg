@@ -1,0 +1,52 @@
+<!--
+html-template-pack · svg-library · domino-chain
+  Domino chain: five dominoes that grow left to right, the first one tipping,
+  with a dashed chain-reaction arc — cause chains, knock-on effects, small
+  trigger → big outcome.
+  Tokens: coral border-bright text text-muted surface font-head font-sans.
+  Edit: five labels + captions (≤ 20 chars), arc note. Domino i: x =
+  70/192/330/490/650, width 34 + 8i, height 80 + 30i, bottom on y = 360; the
+  first is rotate(18) about its bottom-right corner. Fill deepens 10%→34%.
+  No ids/markers/defs — safe to paste multiples.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-label="Five dominoes growing in size, the first tipping over, showing a chain from Trigger through Gap, Delay and Churn to Outcome" style="width:100%;height:auto">
+  <title>Domino chain reaction</title>
+  <!-- chain-reaction arc -->
+  <path d="M 112 246 Q 400 40 676 140" fill="none" style="stroke:var(--text-muted,#64748b);stroke-width:2" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="7 6"/>
+  <polygon points="683,148 669.9,141.8 680.1,133.8" style="fill:var(--text-muted,#64748b)"/>
+  <text x="400" y="132" text-anchor="middle" style="paint-order:stroke;stroke:var(--surface,#ffffff);stroke-width:5px;stroke-linejoin:round;font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:13px;fill:var(--text-muted,#64748b)">chain reaction</text>
+  <!-- domino 1: Trigger -->
+  <rect x="70" y="280" width="34" height="80" rx="7" transform="translate(4 5) rotate(18 104 360)" style="fill:color-mix(in srgb, var(--coral,#ef4444) 22%, transparent);stroke:color-mix(in srgb, var(--coral,#ef4444) 45%, transparent);stroke-width:1.5"/>
+  <rect x="70" y="280" width="34" height="80" rx="7" transform="rotate(18 104 360)" style="fill:color-mix(in srgb, var(--coral,#ef4444) 10%, var(--surface,#ffffff));stroke:var(--coral,#ef4444);stroke-width:2"/>
+  <g transform="rotate(18 104 360)" style="fill:var(--coral,#ef4444)"><line x1="77" y1="320.0" x2="97" y2="320.0" style="stroke:color-mix(in srgb, var(--coral,#ef4444) 55%, transparent);stroke-width:1.5"/><circle cx="87" cy="300" r="3.0"/><circle cx="87" cy="340" r="3.0"/></g>
+  <text x="101" y="392" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">Trigger</text>
+  <text x="101" y="410" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">key hire quits</text>
+  <!-- domino 2: Gap -->
+  <rect x="192" y="250" width="42" height="110" rx="7" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--coral,#ef4444) 22%, transparent);stroke:color-mix(in srgb, var(--coral,#ef4444) 45%, transparent);stroke-width:1.5"/>
+  <rect x="192" y="250" width="42" height="110" rx="7" style="fill:color-mix(in srgb, var(--coral,#ef4444) 16%, var(--surface,#ffffff));stroke:var(--coral,#ef4444);stroke-width:2"/>
+  <g style="fill:var(--coral,#ef4444)"><line x1="199" y1="305.0" x2="227" y2="305.0" style="stroke:color-mix(in srgb, var(--coral,#ef4444) 55%, transparent);stroke-width:1.5"/><circle cx="213" cy="277.5" r="3.6"/><circle cx="213" cy="332.5" r="3.6"/></g>
+  <text x="213" y="392" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">Gap</text>
+  <text x="213" y="410" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">no handover</text>
+  <!-- domino 3: Delay -->
+  <rect x="330" y="220" width="50" height="140" rx="7" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--coral,#ef4444) 22%, transparent);stroke:color-mix(in srgb, var(--coral,#ef4444) 45%, transparent);stroke-width:1.5"/>
+  <rect x="330" y="220" width="50" height="140" rx="7" style="fill:color-mix(in srgb, var(--coral,#ef4444) 22%, var(--surface,#ffffff));stroke:var(--coral,#ef4444);stroke-width:2"/>
+  <g style="fill:var(--coral,#ef4444)"><line x1="337" y1="290.0" x2="373" y2="290.0" style="stroke:color-mix(in srgb, var(--coral,#ef4444) 55%, transparent);stroke-width:1.5"/><circle cx="355" cy="255" r="4.2"/><circle cx="355" cy="325" r="4.2"/></g>
+  <text x="355" y="392" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">Delay</text>
+  <text x="355" y="410" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">releases slip</text>
+  <!-- domino 4: Churn -->
+  <rect x="490" y="190" width="58" height="170" rx="7" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--coral,#ef4444) 22%, transparent);stroke:color-mix(in srgb, var(--coral,#ef4444) 45%, transparent);stroke-width:1.5"/>
+  <rect x="490" y="190" width="58" height="170" rx="7" style="fill:color-mix(in srgb, var(--coral,#ef4444) 28%, var(--surface,#ffffff));stroke:var(--coral,#ef4444);stroke-width:2"/>
+  <g style="fill:var(--coral,#ef4444)"><line x1="497" y1="275.0" x2="541" y2="275.0" style="stroke:color-mix(in srgb, var(--coral,#ef4444) 55%, transparent);stroke-width:1.5"/><circle cx="519" cy="232.5" r="4.8"/><circle cx="519" cy="317.5" r="4.8"/></g>
+  <text x="519" y="392" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">Churn</text>
+  <text x="519" y="410" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">clients lose trust</text>
+  <!-- domino 5: Outcome -->
+  <rect x="650" y="160" width="66" height="200" rx="7" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--coral,#ef4444) 22%, transparent);stroke:color-mix(in srgb, var(--coral,#ef4444) 45%, transparent);stroke-width:1.5"/>
+  <rect x="650" y="160" width="66" height="200" rx="7" style="fill:color-mix(in srgb, var(--coral,#ef4444) 34%, var(--surface,#ffffff));stroke:var(--coral,#ef4444);stroke-width:2"/>
+  <g style="fill:var(--coral,#ef4444)"><line x1="657" y1="260.0" x2="709" y2="260.0" style="stroke:color-mix(in srgb, var(--coral,#ef4444) 55%, transparent);stroke-width:1.5"/><circle cx="683" cy="210" r="5.4"/><circle cx="683" cy="310" r="5.4"/></g>
+  <text x="683" y="392" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">Outcome</text>
+  <text x="683" y="410" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">revenue falls 12%</text>
+  <!-- motion cues + ground -->
+  <path d="M 128 268 q 10 6 12 18" fill="none" style="stroke:var(--text-muted,#64748b);stroke-width:2" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M 140 256 q 14 8 16 24" fill="none" style="stroke:var(--text-muted,#64748b);stroke-width:2" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="40" y1="360" x2="760" y2="360" style="stroke:var(--border-bright,#cbd5e1);stroke-width:2" stroke-linecap="round"/>
+</svg>

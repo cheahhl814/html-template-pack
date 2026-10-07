@@ -1,12 +1,13 @@
-# svg-library — hand-drawn SVG diagram templates (html-template-pack v0.11.0)
+# svg-library — hand-drawn SVG diagram templates (html-template-pack v0.13.0)
 
-Twenty agent-drawable, copy-paste-ready **inline SVG diagram/infographic templates** for
+Forty agent-drawable, copy-paste-ready **inline SVG diagram/infographic templates** for
 explanatory and summary visuals — the complement to the pure-CSS graphics pack
 (`features/graphics/graphics.css`). Where the CSS pack covers charts built from real
 data (donut, gauge, heatmap, bars), the SVG library covers **concept diagrams**:
 processes, loops, hierarchies, matrices, funnels, roadmaps, cause-effect maps, goals,
 maturity ladders, phases, hidden-vs-visible, trade-offs, assessments, journeys,
-converging forces, parts-of-a-whole and interdependencies.
+converging forces, parts-of-a-whole, interdependencies, decisions, adoption curves,
+networks, nested scopes, cause chains, comparisons and briefs.
 
 ```
 features/graphics/svg-library/
@@ -49,6 +50,26 @@ Each figure card has a collapsible **source (.svg)** block copy-paste-ready.
 | 18 | `converging-forces.svg` | Four corner drivers with fat arrows converging on one central subject | External pressures, drivers of change, stakeholder influence |
 | 19 | `puzzle-pieces.svg` | 2×2 interlocking jigsaw with the final piece lifted out | Parts of a whole, integrated solutions, the missing element |
 | 20 | `gear-mechanism.svg` | Three meshing gears with rotation cues (driver → driven) | Interdependent parts, operating models, what drives what |
+| 21 | `timeline-vertical.svg` | Central spine, five dated events alternating left/right | Company histories, project chronologies, release history |
+| 22 | `swimlane-gantt.svg` | Four workstream lanes, bars across six quarters, today marker + milestone | Roadmaps by team, Gantt-lite plans, parallel workstreams |
+| 23 | `honeycomb-cluster.svg` | Seven packed hexagons with one solid focus cell | Capability maps, building blocks, product modules |
+| 24 | `dual-hub.svg` | Two hubs with three satellites each, bridged by a shared goal | Comparing two options/teams that share an objective |
+| 25 | `petal-cycle.svg` | Six leaf petals around a hub with clockwise flow cues | Six-stage cycles, continuous improvement, lifecycles |
+| 26 | `decision-tree.svg` | Root question → yes/no follow-ups → four outcome cards | Decision guides, triage rules, build-vs-buy logic |
+| 27 | `snake-path.svg` | Winding road, seven numbered stations, U-turn + goal flag | Long processes (6–9 steps), learning paths |
+| 28 | `onion-layers.svg` | Four nested half-rings (context → core) with leader descriptions | Spheres of influence, nested scopes, system boundaries |
+| 29 | `pillars-foundation.svg` | Roof carried by four pillars on a foundation slab | Strategy houses, guiding principles, programme pillars |
+| 30 | `versus-columns.svg` | Two option cards with VS badge, strengths/trade-offs, best-for verdict | A vs B comparisons, option appraisals |
+| 31 | `lightbulb-layers.svg` | Bulb sliced into four numbered bands, each leading to a card | Idea maturation, innovation stages, layers of an insight |
+| 32 | `matrix-nine-box.svg` | 3×3 matrix on graded axes, cells warming coral → green | Talent nine-box, portfolio grids, likelihood × impact |
+| 33 | `s-curve-adoption.svg` | Logistic S-curve over four phases + rate bell + we-are-here marker | Technology adoption, product life-cycle, maturity curves |
+| 34 | `growth-tree.svg` | Canopy of outcomes fed by labelled roots below a soil line | Roots-and-fruits, inputs vs outcomes, theory of change |
+| 35 | `spiral-growth.svg` | Outward spiral through five numbered stations + legend | Compounding growth, iterative deepening |
+| 36 | `domino-chain.svg` | Five growing dominoes, first tipping, chain-reaction arc | Cause chains, knock-on effects, small trigger → big outcome |
+| 37 | `network-mesh.svg` | Central node, strong ties, influence-sized nodes, weak dashed ties | Stakeholder maps, ecosystems, collaboration networks |
+| 38 | `merge-paths.svg` | Three input streams curving into one arrow → single outcome | Data integration, synthesis, merging workstreams |
+| 39 | `five-w-agenda.svg` | Who/What/When/Where/Why tiles with answer cards + tags | Project briefs, kick-off agendas, incident summaries |
+| 40 | `orbit-satellites.svg` | Core with three dashed orbits of satellites + distance legend | Stakeholder proximity, engagement tiers |
 
 **When to use which graphics system:**
 
@@ -63,9 +84,12 @@ Each figure card has a collapsible **source (.svg)** block copy-paste-ready.
 
 1. **Inline SVG only.** Paste the whole `<svg>…</svg>` into the template HTML —
    no external files, no `<img>`, no CDN. Keeps the single-file-portability invariant.
-2. **No `id` attributes, no `<defs>`, no `<marker>`, no `<filter>`.** Several library
+2. **No `id` attributes, no `<defs>`, `<marker>`, `<filter>`, `<mask>`, `<pattern>` or `<clipPath>`.** Several library
    SVGs may be pasted into one page; `id` collisions would break them all. Arrowheads
-   are explicit `<polygon>` triangles; repeated shapes are `<line>`/`<rect>` groups.
+   are explicit `<polygon>` triangles; repeated shapes are `<line>`/`<rect>` groups; a
+   "sliced" shape is pre-computed polygons (see `lightbulb-layers.svg`), not a clip. A label
+   that must sit on top of lines gets a knockout halo instead:
+   `paint-order:stroke;stroke:var(--surface,#ffffff);stroke-width:5px` in its `style`.
    (Exception: if a one-off effect genuinely needs `<defs>`, generate globally-unique
    ids yourself and document it.)
 3. **Token-driven color.** Every color is `var(--token, #fallback)` inside an inline
@@ -118,8 +142,13 @@ Each figure card has a collapsible **source (.svg)** block copy-paste-ready.
 
 1. Hand-draw it in `svg/<kebab-name>.svg` following the conventions above — agent-drawn
    SVG is the point of the library; treat the shipped files as style reference
-   (rounded rx=10–14 boxes, 2px strokes, 15–17px labels, muted 12–13px captions,
-   explicit-polygon arrowheads, dashed 1.5px leaders ending in a 3.5px dot).
+   (rounded rx=12 cards — 8 for bars, 4–6 for slabs, 14 for large panels; 2px primary
+   strokes, 1.5px shadows/leaders, 2.5px connectors, 3px spines; dashed 1.5px leaders
+   start at a 3.5px dot). **Type scale (shared by all 40):** hero 20/700 (one central
+   subject or headline) · label 16/600 · annotation 13/400 muted · caption 12/400 muted ·
+   eyebrow 11/700 caps with `letter-spacing="1.2"` · badge number 13/700.
+   **Arrowheads:** 13×13 on connectors, 11×11 on small cue arrows, 16×16 on thick spines
+   (length × base, tip exactly on the target edge).
    **Signature look:** primary shapes get a "misregistered print" offset copy drawn
    underneath — same shape + `transform="translate(4 5)"` +
    `style="fill:color-mix(in srgb, var(--x) 22%, transparent);stroke:color-mix(in srgb, var(--x) 45%, transparent);stroke-width:1.5"`.

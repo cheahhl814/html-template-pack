@@ -1,7 +1,7 @@
 ---
 name: html-template-pack
 description: 'Four self-contained HTML templates — report (left-side sticky sidebar with 5 icon+label tabs, theme toggle, offset-anchored annotations, JSON export), slide deck (prev/next nav, theme toggle, inline annotations, JSON export), bento one-pager (2026 bento-grid snapshot briefing, dark-first glass, full v2 annotation engine), and htmx dashboard (topbar, KPI row, sparkline, activity feed, sortable table, demo-mode mock backend). Pick report for ≥3 long sections, slide for ≤12 visual beats, bento for a one-page snapshot briefing, dashboard for live/polling data. Invoke for "HTML report", "HTML deck", "HTML page", "annotated report", "review-ready HTML", "slide deck", "HTML dashboard", "htmx dashboard", "ops dashboard", "admin panel", "one-pager", "briefing", "recap page", or MD/DOCX/PDF → HTML conversion. Report, slide, and bento ship the v2 annotation system; dashboard omits annotations (live data is not a stable anchor target). All four are dark-first with glass chrome and density + font-size toggles.'
-version: 0.12.0
+version: 0.13.0
 license: MIT
 ---
 
@@ -75,9 +75,9 @@ Interactive data dashboards now live in **this** skill (the dashboard template) 
 │   ├── graphics/
 │   │   └── chartz-embed.md                     ← v0.10.0 how to embed chartz-rendered data charts (iframe pattern, single-file exception)
 │   │   └── svg-library/
-│   │       ├── README.md                       ← v0.12.0 SVG diagram library: conventions + catalog (20 components)
+│   │       ├── README.md                       ← v0.13.0 SVG diagram library: conventions + catalog (40 components)
 │   │       ├── gallery.html                    ← generated preview page (node bin/build-svg-gallery.js)
-│   │       └── svg/                            ← canonical .svg component files (20 infographic templates)
+│   │       └── svg/                            ← canonical .svg component files (40 infographic templates)
 │   ├── report/
 │   │   ├── highlight-annotate.js               ← v2 offset-anchored annotations (602 lines)
 │   │   ├── annotate.css                        ← annotation styles (216 lines)
@@ -187,7 +187,7 @@ In **v0.8.0**, all four templates gain a shared **zero-dependency graphics pack*
 
 ## SVG diagram library (`features/graphics/svg-library/` + `bin/build-svg-gallery.js`)
 
-In **v0.11.0** (10 components), extended to **20 in v0.12.0**: a sibling to the CSS graphics pack — **hand-drawn inline SVG infographic templates** for explanatory/summary visuals — concept diagrams the CSS pack doesn't cover, with the hand-drawn quality users responded well to (the DNA-helix deck-motif precedent).
+Grown over three releases: **10 in v0.11.0** → 20 in v0.12.0 → **40 in v0.13.0**: a sibling to the CSS graphics pack — **hand-drawn inline SVG infographic templates** for explanatory/summary visuals — concept diagrams the CSS pack doesn't cover, with the hand-drawn quality users responded well to (the DNA-helix deck-motif precedent).
 
 | # | Component (`svg/*.svg`) | Shows | When to use |
 |---|---|---|---|
@@ -211,6 +211,26 @@ In **v0.11.0** (10 components), extended to **20 in v0.12.0**: a sibling to the 
 | 18 | `converging-forces` | four corner drivers with arrows pushing on one central subject | stakeholder/market forces, pressure maps, drivers of change |
 | 19 | `puzzle-pieces` | 2×2 interlocking jigsaw with one piece lifted out | parts-of-a-whole, integration stories, missing-element framing |
 | 20 | `gear-mechanism` | three meshing gears with turn-direction arrows | what-drives-what, causal mechanism, process interactions |
+| 21 | `timeline-vertical` | central spine, 5 dated events alternating left/right | chronologies, event history, evolution narratives |
+| 22 | `swimlane-gantt` | 4 workstream lanes × 6 quarters, today marker + GA milestone | multi-stream project plans, cross-team roadmaps |
+| 23 | `honeycomb-cluster` | 7 packed hexagons, one solid focus cell | close-packing sets, capability clusters, team structures |
+| 24 | `dual-hub` | two option hubs, 3 satellites each, bridged by a shared goal | comparing two approaches around a shared constraint |
+| 25 | `petal-cycle` | 6 leaf petals around a hub with clockwise cues | 6-part cycles, service loops, seasonal rounds |
+| 26 | `decision-tree` | root question → yes/no → 2 follow-ups → 4 outcomes | branching logic, decision guidance, triage paths |
+| 27 | `snake-path` | winding road, 7 stations, U-turn, goal flag | long processes (7+ steps), journeys with direction changes |
+| 28 | `onion-layers` | half-onion of 4 nested scopes with leader descriptions | nesting/containment: scopes, audiences, contexts |
+| 29 | `pillars-foundation` | vision roof, 4 named pillars, foundation slab | strategy frameworks, programmes standing on capabilities |
+| 30 | `versus-columns` | A vs B cards, VS badge, check/dash rows, best-for footer | option comparison, recommendation framing |
+| 31 | `lightbulb-layers` | bulb sliced into 4 numbered bands + description cards | idea anatomy, innovation layers, concept decomposition |
+| 32 | `matrix-nine-box` | 3×3 graded matrix, cells warming coral→green | portfolio grading, risk/impact 9-cell grids |
+| 33 | `s-curve-adoption` | logistic S-curve, 4 phase bands, "we are here" marker | adoption lifecycle, maturity/effort curves |
+| 34 | `growth-tree` | canopy outcomes fed by labelled roots below a soil line | outcomes ↔ enablers, drivers of growth, capability→impact |
+| 35 | `spiral-growth` | outward spiral through 5 numbered stations + legend | compounding/iterative growth, escalation loops |
+| 36 | `domino-chain` | 5 growing dominoes, first tipping, chain-reaction arc | chain reactions, cascade risk, dependency triggers |
+| 37 | `network-mesh` | core with strong solid ties + weak dashed ties to sized nodes | ecosystems, influence maps, relationship strength |
+| 38 | `merge-paths` | 3 streams curving into one arrow → single outcome | convergence: inputs → integration, synthesis stories |
+| 39 | `five-w-agenda` | Who/What/When/Where/Why tiles with answers + tags | briefing skeletons, case summaries, incident reports |
+| 40 | `orbit-satellites` | core + 3 dashed orbits with distance legend | proximity/closeness: partner tiers, adjacency, distance-from-core |
 
 **Routing within the graphics systems**: real/interactive data → `chartz`; real-data static charts → CSS graphics pack A-block; Mermaid flow/sequence/ER → Mermaid CDN; **concept/infographic diagrams → this SVG library**; decorative background motifs → hand-draw per the svg-library conventions (token-driven, `aria-hidden`, zero text nodes).
 
@@ -275,6 +295,7 @@ Positioning differs: report/slide float the button `position: fixed` top-right; 
 - `template.html` and `slide-template.html` (research report + slide deck, 2026-07) — battle-tested templates
 - `dashboard-template.html` (added 2026-07-11) — htmx dashboard shell, new template family for live/polling data views
 - `bento-template.html` (added 2026-09-08, v0.7.0) — bento-grid one-pager. The full v2 annotation engine is inlined from the slide template with its token-mapping `:root` block stripped (the bento defines generic token names directly); density/font-size IIFEs reused with `bento-density`/`bento-font-size` storage keys. Bar chart is pure CSS, no Mermaid/htmx. Aesthetic sourced from the 2026 UI-trends research pass (bento grids as the default snapshot pattern, dark-first design, restrained glass, hover-glow micro-interactions).
+- v0.13.0 SVG library to 40 components (2026-10-07) — second delegation round (claude code via herdr, svglib-v13-claude; 18 inspiration page fetches incl. subpages of infodiagram/free-powerpoint-templates-design/presentationgo; **magnific.com 403'd WebFetch and curl — its pages were never seen**). 20 new templates: timeline-vertical, swimlane-gantt, honeycomb-cluster, dual-hub, petal-cycle, decision-tree, snake-path, onion-layers, pillars-foundation, versus-columns, lightbulb-layers, matrix-nine-box, s-curve-adoption, growth-tree, spiral-growth, domino-chain, network-mesh, merge-paths, five-w-agenda, orbit-satellites. Professional polish pass on all 20 originals now standardised into one type scale (hero 20/700 · label 16/600 · annotation 13 · caption 12 · eyebrow 11/700 ls-1.2 · badge 13/700), normalised arrowheads (13×13 connectors, 16×16 spines), quadrant got the offset shadow, puzzle label overlap + radar glyph fixed. Validator hardened: rejects `<mask>/<pattern>/<clipPath>` and `fill="var(...)"`/`stroke="var(...)` presentation attributes; **XML-comment `--` check added** (staircase-steps had illegal `--accent` inside a comment that xml.etree rejected but the old validator missed). New techniques documented: pre-computed polygon sampling instead of clipPath (bulb slices), knockout label halos via `paint-order:stroke` for labels-on-lines. Verified: 40/40 build + independent convention recheck (my ET.parse loop) + both-theme screenshots + 60/60 tests; agent-side rotation-aware getBBox check (final: 0 clipped, 0 overlaps; earlier runs caught 4 real overlaps, fixed).
 - v0.12.0 SVG library expansion (2026-10-07) — library grown from 10 to 20 components: 10 new infographic templates (target-bullseye, staircase-steps, chevron-progression, iceberg-depth, balance-scale, radar-spider, journey-map, converging-forces, puzzle-pieces, gear-mechanism) inspired by PowerPoint diagram galleries (infodiagram key-visuals, free-powerpoint-templates-design, magnific presentation vectors, presentationgo — layout inspiration only, no assets), plus a polish pass on the originals: convention fix (arrowhead colours now set via `style=` polygons — three files had used `fill="var()"` attributes), dark-mode contrast fix (`--navy`/`--deep-blue` outlines+labels mixed toward `--text` where they disappeared on dark surfaces), shared offset-tint hand-drawn drop-shadow, cycle nodes placed on the arc circle, fishbone arrowhead + sub-causes, funnel in-band counts, roadmap "today" marker + done segment, quadrant arrowed axes, venn set titles, journey/emotion curve. All 20 re-verified in both themes with Playwright (getBBox out-of-viewBox flags on rotated text are false positives — bbox ignores rotate transforms).
 - v0.11.0 SVG diagram library (2026-10-07) — `features/graphics/svg-library/` (`README.md` conventions + catalog, 10 canonical `svg/*.svg` infographic templates, generated `gallery.html` preview via `bin/build-svg-gallery.js`). Ten token-driven hand-drawn diagram components (pipeline, cycle, hub-spoke, pyramid, venn, quadrant, funnel, roadmap, fishbone, layer-stack) with `role="img"`/`aria-label`/`<title>` a11y, id-free collision-safe markup, var()-in-style-attribute color wiring (var() is invalid in SVG presentation attributes — discovered and documented), and constant 800×450 viewBox. Motivated by the user's positive experience with agent-drawn SVG (DNA-helix deck motif, 2026-10-02); delivery chosen (ask_user): reference + gallery page, token-driven auto-adapt, diagrams/infographics focus.
 - v0.10.0 chartz interlink (2026-09-19) — routing: real/interactive data charts (box/violin, sankey, treemap, network graphs, tooltip-heavy series) beyond the pure-CSS graphics pack now route to the [chartz](https://github.com/cheahhl814/chartz) skill; `features/graphics/chartz-embed.md` documents the embed patterns (iframe by default — keeps templates dependency-free; documented single-file exception that extends the invariant's CDN-exception list with the pinned chart-engine tag). Static/snapshot charts stay on the graphics pack.

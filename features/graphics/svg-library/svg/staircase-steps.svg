@@ -1,7 +1,7 @@
 <!--
 html-template-pack · svg-library · staircase-steps
   Five ascending steps on a shared baseline (maturity model, capability ladder,
-  growth stages) with a goal flag on the top step. Monochrome --accent whose tint
+  growth stages) with a goal flag on the top step. Monochrome accent whose tint
   deepens step by step, so it adopts each host template's accent.
   Tokens: accent amber text text-muted border-bright surface font-head font-sans.
   Edit: step labels + captions, flag title/caption. Each step: x = 63 + i*136,
@@ -46,7 +46,7 @@ html-template-pack · svg-library · staircase-steps
   <!-- goal flag on the top step -->
   <line x1="703" y1="120" x2="703" y2="46" style="stroke:var(--text,#0f172a);stroke-width:3" stroke-linecap="round"/>
   <polygon points="703,46 745,58 703,70" style="fill:var(--amber,#f59e0b);stroke:var(--amber,#f59e0b);stroke-width:2" stroke-linejoin="round"/>
-  <text x="689" y="62" text-anchor="end" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:15px;font-weight:700;fill:var(--text,#0f172a)">Target maturity</text>
+  <text x="689" y="62" text-anchor="end" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:700;fill:var(--text,#0f172a)">Target maturity</text>
   <text x="689" y="82" text-anchor="end" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">where we want to be by Q4</text>
   <line x1="40" y1="410" x2="760" y2="410" style="stroke:var(--border-bright,#cbd5e1);stroke-width:2" stroke-linecap="round"/>
 </svg>

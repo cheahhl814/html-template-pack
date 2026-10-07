@@ -14,33 +14,33 @@ html-template-pack · svg-library · puzzle-pieces
   <g>
     <path d="M 250 70 L 400 70 L 400 133 L 406 133 A 15 15 0 1 1 406 157 L 400 157 L 400 220 L 337 220 L 337 226 A 15 15 0 1 1 313 226 L 313 220 L 250 220 L 250 70 Z" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--teal,#0d9488) 22%, transparent);stroke:color-mix(in srgb, var(--teal,#0d9488) 45%, transparent);stroke-width:1.5" stroke-linejoin="round"/>
     <path d="M 250 70 L 400 70 L 400 133 L 406 133 A 15 15 0 1 1 406 157 L 400 157 L 400 220 L 337 220 L 337 226 A 15 15 0 1 1 313 226 L 313 220 L 250 220 L 250 70 Z" style="fill:color-mix(in srgb, var(--teal,#0d9488) 22%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:2" stroke-linejoin="round"/>
-    <text x="320" y="136" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:17px;font-weight:700;fill:var(--text,#0f172a)">Vision</text>
+    <text x="320" y="136" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:700;fill:var(--text,#0f172a)">Vision</text>
     <text x="320" y="156" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">why we exist</text>
   </g>
   <g>
     <path d="M 400 70 L 550 70 L 550 220 L 487 220 L 487 214 A 15 15 0 1 0 463 214 L 463 220 L 400 220 L 400 157 L 406 157 A 15 15 0 1 0 406 133 L 400 133 L 400 70 Z" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 22%, transparent);stroke:color-mix(in srgb, var(--amber,#f59e0b) 45%, transparent);stroke-width:1.5" stroke-linejoin="round"/>
     <path d="M 400 70 L 550 70 L 550 220 L 487 220 L 487 214 A 15 15 0 1 0 463 214 L 463 220 L 400 220 L 400 157 L 406 157 A 15 15 0 1 0 406 133 L 400 133 L 400 70 Z" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 22%, var(--surface,#ffffff));stroke:var(--amber,#f59e0b);stroke-width:2" stroke-linejoin="round"/>
-    <text x="484" y="136" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:17px;font-weight:700;fill:var(--text,#0f172a)">People</text>
+    <text x="484" y="136" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:700;fill:var(--text,#0f172a)">People</text>
     <text x="484" y="156" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">who makes it real</text>
   </g>
   <g>
     <path d="M 250 220 L 313 220 L 313 226 A 15 15 0 1 0 337 226 L 337 220 L 400 220 L 400 283 L 394 283 A 15 15 0 1 0 394 307 L 400 307 L 400 370 L 250 370 L 250 220 Z" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 22%, transparent);stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 45%, transparent);stroke-width:1.5" stroke-linejoin="round"/>
     <path d="M 250 220 L 313 220 L 313 226 A 15 15 0 1 0 337 226 L 337 220 L 400 220 L 400 283 L 394 283 A 15 15 0 1 0 394 307 L 400 307 L 400 370 L 250 370 L 250 220 Z" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 22%, var(--surface,#ffffff));stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:2" stroke-linejoin="round"/>
-    <text x="314" y="296" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:17px;font-weight:700;fill:var(--text,#0f172a)">Process</text>
+    <text x="314" y="296" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:700;fill:var(--text,#0f172a)">Process</text>
     <text x="314" y="316" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">how work gets done</text>
   </g>
   <g transform="translate(34 22) rotate(7 475 295)">
     <path d="M 400 220 L 463 220 L 463 214 A 15 15 0 1 1 487 214 L 487 220 L 550 220 L 550 370 L 400 370 L 400 307 L 394 307 A 15 15 0 1 1 394 283 L 400 283 L 400 220 Z" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--coral,#ef4444) 22%, transparent);stroke:color-mix(in srgb, var(--coral,#ef4444) 45%, transparent);stroke-width:1.5" stroke-linejoin="round"/>
     <path d="M 400 220 L 463 220 L 463 214 A 15 15 0 1 1 487 214 L 487 220 L 550 220 L 550 370 L 400 370 L 400 307 L 394 307 A 15 15 0 1 1 394 283 L 400 283 L 400 220 Z" style="fill:color-mix(in srgb, var(--coral,#ef4444) 22%, var(--surface,#ffffff));stroke:var(--coral,#ef4444);stroke-width:2" stroke-linejoin="round"/>
-    <text x="476" y="292" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:17px;font-weight:700;fill:var(--text,#0f172a)">Tools</text>
-    <text x="476" y="312" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">what enables it</text>
+    <text x="476" y="292" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:700;fill:var(--text,#0f172a)">Tools</text>
+    <text x="476" y="318" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">what enables it</text>
   </g>
   <line x1="642" y1="232" x2="610" y2="252" style="stroke:var(--text-muted,#64748b);stroke-width:1.5" stroke-dasharray="4 4"/>
   <polygon points="600,258 606.5,247.5 612.2,256.9" style="fill:var(--text-muted,#64748b)"/>
   <text x="650" y="226" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:600;fill:var(--text-muted,#64748b)">the missing piece</text>
   <text x="650" y="245" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">what completes it</text>
-  <text x="60" y="70" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:18px;font-weight:700;fill:var(--text,#0f172a)">Four parts,</text>
-  <text x="60" y="94" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:18px;font-weight:700;fill:color-mix(in srgb, var(--accent,#0d9488) 70%, var(--text,#0f172a))">one system</text>
+  <text x="60" y="70" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:20px;font-weight:700;fill:var(--text,#0f172a)">Four parts,</text>
+  <text x="60" y="96" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:20px;font-weight:700;fill:color-mix(in srgb, var(--accent,#0d9488) 70%, var(--text,#0f172a))">one system</text>
   <text x="60" y="122" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">each piece only works</text>
   <text x="60" y="140" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">when its neighbours fit</text>
 </svg>

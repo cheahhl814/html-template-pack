@@ -1,0 +1,51 @@
+<!--
+html-template-pack · svg-library · honeycomb-cluster
+  Honeycomb cluster: seven tightly packed hexagons (4 + 3 rows) with one solid
+  focus cell — capability maps, building blocks, product modules.
+  Tokens: teal amber deep-blue green coral accent text text-muted surface
+  font-head font-sans.
+  Edit: headline + caption, cell labels + captions (keep captions ≤ 16 chars).
+  Hexagons are pointy-top, R = 60; columns step 111.9 px, rows step 97 px.
+  To move the focus, swap a cell's fill/text styles with the Platform cell.
+  No ids/markers/defs — safe to paste multiples.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-label="Honeycomb of seven hexagonal capability cells, Data, Models, Tools, People, Process and Security, around a highlighted Platform core" style="width:100%;height:auto">
+  <title>Honeycomb capability cluster</title>
+  <text x="400" y="58" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:20px;font-weight:700;fill:var(--text,#0f172a)">Seven capabilities, one platform</text>
+  <text x="400" y="80" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">each cell is a capability; the solid cell is the shared core</text>
+  <!-- cell: Data -->
+  <polygon points="232.1,130 284.1,160 284.1,220 232.1,250 180.2,220 180.2,160" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--teal,#0d9488) 22%, transparent);stroke:color-mix(in srgb, var(--teal,#0d9488) 45%, transparent);stroke-width:1.5" stroke-linejoin="round"/>
+  <polygon points="232.1,130 284.1,160 284.1,220 232.1,250 180.2,220 180.2,160" style="fill:color-mix(in srgb, var(--teal,#0d9488) 14%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:2" stroke-linejoin="round"/>
+  <text x="232.1" y="189" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">Data</text>
+  <text x="232.1" y="207" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">governed</text>
+  <!-- cell: Models -->
+  <polygon points="344,130 396,160 396,220 344,250 292.1,220 292.1,160" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 22%, transparent);stroke:color-mix(in srgb, var(--amber,#f59e0b) 45%, transparent);stroke-width:1.5" stroke-linejoin="round"/>
+  <polygon points="344,130 396,160 396,220 344,250 292.1,220 292.1,160" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 14%, var(--surface,#ffffff));stroke:var(--amber,#f59e0b);stroke-width:2" stroke-linejoin="round"/>
+  <text x="344" y="189" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">Models</text>
+  <text x="344" y="207" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">trained, tested</text>
+  <!-- cell: Tools -->
+  <polygon points="456,130 507.9,160 507.9,220 456,250 404,220 404,160" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 22%, transparent);stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 45%, transparent);stroke-width:1.5" stroke-linejoin="round"/>
+  <polygon points="456,130 507.9,160 507.9,220 456,250 404,220 404,160" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 14%, var(--surface,#ffffff));stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:2" stroke-linejoin="round"/>
+  <text x="456" y="189" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">Tools</text>
+  <text x="456" y="207" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">shared toolkit</text>
+  <!-- cell: People -->
+  <polygon points="567.9,130 619.8,160 619.8,220 567.9,250 515.9,220 515.9,160" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--green,#10b981) 22%, transparent);stroke:color-mix(in srgb, var(--green,#10b981) 45%, transparent);stroke-width:1.5" stroke-linejoin="round"/>
+  <polygon points="567.9,130 619.8,160 619.8,220 567.9,250 515.9,220 515.9,160" style="fill:color-mix(in srgb, var(--green,#10b981) 14%, var(--surface,#ffffff));stroke:var(--green,#10b981);stroke-width:2" stroke-linejoin="round"/>
+  <text x="567.9" y="189" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">People</text>
+  <text x="567.9" y="207" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">skills + roles</text>
+  <!-- cell: Process -->
+  <polygon points="288.1,227 340,257 340,317 288.1,347 236.1,317 236.1,257" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--coral,#ef4444) 22%, transparent);stroke:color-mix(in srgb, var(--coral,#ef4444) 45%, transparent);stroke-width:1.5" stroke-linejoin="round"/>
+  <polygon points="288.1,227 340,257 340,317 288.1,347 236.1,317 236.1,257" style="fill:color-mix(in srgb, var(--coral,#ef4444) 14%, var(--surface,#ffffff));stroke:var(--coral,#ef4444);stroke-width:2" stroke-linejoin="round"/>
+  <text x="288.1" y="286" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">Process</text>
+  <text x="288.1" y="304" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">how work flows</text>
+  <!-- cell: Platform -->
+  <polygon points="400,227 452,257 452,317 400,347 348,317 348,257" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--accent,#0d9488) 22%, transparent);stroke:color-mix(in srgb, var(--accent,#0d9488) 45%, transparent);stroke-width:1.5" stroke-linejoin="round"/>
+  <polygon points="400,227 452,257 452,317 400,347 348,317 348,257" style="fill:var(--accent,#0d9488);stroke:var(--accent,#0d9488);stroke-width:2" stroke-linejoin="round"/>
+  <text x="400" y="286" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--surface,#ffffff)">Platform</text>
+  <text x="400" y="304" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:color-mix(in srgb, var(--surface,#ffffff) 85%, transparent)">the core</text>
+  <!-- cell: Security -->
+  <polygon points="511.9,227 563.9,257 563.9,317 511.9,347 460,317 460,257" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 22%, transparent);stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 45%, transparent);stroke-width:1.5" stroke-linejoin="round"/>
+  <polygon points="511.9,227 563.9,257 563.9,317 511.9,347 460,317 460,257" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 14%, var(--surface,#ffffff));stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:2" stroke-linejoin="round"/>
+  <text x="511.9" y="286" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">Security</text>
+  <text x="511.9" y="304" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">by default</text>
+</svg>

@@ -14,26 +14,26 @@ html-template-pack · svg-library · flow-pipeline
     <rect x="30" y="150" width="150" height="112" rx="14" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--teal,#0d9488) 22%, transparent);stroke:color-mix(in srgb, var(--teal,#0d9488) 45%, transparent);stroke-width:1.5"/>
     <rect x="30" y="150" width="150" height="112" rx="14" style="fill:color-mix(in srgb, var(--teal,#0d9488) 16%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:2"/>
     <circle cx="105" cy="150" r="15" style="fill:var(--teal,#0d9488);stroke:var(--surface,#ffffff);stroke-width:3"/>
-    <text x="105" y="155" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:14px;font-weight:700;fill:var(--surface,#ffffff)">1</text>
-    <text x="105" y="206" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:17px;font-weight:600;fill:var(--text,#0f172a)">Discover</text>
+    <text x="105" y="155" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--surface,#ffffff)">1</text>
+    <text x="105" y="206" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">Discover</text>
     <text x="105" y="230" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">scoping and inputs</text>
     <rect x="228" y="150" width="150" height="112" rx="14" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 22%, transparent);stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 45%, transparent);stroke-width:1.5"/>
     <rect x="228" y="150" width="150" height="112" rx="14" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 16%, var(--surface,#ffffff));stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:2"/>
     <circle cx="303" cy="150" r="15" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke:var(--surface,#ffffff);stroke-width:3"/>
-    <text x="303" y="155" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:14px;font-weight:700;fill:var(--surface,#ffffff)">2</text>
-    <text x="303" y="206" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:17px;font-weight:600;fill:var(--text,#0f172a)">Design</text>
+    <text x="303" y="155" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--surface,#ffffff)">2</text>
+    <text x="303" y="206" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">Design</text>
     <text x="303" y="230" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">prototype + review</text>
     <rect x="426" y="150" width="150" height="112" rx="14" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 22%, transparent);stroke:color-mix(in srgb, var(--amber,#f59e0b) 45%, transparent);stroke-width:1.5"/>
     <rect x="426" y="150" width="150" height="112" rx="14" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 16%, var(--surface,#ffffff));stroke:var(--amber,#f59e0b);stroke-width:2"/>
     <circle cx="501" cy="150" r="15" style="fill:var(--amber,#f59e0b);stroke:var(--surface,#ffffff);stroke-width:3"/>
-    <text x="501" y="155" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:14px;font-weight:700;fill:var(--surface,#ffffff)">3</text>
-    <text x="501" y="206" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:17px;font-weight:600;fill:var(--text,#0f172a)">Build</text>
+    <text x="501" y="155" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--surface,#ffffff)">3</text>
+    <text x="501" y="206" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">Build</text>
     <text x="501" y="230" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">implementation QA</text>
     <rect x="624" y="150" width="150" height="112" rx="14" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--green,#10b981) 22%, transparent);stroke:color-mix(in srgb, var(--green,#10b981) 45%, transparent);stroke-width:1.5"/>
     <rect x="624" y="150" width="150" height="112" rx="14" style="fill:color-mix(in srgb, var(--green,#10b981) 16%, var(--surface,#ffffff));stroke:var(--green,#10b981);stroke-width:2"/>
     <circle cx="699" cy="150" r="15" style="fill:var(--green,#10b981);stroke:var(--surface,#ffffff);stroke-width:3"/>
-    <text x="699" y="155" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:14px;font-weight:700;fill:var(--surface,#ffffff)">4</text>
-    <text x="699" y="206" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:17px;font-weight:600;fill:var(--text,#0f172a)">Launch</text>
+    <text x="699" y="155" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--surface,#ffffff)">4</text>
+    <text x="699" y="206" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">Launch</text>
     <text x="699" y="230" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">monitor + iterate</text>
   </g>
   <!-- forward connectors -->

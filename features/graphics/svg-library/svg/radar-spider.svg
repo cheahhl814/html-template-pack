@@ -24,26 +24,26 @@ html-template-pack · svg-library · radar-spider
     <line x1="290" y1="232" x2="160.1" y2="307"/>
     <line x1="290" y1="232" x2="160.1" y2="157"/>
   </g>
-  <text x="296" y="161" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:10px;fill:var(--text-muted,#64748b)">50</text>
+  <text x="296" y="161" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:11px;fill:var(--text-muted,#64748b)">50</text>
   <!-- target (dashed outline) then current (filled) -->
   <polygon points="290,97 396.5,170.5 393.9,292 290,349 179.6,295.8 196.5,178" fill="none" style="stroke:var(--amber,#f59e0b);stroke-width:2.5" stroke-dasharray="7 5" stroke-linejoin="round"/>
   <polygon points="290,112 367.9,187 383.5,286 290,289 204.3,281.5 222.5,193" style="fill:color-mix(in srgb, var(--teal,#0d9488) 26%, transparent);stroke:var(--teal,#0d9488);stroke-width:2.5" stroke-linejoin="round"/>
   <g style="fill:var(--teal,#0d9488)"><circle cx="290" cy="112" r="4.5"/><circle cx="367.9" cy="187" r="4.5"/><circle cx="383.5" cy="286" r="4.5"/><circle cx="290" cy="289" r="4.5"/><circle cx="204.3" cy="281.5" r="4.5"/><circle cx="222.5" cy="193" r="4.5"/></g>
   <!-- axis labels -->
-  <text x="290" y="62" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:15px;font-weight:600;fill:var(--text,#0f172a)">Speed</text>
-  <text x="435.5" y="153" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:15px;font-weight:600;fill:var(--text,#0f172a)">Quality</text>
-  <text x="435.5" y="321" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:15px;font-weight:600;fill:var(--text,#0f172a)">Cost</text>
-  <text x="290" y="414" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:15px;font-weight:600;fill:var(--text,#0f172a)">Scale</text>
-  <text x="144.5" y="321" text-anchor="end" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:15px;font-weight:600;fill:var(--text,#0f172a)">Security</text>
-  <text x="144.5" y="153" text-anchor="end" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:15px;font-weight:600;fill:var(--text,#0f172a)">Usability</text>
+  <text x="290" y="62" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">Speed</text>
+  <text x="435.5" y="153" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">Quality</text>
+  <text x="435.5" y="321" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">Cost</text>
+  <text x="290" y="414" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">Scale</text>
+  <text x="144.5" y="321" text-anchor="end" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">Security</text>
+  <text x="144.5" y="153" text-anchor="end" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">Usability</text>
   <!-- legend + takeaway -->
   <rect x="560" y="128" width="26" height="14" rx="4" style="fill:color-mix(in srgb, var(--teal,#0d9488) 26%, transparent);stroke:var(--teal,#0d9488);stroke-width:2"/>
-  <text x="598" y="140" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:15px;font-weight:600;fill:var(--text,#0f172a)">Current</text>
+  <text x="598" y="140" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">Current</text>
   <line x1="560" y1="172" x2="586" y2="172" style="stroke:var(--amber,#f59e0b);stroke-width:2.5" stroke-dasharray="7 5"/>
-  <text x="598" y="177" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:15px;font-weight:600;fill:var(--text,#0f172a)">Target</text>
+  <text x="598" y="177" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">Target</text>
   <line x1="560" y1="214" x2="760" y2="214" style="stroke:var(--border-bright,#cbd5e1);stroke-width:1"/>
-  <text x="560" y="246" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:15px;font-weight:700;fill:color-mix(in srgb, var(--coral,#ef4444) 70%, var(--text,#0f172a))">Largest gap: Scale</text>
-  <text x="560" y="268" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">38 → 78 · invest here first</text>
-  <text x="560" y="296" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:15px;font-weight:700;fill:color-mix(in srgb, var(--green,#10b981) 70%, var(--text,#0f172a))">Already strong: Speed</text>
+  <text x="560" y="246" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:700;fill:color-mix(in srgb, var(--coral,#ef4444) 70%, var(--text,#0f172a))">Largest gap: Scale</text>
+  <text x="560" y="268" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">38 vs 78 target · invest here first</text>
+  <text x="560" y="296" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:700;fill:color-mix(in srgb, var(--green,#10b981) 70%, var(--text,#0f172a))">Already strong: Speed</text>
   <text x="560" y="318" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">80 vs 90 target</text>
 </svg>

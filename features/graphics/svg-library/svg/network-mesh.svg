@@ -1,0 +1,73 @@
+<!--
+html-template-pack · svg-library · network-mesh
+  Network mesh: a central node with strong ties, outer nodes sized by influence
+  and joined by weaker dashed ties — stakeholder maps, ecosystems, research
+  collaborations, dependency webs.
+  Tokens: accent teal amber deep-blue coral green border-bright text text-muted
+  surface font-head font-sans.
+  Edit: node labels + captions, legend. To move a node, change its circles AND
+  the x1/y1 or x2/y2 of every edge touching it (edges are listed weak-first,
+  then strong, under the nodes).
+  No ids/markers/defs — safe to paste multiples.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-label="Network of eight stakeholders with a central Core node strongly tied to six others and weaker dashed ties between neighbours" style="width:100%;height:auto">
+  <title>Stakeholder network</title>
+  <!-- edges: weak first, then strong -->
+  <line x1="228" y1="112" x2="118" y2="196" style="stroke:var(--border-bright,#cbd5e1);stroke-width:1.5" stroke-linecap="round" stroke-dasharray="5 5"/>
+  <line x1="118" y1="196" x2="178" y2="300" style="stroke:var(--border-bright,#cbd5e1);stroke-width:1.5" stroke-linecap="round" stroke-dasharray="5 5"/>
+  <line x1="228" y1="112" x2="590" y2="104" style="stroke:var(--border-bright,#cbd5e1);stroke-width:1.5" stroke-linecap="round" stroke-dasharray="5 5"/>
+  <line x1="590" y1="104" x2="696" y2="226" style="stroke:var(--border-bright,#cbd5e1);stroke-width:1.5" stroke-linecap="round" stroke-dasharray="5 5"/>
+  <line x1="696" y1="226" x2="566" y2="342" style="stroke:var(--border-bright,#cbd5e1);stroke-width:1.5" stroke-linecap="round" stroke-dasharray="5 5"/>
+  <line x1="566" y1="342" x2="338" y2="372" style="stroke:var(--border-bright,#cbd5e1);stroke-width:1.5" stroke-linecap="round" stroke-dasharray="5 5"/>
+  <line x1="178" y1="300" x2="338" y2="372" style="stroke:var(--border-bright,#cbd5e1);stroke-width:1.5" stroke-linecap="round" stroke-dasharray="5 5"/>
+  <line x1="400" y1="220" x2="228" y2="112" style="stroke:color-mix(in srgb, var(--accent,#0d9488) 55%, transparent);stroke-width:2.5" stroke-linecap="round"/>
+  <line x1="400" y1="220" x2="590" y2="104" style="stroke:color-mix(in srgb, var(--accent,#0d9488) 55%, transparent);stroke-width:2.5" stroke-linecap="round"/>
+  <line x1="400" y1="220" x2="178" y2="300" style="stroke:color-mix(in srgb, var(--accent,#0d9488) 55%, transparent);stroke-width:2.5" stroke-linecap="round"/>
+  <line x1="400" y1="220" x2="338" y2="372" style="stroke:color-mix(in srgb, var(--accent,#0d9488) 55%, transparent);stroke-width:2.5" stroke-linecap="round"/>
+  <line x1="400" y1="220" x2="566" y2="342" style="stroke:color-mix(in srgb, var(--accent,#0d9488) 55%, transparent);stroke-width:2.5" stroke-linecap="round"/>
+  <line x1="400" y1="220" x2="696" y2="226" style="stroke:color-mix(in srgb, var(--accent,#0d9488) 55%, transparent);stroke-width:2.5" stroke-linecap="round"/>
+  <!-- nodes -->
+  <circle cx="400" cy="220" r="40" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--accent,#0d9488) 22%, transparent);stroke:color-mix(in srgb, var(--accent,#0d9488) 45%, transparent);stroke-width:1.5"/>
+  <circle cx="400" cy="220" r="40" style="fill:color-mix(in srgb, var(--accent,#0d9488) 22%, var(--surface,#ffffff));stroke:var(--accent,#0d9488);stroke-width:2.5"/>
+  <circle cx="228" cy="112" r="24" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--teal,#0d9488) 22%, transparent);stroke:color-mix(in srgb, var(--teal,#0d9488) 45%, transparent);stroke-width:1.5"/>
+  <circle cx="228" cy="112" r="24" style="fill:var(--surface,#ffffff);stroke:var(--teal,#0d9488);stroke-width:2"/>
+  <circle cx="228" cy="112" r="10.1" style="fill:var(--teal,#0d9488)"/>
+  <circle cx="590" cy="104" r="26" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 22%, transparent);stroke:color-mix(in srgb, var(--amber,#f59e0b) 45%, transparent);stroke-width:1.5"/>
+  <circle cx="590" cy="104" r="26" style="fill:var(--surface,#ffffff);stroke:var(--amber,#f59e0b);stroke-width:2"/>
+  <circle cx="590" cy="104" r="10.9" style="fill:var(--amber,#f59e0b)"/>
+  <circle cx="178" cy="300" r="22" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 22%, transparent);stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 45%, transparent);stroke-width:1.5"/>
+  <circle cx="178" cy="300" r="22" style="fill:var(--surface,#ffffff);stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:2"/>
+  <circle cx="178" cy="300" r="9.2" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a))"/>
+  <circle cx="338" cy="372" r="20" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--coral,#ef4444) 22%, transparent);stroke:color-mix(in srgb, var(--coral,#ef4444) 45%, transparent);stroke-width:1.5"/>
+  <circle cx="338" cy="372" r="20" style="fill:var(--surface,#ffffff);stroke:var(--coral,#ef4444);stroke-width:2"/>
+  <circle cx="338" cy="372" r="8.4" style="fill:var(--coral,#ef4444)"/>
+  <circle cx="566" cy="342" r="24" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--green,#10b981) 22%, transparent);stroke:color-mix(in srgb, var(--green,#10b981) 45%, transparent);stroke-width:1.5"/>
+  <circle cx="566" cy="342" r="24" style="fill:var(--surface,#ffffff);stroke:var(--green,#10b981);stroke-width:2"/>
+  <circle cx="566" cy="342" r="10.1" style="fill:var(--green,#10b981)"/>
+  <circle cx="696" cy="226" r="18" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 22%, transparent);stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 45%, transparent);stroke-width:1.5"/>
+  <circle cx="696" cy="226" r="18" style="fill:var(--surface,#ffffff);stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:2"/>
+  <circle cx="696" cy="226" r="7.6" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a))"/>
+  <circle cx="118" cy="196" r="16" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--teal,#0d9488) 22%, transparent);stroke:color-mix(in srgb, var(--teal,#0d9488) 45%, transparent);stroke-width:1.5"/>
+  <circle cx="118" cy="196" r="16" style="fill:var(--surface,#ffffff);stroke:var(--teal,#0d9488);stroke-width:2"/>
+  <circle cx="118" cy="196" r="6.7" style="fill:var(--teal,#0d9488)"/>
+  <text x="400" y="218" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">Core</text>
+  <text x="400" y="236" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">our lab</text>
+  <text x="228" y="66" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">Partners</text>
+  <text x="228" y="83" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">three universities</text>
+  <text x="626" y="100" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">Funders</text>
+  <text x="626" y="117" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">two foundations</text>
+  <text x="144" y="296" text-anchor="end" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">Suppliers</text>
+  <text x="144" y="313" text-anchor="end" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">reagents, cloud</text>
+  <text x="338" y="414" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">Regulators</text>
+  <text x="338" y="431" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">ethics board</text>
+  <text x="600" y="338" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">Users</text>
+  <text x="600" y="355" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">field teams</text>
+  <text x="696" y="266" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">Media</text>
+  <text x="696" y="283" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">press office</text>
+  <text x="92" y="158" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">Alumni</text>
+  <text x="92" y="175" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">advisory pool</text>
+  <line x1="560" y1="420" x2="584" y2="420" style="stroke:color-mix(in srgb, var(--accent,#0d9488) 55%, transparent);stroke-width:2.5" stroke-linecap="round"/>
+  <text x="592" y="424" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">strong tie</text>
+  <line x1="560" y1="438" x2="584" y2="438" style="stroke:var(--border-bright,#cbd5e1);stroke-width:1.5" stroke-linecap="round" stroke-dasharray="5 5"/>
+  <text x="592" y="442" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">weak tie · size = influence</text>
+</svg>

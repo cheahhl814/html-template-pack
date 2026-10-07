@@ -1,0 +1,74 @@
+<!--
+html-template-pack · svg-library · swimlane-gantt
+  Gantt-lite swim-lane roadmap: four workstream lanes, bars across six
+  quarter columns, a dashed "today" marker and a diamond milestone.
+  Tokens: teal deep-blue amber green coral border text text-muted surface
+  font-head font-sans.
+  Edit: column headers, lane names + captions, bar labels. Quarter q starts at
+  x = 180 + q*96.7; a bar from q=a to q=z is x = 180 + a*96.7 + 3, width
+  (z-a)*96.7 - 6. Lane i sits at y = 66 + i*86 (bars at lane y + 22).
+  No ids/markers/defs — safe to paste multiples.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-label="Swim-lane roadmap with four workstreams, Research, Design, Build and Launch, as bars across six quarters, a today marker and a GA milestone" style="width:100%;height:auto">
+  <title>Swim-lane roadmap</title>
+  <!-- column headers + grid -->
+  <text x="228.3" y="46" text-anchor="middle" letter-spacing="1.2" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:11px;font-weight:700;fill:var(--text-muted,#64748b)">Q1</text>
+  <text x="325.1" y="46" text-anchor="middle" letter-spacing="1.2" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:11px;font-weight:700;fill:var(--text-muted,#64748b)">Q2</text>
+  <text x="421.8" y="46" text-anchor="middle" letter-spacing="1.2" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:11px;font-weight:700;fill:var(--text-muted,#64748b)">Q3</text>
+  <text x="518.5" y="46" text-anchor="middle" letter-spacing="1.2" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:11px;font-weight:700;fill:var(--text-muted,#64748b)">Q4</text>
+  <text x="615.2" y="46" text-anchor="middle" letter-spacing="1.2" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:11px;font-weight:700;fill:var(--text-muted,#64748b)">Q5</text>
+  <text x="711.9" y="46" text-anchor="middle" letter-spacing="1.2" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:11px;font-weight:700;fill:var(--text-muted,#64748b)">Q6</text>
+  <line x1="180" y1="60" x2="180" y2="404" style="stroke:var(--border,#e2e8f0);stroke-width:1.5" stroke-linecap="round" stroke-dasharray="3 5"/>
+  <line x1="276.7" y1="60" x2="276.7" y2="404" style="stroke:var(--border,#e2e8f0);stroke-width:1.5" stroke-linecap="round" stroke-dasharray="3 5"/>
+  <line x1="373.4" y1="60" x2="373.4" y2="404" style="stroke:var(--border,#e2e8f0);stroke-width:1.5" stroke-linecap="round" stroke-dasharray="3 5"/>
+  <line x1="470.1" y1="60" x2="470.1" y2="404" style="stroke:var(--border,#e2e8f0);stroke-width:1.5" stroke-linecap="round" stroke-dasharray="3 5"/>
+  <line x1="566.8" y1="60" x2="566.8" y2="404" style="stroke:var(--border,#e2e8f0);stroke-width:1.5" stroke-linecap="round" stroke-dasharray="3 5"/>
+  <line x1="663.5" y1="60" x2="663.5" y2="404" style="stroke:var(--border,#e2e8f0);stroke-width:1.5" stroke-linecap="round" stroke-dasharray="3 5"/>
+  <line x1="760.2" y1="60" x2="760.2" y2="404" style="stroke:var(--border,#e2e8f0);stroke-width:1.5" stroke-linecap="round" stroke-dasharray="3 5"/>
+  <!-- lane 1: Research -->
+  <rect x="30" y="66" width="740" height="76" rx="12" style="fill:color-mix(in srgb, var(--teal,#0d9488) 7%, transparent);stroke:color-mix(in srgb, var(--teal,#0d9488) 35%, transparent);stroke-width:1.5"/>
+  <rect x="30" y="66" width="6" height="76" rx="3" style="fill:var(--teal,#0d9488)"/>
+  <text x="52" y="101" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">Research</text>
+  <text x="52" y="119" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">discovery</text>
+  <!-- lane 2: Design -->
+  <rect x="30" y="152" width="740" height="76" rx="12" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 7%, transparent);stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 35%, transparent);stroke-width:1.5"/>
+  <rect x="30" y="152" width="6" height="76" rx="3" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a))"/>
+  <text x="52" y="187" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">Design</text>
+  <text x="52" y="205" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">UX + specs</text>
+  <!-- lane 3: Build -->
+  <rect x="30" y="238" width="740" height="76" rx="12" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 7%, transparent);stroke:color-mix(in srgb, var(--amber,#f59e0b) 35%, transparent);stroke-width:1.5"/>
+  <rect x="30" y="238" width="6" height="76" rx="3" style="fill:var(--amber,#f59e0b)"/>
+  <text x="52" y="273" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">Build</text>
+  <text x="52" y="291" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">engineering</text>
+  <!-- lane 4: Launch -->
+  <rect x="30" y="324" width="740" height="76" rx="12" style="fill:color-mix(in srgb, var(--green,#10b981) 7%, transparent);stroke:color-mix(in srgb, var(--green,#10b981) 35%, transparent);stroke-width:1.5"/>
+  <rect x="30" y="324" width="6" height="76" rx="3" style="fill:var(--green,#10b981)"/>
+  <text x="52" y="359" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">Launch</text>
+  <text x="52" y="377" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">go-to-market</text>
+  <!-- today marker (under the bars) -->
+  <line x1="479.8" y1="58" x2="479.8" y2="408" style="stroke:var(--coral,#ef4444);stroke-width:2" stroke-linecap="round" stroke-dasharray="6 5"/>
+  <circle cx="479.8" cy="58" r="4.5" style="fill:var(--coral,#ef4444)"/>
+  <text x="479.8" y="428" text-anchor="middle" letter-spacing="1.2" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:11px;font-weight:700;fill:color-mix(in srgb, var(--coral,#ef4444) 70%, var(--text,#0f172a))">TODAY</text>
+  <rect x="183" y="88" width="226.1" height="32" rx="8" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--teal,#0d9488) 22%, transparent);stroke:color-mix(in srgb, var(--teal,#0d9488) 45%, transparent);stroke-width:1.5"/>
+  <rect x="183" y="88" width="226.1" height="32" rx="8" style="fill:color-mix(in srgb, var(--teal,#0d9488) 24%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:2"/>
+  <text x="195" y="109" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:color-mix(in srgb, var(--teal,#0d9488) 70%, var(--text,#0f172a))">Interviews</text>
+  <rect x="434.4" y="88" width="90.7" height="32" rx="8" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--teal,#0d9488) 22%, transparent);stroke:color-mix(in srgb, var(--teal,#0d9488) 45%, transparent);stroke-width:1.5"/>
+  <rect x="434.4" y="88" width="90.7" height="32" rx="8" style="fill:color-mix(in srgb, var(--teal,#0d9488) 24%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:2"/>
+  <text x="446.4" y="109" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:color-mix(in srgb, var(--teal,#0d9488) 70%, var(--text,#0f172a))">Synthesis</text>
+  <rect x="337.7" y="174" width="168.1" height="32" rx="8" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 22%, transparent);stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 45%, transparent);stroke-width:1.5"/>
+  <rect x="337.7" y="174" width="168.1" height="32" rx="8" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 24%, var(--surface,#ffffff));stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:2"/>
+  <text x="349.7" y="195" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a))">Prototype</text>
+  <rect x="531.1" y="174" width="71.4" height="32" rx="8" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 22%, transparent);stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 45%, transparent);stroke-width:1.5"/>
+  <rect x="531.1" y="174" width="71.4" height="32" rx="8" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 24%, var(--surface,#ffffff));stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:2"/>
+  <text x="543.1" y="195" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a))">Specs</text>
+  <rect x="453.8" y="260" width="245.4" height="32" rx="8" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 22%, transparent);stroke:color-mix(in srgb, var(--amber,#f59e0b) 45%, transparent);stroke-width:1.5"/>
+  <rect x="453.8" y="260" width="245.4" height="32" rx="8" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 24%, var(--surface,#ffffff));stroke:var(--amber,#f59e0b);stroke-width:2"/>
+  <text x="465.8" y="281" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:color-mix(in srgb, var(--amber,#f59e0b) 70%, var(--text,#0f172a))">Implementation + QA</text>
+  <rect x="627.8" y="346" width="90.7" height="32" rx="8" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--green,#10b981) 22%, transparent);stroke:color-mix(in srgb, var(--green,#10b981) 45%, transparent);stroke-width:1.5"/>
+  <rect x="627.8" y="346" width="90.7" height="32" rx="8" style="fill:color-mix(in srgb, var(--green,#10b981) 24%, var(--surface,#ffffff));stroke:var(--green,#10b981);stroke-width:2"/>
+  <text x="639.8" y="367" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:color-mix(in srgb, var(--green,#10b981) 70%, var(--text,#0f172a))">Beta</text>
+  <!-- milestone -->
+  <polygon points="745.7,349 758.7,362 745.7,375 732.7,362" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--green,#10b981) 22%, transparent);stroke:color-mix(in srgb, var(--green,#10b981) 45%, transparent);stroke-width:1.5" stroke-linejoin="round"/>
+  <polygon points="745.7,349 758.7,362 745.7,375 732.7,362" style="fill:color-mix(in srgb, var(--green,#10b981) 40%, var(--surface,#ffffff));stroke:var(--green,#10b981);stroke-width:2" stroke-linejoin="round"/>
+  <text x="745.7" y="342" text-anchor="middle" letter-spacing="1.2" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:11px;font-weight:700;fill:color-mix(in srgb, var(--green,#10b981) 70%, var(--text,#0f172a))">GA</text>
+</svg>

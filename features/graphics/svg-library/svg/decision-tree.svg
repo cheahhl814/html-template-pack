@@ -1,0 +1,70 @@
+<!--
+html-template-pack · svg-library · decision-tree
+  Decision tree: a root question splits yes/no into two follow-up questions,
+  each ending in two outcome cards. Rounded elbow connectors + YES/NO pills.
+  Tokens: accent deep-blue green amber teal coral text text-muted surface
+  font-head font-sans.
+  Edit: three question labels (≤ 14 chars fit a diamond), four outcome titles
+  + captions, pill words. Outcome cards sit at x 592 centred on y 62/172/282/390;
+  each connector is one <path> + one arrowhead <polygon> at x 590.
+  No ids/markers/defs — safe to paste multiples.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-label="Decision tree: Build or buy leads through two follow-up questions to four outcomes, Build it, Partner, Buy it and Defer" style="width:100%;height:auto">
+  <title>Decision tree</title>
+  <!-- connectors (drawn first, under the nodes) -->
+  <path d="M 220 225 H 250 Q 262 225 262 213 V 132 Q 262 120 274 120 H 280" fill="none" style="stroke:var(--text-muted,#64748b);stroke-width:2" stroke-linecap="round" stroke-linejoin="round"/>
+  <polygon points="292,120 279,126.5 279,113.5" style="fill:var(--text-muted,#64748b)"/>
+  <path d="M 220 225 H 250 Q 262 225 262 237 V 318 Q 262 330 274 330 H 280" fill="none" style="stroke:var(--text-muted,#64748b);stroke-width:2" stroke-linecap="round" stroke-linejoin="round"/>
+  <polygon points="292,330 279,336.5 279,323.5" style="fill:var(--text-muted,#64748b)"/>
+  <path d="M 450 120 H 488 Q 500 120 500 108 V 74 Q 500 62 512 62 H 578" fill="none" style="stroke:var(--text-muted,#64748b);stroke-width:2" stroke-linecap="round" stroke-linejoin="round"/>
+  <polygon points="590,62 577,68.5 577,55.5" style="fill:var(--text-muted,#64748b)"/>
+  <path d="M 450 120 H 488 Q 500 120 500 132 V 160 Q 500 172 512 172 H 578" fill="none" style="stroke:var(--text-muted,#64748b);stroke-width:2" stroke-linecap="round" stroke-linejoin="round"/>
+  <polygon points="590,172 577,178.5 577,165.5" style="fill:var(--text-muted,#64748b)"/>
+  <path d="M 450 330 H 488 Q 500 330 500 318 V 294 Q 500 282 512 282 H 578" fill="none" style="stroke:var(--text-muted,#64748b);stroke-width:2" stroke-linecap="round" stroke-linejoin="round"/>
+  <polygon points="590,282 577,288.5 577,275.5" style="fill:var(--text-muted,#64748b)"/>
+  <path d="M 450 330 H 488 Q 500 330 500 342 V 378 Q 500 390 512 390 H 578" fill="none" style="stroke:var(--text-muted,#64748b);stroke-width:2" stroke-linecap="round" stroke-linejoin="round"/>
+  <polygon points="590,390 577,396.5 577,383.5" style="fill:var(--text-muted,#64748b)"/>
+  <rect x="240" y="161" width="44" height="22" rx="11" style="fill:var(--surface,#ffffff);stroke:var(--green,#10b981);stroke-width:1.5"/>
+  <text x="262" y="176" text-anchor="middle" letter-spacing="1.2" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:11px;font-weight:700;fill:color-mix(in srgb, var(--green,#10b981) 70%, var(--text,#0f172a))">YES</text>
+  <rect x="240" y="267" width="44" height="22" rx="11" style="fill:var(--surface,#ffffff);stroke:var(--coral,#ef4444);stroke-width:1.5"/>
+  <text x="262" y="282" text-anchor="middle" letter-spacing="1.2" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:11px;font-weight:700;fill:color-mix(in srgb, var(--coral,#ef4444) 70%, var(--text,#0f172a))">NO</text>
+  <rect x="478" y="80" width="44" height="22" rx="11" style="fill:var(--surface,#ffffff);stroke:var(--green,#10b981);stroke-width:1.5"/>
+  <text x="500" y="95" text-anchor="middle" letter-spacing="1.2" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:11px;font-weight:700;fill:color-mix(in srgb, var(--green,#10b981) 70%, var(--text,#0f172a))">YES</text>
+  <rect x="478" y="135" width="44" height="22" rx="11" style="fill:var(--surface,#ffffff);stroke:var(--coral,#ef4444);stroke-width:1.5"/>
+  <text x="500" y="150" text-anchor="middle" letter-spacing="1.2" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:11px;font-weight:700;fill:color-mix(in srgb, var(--coral,#ef4444) 70%, var(--text,#0f172a))">NO</text>
+  <rect x="478" y="295" width="44" height="22" rx="11" style="fill:var(--surface,#ffffff);stroke:var(--green,#10b981);stroke-width:1.5"/>
+  <text x="500" y="310" text-anchor="middle" letter-spacing="1.2" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:11px;font-weight:700;fill:color-mix(in srgb, var(--green,#10b981) 70%, var(--text,#0f172a))">YES</text>
+  <rect x="478" y="350" width="44" height="22" rx="11" style="fill:var(--surface,#ffffff);stroke:var(--coral,#ef4444);stroke-width:1.5"/>
+  <text x="500" y="365" text-anchor="middle" letter-spacing="1.2" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:11px;font-weight:700;fill:color-mix(in srgb, var(--coral,#ef4444) 70%, var(--text,#0f172a))">NO</text>
+  <!-- decision nodes -->
+  <polygon points="38,225 130,167 222,225 130,283" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--accent,#0d9488) 22%, transparent);stroke:color-mix(in srgb, var(--accent,#0d9488) 45%, transparent);stroke-width:1.5" stroke-linejoin="round"/>
+  <polygon points="38,225 130,167 222,225 130,283" style="fill:color-mix(in srgb, var(--accent,#0d9488) 14%, var(--surface,#ffffff));stroke:var(--accent,#0d9488);stroke-width:2" stroke-linejoin="round"/>
+  <text x="130" y="230" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">Build or buy?</text>
+  <polygon points="290,120 370,70 450,120 370,170" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 22%, transparent);stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 45%, transparent);stroke-width:1.5" stroke-linejoin="round"/>
+  <polygon points="290,120 370,70 450,120 370,170" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 14%, var(--surface,#ffffff));stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:2" stroke-linejoin="round"/>
+  <text x="370" y="125" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">Core to us?</text>
+  <polygon points="290,330 370,280 450,330 370,380" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 22%, transparent);stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 45%, transparent);stroke-width:1.5" stroke-linejoin="round"/>
+  <polygon points="290,330 370,280 450,330 370,380" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 14%, var(--surface,#ffffff));stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:2" stroke-linejoin="round"/>
+  <text x="370" y="335" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">Budget fits?</text>
+  <!-- outcomes -->
+  <rect x="592" y="34" width="178" height="56" rx="12" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--green,#10b981) 22%, transparent);stroke:color-mix(in srgb, var(--green,#10b981) 45%, transparent);stroke-width:1.5"/>
+  <rect x="592" y="34" width="178" height="56" rx="12" style="fill:color-mix(in srgb, var(--green,#10b981) 14%, var(--surface,#ffffff));stroke:var(--green,#10b981);stroke-width:2"/>
+  <rect x="592" y="34" width="6" height="56" rx="3" style="fill:var(--green,#10b981)"/>
+  <text x="612" y="59" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">Build it</text>
+  <text x="612" y="77" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">own the roadmap</text>
+  <rect x="592" y="144" width="178" height="56" rx="12" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 22%, transparent);stroke:color-mix(in srgb, var(--amber,#f59e0b) 45%, transparent);stroke-width:1.5"/>
+  <rect x="592" y="144" width="178" height="56" rx="12" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 14%, var(--surface,#ffffff));stroke:var(--amber,#f59e0b);stroke-width:2"/>
+  <rect x="592" y="144" width="6" height="56" rx="3" style="fill:var(--amber,#f59e0b)"/>
+  <text x="612" y="169" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">Partner</text>
+  <text x="612" y="187" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">co-develop, share risk</text>
+  <rect x="592" y="254" width="178" height="56" rx="12" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--teal,#0d9488) 22%, transparent);stroke:color-mix(in srgb, var(--teal,#0d9488) 45%, transparent);stroke-width:1.5"/>
+  <rect x="592" y="254" width="178" height="56" rx="12" style="fill:color-mix(in srgb, var(--teal,#0d9488) 14%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:2"/>
+  <rect x="592" y="254" width="6" height="56" rx="3" style="fill:var(--teal,#0d9488)"/>
+  <text x="612" y="279" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">Buy it</text>
+  <text x="612" y="297" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">licence a platform</text>
+  <rect x="592" y="362" width="178" height="56" rx="12" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--coral,#ef4444) 22%, transparent);stroke:color-mix(in srgb, var(--coral,#ef4444) 45%, transparent);stroke-width:1.5"/>
+  <rect x="592" y="362" width="178" height="56" rx="12" style="fill:color-mix(in srgb, var(--coral,#ef4444) 14%, var(--surface,#ffffff));stroke:var(--coral,#ef4444);stroke-width:2"/>
+  <rect x="592" y="362" width="6" height="56" rx="3" style="fill:var(--coral,#ef4444)"/>
+  <text x="612" y="387" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">Defer</text>
+  <text x="612" y="405" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">revisit next quarter</text>
+</svg>

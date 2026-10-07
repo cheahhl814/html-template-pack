@@ -1,0 +1,52 @@
+<!--
+html-template-pack · svg-library · orbit-satellites
+  Orbit satellites: a core with three tilted, dashed orbits carrying labelled
+  satellites, plus a legend explaining what distance means — stakeholder
+  proximity, spheres of influence, engagement tiers.
+  Tokens: accent teal amber deep-blue text text-muted surface font-head font-sans.
+  Edit: core title + caption, satellite labels, legend rows, eyebrow. Satellite
+  at angle a on orbit (rx, ry) sits at (272 + rx·cos a, 225 + ry·sin a); labels
+  carry a surface-coloured halo so they stay legible across the orbit lines.
+  No ids/markers/defs — safe to paste multiples.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-label="Core project with three dashed orbits of stakeholders, Team and Leads close in, Partners and Suppliers in the middle, Media and Public far out, with a legend" style="width:100%;height:auto">
+  <title>Orbit of satellites</title>
+  <!-- orbits, outermost first -->
+  <ellipse cx="272" cy="225" rx="246" ry="150" fill="none" style="stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 60%, transparent);stroke-width:1.5" stroke-dasharray="6 6"/>
+  <ellipse cx="272" cy="225" rx="184" ry="108" fill="none" style="stroke:color-mix(in srgb, var(--amber,#f59e0b) 60%, transparent);stroke-width:1.5" stroke-dasharray="6 6"/>
+  <ellipse cx="272" cy="225" rx="118" ry="64" fill="none" style="stroke:color-mix(in srgb, var(--teal,#0d9488) 60%, transparent);stroke-width:1.5" stroke-dasharray="6 6"/>
+  <circle cx="272" cy="225" r="50" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--accent,#0d9488) 22%, transparent);stroke:color-mix(in srgb, var(--accent,#0d9488) 45%, transparent);stroke-width:1.5"/>
+  <circle cx="272" cy="225" r="50" style="fill:color-mix(in srgb, var(--accent,#0d9488) 24%, var(--surface,#ffffff));stroke:var(--accent,#0d9488);stroke-width:2.5"/>
+  <text x="272" y="227" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:20px;font-weight:700;fill:var(--text,#0f172a)">Core</text>
+  <text x="272" y="245" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">the project</text>
+  <!-- satellites -->
+  <circle cx="368.7" cy="188.3" r="12" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--teal,#0d9488) 22%, transparent);stroke:color-mix(in srgb, var(--teal,#0d9488) 45%, transparent);stroke-width:1.5"/>
+  <circle cx="368.7" cy="188.3" r="12" style="fill:color-mix(in srgb, var(--teal,#0d9488) 28%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:2"/>
+  <text x="390.7" y="193.3" style="paint-order:stroke;stroke:var(--surface,#ffffff);stroke-width:5px;stroke-linejoin:round;font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--text,#0f172a)">Team</text>
+  <circle cx="175.3" cy="261.7" r="12" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--teal,#0d9488) 22%, transparent);stroke:color-mix(in srgb, var(--teal,#0d9488) 45%, transparent);stroke-width:1.5"/>
+  <circle cx="175.3" cy="261.7" r="12" style="fill:color-mix(in srgb, var(--teal,#0d9488) 28%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:2"/>
+  <text x="153.3" y="266.7" text-anchor="end" style="paint-order:stroke;stroke:var(--surface,#ffffff);stroke-width:5px;stroke-linejoin:round;font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--text,#0f172a)">Leads</text>
+  <circle cx="447" cy="258.4" r="14" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 22%, transparent);stroke:color-mix(in srgb, var(--amber,#f59e0b) 45%, transparent);stroke-width:1.5"/>
+  <circle cx="447" cy="258.4" r="14" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 28%, var(--surface,#ffffff));stroke:var(--amber,#f59e0b);stroke-width:2"/>
+  <text x="471" y="263.4" style="paint-order:stroke;stroke:var(--surface,#ffffff);stroke-width:5px;stroke-linejoin:round;font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--text,#0f172a)">Partners</text>
+  <circle cx="116" cy="167.8" r="14" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 22%, transparent);stroke:color-mix(in srgb, var(--amber,#f59e0b) 45%, transparent);stroke-width:1.5"/>
+  <circle cx="116" cy="167.8" r="14" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 28%, var(--surface,#ffffff));stroke:var(--amber,#f59e0b);stroke-width:2"/>
+  <text x="92" y="172.8" text-anchor="end" style="paint-order:stroke;stroke:var(--surface,#ffffff);stroke-width:5px;stroke-linejoin:round;font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--text,#0f172a)">Suppliers</text>
+  <circle cx="387.5" cy="92.6" r="16" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 22%, transparent);stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 45%, transparent);stroke-width:1.5"/>
+  <circle cx="387.5" cy="92.6" r="16" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 28%, var(--surface,#ffffff));stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:2"/>
+  <text x="413.5" y="97.6" style="paint-order:stroke;stroke:var(--surface,#ffffff);stroke-width:5px;stroke-linejoin:round;font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--text,#0f172a)">Media</text>
+  <circle cx="156.5" cy="357.4" r="16" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 22%, transparent);stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 45%, transparent);stroke-width:1.5"/>
+  <circle cx="156.5" cy="357.4" r="16" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 28%, var(--surface,#ffffff));stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:2"/>
+  <text x="130.5" y="362.4" text-anchor="end" style="paint-order:stroke;stroke:var(--surface,#ffffff);stroke-width:5px;stroke-linejoin:round;font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--text,#0f172a)">Public</text>
+  <!-- legend -->
+  <text x="560" y="120" letter-spacing="1.2" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:11px;font-weight:700;fill:var(--text-muted,#64748b)">CLOSER = MORE CONTACT</text>
+  <circle cx="574" cy="161" r="12" style="fill:color-mix(in srgb, var(--teal,#0d9488) 28%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:2"/>
+  <text x="600" y="166" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">Inner orbit</text>
+  <text x="600" y="184" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">daily contact</text>
+  <circle cx="574" cy="227" r="14" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 28%, var(--surface,#ffffff));stroke:var(--amber,#f59e0b);stroke-width:2"/>
+  <text x="600" y="232" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">Middle orbit</text>
+  <text x="600" y="250" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">monthly check-ins</text>
+  <circle cx="574" cy="293" r="16" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 28%, var(--surface,#ffffff));stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:2"/>
+  <text x="600" y="298" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">Outer orbit</text>
+  <text x="600" y="316" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">quarterly or ad hoc</text>
+</svg>

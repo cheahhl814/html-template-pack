@@ -10,17 +10,17 @@ html-template-pack · svg-library · venn-overlap
   <title>Two-way venn overlap</title>
   <!-- translucent fills (alpha, not blend modes) so the overlap reads in both themes -->
   <g>
-    <circle cx="320" cy="228" r="145" style="fill:color-mix(in srgb, var(--teal,#0d9488) 24%, transparent);stroke:var(--teal,#0d9488);stroke-width:2.5"/>
-    <circle cx="480" cy="228" r="145" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 24%, transparent);stroke:var(--amber,#f59e0b);stroke-width:2.5"/>
+    <circle cx="320" cy="228" r="145" style="fill:color-mix(in srgb, var(--teal,#0d9488) 24%, transparent);stroke:var(--teal,#0d9488);stroke-width:2"/>
+    <circle cx="480" cy="228" r="145" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 24%, transparent);stroke:var(--amber,#f59e0b);stroke-width:2"/>
   </g>
-  <text x="250" y="64" text-anchor="end" letter-spacing=".5" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:15px;font-weight:700;fill:color-mix(in srgb, var(--teal,#0d9488) 70%, var(--text,#0f172a))">Set A</text>
-  <text x="550" y="64" letter-spacing=".5" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:15px;font-weight:700;fill:color-mix(in srgb, var(--amber,#f59e0b) 70%, var(--text,#0f172a))">Set B</text>
+  <text x="250" y="64" text-anchor="end" letter-spacing=".5" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:700;fill:color-mix(in srgb, var(--teal,#0d9488) 70%, var(--text,#0f172a))">Set A</text>
+  <text x="550" y="64" letter-spacing=".5" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:700;fill:color-mix(in srgb, var(--amber,#f59e0b) 70%, var(--text,#0f172a))">Set B</text>
   <g>
-    <text x="240" y="224" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:17px;font-weight:600;fill:var(--text,#0f172a)">Only A</text>
+    <text x="240" y="224" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">Only A</text>
     <text x="240" y="246" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">distinct trait</text>
-    <text x="400" y="224" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:18px;font-weight:700;fill:var(--text,#0f172a)">Shared</text>
+    <text x="400" y="224" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:700;fill:var(--text,#0f172a)">Shared</text>
     <text x="400" y="246" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">overlap zone</text>
-    <text x="560" y="224" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:17px;font-weight:600;fill:var(--text,#0f172a)">Only B</text>
+    <text x="560" y="224" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">Only B</text>
     <text x="560" y="246" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">distinct trait</text>
   </g>
   <!-- bottom captions -->

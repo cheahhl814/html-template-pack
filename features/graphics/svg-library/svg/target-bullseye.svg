@@ -17,7 +17,7 @@ html-template-pack · svg-library · target-bullseye
     <circle cx="260" cy="225" r="82" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 22%, var(--surface,#ffffff));stroke:var(--amber,#f59e0b);stroke-width:2"/>
     <circle cx="260" cy="225" r="42" style="fill:color-mix(in srgb, var(--coral,#ef4444) 30%, var(--surface,#ffffff));stroke:var(--coral,#ef4444);stroke-width:2.5"/>
   </g>
-  <text x="260" y="231" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:17px;font-weight:700;fill:var(--text,#0f172a)">Goal</text>
+  <text x="260" y="231" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:700;fill:var(--text,#0f172a)">Goal</text>
   <!-- dart: shaft + explicit head + fletching -->
   <line x1="96" y1="58" x2="233.3" y2="196.2" style="stroke:var(--text,#0f172a);stroke-width:3.5" stroke-linecap="round"/>
   <polygon points="246,209 226.2,200.4 237.6,189.2" style="fill:var(--text,#0f172a)"/>

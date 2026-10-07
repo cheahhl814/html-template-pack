@@ -35,6 +35,6 @@ html-template-pack · svg-library · balance-scale
   <path d="M 561.6 205.2 H 733.6 Q 721.6 241.2 647.6 241.2 Q 573.6 241.2 561.6 205.2 Z" style="fill:color-mix(in srgb, var(--coral,#ef4444) 30%, var(--surface,#ffffff));stroke:var(--coral,#ef4444);stroke-width:2" stroke-linejoin="round"/>
   <text x="647.6" y="269.2" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:13px;fill:var(--text-muted,#64748b)">migration effort</text>
   <text x="647.6" y="289.2" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:13px;fill:var(--text-muted,#64748b)">team retraining</text>
-  <text x="400" y="52" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:18px;font-weight:700;fill:var(--text,#0f172a)">Verdict: proceed</text>
+  <text x="400" y="52" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:20px;font-weight:700;fill:var(--text,#0f172a)">Verdict: proceed</text>
   <text x="400" y="74" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">benefits outweigh the risks</text>
 </svg>

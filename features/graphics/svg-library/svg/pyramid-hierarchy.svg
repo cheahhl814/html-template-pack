@@ -12,16 +12,16 @@ html-template-pack · svg-library · pyramid-hierarchy
   <g>
     <polygon points="274,44 386,44 438,116 222,116" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--teal,#0d9488) 22%, transparent);stroke:color-mix(in srgb, var(--teal,#0d9488) 45%, transparent);stroke-width:1.5" stroke-linejoin="round"/>
     <polygon points="274,44 386,44 438,116 222,116" style="fill:color-mix(in srgb, var(--teal,#0d9488) 20%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:2" stroke-linejoin="round"/>
-    <text x="330" y="86" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:17px;font-weight:600;fill:var(--text,#0f172a)">Strategy</text>
+    <text x="330" y="86" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">Strategy</text>
     <polygon points="213,128 447,128 499,200 161,200" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 22%, transparent);stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 45%, transparent);stroke-width:1.5" stroke-linejoin="round"/>
     <polygon points="213,128 447,128 499,200 161,200" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 20%, var(--surface,#ffffff));stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:2" stroke-linejoin="round"/>
-    <text x="330" y="170" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:17px;font-weight:600;fill:var(--text,#0f172a)">Programmes</text>
+    <text x="330" y="170" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">Programmes</text>
     <polygon points="152,212 508,212 560,284 100,284" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 22%, transparent);stroke:color-mix(in srgb, var(--amber,#f59e0b) 45%, transparent);stroke-width:1.5" stroke-linejoin="round"/>
     <polygon points="152,212 508,212 560,284 100,284" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 20%, var(--surface,#ffffff));stroke:var(--amber,#f59e0b);stroke-width:2" stroke-linejoin="round"/>
-    <text x="330" y="254" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:17px;font-weight:600;fill:var(--text,#0f172a)">Projects</text>
+    <text x="330" y="254" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">Projects</text>
     <polygon points="91,296 569,296 621,368 39,368" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--navy,#1a2744) 22%, transparent);stroke:color-mix(in srgb, var(--navy,#1a2744) 45%, transparent);stroke-width:1.5" stroke-linejoin="round"/>
     <polygon points="91,296 569,296 621,368 39,368" style="fill:color-mix(in srgb, var(--navy,#1a2744) 26%, var(--surface,#ffffff));stroke:color-mix(in srgb, var(--navy,#1a2744) 55%, var(--text,#0f172a));stroke-width:2" stroke-linejoin="round"/>
-    <text x="330" y="338" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:17px;font-weight:600;fill:var(--text,#0f172a)">Tasks</text>
+    <text x="330" y="338" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">Tasks</text>
   </g>
   <!-- right-side annotations: leader starts at the band edge, text clear of it -->
   <circle cx="420" cy="80" r="3.5" style="fill:var(--teal,#0d9488)"/>
