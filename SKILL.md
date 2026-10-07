@@ -1,7 +1,7 @@
 ---
 name: html-template-pack
 description: 'Four self-contained HTML templates — report (left-side sticky sidebar with 5 icon+label tabs, theme toggle, offset-anchored annotations, JSON export), slide deck (prev/next nav, theme toggle, inline annotations, JSON export), bento one-pager (2026 bento-grid snapshot briefing, dark-first glass, full v2 annotation engine), and htmx dashboard (topbar, KPI row, sparkline, activity feed, sortable table, demo-mode mock backend). Pick report for ≥3 long sections, slide for ≤12 visual beats, bento for a one-page snapshot briefing, dashboard for live/polling data. Invoke for "HTML report", "HTML deck", "HTML page", "annotated report", "review-ready HTML", "slide deck", "HTML dashboard", "htmx dashboard", "ops dashboard", "admin panel", "one-pager", "briefing", "recap page", or MD/DOCX/PDF → HTML conversion. Report, slide, and bento ship the v2 annotation system; dashboard omits annotations (live data is not a stable anchor target). All four are dark-first with glass chrome and density + font-size toggles.'
-version: 0.10.0
+version: 0.11.0
 license: MIT
 ---
 
@@ -74,6 +74,10 @@ Interactive data dashboards now live in **this** skill (the dashboard template) 
 ├── features/
 │   ├── graphics/
 │   │   └── chartz-embed.md                     ← v0.10.0 how to embed chartz-rendered data charts (iframe pattern, single-file exception)
+│   │   └── svg-library/
+│   │       ├── README.md                       ← v0.11.0 SVG diagram library: conventions + catalog
+│   │       ├── gallery.html                    ← generated preview page (node bin/build-svg-gallery.js)
+│   │       └── svg/                            ← canonical .svg component files (10 infographic templates)
 │   ├── report/
 │   │   ├── highlight-annotate.js               ← v2 offset-anchored annotations (602 lines)
 │   │   ├── annotate.css                        ← annotation styles (216 lines)
@@ -181,6 +185,27 @@ In **v0.8.0**, all four templates gain a shared **zero-dependency graphics pack*
 
 **Print**: the graphics pack includes `@media print` rules — reading-progress bar hidden, reveals shown at their final state, gauge sweep frozen at the final value, milestone strip dots monochrome.
 
+## SVG diagram library (`features/graphics/svg-library/` + `bin/build-svg-gallery.js`)
+
+In **v0.11.0**, a sibling to the CSS graphics pack: **ten hand-drawn inline SVG infographic templates** for explanatory/summary visuals — concept diagrams the CSS pack doesn't cover, with the hand-drawn quality users responded well to (the DNA-helix deck-motif precedent).
+
+| # | Component (`svg/*.svg`) | Shows | When to use |
+|---|---|---|---|
+| 1 | `flow-pipeline` | 4-step horizontal process + feedback loop | delivery/analysis pipelines, workflows |
+| 2 | `cycle-loop` | 4-node clockwise loop | iterative processes, plan-build-measure-learn |
+| 3 | `hub-spoke` | central topic + 6 satellites | concept maps, ecosystems, capability overviews |
+| 4 | `pyramid-hierarchy` | 4-level pyramid + side annotations | strategy→task hierarchies, abstraction tiers |
+| 5 | `venn-overlap` | 2-way overlap with shared zone | shared vs unique traits of two things |
+| 6 | `quadrant-matrix` | 2×2 matrix, dashed axes, tinted cells | impact/effort prioritisation, risk maps |
+| 7 | `funnel-stages` | 4-stage narrowing funnel + % callouts | sales/user funnels, cohort retention |
+| 8 | `roadmap-timeline` | spine + 5 milestones + alternating callouts | roadmaps, phased timelines |
+| 9 | `fishbone-causal` | 4 cause categories → outcome box | root-cause analysis, driver maps |
+| 10 | `layer-stack` | 4-layer vertical stack + captions | architecture stacks, dependency tiers |
+
+**Routing within the graphics systems**: real/interactive data → `chartz`; real-data static charts → CSS graphics pack A-block; Mermaid flow/sequence/ER → Mermaid CDN; **concept/infographic diagrams → this SVG library**; decorative background motifs → hand-draw per the svg-library conventions (token-driven, `aria-hidden`, zero text nodes).
+
+**Usage**: open `features/graphics/svg-library/gallery.html` in a browser (token-driven, ◐ theme toggle to preview both palettes), pick a component, copy the inline `<svg>`, replace the placeholder `<text>` labels. The `svg/*.svg` files are canonical; `gallery.html` is generated — after editing or adding a component run `node bin/build-svg-gallery.js` (it validates: well-formed XML, `role="img"` + `aria-label` + `<title>`, `viewBox 0 0 800 450`, **no `id=` / `<defs>` / `<marker>` / `<filter>` / `<script>`** so several components can be pasted into one page safely). Colors are `var(--token, #fallback)` **inside `style` attributes** (var() does not work in SVG presentation attributes) + `color-mix()` tints, so the same SVG adapts to every template palette and both themes with zero per-use edits. Full conventions + add-a-component workflow: `features/graphics/svg-library/README.md`.
+
 ## Pipeline (Decide → Copy → Adapt → Render → Wire annotation / backend)
 
 1. **Decide** — apply the decision rubric above. If unsure, ask the user.
@@ -240,6 +265,7 @@ Positioning differs: report/slide float the button `position: fixed` top-right; 
 - `template.html` and `slide-template.html` (research report + slide deck, 2026-07) — battle-tested templates
 - `dashboard-template.html` (added 2026-07-11) — htmx dashboard shell, new template family for live/polling data views
 - `bento-template.html` (added 2026-09-08, v0.7.0) — bento-grid one-pager. The full v2 annotation engine is inlined from the slide template with its token-mapping `:root` block stripped (the bento defines generic token names directly); density/font-size IIFEs reused with `bento-density`/`bento-font-size` storage keys. Bar chart is pure CSS, no Mermaid/htmx. Aesthetic sourced from the 2026 UI-trends research pass (bento grids as the default snapshot pattern, dark-first design, restrained glass, hover-glow micro-interactions).
+- v0.11.0 SVG diagram library (2026-10-07) — `features/graphics/svg-library/` (`README.md` conventions + catalog, 10 canonical `svg/*.svg` infographic templates, generated `gallery.html` preview via `bin/build-svg-gallery.js`). Ten token-driven hand-drawn diagram components (pipeline, cycle, hub-spoke, pyramid, venn, quadrant, funnel, roadmap, fishbone, layer-stack) with `role="img"`/`aria-label`/`<title>` a11y, id-free collision-safe markup, var()-in-style-attribute color wiring (var() is invalid in SVG presentation attributes — discovered and documented), and constant 800×450 viewBox. Motivated by the user's positive experience with agent-drawn SVG (DNA-helix deck motif, 2026-10-02); delivery chosen (ask_user): reference + gallery page, token-driven auto-adapt, diagrams/infographics focus.
 - v0.10.0 chartz interlink (2026-09-19) — routing: real/interactive data charts (box/violin, sankey, treemap, network graphs, tooltip-heavy series) beyond the pure-CSS graphics pack now route to the [chartz](https://github.com/cheahhl814/chartz) skill; `features/graphics/chartz-embed.md` documents the embed patterns (iframe by default — keeps templates dependency-free; documented single-file exception that extends the invariant's CDN-exception list with the pinned chart-engine tag). Static/snapshot charts stay on the graphics pack.
 - v0.7.0 aesthetic pass (2026-09-08) — all four templates: dark-first defaults (theme scripts now `saved || 'dark'`), glass chrome (`color-mix` translucent surfaces + `backdrop-filter` on sidebar/panels/cards in dark mode), ambient radial accent glow (`body::before`, hidden in print), fluid `clamp()` type scale on display headings, hover lift + accent-glow shadows. Fixed a corrupted CSS line in the dashboard template's light token block (`--error: #dc2 la l’T.` → `--error: #dc2626`). Annotation systems untouched.
 - v0.8.0 graphics pack (2026-09-08) — `features/graphics/graphics.css` + `snippets.html` added; the pack is inlined into each template's `<style>` block. Eleven zero-dependency components: donut/pie + radial gauge + horizontal bars + heatmap table + data-bar table cells + pure-CSS flowchart + horizontal milestone strip + feature comparison table + pull-quote + scroll-driven reveals + reading-progress bar + `@property`-animated gauge sweep. Every chart carries an accessible data fallback (real `<table>` or sr-only mirror); every motion component is `@supports (animation-timeline: …)` + `prefers-reduced-motion` guarded. Sources for the techniques: CSS-Tricks pie chart articles, MDN conic-gradient + scroll-driven animations docs, chaarts (CSS-only charts from tables), WAI accessibility.build charts guide, coryrylan anchor-positioning flowcharts.

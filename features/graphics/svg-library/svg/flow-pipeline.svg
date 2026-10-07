@@ -1,0 +1,48 @@
+<!--
+  html-template-pack · svg-library · flow-pipeline
+  Horizontal 4-step process. Uses tokens: teal deep-blue amber green
+  surface text text-muted font-head font-sans (fallbacks included).
+  Edit: step labels + sub captions; swap the var(token,#hex) values if the
+  host template lacks a token. No ids/markers — safe to paste multiples.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-label="Four-step process pipeline with arrows between stages" style="width:100%;height:auto">
+  <title>Four-step process pipeline</title>
+  <!-- boxes -->
+  <g>
+    <rect x="30" y="170" width="150" height="108" rx="14" style="fill:color-mix(in srgb, var(--teal,#0d9488) 14%, var(--surface,#f8fafc));stroke:var(--teal,#0d9488);stroke-width:2"/>
+    <text x="46" y="200" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:15px;font-weight:700;fill:var(--teal,#0d9488)">1</text>
+    <text x="105" y="222" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:17px;font-weight:600;fill:var(--text,#0f172a)">Discover</text>
+    <text x="105" y="248" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">scoping and inputs</text>
+
+    <rect x="228" y="170" width="150" height="108" rx="14" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 14%, var(--surface,#f8fafc));stroke:var(--deep-blue,#2c4a7c);stroke-width:2"/>
+    <text x="244" y="200" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:15px;font-weight:700;fill:var(--deep-blue,#2c4a7c)">2</text>
+    <text x="303" y="222" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:17px;font-weight:600;fill:var(--text,#0f172a)">Design</text>
+    <text x="303" y="248" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">prototype + review</text>
+
+    <rect x="426" y="170" width="150" height="108" rx="14" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 14%, var(--surface,#f8fafc));stroke:var(--amber,#f59e0b);stroke-width:2"/>
+    <text x="442" y="200" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:15px;font-weight:700;fill:var(--amber,#f59e0b)">3</text>
+    <text x="501" y="222" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:17px;font-weight:600;fill:var(--text,#0f172a)">Build</text>
+    <text x="501" y="248" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">implementation QA</text>
+
+    <rect x="624" y="170" width="150" height="108" rx="14" style="fill:color-mix(in srgb, var(--green,#10b981) 14%, var(--surface,#f8fafc));stroke:var(--green,#10b981);stroke-width:2"/>
+    <text x="640" y="200" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:15px;font-weight:700;fill:var(--green,#10b981)">4</text>
+    <text x="699" y="222" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:17px;font-weight:600;fill:var(--text,#0f172a)">Launch</text>
+    <text x="699" y="248" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">monitor + iterate</text>
+  </g>
+  <!-- connectors -->
+  <g style="stroke:var(--text-muted,#64748b);stroke-width:2.5" fill="none" stroke-linecap="round">
+    <line x1="186" y1="224" x2="214" y2="224"/>
+    <line x1="384" y1="224" x2="412" y2="224"/>
+    <line x1="582" y1="224" x2="610" y2="224"/>
+    <line x1="105" y1="300" x2="105" y2="352"/>
+    <line x1="105" y1="352" x2="699" y2="352"/>
+    <line x1="699" y1="352" x2="699" y2="290"/>
+  </g>
+  <g fill="var(--text-muted,#64748b)">
+    <polygon points="223,224 213,219 213,229"/>
+    <polygon points="421,224 411,219 411,229"/>
+    <polygon points="619,224 609,219 609,229"/>
+    <polygon points="699,281 694,291 704,291"/>
+  </g>
+  <text x="400" y="335" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">feedback re-enters at the previous stage</text>
+</svg>

@@ -1,0 +1,44 @@
+<!--
+  html-template-pack · svg-library · cycle-loop
+  4-node loop with clockwise arc arrows. Tokens: teal green coral amber
+  surface text text-muted font-head font-sans.
+  Edit: node labels (Plan/Build/Measure/Learn are placeholders) + center title.
+  No ids/markers — safe to paste multiples.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-label="Four-node cycle with clockwise arrows returning to the first node" style="width:100%;height:auto">
+  <title>Cycle loop diagram</title>
+  <!-- arc arrows: right, bottom, left, top (clockwise) -->
+  <g fill="none" style="stroke:var(--text-muted,#64748b);stroke-width:2.5" stroke-linecap="round">
+    <path d="M 505.7 194.7 A 110 110 0 0 1 505.7 255.3"/>
+    <path d="M 430.3 330.7 A 110 110 0 0 1 369.7 330.7"/>
+    <path d="M 294.3 255.3 A 110 110 0 0 1 294.3 194.7"/>
+    <path d="M 369.7 119.3 A 110 110 0 0 1 430.3 119.3"/>
+  </g>
+  <g fill="var(--text-muted,#64748b)">
+    <polygon points="502.4,266.9 500.0,258.9 508.7,261.4"/>
+    <polygon points="358.1,327.4 366.1,325.0 363.6,333.7"/>
+    <polygon points="297.6,183.1 300.0,191.1 291.3,188.6"/>
+    <polygon points="441.9,122.6 433.9,125.0 436.4,116.3"/>
+  </g>
+  <!-- center -->
+  <text x="400" y="220" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:20px;font-weight:700;fill:var(--text,#0f172a)">Iterate</text>
+  <text x="400" y="246" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">repeat the loop</text>
+  <!-- nodes: 1 top-right, 2 bottom-right, 3 bottom-left, 4 top-left -->
+  <g>
+    <circle cx="510" cy="118" r="52" style="fill:color-mix(in srgb, var(--teal,#0d9488) 14%, var(--surface,#f8fafc));stroke:var(--teal,#0d9488);stroke-width:2"/>
+    <text x="510" y="126" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:17px;font-weight:700;fill:var(--text,#0f172a)">1</text>
+    <text x="510" y="30" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:15px;font-weight:600;fill:var(--teal,#0d9488)">Plan</text>
+
+    <circle cx="510" cy="332" r="52" style="fill:color-mix(in srgb, var(--green,#10b981) 14%, var(--surface,#f8fafc));stroke:var(--green,#10b981);stroke-width:2"/>
+    <text x="510" y="340" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:17px;font-weight:700;fill:var(--text,#0f172a)">2</text>
+    <text x="578" y="339" text-anchor="start" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:15px;font-weight:600;fill:var(--green,#10b981)">Build</text>
+
+    <circle cx="290" cy="332" r="52" style="fill:color-mix(in srgb, var(--coral,#ef4444) 14%, var(--surface,#f8fafc));stroke:var(--coral,#ef4444);stroke-width:2"/>
+    <text x="290" y="340" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:17px;font-weight:700;fill:var(--text,#0f172a)">3</text>
+    <text x="222" y="339" text-anchor="end" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:15px;font-weight:600;fill:var(--coral,#ef4444)">Measure</text>
+
+    <circle cx="290" cy="118" r="52" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 14%, var(--surface,#f8fafc));stroke:var(--amber,#f59e0b);stroke-width:2"/>
+    <text x="290" y="126" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:17px;font-weight:700;fill:var(--text,#0f172a)">4</text>
+    <text x="222" y="125" text-anchor="end" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:15px;font-weight:600;fill:var(--amber,#f59e0b)">Learn</text>
+  </g>
+</svg>

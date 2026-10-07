@@ -1,0 +1,28 @@
+<!--
+  html-template-pack · svg-library · venn-overlap
+  Two-way overlap with a shared zone. Tokens: teal amber surface text
+  text-muted font-head font-sans.
+  Edit: the three region labels + optional bottom captions.
+  For a 3-circle venn use the CSS .venn.triple in graphics.css instead.
+  No ids/markers.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-label="Two overlapping circles with a shared middle zone" style="width:100%;height:auto">
+  <title>Two-way venn overlap</title>
+  <g>
+    <circle cx="330" cy="215" r="140" style="fill:var(--teal,#0d9488);fill-opacity:.24;stroke:var(--teal,#0d9488);stroke-width:2.5"/>
+    <circle cx="470" cy="215" r="140" style="fill:var(--amber,#f59e0b);fill-opacity:.24;stroke:var(--amber,#f59e0b);stroke-width:2.5"/>
+  </g>
+  <g text-anchor="middle">
+    <text x="245" y="210" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:17px;font-weight:600;fill:var(--text,#0f172a)">Only A</text>
+    <text x="245" y="236" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">distinct trait</text>
+    <text x="400" y="210" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:17px;font-weight:700;fill:var(--text,#0f172a)">Shared</text>
+    <text x="400" y="236" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">overlap zone</text>
+    <text x="555" y="210" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:17px;font-weight:600;fill:var(--text,#0f172a)">Only B</text>
+    <text x="555" y="236" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">distinct trait</text>
+  </g>
+  <!-- bottom captions -->
+  <g text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">
+    <text x="330" y="415">A in one sentence</text>
+    <text x="470" y="415">B in one sentence</text>
+  </g>
+</svg>

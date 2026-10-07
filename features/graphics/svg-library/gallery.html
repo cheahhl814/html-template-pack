@@ -1,0 +1,478 @@
+<!--
+  GENERATED FILE — do not hand-edit.
+  Source of truth: svg/*.svg in this directory; regenerate with:
+      node bin/build-svg-gallery.js
+  (html-template-pack v0.11.0 SVG diagram library)
+-->
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>svg-library · html-template-pack</title>
+<style>
+  :root {
+    --bg: #f8fafc; --surface: #ffffff; --surface2: #f1f5f9; --surface3: #e2e8f0;
+    --border: #e2e8f0; --border-bright: #cbd5e1;
+    --text: #0f172a; --text-muted: #64748b; --text-dim: #94a3b8;
+    --accent: #0d9488;
+    --navy: #1a2744; --deep-blue: #2c4a7c; --teal: #0d9488;
+    --coral: #ef4444; --amber: #f59e0b; --green: #10b981;
+    --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    --font-head: 'Outfit', sans-serif;
+    --font-mono: ui-monospace, 'SF Mono', 'JetBrains Mono', Menlo, Consolas, monospace;
+  }
+  html[data-theme="dark"] {
+    --bg: #0b0e14; --surface: #131820; --surface2: #1c2230; --surface3: #252b3d;
+    --border: #232a35; --border-bright: #313a4a;
+    --text: #f8fafc; --text-muted: #94a3b8; --text-dim: #64748b;
+    --accent: #14b8a6;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: var(--font-sans); background: var(--bg); color: var(--text); padding: 40px clamp(20px, 5vw, 72px) 80px; }
+  header { display: flex; align-items: baseline; gap: 16px; flex-wrap: wrap; margin-bottom: 28px; }
+  h1 { font-family: var(--font-head); font-size: clamp(26px, 3.5vw, 38px); }
+  header p { color: var(--text-muted); max-width: 62ch; }
+  .toggle { margin-left: auto; background: var(--surface2); color: var(--text); border: 1px solid var(--border); border-radius: 8px; padding: 6px 14px; cursor: pointer; font-size: 14px; }
+  .catalog { display: grid; grid-template-columns: repeat(auto-fill, minmax(420px, 1fr)); gap: 24px; }
+  @media (max-width: 520px) { .catalog { grid-template-columns: 1fr; } }
+  .card { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 18px; scroll-margin-top: 20px; }
+  figcaption { display: flex; gap: 14px; align-items: flex-start; margin-bottom: 14px; }
+  .idx { font-family: var(--font-mono); color: var(--accent); font-size: 13px; padding-top: 2px; }
+  .info strong { font-family: var(--font-head); font-size: 16px; display: block; }
+  .info em { color: var(--text-muted); font-style: normal; font-size: 13px; display: block; margin-top: 2px; }
+  .use { color: var(--text-dim); font-size: 12px; display: block; margin-top: 4px; }
+  .stage { border: 1px solid var(--border); border-radius: 10px; background: var(--bg); padding: 10px; }
+  .stage svg { display: block; }
+  details { margin-top: 12px; }
+  summary { cursor: pointer; color: var(--text-muted); font-size: 13px; user-select: none; }
+  .src { font-family: var(--font-mono); font-size: 11px; line-height: 1.5; color: var(--text-muted); background: var(--surface2); border: 1px solid var(--border); border-radius: 8px; padding: 12px; overflow: auto; max-height: 340px; white-space: pre; margin-top: 8px; }
+  nav { margin-bottom: 24px; display: flex; flex-wrap: wrap; gap: 8px; }
+  nav a { font-size: 13px; color: var(--accent); text-decoration: none; border: 1px solid var(--border); border-radius: 999px; padding: 4px 12px; }
+  nav a:hover { border-color: var(--accent); }
+</style>
+</head>
+<body>
+  <header>
+    <h1>svg-library</h1>
+    <p>Hand-drawn SVG diagram templates for the html-template-pack templates. Every component is token-driven (adapts to each template's palette + light/dark) and id-free (safe to paste multiple). Copy-paste the inline SVG, then edit the labels. Toggle the theme to preview both palettes.</p>
+    <button class="toggle" onclick="var h=document.documentElement;h.setAttribute('data-theme',h.getAttribute('data-theme')==='dark'?'light':'dark')">◐</button>
+  </header>
+  <nav><a href="#c-cycle-loop">cycle-loop</a><a href="#c-fishbone-causal">fishbone-causal</a><a href="#c-flow-pipeline">flow-pipeline</a><a href="#c-funnel-stages">funnel-stages</a><a href="#c-hub-spoke">hub-spoke</a><a href="#c-layer-stack">layer-stack</a><a href="#c-pyramid-hierarchy">pyramid-hierarchy</a><a href="#c-quadrant-matrix">quadrant-matrix</a><a href="#c-roadmap-timeline">roadmap-timeline</a><a href="#c-venn-overlap">venn-overlap</a></nav>
+  <main class="catalog">
+    <figure class="card" id="c-cycle-loop">
+      <figcaption>
+        <span class="idx">01</span>
+        <span class="info"><strong>cycle-loop</strong><em>Four-node circular loop with clockwise arrows back to the start</em><span class="use">when: Iterative processes: plan-build-measure-learn, audit cycles, feedback loops</span></span>
+      </figcaption>
+      <div class="stage"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-label="Four-node cycle with clockwise arrows returning to the first node" style="width:100%;height:auto">
+  <title>Cycle loop diagram</title>
+  <!-- arc arrows: right, bottom, left, top (clockwise) -->
+  <g fill="none" style="stroke:var(--text-muted,#64748b);stroke-width:2.5" stroke-linecap="round">
+    <path d="M 505.7 194.7 A 110 110 0 0 1 505.7 255.3"/>
+    <path d="M 430.3 330.7 A 110 110 0 0 1 369.7 330.7"/>
+    <path d="M 294.3 255.3 A 110 110 0 0 1 294.3 194.7"/>
+    <path d="M 369.7 119.3 A 110 110 0 0 1 430.3 119.3"/>
+  </g>
+  <g fill="var(--text-muted,#64748b)">
+    <polygon points="502.4,266.9 500.0,258.9 508.7,261.4"/>
+    <polygon points="358.1,327.4 366.1,325.0 363.6,333.7"/>
+    <polygon points="297.6,183.1 300.0,191.1 291.3,188.6"/>
+    <polygon points="441.9,122.6 433.9,125.0 436.4,116.3"/>
+  </g>
+  <!-- center -->
+  <text x="400" y="220" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:20px;font-weight:700;fill:var(--text,#0f172a)">Iterate</text>
+  <text x="400" y="246" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">repeat the loop</text>
+  <!-- nodes: 1 top-right, 2 bottom-right, 3 bottom-left, 4 top-left -->
+  <g>
+    <circle cx="510" cy="118" r="52" style="fill:color-mix(in srgb, var(--teal,#0d9488) 14%, var(--surface,#f8fafc));stroke:var(--teal,#0d9488);stroke-width:2"/>
+    <text x="510" y="126" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:17px;font-weight:700;fill:var(--text,#0f172a)">1</text>
+    <text x="510" y="30" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:15px;font-weight:600;fill:var(--teal,#0d9488)">Plan</text>
+
+    <circle cx="510" cy="332" r="52" style="fill:color-mix(in srgb, var(--green,#10b981) 14%, var(--surface,#f8fafc));stroke:var(--green,#10b981);stroke-width:2"/>
+    <text x="510" y="340" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:17px;font-weight:700;fill:var(--text,#0f172a)">2</text>
+    <text x="578" y="339" text-anchor="start" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:15px;font-weight:600;fill:var(--green,#10b981)">Build</text>
+
+    <circle cx="290" cy="332" r="52" style="fill:color-mix(in srgb, var(--coral,#ef4444) 14%, var(--surface,#f8fafc));stroke:var(--coral,#ef4444);stroke-width:2"/>
+    <text x="290" y="340" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:17px;font-weight:700;fill:var(--text,#0f172a)">3</text>
+    <text x="222" y="339" text-anchor="end" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:15px;font-weight:600;fill:var(--coral,#ef4444)">Measure</text>
+
+    <circle cx="290" cy="118" r="52" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 14%, var(--surface,#f8fafc));stroke:var(--amber,#f59e0b);stroke-width:2"/>
+    <text x="290" y="126" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:17px;font-weight:700;fill:var(--text,#0f172a)">4</text>
+    <text x="222" y="125" text-anchor="end" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:15px;font-weight:600;fill:var(--amber,#f59e0b)">Learn</text>
+  </g>
+</svg></div>
+      <details><summary>source (.svg)</summary><pre class="src"></pre></details>
+    </figure>
+    <figure class="card" id="c-fishbone-causal">
+      <figcaption>
+        <span class="idx">02</span>
+        <span class="info"><strong>fishbone-causal</strong><em>Ishikawa skeleton: four cause categories feeding one outcome box</em><span class="use">when: Root-cause analysis, drivers-of-an-outcome summaries</span></span>
+      </figcaption>
+      <div class="stage"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-label="Fishbone diagram with four cause categories feeding one outcome box" style="width:100%;height:auto">
+  <title>Cause-and-effect fishbone</title>
+  <!-- spine -->
+  <line x1="60" y1="225" x2="672" y2="225" style="stroke:var(--border-bright,#cbd5e1);stroke-width:3.5" stroke-linecap="round"/>
+  <!-- bones -->
+  <g style="stroke:var(--text-muted,#64748b);stroke-width:2.5" stroke-linecap="round" fill="none">
+    <line x1="290" y1="225" x2="160" y2="105"/>
+    <line x1="290" y1="225" x2="160" y2="345"/>
+    <line x1="520" y1="225" x2="390" y2="105"/>
+    <line x1="520" y1="225" x2="390" y2="345"/>
+  </g>
+  <!-- cause ticks -->
+  <g style="stroke:var(--border-bright,#cbd5e1);stroke-width:2" stroke-linecap="round" fill="none">
+    <line x1="250" y1="189" x2="216" y2="223"/>
+    <line x1="222" y1="161" x2="188" y2="195"/>
+    <line x1="250" y1="261" x2="216" y2="227"/>
+    <line x1="222" y1="289" x2="188" y2="255"/>
+    <line x1="480" y1="189" x2="446" y2="223"/>
+    <line x1="452" y1="161" x2="418" y2="195"/>
+    <line x1="480" y1="261" x2="446" y2="227"/>
+    <line x1="452" y1="289" x2="418" y2="255"/>
+  </g>
+  <!-- category boxes -->
+  <g>
+    <rect x="95" y="66" width="130" height="34" rx="8" style="fill:color-mix(in srgb, var(--coral,#ef4444) 14%, var(--surface,#f8fafc));stroke:var(--coral,#ef4444);stroke-width:1.5"/>
+    <text x="160" y="88" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:14px;font-weight:600;fill:var(--text,#0f172a)">People</text>
+    <rect x="325" y="66" width="130" height="34" rx="8" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 14%, var(--surface,#f8fafc));stroke:var(--amber,#f59e0b);stroke-width:1.5"/>
+    <text x="390" y="88" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:14px;font-weight:600;fill:var(--text,#0f172a)">Process</text>
+    <rect x="95" y="350" width="130" height="34" rx="8" style="fill:color-mix(in srgb, var(--teal,#0d9488) 14%, var(--surface,#f8fafc));stroke:var(--teal,#0d9488);stroke-width:1.5"/>
+    <text x="160" y="372" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:14px;font-weight:600;fill:var(--text,#0f172a)">Tools</text>
+    <rect x="325" y="350" width="130" height="34" rx="8" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 14%, var(--surface,#f8fafc));stroke:var(--deep-blue,#2c4a7c);stroke-width:1.5"/>
+    <text x="390" y="372" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:14px;font-weight:600;fill:var(--text,#0f172a)">Data</text>
+  </g>
+  <!-- outcome -->
+  <rect x="688" y="188" width="92" height="74" rx="10" style="fill:color-mix(in srgb, var(--navy,#1a2744) 30%, var(--surface,#f8fafc));stroke:var(--navy,#1a2744);stroke-width:2"/>
+  <text x="734" y="222" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--text,#0f172a)">Outcome</text>
+  <text x="734" y="242" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:10px;fill:var(--text-muted,#64748b)">observed</text>
+</svg></div>
+      <details><summary>source (.svg)</summary><pre class="src"></pre></details>
+    </figure>
+    <figure class="card" id="c-flow-pipeline">
+      <figcaption>
+        <span class="idx">03</span>
+        <span class="info"><strong>flow-pipeline</strong><em>Horizontal multi-step process with connectors and a feedback loop</em><span class="use">when: Stages of a process, delivery pipeline, analysis workflow</span></span>
+      </figcaption>
+      <div class="stage"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-label="Four-step process pipeline with arrows between stages" style="width:100%;height:auto">
+  <title>Four-step process pipeline</title>
+  <!-- boxes -->
+  <g>
+    <rect x="30" y="170" width="150" height="108" rx="14" style="fill:color-mix(in srgb, var(--teal,#0d9488) 14%, var(--surface,#f8fafc));stroke:var(--teal,#0d9488);stroke-width:2"/>
+    <text x="46" y="200" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:15px;font-weight:700;fill:var(--teal,#0d9488)">1</text>
+    <text x="105" y="222" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:17px;font-weight:600;fill:var(--text,#0f172a)">Discover</text>
+    <text x="105" y="248" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">scoping and inputs</text>
+
+    <rect x="228" y="170" width="150" height="108" rx="14" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 14%, var(--surface,#f8fafc));stroke:var(--deep-blue,#2c4a7c);stroke-width:2"/>
+    <text x="244" y="200" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:15px;font-weight:700;fill:var(--deep-blue,#2c4a7c)">2</text>
+    <text x="303" y="222" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:17px;font-weight:600;fill:var(--text,#0f172a)">Design</text>
+    <text x="303" y="248" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">prototype + review</text>
+
+    <rect x="426" y="170" width="150" height="108" rx="14" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 14%, var(--surface,#f8fafc));stroke:var(--amber,#f59e0b);stroke-width:2"/>
+    <text x="442" y="200" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:15px;font-weight:700;fill:var(--amber,#f59e0b)">3</text>
+    <text x="501" y="222" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:17px;font-weight:600;fill:var(--text,#0f172a)">Build</text>
+    <text x="501" y="248" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">implementation QA</text>
+
+    <rect x="624" y="170" width="150" height="108" rx="14" style="fill:color-mix(in srgb, var(--green,#10b981) 14%, var(--surface,#f8fafc));stroke:var(--green,#10b981);stroke-width:2"/>
+    <text x="640" y="200" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:15px;font-weight:700;fill:var(--green,#10b981)">4</text>
+    <text x="699" y="222" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:17px;font-weight:600;fill:var(--text,#0f172a)">Launch</text>
+    <text x="699" y="248" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">monitor + iterate</text>
+  </g>
+  <!-- connectors -->
+  <g style="stroke:var(--text-muted,#64748b);stroke-width:2.5" fill="none" stroke-linecap="round">
+    <line x1="186" y1="224" x2="214" y2="224"/>
+    <line x1="384" y1="224" x2="412" y2="224"/>
+    <line x1="582" y1="224" x2="610" y2="224"/>
+    <line x1="105" y1="300" x2="105" y2="352"/>
+    <line x1="105" y1="352" x2="699" y2="352"/>
+    <line x1="699" y1="352" x2="699" y2="290"/>
+  </g>
+  <g fill="var(--text-muted,#64748b)">
+    <polygon points="223,224 213,219 213,229"/>
+    <polygon points="421,224 411,219 411,229"/>
+    <polygon points="619,224 609,219 609,229"/>
+    <polygon points="699,281 694,291 704,291"/>
+  </g>
+  <text x="400" y="335" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">feedback re-enters at the previous stage</text>
+</svg></div>
+      <details><summary>source (.svg)</summary><pre class="src"></pre></details>
+    </figure>
+    <figure class="card" id="c-funnel-stages">
+      <figcaption>
+        <span class="idx">04</span>
+        <span class="info"><strong>funnel-stages</strong><em>Four-stage narrowing funnel with conversion percentages</em><span class="use">when: Sales/user funnels, pipeline stages, cohort retention</span></span>
+      </figcaption>
+      <div class="stage"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-label="Four-stage funnel narrowing from top to bottom with conversion percentages" style="width:100%;height:auto">
+  <title>Conversion funnel</title>
+  <!-- bands (top->bottom) -->
+  <g style="stroke:var(--surface,#f8fafc);stroke-width:3" stroke-linejoin="round">
+    <polygon points="140,52 660,52 596,128 204,128" style="fill:color-mix(in srgb, var(--teal,#0d9488) 26%, var(--surface,#f8fafc));stroke:var(--teal,#0d9488);stroke-width:2"/>
+    <polygon points="204,140 596,140 536,216 264,216" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 24%, var(--surface,#f8fafc));stroke:var(--deep-blue,#2c4a7c);stroke-width:2"/>
+    <polygon points="264,228 536,228 478,304 322,304" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 24%, var(--surface,#f8fafc));stroke:var(--amber,#f59e0b);stroke-width:2"/>
+    <polygon points="322,316 478,316 425,392 375,392" style="fill:color-mix(in srgb, var(--coral,#ef4444) 22%, var(--surface,#f8fafc));stroke:var(--coral,#ef4444);stroke-width:2"/>
+  </g>
+  <!-- stage labels -->
+  <g text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">
+    <text x="400" y="98">Visitors</text>
+    <text x="400" y="186">Sign-ups</text>
+    <text x="400" y="274">Actives</text>
+    <text x="400" y="362">Payers</text>
+  </g>
+  <!-- stage percentage callouts -->
+  <g style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--text-muted,#64748b)">
+    <text x="700" y="146">62%</text>
+    <text x="700" y="234">44%</text>
+    <text x="700" y="322">31%</text>
+  </g>
+  <g style="stroke:var(--text-muted,#64748b);stroke-width:1.5" stroke-dasharray="4 4" fill="none">
+    <line x1="640" y1="134" x2="690" y2="141"/>
+    <line x1="560" y1="222" x2="690" y2="229"/>
+    <line x1="500" y1="310" x2="690" y2="317"/>
+  </g>
+  <text x="700" y="408" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:11px;fill:var(--text-muted,#64748b)">stage conversion</text>
+</svg></div>
+      <details><summary>source (.svg)</summary><pre class="src"></pre></details>
+    </figure>
+    <figure class="card" id="c-hub-spoke">
+      <figcaption>
+        <span class="idx">05</span>
+        <span class="info"><strong>hub-spoke</strong><em>Central topic connected to six satellite topics</em><span class="use">when: Concept maps, ecosystems, capability overviews, research landscape</span></span>
+      </figcaption>
+      <div class="stage"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-label="Central hub connected to six surrounding topics" style="width:100%;height:auto">
+  <title>Hub and spoke concept map</title>
+  <!-- connectors (under nodes) -->
+  <g style="stroke:var(--text-muted,#64748b);stroke-width:2" fill="none">
+    <line x1="400" y1="225" x2="550" y2="225"/>
+    <line x1="400" y1="225" x2="475" y2="95"/>
+    <line x1="400" y1="225" x2="325" y2="95"/>
+    <line x1="400" y1="225" x2="250" y2="225"/>
+    <line x1="400" y1="225" x2="325" y2="355"/>
+    <line x1="400" y1="225" x2="475" y2="355"/>
+  </g>
+  <!-- satellites -->
+  <g>
+    <circle cx="550" cy="225" r="40" style="fill:color-mix(in srgb, var(--teal,#0d9488) 14%, var(--surface,#f8fafc));stroke:var(--teal,#0d9488);stroke-width:2"/>
+    <text x="550" y="231" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:600;fill:var(--text,#0f172a)">Data</text>
+    <circle cx="475" cy="95" r="40" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 14%, var(--surface,#f8fafc));stroke:var(--amber,#f59e0b);stroke-width:2"/>
+    <text x="475" y="101" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:600;fill:var(--text,#0f172a)">People</text>
+    <circle cx="325" cy="95" r="40" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 14%, var(--surface,#f8fafc));stroke:var(--deep-blue,#2c4a7c);stroke-width:2"/>
+    <text x="325" y="101" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:600;fill:var(--text,#0f172a)">Compute</text>
+    <circle cx="250" cy="225" r="40" style="fill:color-mix(in srgb, var(--green,#10b981) 14%, var(--surface,#f8fafc));stroke:var(--green,#10b981);stroke-width:2"/>
+    <text x="250" y="231" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:600;fill:var(--text,#0f172a)">Methods</text>
+    <circle cx="325" cy="355" r="40" style="fill:color-mix(in srgb, var(--coral,#ef4444) 14%, var(--surface,#f8fafc));stroke:var(--coral,#ef4444);stroke-width:2"/>
+    <text x="325" y="361" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:600;fill:var(--text,#0f172a)">Ethics</text>
+    <circle cx="475" cy="355" r="40" style="fill:color-mix(in srgb, var(--navy,#1a2744) 22%, var(--surface,#f8fafc));stroke:var(--navy,#1a2744);stroke-width:2"/>
+    <text x="475" y="361" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:600;fill:var(--text,#0f172a)">Infra</text>
+  </g>
+  <!-- hub -->
+  <circle cx="400" cy="225" r="60" style="fill:color-mix(in srgb, var(--accent,#0d9488) 16%, var(--surface,#f8fafc));stroke:var(--accent,#0d9488);stroke-width:2.5"/>
+  <text x="400" y="220" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:18px;font-weight:700;fill:var(--text,#0f172a)">Platform</text>
+  <text x="400" y="242" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:11px;fill:var(--text-muted,#64748b)">topic</text>
+</svg></div>
+      <details><summary>source (.svg)</summary><pre class="src"></pre></details>
+    </figure>
+    <figure class="card" id="c-layer-stack">
+      <figcaption>
+        <span class="idx">06</span>
+        <span class="info"><strong>layer-stack</strong><em>Four-layer vertical stack with per-layer captions</em><span class="use">when: Architecture stacks, solution layers, dependency tiers</span></span>
+      </figcaption>
+      <div class="stage"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-label="Four-layer stack with a caption per layer on the right" style="width:100%;height:auto">
+  <title>Layer stack</title>
+  <!-- layers (top = user-facing) -->
+  <g>
+    <rect x="130" y="48" width="380" height="74" rx="12" style="fill:color-mix(in srgb, var(--teal,#0d9488) 14%, var(--surface,#f8fafc));stroke:var(--teal,#0d9488);stroke-width:2"/>
+    <rect x="130" y="48" width="10" height="74" rx="5" style="fill:var(--teal,#0d9488)"/>
+    <text x="320" y="82" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:17px;font-weight:600;fill:var(--text,#0f172a)">Interface</text>
+    <text x="320" y="106" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">what users touch</text>
+
+    <rect x="130" y="142" width="380" height="74" rx="12" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 14%, var(--surface,#f8fafc));stroke:var(--deep-blue,#2c4a7c);stroke-width:2"/>
+    <rect x="130" y="142" width="10" height="74" rx="5" style="fill:var(--deep-blue,#2c4a7c)"/>
+    <text x="320" y="176" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:17px;font-weight:600;fill:var(--text,#0f172a)">Services</text>
+    <text x="320" y="200" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">business logic</text>
+
+    <rect x="130" y="236" width="380" height="74" rx="12" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 14%, var(--surface,#f8fafc));stroke:var(--amber,#f59e0b);stroke-width:2"/>
+    <rect x="130" y="236" width="10" height="74" rx="5" style="fill:var(--amber,#f59e0b)"/>
+    <text x="320" y="270" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:17px;font-weight:600;fill:var(--text,#0f172a)">Data</text>
+    <text x="320" y="294" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">state + pipeline</text>
+
+    <rect x="130" y="330" width="380" height="74" rx="12" style="fill:color-mix(in srgb, var(--navy,#1a2744) 26%, var(--surface,#f8fafc));stroke:var(--navy,#1a2744);stroke-width:2"/>
+    <rect x="130" y="330" width="10" height="74" rx="5" style="fill:var(--navy,#1a2744)"/>
+    <text x="320" y="364" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:17px;font-weight:600;fill:var(--text,#0f172a)">Infrastructure</text>
+    <text x="320" y="388" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">compute + network</text>
+  </g>
+  <!-- right captions -->
+  <g style="stroke:var(--text-muted,#64748b);stroke-width:1.5" stroke-dasharray="4 4" fill="none">
+    <line x1="520" y1="85"  x2="640" y2="85"/>
+    <line x1="520" y1="179" x2="640" y2="179"/>
+    <line x1="520" y1="273" x2="640" y2="273"/>
+    <line x1="520" y1="367" x2="640" y2="367"/>
+  </g>
+  <g style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">
+    <text x="648" y="89">owner: team A</text>
+    <text x="648" y="183">owner: team B</text>
+    <text x="648" y="277">owner: team C</text>
+    <text x="648" y="371">owner: platform</text>
+  </g>
+</svg></div>
+      <details><summary>source (.svg)</summary><pre class="src"></pre></details>
+    </figure>
+    <figure class="card" id="c-pyramid-hierarchy">
+      <figcaption>
+        <span class="idx">07</span>
+        <span class="info"><strong>pyramid-hierarchy</strong><em>Four-level pyramid (narrow apex to broad base) with side annotations</em><span class="use">when: Strategy→task hierarchies, organisational levels, abstraction layers</span></span>
+      </figcaption>
+      <div class="stage"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-label="Four-level pyramid from a narrow apex to a broad base, with annotations on the right" style="width:100%;height:auto">
+  <title>Hierarchy pyramid</title>
+  <!-- bands top -> bottom (shared slant: each band bottom edge = next band top edge) -->
+  <g style="stroke:var(--surface,#f8fafc);stroke-width:3" stroke-linejoin="round">
+    <polygon points="330,44 470,44 530,116 270,116" style="fill:color-mix(in srgb, var(--teal,#0d9488) 20%, var(--surface,#f8fafc));stroke:var(--teal,#0d9488);stroke-width:2"/>
+    <polygon points="270,128 530,128 590,200 210,200" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 20%, var(--surface,#f8fafc));stroke:var(--deep-blue,#2c4a7c);stroke-width:2"/>
+    <polygon points="210,212 590,212 650,284 150,284" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 20%, var(--surface,#f8fafc));stroke:var(--amber,#f59e0b);stroke-width:2"/>
+    <polygon points="150,296 650,296 710,368 90,368" style="fill:color-mix(in srgb, var(--navy,#1a2744) 26%, var(--surface,#f8fafc));stroke:var(--navy,#1a2744);stroke-width:2"/>
+  </g>
+  <!-- level labels -->
+  <g text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">
+    <text x="400" y="88">Strategy</text>
+    <text x="400" y="172">Programmes</text>
+    <text x="400" y="256">Projects</text>
+    <text x="400" y="340">Tasks</text>
+  </g>
+  <!-- right-side annotations -->
+  <g style="stroke:var(--text-muted,#64748b);stroke-width:1.5" stroke-dasharray="4 4" fill="none">
+    <line x1="520" y1="88" x2="680" y2="88"/>
+    <line x1="580" y1="172" x2="680" y2="172"/>
+    <line x1="640" y1="256" x2="680" y2="256"/>
+    <line x1="700" y1="340" x2="680" y2="340"/>
+  </g>
+  <g style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)" text-anchor="end">
+    <text x="674" y="92">who decides</text>
+    <text x="674" y="176">who coordinates</text>
+    <text x="674" y="260">who executes</text>
+    <text x="674" y="344">who delivers</text>
+  </g>
+</svg></div>
+      <details><summary>source (.svg)</summary><pre class="src"></pre></details>
+    </figure>
+    <figure class="card" id="c-quadrant-matrix">
+      <figcaption>
+        <span class="idx">08</span>
+        <span class="info"><strong>quadrant-matrix</strong><em>2×2 matrix with dashed axes and four tinted quadrant cells</em><span class="use">when: Prioritisation matrices (impact vs effort), risk maps, positioning</span></span>
+      </figcaption>
+      <div class="stage"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-label="Two-by-two matrix with Impact on the vertical axis and Effort on the horizontal" style="width:100%;height:auto">
+  <title>Quadrant matrix</title>
+  <!-- quadrant tints -->
+  <g style="stroke:var(--border-bright,#cbd5e1);stroke-width:1.5">
+    <rect x="60" y="50" width="340" height="165" rx="12" style="fill:color-mix(in srgb, var(--green,#10b981) 10%, var(--surface,#f8fafc))"/>
+    <rect x="420" y="50" width="340" height="165" rx="12" style="fill:color-mix(in srgb, var(--teal,#0d9488) 8%, var(--surface,#f8fafc))"/>
+    <rect x="60" y="235" width="340" height="165" rx="12" style="fill:color-mix(in srgb, var(--coral,#ef4444) 8%, var(--surface,#f8fafc))"/>
+    <rect x="420" y="235" width="340" height="165" rx="12" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 8%, var(--surface,#f8fafc))"/>
+  </g>
+  <!-- axes -->
+  <line x1="400" y1="50" x2="400" y2="400" style="stroke:var(--border-bright,#cbd5e1);stroke-width:2" stroke-dasharray="6 6"/>
+  <line x1="60" y1="225" x2="760" y2="225" style="stroke:var(--border-bright,#cbd5e1);stroke-width:2" stroke-dasharray="6 6"/>
+  <!-- quadrant titles -->
+  <g text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">
+    <text x="230" y="120">Do first</text>
+    <text x="590" y="120">Plan</text>
+    <text x="230" y="305">Question</text>
+    <text x="590" y="305">Fill-in</text>
+  </g>
+  <g text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">
+    <text x="230" y="146">high impact · low effort</text>
+    <text x="590" y="146">high impact · high effort</text>
+    <text x="230" y="331">low impact · low effort</text>
+    <text x="590" y="331">low impact · high effort</text>
+  </g>
+  <!-- axis labels -->
+  <text x="760" y="428" text-anchor="end" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:13px;font-weight:600;fill:var(--text-muted,#64748b)">Effort →</text>
+  <text x="0" y="0" transform="translate(28,225) rotate(-90)" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:13px;font-weight:600;fill:var(--text-muted,#64748b)">Impact →</text>
+</svg></div>
+      <details><summary>source (.svg)</summary><pre class="src"></pre></details>
+    </figure>
+    <figure class="card" id="c-roadmap-timeline">
+      <figcaption>
+        <span class="idx">09</span>
+        <span class="info"><strong>roadmap-timeline</strong><em>Horizontal spine with five milestones and alternating callout cards</em><span class="use">when: Project roadmaps, phased timelines, milestone plans</span></span>
+      </figcaption>
+      <div class="stage"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-label="Roadmap with five milestones along a horizontal spine, labels alternating above and below" style="width:100%;height:auto">
+  <title>Milestone roadmap</title>
+  <!-- spine -->
+  <line x1="60" y1="280" x2="720" y2="280" style="stroke:var(--border-bright,#cbd5e1);stroke-width:3" stroke-linecap="round"/>
+  <polygon points="740,280 726,273 726,287" fill="var(--border-bright,#cbd5e1)"/>
+  <!-- connectors -->
+  <g style="stroke:var(--text-muted,#64748b);stroke-width:1.5" stroke-dasharray="4 4" fill="none">
+    <line x1="90"   y1="280" x2="90"   y2="240"/>
+    <line x1="245"  y1="280" x2="245"  y2="320"/>
+    <line x1="400"  y1="280" x2="400"  y2="240"/>
+    <line x1="555"  y1="280" x2="555"  y2="320"/>
+    <line x1="710"  y1="280" x2="710"  y2="240"/>
+  </g>
+  <!-- dots -->
+  <g>
+    <circle cx="90"  cy="280" r="10" style="fill:var(--teal,#0d9488)" /><circle cx="90"  cy="280" r="5" style="fill:var(--surface,#f8fafc)"/>
+    <circle cx="245" cy="280" r="10" style="fill:var(--green,#10b981)"/><circle cx="245" cy="280" r="5" style="fill:var(--surface,#f8fafc)"/>
+    <circle cx="400" cy="280" r="10" style="fill:var(--amber,#f59e0b)"/><circle cx="400" cy="280" r="5" style="fill:var(--surface,#f8fafc)"/>
+    <circle cx="555" cy="280" r="10" style="fill:var(--coral,#ef4444)"/><circle cx="555" cy="280" r="5" style="fill:var(--surface,#f8fafc)"/>
+    <circle cx="710" cy="280" r="10" style="fill:var(--deep-blue,#2c4a7c)"/><circle cx="710" cy="280" r="5" style="fill:var(--surface,#f8fafc)"/>
+  </g>
+  <!-- callout cards: above = 1,3,5 ; below = 2,4 -->
+  <g>
+    <rect x="15" y="150" width="150" height="70" rx="10" style="fill:color-mix(in srgb, var(--teal,#0d9488) 12%, var(--surface,#f8fafc));stroke:var(--teal,#0d9488);stroke-width:1.5"/>
+    <text x="90" y="181" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:14px;font-weight:600;fill:var(--text,#0f172a)">Kick-off</text>
+    <text x="90" y="204" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:11px;fill:var(--text-muted,#64748b)">Q1 · week 2</text>
+
+    <rect x="170" y="330" width="150" height="70" rx="10" style="fill:color-mix(in srgb, var(--green,#10b981) 12%, var(--surface,#f8fafc));stroke:var(--green,#10b981);stroke-width:1.5"/>
+    <text x="245" y="361" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:14px;font-weight:600;fill:var(--text,#0f172a)">Alpha</text>
+    <text x="245" y="384" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:11px;fill:var(--text-muted,#64748b)">Q2 · internal</text>
+
+    <rect x="325" y="150" width="150" height="70" rx="10" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 12%, var(--surface,#f8fafc));stroke:var(--amber,#f59e0b);stroke-width:1.5"/>
+    <text x="400" y="181" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:14px;font-weight:600;fill:var(--text,#0f172a)">Beta</text>
+    <text x="400" y="204" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:11px;fill:var(--text-muted,#64748b)">Q3 · 50 users</text>
+
+    <rect x="480" y="330" width="150" height="70" rx="10" style="fill:color-mix(in srgb, var(--coral,#ef4444) 12%, var(--surface,#f8fafc));stroke:var(--coral,#ef4444);stroke-width:1.5"/>
+    <text x="555" y="361" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:14px;font-weight:600;fill:var(--text,#0f172a)">GA</text>
+    <text x="555" y="384" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:11px;fill:var(--text-muted,#64748b)">Q4 · public</text>
+
+    <rect x="635" y="150" width="150" height="70" rx="10" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 12%, var(--surface,#f8fafc));stroke:var(--deep-blue,#2c4a7c);stroke-width:1.5"/>
+    <text x="710" y="181" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:14px;font-weight:600;fill:var(--text,#0f172a)">v2 scope</text>
+    <text x="710" y="204" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:11px;fill:var(--text-muted,#64748b)">next cycle</text>
+  </g>
+</svg></div>
+      <details><summary>source (.svg)</summary><pre class="src"></pre></details>
+    </figure>
+    <figure class="card" id="c-venn-overlap">
+      <figcaption>
+        <span class="idx">10</span>
+        <span class="info"><strong>venn-overlap</strong><em>Two-way overlap with a distinct shared zone</em><span class="use">when: Relationships between two disciplines, shared vs unique capabilities</span></span>
+      </figcaption>
+      <div class="stage"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-label="Two overlapping circles with a shared middle zone" style="width:100%;height:auto">
+  <title>Two-way venn overlap</title>
+  <g>
+    <circle cx="330" cy="215" r="140" style="fill:var(--teal,#0d9488);fill-opacity:.24;stroke:var(--teal,#0d9488);stroke-width:2.5"/>
+    <circle cx="470" cy="215" r="140" style="fill:var(--amber,#f59e0b);fill-opacity:.24;stroke:var(--amber,#f59e0b);stroke-width:2.5"/>
+  </g>
+  <g text-anchor="middle">
+    <text x="245" y="210" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:17px;font-weight:600;fill:var(--text,#0f172a)">Only A</text>
+    <text x="245" y="236" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">distinct trait</text>
+    <text x="400" y="210" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:17px;font-weight:700;fill:var(--text,#0f172a)">Shared</text>
+    <text x="400" y="236" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">overlap zone</text>
+    <text x="555" y="210" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:17px;font-weight:600;fill:var(--text,#0f172a)">Only B</text>
+    <text x="555" y="236" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">distinct trait</text>
+  </g>
+  <!-- bottom captions -->
+  <g text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">
+    <text x="330" y="415">A in one sentence</text>
+    <text x="470" y="415">B in one sentence</text>
+  </g>
+</svg></div>
+      <details><summary>source (.svg)</summary><pre class="src"></pre></details>
+    </figure>
+  </main>
+<script>
+  document.querySelectorAll('figure.card').forEach(function (fig) {
+    var svg = fig.querySelector('.stage svg');
+    if (svg) fig.querySelector('.src').textContent = svg.outerHTML;
+  });
+</script>
+</body>
+</html>

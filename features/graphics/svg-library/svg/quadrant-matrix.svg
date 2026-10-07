@@ -1,0 +1,37 @@
+<!--
+  html-template-pack · svg-library · quadrant-matrix
+  2x2 prioritisation matrix (two labelled axes + 4 quadrant cells).
+  Tokens: green teal amber coral border-bright text text-muted
+  font-head font-sans.
+  Edit: axis labels (bottom + rotated left), 4 quadrant titles + subtitles.
+  Corner fills can be tinted by editing the color-mix tokens. No ids/markers.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-label="Two-by-two matrix with Impact on the vertical axis and Effort on the horizontal" style="width:100%;height:auto">
+  <title>Quadrant matrix</title>
+  <!-- quadrant tints -->
+  <g style="stroke:var(--border-bright,#cbd5e1);stroke-width:1.5">
+    <rect x="60" y="50" width="340" height="165" rx="12" style="fill:color-mix(in srgb, var(--green,#10b981) 10%, var(--surface,#f8fafc))"/>
+    <rect x="420" y="50" width="340" height="165" rx="12" style="fill:color-mix(in srgb, var(--teal,#0d9488) 8%, var(--surface,#f8fafc))"/>
+    <rect x="60" y="235" width="340" height="165" rx="12" style="fill:color-mix(in srgb, var(--coral,#ef4444) 8%, var(--surface,#f8fafc))"/>
+    <rect x="420" y="235" width="340" height="165" rx="12" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 8%, var(--surface,#f8fafc))"/>
+  </g>
+  <!-- axes -->
+  <line x1="400" y1="50" x2="400" y2="400" style="stroke:var(--border-bright,#cbd5e1);stroke-width:2" stroke-dasharray="6 6"/>
+  <line x1="60" y1="225" x2="760" y2="225" style="stroke:var(--border-bright,#cbd5e1);stroke-width:2" stroke-dasharray="6 6"/>
+  <!-- quadrant titles -->
+  <g text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">
+    <text x="230" y="120">Do first</text>
+    <text x="590" y="120">Plan</text>
+    <text x="230" y="305">Question</text>
+    <text x="590" y="305">Fill-in</text>
+  </g>
+  <g text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">
+    <text x="230" y="146">high impact · low effort</text>
+    <text x="590" y="146">high impact · high effort</text>
+    <text x="230" y="331">low impact · low effort</text>
+    <text x="590" y="331">low impact · high effort</text>
+  </g>
+  <!-- axis labels -->
+  <text x="760" y="428" text-anchor="end" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:13px;font-weight:600;fill:var(--text-muted,#64748b)">Effort →</text>
+  <text x="0" y="0" transform="translate(28,225) rotate(-90)" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:13px;font-weight:600;fill:var(--text-muted,#64748b)">Impact →</text>
+</svg>

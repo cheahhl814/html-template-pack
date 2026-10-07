@@ -1,0 +1,37 @@
+<!--
+  html-template-pack · svg-library · pyramid-hierarchy
+  4-level pyramid with right-side annotations. Tokens: teal deep-blue amber
+  navy surface text text-muted heading.
+  Edit: level labels + right captions. Slope is constant; retuning widths means
+  editing (400±a) top and (400±b) bottom of each polygon. No ids/markers.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-label="Four-level pyramid from a narrow apex to a broad base, with annotations on the right" style="width:100%;height:auto">
+  <title>Hierarchy pyramid</title>
+  <!-- bands top -> bottom (shared slant: each band bottom edge = next band top edge) -->
+  <g style="stroke:var(--surface,#f8fafc);stroke-width:3" stroke-linejoin="round">
+    <polygon points="330,44 470,44 530,116 270,116" style="fill:color-mix(in srgb, var(--teal,#0d9488) 20%, var(--surface,#f8fafc));stroke:var(--teal,#0d9488);stroke-width:2"/>
+    <polygon points="270,128 530,128 590,200 210,200" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 20%, var(--surface,#f8fafc));stroke:var(--deep-blue,#2c4a7c);stroke-width:2"/>
+    <polygon points="210,212 590,212 650,284 150,284" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 20%, var(--surface,#f8fafc));stroke:var(--amber,#f59e0b);stroke-width:2"/>
+    <polygon points="150,296 650,296 710,368 90,368" style="fill:color-mix(in srgb, var(--navy,#1a2744) 26%, var(--surface,#f8fafc));stroke:var(--navy,#1a2744);stroke-width:2"/>
+  </g>
+  <!-- level labels -->
+  <g text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">
+    <text x="400" y="88">Strategy</text>
+    <text x="400" y="172">Programmes</text>
+    <text x="400" y="256">Projects</text>
+    <text x="400" y="340">Tasks</text>
+  </g>
+  <!-- right-side annotations -->
+  <g style="stroke:var(--text-muted,#64748b);stroke-width:1.5" stroke-dasharray="4 4" fill="none">
+    <line x1="520" y1="88" x2="680" y2="88"/>
+    <line x1="580" y1="172" x2="680" y2="172"/>
+    <line x1="640" y1="256" x2="680" y2="256"/>
+    <line x1="700" y1="340" x2="680" y2="340"/>
+  </g>
+  <g style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)" text-anchor="end">
+    <text x="674" y="92">who decides</text>
+    <text x="674" y="176">who coordinates</text>
+    <text x="674" y="260">who executes</text>
+    <text x="674" y="344">who delivers</text>
+  </g>
+</svg>

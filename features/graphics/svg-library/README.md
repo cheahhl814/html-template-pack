@@ -1,0 +1,108 @@
+# svg-library — hand-drawn SVG diagram templates (html-template-pack v0.11.0)
+
+Ten agent-drawable, copy-paste-ready **inline SVG diagram/infographic templates** for
+explanatory and summary visuals — the complement to the pure-CSS graphics pack
+(`features/graphics/graphics.css`). Where the CSS pack covers charts built from real
+data (donut, gauge, heatmap, bars), the SVG library covers **concept diagrams**:
+processes, loops, hierarchies, matrices, funnels, roadmaps, cause-effect maps.
+
+```
+features/graphics/svg-library/
+├── README.md        ← you are here (conventions + catalog)
+├── gallery.html     ← GENERATED preview page (open in a browser)
+└── svg/*.svg        ← CANONICAL component files (edit these)
+```
+
+Regenerate the gallery after any change to `svg/*.svg`:
+
+```
+node bin/build-svg-gallery.js
+```
+
+The catalog with live previews lives in `gallery.html` — dark-first, with a ◐
+theme toggle so you can eyeball each component in both palettes before copying.
+Each figure card has a collapsible **source (.svg)** block copy-paste-ready.
+
+## Catalog
+
+| # | Component | What it shows | When to use |
+|---|-----------|---------------|-------------|
+| 1 | `flow-pipeline.svg` | Horizontal multi-step process with connectors and a feedback loop | Stages of a process, delivery pipeline, analysis workflow |
+| 2 | `cycle-loop.svg` | Four-node circular loop with clockwise arrows back to the start | Iterative processes: plan-build-measure-learn, audit cycles |
+| 3 | `hub-spoke.svg` | Central topic connected to six satellite topics | Concept maps, ecosystems, capability overviews |
+| 4 | `pyramid-hierarchy.svg` | Four-level pyramid (narrow apex → broad base) + side annotations | Strategy→task hierarchies, levels of abstraction, org tiers |
+| 5 | `venn-overlap.svg` | Two-way overlap with a distinct shared zone | Shared vs unique traits of two disciplines/approaches |
+| 6 | `quadrant-matrix.svg` | 2×2 matrix, dashed axes, four tinted cells | Prioritisation (impact vs effort), risk maps, positioning |
+| 7 | `funnel-stages.svg` | Four-stage narrowing funnel + conversion percentages | Sales/user funnels, pipeline stages, cohort retention |
+| 8 | `roadmap-timeline.svg` | Horizontal spine, 5 milestones, alternating callout cards | Project roadmaps, phased timelines, milestone plans |
+| 9 | `fishbone-causal.svg` | Ishikawa skeleton: 4 cause categories → 1 outcome box | Root-cause analysis, drivers-of-an-outcome summaries |
+| 10 | `layer-stack.svg` | Four-layer vertical stack with per-layer captions | Architecture stacks, dependency tiers |
+
+**When to use which graphics system:**
+
+- Real data, interactive → `chartz` skill (see `features/graphics/chartz-embed.md`)
+- Charts from real data, zero deps → CSS graphics pack (`graphics.css` A-block)
+- Mermaid flow/sequence/ER → Mermaid CDN (report template)
+- **Concept diagrams, hand-drawn feel, themed illustration → this SVG library**
+- Decorative background motifs (no labels) → hand-draw per the DNA-helix precedent
+  (see the 2026-10-02 wiki observation); same conventions as below
+
+## Conventions baked into every file (hard rules)
+
+1. **Inline SVG only.** Paste the whole `<svg>…</svg>` into the template HTML —
+   no external files, no `<img>`, no CDN. Keeps the single-file-portability invariant.
+2. **No `id` attributes, no `<defs>`, no `<marker>`, no `<filter>`.** Several library
+   SVGs may be pasted into one page; `id` collisions would break them all. Arrowheads
+   are explicit `<polygon>` triangles; repeated shapes are `<line>`/`<rect>` groups.
+   (Exception: if a one-off effect genuinely needs `<defs>`, generate globally-unique
+   ids yourself and document it.)
+3. **Token-driven color.** Every color is `var(--token, #fallback)` inside an inline
+   `style` attribute (var() does **not** work in SVG presentation attributes — always
+   use `style="fill:…"` / `style="stroke:…"`, never `fill="--teal"`). Tints use
+   `color-mix(in srgb, var(--x) N%, var(--surface))`, so each component adapts to the
+   host template's palette (report blue / slide teal / bento mixed) and both themes
+   with zero per-use editing. Fallbacks are the slide template's **light-mode** values
+   so a bare `.svg` file opened directly still renders correctly.
+4. **Labels are real `<text>` nodes.** Unlike background motifs, diagram components
+   carry editable labels — replace the placeholder text when copying. Label text uses
+   `var(--font-head, …)` 600/700 weight; captions use `var(--font-sans, …)` 400.
+   Know the limits: SVG text does **not** scale with the templates' font-size toggle
+   and is not selectable-by-the-annotation-engine in all cases — for body-copy-heavy
+   content prefer HTML components; SVG diagrams are for *diagram-labelled* content.
+5. **Accessibility.** Root carries `role="img"` + `aria-label` (one sentence, no
+   "image of") and a `<title>` child. Keep both in sync with the edited labels.
+   Text-on-text contrast: labels use `--text`, captions `--text-muted` (both themes
+   are ≥3:1 against the tinted fills; check custom tints before retinting).
+6. **Canvas is `viewBox="0 0 800 450"`.** All ten components share it, so they align
+   when stacked in a report section. `style="width:100%;height:auto"` makes them
+   responsive. Change the canvas only for special layouts (keep aspect ratio ≥ 4:3).
+7. **Print-safe.** Pure vector, no JS, no animation — the templates' `@media print`
+   rules pass them through untouched. If you add `class="reveal"` from the graphics
+   pack, the static state must equal the final state.
+
+## Workflow: copy → edit → paste
+
+1. **Pick** a component from the gallery (`open features/graphics/svg-library/gallery.html`),
+   or from this catalog by intent.
+2. **Read** the component's `svg/<name>.svg` — the header comment lists the tokens it
+   uses and what to edit.
+3. **Copy the `<svg>` element only** (skip the HTML comment when pasting).
+4. **Edit in place**: replace placeholder labels, adjust counts (see per-file notes),
+   swap `var(--token,#hex)` for a token the host template actually defines if needed
+   (report/slide/bento define: `--text --text-muted --accent --teal --coral --green
+   --amber --navy --deep-blue --surface --border`; dashboard omits the accent palette —
+   use `--accent` + `--text-muted` there).
+5. **Verify in the browser**, light and dark: labels legible, no clipping, arrows
+   still land. Print preview if the artifact will be PDF'd.
+
+## Adding a new component
+
+1. Hand-draw it in `svg/<kebab-name>.svg` following the conventions above — agent-drawn
+   SVG is the point of the library; treat the 10 shipped files as style reference
+   (rounded rx=12–14 boxes, 2px strokes, 15–17px labels, muted 11–13px captions).
+2. Add a `META` entry to `bin/build-svg-gallery.js` (desc + when-to-use).
+3. Mirror the row in the catalog table above, and in the SKILL.md section if the
+   component is generally useful.
+4. Run `node bin/build-svg-gallery.js` — validation must pass (no ids, balanced tags,
+   role/title/viewBox present).
+5. Commit.

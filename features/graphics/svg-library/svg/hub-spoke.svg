@@ -1,0 +1,37 @@
+<!--
+  html-template-pack · svg-library · hub-spoke
+  Concept map / ecosystem: central topic + 6 spokes. Tokens: navy teal amber
+  deep-blue coral green surface text text-muted heading.
+  Edit: center title + 6 spoke labels (1-2 short words each). No ids/markers.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-label="Central hub connected to six surrounding topics" style="width:100%;height:auto">
+  <title>Hub and spoke concept map</title>
+  <!-- connectors (under nodes) -->
+  <g style="stroke:var(--text-muted,#64748b);stroke-width:2" fill="none">
+    <line x1="400" y1="225" x2="550" y2="225"/>
+    <line x1="400" y1="225" x2="475" y2="95"/>
+    <line x1="400" y1="225" x2="325" y2="95"/>
+    <line x1="400" y1="225" x2="250" y2="225"/>
+    <line x1="400" y1="225" x2="325" y2="355"/>
+    <line x1="400" y1="225" x2="475" y2="355"/>
+  </g>
+  <!-- satellites -->
+  <g>
+    <circle cx="550" cy="225" r="40" style="fill:color-mix(in srgb, var(--teal,#0d9488) 14%, var(--surface,#f8fafc));stroke:var(--teal,#0d9488);stroke-width:2"/>
+    <text x="550" y="231" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:600;fill:var(--text,#0f172a)">Data</text>
+    <circle cx="475" cy="95" r="40" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 14%, var(--surface,#f8fafc));stroke:var(--amber,#f59e0b);stroke-width:2"/>
+    <text x="475" y="101" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:600;fill:var(--text,#0f172a)">People</text>
+    <circle cx="325" cy="95" r="40" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 14%, var(--surface,#f8fafc));stroke:var(--deep-blue,#2c4a7c);stroke-width:2"/>
+    <text x="325" y="101" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:600;fill:var(--text,#0f172a)">Compute</text>
+    <circle cx="250" cy="225" r="40" style="fill:color-mix(in srgb, var(--green,#10b981) 14%, var(--surface,#f8fafc));stroke:var(--green,#10b981);stroke-width:2"/>
+    <text x="250" y="231" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:600;fill:var(--text,#0f172a)">Methods</text>
+    <circle cx="325" cy="355" r="40" style="fill:color-mix(in srgb, var(--coral,#ef4444) 14%, var(--surface,#f8fafc));stroke:var(--coral,#ef4444);stroke-width:2"/>
+    <text x="325" y="361" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:600;fill:var(--text,#0f172a)">Ethics</text>
+    <circle cx="475" cy="355" r="40" style="fill:color-mix(in srgb, var(--navy,#1a2744) 22%, var(--surface,#f8fafc));stroke:var(--navy,#1a2744);stroke-width:2"/>
+    <text x="475" y="361" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:600;fill:var(--text,#0f172a)">Infra</text>
+  </g>
+  <!-- hub -->
+  <circle cx="400" cy="225" r="60" style="fill:color-mix(in srgb, var(--accent,#0d9488) 16%, var(--surface,#f8fafc));stroke:var(--accent,#0d9488);stroke-width:2.5"/>
+  <text x="400" y="220" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:18px;font-weight:700;fill:var(--text,#0f172a)">Platform</text>
+  <text x="400" y="242" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:11px;fill:var(--text-muted,#64748b)">topic</text>
+</svg>
