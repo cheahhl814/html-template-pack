@@ -1,52 +1,55 @@
 <!--
-  html-template-pack · svg-library · roadmap-timeline
-  Horizontal spine roadmap with 5 milestones and alternating callout cards.
-  Tokens: teal green amber coral deep-blue surface border-bright
-  text text-muted font-head font-sans.
-  Edit: milestone names + date sublines. Dots sit on the spine (y=280);
-  callouts alternate above (odd) / below (even). No ids/markers.
+html-template-pack · svg-library · roadmap-timeline
+  Horizontal spine roadmap: 5 milestones with alternating callout cards, a
+  solid "done" segment up to a today marker, filled (done) vs ring (upcoming) dots.
+  Tokens: accent teal green amber coral deep-blue border-bright text text-muted
+  surface font-head font-sans.
+  Edit: names + date captions; move "today" by changing x=322 in the accent
+  segment and the marker; swap a dot between the filled+tick and ring forms.
+  Callouts alternate above (odd) / below (even). No ids/markers.
 -->
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-label="Roadmap with five milestones along a horizontal spine, labels alternating above and below" style="width:100%;height:auto">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-label="Roadmap with five milestones along a horizontal spine; the first two are done and a today marker sits before Beta" style="width:100%;height:auto">
   <title>Milestone roadmap</title>
-  <!-- spine -->
-  <line x1="60" y1="280" x2="720" y2="280" style="stroke:var(--border-bright,#cbd5e1);stroke-width:3" stroke-linecap="round"/>
-  <polygon points="740,280 726,273 726,287" fill="var(--border-bright,#cbd5e1)"/>
+  <!-- spine: done segment solid accent, remaining segment muted -->
+  <line x1="60" y1="244" x2="724" y2="244" style="stroke:var(--border-bright,#cbd5e1);stroke-width:4" stroke-linecap="round"/>
+  <line x1="60" y1="244" x2="322" y2="244" style="stroke:var(--accent,#0d9488);stroke-width:4" stroke-linecap="round"/>
+  <polygon points="748,244 732,252 732,236" style="fill:var(--text-muted,#64748b)"/>
+  <!-- today marker -->
+  <line x1="322" y1="228" x2="322" y2="260" style="stroke:var(--text,#0f172a);stroke-width:2" stroke-linecap="round"/>
+  <text x="322" y="278" text-anchor="middle" letter-spacing="1" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:11px;font-weight:700;fill:var(--text,#0f172a)">today</text>
   <!-- connectors -->
-  <g style="stroke:var(--text-muted,#64748b);stroke-width:1.5" stroke-dasharray="4 4" fill="none">
-    <line x1="90"   y1="280" x2="90"   y2="240"/>
-    <line x1="245"  y1="280" x2="245"  y2="320"/>
-    <line x1="400"  y1="280" x2="400"  y2="240"/>
-    <line x1="555"  y1="280" x2="555"  y2="320"/>
-    <line x1="710"  y1="280" x2="710"  y2="240"/>
-  </g>
-  <!-- dots -->
-  <g>
-    <circle cx="90"  cy="280" r="10" style="fill:var(--teal,#0d9488)" /><circle cx="90"  cy="280" r="5" style="fill:var(--surface,#f8fafc)"/>
-    <circle cx="245" cy="280" r="10" style="fill:var(--green,#10b981)"/><circle cx="245" cy="280" r="5" style="fill:var(--surface,#f8fafc)"/>
-    <circle cx="400" cy="280" r="10" style="fill:var(--amber,#f59e0b)"/><circle cx="400" cy="280" r="5" style="fill:var(--surface,#f8fafc)"/>
-    <circle cx="555" cy="280" r="10" style="fill:var(--coral,#ef4444)"/><circle cx="555" cy="280" r="5" style="fill:var(--surface,#f8fafc)"/>
-    <circle cx="710" cy="280" r="10" style="fill:var(--deep-blue,#2c4a7c)"/><circle cx="710" cy="280" r="5" style="fill:var(--surface,#f8fafc)"/>
-  </g>
+  <line x1="90" y1="244" x2="90" y2="196" style="stroke:var(--text-muted,#64748b);stroke-width:1.5" stroke-dasharray="4 4"/>
+  <line x1="245" y1="244" x2="245" y2="292" style="stroke:var(--text-muted,#64748b);stroke-width:1.5" stroke-dasharray="4 4"/>
+  <line x1="400" y1="244" x2="400" y2="196" style="stroke:var(--text-muted,#64748b);stroke-width:1.5" stroke-dasharray="4 4"/>
+  <line x1="555" y1="244" x2="555" y2="292" style="stroke:var(--text-muted,#64748b);stroke-width:1.5" stroke-dasharray="4 4"/>
+  <line x1="710" y1="244" x2="710" y2="196" style="stroke:var(--text-muted,#64748b);stroke-width:1.5" stroke-dasharray="4 4"/>
+  <!-- milestones: filled = done, ring = upcoming -->
+  <circle cx="90" cy="244" r="11" style="fill:var(--teal,#0d9488);stroke:var(--surface,#ffffff);stroke-width:3"/>
+  <polyline points="85.5,244 89,247.5 95,240.5" fill="none" style="stroke:var(--surface,#ffffff);stroke-width:2.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="245" cy="244" r="11" style="fill:var(--green,#10b981);stroke:var(--surface,#ffffff);stroke-width:3"/>
+  <polyline points="240.5,244 244,247.5 250,240.5" fill="none" style="stroke:var(--surface,#ffffff);stroke-width:2.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="400" cy="244" r="10" style="fill:var(--surface,#ffffff);stroke:var(--amber,#f59e0b);stroke-width:3.5"/>
+  <circle cx="555" cy="244" r="10" style="fill:var(--surface,#ffffff);stroke:var(--coral,#ef4444);stroke-width:3.5"/>
+  <circle cx="710" cy="244" r="10" style="fill:var(--surface,#ffffff);stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:3.5"/>
   <!-- callout cards: above = 1,3,5 ; below = 2,4 -->
-  <g>
-    <rect x="15" y="150" width="150" height="70" rx="10" style="fill:color-mix(in srgb, var(--teal,#0d9488) 12%, var(--surface,#f8fafc));stroke:var(--teal,#0d9488);stroke-width:1.5"/>
-    <text x="90" y="181" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:14px;font-weight:600;fill:var(--text,#0f172a)">Kick-off</text>
-    <text x="90" y="204" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:11px;fill:var(--text-muted,#64748b)">Q1 · week 2</text>
-
-    <rect x="170" y="330" width="150" height="70" rx="10" style="fill:color-mix(in srgb, var(--green,#10b981) 12%, var(--surface,#f8fafc));stroke:var(--green,#10b981);stroke-width:1.5"/>
-    <text x="245" y="361" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:14px;font-weight:600;fill:var(--text,#0f172a)">Alpha</text>
-    <text x="245" y="384" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:11px;fill:var(--text-muted,#64748b)">Q2 · internal</text>
-
-    <rect x="325" y="150" width="150" height="70" rx="10" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 12%, var(--surface,#f8fafc));stroke:var(--amber,#f59e0b);stroke-width:1.5"/>
-    <text x="400" y="181" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:14px;font-weight:600;fill:var(--text,#0f172a)">Beta</text>
-    <text x="400" y="204" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:11px;fill:var(--text-muted,#64748b)">Q3 · 50 users</text>
-
-    <rect x="480" y="330" width="150" height="70" rx="10" style="fill:color-mix(in srgb, var(--coral,#ef4444) 12%, var(--surface,#f8fafc));stroke:var(--coral,#ef4444);stroke-width:1.5"/>
-    <text x="555" y="361" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:14px;font-weight:600;fill:var(--text,#0f172a)">GA</text>
-    <text x="555" y="384" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:11px;fill:var(--text-muted,#64748b)">Q4 · public</text>
-
-    <rect x="635" y="150" width="150" height="70" rx="10" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 12%, var(--surface,#f8fafc));stroke:var(--deep-blue,#2c4a7c);stroke-width:1.5"/>
-    <text x="710" y="181" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:14px;font-weight:600;fill:var(--text,#0f172a)">v2 scope</text>
-    <text x="710" y="204" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:11px;fill:var(--text-muted,#64748b)">next cycle</text>
-  </g>
+  <rect x="18" y="114" width="144" height="74" rx="12" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--teal,#0d9488) 22%, transparent);stroke:color-mix(in srgb, var(--teal,#0d9488) 45%, transparent);stroke-width:1.5"/>
+    <rect x="18" y="114" width="144" height="74" rx="12" style="fill:color-mix(in srgb, var(--teal,#0d9488) 14%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:2"/>
+  <text x="90" y="146" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">Kick-off</text>
+  <text x="90" y="168" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">Q1 · week 2 · done</text>
+  <rect x="173" y="294" width="144" height="74" rx="12" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--green,#10b981) 22%, transparent);stroke:color-mix(in srgb, var(--green,#10b981) 45%, transparent);stroke-width:1.5"/>
+    <rect x="173" y="294" width="144" height="74" rx="12" style="fill:color-mix(in srgb, var(--green,#10b981) 14%, var(--surface,#ffffff));stroke:var(--green,#10b981);stroke-width:2"/>
+  <text x="245" y="326" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">Alpha</text>
+  <text x="245" y="348" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">Q2 · internal · done</text>
+  <rect x="328" y="114" width="144" height="74" rx="12" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 22%, transparent);stroke:color-mix(in srgb, var(--amber,#f59e0b) 45%, transparent);stroke-width:1.5"/>
+    <rect x="328" y="114" width="144" height="74" rx="12" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 14%, var(--surface,#ffffff));stroke:var(--amber,#f59e0b);stroke-width:2"/>
+  <text x="400" y="146" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">Beta</text>
+  <text x="400" y="168" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">Q3 · 50 users</text>
+  <rect x="483" y="294" width="144" height="74" rx="12" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--coral,#ef4444) 22%, transparent);stroke:color-mix(in srgb, var(--coral,#ef4444) 45%, transparent);stroke-width:1.5"/>
+    <rect x="483" y="294" width="144" height="74" rx="12" style="fill:color-mix(in srgb, var(--coral,#ef4444) 14%, var(--surface,#ffffff));stroke:var(--coral,#ef4444);stroke-width:2"/>
+  <text x="555" y="326" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">GA</text>
+  <text x="555" y="348" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">Q4 · public</text>
+  <rect x="638" y="114" width="144" height="74" rx="12" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 22%, transparent);stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 45%, transparent);stroke-width:1.5"/>
+    <rect x="638" y="114" width="144" height="74" rx="12" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 14%, var(--surface,#ffffff));stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:2"/>
+  <text x="710" y="146" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">v2 scope</text>
+  <text x="710" y="168" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">next cycle</text>
 </svg>

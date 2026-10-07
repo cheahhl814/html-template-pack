@@ -1,10 +1,12 @@
 # svg-library — hand-drawn SVG diagram templates (html-template-pack v0.11.0)
 
-Ten agent-drawable, copy-paste-ready **inline SVG diagram/infographic templates** for
+Twenty agent-drawable, copy-paste-ready **inline SVG diagram/infographic templates** for
 explanatory and summary visuals — the complement to the pure-CSS graphics pack
 (`features/graphics/graphics.css`). Where the CSS pack covers charts built from real
 data (donut, gauge, heatmap, bars), the SVG library covers **concept diagrams**:
-processes, loops, hierarchies, matrices, funnels, roadmaps, cause-effect maps.
+processes, loops, hierarchies, matrices, funnels, roadmaps, cause-effect maps, goals,
+maturity ladders, phases, hidden-vs-visible, trade-offs, assessments, journeys,
+converging forces, parts-of-a-whole and interdependencies.
 
 ```
 features/graphics/svg-library/
@@ -37,6 +39,16 @@ Each figure card has a collapsible **source (.svg)** block copy-paste-ready.
 | 8 | `roadmap-timeline.svg` | Horizontal spine, 5 milestones, alternating callout cards | Project roadmaps, phased timelines, milestone plans |
 | 9 | `fishbone-causal.svg` | Ishikawa skeleton: 4 cause categories → 1 outcome box | Root-cause analysis, drivers-of-an-outcome summaries |
 | 10 | `layer-stack.svg` | Four-layer vertical stack with per-layer captions | Architecture stacks, dependency tiers |
+| 11 | `target-bullseye.svg` | Concentric priority rings around one goal, dart in the bullseye, labelled leaders | Goal setting, must/should/could priorities, scope focus |
+| 12 | `staircase-steps.svg` | Five rising steps on a shared baseline with a goal flag on top | Maturity models, capability ladders, growth stages |
+| 13 | `chevron-progression.svg` | Five interlocking chevron phases with durations and activities | Project phases, methodology stages, programme timelines |
+| 14 | `iceberg-depth.svg` | Visible tip vs larger hidden mass below a waterline, labelled leaders | Visible symptoms vs underlying causes, hidden costs, culture models |
+| 15 | `balance-scale.svg` | Two-pan balance tilted toward the heavier side, factors under each pan | Trade-offs, pros vs cons, cost vs benefit, decision verdicts |
+| 16 | `radar-spider.svg` | Six-axis radar: current profile vs dashed target, legend + takeaway | Capability assessments, maturity scoring, option profiles (concept-level; real data → chartz) |
+| 17 | `journey-map.svg` | Five stages with touchpoints and an emotion curve through face markers | Customer/user journeys, onboarding experience, service blueprints |
+| 18 | `converging-forces.svg` | Four corner drivers with fat arrows converging on one central subject | External pressures, drivers of change, stakeholder influence |
+| 19 | `puzzle-pieces.svg` | 2×2 interlocking jigsaw with the final piece lifted out | Parts of a whole, integrated solutions, the missing element |
+| 20 | `gear-mechanism.svg` | Three meshing gears with rotation cues (driver → driven) | Interdependent parts, operating models, what drives what |
 
 **When to use which graphics system:**
 
@@ -63,6 +75,13 @@ Each figure card has a collapsible **source (.svg)** block copy-paste-ready.
    host template's palette (report blue / slide teal / bento mixed) and both themes
    with zero per-use editing. Fallbacks are the slide template's **light-mode** values
    so a bare `.svg` file opened directly still renders correctly.
+   **Dark tokens + colored text:** `--navy` and `--deep-blue` stay dark in the dark
+   theme of every template, so as a *stroke* or *text* they vanish on a dark surface.
+   Use them (and any colored text) pulled toward `--text`:
+   `color-mix(in srgb, var(--navy,#1a2744) 55%, var(--text,#0f172a))` (navy/deep-blue)
+   or `… var(--amber,#f59e0b) 70%, var(--text,#0f172a))` (bright hues) — readable in
+   both themes. Translucent fills use `color-mix(… N%, transparent)`, never
+   `mix-blend-mode` (multiply goes black on dark surfaces).
 4. **Labels are real `<text>` nodes.** Unlike background motifs, diagram components
    carry editable labels — replace the placeholder text when copying. Label text uses
    `var(--font-head, …)` 600/700 weight; captions use `var(--font-sans, …)` 400.
@@ -73,7 +92,7 @@ Each figure card has a collapsible **source (.svg)** block copy-paste-ready.
    "image of") and a `<title>` child. Keep both in sync with the edited labels.
    Text-on-text contrast: labels use `--text`, captions `--text-muted` (both themes
    are ≥3:1 against the tinted fills; check custom tints before retinting).
-6. **Canvas is `viewBox="0 0 800 450"`.** All ten components share it, so they align
+6. **Canvas is `viewBox="0 0 800 450"`.** All components share it, so they align
    when stacked in a report section. `style="width:100%;height:auto"` makes them
    responsive. Change the canvas only for special layouts (keep aspect ratio ≥ 4:3).
 7. **Print-safe.** Pure vector, no JS, no animation — the templates' `@media print`
@@ -98,8 +117,12 @@ Each figure card has a collapsible **source (.svg)** block copy-paste-ready.
 ## Adding a new component
 
 1. Hand-draw it in `svg/<kebab-name>.svg` following the conventions above — agent-drawn
-   SVG is the point of the library; treat the 10 shipped files as style reference
-   (rounded rx=12–14 boxes, 2px strokes, 15–17px labels, muted 11–13px captions).
+   SVG is the point of the library; treat the shipped files as style reference
+   (rounded rx=10–14 boxes, 2px strokes, 15–17px labels, muted 12–13px captions,
+   explicit-polygon arrowheads, dashed 1.5px leaders ending in a 3.5px dot).
+   **Signature look:** primary shapes get a "misregistered print" offset copy drawn
+   underneath — same shape + `transform="translate(4 5)"` +
+   `style="fill:color-mix(in srgb, var(--x) 22%, transparent);stroke:color-mix(in srgb, var(--x) 45%, transparent);stroke-width:1.5"`.
 2. Add a `META` entry to `bin/build-svg-gallery.js` (desc + when-to-use).
 3. Mirror the row in the catalog table above, and in the SKILL.md section if the
    component is generally useful.

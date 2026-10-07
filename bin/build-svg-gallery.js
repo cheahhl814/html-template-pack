@@ -33,6 +33,16 @@ const META = {
   'roadmap-timeline': { desc: 'Horizontal spine with five milestones and alternating callout cards', use: 'Project roadmaps, phased timelines, milestone plans' },
   'fishbone-causal': { desc: 'Ishikawa skeleton: four cause categories feeding one outcome box', use: 'Root-cause analysis, drivers-of-an-outcome summaries' },
   'layer-stack': { desc: 'Four-layer vertical stack with per-layer captions', use: 'Architecture stacks, solution layers, dependency tiers' },
+  'target-bullseye': { desc: 'Concentric priority rings around one goal, dart in the bullseye, labelled leaders', use: 'Goal setting, must/should/could priorities, scope focus' },
+  'staircase-steps': { desc: 'Five rising steps on a shared baseline with a goal flag on top', use: 'Maturity models, capability ladders, growth stages' },
+  'chevron-progression': { desc: 'Five interlocking chevron phases with durations and activities', use: 'Project phases, methodology stages, programme timelines' },
+  'iceberg-depth': { desc: 'Visible tip vs larger hidden mass below a waterline, with labelled leaders', use: 'Visible symptoms vs underlying causes, hidden costs, culture models' },
+  'balance-scale': { desc: 'Two-pan balance tilted toward the heavier side, factors listed under each pan', use: 'Trade-offs, pros vs cons, cost vs benefit, decision verdicts' },
+  'radar-spider': { desc: 'Six-axis radar: current profile vs dashed target, with legend and takeaway', use: 'Capability assessments, maturity scoring, option profiles' },
+  'journey-map': { desc: 'Five stages with touchpoints and an emotion curve through face markers', use: 'Customer/user journeys, onboarding experience, service blueprints' },
+  'converging-forces': { desc: 'Four corner drivers with fat arrows converging on one central subject', use: 'External pressures, drivers of change, stakeholder influence' },
+  'puzzle-pieces': { desc: '2×2 interlocking jigsaw with the final piece lifted out', use: 'Parts of a whole, integrated solutions, the missing element' },
+  'gear-mechanism': { desc: 'Three meshing gears with rotation cues (driver → driven)', use: 'Interdependent parts, operating models, what drives what' },
 };
 
 function validate(name, src) {
@@ -81,7 +91,7 @@ const page = `<!--
   GENERATED FILE — do not hand-edit.
   Source of truth: svg/*.svg in this directory; regenerate with:
       node bin/build-svg-gallery.js
-  (html-template-pack v0.11.0 SVG diagram library)
+  (html-template-pack v0.12.0 SVG diagram library)
 -->
 <!doctype html>
 <html lang="en" data-theme="dark">

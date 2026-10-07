@@ -1,0 +1,52 @@
+<!--
+html-template-pack · svg-library · staircase-steps
+  Five ascending steps on a shared baseline (maturity model, capability ladder,
+  growth stages) with a goal flag on the top step. Monochrome --accent whose tint
+  deepens step by step, so it adopts each host template's accent.
+  Tokens: accent amber text text-muted border-bright surface font-head font-sans.
+  Edit: step labels + captions, flag title/caption. Each step: x = 63 + i*136,
+  top = 320 - i*50. To drop to 4 steps delete the last <rect> trio and move the
+  flag (x = step-left + 96). No ids/markers.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-label="Five rising steps from Aware to Leading with a goal flag on the top step" style="width:100%;height:auto">
+  <title>Staircase of maturity steps</title>
+  <!-- steps: rising blocks on a shared baseline; tint deepens with each step -->
+  <g>
+    <rect x="63" y="320" width="130" height="90" rx="10" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--accent,#0d9488) 22%, transparent);stroke:color-mix(in srgb, var(--accent,#0d9488) 45%, transparent);stroke-width:1.5"/>
+    <rect x="63" y="320" width="130" height="90" rx="10" style="fill:color-mix(in srgb, var(--accent,#0d9488) 8%, var(--surface,#ffffff));stroke:var(--accent,#0d9488);stroke-width:2"/>
+    <rect x="63" y="320" width="130" height="7" rx="3.5" style="fill:var(--accent,#0d9488)"/>
+    <text x="77" y="354" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:20px;font-weight:700;fill:color-mix(in srgb, var(--accent,#0d9488) 70%, var(--text,#0f172a))">01</text>
+    <text x="77" y="378" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">Aware</text>
+    <text x="77" y="398" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">knows the problem</text>
+    <rect x="199" y="270" width="130" height="140" rx="10" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--accent,#0d9488) 22%, transparent);stroke:color-mix(in srgb, var(--accent,#0d9488) 45%, transparent);stroke-width:1.5"/>
+    <rect x="199" y="270" width="130" height="140" rx="10" style="fill:color-mix(in srgb, var(--accent,#0d9488) 14%, var(--surface,#ffffff));stroke:var(--accent,#0d9488);stroke-width:2"/>
+    <rect x="199" y="270" width="130" height="7" rx="3.5" style="fill:var(--accent,#0d9488)"/>
+    <text x="213" y="304" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:20px;font-weight:700;fill:color-mix(in srgb, var(--accent,#0d9488) 70%, var(--text,#0f172a))">02</text>
+    <text x="213" y="328" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">Trying</text>
+    <text x="213" y="348" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">first experiments</text>
+    <rect x="335" y="220" width="130" height="190" rx="10" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--accent,#0d9488) 22%, transparent);stroke:color-mix(in srgb, var(--accent,#0d9488) 45%, transparent);stroke-width:1.5"/>
+    <rect x="335" y="220" width="130" height="190" rx="10" style="fill:color-mix(in srgb, var(--accent,#0d9488) 20%, var(--surface,#ffffff));stroke:var(--accent,#0d9488);stroke-width:2"/>
+    <rect x="335" y="220" width="130" height="7" rx="3.5" style="fill:var(--accent,#0d9488)"/>
+    <text x="349" y="254" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:20px;font-weight:700;fill:color-mix(in srgb, var(--accent,#0d9488) 70%, var(--text,#0f172a))">03</text>
+    <text x="349" y="278" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">Adopting</text>
+    <text x="349" y="298" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">part of the routine</text>
+    <rect x="471" y="170" width="130" height="240" rx="10" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--accent,#0d9488) 22%, transparent);stroke:color-mix(in srgb, var(--accent,#0d9488) 45%, transparent);stroke-width:1.5"/>
+    <rect x="471" y="170" width="130" height="240" rx="10" style="fill:color-mix(in srgb, var(--accent,#0d9488) 26%, var(--surface,#ffffff));stroke:var(--accent,#0d9488);stroke-width:2"/>
+    <rect x="471" y="170" width="130" height="7" rx="3.5" style="fill:var(--accent,#0d9488)"/>
+    <text x="485" y="204" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:20px;font-weight:700;fill:color-mix(in srgb, var(--accent,#0d9488) 70%, var(--text,#0f172a))">04</text>
+    <text x="485" y="228" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">Scaling</text>
+    <text x="485" y="248" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">across teams</text>
+    <rect x="607" y="120" width="130" height="290" rx="10" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--accent,#0d9488) 22%, transparent);stroke:color-mix(in srgb, var(--accent,#0d9488) 45%, transparent);stroke-width:1.5"/>
+    <rect x="607" y="120" width="130" height="290" rx="10" style="fill:color-mix(in srgb, var(--accent,#0d9488) 32%, var(--surface,#ffffff));stroke:var(--accent,#0d9488);stroke-width:2"/>
+    <rect x="607" y="120" width="130" height="7" rx="3.5" style="fill:var(--accent,#0d9488)"/>
+    <text x="621" y="154" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:20px;font-weight:700;fill:color-mix(in srgb, var(--accent,#0d9488) 70%, var(--text,#0f172a))">05</text>
+    <text x="621" y="178" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">Leading</text>
+    <text x="621" y="198" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">sets the standard</text>
+  </g>
+  <!-- goal flag on the top step -->
+  <line x1="703" y1="120" x2="703" y2="46" style="stroke:var(--text,#0f172a);stroke-width:3" stroke-linecap="round"/>
+  <polygon points="703,46 745,58 703,70" style="fill:var(--amber,#f59e0b);stroke:var(--amber,#f59e0b);stroke-width:2" stroke-linejoin="round"/>
+  <text x="689" y="62" text-anchor="end" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:15px;font-weight:700;fill:var(--text,#0f172a)">Target maturity</text>
+  <text x="689" y="82" text-anchor="end" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">where we want to be by Q4</text>
+  <line x1="40" y1="410" x2="760" y2="410" style="stroke:var(--border-bright,#cbd5e1);stroke-width:2" stroke-linecap="round"/>
+</svg>

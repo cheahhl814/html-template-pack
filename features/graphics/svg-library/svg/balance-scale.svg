@@ -1,0 +1,40 @@
+<!--
+html-template-pack · svg-library · balance-scale
+  Two-pan balance for trade-offs / pros vs cons. The beam tilts 8° toward the
+  heavier side; captions under each pan list the factors.
+  Tokens: green coral deep-blue text text-muted surface font-head font-sans.
+  Edit: verdict line, pan labels, factor captions. To tip the other way, mirror
+  the beam: swap the two pans' y (left end y=162.8, right end y=93.2) and their
+  dependent rims (end y + 112). No ids/markers.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-label="Balance scale tipped toward Benefits on the left, outweighing Risks on the right" style="width:100%;height:auto">
+  <title>Balance scale trade-off</title>
+  <!-- stand -->
+  <line x1="400" y1="128" x2="400" y2="392" style="stroke:var(--text-muted,#64748b);stroke-width:5" stroke-linecap="round"/>
+  <path d="M 344 408 Q 400 368 456 408 Z" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 16%, var(--surface,#ffffff));stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:2" stroke-linejoin="round"/>
+  <rect x="318" y="404" width="164" height="12" rx="6" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a))"/>
+  <!-- beam (tilted 8°: heavier side down) -->
+  <line x1="152.4" y1="162.8" x2="647.6" y2="93.2" style="stroke:var(--text,#0f172a);stroke-width:5" stroke-linecap="round"/>
+  <circle cx="400" cy="128" r="11" style="fill:var(--surface,#ffffff);stroke:var(--text,#0f172a);stroke-width:3"/>
+  <!-- benefits pan -->
+  <g style="stroke:var(--text-muted,#64748b);stroke-width:1.5" fill="none"><line x1="152.4" y1="162.8" x2="72.4" y2="274.8"/><line x1="152.4" y1="162.8" x2="232.4" y2="274.8"/></g>
+  <circle cx="152.4" cy="162.8" r="5" style="fill:var(--text,#0f172a)"/>
+  <rect x="102.4" y="234.8" width="100" height="36" rx="8" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--green,#10b981) 22%, transparent);stroke:color-mix(in srgb, var(--green,#10b981) 45%, transparent);stroke-width:1.5"/>
+    <rect x="102.4" y="234.8" width="100" height="36" rx="8" style="fill:color-mix(in srgb, var(--green,#10b981) 22%, var(--surface,#ffffff));stroke:var(--green,#10b981);stroke-width:2"/>
+  <text x="152.4" y="258.8" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:700;fill:var(--text,#0f172a)">Benefits</text>
+  <path d="M 66.4 274.8 H 238.4 Q 226.4 310.8 152.4 310.8 Q 78.4 310.8 66.4 274.8 Z" style="fill:color-mix(in srgb, var(--green,#10b981) 30%, var(--surface,#ffffff));stroke:var(--green,#10b981);stroke-width:2" stroke-linejoin="round"/>
+  <text x="152.4" y="338.8" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:13px;fill:var(--text-muted,#64748b)">faster delivery</text>
+  <text x="152.4" y="358.8" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:13px;fill:var(--text-muted,#64748b)">lower running cost</text>
+  <text x="152.4" y="378.8" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:13px;fill:var(--text-muted,#64748b)">simpler operations</text>
+  <!-- risks pan -->
+  <g style="stroke:var(--text-muted,#64748b);stroke-width:1.5" fill="none"><line x1="647.6" y1="93.2" x2="567.6" y2="205.2"/><line x1="647.6" y1="93.2" x2="727.6" y2="205.2"/></g>
+  <circle cx="647.6" cy="93.2" r="5" style="fill:var(--text,#0f172a)"/>
+  <rect x="597.6" y="165.2" width="100" height="36" rx="8" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--coral,#ef4444) 22%, transparent);stroke:color-mix(in srgb, var(--coral,#ef4444) 45%, transparent);stroke-width:1.5"/>
+    <rect x="597.6" y="165.2" width="100" height="36" rx="8" style="fill:color-mix(in srgb, var(--coral,#ef4444) 22%, var(--surface,#ffffff));stroke:var(--coral,#ef4444);stroke-width:2"/>
+  <text x="647.6" y="189.2" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:700;fill:var(--text,#0f172a)">Risks</text>
+  <path d="M 561.6 205.2 H 733.6 Q 721.6 241.2 647.6 241.2 Q 573.6 241.2 561.6 205.2 Z" style="fill:color-mix(in srgb, var(--coral,#ef4444) 30%, var(--surface,#ffffff));stroke:var(--coral,#ef4444);stroke-width:2" stroke-linejoin="round"/>
+  <text x="647.6" y="269.2" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:13px;fill:var(--text-muted,#64748b)">migration effort</text>
+  <text x="647.6" y="289.2" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:13px;fill:var(--text-muted,#64748b)">team retraining</text>
+  <text x="400" y="52" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:18px;font-weight:700;fill:var(--text,#0f172a)">Verdict: proceed</text>
+  <text x="400" y="74" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">benefits outweigh the risks</text>
+</svg>

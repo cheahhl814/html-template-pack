@@ -2,7 +2,7 @@
   GENERATED FILE — do not hand-edit.
   Source of truth: svg/*.svg in this directory; regenerate with:
       node bin/build-svg-gallery.js
-  (html-template-pack v0.11.0 SVG diagram library)
+  (html-template-pack v0.12.0 SVG diagram library)
 -->
 <!doctype html>
 <html lang="en" data-theme="dark">
@@ -58,412 +58,888 @@
     <p>Hand-drawn SVG diagram templates for the html-template-pack templates. Every component is token-driven (adapts to each template's palette + light/dark) and id-free (safe to paste multiple). Copy-paste the inline SVG, then edit the labels. Toggle the theme to preview both palettes.</p>
     <button class="toggle" onclick="var h=document.documentElement;h.setAttribute('data-theme',h.getAttribute('data-theme')==='dark'?'light':'dark')">◐</button>
   </header>
-  <nav><a href="#c-cycle-loop">cycle-loop</a><a href="#c-fishbone-causal">fishbone-causal</a><a href="#c-flow-pipeline">flow-pipeline</a><a href="#c-funnel-stages">funnel-stages</a><a href="#c-hub-spoke">hub-spoke</a><a href="#c-layer-stack">layer-stack</a><a href="#c-pyramid-hierarchy">pyramid-hierarchy</a><a href="#c-quadrant-matrix">quadrant-matrix</a><a href="#c-roadmap-timeline">roadmap-timeline</a><a href="#c-venn-overlap">venn-overlap</a></nav>
+  <nav><a href="#c-balance-scale">balance-scale</a><a href="#c-chevron-progression">chevron-progression</a><a href="#c-converging-forces">converging-forces</a><a href="#c-cycle-loop">cycle-loop</a><a href="#c-fishbone-causal">fishbone-causal</a><a href="#c-flow-pipeline">flow-pipeline</a><a href="#c-funnel-stages">funnel-stages</a><a href="#c-gear-mechanism">gear-mechanism</a><a href="#c-hub-spoke">hub-spoke</a><a href="#c-iceberg-depth">iceberg-depth</a><a href="#c-journey-map">journey-map</a><a href="#c-layer-stack">layer-stack</a><a href="#c-puzzle-pieces">puzzle-pieces</a><a href="#c-pyramid-hierarchy">pyramid-hierarchy</a><a href="#c-quadrant-matrix">quadrant-matrix</a><a href="#c-radar-spider">radar-spider</a><a href="#c-roadmap-timeline">roadmap-timeline</a><a href="#c-staircase-steps">staircase-steps</a><a href="#c-target-bullseye">target-bullseye</a><a href="#c-venn-overlap">venn-overlap</a></nav>
   <main class="catalog">
-    <figure class="card" id="c-cycle-loop">
+    <figure class="card" id="c-balance-scale">
       <figcaption>
         <span class="idx">01</span>
+        <span class="info"><strong>balance-scale</strong><em>Two-pan balance tilted toward the heavier side, factors listed under each pan</em><span class="use">when: Trade-offs, pros vs cons, cost vs benefit, decision verdicts</span></span>
+      </figcaption>
+      <div class="stage"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-label="Balance scale tipped toward Benefits on the left, outweighing Risks on the right" style="width:100%;height:auto">
+  <title>Balance scale trade-off</title>
+  <!-- stand -->
+  <line x1="400" y1="128" x2="400" y2="392" style="stroke:var(--text-muted,#64748b);stroke-width:5" stroke-linecap="round"/>
+  <path d="M 344 408 Q 400 368 456 408 Z" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 16%, var(--surface,#ffffff));stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:2" stroke-linejoin="round"/>
+  <rect x="318" y="404" width="164" height="12" rx="6" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a))"/>
+  <!-- beam (tilted 8°: heavier side down) -->
+  <line x1="152.4" y1="162.8" x2="647.6" y2="93.2" style="stroke:var(--text,#0f172a);stroke-width:5" stroke-linecap="round"/>
+  <circle cx="400" cy="128" r="11" style="fill:var(--surface,#ffffff);stroke:var(--text,#0f172a);stroke-width:3"/>
+  <!-- benefits pan -->
+  <g style="stroke:var(--text-muted,#64748b);stroke-width:1.5" fill="none"><line x1="152.4" y1="162.8" x2="72.4" y2="274.8"/><line x1="152.4" y1="162.8" x2="232.4" y2="274.8"/></g>
+  <circle cx="152.4" cy="162.8" r="5" style="fill:var(--text,#0f172a)"/>
+  <rect x="102.4" y="234.8" width="100" height="36" rx="8" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--green,#10b981) 22%, transparent);stroke:color-mix(in srgb, var(--green,#10b981) 45%, transparent);stroke-width:1.5"/>
+    <rect x="102.4" y="234.8" width="100" height="36" rx="8" style="fill:color-mix(in srgb, var(--green,#10b981) 22%, var(--surface,#ffffff));stroke:var(--green,#10b981);stroke-width:2"/>
+  <text x="152.4" y="258.8" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:700;fill:var(--text,#0f172a)">Benefits</text>
+  <path d="M 66.4 274.8 H 238.4 Q 226.4 310.8 152.4 310.8 Q 78.4 310.8 66.4 274.8 Z" style="fill:color-mix(in srgb, var(--green,#10b981) 30%, var(--surface,#ffffff));stroke:var(--green,#10b981);stroke-width:2" stroke-linejoin="round"/>
+  <text x="152.4" y="338.8" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:13px;fill:var(--text-muted,#64748b)">faster delivery</text>
+  <text x="152.4" y="358.8" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:13px;fill:var(--text-muted,#64748b)">lower running cost</text>
+  <text x="152.4" y="378.8" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:13px;fill:var(--text-muted,#64748b)">simpler operations</text>
+  <!-- risks pan -->
+  <g style="stroke:var(--text-muted,#64748b);stroke-width:1.5" fill="none"><line x1="647.6" y1="93.2" x2="567.6" y2="205.2"/><line x1="647.6" y1="93.2" x2="727.6" y2="205.2"/></g>
+  <circle cx="647.6" cy="93.2" r="5" style="fill:var(--text,#0f172a)"/>
+  <rect x="597.6" y="165.2" width="100" height="36" rx="8" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--coral,#ef4444) 22%, transparent);stroke:color-mix(in srgb, var(--coral,#ef4444) 45%, transparent);stroke-width:1.5"/>
+    <rect x="597.6" y="165.2" width="100" height="36" rx="8" style="fill:color-mix(in srgb, var(--coral,#ef4444) 22%, var(--surface,#ffffff));stroke:var(--coral,#ef4444);stroke-width:2"/>
+  <text x="647.6" y="189.2" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:700;fill:var(--text,#0f172a)">Risks</text>
+  <path d="M 561.6 205.2 H 733.6 Q 721.6 241.2 647.6 241.2 Q 573.6 241.2 561.6 205.2 Z" style="fill:color-mix(in srgb, var(--coral,#ef4444) 30%, var(--surface,#ffffff));stroke:var(--coral,#ef4444);stroke-width:2" stroke-linejoin="round"/>
+  <text x="647.6" y="269.2" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:13px;fill:var(--text-muted,#64748b)">migration effort</text>
+  <text x="647.6" y="289.2" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:13px;fill:var(--text-muted,#64748b)">team retraining</text>
+  <text x="400" y="52" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:18px;font-weight:700;fill:var(--text,#0f172a)">Verdict: proceed</text>
+  <text x="400" y="74" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">benefits outweigh the risks</text>
+</svg></div>
+      <details><summary>source (.svg)</summary><pre class="src"></pre></details>
+    </figure>
+    <figure class="card" id="c-chevron-progression">
+      <figcaption>
+        <span class="idx">02</span>
+        <span class="info"><strong>chevron-progression</strong><em>Five interlocking chevron phases with durations and activities</em><span class="use">when: Project phases, methodology stages, programme timelines</span></span>
+      </figcaption>
+      <div class="stage"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-label="Five chevron phases from Discover to Sustain with durations above and activities below" style="width:100%;height:auto">
+  <title>Chevron phase progression</title>
+  <!-- chevrons: first has a flat tail, the rest a notched tail -->
+  <g>
+    <polygon points="30,170 166,170 194,220 166,270 30,270" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--teal,#0d9488) 22%, transparent);stroke:color-mix(in srgb, var(--teal,#0d9488) 45%, transparent);stroke-width:1.5" stroke-linejoin="round"/>
+    <polygon points="30,170 166,170 194,220 166,270 30,270" style="fill:color-mix(in srgb, var(--teal,#0d9488) 20%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:2" stroke-linejoin="round"/>
+    <text x="98" y="212" text-anchor="middle" letter-spacing="1.2" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:11px;font-weight:700;fill:color-mix(in srgb, var(--teal,#0d9488) 70%, var(--text,#0f172a))">PHASE 1</text>
+    <text x="98" y="236" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:17px;font-weight:600;fill:var(--text,#0f172a)">Discover</text>
+    <text x="98" y="152" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:600;fill:var(--text-muted,#64748b)">Wk 1–2</text>
+    <text x="98" y="308" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">interviews</text>
+    <text x="98" y="328" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">problem framing</text>
+    <polygon points="174,170 310,170 338,220 310,270 174,270 202,220" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 22%, transparent);stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 45%, transparent);stroke-width:1.5" stroke-linejoin="round"/>
+    <polygon points="174,170 310,170 338,220 310,270 174,270 202,220" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 20%, var(--surface,#ffffff));stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:2" stroke-linejoin="round"/>
+    <text x="263" y="212" text-anchor="middle" letter-spacing="1.2" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:11px;font-weight:700;fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a))">PHASE 2</text>
+    <text x="263" y="236" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:17px;font-weight:600;fill:var(--text,#0f172a)">Define</text>
+    <text x="263" y="152" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:600;fill:var(--text-muted,#64748b)">Wk 3</text>
+    <text x="263" y="308" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">scope + metrics</text>
+    <text x="263" y="328" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">success criteria</text>
+    <polygon points="318,170 454,170 482,220 454,270 318,270 346,220" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 22%, transparent);stroke:color-mix(in srgb, var(--amber,#f59e0b) 45%, transparent);stroke-width:1.5" stroke-linejoin="round"/>
+    <polygon points="318,170 454,170 482,220 454,270 318,270 346,220" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 20%, var(--surface,#ffffff));stroke:var(--amber,#f59e0b);stroke-width:2" stroke-linejoin="round"/>
+    <text x="407" y="212" text-anchor="middle" letter-spacing="1.2" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:11px;font-weight:700;fill:color-mix(in srgb, var(--amber,#f59e0b) 70%, var(--text,#0f172a))">PHASE 3</text>
+    <text x="407" y="236" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:17px;font-weight:600;fill:var(--text,#0f172a)">Develop</text>
+    <text x="407" y="152" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:600;fill:var(--text-muted,#64748b)">Wk 4–7</text>
+    <text x="407" y="308" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">build increments</text>
+    <text x="407" y="328" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">weekly demos</text>
+    <polygon points="462,170 598,170 626,220 598,270 462,270 490,220" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--coral,#ef4444) 22%, transparent);stroke:color-mix(in srgb, var(--coral,#ef4444) 45%, transparent);stroke-width:1.5" stroke-linejoin="round"/>
+    <polygon points="462,170 598,170 626,220 598,270 462,270 490,220" style="fill:color-mix(in srgb, var(--coral,#ef4444) 20%, var(--surface,#ffffff));stroke:var(--coral,#ef4444);stroke-width:2" stroke-linejoin="round"/>
+    <text x="551" y="212" text-anchor="middle" letter-spacing="1.2" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:11px;font-weight:700;fill:color-mix(in srgb, var(--coral,#ef4444) 70%, var(--text,#0f172a))">PHASE 4</text>
+    <text x="551" y="236" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:17px;font-weight:600;fill:var(--text,#0f172a)">Deliver</text>
+    <text x="551" y="152" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:600;fill:var(--text-muted,#64748b)">Wk 8</text>
+    <text x="551" y="308" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">launch</text>
+    <text x="551" y="328" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">handover</text>
+    <polygon points="606,170 742,170 770,220 742,270 606,270 634,220" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--green,#10b981) 22%, transparent);stroke:color-mix(in srgb, var(--green,#10b981) 45%, transparent);stroke-width:1.5" stroke-linejoin="round"/>
+    <polygon points="606,170 742,170 770,220 742,270 606,270 634,220" style="fill:color-mix(in srgb, var(--green,#10b981) 20%, var(--surface,#ffffff));stroke:var(--green,#10b981);stroke-width:2" stroke-linejoin="round"/>
+    <text x="695" y="212" text-anchor="middle" letter-spacing="1.2" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:11px;font-weight:700;fill:color-mix(in srgb, var(--green,#10b981) 70%, var(--text,#0f172a))">PHASE 5</text>
+    <text x="695" y="236" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:17px;font-weight:600;fill:var(--text,#0f172a)">Sustain</text>
+    <text x="695" y="152" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:600;fill:var(--text-muted,#64748b)">ongoing</text>
+    <text x="695" y="308" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">monitor</text>
+    <text x="695" y="328" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">improve</text>
+  </g>
+  <line x1="30" y1="286" x2="770" y2="286" style="stroke:var(--border-bright,#cbd5e1);stroke-width:1.5" stroke-dasharray="2 6" stroke-linecap="round"/>
+</svg></div>
+      <details><summary>source (.svg)</summary><pre class="src"></pre></details>
+    </figure>
+    <figure class="card" id="c-converging-forces">
+      <figcaption>
+        <span class="idx">03</span>
+        <span class="info"><strong>converging-forces</strong><em>Four corner drivers with fat arrows converging on one central subject</em><span class="use">when: External pressures, drivers of change, stakeholder influence</span></span>
+      </figcaption>
+      <div class="stage"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-label="Four external forces in the corners pushing inward on one central subject" style="width:100%;height:auto">
+  <title>Converging forces on a subject</title>
+  <!-- fat arrows: from each card corner toward the centre (drawn first, under shapes) -->
+  <polygon points="240.9,146.8 310,185.2 304.6,194.8 335.3,189 324.1,159.9 318.7,169.5 249.6,131.1" style="fill:color-mix(in srgb, var(--teal,#0d9488) 40%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:2" stroke-linejoin="round"/>
+  <polygon points="550.4,131.1 481.3,169.5 475.9,159.9 464.7,189 495.4,194.8 490,185.2 559.1,146.8" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 40%, var(--surface,#ffffff));stroke:var(--amber,#f59e0b);stroke-width:2" stroke-linejoin="round"/>
+  <polygon points="249.6,318.9 318.7,280.5 324.1,290.1 335.3,261 304.6,255.2 310,264.8 240.9,303.2" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 40%, var(--surface,#ffffff));stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:2" stroke-linejoin="round"/>
+  <polygon points="559.1,303.2 490,264.8 495.4,255.2 464.7,261 475.9,290.1 481.3,280.5 550.4,318.9" style="fill:color-mix(in srgb, var(--coral,#ef4444) 40%, var(--surface,#ffffff));stroke:var(--coral,#ef4444);stroke-width:2" stroke-linejoin="round"/>
+  <!-- force cards -->
+  <rect x="30" y="40" width="210" height="96" rx="14" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--teal,#0d9488) 22%, transparent);stroke:color-mix(in srgb, var(--teal,#0d9488) 45%, transparent);stroke-width:1.5"/>
+    <rect x="30" y="40" width="210" height="96" rx="14" style="fill:color-mix(in srgb, var(--teal,#0d9488) 14%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:2"/>
+  <rect x="48" y="60" width="26" height="26" rx="13" style="fill:var(--teal,#0d9488)"/>
+  <text x="61" y="78" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--surface,#ffffff)">1</text>
+  <text x="86" y="79" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:17px;font-weight:600;fill:var(--text,#0f172a)">Customers</text>
+  <text x="48" y="112" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">demand for self-service</text>
+  <rect x="560" y="40" width="210" height="96" rx="14" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 22%, transparent);stroke:color-mix(in srgb, var(--amber,#f59e0b) 45%, transparent);stroke-width:1.5"/>
+    <rect x="560" y="40" width="210" height="96" rx="14" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 14%, var(--surface,#ffffff));stroke:var(--amber,#f59e0b);stroke-width:2"/>
+  <rect x="578" y="60" width="26" height="26" rx="13" style="fill:var(--amber,#f59e0b)"/>
+  <text x="591" y="78" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--surface,#ffffff)">2</text>
+  <text x="616" y="79" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:17px;font-weight:600;fill:var(--text,#0f172a)">Regulation</text>
+  <text x="578" y="112" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">new reporting rules</text>
+  <rect x="30" y="314" width="210" height="96" rx="14" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 22%, transparent);stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 45%, transparent);stroke-width:1.5"/>
+    <rect x="30" y="314" width="210" height="96" rx="14" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 14%, var(--surface,#ffffff));stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:2"/>
+  <rect x="48" y="334" width="26" height="26" rx="13" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a))"/>
+  <text x="61" y="352" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--surface,#ffffff)">3</text>
+  <text x="86" y="353" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:17px;font-weight:600;fill:var(--text,#0f172a)">Technology</text>
+  <text x="48" y="386" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">cheaper cloud compute</text>
+  <rect x="560" y="314" width="210" height="96" rx="14" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--coral,#ef4444) 22%, transparent);stroke:color-mix(in srgb, var(--coral,#ef4444) 45%, transparent);stroke-width:1.5"/>
+    <rect x="560" y="314" width="210" height="96" rx="14" style="fill:color-mix(in srgb, var(--coral,#ef4444) 14%, var(--surface,#ffffff));stroke:var(--coral,#ef4444);stroke-width:2"/>
+  <rect x="578" y="334" width="26" height="26" rx="13" style="fill:var(--coral,#ef4444)"/>
+  <text x="591" y="352" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--surface,#ffffff)">4</text>
+  <text x="616" y="353" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:17px;font-weight:600;fill:var(--text,#0f172a)">Competition</text>
+  <text x="578" y="386" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">two new entrants</text>
+  <!-- subject -->
+  <circle cx="400" cy="225" r="66" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--accent,#0d9488) 22%, transparent);stroke:color-mix(in srgb, var(--accent,#0d9488) 45%, transparent);stroke-width:1.5"/>
+    <circle cx="400" cy="225" r="66" style="fill:color-mix(in srgb, var(--accent,#0d9488) 18%, var(--surface,#ffffff));stroke:var(--accent,#0d9488);stroke-width:2.5"/>
+  <text x="400" y="227" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:17px;font-weight:700;fill:var(--text,#0f172a)">Our product</text>
+  <text x="400" y="247" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">under pressure</text>
+</svg></div>
+      <details><summary>source (.svg)</summary><pre class="src"></pre></details>
+    </figure>
+    <figure class="card" id="c-cycle-loop">
+      <figcaption>
+        <span class="idx">04</span>
         <span class="info"><strong>cycle-loop</strong><em>Four-node circular loop with clockwise arrows back to the start</em><span class="use">when: Iterative processes: plan-build-measure-learn, audit cycles, feedback loops</span></span>
       </figcaption>
-      <div class="stage"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-label="Four-node cycle with clockwise arrows returning to the first node" style="width:100%;height:auto">
+      <div class="stage"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-label="Four-node cycle Plan, Build, Measure, Learn with clockwise arrows returning to the first node" style="width:100%;height:auto">
   <title>Cycle loop diagram</title>
-  <!-- arc arrows: right, bottom, left, top (clockwise) -->
-  <g fill="none" style="stroke:var(--text-muted,#64748b);stroke-width:2.5" stroke-linecap="round">
-    <path d="M 505.7 194.7 A 110 110 0 0 1 505.7 255.3"/>
-    <path d="M 430.3 330.7 A 110 110 0 0 1 369.7 330.7"/>
-    <path d="M 294.3 255.3 A 110 110 0 0 1 294.3 194.7"/>
-    <path d="M 369.7 119.3 A 110 110 0 0 1 430.3 119.3"/>
-  </g>
-  <g fill="var(--text-muted,#64748b)">
-    <polygon points="502.4,266.9 500.0,258.9 508.7,261.4"/>
-    <polygon points="358.1,327.4 366.1,325.0 363.6,333.7"/>
-    <polygon points="297.6,183.1 300.0,191.1 291.3,188.6"/>
-    <polygon points="441.9,122.6 433.9,125.0 436.4,116.3"/>
-  </g>
-  <!-- center -->
-  <text x="400" y="220" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:20px;font-weight:700;fill:var(--text,#0f172a)">Iterate</text>
-  <text x="400" y="246" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">repeat the loop</text>
-  <!-- nodes: 1 top-right, 2 bottom-right, 3 bottom-left, 4 top-left -->
-  <g>
-    <circle cx="510" cy="118" r="52" style="fill:color-mix(in srgb, var(--teal,#0d9488) 14%, var(--surface,#f8fafc));stroke:var(--teal,#0d9488);stroke-width:2"/>
-    <text x="510" y="126" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:17px;font-weight:700;fill:var(--text,#0f172a)">1</text>
-    <text x="510" y="30" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:15px;font-weight:600;fill:var(--teal,#0d9488)">Plan</text>
-
-    <circle cx="510" cy="332" r="52" style="fill:color-mix(in srgb, var(--green,#10b981) 14%, var(--surface,#f8fafc));stroke:var(--green,#10b981);stroke-width:2"/>
-    <text x="510" y="340" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:17px;font-weight:700;fill:var(--text,#0f172a)">2</text>
-    <text x="578" y="339" text-anchor="start" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:15px;font-weight:600;fill:var(--green,#10b981)">Build</text>
-
-    <circle cx="290" cy="332" r="52" style="fill:color-mix(in srgb, var(--coral,#ef4444) 14%, var(--surface,#f8fafc));stroke:var(--coral,#ef4444);stroke-width:2"/>
-    <text x="290" y="340" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:17px;font-weight:700;fill:var(--text,#0f172a)">3</text>
-    <text x="222" y="339" text-anchor="end" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:15px;font-weight:600;fill:var(--coral,#ef4444)">Measure</text>
-
-    <circle cx="290" cy="118" r="52" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 14%, var(--surface,#f8fafc));stroke:var(--amber,#f59e0b);stroke-width:2"/>
-    <text x="290" y="126" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:17px;font-weight:700;fill:var(--text,#0f172a)">4</text>
-    <text x="222" y="125" text-anchor="end" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:15px;font-weight:600;fill:var(--amber,#f59e0b)">Learn</text>
-  </g>
+  <!-- arcs between nodes on the same circle (clockwise) -->
+  <path d="M 542.4 178 A 150 150 0 0 1 542.4 272" fill="none" style="stroke:var(--text-muted,#64748b);stroke-width:2.5" stroke-linecap="round"/>
+  <polygon points="540.3,278.2 537.8,262.7 551.1,266.9" style="fill:var(--text-muted,#64748b)"/>
+  <path d="M 447 367.4 A 150 150 0 0 1 353 367.4" fill="none" style="stroke:var(--text-muted,#64748b);stroke-width:2.5" stroke-linecap="round"/>
+  <polygon points="346.8,365.3 362.3,362.8 358.1,376.1" style="fill:var(--text-muted,#64748b)"/>
+  <path d="M 257.6 272 A 150 150 0 0 1 257.6 178" fill="none" style="stroke:var(--text-muted,#64748b);stroke-width:2.5" stroke-linecap="round"/>
+  <polygon points="259.7,171.8 262.2,187.3 248.9,183.1" style="fill:var(--text-muted,#64748b)"/>
+  <path d="M 353 82.6 A 150 150 0 0 1 447 82.6" fill="none" style="stroke:var(--text-muted,#64748b);stroke-width:2.5" stroke-linecap="round"/>
+  <polygon points="453.2,84.7 437.7,87.2 441.9,73.9" style="fill:var(--text-muted,#64748b)"/>
+  <text x="400" y="223" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:22px;font-weight:700;fill:var(--text,#0f172a)">Iterate</text>
+  <text x="400" y="245" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">repeat the loop</text>
+  <!-- nodes (number + label inside, caption outside) -->
+  <circle cx="506.1" cy="118.9" r="54" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--teal,#0d9488) 22%, transparent);stroke:color-mix(in srgb, var(--teal,#0d9488) 45%, transparent);stroke-width:1.5"/>
+    <circle cx="506.1" cy="118.9" r="54" style="fill:color-mix(in srgb, var(--teal,#0d9488) 18%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:2"/>
+  <text x="506.1" y="108.9" text-anchor="middle" letter-spacing="1" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:12px;font-weight:700;fill:color-mix(in srgb, var(--teal,#0d9488) 70%, var(--text,#0f172a))">01</text>
+  <text x="506.1" y="130.9" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:17px;font-weight:600;fill:var(--text,#0f172a)">Plan</text>
+  <text x="574.1" y="116.9" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">set the goal</text>
+  <text x="574.1" y="134.9" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">and the metric</text>
+  <circle cx="506.1" cy="331.1" r="54" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--green,#10b981) 22%, transparent);stroke:color-mix(in srgb, var(--green,#10b981) 45%, transparent);stroke-width:1.5"/>
+    <circle cx="506.1" cy="331.1" r="54" style="fill:color-mix(in srgb, var(--green,#10b981) 18%, var(--surface,#ffffff));stroke:var(--green,#10b981);stroke-width:2"/>
+  <text x="506.1" y="321.1" text-anchor="middle" letter-spacing="1" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:12px;font-weight:700;fill:color-mix(in srgb, var(--green,#10b981) 70%, var(--text,#0f172a))">02</text>
+  <text x="506.1" y="343.1" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:17px;font-weight:600;fill:var(--text,#0f172a)">Build</text>
+  <text x="574.1" y="329.1" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">ship the smallest</text>
+  <text x="574.1" y="347.1" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">useful slice</text>
+  <circle cx="293.9" cy="331.1" r="54" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--coral,#ef4444) 22%, transparent);stroke:color-mix(in srgb, var(--coral,#ef4444) 45%, transparent);stroke-width:1.5"/>
+    <circle cx="293.9" cy="331.1" r="54" style="fill:color-mix(in srgb, var(--coral,#ef4444) 18%, var(--surface,#ffffff));stroke:var(--coral,#ef4444);stroke-width:2"/>
+  <text x="293.9" y="321.1" text-anchor="middle" letter-spacing="1" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:12px;font-weight:700;fill:color-mix(in srgb, var(--coral,#ef4444) 70%, var(--text,#0f172a))">03</text>
+  <text x="293.9" y="343.1" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:17px;font-weight:600;fill:var(--text,#0f172a)">Measure</text>
+  <text x="225.9" y="329.1" text-anchor="end" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">collect real</text>
+  <text x="225.9" y="347.1" text-anchor="end" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">usage data</text>
+  <circle cx="293.9" cy="118.9" r="54" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 22%, transparent);stroke:color-mix(in srgb, var(--amber,#f59e0b) 45%, transparent);stroke-width:1.5"/>
+    <circle cx="293.9" cy="118.9" r="54" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 18%, var(--surface,#ffffff));stroke:var(--amber,#f59e0b);stroke-width:2"/>
+  <text x="293.9" y="108.9" text-anchor="middle" letter-spacing="1" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:12px;font-weight:700;fill:color-mix(in srgb, var(--amber,#f59e0b) 70%, var(--text,#0f172a))">04</text>
+  <text x="293.9" y="130.9" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:17px;font-weight:600;fill:var(--text,#0f172a)">Learn</text>
+  <text x="225.9" y="116.9" text-anchor="end" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">decide: keep,</text>
+  <text x="225.9" y="134.9" text-anchor="end" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">change or drop</text>
 </svg></div>
       <details><summary>source (.svg)</summary><pre class="src"></pre></details>
     </figure>
     <figure class="card" id="c-fishbone-causal">
       <figcaption>
-        <span class="idx">02</span>
+        <span class="idx">05</span>
         <span class="info"><strong>fishbone-causal</strong><em>Ishikawa skeleton: four cause categories feeding one outcome box</em><span class="use">when: Root-cause analysis, drivers-of-an-outcome summaries</span></span>
       </figcaption>
-      <div class="stage"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-label="Fishbone diagram with four cause categories feeding one outcome box" style="width:100%;height:auto">
+      <div class="stage"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-label="Fishbone diagram with four cause categories, each with two sub-causes, feeding one outcome box" style="width:100%;height:auto">
   <title>Cause-and-effect fishbone</title>
-  <!-- spine -->
-  <line x1="60" y1="225" x2="672" y2="225" style="stroke:var(--border-bright,#cbd5e1);stroke-width:3.5" stroke-linecap="round"/>
-  <!-- bones -->
-  <g style="stroke:var(--text-muted,#64748b);stroke-width:2.5" stroke-linecap="round" fill="none">
-    <line x1="290" y1="225" x2="160" y2="105"/>
-    <line x1="290" y1="225" x2="160" y2="345"/>
-    <line x1="520" y1="225" x2="390" y2="105"/>
-    <line x1="520" y1="225" x2="390" y2="345"/>
-  </g>
-  <!-- cause ticks -->
-  <g style="stroke:var(--border-bright,#cbd5e1);stroke-width:2" stroke-linecap="round" fill="none">
-    <line x1="250" y1="189" x2="216" y2="223"/>
-    <line x1="222" y1="161" x2="188" y2="195"/>
-    <line x1="250" y1="261" x2="216" y2="227"/>
-    <line x1="222" y1="289" x2="188" y2="255"/>
-    <line x1="480" y1="189" x2="446" y2="223"/>
-    <line x1="452" y1="161" x2="418" y2="195"/>
-    <line x1="480" y1="261" x2="446" y2="227"/>
-    <line x1="452" y1="289" x2="418" y2="255"/>
-  </g>
-  <!-- category boxes -->
-  <g>
-    <rect x="95" y="66" width="130" height="34" rx="8" style="fill:color-mix(in srgb, var(--coral,#ef4444) 14%, var(--surface,#f8fafc));stroke:var(--coral,#ef4444);stroke-width:1.5"/>
-    <text x="160" y="88" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:14px;font-weight:600;fill:var(--text,#0f172a)">People</text>
-    <rect x="325" y="66" width="130" height="34" rx="8" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 14%, var(--surface,#f8fafc));stroke:var(--amber,#f59e0b);stroke-width:1.5"/>
-    <text x="390" y="88" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:14px;font-weight:600;fill:var(--text,#0f172a)">Process</text>
-    <rect x="95" y="350" width="130" height="34" rx="8" style="fill:color-mix(in srgb, var(--teal,#0d9488) 14%, var(--surface,#f8fafc));stroke:var(--teal,#0d9488);stroke-width:1.5"/>
-    <text x="160" y="372" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:14px;font-weight:600;fill:var(--text,#0f172a)">Tools</text>
-    <rect x="325" y="350" width="130" height="34" rx="8" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 14%, var(--surface,#f8fafc));stroke:var(--deep-blue,#2c4a7c);stroke-width:1.5"/>
-    <text x="390" y="372" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:14px;font-weight:600;fill:var(--text,#0f172a)">Data</text>
-  </g>
+  <!-- spine + head arrow into the outcome -->
+  <line x1="50" y1="225" x2="640" y2="225" style="stroke:var(--text-muted,#64748b);stroke-width:4" stroke-linecap="round"/>
+  <polygon points="664,225 646,235 646,215" style="fill:var(--text-muted,#64748b)"/>
+  <!-- bones + labelled sub-causes -->
+  <line x1="290" y1="225" x2="160" y2="105" style="stroke:var(--coral,#ef4444);stroke-width:3" stroke-linecap="round"/>
+  <line x1="243.2" y1="181.8" x2="191.2" y2="181.8" style="stroke:var(--text-muted,#64748b);stroke-width:1.8" stroke-linecap="round"/>
+  <text x="185.2" y="185.8" text-anchor="end" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">skills gap</text>
+  <line x1="201.6" y1="143.4" x2="149.6" y2="143.4" style="stroke:var(--text-muted,#64748b);stroke-width:1.8" stroke-linecap="round"/>
+  <text x="143.6" y="147.4" text-anchor="end" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">unclear owner</text>
+  <rect x="92" y="65" width="136" height="36" rx="10" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--coral,#ef4444) 22%, transparent);stroke:color-mix(in srgb, var(--coral,#ef4444) 45%, transparent);stroke-width:1.5"/>
+    <rect x="92" y="65" width="136" height="36" rx="10" style="fill:color-mix(in srgb, var(--coral,#ef4444) 18%, var(--surface,#ffffff));stroke:var(--coral,#ef4444);stroke-width:2"/>
+  <text x="160" y="89" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:15px;font-weight:600;fill:var(--text,#0f172a)">People</text>
+  <line x1="520" y1="225" x2="390" y2="105" style="stroke:var(--amber,#f59e0b);stroke-width:3" stroke-linecap="round"/>
+  <line x1="473.2" y1="181.8" x2="421.2" y2="181.8" style="stroke:var(--text-muted,#64748b);stroke-width:1.8" stroke-linecap="round"/>
+  <text x="415.2" y="185.8" text-anchor="end" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">handoffs</text>
+  <line x1="431.6" y1="143.4" x2="379.6" y2="143.4" style="stroke:var(--text-muted,#64748b);stroke-width:1.8" stroke-linecap="round"/>
+  <text x="373.6" y="147.4" text-anchor="end" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">no review step</text>
+  <rect x="322" y="65" width="136" height="36" rx="10" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 22%, transparent);stroke:color-mix(in srgb, var(--amber,#f59e0b) 45%, transparent);stroke-width:1.5"/>
+    <rect x="322" y="65" width="136" height="36" rx="10" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 18%, var(--surface,#ffffff));stroke:var(--amber,#f59e0b);stroke-width:2"/>
+  <text x="390" y="89" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:15px;font-weight:600;fill:var(--text,#0f172a)">Process</text>
+  <line x1="290" y1="225" x2="160" y2="345" style="stroke:var(--teal,#0d9488);stroke-width:3" stroke-linecap="round"/>
+  <line x1="243.2" y1="268.2" x2="191.2" y2="268.2" style="stroke:var(--text-muted,#64748b);stroke-width:1.8" stroke-linecap="round"/>
+  <text x="185.2" y="272.2" text-anchor="end" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">legacy system</text>
+  <line x1="201.6" y1="306.6" x2="149.6" y2="306.6" style="stroke:var(--text-muted,#64748b);stroke-width:1.8" stroke-linecap="round"/>
+  <text x="143.6" y="310.6" text-anchor="end" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">no alerts</text>
+  <rect x="92" y="349" width="136" height="36" rx="10" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--teal,#0d9488) 22%, transparent);stroke:color-mix(in srgb, var(--teal,#0d9488) 45%, transparent);stroke-width:1.5"/>
+    <rect x="92" y="349" width="136" height="36" rx="10" style="fill:color-mix(in srgb, var(--teal,#0d9488) 18%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:2"/>
+  <text x="160" y="373" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:15px;font-weight:600;fill:var(--text,#0f172a)">Tools</text>
+  <line x1="520" y1="225" x2="390" y2="345" style="stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:3" stroke-linecap="round"/>
+  <line x1="473.2" y1="268.2" x2="421.2" y2="268.2" style="stroke:var(--text-muted,#64748b);stroke-width:1.8" stroke-linecap="round"/>
+  <text x="415.2" y="272.2" text-anchor="end" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">stale inputs</text>
+  <line x1="431.6" y1="306.6" x2="379.6" y2="306.6" style="stroke:var(--text-muted,#64748b);stroke-width:1.8" stroke-linecap="round"/>
+  <text x="373.6" y="310.6" text-anchor="end" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">bad joins</text>
+  <rect x="322" y="349" width="136" height="36" rx="10" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 22%, transparent);stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 45%, transparent);stroke-width:1.5"/>
+    <rect x="322" y="349" width="136" height="36" rx="10" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 18%, var(--surface,#ffffff));stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:2"/>
+  <text x="390" y="373" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:15px;font-weight:600;fill:var(--text,#0f172a)">Data</text>
   <!-- outcome -->
-  <rect x="688" y="188" width="92" height="74" rx="10" style="fill:color-mix(in srgb, var(--navy,#1a2744) 30%, var(--surface,#f8fafc));stroke:var(--navy,#1a2744);stroke-width:2"/>
-  <text x="734" y="222" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--text,#0f172a)">Outcome</text>
-  <text x="734" y="242" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:10px;fill:var(--text-muted,#64748b)">observed</text>
+  <rect x="672" y="180" width="112" height="90" rx="12" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--coral,#ef4444) 22%, transparent);stroke:color-mix(in srgb, var(--coral,#ef4444) 45%, transparent);stroke-width:1.5"/>
+    <rect x="672" y="180" width="112" height="90" rx="12" style="fill:color-mix(in srgb, var(--coral,#ef4444) 14%, var(--surface,#ffffff));stroke:var(--coral,#ef4444);stroke-width:2.5"/>
+  <text x="728" y="222" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:700;fill:var(--text,#0f172a)">Outcome</text>
+  <text x="728" y="244" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">observed effect</text>
 </svg></div>
       <details><summary>source (.svg)</summary><pre class="src"></pre></details>
     </figure>
     <figure class="card" id="c-flow-pipeline">
       <figcaption>
-        <span class="idx">03</span>
+        <span class="idx">06</span>
         <span class="info"><strong>flow-pipeline</strong><em>Horizontal multi-step process with connectors and a feedback loop</em><span class="use">when: Stages of a process, delivery pipeline, analysis workflow</span></span>
       </figcaption>
-      <div class="stage"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-label="Four-step process pipeline with arrows between stages" style="width:100%;height:auto">
+      <div class="stage"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-label="Four-step process pipeline with arrows between stages and a feedback loop from the last stage back to the first" style="width:100%;height:auto">
   <title>Four-step process pipeline</title>
-  <!-- boxes -->
+  <!-- steps -->
   <g>
-    <rect x="30" y="170" width="150" height="108" rx="14" style="fill:color-mix(in srgb, var(--teal,#0d9488) 14%, var(--surface,#f8fafc));stroke:var(--teal,#0d9488);stroke-width:2"/>
-    <text x="46" y="200" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:15px;font-weight:700;fill:var(--teal,#0d9488)">1</text>
-    <text x="105" y="222" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:17px;font-weight:600;fill:var(--text,#0f172a)">Discover</text>
-    <text x="105" y="248" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">scoping and inputs</text>
-
-    <rect x="228" y="170" width="150" height="108" rx="14" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 14%, var(--surface,#f8fafc));stroke:var(--deep-blue,#2c4a7c);stroke-width:2"/>
-    <text x="244" y="200" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:15px;font-weight:700;fill:var(--deep-blue,#2c4a7c)">2</text>
-    <text x="303" y="222" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:17px;font-weight:600;fill:var(--text,#0f172a)">Design</text>
-    <text x="303" y="248" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">prototype + review</text>
-
-    <rect x="426" y="170" width="150" height="108" rx="14" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 14%, var(--surface,#f8fafc));stroke:var(--amber,#f59e0b);stroke-width:2"/>
-    <text x="442" y="200" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:15px;font-weight:700;fill:var(--amber,#f59e0b)">3</text>
-    <text x="501" y="222" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:17px;font-weight:600;fill:var(--text,#0f172a)">Build</text>
-    <text x="501" y="248" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">implementation QA</text>
-
-    <rect x="624" y="170" width="150" height="108" rx="14" style="fill:color-mix(in srgb, var(--green,#10b981) 14%, var(--surface,#f8fafc));stroke:var(--green,#10b981);stroke-width:2"/>
-    <text x="640" y="200" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:15px;font-weight:700;fill:var(--green,#10b981)">4</text>
-    <text x="699" y="222" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:17px;font-weight:600;fill:var(--text,#0f172a)">Launch</text>
-    <text x="699" y="248" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">monitor + iterate</text>
+    <rect x="30" y="150" width="150" height="112" rx="14" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--teal,#0d9488) 22%, transparent);stroke:color-mix(in srgb, var(--teal,#0d9488) 45%, transparent);stroke-width:1.5"/>
+    <rect x="30" y="150" width="150" height="112" rx="14" style="fill:color-mix(in srgb, var(--teal,#0d9488) 16%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:2"/>
+    <circle cx="105" cy="150" r="15" style="fill:var(--teal,#0d9488);stroke:var(--surface,#ffffff);stroke-width:3"/>
+    <text x="105" y="155" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:14px;font-weight:700;fill:var(--surface,#ffffff)">1</text>
+    <text x="105" y="206" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:17px;font-weight:600;fill:var(--text,#0f172a)">Discover</text>
+    <text x="105" y="230" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">scoping and inputs</text>
+    <rect x="228" y="150" width="150" height="112" rx="14" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 22%, transparent);stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 45%, transparent);stroke-width:1.5"/>
+    <rect x="228" y="150" width="150" height="112" rx="14" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 16%, var(--surface,#ffffff));stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:2"/>
+    <circle cx="303" cy="150" r="15" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke:var(--surface,#ffffff);stroke-width:3"/>
+    <text x="303" y="155" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:14px;font-weight:700;fill:var(--surface,#ffffff)">2</text>
+    <text x="303" y="206" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:17px;font-weight:600;fill:var(--text,#0f172a)">Design</text>
+    <text x="303" y="230" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">prototype + review</text>
+    <rect x="426" y="150" width="150" height="112" rx="14" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 22%, transparent);stroke:color-mix(in srgb, var(--amber,#f59e0b) 45%, transparent);stroke-width:1.5"/>
+    <rect x="426" y="150" width="150" height="112" rx="14" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 16%, var(--surface,#ffffff));stroke:var(--amber,#f59e0b);stroke-width:2"/>
+    <circle cx="501" cy="150" r="15" style="fill:var(--amber,#f59e0b);stroke:var(--surface,#ffffff);stroke-width:3"/>
+    <text x="501" y="155" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:14px;font-weight:700;fill:var(--surface,#ffffff)">3</text>
+    <text x="501" y="206" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:17px;font-weight:600;fill:var(--text,#0f172a)">Build</text>
+    <text x="501" y="230" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">implementation QA</text>
+    <rect x="624" y="150" width="150" height="112" rx="14" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--green,#10b981) 22%, transparent);stroke:color-mix(in srgb, var(--green,#10b981) 45%, transparent);stroke-width:1.5"/>
+    <rect x="624" y="150" width="150" height="112" rx="14" style="fill:color-mix(in srgb, var(--green,#10b981) 16%, var(--surface,#ffffff));stroke:var(--green,#10b981);stroke-width:2"/>
+    <circle cx="699" cy="150" r="15" style="fill:var(--green,#10b981);stroke:var(--surface,#ffffff);stroke-width:3"/>
+    <text x="699" y="155" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:14px;font-weight:700;fill:var(--surface,#ffffff)">4</text>
+    <text x="699" y="206" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:17px;font-weight:600;fill:var(--text,#0f172a)">Launch</text>
+    <text x="699" y="230" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">monitor + iterate</text>
   </g>
-  <!-- connectors -->
-  <g style="stroke:var(--text-muted,#64748b);stroke-width:2.5" fill="none" stroke-linecap="round">
-    <line x1="186" y1="224" x2="214" y2="224"/>
-    <line x1="384" y1="224" x2="412" y2="224"/>
-    <line x1="582" y1="224" x2="610" y2="224"/>
-    <line x1="105" y1="300" x2="105" y2="352"/>
-    <line x1="105" y1="352" x2="699" y2="352"/>
-    <line x1="699" y1="352" x2="699" y2="290"/>
+  <!-- forward connectors -->
+  <g style="stroke:var(--text-muted,#64748b);stroke-width:2.5" stroke-linecap="round">
+    <line x1="188" y1="206" x2="212" y2="206"/>
+    <line x1="386" y1="206" x2="410" y2="206"/>
+    <line x1="584" y1="206" x2="608" y2="206"/>
   </g>
-  <g fill="var(--text-muted,#64748b)">
-    <polygon points="223,224 213,219 213,229"/>
-    <polygon points="421,224 411,219 411,229"/>
-    <polygon points="619,224 609,219 609,229"/>
-    <polygon points="699,281 694,291 704,291"/>
-  </g>
-  <text x="400" y="335" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">feedback re-enters at the previous stage</text>
+  <polygon points="222,206 209,212.5 209,199.5" style="fill:var(--text-muted,#64748b)"/>
+  <polygon points="420,206 407,212.5 407,199.5" style="fill:var(--text-muted,#64748b)"/>
+  <polygon points="618,206 605,212.5 605,199.5" style="fill:var(--text-muted,#64748b)"/>
+  <!-- feedback loop: Launch back to Discover -->
+  <path d="M 699 276 V 336 Q 699 352 683 352 H 121 Q 105 352 105 336 V 290" fill="none" style="stroke:var(--text-muted,#64748b);stroke-width:2.5" stroke-dasharray="7 6" stroke-linecap="round"/>
+  <polygon points="105,274 111.5,287 98.5,287" style="fill:var(--text-muted,#64748b)"/>
+  <text x="400" y="338" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:13px;fill:var(--text-muted,#64748b)">learnings feed the next cycle</text>
 </svg></div>
       <details><summary>source (.svg)</summary><pre class="src"></pre></details>
     </figure>
     <figure class="card" id="c-funnel-stages">
       <figcaption>
-        <span class="idx">04</span>
+        <span class="idx">07</span>
         <span class="info"><strong>funnel-stages</strong><em>Four-stage narrowing funnel with conversion percentages</em><span class="use">when: Sales/user funnels, pipeline stages, cohort retention</span></span>
       </figcaption>
-      <div class="stage"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-label="Four-stage funnel narrowing from top to bottom with conversion percentages" style="width:100%;height:auto">
+      <div class="stage"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-label="Four-stage funnel narrowing from visitors to payers with stage conversion percentages" style="width:100%;height:auto">
   <title>Conversion funnel</title>
-  <!-- bands (top->bottom) -->
-  <g style="stroke:var(--surface,#f8fafc);stroke-width:3" stroke-linejoin="round">
-    <polygon points="140,52 660,52 596,128 204,128" style="fill:color-mix(in srgb, var(--teal,#0d9488) 26%, var(--surface,#f8fafc));stroke:var(--teal,#0d9488);stroke-width:2"/>
-    <polygon points="204,140 596,140 536,216 264,216" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 24%, var(--surface,#f8fafc));stroke:var(--deep-blue,#2c4a7c);stroke-width:2"/>
-    <polygon points="264,228 536,228 478,304 322,304" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 24%, var(--surface,#f8fafc));stroke:var(--amber,#f59e0b);stroke-width:2"/>
-    <polygon points="322,316 478,316 425,392 375,392" style="fill:color-mix(in srgb, var(--coral,#ef4444) 22%, var(--surface,#f8fafc));stroke:var(--coral,#ef4444);stroke-width:2"/>
+  <!-- bands top -> bottom -->
+  <g>
+    <polygon points="100,52 620,52 556,128 164,128" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--teal,#0d9488) 22%, transparent);stroke:color-mix(in srgb, var(--teal,#0d9488) 45%, transparent);stroke-width:1.5" stroke-linejoin="round"/>
+    <polygon points="100,52 620,52 556,128 164,128" style="fill:color-mix(in srgb, var(--teal,#0d9488) 24%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:2" stroke-linejoin="round"/>
+    <text x="360" y="89" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">Visitors</text>
+    <text x="360" y="108" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">12,400</text>
+    <polygon points="164,140 556,140 496,216 224,216" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 22%, transparent);stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 45%, transparent);stroke-width:1.5" stroke-linejoin="round"/>
+    <polygon points="164,140 556,140 496,216 224,216" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 24%, var(--surface,#ffffff));stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:2" stroke-linejoin="round"/>
+    <text x="360" y="177" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">Sign-ups</text>
+    <text x="360" y="196" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">7,700</text>
+    <polygon points="224,228 496,228 438,304 282,304" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 22%, transparent);stroke:color-mix(in srgb, var(--amber,#f59e0b) 45%, transparent);stroke-width:1.5" stroke-linejoin="round"/>
+    <polygon points="224,228 496,228 438,304 282,304" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 24%, var(--surface,#ffffff));stroke:var(--amber,#f59e0b);stroke-width:2" stroke-linejoin="round"/>
+    <text x="360" y="265" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">Actives</text>
+    <text x="360" y="284" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">3,400</text>
+    <polygon points="282,316 438,316 386,392 334,392" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--coral,#ef4444) 22%, transparent);stroke:color-mix(in srgb, var(--coral,#ef4444) 45%, transparent);stroke-width:1.5" stroke-linejoin="round"/>
+    <polygon points="282,316 438,316 386,392 334,392" style="fill:color-mix(in srgb, var(--coral,#ef4444) 24%, var(--surface,#ffffff));stroke:var(--coral,#ef4444);stroke-width:2" stroke-linejoin="round"/>
+    <text x="360" y="353" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">Payers</text>
+    <text x="360" y="372" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">1,050</text>
   </g>
-  <!-- stage labels -->
-  <g text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">
-    <text x="400" y="98">Visitors</text>
-    <text x="400" y="186">Sign-ups</text>
-    <text x="400" y="274">Actives</text>
-    <text x="400" y="362">Payers</text>
-  </g>
-  <!-- stage percentage callouts -->
-  <g style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--text-muted,#64748b)">
-    <text x="700" y="146">62%</text>
-    <text x="700" y="234">44%</text>
-    <text x="700" y="322">31%</text>
-  </g>
-  <g style="stroke:var(--text-muted,#64748b);stroke-width:1.5" stroke-dasharray="4 4" fill="none">
-    <line x1="640" y1="134" x2="690" y2="141"/>
-    <line x1="560" y1="222" x2="690" y2="229"/>
-    <line x1="500" y1="310" x2="690" y2="317"/>
-  </g>
-  <text x="700" y="408" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:11px;fill:var(--text-muted,#64748b)">stage conversion</text>
+  <!-- stage-to-stage conversion pills, aligned on the band gaps -->
+  <text x="668" y="112" text-anchor="middle" letter-spacing=".5" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:12px;font-weight:700;fill:var(--text-muted,#64748b)">conversion</text>
+  <line x1="564" y1="134" x2="630" y2="134" style="stroke:var(--text-muted,#64748b);stroke-width:1.5" stroke-dasharray="4 4"/>
+  <rect x="636" y="120" width="64" height="28" rx="14" style="fill:var(--surface,#ffffff);stroke:var(--border-bright,#cbd5e1);stroke-width:1.5"/>
+  <text x="668" y="139" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:14px;font-weight:700;fill:var(--text,#0f172a)">62%</text>
+  <line x1="504" y1="222" x2="630" y2="222" style="stroke:var(--text-muted,#64748b);stroke-width:1.5" stroke-dasharray="4 4"/>
+  <rect x="636" y="208" width="64" height="28" rx="14" style="fill:var(--surface,#ffffff);stroke:var(--border-bright,#cbd5e1);stroke-width:1.5"/>
+  <text x="668" y="227" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:14px;font-weight:700;fill:var(--text,#0f172a)">44%</text>
+  <line x1="446" y1="310" x2="630" y2="310" style="stroke:var(--text-muted,#64748b);stroke-width:1.5" stroke-dasharray="4 4"/>
+  <rect x="636" y="296" width="64" height="28" rx="14" style="fill:var(--surface,#ffffff);stroke:var(--border-bright,#cbd5e1);stroke-width:1.5"/>
+  <text x="668" y="315" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:14px;font-weight:700;fill:var(--text,#0f172a)">31%</text>
+</svg></div>
+      <details><summary>source (.svg)</summary><pre class="src"></pre></details>
+    </figure>
+    <figure class="card" id="c-gear-mechanism">
+      <figcaption>
+        <span class="idx">08</span>
+        <span class="info"><strong>gear-mechanism</strong><em>Three meshing gears with rotation cues (driver → driven)</em><span class="use">when: Interdependent parts, operating models, what drives what</span></span>
+      </figcaption>
+      <div class="stage"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-label="Three meshing gears labelled Process, People and Tools, turning each other" style="width:100%;height:auto">
+  <title>Gear mechanism of interdependent parts</title>
+  <!-- gears: teeth are explicit polygons; meshing set by centre distance + rotation -->
+  <polygon points="347,262 361.8,269 359.8,284.1 343.7,287.1 334,310.5 334,310.5 343.3,324 334,336.1 318.6,330.6 298.5,346 298.5,346 299.8,362.3 285.7,368.2 275.1,355.7 250,359 250,359 243,373.8 227.9,371.8 224.9,355.7 201.5,346 201.5,346 188,355.3 175.9,346 181.4,330.6 166,310.5 166,310.5 149.7,311.8 143.8,297.7 156.3,287.1 153,262 153,262 138.2,255 140.2,239.9 156.3,236.9 166,213.5 166,213.5 156.7,200 166,187.9 181.4,193.4 201.5,178 201.5,178 200.2,161.7 214.3,155.8 224.9,168.3 250,165 250,165 257,150.2 272.1,152.2 275.1,168.3 298.5,178 298.5,178 312,168.7 324.1,178 318.6,193.4 334,213.5 334,213.5 350.3,212.2 356.2,226.3 343.7,236.9 347,262" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--teal,#0d9488) 22%, transparent);stroke:color-mix(in srgb, var(--teal,#0d9488) 45%, transparent);stroke-width:1.5" stroke-linejoin="round"/>
+    <polygon points="347,262 361.8,269 359.8,284.1 343.7,287.1 334,310.5 334,310.5 343.3,324 334,336.1 318.6,330.6 298.5,346 298.5,346 299.8,362.3 285.7,368.2 275.1,355.7 250,359 250,359 243,373.8 227.9,371.8 224.9,355.7 201.5,346 201.5,346 188,355.3 175.9,346 181.4,330.6 166,310.5 166,310.5 149.7,311.8 143.8,297.7 156.3,287.1 153,262 153,262 138.2,255 140.2,239.9 156.3,236.9 166,213.5 166,213.5 156.7,200 166,187.9 181.4,193.4 201.5,178 201.5,178 200.2,161.7 214.3,155.8 224.9,168.3 250,165 250,165 257,150.2 272.1,152.2 275.1,168.3 298.5,178 298.5,178 312,168.7 324.1,178 318.6,193.4 334,213.5 334,213.5 350.3,212.2 356.2,226.3 343.7,236.9 347,262" style="fill:color-mix(in srgb, var(--teal,#0d9488) 22%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:2" stroke-linejoin="round"/>
+  <circle cx="250" cy="262" r="85" fill="none" style="stroke:color-mix(in srgb, var(--teal,#0d9488) 50%, transparent);stroke-width:1.5" stroke-dasharray="3 5"/>
+  <circle cx="250" cy="262" r="44" style="fill:var(--surface,#ffffff);stroke:var(--teal,#0d9488);stroke-width:2"/>
+  <text x="250" y="267" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:15px;font-weight:700;fill:var(--text,#0f172a)">Process</text>
+  <polygon points="450.7,164.5 464.3,173.2 459.9,187 443.7,186 429.8,203.8 429.8,203.8 434.7,219.2 422.4,226.9 410.7,215.8 388.6,220.5 388.6,220.5 382.4,235.4 368.1,233.4 366.2,217.3 346.3,206.7 346.3,206.7 332,214.2 322.3,203.4 331.2,189.9 322.7,169 322.7,169 307,165.5 306.5,151 322,146.4 328.9,125 328.9,125 319.1,112.2 328,100.7 342.8,107.2 362,95.2 362,95.2 362.7,79.1 376.9,76.1 384.1,90.5 406.4,93.7 406.4,93.7 417.3,81.7 430.1,88.5 426.3,104.3 441.4,121 441.4,121 457.5,118.9 462.9,132.4 449.9,142 450.7,164.5" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 22%, transparent);stroke:color-mix(in srgb, var(--amber,#f59e0b) 45%, transparent);stroke-width:1.5" stroke-linejoin="round"/>
+    <polygon points="450.7,164.5 464.3,173.2 459.9,187 443.7,186 429.8,203.8 429.8,203.8 434.7,219.2 422.4,226.9 410.7,215.8 388.6,220.5 388.6,220.5 382.4,235.4 368.1,233.4 366.2,217.3 346.3,206.7 346.3,206.7 332,214.2 322.3,203.4 331.2,189.9 322.7,169 322.7,169 307,165.5 306.5,151 322,146.4 328.9,125 328.9,125 319.1,112.2 328,100.7 342.8,107.2 362,95.2 362,95.2 362.7,79.1 376.9,76.1 384.1,90.5 406.4,93.7 406.4,93.7 417.3,81.7 430.1,88.5 426.3,104.3 441.4,121 441.4,121 457.5,118.9 462.9,132.4 449.9,142 450.7,164.5" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 22%, var(--surface,#ffffff));stroke:var(--amber,#f59e0b);stroke-width:2" stroke-linejoin="round"/>
+  <circle cx="386.3" cy="155.5" r="53" fill="none" style="stroke:color-mix(in srgb, var(--amber,#f59e0b) 50%, transparent);stroke-width:1.5" stroke-dasharray="3 5"/>
+  <circle cx="386.3" cy="155.5" r="34" style="fill:var(--surface,#ffffff);stroke:var(--amber,#f59e0b);stroke-width:2"/>
+  <text x="386.3" y="160.5" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:15px;font-weight:700;fill:var(--text,#0f172a)">People</text>
+  <polygon points="551,206.3 565.1,214 560.9,227.8 544.9,226.4 530.7,241.8 530.7,241.8 533.6,257.6 520.2,262.9 511.3,249.5 490.4,248 490.4,248 479.8,260.1 467.3,253 472.3,237.7 460.4,220.5 460.4,220.5 444.3,219.7 442.1,205.4 457.2,199.8 463.3,179.8 463.3,179.8 453.8,166.7 463.6,156.1 477.4,164.4 496.8,156.6 496.8,156.6 501.2,141.1 515.6,142.1 517.7,158.1 535.9,168.5 535.9,168.5 550.7,162.2 558.9,174.1 547.7,185.7 551,206.3" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 22%, transparent);stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 45%, transparent);stroke-width:1.5" stroke-linejoin="round"/>
+    <polygon points="551,206.3 565.1,214 560.9,227.8 544.9,226.4 530.7,241.8 530.7,241.8 533.6,257.6 520.2,262.9 511.3,249.5 490.4,248 490.4,248 479.8,260.1 467.3,253 472.3,237.7 460.4,220.5 460.4,220.5 444.3,219.7 442.1,205.4 457.2,199.8 463.3,179.8 463.3,179.8 453.8,166.7 463.6,156.1 477.4,164.4 496.8,156.6 496.8,156.6 501.2,141.1 515.6,142.1 517.7,158.1 535.9,168.5 535.9,168.5 550.7,162.2 558.9,174.1 547.7,185.7 551,206.3" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 22%, var(--surface,#ffffff));stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:2" stroke-linejoin="round"/>
+  <circle cx="504.1" cy="203.1" r="35" fill="none" style="stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 50%, transparent);stroke-width:1.5" stroke-dasharray="3 5"/>
+  <circle cx="504.1" cy="203.1" r="26" style="fill:var(--surface,#ffffff);stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:2"/>
+  <text x="504.1" y="208.1" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--text,#0f172a)">Tools</text>
+  <!-- rotation cues + captions -->
+  <path d="M 139.1 326 A 128 128 0 0 1 129.7 218.2" fill="none" style="stroke:var(--text-muted,#64748b);stroke-width:2" stroke-linecap="round"/>
+  <polygon points="131.8,212.6 133.2,224.8 122.8,221" style="fill:var(--text-muted,#64748b)"/>
+  <path d="M 353.5 65.3 A 96 96 0 0 0 296.1 122.7" fill="none" style="stroke:var(--text-muted,#64748b);stroke-width:2" stroke-linecap="round"/>
+  <polygon points="294.1,128.3 292.7,116.1 303,119.8" style="fill:var(--text-muted,#64748b)"/>
+  <path d="M 563.8 253.2 A 78 78 0 0 1 504.1 281.1" fill="none" style="stroke:var(--text-muted,#64748b);stroke-width:2" stroke-linecap="round"/>
+  <polygon points="498.1,281.1 509.1,275.6 509.1,286.6" style="fill:var(--text-muted,#64748b)"/>
+  <text x="250" y="420" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">drives everything</text>
+  <text x="482.3" y="103.5" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">turn the work</text>
+  <text x="524.1" y="303.1" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">multiply effort</text>
+  <text x="560" y="330" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:17px;font-weight:700;fill:var(--text,#0f172a)">Interlocking parts</text>
+  <text x="560" y="352" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">slow one gear and the</text>
+  <text x="560" y="370" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">whole mechanism slows</text>
 </svg></div>
       <details><summary>source (.svg)</summary><pre class="src"></pre></details>
     </figure>
     <figure class="card" id="c-hub-spoke">
       <figcaption>
-        <span class="idx">05</span>
+        <span class="idx">09</span>
         <span class="info"><strong>hub-spoke</strong><em>Central topic connected to six satellite topics</em><span class="use">when: Concept maps, ecosystems, capability overviews, research landscape</span></span>
       </figcaption>
       <div class="stage"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-label="Central hub connected to six surrounding topics" style="width:100%;height:auto">
   <title>Hub and spoke concept map</title>
-  <!-- connectors (under nodes) -->
-  <g style="stroke:var(--text-muted,#64748b);stroke-width:2" fill="none">
-    <line x1="400" y1="225" x2="550" y2="225"/>
-    <line x1="400" y1="225" x2="475" y2="95"/>
-    <line x1="400" y1="225" x2="325" y2="95"/>
-    <line x1="400" y1="225" x2="250" y2="225"/>
-    <line x1="400" y1="225" x2="325" y2="355"/>
-    <line x1="400" y1="225" x2="475" y2="355"/>
+  <!-- spokes (hub edge -> satellite edge) -->
+  <g style="stroke:var(--text-muted,#64748b);stroke-width:2" stroke-linecap="round">
+    <line x1="468" y1="225" x2="508" y2="225"/>
+    <line x1="434" y1="166.1" x2="454" y2="131.5"/>
+    <line x1="366" y1="166.1" x2="346" y2="131.5"/>
+    <line x1="332" y1="225" x2="292" y2="225"/>
+    <line x1="366" y1="283.9" x2="346" y2="318.5"/>
+    <line x1="434" y1="283.9" x2="454" y2="318.5"/>
   </g>
   <!-- satellites -->
-  <g>
-    <circle cx="550" cy="225" r="40" style="fill:color-mix(in srgb, var(--teal,#0d9488) 14%, var(--surface,#f8fafc));stroke:var(--teal,#0d9488);stroke-width:2"/>
-    <text x="550" y="231" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:600;fill:var(--text,#0f172a)">Data</text>
-    <circle cx="475" cy="95" r="40" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 14%, var(--surface,#f8fafc));stroke:var(--amber,#f59e0b);stroke-width:2"/>
-    <text x="475" y="101" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:600;fill:var(--text,#0f172a)">People</text>
-    <circle cx="325" cy="95" r="40" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 14%, var(--surface,#f8fafc));stroke:var(--deep-blue,#2c4a7c);stroke-width:2"/>
-    <text x="325" y="101" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:600;fill:var(--text,#0f172a)">Compute</text>
-    <circle cx="250" cy="225" r="40" style="fill:color-mix(in srgb, var(--green,#10b981) 14%, var(--surface,#f8fafc));stroke:var(--green,#10b981);stroke-width:2"/>
-    <text x="250" y="231" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:600;fill:var(--text,#0f172a)">Methods</text>
-    <circle cx="325" cy="355" r="40" style="fill:color-mix(in srgb, var(--coral,#ef4444) 14%, var(--surface,#f8fafc));stroke:var(--coral,#ef4444);stroke-width:2"/>
-    <text x="325" y="361" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:600;fill:var(--text,#0f172a)">Ethics</text>
-    <circle cx="475" cy="355" r="40" style="fill:color-mix(in srgb, var(--navy,#1a2744) 22%, var(--surface,#f8fafc));stroke:var(--navy,#1a2744);stroke-width:2"/>
-    <text x="475" y="361" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:600;fill:var(--text,#0f172a)">Infra</text>
-  </g>
+  <circle cx="558" cy="225" r="46" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--teal,#0d9488) 22%, transparent);stroke:color-mix(in srgb, var(--teal,#0d9488) 45%, transparent);stroke-width:1.5"/>
+    <circle cx="558" cy="225" r="46" style="fill:color-mix(in srgb, var(--teal,#0d9488) 18%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:2"/>
+  <text x="558" y="230" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:14px;font-weight:600;fill:var(--text,#0f172a)">Data</text>
+  <circle cx="479" cy="88.2" r="46" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 22%, transparent);stroke:color-mix(in srgb, var(--amber,#f59e0b) 45%, transparent);stroke-width:1.5"/>
+    <circle cx="479" cy="88.2" r="46" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 18%, var(--surface,#ffffff));stroke:var(--amber,#f59e0b);stroke-width:2"/>
+  <text x="479" y="93.2" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:14px;font-weight:600;fill:var(--text,#0f172a)">People</text>
+  <circle cx="321" cy="88.2" r="46" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 22%, transparent);stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 45%, transparent);stroke-width:1.5"/>
+    <circle cx="321" cy="88.2" r="46" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 18%, var(--surface,#ffffff));stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:2"/>
+  <text x="321" y="93.2" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:14px;font-weight:600;fill:var(--text,#0f172a)">Compute</text>
+  <circle cx="242" cy="225" r="46" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--green,#10b981) 22%, transparent);stroke:color-mix(in srgb, var(--green,#10b981) 45%, transparent);stroke-width:1.5"/>
+    <circle cx="242" cy="225" r="46" style="fill:color-mix(in srgb, var(--green,#10b981) 18%, var(--surface,#ffffff));stroke:var(--green,#10b981);stroke-width:2"/>
+  <text x="242" y="230" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:14px;font-weight:600;fill:var(--text,#0f172a)">Methods</text>
+  <circle cx="321" cy="361.8" r="46" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--coral,#ef4444) 22%, transparent);stroke:color-mix(in srgb, var(--coral,#ef4444) 45%, transparent);stroke-width:1.5"/>
+    <circle cx="321" cy="361.8" r="46" style="fill:color-mix(in srgb, var(--coral,#ef4444) 18%, var(--surface,#ffffff));stroke:var(--coral,#ef4444);stroke-width:2"/>
+  <text x="321" y="366.8" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:14px;font-weight:600;fill:var(--text,#0f172a)">Ethics</text>
+  <circle cx="479" cy="361.8" r="46" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--navy,#1a2744) 22%, transparent);stroke:color-mix(in srgb, var(--navy,#1a2744) 45%, transparent);stroke-width:1.5"/>
+    <circle cx="479" cy="361.8" r="46" style="fill:color-mix(in srgb, var(--navy,#1a2744) 24%, var(--surface,#ffffff));stroke:color-mix(in srgb, var(--navy,#1a2744) 55%, var(--text,#0f172a));stroke-width:2"/>
+  <text x="479" y="366.8" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:14px;font-weight:600;fill:var(--text,#0f172a)">Infra</text>
   <!-- hub -->
-  <circle cx="400" cy="225" r="60" style="fill:color-mix(in srgb, var(--accent,#0d9488) 16%, var(--surface,#f8fafc));stroke:var(--accent,#0d9488);stroke-width:2.5"/>
-  <text x="400" y="220" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:18px;font-weight:700;fill:var(--text,#0f172a)">Platform</text>
-  <text x="400" y="242" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:11px;fill:var(--text-muted,#64748b)">topic</text>
+  <circle cx="400" cy="225" r="64" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--accent,#0d9488) 22%, transparent);stroke:color-mix(in srgb, var(--accent,#0d9488) 45%, transparent);stroke-width:1.5"/>
+    <circle cx="400" cy="225" r="64" style="fill:color-mix(in srgb, var(--accent,#0d9488) 20%, var(--surface,#ffffff));stroke:var(--accent,#0d9488);stroke-width:3"/>
+  <text x="400" y="225" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:19px;font-weight:700;fill:var(--text,#0f172a)">Platform</text>
+  <text x="400" y="245" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">core topic</text>
+</svg></div>
+      <details><summary>source (.svg)</summary><pre class="src"></pre></details>
+    </figure>
+    <figure class="card" id="c-iceberg-depth">
+      <figcaption>
+        <span class="idx">10</span>
+        <span class="info"><strong>iceberg-depth</strong><em>Visible tip vs larger hidden mass below a waterline, with labelled leaders</em><span class="use">when: Visible symptoms vs underlying causes, hidden costs, culture models</span></span>
+      </figcaption>
+      <div class="stage"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-label="Iceberg with visible results and behaviours above the waterline and hidden processes, assumptions, culture and incentives below" style="width:100%;height:auto">
+  <title>Iceberg of visible and hidden factors</title>
+  <!-- water -->
+  <path d="M 10 170 H 790 V 424 Q 790 438 776 438 H 24 Q 10 438 10 424 Z" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 12%, var(--surface,#ffffff))"/>
+  <!-- hidden mass (dashed = below the surface) -->
+  <polygon points="306,170 252,236 232,318 290,398 400,424 520,396 570,312 548,232 494,170" style="fill:color-mix(in srgb, var(--teal,#0d9488) 20%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:2" stroke-dasharray="7 5" stroke-linejoin="round"/>
+  <!-- visible tip -->
+  <polygon points="328,170 360,112 384,84 400,56 424,94 446,116 472,170" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--teal,#0d9488) 22%, transparent);stroke:color-mix(in srgb, var(--teal,#0d9488) 45%, transparent);stroke-width:1.5"/>
+  <polygon points="328,170 360,112 384,84 400,56 424,94 446,116 472,170" style="fill:color-mix(in srgb, var(--teal,#0d9488) 16%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:2.5" stroke-linejoin="round"/>
+  <polyline points="384,84 392,130 380,160" fill="none" style="stroke:color-mix(in srgb, var(--teal,#0d9488) 55%, transparent);stroke-width:1.5" stroke-linecap="round"/>
+  <!-- waterline -->
+  <path d="M 10 170 q 15 -7 30 0 t 30 0 q 15 -7 30 0 t 30 0 q 15 -7 30 0 t 30 0 q 15 -7 30 0 t 30 0 q 15 -7 30 0 t 30 0 q 15 -7 30 0 t 30 0 q 15 -7 30 0 t 30 0 q 15 -7 30 0 t 30 0 q 15 -7 30 0 t 30 0 q 15 -7 30 0 t 30 0 q 15 -7 30 0 t 30 0 q 15 -7 30 0 t 30 0 q 15 -7 30 0 t 30 0" fill="none" style="stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:2" stroke-linecap="round"/>
+  <text x="30" y="52" letter-spacing="1.2" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:11px;font-weight:700;fill:var(--text-muted,#64748b)">VISIBLE · ~10%</text>
+  <text x="30" y="202" letter-spacing="1.2" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:11px;font-weight:700;fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a))">HIDDEN · ~90%</text>
+  <!-- labels + leaders (edge x = where the leader meets the berg) -->
+  <line x1="220" y1="115" x2="352" y2="115" style="stroke:var(--text-muted,#64748b);stroke-width:1.5" stroke-dasharray="3 4"/>
+  <circle cx="352" cy="115" r="3.5" style="fill:var(--text-muted,#64748b)"/>
+  <text x="212" y="120" text-anchor="end" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">Results</text>
+  <text x="212" y="139" text-anchor="end" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">what gets reported</text>
+  <line x1="580" y1="131" x2="456" y2="131" style="stroke:var(--text-muted,#64748b);stroke-width:1.5" stroke-dasharray="3 4"/>
+  <circle cx="456" cy="131" r="3.5" style="fill:var(--text-muted,#64748b)"/>
+  <text x="588" y="136" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">Behaviours</text>
+  <text x="588" y="155" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">what people do</text>
+  <line x1="220" y1="257" x2="246" y2="257" style="stroke:var(--text-muted,#64748b);stroke-width:1.5" stroke-dasharray="3 4"/>
+  <circle cx="246" cy="257" r="3.5" style="fill:var(--text-muted,#64748b)"/>
+  <text x="212" y="262" text-anchor="end" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">Processes</text>
+  <text x="212" y="281" text-anchor="end" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">how work flows</text>
+  <line x1="580" y1="257" x2="556" y2="257" style="stroke:var(--text-muted,#64748b);stroke-width:1.5" stroke-dasharray="3 4"/>
+  <circle cx="556" cy="257" r="3.5" style="fill:var(--text-muted,#64748b)"/>
+  <text x="588" y="262" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">Assumptions</text>
+  <text x="588" y="281" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">what we take for granted</text>
+  <line x1="220" y1="347" x2="252" y2="347" style="stroke:var(--text-muted,#64748b);stroke-width:1.5" stroke-dasharray="3 4"/>
+  <circle cx="252" cy="347" r="3.5" style="fill:var(--text-muted,#64748b)"/>
+  <text x="212" y="352" text-anchor="end" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">Culture</text>
+  <text x="212" y="371" text-anchor="end" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">unwritten rules</text>
+  <line x1="580" y1="347" x2="546" y2="347" style="stroke:var(--text-muted,#64748b);stroke-width:1.5" stroke-dasharray="3 4"/>
+  <circle cx="546" cy="347" r="3.5" style="fill:var(--text-muted,#64748b)"/>
+  <text x="588" y="352" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">Incentives</text>
+  <text x="588" y="371" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">what is rewarded</text>
+</svg></div>
+      <details><summary>source (.svg)</summary><pre class="src"></pre></details>
+    </figure>
+    <figure class="card" id="c-journey-map">
+      <figcaption>
+        <span class="idx">11</span>
+        <span class="info"><strong>journey-map</strong><em>Five stages with touchpoints and an emotion curve through face markers</em><span class="use">when: Customer/user journeys, onboarding experience, service blueprints</span></span>
+      </figcaption>
+      <div class="stage"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-label="Five-stage customer journey with touchpoints and an emotion curve dipping at onboarding and peaking at advocacy" style="width:100%;height:auto">
+  <title>Journey map with emotion curve</title>
+  <!-- column guides -->
+  <g style="stroke:var(--border,#e2e8f0);stroke-width:1.5" stroke-dasharray="3 5">
+    <line x1="175" y1="30" x2="175" y2="420"/>
+    <line x1="325" y1="30" x2="325" y2="420"/>
+    <line x1="475" y1="30" x2="475" y2="420"/>
+    <line x1="625" y1="30" x2="625" y2="420"/>
+  </g>
+  <line x1="30" y1="282" x2="770" y2="282" style="stroke:var(--border-bright,#cbd5e1);stroke-width:1.5" stroke-dasharray="6 6"/>
+  <text x="30" y="186" letter-spacing="1" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:11px;font-weight:700;fill:var(--text-muted,#64748b)">delight</text>
+  <text x="30" y="386" letter-spacing="1" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:11px;font-weight:700;fill:var(--text-muted,#64748b)">friction</text>
+  <!-- stage headers + touchpoints -->
+  <rect x="30" y="34" width="140" height="42" rx="21" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--teal,#0d9488) 22%, transparent);stroke:color-mix(in srgb, var(--teal,#0d9488) 45%, transparent);stroke-width:1.5"/>
+    <rect x="30" y="34" width="140" height="42" rx="21" style="fill:color-mix(in srgb, var(--teal,#0d9488) 22%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:2"/>
+  <text x="100" y="61" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:700;fill:var(--text,#0f172a)">Discover</text>
+  <text x="100" y="104" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">search · referral</text>
+  <rect x="180" y="34" width="140" height="42" rx="21" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 22%, transparent);stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 45%, transparent);stroke-width:1.5"/>
+    <rect x="180" y="34" width="140" height="42" rx="21" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 22%, var(--surface,#ffffff));stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:2"/>
+  <text x="250" y="61" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:700;fill:var(--text,#0f172a)">Sign up</text>
+  <text x="250" y="104" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">form · email check</text>
+  <rect x="330" y="34" width="140" height="42" rx="21" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--coral,#ef4444) 22%, transparent);stroke:color-mix(in srgb, var(--coral,#ef4444) 45%, transparent);stroke-width:1.5"/>
+    <rect x="330" y="34" width="140" height="42" rx="21" style="fill:color-mix(in srgb, var(--coral,#ef4444) 22%, var(--surface,#ffffff));stroke:var(--coral,#ef4444);stroke-width:2"/>
+  <text x="400" y="61" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:700;fill:var(--text,#0f172a)">Onboard</text>
+  <text x="400" y="104" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">tutorial · setup</text>
+  <rect x="480" y="34" width="140" height="42" rx="21" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 22%, transparent);stroke:color-mix(in srgb, var(--amber,#f59e0b) 45%, transparent);stroke-width:1.5"/>
+    <rect x="480" y="34" width="140" height="42" rx="21" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 22%, var(--surface,#ffffff));stroke:var(--amber,#f59e0b);stroke-width:2"/>
+  <text x="550" y="61" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:700;fill:var(--text,#0f172a)">Use</text>
+  <text x="550" y="104" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">daily app · support</text>
+  <rect x="630" y="34" width="140" height="42" rx="21" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--green,#10b981) 22%, transparent);stroke:color-mix(in srgb, var(--green,#10b981) 45%, transparent);stroke-width:1.5"/>
+    <rect x="630" y="34" width="140" height="42" rx="21" style="fill:color-mix(in srgb, var(--green,#10b981) 22%, var(--surface,#ffffff));stroke:var(--green,#10b981);stroke-width:2"/>
+  <text x="700" y="61" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:700;fill:var(--text,#0f172a)">Advocate</text>
+  <text x="700" y="104" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">reviews · invites</text>
+  <!-- emotion curve -->
+  <path d="M 100 240.6 C 125 251.3 200 286.6 250 305 C 300 323.4 350 358.7 400 351 C 450 343.3 500 283.5 550 259 C 600 234.5 675 213 700 203.8" fill="none" style="stroke:var(--text-muted,#64748b);stroke-width:3" stroke-linecap="round"/>
+  <!-- faces: green = delight, amber = neutral, coral = friction (mouth curve follows the score) -->
+  <g style="stroke:var(--green,#10b981);stroke-width:2" stroke-linecap="round"><circle cx="100" cy="240.6" r="17" style="fill:color-mix(in srgb, var(--green,#10b981) 22%, var(--surface,#ffffff))"/><path d="M 93 244.6 Q 100 247.8 107 244.6" fill="none"/><circle cx="94" cy="235.6" r="1.6" style="fill:var(--green,#10b981)"/><circle cx="106" cy="235.6" r="1.6" style="fill:var(--green,#10b981)"/></g>
+  <text x="100" y="418" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">finds us easily</text>
+  <g style="stroke:var(--amber,#f59e0b);stroke-width:2" stroke-linecap="round"><circle cx="250" cy="305" r="17" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 22%, var(--surface,#ffffff))"/><path d="M 243 309 Q 250 307.2 257 309" fill="none"/><circle cx="244" cy="300" r="1.6" style="fill:var(--amber,#f59e0b)"/><circle cx="256" cy="300" r="1.6" style="fill:var(--amber,#f59e0b)"/></g>
+  <text x="250" y="418" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">too many fields</text>
+  <g style="stroke:var(--coral,#ef4444);stroke-width:2" stroke-linecap="round"><circle cx="400" cy="351" r="17" style="fill:color-mix(in srgb, var(--coral,#ef4444) 22%, var(--surface,#ffffff))"/><path d="M 393 355 Q 400 349.8 407 355" fill="none"/><circle cx="394" cy="346" r="1.6" style="fill:var(--coral,#ef4444)"/><circle cx="406" cy="346" r="1.6" style="fill:var(--coral,#ef4444)"/></g>
+  <text x="400" y="418" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">first error, stuck</text>
+  <g style="stroke:var(--amber,#f59e0b);stroke-width:2" stroke-linecap="round"><circle cx="550" cy="259" r="17" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 22%, var(--surface,#ffffff))"/><path d="M 543 263 Q 550 264.8 557 263" fill="none"/><circle cx="544" cy="254" r="1.6" style="fill:var(--amber,#f59e0b)"/><circle cx="556" cy="254" r="1.6" style="fill:var(--amber,#f59e0b)"/></g>
+  <text x="550" y="418" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">help arrives fast</text>
+  <g style="stroke:var(--green,#10b981);stroke-width:2" stroke-linecap="round"><circle cx="700" cy="203.8" r="17" style="fill:color-mix(in srgb, var(--green,#10b981) 22%, var(--surface,#ffffff))"/><path d="M 693 207.8 Q 700 213.8 707 207.8" fill="none"/><circle cx="694" cy="198.8" r="1.6" style="fill:var(--green,#10b981)"/><circle cx="706" cy="198.8" r="1.6" style="fill:var(--green,#10b981)"/></g>
+  <text x="700" y="418" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">tells a colleague</text>
 </svg></div>
       <details><summary>source (.svg)</summary><pre class="src"></pre></details>
     </figure>
     <figure class="card" id="c-layer-stack">
       <figcaption>
-        <span class="idx">06</span>
+        <span class="idx">12</span>
         <span class="info"><strong>layer-stack</strong><em>Four-layer vertical stack with per-layer captions</em><span class="use">when: Architecture stacks, solution layers, dependency tiers</span></span>
       </figcaption>
-      <div class="stage"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-label="Four-layer stack with a caption per layer on the right" style="width:100%;height:auto">
+      <div class="stage"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-label="Four-layer stack from Interface down to Infrastructure with an owner caption per layer" style="width:100%;height:auto">
   <title>Layer stack</title>
+  <!-- direction cue -->
+  <line x1="92" y1="388" x2="92" y2="70" style="stroke:var(--border-bright,#cbd5e1);stroke-width:2.5" stroke-linecap="round"/>
+  <polygon points="92,50 99,63 85,63" style="fill:var(--text-muted,#64748b)"/>
+  <text x="0" y="0" transform="translate(76,225) rotate(-90)" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">closer to the user</text>
   <!-- layers (top = user-facing) -->
   <g>
-    <rect x="130" y="48" width="380" height="74" rx="12" style="fill:color-mix(in srgb, var(--teal,#0d9488) 14%, var(--surface,#f8fafc));stroke:var(--teal,#0d9488);stroke-width:2"/>
+    <rect x="130" y="48" width="380" height="74" rx="12" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--teal,#0d9488) 22%, transparent);stroke:color-mix(in srgb, var(--teal,#0d9488) 45%, transparent);stroke-width:1.5"/>
+    <rect x="130" y="48" width="380" height="74" rx="12" style="fill:color-mix(in srgb, var(--teal,#0d9488) 16%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:2"/>
     <rect x="130" y="48" width="10" height="74" rx="5" style="fill:var(--teal,#0d9488)"/>
-    <text x="320" y="82" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:17px;font-weight:600;fill:var(--text,#0f172a)">Interface</text>
-    <text x="320" y="106" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">what users touch</text>
-
-    <rect x="130" y="142" width="380" height="74" rx="12" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 14%, var(--surface,#f8fafc));stroke:var(--deep-blue,#2c4a7c);stroke-width:2"/>
-    <rect x="130" y="142" width="10" height="74" rx="5" style="fill:var(--deep-blue,#2c4a7c)"/>
-    <text x="320" y="176" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:17px;font-weight:600;fill:var(--text,#0f172a)">Services</text>
-    <text x="320" y="200" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">business logic</text>
-
-    <rect x="130" y="236" width="380" height="74" rx="12" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 14%, var(--surface,#f8fafc));stroke:var(--amber,#f59e0b);stroke-width:2"/>
+    <text x="325" y="82" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:17px;font-weight:600;fill:var(--text,#0f172a)">Interface</text>
+    <text x="325" y="104" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">what users touch</text>
+    <rect x="130" y="142" width="380" height="74" rx="12" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 22%, transparent);stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 45%, transparent);stroke-width:1.5"/>
+    <rect x="130" y="142" width="380" height="74" rx="12" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 16%, var(--surface,#ffffff));stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:2"/>
+    <rect x="130" y="142" width="10" height="74" rx="5" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a))"/>
+    <text x="325" y="176" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:17px;font-weight:600;fill:var(--text,#0f172a)">Services</text>
+    <text x="325" y="198" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">business logic</text>
+    <rect x="130" y="236" width="380" height="74" rx="12" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 22%, transparent);stroke:color-mix(in srgb, var(--amber,#f59e0b) 45%, transparent);stroke-width:1.5"/>
+    <rect x="130" y="236" width="380" height="74" rx="12" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 16%, var(--surface,#ffffff));stroke:var(--amber,#f59e0b);stroke-width:2"/>
     <rect x="130" y="236" width="10" height="74" rx="5" style="fill:var(--amber,#f59e0b)"/>
-    <text x="320" y="270" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:17px;font-weight:600;fill:var(--text,#0f172a)">Data</text>
-    <text x="320" y="294" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">state + pipeline</text>
-
-    <rect x="130" y="330" width="380" height="74" rx="12" style="fill:color-mix(in srgb, var(--navy,#1a2744) 26%, var(--surface,#f8fafc));stroke:var(--navy,#1a2744);stroke-width:2"/>
-    <rect x="130" y="330" width="10" height="74" rx="5" style="fill:var(--navy,#1a2744)"/>
-    <text x="320" y="364" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:17px;font-weight:600;fill:var(--text,#0f172a)">Infrastructure</text>
-    <text x="320" y="388" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">compute + network</text>
+    <text x="325" y="270" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:17px;font-weight:600;fill:var(--text,#0f172a)">Data</text>
+    <text x="325" y="292" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">state + pipeline</text>
+    <rect x="130" y="330" width="380" height="74" rx="12" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--navy,#1a2744) 22%, transparent);stroke:color-mix(in srgb, var(--navy,#1a2744) 45%, transparent);stroke-width:1.5"/>
+    <rect x="130" y="330" width="380" height="74" rx="12" style="fill:color-mix(in srgb, var(--navy,#1a2744) 24%, var(--surface,#ffffff));stroke:color-mix(in srgb, var(--navy,#1a2744) 55%, var(--text,#0f172a));stroke-width:2"/>
+    <rect x="130" y="330" width="10" height="74" rx="5" style="fill:color-mix(in srgb, var(--navy,#1a2744) 55%, var(--text,#0f172a))"/>
+    <text x="325" y="364" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:17px;font-weight:600;fill:var(--text,#0f172a)">Infrastructure</text>
+    <text x="325" y="386" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">compute + network</text>
   </g>
   <!-- right captions -->
-  <g style="stroke:var(--text-muted,#64748b);stroke-width:1.5" stroke-dasharray="4 4" fill="none">
-    <line x1="520" y1="85"  x2="640" y2="85"/>
-    <line x1="520" y1="179" x2="640" y2="179"/>
-    <line x1="520" y1="273" x2="640" y2="273"/>
-    <line x1="520" y1="367" x2="640" y2="367"/>
+  <circle cx="526" cy="85" r="3.5" style="fill:var(--teal,#0d9488)"/>
+  <line x1="534" y1="85" x2="630" y2="85" style="stroke:var(--text-muted,#64748b);stroke-width:1.5" stroke-dasharray="4 4"/>
+  <text x="640" y="90" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:13px;fill:var(--text-muted,#64748b)">owner: team A</text>
+  <circle cx="526" cy="179" r="3.5" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a))"/>
+  <line x1="534" y1="179" x2="630" y2="179" style="stroke:var(--text-muted,#64748b);stroke-width:1.5" stroke-dasharray="4 4"/>
+  <text x="640" y="184" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:13px;fill:var(--text-muted,#64748b)">owner: team B</text>
+  <circle cx="526" cy="273" r="3.5" style="fill:var(--amber,#f59e0b)"/>
+  <line x1="534" y1="273" x2="630" y2="273" style="stroke:var(--text-muted,#64748b);stroke-width:1.5" stroke-dasharray="4 4"/>
+  <text x="640" y="278" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:13px;fill:var(--text-muted,#64748b)">owner: team C</text>
+  <circle cx="526" cy="367" r="3.5" style="fill:color-mix(in srgb, var(--navy,#1a2744) 55%, var(--text,#0f172a))"/>
+  <line x1="534" y1="367" x2="630" y2="367" style="stroke:var(--text-muted,#64748b);stroke-width:1.5" stroke-dasharray="4 4"/>
+  <text x="640" y="372" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:13px;fill:var(--text-muted,#64748b)">owner: platform</text>
+</svg></div>
+      <details><summary>source (.svg)</summary><pre class="src"></pre></details>
+    </figure>
+    <figure class="card" id="c-puzzle-pieces">
+      <figcaption>
+        <span class="idx">13</span>
+        <span class="info"><strong>puzzle-pieces</strong><em>2×2 interlocking jigsaw with the final piece lifted out</em><span class="use">when: Parts of a whole, integrated solutions, the missing element</span></span>
+      </figcaption>
+      <div class="stage"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-label="Four interlocking puzzle pieces Vision, People, Process and Tools, with the Tools piece lifted out" style="width:100%;height:auto">
+  <title>Puzzle pieces forming one system</title>
+  <!-- 2x2 jigsaw; the last piece is lifted out to show it completes the whole -->
+  <g>
+    <path d="M 250 70 L 400 70 L 400 133 L 406 133 A 15 15 0 1 1 406 157 L 400 157 L 400 220 L 337 220 L 337 226 A 15 15 0 1 1 313 226 L 313 220 L 250 220 L 250 70 Z" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--teal,#0d9488) 22%, transparent);stroke:color-mix(in srgb, var(--teal,#0d9488) 45%, transparent);stroke-width:1.5" stroke-linejoin="round"/>
+    <path d="M 250 70 L 400 70 L 400 133 L 406 133 A 15 15 0 1 1 406 157 L 400 157 L 400 220 L 337 220 L 337 226 A 15 15 0 1 1 313 226 L 313 220 L 250 220 L 250 70 Z" style="fill:color-mix(in srgb, var(--teal,#0d9488) 22%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:2" stroke-linejoin="round"/>
+    <text x="320" y="136" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:17px;font-weight:700;fill:var(--text,#0f172a)">Vision</text>
+    <text x="320" y="156" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">why we exist</text>
   </g>
-  <g style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">
-    <text x="648" y="89">owner: team A</text>
-    <text x="648" y="183">owner: team B</text>
-    <text x="648" y="277">owner: team C</text>
-    <text x="648" y="371">owner: platform</text>
+  <g>
+    <path d="M 400 70 L 550 70 L 550 220 L 487 220 L 487 214 A 15 15 0 1 0 463 214 L 463 220 L 400 220 L 400 157 L 406 157 A 15 15 0 1 0 406 133 L 400 133 L 400 70 Z" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 22%, transparent);stroke:color-mix(in srgb, var(--amber,#f59e0b) 45%, transparent);stroke-width:1.5" stroke-linejoin="round"/>
+    <path d="M 400 70 L 550 70 L 550 220 L 487 220 L 487 214 A 15 15 0 1 0 463 214 L 463 220 L 400 220 L 400 157 L 406 157 A 15 15 0 1 0 406 133 L 400 133 L 400 70 Z" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 22%, var(--surface,#ffffff));stroke:var(--amber,#f59e0b);stroke-width:2" stroke-linejoin="round"/>
+    <text x="484" y="136" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:17px;font-weight:700;fill:var(--text,#0f172a)">People</text>
+    <text x="484" y="156" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">who makes it real</text>
   </g>
+  <g>
+    <path d="M 250 220 L 313 220 L 313 226 A 15 15 0 1 0 337 226 L 337 220 L 400 220 L 400 283 L 394 283 A 15 15 0 1 0 394 307 L 400 307 L 400 370 L 250 370 L 250 220 Z" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 22%, transparent);stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 45%, transparent);stroke-width:1.5" stroke-linejoin="round"/>
+    <path d="M 250 220 L 313 220 L 313 226 A 15 15 0 1 0 337 226 L 337 220 L 400 220 L 400 283 L 394 283 A 15 15 0 1 0 394 307 L 400 307 L 400 370 L 250 370 L 250 220 Z" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 22%, var(--surface,#ffffff));stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:2" stroke-linejoin="round"/>
+    <text x="314" y="296" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:17px;font-weight:700;fill:var(--text,#0f172a)">Process</text>
+    <text x="314" y="316" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">how work gets done</text>
+  </g>
+  <g transform="translate(34 22) rotate(7 475 295)">
+    <path d="M 400 220 L 463 220 L 463 214 A 15 15 0 1 1 487 214 L 487 220 L 550 220 L 550 370 L 400 370 L 400 307 L 394 307 A 15 15 0 1 1 394 283 L 400 283 L 400 220 Z" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--coral,#ef4444) 22%, transparent);stroke:color-mix(in srgb, var(--coral,#ef4444) 45%, transparent);stroke-width:1.5" stroke-linejoin="round"/>
+    <path d="M 400 220 L 463 220 L 463 214 A 15 15 0 1 1 487 214 L 487 220 L 550 220 L 550 370 L 400 370 L 400 307 L 394 307 A 15 15 0 1 1 394 283 L 400 283 L 400 220 Z" style="fill:color-mix(in srgb, var(--coral,#ef4444) 22%, var(--surface,#ffffff));stroke:var(--coral,#ef4444);stroke-width:2" stroke-linejoin="round"/>
+    <text x="476" y="292" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:17px;font-weight:700;fill:var(--text,#0f172a)">Tools</text>
+    <text x="476" y="312" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">what enables it</text>
+  </g>
+  <line x1="642" y1="232" x2="610" y2="252" style="stroke:var(--text-muted,#64748b);stroke-width:1.5" stroke-dasharray="4 4"/>
+  <polygon points="600,258 606.5,247.5 612.2,256.9" style="fill:var(--text-muted,#64748b)"/>
+  <text x="650" y="226" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:600;fill:var(--text-muted,#64748b)">the missing piece</text>
+  <text x="650" y="245" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">what completes it</text>
+  <text x="60" y="70" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:18px;font-weight:700;fill:var(--text,#0f172a)">Four parts,</text>
+  <text x="60" y="94" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:18px;font-weight:700;fill:color-mix(in srgb, var(--accent,#0d9488) 70%, var(--text,#0f172a))">one system</text>
+  <text x="60" y="122" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">each piece only works</text>
+  <text x="60" y="140" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">when its neighbours fit</text>
 </svg></div>
       <details><summary>source (.svg)</summary><pre class="src"></pre></details>
     </figure>
     <figure class="card" id="c-pyramid-hierarchy">
       <figcaption>
-        <span class="idx">07</span>
+        <span class="idx">14</span>
         <span class="info"><strong>pyramid-hierarchy</strong><em>Four-level pyramid (narrow apex to broad base) with side annotations</em><span class="use">when: Strategy→task hierarchies, organisational levels, abstraction layers</span></span>
       </figcaption>
       <div class="stage"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-label="Four-level pyramid from a narrow apex to a broad base, with annotations on the right" style="width:100%;height:auto">
   <title>Hierarchy pyramid</title>
-  <!-- bands top -> bottom (shared slant: each band bottom edge = next band top edge) -->
-  <g style="stroke:var(--surface,#f8fafc);stroke-width:3" stroke-linejoin="round">
-    <polygon points="330,44 470,44 530,116 270,116" style="fill:color-mix(in srgb, var(--teal,#0d9488) 20%, var(--surface,#f8fafc));stroke:var(--teal,#0d9488);stroke-width:2"/>
-    <polygon points="270,128 530,128 590,200 210,200" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 20%, var(--surface,#f8fafc));stroke:var(--deep-blue,#2c4a7c);stroke-width:2"/>
-    <polygon points="210,212 590,212 650,284 150,284" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 20%, var(--surface,#f8fafc));stroke:var(--amber,#f59e0b);stroke-width:2"/>
-    <polygon points="150,296 650,296 710,368 90,368" style="fill:color-mix(in srgb, var(--navy,#1a2744) 26%, var(--surface,#f8fafc));stroke:var(--navy,#1a2744);stroke-width:2"/>
+  <!-- bands top -> bottom (constant slant; next band continues the edge) -->
+  <g>
+    <polygon points="274,44 386,44 438,116 222,116" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--teal,#0d9488) 22%, transparent);stroke:color-mix(in srgb, var(--teal,#0d9488) 45%, transparent);stroke-width:1.5" stroke-linejoin="round"/>
+    <polygon points="274,44 386,44 438,116 222,116" style="fill:color-mix(in srgb, var(--teal,#0d9488) 20%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:2" stroke-linejoin="round"/>
+    <text x="330" y="86" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:17px;font-weight:600;fill:var(--text,#0f172a)">Strategy</text>
+    <polygon points="213,128 447,128 499,200 161,200" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 22%, transparent);stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 45%, transparent);stroke-width:1.5" stroke-linejoin="round"/>
+    <polygon points="213,128 447,128 499,200 161,200" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 20%, var(--surface,#ffffff));stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:2" stroke-linejoin="round"/>
+    <text x="330" y="170" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:17px;font-weight:600;fill:var(--text,#0f172a)">Programmes</text>
+    <polygon points="152,212 508,212 560,284 100,284" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 22%, transparent);stroke:color-mix(in srgb, var(--amber,#f59e0b) 45%, transparent);stroke-width:1.5" stroke-linejoin="round"/>
+    <polygon points="152,212 508,212 560,284 100,284" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 20%, var(--surface,#ffffff));stroke:var(--amber,#f59e0b);stroke-width:2" stroke-linejoin="round"/>
+    <text x="330" y="254" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:17px;font-weight:600;fill:var(--text,#0f172a)">Projects</text>
+    <polygon points="91,296 569,296 621,368 39,368" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--navy,#1a2744) 22%, transparent);stroke:color-mix(in srgb, var(--navy,#1a2744) 45%, transparent);stroke-width:1.5" stroke-linejoin="round"/>
+    <polygon points="91,296 569,296 621,368 39,368" style="fill:color-mix(in srgb, var(--navy,#1a2744) 26%, var(--surface,#ffffff));stroke:color-mix(in srgb, var(--navy,#1a2744) 55%, var(--text,#0f172a));stroke-width:2" stroke-linejoin="round"/>
+    <text x="330" y="338" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:17px;font-weight:600;fill:var(--text,#0f172a)">Tasks</text>
   </g>
-  <!-- level labels -->
-  <g text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">
-    <text x="400" y="88">Strategy</text>
-    <text x="400" y="172">Programmes</text>
-    <text x="400" y="256">Projects</text>
-    <text x="400" y="340">Tasks</text>
-  </g>
-  <!-- right-side annotations -->
-  <g style="stroke:var(--text-muted,#64748b);stroke-width:1.5" stroke-dasharray="4 4" fill="none">
-    <line x1="520" y1="88" x2="680" y2="88"/>
-    <line x1="580" y1="172" x2="680" y2="172"/>
-    <line x1="640" y1="256" x2="680" y2="256"/>
-    <line x1="700" y1="340" x2="680" y2="340"/>
-  </g>
-  <g style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)" text-anchor="end">
-    <text x="674" y="92">who decides</text>
-    <text x="674" y="176">who coordinates</text>
-    <text x="674" y="260">who executes</text>
-    <text x="674" y="344">who delivers</text>
-  </g>
+  <!-- right-side annotations: leader starts at the band edge, text clear of it -->
+  <circle cx="420" cy="80" r="3.5" style="fill:var(--teal,#0d9488)"/>
+  <line x1="426" y1="80" x2="650" y2="80" style="stroke:var(--text-muted,#64748b);stroke-width:1.5" stroke-dasharray="4 4"/>
+  <text x="660" y="85" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:13px;fill:var(--text-muted,#64748b)">who decides</text>
+  <circle cx="481" cy="164" r="3.5" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a))"/>
+  <line x1="487" y1="164" x2="650" y2="164" style="stroke:var(--text-muted,#64748b);stroke-width:1.5" stroke-dasharray="4 4"/>
+  <text x="660" y="169" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:13px;fill:var(--text-muted,#64748b)">who coordinates</text>
+  <circle cx="542" cy="248" r="3.5" style="fill:var(--amber,#f59e0b)"/>
+  <line x1="548" y1="248" x2="650" y2="248" style="stroke:var(--text-muted,#64748b);stroke-width:1.5" stroke-dasharray="4 4"/>
+  <text x="660" y="253" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:13px;fill:var(--text-muted,#64748b)">who executes</text>
+  <circle cx="603" cy="332" r="3.5" style="fill:color-mix(in srgb, var(--navy,#1a2744) 55%, var(--text,#0f172a))"/>
+  <line x1="609" y1="332" x2="650" y2="332" style="stroke:var(--text-muted,#64748b);stroke-width:1.5" stroke-dasharray="4 4"/>
+  <text x="660" y="337" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:13px;fill:var(--text-muted,#64748b)">who delivers</text>
 </svg></div>
       <details><summary>source (.svg)</summary><pre class="src"></pre></details>
     </figure>
     <figure class="card" id="c-quadrant-matrix">
       <figcaption>
-        <span class="idx">08</span>
+        <span class="idx">15</span>
         <span class="info"><strong>quadrant-matrix</strong><em>2×2 matrix with dashed axes and four tinted quadrant cells</em><span class="use">when: Prioritisation matrices (impact vs effort), risk maps, positioning</span></span>
       </figcaption>
       <div class="stage"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-label="Two-by-two matrix with Impact on the vertical axis and Effort on the horizontal" style="width:100%;height:auto">
   <title>Quadrant matrix</title>
-  <!-- quadrant tints -->
-  <g style="stroke:var(--border-bright,#cbd5e1);stroke-width:1.5">
-    <rect x="60" y="50" width="340" height="165" rx="12" style="fill:color-mix(in srgb, var(--green,#10b981) 10%, var(--surface,#f8fafc))"/>
-    <rect x="420" y="50" width="340" height="165" rx="12" style="fill:color-mix(in srgb, var(--teal,#0d9488) 8%, var(--surface,#f8fafc))"/>
-    <rect x="60" y="235" width="340" height="165" rx="12" style="fill:color-mix(in srgb, var(--coral,#ef4444) 8%, var(--surface,#f8fafc))"/>
-    <rect x="420" y="235" width="340" height="165" rx="12" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 8%, var(--surface,#f8fafc))"/>
+  <!-- quadrant cells -->
+  <rect x="80" y="40" width="340" height="170" rx="14" style="fill:color-mix(in srgb, var(--green,#10b981) 12%, var(--surface,#ffffff));stroke:color-mix(in srgb, var(--green,#10b981) 55%, transparent);stroke-width:1.5"/>
+  <rect x="102" y="110" width="6" height="34" rx="3" style="fill:var(--green,#10b981)"/>
+  <text x="122" y="124" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:18px;font-weight:600;fill:var(--text,#0f172a)">Do first</text>
+  <text x="122" y="144" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">high impact · low effort</text>
+  <rect x="430" y="40" width="340" height="170" rx="14" style="fill:color-mix(in srgb, var(--teal,#0d9488) 12%, var(--surface,#ffffff));stroke:color-mix(in srgb, var(--teal,#0d9488) 55%, transparent);stroke-width:1.5"/>
+  <rect x="452" y="110" width="6" height="34" rx="3" style="fill:var(--teal,#0d9488)"/>
+  <text x="472" y="124" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:18px;font-weight:600;fill:var(--text,#0f172a)">Plan</text>
+  <text x="472" y="144" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">high impact · high effort</text>
+  <rect x="80" y="222" width="340" height="170" rx="14" style="fill:color-mix(in srgb, var(--coral,#ef4444) 12%, var(--surface,#ffffff));stroke:color-mix(in srgb, var(--coral,#ef4444) 55%, transparent);stroke-width:1.5"/>
+  <rect x="102" y="292" width="6" height="34" rx="3" style="fill:var(--coral,#ef4444)"/>
+  <text x="122" y="306" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:18px;font-weight:600;fill:var(--text,#0f172a)">Question</text>
+  <text x="122" y="326" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">low impact · low effort</text>
+  <rect x="430" y="222" width="340" height="170" rx="14" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 12%, var(--surface,#ffffff));stroke:color-mix(in srgb, var(--amber,#f59e0b) 55%, transparent);stroke-width:1.5"/>
+  <rect x="452" y="292" width="6" height="34" rx="3" style="fill:var(--amber,#f59e0b)"/>
+  <text x="472" y="306" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:18px;font-weight:600;fill:var(--text,#0f172a)">Fill-in</text>
+  <text x="472" y="326" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">low impact · high effort</text>
+  <!-- axes with explicit arrowheads -->
+  <g style="stroke:var(--text-muted,#64748b);stroke-width:2" stroke-linecap="round"><line x1="80" y1="412" x2="760" y2="412"/><line x1="60" y1="392" x2="60" y2="48"/></g>
+  <polygon points="772,412 760,418 760,406" style="fill:var(--text-muted,#64748b)"/>
+  <polygon points="60,30 66,42 54,42" style="fill:var(--text-muted,#64748b)"/>
+  <text x="80" y="436" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">low</text>
+  <text x="420" y="436" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--text-muted,#64748b)">Effort</text>
+  <text x="760" y="436" text-anchor="end" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">high</text>
+  <text x="0" y="0" transform="translate(40,220) rotate(-90)" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--text-muted,#64748b)">Impact</text>
+  <text x="0" y="0" transform="translate(40,392) rotate(-90)" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">low</text>
+  <text x="0" y="0" transform="translate(40,48) rotate(-90)" text-anchor="end" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">high</text>
+</svg></div>
+      <details><summary>source (.svg)</summary><pre class="src"></pre></details>
+    </figure>
+    <figure class="card" id="c-radar-spider">
+      <figcaption>
+        <span class="idx">16</span>
+        <span class="info"><strong>radar-spider</strong><em>Six-axis radar: current profile vs dashed target, with legend and takeaway</em><span class="use">when: Capability assessments, maturity scoring, option profiles</span></span>
+      </figcaption>
+      <div class="stage"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-label="Six-axis radar comparing current scores against targets, with the largest gap on Scale" style="width:100%;height:auto">
+  <title>Radar summary: current vs target</title>
+  <!-- grid: 4 hexagon rings + 6 spokes -->
+  <g fill="none" style="stroke:var(--border-bright,#cbd5e1);stroke-width:1.2">
+    <polygon points="290,194.5 322.5,213.2 322.5,250.8 290,269.5 257.5,250.8 257.5,213.2"/>
+    <polygon points="290,157 355,194.5 355,269.5 290,307 225,269.5 225,194.5"/>
+    <polygon points="290,119.5 387.4,175.8 387.4,288.2 290,344.5 192.6,288.2 192.6,175.8"/>
+    <polygon points="290,82 419.9,157 419.9,307 290,382 160.1,307 160.1,157"/>
+    <line x1="290" y1="232" x2="290" y2="82"/>
+    <line x1="290" y1="232" x2="419.9" y2="157"/>
+    <line x1="290" y1="232" x2="419.9" y2="307"/>
+    <line x1="290" y1="232" x2="290" y2="382"/>
+    <line x1="290" y1="232" x2="160.1" y2="307"/>
+    <line x1="290" y1="232" x2="160.1" y2="157"/>
   </g>
-  <!-- axes -->
-  <line x1="400" y1="50" x2="400" y2="400" style="stroke:var(--border-bright,#cbd5e1);stroke-width:2" stroke-dasharray="6 6"/>
-  <line x1="60" y1="225" x2="760" y2="225" style="stroke:var(--border-bright,#cbd5e1);stroke-width:2" stroke-dasharray="6 6"/>
-  <!-- quadrant titles -->
-  <g text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">
-    <text x="230" y="120">Do first</text>
-    <text x="590" y="120">Plan</text>
-    <text x="230" y="305">Question</text>
-    <text x="590" y="305">Fill-in</text>
-  </g>
-  <g text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">
-    <text x="230" y="146">high impact · low effort</text>
-    <text x="590" y="146">high impact · high effort</text>
-    <text x="230" y="331">low impact · low effort</text>
-    <text x="590" y="331">low impact · high effort</text>
-  </g>
+  <text x="296" y="161" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:10px;fill:var(--text-muted,#64748b)">50</text>
+  <!-- target (dashed outline) then current (filled) -->
+  <polygon points="290,97 396.5,170.5 393.9,292 290,349 179.6,295.8 196.5,178" fill="none" style="stroke:var(--amber,#f59e0b);stroke-width:2.5" stroke-dasharray="7 5" stroke-linejoin="round"/>
+  <polygon points="290,112 367.9,187 383.5,286 290,289 204.3,281.5 222.5,193" style="fill:color-mix(in srgb, var(--teal,#0d9488) 26%, transparent);stroke:var(--teal,#0d9488);stroke-width:2.5" stroke-linejoin="round"/>
+  <g style="fill:var(--teal,#0d9488)"><circle cx="290" cy="112" r="4.5"/><circle cx="367.9" cy="187" r="4.5"/><circle cx="383.5" cy="286" r="4.5"/><circle cx="290" cy="289" r="4.5"/><circle cx="204.3" cy="281.5" r="4.5"/><circle cx="222.5" cy="193" r="4.5"/></g>
   <!-- axis labels -->
-  <text x="760" y="428" text-anchor="end" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:13px;font-weight:600;fill:var(--text-muted,#64748b)">Effort →</text>
-  <text x="0" y="0" transform="translate(28,225) rotate(-90)" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:13px;font-weight:600;fill:var(--text-muted,#64748b)">Impact →</text>
+  <text x="290" y="62" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:15px;font-weight:600;fill:var(--text,#0f172a)">Speed</text>
+  <text x="435.5" y="153" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:15px;font-weight:600;fill:var(--text,#0f172a)">Quality</text>
+  <text x="435.5" y="321" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:15px;font-weight:600;fill:var(--text,#0f172a)">Cost</text>
+  <text x="290" y="414" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:15px;font-weight:600;fill:var(--text,#0f172a)">Scale</text>
+  <text x="144.5" y="321" text-anchor="end" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:15px;font-weight:600;fill:var(--text,#0f172a)">Security</text>
+  <text x="144.5" y="153" text-anchor="end" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:15px;font-weight:600;fill:var(--text,#0f172a)">Usability</text>
+  <!-- legend + takeaway -->
+  <rect x="560" y="128" width="26" height="14" rx="4" style="fill:color-mix(in srgb, var(--teal,#0d9488) 26%, transparent);stroke:var(--teal,#0d9488);stroke-width:2"/>
+  <text x="598" y="140" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:15px;font-weight:600;fill:var(--text,#0f172a)">Current</text>
+  <line x1="560" y1="172" x2="586" y2="172" style="stroke:var(--amber,#f59e0b);stroke-width:2.5" stroke-dasharray="7 5"/>
+  <text x="598" y="177" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:15px;font-weight:600;fill:var(--text,#0f172a)">Target</text>
+  <line x1="560" y1="214" x2="760" y2="214" style="stroke:var(--border-bright,#cbd5e1);stroke-width:1"/>
+  <text x="560" y="246" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:15px;font-weight:700;fill:color-mix(in srgb, var(--coral,#ef4444) 70%, var(--text,#0f172a))">Largest gap: Scale</text>
+  <text x="560" y="268" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">38 → 78 · invest here first</text>
+  <text x="560" y="296" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:15px;font-weight:700;fill:color-mix(in srgb, var(--green,#10b981) 70%, var(--text,#0f172a))">Already strong: Speed</text>
+  <text x="560" y="318" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">80 vs 90 target</text>
 </svg></div>
       <details><summary>source (.svg)</summary><pre class="src"></pre></details>
     </figure>
     <figure class="card" id="c-roadmap-timeline">
       <figcaption>
-        <span class="idx">09</span>
+        <span class="idx">17</span>
         <span class="info"><strong>roadmap-timeline</strong><em>Horizontal spine with five milestones and alternating callout cards</em><span class="use">when: Project roadmaps, phased timelines, milestone plans</span></span>
       </figcaption>
-      <div class="stage"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-label="Roadmap with five milestones along a horizontal spine, labels alternating above and below" style="width:100%;height:auto">
+      <div class="stage"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-label="Roadmap with five milestones along a horizontal spine; the first two are done and a today marker sits before Beta" style="width:100%;height:auto">
   <title>Milestone roadmap</title>
-  <!-- spine -->
-  <line x1="60" y1="280" x2="720" y2="280" style="stroke:var(--border-bright,#cbd5e1);stroke-width:3" stroke-linecap="round"/>
-  <polygon points="740,280 726,273 726,287" fill="var(--border-bright,#cbd5e1)"/>
+  <!-- spine: done segment solid accent, remaining segment muted -->
+  <line x1="60" y1="244" x2="724" y2="244" style="stroke:var(--border-bright,#cbd5e1);stroke-width:4" stroke-linecap="round"/>
+  <line x1="60" y1="244" x2="322" y2="244" style="stroke:var(--accent,#0d9488);stroke-width:4" stroke-linecap="round"/>
+  <polygon points="748,244 732,252 732,236" style="fill:var(--text-muted,#64748b)"/>
+  <!-- today marker -->
+  <line x1="322" y1="228" x2="322" y2="260" style="stroke:var(--text,#0f172a);stroke-width:2" stroke-linecap="round"/>
+  <text x="322" y="278" text-anchor="middle" letter-spacing="1" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:11px;font-weight:700;fill:var(--text,#0f172a)">today</text>
   <!-- connectors -->
-  <g style="stroke:var(--text-muted,#64748b);stroke-width:1.5" stroke-dasharray="4 4" fill="none">
-    <line x1="90"   y1="280" x2="90"   y2="240"/>
-    <line x1="245"  y1="280" x2="245"  y2="320"/>
-    <line x1="400"  y1="280" x2="400"  y2="240"/>
-    <line x1="555"  y1="280" x2="555"  y2="320"/>
-    <line x1="710"  y1="280" x2="710"  y2="240"/>
-  </g>
-  <!-- dots -->
-  <g>
-    <circle cx="90"  cy="280" r="10" style="fill:var(--teal,#0d9488)" /><circle cx="90"  cy="280" r="5" style="fill:var(--surface,#f8fafc)"/>
-    <circle cx="245" cy="280" r="10" style="fill:var(--green,#10b981)"/><circle cx="245" cy="280" r="5" style="fill:var(--surface,#f8fafc)"/>
-    <circle cx="400" cy="280" r="10" style="fill:var(--amber,#f59e0b)"/><circle cx="400" cy="280" r="5" style="fill:var(--surface,#f8fafc)"/>
-    <circle cx="555" cy="280" r="10" style="fill:var(--coral,#ef4444)"/><circle cx="555" cy="280" r="5" style="fill:var(--surface,#f8fafc)"/>
-    <circle cx="710" cy="280" r="10" style="fill:var(--deep-blue,#2c4a7c)"/><circle cx="710" cy="280" r="5" style="fill:var(--surface,#f8fafc)"/>
-  </g>
+  <line x1="90" y1="244" x2="90" y2="196" style="stroke:var(--text-muted,#64748b);stroke-width:1.5" stroke-dasharray="4 4"/>
+  <line x1="245" y1="244" x2="245" y2="292" style="stroke:var(--text-muted,#64748b);stroke-width:1.5" stroke-dasharray="4 4"/>
+  <line x1="400" y1="244" x2="400" y2="196" style="stroke:var(--text-muted,#64748b);stroke-width:1.5" stroke-dasharray="4 4"/>
+  <line x1="555" y1="244" x2="555" y2="292" style="stroke:var(--text-muted,#64748b);stroke-width:1.5" stroke-dasharray="4 4"/>
+  <line x1="710" y1="244" x2="710" y2="196" style="stroke:var(--text-muted,#64748b);stroke-width:1.5" stroke-dasharray="4 4"/>
+  <!-- milestones: filled = done, ring = upcoming -->
+  <circle cx="90" cy="244" r="11" style="fill:var(--teal,#0d9488);stroke:var(--surface,#ffffff);stroke-width:3"/>
+  <polyline points="85.5,244 89,247.5 95,240.5" fill="none" style="stroke:var(--surface,#ffffff);stroke-width:2.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="245" cy="244" r="11" style="fill:var(--green,#10b981);stroke:var(--surface,#ffffff);stroke-width:3"/>
+  <polyline points="240.5,244 244,247.5 250,240.5" fill="none" style="stroke:var(--surface,#ffffff);stroke-width:2.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="400" cy="244" r="10" style="fill:var(--surface,#ffffff);stroke:var(--amber,#f59e0b);stroke-width:3.5"/>
+  <circle cx="555" cy="244" r="10" style="fill:var(--surface,#ffffff);stroke:var(--coral,#ef4444);stroke-width:3.5"/>
+  <circle cx="710" cy="244" r="10" style="fill:var(--surface,#ffffff);stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:3.5"/>
   <!-- callout cards: above = 1,3,5 ; below = 2,4 -->
+  <rect x="18" y="114" width="144" height="74" rx="12" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--teal,#0d9488) 22%, transparent);stroke:color-mix(in srgb, var(--teal,#0d9488) 45%, transparent);stroke-width:1.5"/>
+    <rect x="18" y="114" width="144" height="74" rx="12" style="fill:color-mix(in srgb, var(--teal,#0d9488) 14%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:2"/>
+  <text x="90" y="146" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">Kick-off</text>
+  <text x="90" y="168" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">Q1 · week 2 · done</text>
+  <rect x="173" y="294" width="144" height="74" rx="12" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--green,#10b981) 22%, transparent);stroke:color-mix(in srgb, var(--green,#10b981) 45%, transparent);stroke-width:1.5"/>
+    <rect x="173" y="294" width="144" height="74" rx="12" style="fill:color-mix(in srgb, var(--green,#10b981) 14%, var(--surface,#ffffff));stroke:var(--green,#10b981);stroke-width:2"/>
+  <text x="245" y="326" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">Alpha</text>
+  <text x="245" y="348" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">Q2 · internal · done</text>
+  <rect x="328" y="114" width="144" height="74" rx="12" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 22%, transparent);stroke:color-mix(in srgb, var(--amber,#f59e0b) 45%, transparent);stroke-width:1.5"/>
+    <rect x="328" y="114" width="144" height="74" rx="12" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 14%, var(--surface,#ffffff));stroke:var(--amber,#f59e0b);stroke-width:2"/>
+  <text x="400" y="146" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">Beta</text>
+  <text x="400" y="168" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">Q3 · 50 users</text>
+  <rect x="483" y="294" width="144" height="74" rx="12" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--coral,#ef4444) 22%, transparent);stroke:color-mix(in srgb, var(--coral,#ef4444) 45%, transparent);stroke-width:1.5"/>
+    <rect x="483" y="294" width="144" height="74" rx="12" style="fill:color-mix(in srgb, var(--coral,#ef4444) 14%, var(--surface,#ffffff));stroke:var(--coral,#ef4444);stroke-width:2"/>
+  <text x="555" y="326" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">GA</text>
+  <text x="555" y="348" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">Q4 · public</text>
+  <rect x="638" y="114" width="144" height="74" rx="12" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 22%, transparent);stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 45%, transparent);stroke-width:1.5"/>
+    <rect x="638" y="114" width="144" height="74" rx="12" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 14%, var(--surface,#ffffff));stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:2"/>
+  <text x="710" y="146" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">v2 scope</text>
+  <text x="710" y="168" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">next cycle</text>
+</svg></div>
+      <details><summary>source (.svg)</summary><pre class="src"></pre></details>
+    </figure>
+    <figure class="card" id="c-staircase-steps">
+      <figcaption>
+        <span class="idx">18</span>
+        <span class="info"><strong>staircase-steps</strong><em>Five rising steps on a shared baseline with a goal flag on top</em><span class="use">when: Maturity models, capability ladders, growth stages</span></span>
+      </figcaption>
+      <div class="stage"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-label="Five rising steps from Aware to Leading with a goal flag on the top step" style="width:100%;height:auto">
+  <title>Staircase of maturity steps</title>
+  <!-- steps: rising blocks on a shared baseline; tint deepens with each step -->
   <g>
-    <rect x="15" y="150" width="150" height="70" rx="10" style="fill:color-mix(in srgb, var(--teal,#0d9488) 12%, var(--surface,#f8fafc));stroke:var(--teal,#0d9488);stroke-width:1.5"/>
-    <text x="90" y="181" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:14px;font-weight:600;fill:var(--text,#0f172a)">Kick-off</text>
-    <text x="90" y="204" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:11px;fill:var(--text-muted,#64748b)">Q1 · week 2</text>
-
-    <rect x="170" y="330" width="150" height="70" rx="10" style="fill:color-mix(in srgb, var(--green,#10b981) 12%, var(--surface,#f8fafc));stroke:var(--green,#10b981);stroke-width:1.5"/>
-    <text x="245" y="361" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:14px;font-weight:600;fill:var(--text,#0f172a)">Alpha</text>
-    <text x="245" y="384" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:11px;fill:var(--text-muted,#64748b)">Q2 · internal</text>
-
-    <rect x="325" y="150" width="150" height="70" rx="10" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 12%, var(--surface,#f8fafc));stroke:var(--amber,#f59e0b);stroke-width:1.5"/>
-    <text x="400" y="181" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:14px;font-weight:600;fill:var(--text,#0f172a)">Beta</text>
-    <text x="400" y="204" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:11px;fill:var(--text-muted,#64748b)">Q3 · 50 users</text>
-
-    <rect x="480" y="330" width="150" height="70" rx="10" style="fill:color-mix(in srgb, var(--coral,#ef4444) 12%, var(--surface,#f8fafc));stroke:var(--coral,#ef4444);stroke-width:1.5"/>
-    <text x="555" y="361" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:14px;font-weight:600;fill:var(--text,#0f172a)">GA</text>
-    <text x="555" y="384" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:11px;fill:var(--text-muted,#64748b)">Q4 · public</text>
-
-    <rect x="635" y="150" width="150" height="70" rx="10" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 12%, var(--surface,#f8fafc));stroke:var(--deep-blue,#2c4a7c);stroke-width:1.5"/>
-    <text x="710" y="181" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:14px;font-weight:600;fill:var(--text,#0f172a)">v2 scope</text>
-    <text x="710" y="204" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:11px;fill:var(--text-muted,#64748b)">next cycle</text>
+    <rect x="63" y="320" width="130" height="90" rx="10" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--accent,#0d9488) 22%, transparent);stroke:color-mix(in srgb, var(--accent,#0d9488) 45%, transparent);stroke-width:1.5"/>
+    <rect x="63" y="320" width="130" height="90" rx="10" style="fill:color-mix(in srgb, var(--accent,#0d9488) 8%, var(--surface,#ffffff));stroke:var(--accent,#0d9488);stroke-width:2"/>
+    <rect x="63" y="320" width="130" height="7" rx="3.5" style="fill:var(--accent,#0d9488)"/>
+    <text x="77" y="354" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:20px;font-weight:700;fill:color-mix(in srgb, var(--accent,#0d9488) 70%, var(--text,#0f172a))">01</text>
+    <text x="77" y="378" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">Aware</text>
+    <text x="77" y="398" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">knows the problem</text>
+    <rect x="199" y="270" width="130" height="140" rx="10" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--accent,#0d9488) 22%, transparent);stroke:color-mix(in srgb, var(--accent,#0d9488) 45%, transparent);stroke-width:1.5"/>
+    <rect x="199" y="270" width="130" height="140" rx="10" style="fill:color-mix(in srgb, var(--accent,#0d9488) 14%, var(--surface,#ffffff));stroke:var(--accent,#0d9488);stroke-width:2"/>
+    <rect x="199" y="270" width="130" height="7" rx="3.5" style="fill:var(--accent,#0d9488)"/>
+    <text x="213" y="304" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:20px;font-weight:700;fill:color-mix(in srgb, var(--accent,#0d9488) 70%, var(--text,#0f172a))">02</text>
+    <text x="213" y="328" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">Trying</text>
+    <text x="213" y="348" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">first experiments</text>
+    <rect x="335" y="220" width="130" height="190" rx="10" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--accent,#0d9488) 22%, transparent);stroke:color-mix(in srgb, var(--accent,#0d9488) 45%, transparent);stroke-width:1.5"/>
+    <rect x="335" y="220" width="130" height="190" rx="10" style="fill:color-mix(in srgb, var(--accent,#0d9488) 20%, var(--surface,#ffffff));stroke:var(--accent,#0d9488);stroke-width:2"/>
+    <rect x="335" y="220" width="130" height="7" rx="3.5" style="fill:var(--accent,#0d9488)"/>
+    <text x="349" y="254" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:20px;font-weight:700;fill:color-mix(in srgb, var(--accent,#0d9488) 70%, var(--text,#0f172a))">03</text>
+    <text x="349" y="278" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">Adopting</text>
+    <text x="349" y="298" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">part of the routine</text>
+    <rect x="471" y="170" width="130" height="240" rx="10" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--accent,#0d9488) 22%, transparent);stroke:color-mix(in srgb, var(--accent,#0d9488) 45%, transparent);stroke-width:1.5"/>
+    <rect x="471" y="170" width="130" height="240" rx="10" style="fill:color-mix(in srgb, var(--accent,#0d9488) 26%, var(--surface,#ffffff));stroke:var(--accent,#0d9488);stroke-width:2"/>
+    <rect x="471" y="170" width="130" height="7" rx="3.5" style="fill:var(--accent,#0d9488)"/>
+    <text x="485" y="204" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:20px;font-weight:700;fill:color-mix(in srgb, var(--accent,#0d9488) 70%, var(--text,#0f172a))">04</text>
+    <text x="485" y="228" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">Scaling</text>
+    <text x="485" y="248" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">across teams</text>
+    <rect x="607" y="120" width="130" height="290" rx="10" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--accent,#0d9488) 22%, transparent);stroke:color-mix(in srgb, var(--accent,#0d9488) 45%, transparent);stroke-width:1.5"/>
+    <rect x="607" y="120" width="130" height="290" rx="10" style="fill:color-mix(in srgb, var(--accent,#0d9488) 32%, var(--surface,#ffffff));stroke:var(--accent,#0d9488);stroke-width:2"/>
+    <rect x="607" y="120" width="130" height="7" rx="3.5" style="fill:var(--accent,#0d9488)"/>
+    <text x="621" y="154" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:20px;font-weight:700;fill:color-mix(in srgb, var(--accent,#0d9488) 70%, var(--text,#0f172a))">05</text>
+    <text x="621" y="178" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">Leading</text>
+    <text x="621" y="198" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">sets the standard</text>
   </g>
+  <!-- goal flag on the top step -->
+  <line x1="703" y1="120" x2="703" y2="46" style="stroke:var(--text,#0f172a);stroke-width:3" stroke-linecap="round"/>
+  <polygon points="703,46 745,58 703,70" style="fill:var(--amber,#f59e0b);stroke:var(--amber,#f59e0b);stroke-width:2" stroke-linejoin="round"/>
+  <text x="689" y="62" text-anchor="end" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:15px;font-weight:700;fill:var(--text,#0f172a)">Target maturity</text>
+  <text x="689" y="82" text-anchor="end" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">where we want to be by Q4</text>
+  <line x1="40" y1="410" x2="760" y2="410" style="stroke:var(--border-bright,#cbd5e1);stroke-width:2" stroke-linecap="round"/>
+</svg></div>
+      <details><summary>source (.svg)</summary><pre class="src"></pre></details>
+    </figure>
+    <figure class="card" id="c-target-bullseye">
+      <figcaption>
+        <span class="idx">19</span>
+        <span class="info"><strong>target-bullseye</strong><em>Concentric priority rings around one goal, dart in the bullseye, labelled leaders</em><span class="use">when: Goal setting, must/should/could priorities, scope focus</span></span>
+      </figcaption>
+      <div class="stage"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-label="Target with three priority rings around a central goal, labelled from outer nice-to-haves to primary outcomes" style="width:100%;height:auto">
+  <title>Target bullseye of priorities</title>
+  <!-- rings: outer -> inner (draw largest first) -->
+  <g>
+    <circle cx="260" cy="225" r="170" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--teal,#0d9488) 22%, transparent);stroke:color-mix(in srgb, var(--teal,#0d9488) 45%, transparent);stroke-width:1.5"/>
+    <circle cx="260" cy="225" r="170" style="fill:color-mix(in srgb, var(--teal,#0d9488) 10%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:2"/>
+    <circle cx="260" cy="225" r="125" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 16%, var(--surface,#ffffff));stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:2"/>
+    <circle cx="260" cy="225" r="82" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 22%, var(--surface,#ffffff));stroke:var(--amber,#f59e0b);stroke-width:2"/>
+    <circle cx="260" cy="225" r="42" style="fill:color-mix(in srgb, var(--coral,#ef4444) 30%, var(--surface,#ffffff));stroke:var(--coral,#ef4444);stroke-width:2.5"/>
+  </g>
+  <text x="260" y="231" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:17px;font-weight:700;fill:var(--text,#0f172a)">Goal</text>
+  <!-- dart: shaft + explicit head + fletching -->
+  <line x1="96" y1="58" x2="233.3" y2="196.2" style="stroke:var(--text,#0f172a);stroke-width:3.5" stroke-linecap="round"/>
+  <polygon points="246,209 226.2,200.4 237.6,189.2" style="fill:var(--text,#0f172a)"/>
+  <polygon points="98.8,60.8 114.3,76.4 100.9,78.5 85.4,62.9" style="fill:var(--coral,#ef4444);stroke:var(--coral,#ef4444);stroke-width:1" stroke-linejoin="round"/>
+  <polygon points="98.8,60.8 114.3,76.4 116.5,63 101,47.4" style="fill:var(--coral,#ef4444);stroke:var(--coral,#ef4444);stroke-width:1" stroke-linejoin="round"/>
+  <!-- leaders: dot sits mid-band, line runs to the label column -->
+  <line x1="337.4" y1="100" x2="470" y2="100" style="stroke:var(--text-muted,#64748b);stroke-width:1.5" stroke-dasharray="4 4"/>
+  <circle cx="337.4" cy="100" r="4.5" style="fill:var(--teal,#0d9488)"/>
+  <text x="482" y="101" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">Nice-to-haves</text>
+  <text x="482" y="121" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">outer ring · only if time allows</text>
+  <line x1="354.9" y1="185" x2="470" y2="185" style="stroke:var(--text-muted,#64748b);stroke-width:1.5" stroke-dasharray="4 4"/>
+  <circle cx="354.9" cy="185" r="4.5" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a))"/>
+  <text x="482" y="186" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">Supporting outcomes</text>
+  <text x="482" y="206" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">make the goal achievable</text>
+  <line x1="301.2" y1="270" x2="470" y2="270" style="stroke:var(--text-muted,#64748b);stroke-width:1.5" stroke-dasharray="4 4"/>
+  <circle cx="301.2" cy="270" r="4.5" style="fill:var(--amber,#f59e0b)"/>
+  <text x="482" y="271" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">Primary outcomes</text>
+  <text x="482" y="291" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">directly measure success</text>
+  <text x="482" y="356" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:color-mix(in srgb, var(--coral,#ef4444) 70%, var(--text,#0f172a))">Bullseye</text>
+  <text x="482" y="376" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">the one result that defines done</text>
 </svg></div>
       <details><summary>source (.svg)</summary><pre class="src"></pre></details>
     </figure>
     <figure class="card" id="c-venn-overlap">
       <figcaption>
-        <span class="idx">10</span>
+        <span class="idx">20</span>
         <span class="info"><strong>venn-overlap</strong><em>Two-way overlap with a distinct shared zone</em><span class="use">when: Relationships between two disciplines, shared vs unique capabilities</span></span>
       </figcaption>
-      <div class="stage"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-label="Two overlapping circles with a shared middle zone" style="width:100%;height:auto">
+      <div class="stage"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-label="Two overlapping circles, Set A and Set B, with a shared middle zone" style="width:100%;height:auto">
   <title>Two-way venn overlap</title>
+  <!-- translucent fills (alpha, not blend modes) so the overlap reads in both themes -->
   <g>
-    <circle cx="330" cy="215" r="140" style="fill:var(--teal,#0d9488);fill-opacity:.24;stroke:var(--teal,#0d9488);stroke-width:2.5"/>
-    <circle cx="470" cy="215" r="140" style="fill:var(--amber,#f59e0b);fill-opacity:.24;stroke:var(--amber,#f59e0b);stroke-width:2.5"/>
+    <circle cx="320" cy="228" r="145" style="fill:color-mix(in srgb, var(--teal,#0d9488) 24%, transparent);stroke:var(--teal,#0d9488);stroke-width:2.5"/>
+    <circle cx="480" cy="228" r="145" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 24%, transparent);stroke:var(--amber,#f59e0b);stroke-width:2.5"/>
   </g>
-  <g text-anchor="middle">
-    <text x="245" y="210" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:17px;font-weight:600;fill:var(--text,#0f172a)">Only A</text>
-    <text x="245" y="236" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">distinct trait</text>
-    <text x="400" y="210" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:17px;font-weight:700;fill:var(--text,#0f172a)">Shared</text>
-    <text x="400" y="236" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">overlap zone</text>
-    <text x="555" y="210" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:17px;font-weight:600;fill:var(--text,#0f172a)">Only B</text>
-    <text x="555" y="236" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">distinct trait</text>
+  <text x="250" y="64" text-anchor="end" letter-spacing=".5" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:15px;font-weight:700;fill:color-mix(in srgb, var(--teal,#0d9488) 70%, var(--text,#0f172a))">Set A</text>
+  <text x="550" y="64" letter-spacing=".5" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:15px;font-weight:700;fill:color-mix(in srgb, var(--amber,#f59e0b) 70%, var(--text,#0f172a))">Set B</text>
+  <g>
+    <text x="240" y="224" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:17px;font-weight:600;fill:var(--text,#0f172a)">Only A</text>
+    <text x="240" y="246" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">distinct trait</text>
+    <text x="400" y="224" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:18px;font-weight:700;fill:var(--text,#0f172a)">Shared</text>
+    <text x="400" y="246" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">overlap zone</text>
+    <text x="560" y="224" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:17px;font-weight:600;fill:var(--text,#0f172a)">Only B</text>
+    <text x="560" y="246" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">distinct trait</text>
   </g>
   <!-- bottom captions -->
-  <g text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">
-    <text x="330" y="415">A in one sentence</text>
-    <text x="470" y="415">B in one sentence</text>
-  </g>
+  <text x="260" y="420" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:13px;fill:var(--text-muted,#64748b)">A in one sentence</text>
+  <text x="540" y="420" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:13px;fill:var(--text-muted,#64748b)">B in one sentence</text>
 </svg></div>
       <details><summary>source (.svg)</summary><pre class="src"></pre></details>
     </figure>

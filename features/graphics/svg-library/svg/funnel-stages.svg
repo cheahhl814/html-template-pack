@@ -1,37 +1,42 @@
 <!--
-  html-template-pack · svg-library · funnel-stages
-  4-stage conversion funnel with stage-to-stage percentage callouts.
-  Tokens: teal deep-blue amber coral surface text text-muted
+html-template-pack · svg-library · funnel-stages
+  4-stage conversion funnel (centre x=360) with counts inside each band and
+  stage-to-stage conversion pills aligned on the gaps between bands.
+  Tokens: teal deep-blue amber coral border-bright text text-muted surface
   font-head font-sans.
-  Edit: stage labels + the percentages. Trapezoid widths are the x-half-values
-  in each polygon (260→195→135→85 on an 800-wide canvas). No ids/markers.
+  Edit: stage labels, counts, percentages. Band half-widths 260→196, 196→136,
+  136→78, 78→26 share one slant. No ids/markers.
 -->
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-label="Four-stage funnel narrowing from top to bottom with conversion percentages" style="width:100%;height:auto">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-label="Four-stage funnel narrowing from visitors to payers with stage conversion percentages" style="width:100%;height:auto">
   <title>Conversion funnel</title>
-  <!-- bands (top->bottom) -->
-  <g style="stroke:var(--surface,#f8fafc);stroke-width:3" stroke-linejoin="round">
-    <polygon points="140,52 660,52 596,128 204,128" style="fill:color-mix(in srgb, var(--teal,#0d9488) 26%, var(--surface,#f8fafc));stroke:var(--teal,#0d9488);stroke-width:2"/>
-    <polygon points="204,140 596,140 536,216 264,216" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 24%, var(--surface,#f8fafc));stroke:var(--deep-blue,#2c4a7c);stroke-width:2"/>
-    <polygon points="264,228 536,228 478,304 322,304" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 24%, var(--surface,#f8fafc));stroke:var(--amber,#f59e0b);stroke-width:2"/>
-    <polygon points="322,316 478,316 425,392 375,392" style="fill:color-mix(in srgb, var(--coral,#ef4444) 22%, var(--surface,#f8fafc));stroke:var(--coral,#ef4444);stroke-width:2"/>
+  <!-- bands top -> bottom -->
+  <g>
+    <polygon points="100,52 620,52 556,128 164,128" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--teal,#0d9488) 22%, transparent);stroke:color-mix(in srgb, var(--teal,#0d9488) 45%, transparent);stroke-width:1.5" stroke-linejoin="round"/>
+    <polygon points="100,52 620,52 556,128 164,128" style="fill:color-mix(in srgb, var(--teal,#0d9488) 24%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:2" stroke-linejoin="round"/>
+    <text x="360" y="89" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">Visitors</text>
+    <text x="360" y="108" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">12,400</text>
+    <polygon points="164,140 556,140 496,216 224,216" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 22%, transparent);stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 45%, transparent);stroke-width:1.5" stroke-linejoin="round"/>
+    <polygon points="164,140 556,140 496,216 224,216" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 24%, var(--surface,#ffffff));stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:2" stroke-linejoin="round"/>
+    <text x="360" y="177" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">Sign-ups</text>
+    <text x="360" y="196" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">7,700</text>
+    <polygon points="224,228 496,228 438,304 282,304" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 22%, transparent);stroke:color-mix(in srgb, var(--amber,#f59e0b) 45%, transparent);stroke-width:1.5" stroke-linejoin="round"/>
+    <polygon points="224,228 496,228 438,304 282,304" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 24%, var(--surface,#ffffff));stroke:var(--amber,#f59e0b);stroke-width:2" stroke-linejoin="round"/>
+    <text x="360" y="265" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">Actives</text>
+    <text x="360" y="284" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">3,400</text>
+    <polygon points="282,316 438,316 386,392 334,392" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--coral,#ef4444) 22%, transparent);stroke:color-mix(in srgb, var(--coral,#ef4444) 45%, transparent);stroke-width:1.5" stroke-linejoin="round"/>
+    <polygon points="282,316 438,316 386,392 334,392" style="fill:color-mix(in srgb, var(--coral,#ef4444) 24%, var(--surface,#ffffff));stroke:var(--coral,#ef4444);stroke-width:2" stroke-linejoin="round"/>
+    <text x="360" y="353" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">Payers</text>
+    <text x="360" y="372" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;fill:var(--text-muted,#64748b)">1,050</text>
   </g>
-  <!-- stage labels -->
-  <g text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">
-    <text x="400" y="98">Visitors</text>
-    <text x="400" y="186">Sign-ups</text>
-    <text x="400" y="274">Actives</text>
-    <text x="400" y="362">Payers</text>
-  </g>
-  <!-- stage percentage callouts -->
-  <g style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--text-muted,#64748b)">
-    <text x="700" y="146">62%</text>
-    <text x="700" y="234">44%</text>
-    <text x="700" y="322">31%</text>
-  </g>
-  <g style="stroke:var(--text-muted,#64748b);stroke-width:1.5" stroke-dasharray="4 4" fill="none">
-    <line x1="640" y1="134" x2="690" y2="141"/>
-    <line x1="560" y1="222" x2="690" y2="229"/>
-    <line x1="500" y1="310" x2="690" y2="317"/>
-  </g>
-  <text x="700" y="408" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:11px;fill:var(--text-muted,#64748b)">stage conversion</text>
+  <!-- stage-to-stage conversion pills, aligned on the band gaps -->
+  <text x="668" y="112" text-anchor="middle" letter-spacing=".5" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:12px;font-weight:700;fill:var(--text-muted,#64748b)">conversion</text>
+  <line x1="564" y1="134" x2="630" y2="134" style="stroke:var(--text-muted,#64748b);stroke-width:1.5" stroke-dasharray="4 4"/>
+  <rect x="636" y="120" width="64" height="28" rx="14" style="fill:var(--surface,#ffffff);stroke:var(--border-bright,#cbd5e1);stroke-width:1.5"/>
+  <text x="668" y="139" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:14px;font-weight:700;fill:var(--text,#0f172a)">62%</text>
+  <line x1="504" y1="222" x2="630" y2="222" style="stroke:var(--text-muted,#64748b);stroke-width:1.5" stroke-dasharray="4 4"/>
+  <rect x="636" y="208" width="64" height="28" rx="14" style="fill:var(--surface,#ffffff);stroke:var(--border-bright,#cbd5e1);stroke-width:1.5"/>
+  <text x="668" y="227" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:14px;font-weight:700;fill:var(--text,#0f172a)">44%</text>
+  <line x1="446" y1="310" x2="630" y2="310" style="stroke:var(--text-muted,#64748b);stroke-width:1.5" stroke-dasharray="4 4"/>
+  <rect x="636" y="296" width="64" height="28" rx="14" style="fill:var(--surface,#ffffff);stroke:var(--border-bright,#cbd5e1);stroke-width:1.5"/>
+  <text x="668" y="315" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:14px;font-weight:700;fill:var(--text,#0f172a)">31%</text>
 </svg>
