@@ -1,6 +1,6 @@
-# svg-library — hand-drawn SVG diagram templates (html-template-pack v0.13.0)
+# svg-library — hand-drawn SVG diagram templates (html-template-pack v0.14.0)
 
-Forty agent-drawable, copy-paste-ready **inline SVG diagram/infographic templates** for
+Seventy-one agent-drawable, copy-paste-ready **inline SVG diagram/infographic templates** for
 explanatory and summary visuals — the complement to the pure-CSS graphics pack
 (`features/graphics/graphics.css`). Where the CSS pack covers charts built from real
 data (donut, gauge, heatmap, bars), the SVG library covers **concept diagrams**:
@@ -70,6 +70,37 @@ Each figure card has a collapsible **source (.svg)** block copy-paste-ready.
 | 38 | `merge-paths.svg` | Three input streams curving into one arrow → single outcome | Data integration, synthesis, merging workstreams |
 | 39 | `five-w-agenda.svg` | Who/What/When/Where/Why tiles with answer cards + tags | Project briefs, kick-off agendas, incident summaries |
 | 40 | `orbit-satellites.svg` | Core with three dashed orbits of satellites + distance legend | Stakeholder proximity, engagement tiers |
+| 41 | `metro-map.svg` | Transit-map pipeline: bundled routes, tool detour, route split + re-merge, dotted optional spur, file icons, legend | Bioinformatics/data pipelines with alternative tools or routes (nf-core-style) |
+| 42 | `hanging-tags.svg` | Five round step tags hanging on strings from a rail at alternating heights | Five-step processes, playful step lists, feature tags |
+| 43 | `helix-ribbon-timeline.svg` | Vertical twisted ribbon with five dated events at its turning edges, alternating left/right | Company histories, growth stories, milestone timelines |
+| 44 | `ring-chain.svg` | Five thick numbered rings in a zig-zag chain joined by links | Linked skills/capabilities, dependent steps, value chains |
+| 45 | `semicircle-segments.svg` | Half donut split into three proportional shares with % callouts, a hub total and a legend | Survey splits, share-of-whole summaries (concept-level; real data → chartz) |
+| 46 | `wavy-timeline.svg` | Hand-drawn wavy path with five pins on crests/troughs ending in a paper plane | Project phases, light-touch roadmaps, onboarding journeys |
+| 47 | `pictogram-grid.svg` | 10×10 grid of person icons with N highlighted, headline and legend | "N in 100" statistics, adoption/prevalence callouts |
+| 48 | `mind-map.svg` | Central idea with four curved branches to topic pills, each fanning into three sub-topics | Brainstorms, topic overviews, planning maps |
+| 49 | `eight-step-ring.svg` | Eight arrow-shaped ring segments running clockwise with outside labels and a hub title | 8-step processes, DMAIC-style cycles, continuous improvement |
+| 50 | `radial-bars.svg` | Four concentric 270° progress arcs with labels in the open quadrant and a takeaway card | Funnel/progress percentages, goal attainment (concept-level; real data → chartz) |
+| 51 | `org-chart.svg` | Three-level org chart: one lead, three heads, two reports each, elbow connectors | Org structures, team ownership, reporting lines |
+| 52 | `world-dot-map.svg` | Dot-matrix world (continent-tinted, from Natural Earth 1:110m) with four teardrop pins and callout cards | Global footprint, office/site locations, regional hubs (precise geography → chartz GeoMap) |
+| 53 | `europe-tile-grid.svg` | Tile-grid map of Europe: one equal square per country (ISO alpha-2) filled by category, legend + takeaway | Country-level status/coverage across Europe where small states must stay visible |
+| 54 | `warming-stripes.svg` | Warming-stripes band (one stripe per year, blue cooler to red warmer) with decade axis and key | Long-run temperature change at a glance (illustrative values; swap in HadCRUT/Berkeley Earth) |
+| 55 | `climate-zones-globe.svg` | Flattened globe split into polar, temperate, dry and tropical bands, mirrored about the equator, with a key | Climate zones, latitude-driven patterns, biome overviews (schematic) |
+| 56 | `sector-landscape.svg` | Landscape of four silhouette scenes (power plant, factory, traffic, farm) with each sector's share | Emissions or impacts by sector (placeholder shares) |
+| 57 | `sea-level-rise.svg` | Coastal cross-section: today's sea, two dashed scenario levels reaching homes, rise arrow | Coastal exposure, flood risk, adaptation briefs (illustrative levels) |
+| 58 | `carbon-cycle.svg` | Simplified carbon cycle: atmosphere, fossil emissions, plant and ocean exchange, soil storage | Explaining sources vs sinks, net-zero logic, nature-based solutions |
+| 59 | `thermometer-gauge.svg` | Thermometer of warming vs pre-industrial with risk bands, today's ~1.1 °C and the Paris 1.5/2 °C lines | Climate targets, carbon-budget framing (IPCC AR6, Paris Agreement) |
+| 60 | `energy-mix-icons.svg` | Five hand-drawn energy icons (solar, wind, hydro, bio, nuclear) over vertical share bars | Energy or capacity mix, technology shares (placeholder values) |
+| 61 | `planet-actions.svg` | Six numbered actions staggered along a dashed spine that drops into a half-globe | Climate actions, sustainability pledges, behaviour-change tips |
+| 62 | `dna-helix-steps.svg` | Horizontal DNA double helix (A-T / G-C rungs colour-coded) with six numbered callouts above and below | Sequencing or genomics workflows, six-step processes with a DNA theme |
+| 63 | `central-dogma.svg` | DNA → transcription → mRNA (codons lettered) → ribosome translation → protein bead chain, plus replication | Teaching gene expression, explaining what a sequence encodes |
+| 64 | `cell-to-dna-zoom.svg` | Four zoom lenses: cell, nucleus, chromosome, DNA helix, linked by dashed zoom lines with typical scales | Explaining biological scale, where DNA lives |
+| 65 | `lab-glassware-steps.svg` | Five protocol steps drawn as lab equipment on a bench: tube rack, flask, cylinder, Petri dish, microscope | Lab protocols, sample-processing workflows, methods overviews |
+| 66 | `cell-membrane.svg` | Fluid-mosaic membrane cross-section: phospholipid bilayer with glycoprotein, channel, cholesterol, integral and peripheral proteins, glycolipid | Teaching membrane structure, transport and signalling context |
+| 67 | `punnett-square.svg` | Monohybrid cross Aa × Aa: parents, 2 × 2 Punnett square, 1:2:1 genotype and 3:1 phenotype ratios | Teaching Mendelian inheritance, explaining carrier risk |
+| 68 | `mutation-types.svg` | One coding sequence shown as original, substitution (missense), insertion and deletion (frameshift) with amino acids | Teaching point mutations, explaining variant effects |
+| 69 | `gel-electrophoresis.svg` | Agarose gel with wells, size ladder, five sample lanes and − / + electrodes; bands placed by log10(size) | PCR checks, methods figures, teaching how gels separate DNA |
+| 70 | `well-plate-layout.svg` | 96-well plate map: standards and samples in duplicate, blanks, positive/negative controls, legend | ELISA/qPCR plate layouts, protocol planning |
+| 71 | `scientific-method.svg` | Six-step scientific-method cycle around a flask: observe, question, hypothesise, experiment, analyse, conclude | Teaching the scientific method, research-process overviews |
 
 **When to use which graphics system:**
 
@@ -138,13 +169,60 @@ Each figure card has a collapsible **source (.svg)** block copy-paste-ready.
 5. **Verify in the browser**, light and dark: labels legible, no clipping, arrows
    still land. Print preview if the artifact will be PDF'd.
 
+## Maps
+
+`world-dot-map` and `europe-tile-grid` are **illustrative** maps for slides and summaries:
+the dot map's land mask is rasterised from [Natural Earth](https://www.naturalearthdata.com/) 1:110m
+(public domain), tinted per continent, and draws **no country borders**; the tile grid gives every
+country one equal square, placed approximately. Neither is a geographic reference. For sampling sites,
+coordinates, choropleths or anything where position must be exact, use the `chartz` skill's GeoMap
+engine (with `geocoding` for place names). The tile set follows the EU data-visualisation guide's
+Europe grid (it includes XK, Kosovo); remove or add tiles as your context requires.
+
+## Climate & environment
+
+Eight components (54 to 61) cover common climate-communication visuals. Treat every number in them
+as a **placeholder** unless its file cites a source: the stripes are a synthetic series, sector
+shares, energy shares and sea-level scenarios are illustrative. The one sourced value is the
+thermometer's ≈1.1 °C (IPCC AR6 WG1, 2011 to 2020 mean) against the Paris Agreement 1.5/2 °C limits.
+When you fill them with real data, put the source in the diagram's caption line. For plotted series
+(temperature anomalies, emissions over time) use `chartz` instead.
+
+## Laboratory & life science
+
+Ten components (62 to 71) cover lab and molecular-biology visuals. Their science is meant to be
+**correct as drawn**: base pairing A–T / G–C (rung colours A amber, T coral, G teal, C deep-blue),
+real codons (ATG GCT TCA GAA = Met-Ala-Ser-Glu in `central-dogma` and `mutation-types`, with the
+frameshifts translated), DNA migrating toward the + electrode with ladder bands spaced by log10(size),
+and the membrane drawn with heads out, tails in, sugar chains on the extracellular side. If you edit a
+sequence, re-translate it; if you edit a gel, recompute band positions (formula in the file header).
+Gel bands, plate assignments and workflow labels are illustrative.
+
+## Standalone use (no HTML page)
+
+For a diagram going into PowerPoint, Word, Keynote, Figma, Inkscape/Illustrator, a poster or a
+paper, export it instead of pasting it. Those tools do not resolve `var()` or `color-mix()`, so a raw
+library file renders black or blank there.
+
+```
+cp features/graphics/svg-library/svg/mind-map.svg ./my-map.svg   # edit the labels
+node bin/svg-export.js ./my-map.svg --out figures/               # → figures/my-map.svg
+node bin/svg-export.js ./my-map.svg --theme dark --out figures/  # → figures/my-map-dark.svg
+node bin/svg-export.js mind-map org-chart --out figures/         # library names work too
+```
+
+The export bakes the slide palette (light or dark) into plain hex + `fill-opacity` /
+`stroke-opacity`, drops the authoring comment, and sets `width="800" height="450"`. Dark exports also
+get a background rect, since light text on a transparent canvas disappears on white pages. The script
+fails if any `var()` or `color-mix()` would survive. Want PNG? Render the **exported** file.
+
 ## Adding a new component
 
 1. Hand-draw it in `svg/<kebab-name>.svg` following the conventions above — agent-drawn
    SVG is the point of the library; treat the shipped files as style reference
    (rounded rx=12 cards — 8 for bars, 4–6 for slabs, 14 for large panels; 2px primary
    strokes, 1.5px shadows/leaders, 2.5px connectors, 3px spines; dashed 1.5px leaders
-   start at a 3.5px dot). **Type scale (shared by all 40):** hero 20/700 (one central
+   start at a 3.5px dot). **Type scale (shared by all 71):** hero 20/700 (one central
    subject or headline) · label 16/600 · annotation 13/400 muted · caption 12/400 muted ·
    eyebrow 11/700 caps with `letter-spacing="1.2"` · badge number 13/700.
    **Arrowheads:** 13×13 on connectors, 11×11 on small cue arrows, 16×16 on thick spines

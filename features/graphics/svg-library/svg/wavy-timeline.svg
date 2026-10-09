@@ -1,0 +1,52 @@
+<!--
+html-template-pack · svg-library · wavy-timeline
+  Hand-drawn wavy path with five pins on its crests and troughs, labels
+  above crests / below troughs, ending in a paper plane.
+  Tokens: teal deep-blue amber coral green text text-muted surface font-head font-sans.
+  Edit: phase labels + captions. Pins sit on x = 100 + i*140 (crests at
+  even i). The wave is sampled; regenerate or edit d to reshape.
+  No ids/markers, safe to paste multiples.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-label="Wavy hand-drawn timeline with five pinned milestones and a paper plane at the end" style="width:100%;height:auto">
+  <title>Wavy milestone timeline</title>
+  <!-- wave: offset pencil line + main line -->
+  <g>
+  <path d="M 40 212.8 L 44 208 L 48 203.4 L 52 198.9 L 56 194.7 L 60 190.7 L 64 187 L 68 183.6 L 72 180.5 L 76 177.8 L 80 175.4 L 84 173.5 L 88 172 L 92 170.9 L 96 170.2 L 100 170 L 104 170.2 L 108 170.9 L 112 172 L 116 173.5 L 120 175.4 L 124 177.8 L 128 180.5 L 132 183.6 L 136 187 L 140 190.7 L 144 194.7 L 148 198.9 L 152 203.4 L 156 208 L 160 212.8 L 164 217.6 L 168 222.5 L 172 227.5 L 176 232.4 L 180 237.2 L 184 242 L 188 246.6 L 192 251.1 L 196 255.3 L 200 259.3 L 204 263 L 208 266.4 L 212 269.5 L 216 272.2 L 220 274.6 L 224 276.5 L 228 278 L 232 279.1 L 236 279.8 L 240 280 L 244 279.8 L 248 279.1 L 252 278 L 256 276.5 L 260 274.6 L 264 272.2 L 268 269.5 L 272 266.4 L 276 263 L 280 259.3 L 284 255.3 L 288 251.1 L 292 246.6 L 296 242 L 300 237.2 L 304 232.4 L 308 227.5 L 312 222.5 L 316 217.6 L 320 212.8 L 324 208 L 328 203.4 L 332 198.9 L 336 194.7 L 340 190.7 L 344 187 L 348 183.6 L 352 180.5 L 356 177.8 L 360 175.4 L 364 173.5 L 368 172 L 372 170.9 L 376 170.2 L 380 170 L 384 170.2 L 388 170.9 L 392 172 L 396 173.5 L 400 175.4 L 404 177.8 L 408 180.5 L 412 183.6 L 416 187 L 420 190.7 L 424 194.7 L 428 198.9 L 432 203.4 L 436 208 L 440 212.8 L 444 217.6 L 448 222.5 L 452 227.5 L 456 232.4 L 460 237.2 L 464 242 L 468 246.6 L 472 251.1 L 476 255.3 L 480 259.3 L 484 263 L 488 266.4 L 492 269.5 L 496 272.2 L 500 274.6 L 504 276.5 L 508 278 L 512 279.1 L 516 279.8 L 520 280 L 524 279.8 L 528 279.1 L 532 278 L 536 276.5 L 540 274.6 L 544 272.2 L 548 269.5 L 552 266.4 L 556 263 L 560 259.3 L 564 255.3 L 568 251.1 L 572 246.6 L 576 242 L 580 237.2 L 584 232.4 L 588 227.5 L 592 222.5 L 596 217.6 L 600 212.8 L 604 208 L 608 203.4 L 612 198.9 L 616 194.7 L 620 190.7 L 624 187 L 628 183.6 L 632 180.5 L 636 177.8 L 640 175.4 L 644 173.5 L 648 172 L 652 170.9 L 656 170.2 L 660 170 L 664 170.2 L 668 170.9 L 672 172 L 676 173.5 L 680 175.4 L 684 177.8 L 688 180.5 L 692 183.6 L 696 187 L 700 190.7" transform="translate(3 4)" fill="none" stroke-linecap="round" style="stroke:color-mix(in srgb, var(--text-muted,#64748b) 45%, transparent);stroke-width:1.5"/>
+  <path d="M 40 212.8 L 44 208 L 48 203.4 L 52 198.9 L 56 194.7 L 60 190.7 L 64 187 L 68 183.6 L 72 180.5 L 76 177.8 L 80 175.4 L 84 173.5 L 88 172 L 92 170.9 L 96 170.2 L 100 170 L 104 170.2 L 108 170.9 L 112 172 L 116 173.5 L 120 175.4 L 124 177.8 L 128 180.5 L 132 183.6 L 136 187 L 140 190.7 L 144 194.7 L 148 198.9 L 152 203.4 L 156 208 L 160 212.8 L 164 217.6 L 168 222.5 L 172 227.5 L 176 232.4 L 180 237.2 L 184 242 L 188 246.6 L 192 251.1 L 196 255.3 L 200 259.3 L 204 263 L 208 266.4 L 212 269.5 L 216 272.2 L 220 274.6 L 224 276.5 L 228 278 L 232 279.1 L 236 279.8 L 240 280 L 244 279.8 L 248 279.1 L 252 278 L 256 276.5 L 260 274.6 L 264 272.2 L 268 269.5 L 272 266.4 L 276 263 L 280 259.3 L 284 255.3 L 288 251.1 L 292 246.6 L 296 242 L 300 237.2 L 304 232.4 L 308 227.5 L 312 222.5 L 316 217.6 L 320 212.8 L 324 208 L 328 203.4 L 332 198.9 L 336 194.7 L 340 190.7 L 344 187 L 348 183.6 L 352 180.5 L 356 177.8 L 360 175.4 L 364 173.5 L 368 172 L 372 170.9 L 376 170.2 L 380 170 L 384 170.2 L 388 170.9 L 392 172 L 396 173.5 L 400 175.4 L 404 177.8 L 408 180.5 L 412 183.6 L 416 187 L 420 190.7 L 424 194.7 L 428 198.9 L 432 203.4 L 436 208 L 440 212.8 L 444 217.6 L 448 222.5 L 452 227.5 L 456 232.4 L 460 237.2 L 464 242 L 468 246.6 L 472 251.1 L 476 255.3 L 480 259.3 L 484 263 L 488 266.4 L 492 269.5 L 496 272.2 L 500 274.6 L 504 276.5 L 508 278 L 512 279.1 L 516 279.8 L 520 280 L 524 279.8 L 528 279.1 L 532 278 L 536 276.5 L 540 274.6 L 544 272.2 L 548 269.5 L 552 266.4 L 556 263 L 560 259.3 L 564 255.3 L 568 251.1 L 572 246.6 L 576 242 L 580 237.2 L 584 232.4 L 588 227.5 L 592 222.5 L 596 217.6 L 600 212.8 L 604 208 L 608 203.4 L 612 198.9 L 616 194.7 L 620 190.7 L 624 187 L 628 183.6 L 632 180.5 L 636 177.8 L 640 175.4 L 644 173.5 L 648 172 L 652 170.9 L 656 170.2 L 660 170 L 664 170.2 L 668 170.9 L 672 172 L 676 173.5 L 680 175.4 L 684 177.8 L 688 180.5 L 692 183.6 L 696 187 L 700 190.7" fill="none" stroke-linecap="round" stroke-dasharray="10 0" style="stroke:var(--text-muted,#64748b);stroke-width:3"/>
+  </g>
+  <!-- paper plane -->
+  <g>
+  <path d="M 700 190.7 Q 704 170.7 704 160.70806089776963" fill="none" stroke-dasharray="4 5" stroke-linecap="round" style="stroke:var(--text-muted,#64748b);stroke-width:1.5"/>
+  <polygon points="712,156.7 764,128.7 738,166.7" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 22%, transparent);stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 45%, transparent);stroke-width:1.5"/>
+  <polygon points="712,156.7 764,128.7 738,166.7" stroke-linejoin="round" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 18%, var(--surface,#ffffff));stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:2"/>
+  <polyline points="764,128.7 730,158.7 732,174.7 738,166.7" stroke-linejoin="round" style="fill:none;stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:2"/>
+  </g>
+  <!-- pins + labels -->
+  <g>
+  <circle cx="100" cy="170" r="15" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--teal,#0d9488) 22%, transparent);stroke:color-mix(in srgb, var(--teal,#0d9488) 45%, transparent);stroke-width:1.5"/>
+  <circle cx="100" cy="170" r="15" style="fill:var(--teal,#0d9488);stroke:var(--surface,#ffffff);stroke-width:3"/>
+  <text x="100" y="175" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--surface,#ffffff)">1</text>
+  <text x="100" y="124" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">Kick-off</text>
+  <text x="100" y="142" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">goals + team</text>
+  <circle cx="240" cy="280" r="15" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 22%, transparent);stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 45%, transparent);stroke-width:1.5"/>
+  <circle cx="240" cy="280" r="15" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke:var(--surface,#ffffff);stroke-width:3"/>
+  <text x="240" y="285" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--surface,#ffffff)">2</text>
+  <text x="240" y="322" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">Discovery</text>
+  <text x="240" y="340" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">interviews, data</text>
+  <circle cx="380" cy="170" r="15" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 22%, transparent);stroke:color-mix(in srgb, var(--amber,#f59e0b) 45%, transparent);stroke-width:1.5"/>
+  <circle cx="380" cy="170" r="15" style="fill:var(--amber,#f59e0b);stroke:var(--surface,#ffffff);stroke-width:3"/>
+  <text x="380" y="175" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--surface,#ffffff)">3</text>
+  <text x="380" y="124" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">Build</text>
+  <text x="380" y="142" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">two sprints</text>
+  <circle cx="520" cy="280" r="15" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--coral,#ef4444) 22%, transparent);stroke:color-mix(in srgb, var(--coral,#ef4444) 45%, transparent);stroke-width:1.5"/>
+  <circle cx="520" cy="280" r="15" style="fill:var(--coral,#ef4444);stroke:var(--surface,#ffffff);stroke-width:3"/>
+  <text x="520" y="285" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--surface,#ffffff)">4</text>
+  <text x="520" y="322" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">Pilot</text>
+  <text x="520" y="340" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">one region</text>
+  <circle cx="660" cy="170" r="15" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--green,#10b981) 22%, transparent);stroke:color-mix(in srgb, var(--green,#10b981) 45%, transparent);stroke-width:1.5"/>
+  <circle cx="660" cy="170" r="15" style="fill:var(--green,#10b981);stroke:var(--surface,#ffffff);stroke-width:3"/>
+  <text x="660" y="175" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--surface,#ffffff)">5</text>
+  <text x="660" y="124" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">Rollout</text>
+  <text x="660" y="142" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">all regions</text>
+  </g>
+</svg>

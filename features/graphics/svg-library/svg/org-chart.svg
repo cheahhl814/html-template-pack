@@ -1,0 +1,67 @@
+<!--
+html-template-pack · svg-library · org-chart
+  Three-level org chart: one lead, three heads, two reports each, joined by
+  elbow connectors; heads tinted per team, reports carry a team stripe.
+  Tokens: accent teal amber coral text text-muted surface border font-head font-sans.
+  Edit: names/roles. Level y = 50 / 175 / 310; reports at x = 85 + j*126.
+  No ids/markers, safe to paste multiples.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-label="Organisation chart with one lead, three department heads and two reports under each" style="width:100%;height:auto">
+  <title>Organisation chart</title>
+  <!-- connectors -->
+  <g>
+  <path d="M 400 120 V 142 M 148 142 H 652 M 148 142 V 175 M 400 142 V 175 M 652 142 V 175" stroke-linecap="round" style="fill:none;stroke:var(--text-muted,#64748b);stroke-width:2"/>
+  <path d="M 148 245 V 278 M 85 278 H 211 M 85 278 V 310 M 211 278 V 310" stroke-linecap="round" style="fill:none;stroke:var(--text-muted,#64748b);stroke-width:2"/>
+  <path d="M 400 245 V 278 M 337 278 H 463 M 337 278 V 310 M 463 278 V 310" stroke-linecap="round" style="fill:none;stroke:var(--text-muted,#64748b);stroke-width:2"/>
+  <path d="M 652 245 V 278 M 589 278 H 715 M 589 278 V 310 M 715 278 V 310" stroke-linecap="round" style="fill:none;stroke:var(--text-muted,#64748b);stroke-width:2"/>
+  </g>
+  <!-- lead -->
+  <g>
+  <rect x="310" y="50" width="180" height="70" rx="12" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--accent,#0d9488) 22%, transparent);stroke:color-mix(in srgb, var(--accent,#0d9488) 45%, transparent);stroke-width:1.5"/>
+  <rect x="310" y="50" width="180" height="70" rx="12" style="fill:var(--accent,#0d9488);stroke:color-mix(in srgb, var(--accent,#0d9488) 70%, var(--text,#0f172a));stroke-width:2"/>
+  <text x="400" y="82" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--surface,#ffffff)">Alex Morgan</text>
+  <text x="400" y="102" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--surface,#ffffff)">chief executive</text>
+  </g>
+  <!-- heads -->
+  <g>
+  <rect x="63" y="175" width="170" height="70" rx="12" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--teal,#0d9488) 22%, transparent);stroke:color-mix(in srgb, var(--teal,#0d9488) 45%, transparent);stroke-width:1.5"/>
+  <rect x="63" y="175" width="170" height="70" rx="12" style="fill:color-mix(in srgb, var(--teal,#0d9488) 18%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:2"/>
+  <text x="148" y="207" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">Engineering</text>
+  <text x="148" y="227" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">head of eng</text>
+  <rect x="315" y="175" width="170" height="70" rx="12" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 22%, transparent);stroke:color-mix(in srgb, var(--amber,#f59e0b) 45%, transparent);stroke-width:1.5"/>
+  <rect x="315" y="175" width="170" height="70" rx="12" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 18%, var(--surface,#ffffff));stroke:var(--amber,#f59e0b);stroke-width:2"/>
+  <text x="400" y="207" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">Product</text>
+  <text x="400" y="227" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">head of product</text>
+  <rect x="567" y="175" width="170" height="70" rx="12" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--coral,#ef4444) 22%, transparent);stroke:color-mix(in srgb, var(--coral,#ef4444) 45%, transparent);stroke-width:1.5"/>
+  <rect x="567" y="175" width="170" height="70" rx="12" style="fill:color-mix(in srgb, var(--coral,#ef4444) 18%, var(--surface,#ffffff));stroke:var(--coral,#ef4444);stroke-width:2"/>
+  <text x="652" y="207" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">Operations</text>
+  <text x="652" y="227" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">head of ops</text>
+  </g>
+  <!-- reports -->
+  <g>
+  <rect x="29" y="310" width="112" height="64" rx="8" style="fill:var(--surface,#ffffff);stroke:var(--border,#e2e8f0);stroke-width:1.5"/>
+  <rect x="29" y="310" width="112" height="6" rx="3" style="fill:var(--teal,#0d9488)"/>
+  <text x="85" y="342" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--text,#0f172a)">Platform</text>
+  <text x="85" y="361" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">infra + SRE</text>
+  <rect x="155" y="310" width="112" height="64" rx="8" style="fill:var(--surface,#ffffff);stroke:var(--border,#e2e8f0);stroke-width:1.5"/>
+  <rect x="155" y="310" width="112" height="6" rx="3" style="fill:var(--teal,#0d9488)"/>
+  <text x="211" y="342" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--text,#0f172a)">Apps</text>
+  <text x="211" y="361" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">web + mobile</text>
+  <rect x="281" y="310" width="112" height="64" rx="8" style="fill:var(--surface,#ffffff);stroke:var(--border,#e2e8f0);stroke-width:1.5"/>
+  <rect x="281" y="310" width="112" height="6" rx="3" style="fill:var(--amber,#f59e0b)"/>
+  <text x="337" y="342" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--text,#0f172a)">Design</text>
+  <text x="337" y="361" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">UX research</text>
+  <rect x="407" y="310" width="112" height="64" rx="8" style="fill:var(--surface,#ffffff);stroke:var(--border,#e2e8f0);stroke-width:1.5"/>
+  <rect x="407" y="310" width="112" height="6" rx="3" style="fill:var(--amber,#f59e0b)"/>
+  <text x="463" y="342" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--text,#0f172a)">Analytics</text>
+  <text x="463" y="361" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">data + insight</text>
+  <rect x="533" y="310" width="112" height="64" rx="8" style="fill:var(--surface,#ffffff);stroke:var(--border,#e2e8f0);stroke-width:1.5"/>
+  <rect x="533" y="310" width="112" height="6" rx="3" style="fill:var(--coral,#ef4444)"/>
+  <text x="589" y="342" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--text,#0f172a)">People</text>
+  <text x="589" y="361" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">hiring, culture</text>
+  <rect x="659" y="310" width="112" height="64" rx="8" style="fill:var(--surface,#ffffff);stroke:var(--border,#e2e8f0);stroke-width:1.5"/>
+  <rect x="659" y="310" width="112" height="6" rx="3" style="fill:var(--coral,#ef4444)"/>
+  <text x="715" y="342" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--text,#0f172a)">Finance</text>
+  <text x="715" y="361" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">budget + legal</text>
+  </g>
+</svg>

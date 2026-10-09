@@ -1,0 +1,61 @@
+<!--
+html-template-pack · svg-library · climate-zones-globe
+  Flattened globe split into latitude climate bands (polar, temperate, dry,
+  tropical, mirrored), after the Met Office climate-zones graphic, with a
+  keyed description list on the right. Bands are pre-computed polygons.
+  Tokens: deep-blue green amber coral text text-muted surface border font-head font-sans.
+  Edit: band names, the key text. Band edges are fractions of the radius
+  (EDGES); bands are schematic, not real zone boundaries.
+  No ids/markers, safe to paste multiples.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-label="Schematic globe divided into polar, temperate, dry and tropical climate bands, mirrored about the equator" style="width:100%;height:auto">
+  <title>Climate zones globe</title>
+  <ellipse cx="290" cy="225" rx="240" ry="185" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 22%, transparent);stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 45%, transparent);stroke-width:1.5"/>
+  <!-- bands (pre-computed lens slices) -->
+  <g>
+  <polygon points="290,40 259.1,41.5 246.4,43.1 236.7,44.6 228.6,46.2 221.4,47.7 215.1,49.2 209.2,50.8 203.8,52.3 198.8,53.9 194.1,55.4 189.6,57 185.4,58.5 181.4,60 177.5,61.6 173.8,63.1 170.3,64.7 166.9,66.2 163.6,67.7 160.4,69.3 157.3,70.8 154.4,72.4 151.5,73.9 148.7,75.5 146,77 434,77 431.3,75.5 428.5,73.9 425.6,72.4 422.7,70.8 419.6,69.3 416.4,67.7 413.1,66.2 409.7,64.7 406.2,63.1 402.5,61.6 398.6,60 394.6,58.5 390.4,57 385.9,55.4 381.2,53.9 376.2,52.3 370.8,50.8 364.9,49.2 358.6,47.7 351.4,46.2 343.3,44.6 333.6,43.1 320.9,41.5 290,40" style="fill:color-mix(in srgb, color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a)) 26%, var(--surface,#ffffff))"/>
+  <polygon points="146,77 141.7,79.5 137.6,82.1 133.7,84.6 129.9,87.2 126.3,89.7 122.8,92.3 119.5,94.8 116.3,97.3 113.2,99.9 110.2,102.4 107.4,105 104.6,107.5 101.9,110.1 99.4,112.6 96.9,115.2 94.5,117.7 92.2,120.2 90,122.8 87.8,125.3 85.7,127.9 83.7,130.4 81.8,133 80,135.5 78.2,138.1 501.8,138.1 500,135.5 498.2,133 496.3,130.4 494.3,127.9 492.2,125.3 490,122.8 487.8,120.2 485.5,117.7 483.1,115.2 480.6,112.6 478.1,110.1 475.4,107.5 472.6,105 469.8,102.4 466.8,99.9 463.7,97.3 460.5,94.8 457.2,92.3 453.7,89.7 450.1,87.2 446.3,84.6 442.4,82.1 438.3,79.5 434,77" style="fill:color-mix(in srgb, var(--green,#10b981) 30%, var(--surface,#ffffff))"/>
+  <polygon points="78.2,138.1 76.8,140 75.6,141.9 74.3,143.8 73.1,145.8 72,147.7 70.8,149.6 69.7,151.5 68.7,153.5 67.6,155.4 66.6,157.3 65.7,159.2 64.7,161.2 63.8,163.1 63,165 62.1,167 61.3,168.9 60.5,170.8 59.8,172.7 59.1,174.7 58.4,176.6 57.7,178.5 57.1,180.4 56.5,182.4 55.9,184.3 524.1,184.3 523.5,182.4 522.9,180.4 522.3,178.5 521.6,176.6 520.9,174.7 520.2,172.7 519.5,170.8 518.7,168.9 517.9,167 517,165 516.2,163.1 515.3,161.2 514.3,159.2 513.4,157.3 512.4,155.4 511.3,153.5 510.3,151.5 509.2,149.6 508,147.7 506.9,145.8 505.7,143.8 504.4,141.9 503.2,140 501.8,138.1" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 34%, var(--surface,#ffffff))"/>
+  <polygon points="55.9,184.3 54.9,187.7 54.1,191.1 53.3,194.5 52.6,197.9 52,201.3 51.5,204.7 51,208 50.6,211.4 50.4,214.8 50.2,218.2 50,221.6 50,225 50,228.4 50.2,231.8 50.4,235.2 50.6,238.6 51,242 51.5,245.3 52,248.7 52.6,252.1 53.3,255.5 54.1,258.9 54.9,262.3 55.9,265.7 524.1,265.7 525.1,262.3 525.9,258.9 526.7,255.5 527.4,252.1 528,248.7 528.5,245.3 529,242 529.4,238.6 529.6,235.2 529.8,231.8 530,228.4 530,225 530,221.6 529.8,218.2 529.6,214.8 529.4,211.4 529,208 528.5,204.7 528,201.3 527.4,197.9 526.7,194.5 525.9,191.1 525.1,187.7 524.1,184.3" style="fill:color-mix(in srgb, var(--coral,#ef4444) 32%, var(--surface,#ffffff))"/>
+  <polygon points="55.9,265.7 56.5,267.6 57.1,269.6 57.7,271.5 58.4,273.4 59.1,275.3 59.8,277.3 60.5,279.2 61.3,281.1 62.1,283 63,285 63.8,286.9 64.7,288.8 65.7,290.8 66.6,292.7 67.6,294.6 68.7,296.5 69.7,298.5 70.8,300.4 72,302.3 73.1,304.2 74.3,306.2 75.6,308.1 76.8,310 78.2,311.9 501.8,311.9 503.2,310 504.4,308.1 505.7,306.2 506.9,304.2 508,302.3 509.2,300.4 510.3,298.5 511.3,296.5 512.4,294.6 513.4,292.7 514.3,290.8 515.3,288.8 516.2,286.9 517,285 517.9,283 518.7,281.1 519.5,279.2 520.2,277.3 520.9,275.3 521.6,273.4 522.3,271.5 522.9,269.6 523.5,267.6 524.1,265.7" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 34%, var(--surface,#ffffff))"/>
+  <polygon points="78.2,311.9 80,314.5 81.8,317 83.7,319.6 85.7,322.1 87.8,324.7 90,327.2 92.2,329.8 94.5,332.3 96.9,334.8 99.4,337.4 101.9,339.9 104.6,342.5 107.4,345 110.2,347.6 113.2,350.1 116.3,352.6 119.5,355.2 122.8,357.7 126.3,360.3 129.9,362.8 133.7,365.4 137.6,367.9 141.7,370.5 146,373 434,373 438.3,370.5 442.4,367.9 446.3,365.4 450.1,362.8 453.7,360.3 457.2,357.7 460.5,355.2 463.7,352.6 466.8,350.1 469.8,347.6 472.6,345 475.4,342.5 478.1,339.9 480.6,337.4 483.1,334.8 485.5,332.3 487.8,329.8 490,327.2 492.2,324.7 494.3,322.1 496.3,319.6 498.2,317 500,314.5 501.8,311.9" style="fill:color-mix(in srgb, var(--green,#10b981) 30%, var(--surface,#ffffff))"/>
+  <polygon points="146,373 148.7,374.5 151.5,376.1 154.4,377.6 157.3,379.2 160.4,380.7 163.6,382.2 166.9,383.8 170.3,385.3 173.8,386.9 177.5,388.4 181.4,390 185.4,391.5 189.6,393 194.1,394.6 198.8,396.1 203.8,397.7 209.2,399.2 215.1,400.8 221.4,402.3 228.6,403.8 236.7,405.4 246.4,406.9 259.1,408.5 290,410 290,410 320.9,408.5 333.6,406.9 343.3,405.4 351.4,403.8 358.6,402.3 364.9,400.8 370.8,399.2 376.2,397.7 381.2,396.1 385.9,394.6 390.4,393 394.6,391.5 398.6,390 402.5,388.4 406.2,386.9 409.7,385.3 413.1,383.8 416.4,382.2 419.6,380.7 422.7,379.2 425.6,377.6 428.5,376.1 431.3,374.5 434,373" style="fill:color-mix(in srgb, color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a)) 26%, var(--surface,#ffffff))"/>
+  </g>
+  <!-- band dividers + outline -->
+  <g>
+  <line x1="146" y1="77" x2="434" y2="77" style="stroke:var(--surface,#ffffff);stroke-width:2"/>
+  <line x1="78.2" y1="138.1" x2="501.8" y2="138.1" style="stroke:var(--surface,#ffffff);stroke-width:2"/>
+  <line x1="55.9" y1="184.3" x2="524.1" y2="184.3" style="stroke:var(--surface,#ffffff);stroke-width:2"/>
+  <line x1="55.9" y1="265.7" x2="524.1" y2="265.7" style="stroke:var(--surface,#ffffff);stroke-width:2"/>
+  <line x1="78.2" y1="311.9" x2="501.8" y2="311.9" style="stroke:var(--surface,#ffffff);stroke-width:2"/>
+  <line x1="146" y1="373" x2="434" y2="373" style="stroke:var(--surface,#ffffff);stroke-width:2"/>
+  <line x1="50" y1="225" x2="530" y2="225" stroke-dasharray="5 5" style="stroke:var(--text-muted,#64748b);stroke-width:1.5"/>
+  <ellipse cx="290" cy="225" rx="240" ry="185" style="fill:none;stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:2"/>
+  </g>
+  <!-- band labels -->
+  <g>
+  <text x="290" y="62.5" text-anchor="middle" letter-spacing="1.2" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:11px;font-weight:700;fill:var(--text,#0f172a)">POLAR CLIMATES</text>
+  <text x="290" y="111.5" text-anchor="middle" letter-spacing="1.2" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:11px;font-weight:700;fill:var(--text,#0f172a)">TEMPERATE CLIMATES</text>
+  <text x="290" y="165.2" text-anchor="middle" letter-spacing="1.2" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:11px;font-weight:700;fill:var(--text,#0f172a)">DRY CLIMATES</text>
+  <text x="290" y="213" text-anchor="middle" letter-spacing="1.2" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:11px;font-weight:700;fill:var(--text,#0f172a)">TROPICAL CLIMATES</text>
+  <text x="516" y="219" text-anchor="end" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">equator</text>
+  <text x="290" y="292.8" text-anchor="middle" letter-spacing="1.2" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:11px;font-weight:700;fill:var(--text,#0f172a)">DRY CLIMATES</text>
+  <text x="290" y="346.5" text-anchor="middle" letter-spacing="1.2" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:11px;font-weight:700;fill:var(--text,#0f172a)">TEMPERATE CLIMATES</text>
+  <text x="290" y="395.5" text-anchor="middle" letter-spacing="1.2" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:11px;font-weight:700;fill:var(--text,#0f172a)">POLAR CLIMATES</text>
+  </g>
+  <!-- key -->
+  <g>
+  <rect x="568" y="105" width="20" height="20" rx="4" style="fill:color-mix(in srgb, color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a)) 45%, var(--surface,#ffffff));stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:1.5"/>
+  <text x="600" y="120" text-anchor="start" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">Polar</text>
+  <text x="600" y="139" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">cold all year, ice and tundra</text>
+  <rect x="568" y="167" width="20" height="20" rx="4" style="fill:color-mix(in srgb, var(--green,#10b981) 45%, var(--surface,#ffffff));stroke:var(--green,#10b981);stroke-width:1.5"/>
+  <text x="600" y="182" text-anchor="start" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">Temperate</text>
+  <text x="600" y="201" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">mild, four distinct seasons</text>
+  <rect x="568" y="229" width="20" height="20" rx="4" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 45%, var(--surface,#ffffff));stroke:var(--amber,#f59e0b);stroke-width:1.5"/>
+  <text x="600" y="244" text-anchor="start" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">Dry</text>
+  <text x="600" y="263" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">low rainfall, deserts</text>
+  <rect x="568" y="291" width="20" height="20" rx="4" style="fill:color-mix(in srgb, var(--coral,#ef4444) 45%, var(--surface,#ffffff));stroke:var(--coral,#ef4444);stroke-width:1.5"/>
+  <text x="600" y="306" text-anchor="start" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">Tropical</text>
+  <text x="600" y="325" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">hot, wet, few seasons</text>
+  </g>
+</svg>

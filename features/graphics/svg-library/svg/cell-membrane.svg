@@ -1,0 +1,161 @@
+<!--
+html-template-pack · svg-library · cell-membrane
+  Fluid-mosaic cross-section of the plasma membrane: phospholipid bilayer
+  (heads out, tails in) with a glycoprotein, channel protein, cholesterol,
+  integral and peripheral proteins and a glycolipid, labelled with leaders.
+  Extracellular side on top.
+  Tokens: teal deep-blue amber coral green navy text text-muted surface border font-head font-sans.
+  Edit: labels. Phospholipids are skipped where a protein sits (GAPS);
+  move a protein by moving its group and its GAPS interval together.
+  No ids/markers, safe to paste multiples.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-label="Cross-section of a cell membrane: phospholipid bilayer with embedded proteins, cholesterol and sugar chains on the outer side" style="width:100%;height:auto">
+  <title>Cell membrane (fluid mosaic)</title>
+  <text x="40" y="40" text-anchor="start" letter-spacing="1.2" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:11px;font-weight:700;fill:var(--text-muted,#64748b)">EXTRACELLULAR FLUID (OUTSIDE)</text>
+  <text x="40" y="344" text-anchor="start" letter-spacing="1.2" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:11px;font-weight:700;fill:var(--text-muted,#64748b)">CYTOPLASM</text>
+  <!-- tails -->
+  <g>
+  <path d="M 43 207 q 3 10 0 20 t 0 20 M 43 293 q 3 -10 0 -20 t 0 -20 M 49 207 q 3 10 0 20 t 0 20 M 49 293 q 3 -10 0 -20 t 0 -20 M 59 207 q 3 10 0 20 t 0 20 M 59 293 q 3 -10 0 -20 t 0 -20 M 65 207 q 3 10 0 20 t 0 20 M 65 293 q 3 -10 0 -20 t 0 -20 M 75 207 q 3 10 0 20 t 0 20 M 75 293 q 3 -10 0 -20 t 0 -20 M 81 207 q 3 10 0 20 t 0 20 M 81 293 q 3 -10 0 -20 t 0 -20 M 91 207 q 3 10 0 20 t 0 20 M 91 293 q 3 -10 0 -20 t 0 -20 M 97 207 q 3 10 0 20 t 0 20 M 97 293 q 3 -10 0 -20 t 0 -20 M 107 207 q 3 10 0 20 t 0 20 M 107 293 q 3 -10 0 -20 t 0 -20 M 113 207 q 3 10 0 20 t 0 20 M 113 293 q 3 -10 0 -20 t 0 -20 M 123 207 q 3 10 0 20 t 0 20 M 123 293 q 3 -10 0 -20 t 0 -20 M 129 207 q 3 10 0 20 t 0 20 M 129 293 q 3 -10 0 -20 t 0 -20 M 187 207 q 3 10 0 20 t 0 20 M 187 293 q 3 -10 0 -20 t 0 -20 M 193 207 q 3 10 0 20 t 0 20 M 193 293 q 3 -10 0 -20 t 0 -20 M 203 207 q 3 10 0 20 t 0 20 M 203 293 q 3 -10 0 -20 t 0 -20 M 209 207 q 3 10 0 20 t 0 20 M 209 293 q 3 -10 0 -20 t 0 -20 M 219 207 q 3 10 0 20 t 0 20 M 219 293 q 3 -10 0 -20 t 0 -20 M 225 207 q 3 10 0 20 t 0 20 M 225 293 q 3 -10 0 -20 t 0 -20 M 235 207 q 3 10 0 20 t 0 20 M 235 293 q 3 -10 0 -20 t 0 -20 M 241 207 q 3 10 0 20 t 0 20 M 241 293 q 3 -10 0 -20 t 0 -20 M 251 207 q 3 10 0 20 t 0 20 M 251 293 q 3 -10 0 -20 t 0 -20 M 257 207 q 3 10 0 20 t 0 20 M 257 293 q 3 -10 0 -20 t 0 -20 M 267 207 q 3 10 0 20 t 0 20 M 267 293 q 3 -10 0 -20 t 0 -20 M 273 207 q 3 10 0 20 t 0 20 M 273 293 q 3 -10 0 -20 t 0 -20 M 283 207 q 3 10 0 20 t 0 20 M 283 293 q 3 -10 0 -20 t 0 -20 M 289 207 q 3 10 0 20 t 0 20 M 289 293 q 3 -10 0 -20 t 0 -20 M 363 207 q 3 10 0 20 t 0 20 M 363 293 q 3 -10 0 -20 t 0 -20 M 369 207 q 3 10 0 20 t 0 20 M 369 293 q 3 -10 0 -20 t 0 -20 M 379 207 q 3 10 0 20 t 0 20 M 379 293 q 3 -10 0 -20 t 0 -20 M 385 207 q 3 10 0 20 t 0 20 M 385 293 q 3 -10 0 -20 t 0 -20 M 395 207 q 3 10 0 20 t 0 20 M 395 293 q 3 -10 0 -20 t 0 -20 M 401 207 q 3 10 0 20 t 0 20 M 401 293 q 3 -10 0 -20 t 0 -20 M 411 207 q 3 10 0 20 t 0 20 M 411 293 q 3 -10 0 -20 t 0 -20 M 417 207 q 3 10 0 20 t 0 20 M 417 293 q 3 -10 0 -20 t 0 -20 M 427 207 q 3 10 0 20 t 0 20 M 427 293 q 3 -10 0 -20 t 0 -20 M 433 207 q 3 10 0 20 t 0 20 M 433 293 q 3 -10 0 -20 t 0 -20 M 443 207 q 3 10 0 20 t 0 20 M 443 293 q 3 -10 0 -20 t 0 -20 M 449 207 q 3 10 0 20 t 0 20 M 449 293 q 3 -10 0 -20 t 0 -20 M 459 207 q 3 10 0 20 t 0 20 M 459 293 q 3 -10 0 -20 t 0 -20 M 465 207 q 3 10 0 20 t 0 20 M 465 293 q 3 -10 0 -20 t 0 -20 M 475 207 q 3 10 0 20 t 0 20 M 475 293 q 3 -10 0 -20 t 0 -20 M 481 207 q 3 10 0 20 t 0 20 M 481 293 q 3 -10 0 -20 t 0 -20 M 491 207 q 3 10 0 20 t 0 20 M 491 293 q 3 -10 0 -20 t 0 -20 M 497 207 q 3 10 0 20 t 0 20 M 497 293 q 3 -10 0 -20 t 0 -20 M 555 207 q 3 10 0 20 t 0 20 M 555 293 q 3 -10 0 -20 t 0 -20 M 561 207 q 3 10 0 20 t 0 20 M 561 293 q 3 -10 0 -20 t 0 -20 M 571 207 q 3 10 0 20 t 0 20 M 571 293 q 3 -10 0 -20 t 0 -20 M 577 207 q 3 10 0 20 t 0 20 M 577 293 q 3 -10 0 -20 t 0 -20 M 587 207 q 3 10 0 20 t 0 20 M 587 293 q 3 -10 0 -20 t 0 -20 M 593 207 q 3 10 0 20 t 0 20 M 593 293 q 3 -10 0 -20 t 0 -20 M 603 207 q 3 10 0 20 t 0 20 M 603 293 q 3 -10 0 -20 t 0 -20 M 609 207 q 3 10 0 20 t 0 20 M 609 293 q 3 -10 0 -20 t 0 -20 M 619 207 q 3 10 0 20 t 0 20 M 619 293 q 3 -10 0 -20 t 0 -20 M 625 207 q 3 10 0 20 t 0 20 M 625 293 q 3 -10 0 -20 t 0 -20 M 635 207 q 3 10 0 20 t 0 20 M 635 293 q 3 -10 0 -20 t 0 -20 M 641 207 q 3 10 0 20 t 0 20 M 641 293 q 3 -10 0 -20 t 0 -20 M 651 207 q 3 10 0 20 t 0 20 M 651 293 q 3 -10 0 -20 t 0 -20 M 657 207 q 3 10 0 20 t 0 20 M 657 293 q 3 -10 0 -20 t 0 -20 M 667 207 q 3 10 0 20 t 0 20 M 667 293 q 3 -10 0 -20 t 0 -20 M 673 207 q 3 10 0 20 t 0 20 M 673 293 q 3 -10 0 -20 t 0 -20 M 683 207 q 3 10 0 20 t 0 20 M 683 293 q 3 -10 0 -20 t 0 -20 M 689 207 q 3 10 0 20 t 0 20 M 689 293 q 3 -10 0 -20 t 0 -20 M 699 207 q 3 10 0 20 t 0 20 M 699 293 q 3 -10 0 -20 t 0 -20 M 705 207 q 3 10 0 20 t 0 20 M 705 293 q 3 -10 0 -20 t 0 -20 M 715 207 q 3 10 0 20 t 0 20 M 715 293 q 3 -10 0 -20 t 0 -20 M 721 207 q 3 10 0 20 t 0 20 M 721 293 q 3 -10 0 -20 t 0 -20 M 731 207 q 3 10 0 20 t 0 20 M 731 293 q 3 -10 0 -20 t 0 -20 M 737 207 q 3 10 0 20 t 0 20 M 737 293 q 3 -10 0 -20 t 0 -20 M 747 207 q 3 10 0 20 t 0 20 M 747 293 q 3 -10 0 -20 t 0 -20 M 753 207 q 3 10 0 20 t 0 20 M 753 293 q 3 -10 0 -20 t 0 -20" fill="none" stroke-linecap="round" style="stroke:var(--amber,#f59e0b);stroke-width:1.5"/>
+  </g>
+  <!-- cholesterol (in the outer leaflet) -->
+  <g>
+  <rect x="419" y="210" width="10" height="28" rx="3" style="fill:var(--amber,#f59e0b);stroke:var(--amber,#f59e0b);stroke-width:1"/>
+  <rect x="435" y="210" width="10" height="28" rx="3" style="fill:var(--amber,#f59e0b);stroke:var(--amber,#f59e0b);stroke-width:1"/>
+  </g>
+  <!-- heads -->
+  <g>
+  <circle cx="46" cy="200" r="7" style="fill:color-mix(in srgb, var(--teal,#0d9488) 45%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:1.5"/>
+  <circle cx="46" cy="300" r="7" style="fill:color-mix(in srgb, var(--teal,#0d9488) 45%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:1.5"/>
+  <circle cx="62" cy="200" r="7" style="fill:color-mix(in srgb, var(--teal,#0d9488) 45%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:1.5"/>
+  <circle cx="62" cy="300" r="7" style="fill:color-mix(in srgb, var(--teal,#0d9488) 45%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:1.5"/>
+  <circle cx="78" cy="200" r="7" style="fill:color-mix(in srgb, var(--teal,#0d9488) 45%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:1.5"/>
+  <circle cx="78" cy="300" r="7" style="fill:color-mix(in srgb, var(--teal,#0d9488) 45%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:1.5"/>
+  <circle cx="94" cy="200" r="7" style="fill:color-mix(in srgb, var(--teal,#0d9488) 45%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:1.5"/>
+  <circle cx="94" cy="300" r="7" style="fill:color-mix(in srgb, var(--teal,#0d9488) 45%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:1.5"/>
+  <circle cx="110" cy="200" r="7" style="fill:color-mix(in srgb, var(--teal,#0d9488) 45%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:1.5"/>
+  <circle cx="110" cy="300" r="7" style="fill:color-mix(in srgb, var(--teal,#0d9488) 45%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:1.5"/>
+  <circle cx="126" cy="200" r="7" style="fill:color-mix(in srgb, var(--teal,#0d9488) 45%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:1.5"/>
+  <circle cx="126" cy="300" r="7" style="fill:color-mix(in srgb, var(--teal,#0d9488) 45%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:1.5"/>
+  <circle cx="190" cy="200" r="7" style="fill:color-mix(in srgb, var(--teal,#0d9488) 45%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:1.5"/>
+  <circle cx="190" cy="300" r="7" style="fill:color-mix(in srgb, var(--teal,#0d9488) 45%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:1.5"/>
+  <circle cx="206" cy="200" r="7" style="fill:color-mix(in srgb, var(--teal,#0d9488) 45%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:1.5"/>
+  <circle cx="206" cy="300" r="7" style="fill:color-mix(in srgb, var(--teal,#0d9488) 45%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:1.5"/>
+  <circle cx="222" cy="200" r="7" style="fill:color-mix(in srgb, var(--teal,#0d9488) 45%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:1.5"/>
+  <circle cx="222" cy="300" r="7" style="fill:color-mix(in srgb, var(--teal,#0d9488) 45%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:1.5"/>
+  <circle cx="238" cy="200" r="7" style="fill:color-mix(in srgb, var(--teal,#0d9488) 45%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:1.5"/>
+  <circle cx="238" cy="300" r="7" style="fill:color-mix(in srgb, var(--teal,#0d9488) 45%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:1.5"/>
+  <circle cx="254" cy="200" r="7" style="fill:color-mix(in srgb, var(--teal,#0d9488) 45%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:1.5"/>
+  <circle cx="254" cy="300" r="7" style="fill:color-mix(in srgb, var(--teal,#0d9488) 45%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:1.5"/>
+  <circle cx="270" cy="200" r="7" style="fill:color-mix(in srgb, var(--teal,#0d9488) 45%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:1.5"/>
+  <circle cx="270" cy="300" r="7" style="fill:color-mix(in srgb, var(--teal,#0d9488) 45%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:1.5"/>
+  <circle cx="286" cy="200" r="7" style="fill:color-mix(in srgb, var(--teal,#0d9488) 45%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:1.5"/>
+  <circle cx="286" cy="300" r="7" style="fill:color-mix(in srgb, var(--teal,#0d9488) 45%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:1.5"/>
+  <circle cx="366" cy="200" r="7" style="fill:color-mix(in srgb, var(--teal,#0d9488) 45%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:1.5"/>
+  <circle cx="366" cy="300" r="7" style="fill:color-mix(in srgb, var(--teal,#0d9488) 45%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:1.5"/>
+  <circle cx="382" cy="200" r="7" style="fill:color-mix(in srgb, var(--teal,#0d9488) 45%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:1.5"/>
+  <circle cx="382" cy="300" r="7" style="fill:color-mix(in srgb, var(--teal,#0d9488) 45%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:1.5"/>
+  <circle cx="398" cy="200" r="7" style="fill:color-mix(in srgb, var(--teal,#0d9488) 45%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:1.5"/>
+  <circle cx="398" cy="300" r="7" style="fill:color-mix(in srgb, var(--teal,#0d9488) 45%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:1.5"/>
+  <circle cx="414" cy="200" r="7" style="fill:color-mix(in srgb, var(--teal,#0d9488) 45%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:1.5"/>
+  <circle cx="414" cy="300" r="7" style="fill:color-mix(in srgb, var(--teal,#0d9488) 45%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:1.5"/>
+  <circle cx="430" cy="200" r="7" style="fill:color-mix(in srgb, var(--teal,#0d9488) 45%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:1.5"/>
+  <circle cx="430" cy="300" r="7" style="fill:color-mix(in srgb, var(--teal,#0d9488) 45%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:1.5"/>
+  <circle cx="446" cy="200" r="7" style="fill:color-mix(in srgb, var(--teal,#0d9488) 45%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:1.5"/>
+  <circle cx="446" cy="300" r="7" style="fill:color-mix(in srgb, var(--teal,#0d9488) 45%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:1.5"/>
+  <circle cx="462" cy="200" r="7" style="fill:color-mix(in srgb, var(--teal,#0d9488) 45%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:1.5"/>
+  <circle cx="462" cy="300" r="7" style="fill:color-mix(in srgb, var(--teal,#0d9488) 45%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:1.5"/>
+  <circle cx="478" cy="200" r="7" style="fill:color-mix(in srgb, var(--teal,#0d9488) 45%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:1.5"/>
+  <circle cx="478" cy="300" r="7" style="fill:color-mix(in srgb, var(--teal,#0d9488) 45%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:1.5"/>
+  <circle cx="494" cy="200" r="7" style="fill:color-mix(in srgb, var(--teal,#0d9488) 45%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:1.5"/>
+  <circle cx="494" cy="300" r="7" style="fill:color-mix(in srgb, var(--teal,#0d9488) 45%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:1.5"/>
+  <circle cx="558" cy="200" r="7" style="fill:color-mix(in srgb, var(--teal,#0d9488) 45%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:1.5"/>
+  <circle cx="558" cy="300" r="7" style="fill:color-mix(in srgb, var(--teal,#0d9488) 45%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:1.5"/>
+  <circle cx="574" cy="200" r="7" style="fill:color-mix(in srgb, var(--teal,#0d9488) 45%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:1.5"/>
+  <circle cx="574" cy="300" r="7" style="fill:color-mix(in srgb, var(--teal,#0d9488) 45%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:1.5"/>
+  <circle cx="590" cy="200" r="7" style="fill:color-mix(in srgb, var(--teal,#0d9488) 45%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:1.5"/>
+  <circle cx="590" cy="300" r="7" style="fill:color-mix(in srgb, var(--teal,#0d9488) 45%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:1.5"/>
+  <circle cx="606" cy="200" r="7" style="fill:color-mix(in srgb, var(--teal,#0d9488) 45%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:1.5"/>
+  <circle cx="606" cy="300" r="7" style="fill:color-mix(in srgb, var(--teal,#0d9488) 45%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:1.5"/>
+  <circle cx="622" cy="200" r="7" style="fill:color-mix(in srgb, var(--teal,#0d9488) 45%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:1.5"/>
+  <circle cx="622" cy="300" r="7" style="fill:color-mix(in srgb, var(--teal,#0d9488) 45%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:1.5"/>
+  <circle cx="638" cy="200" r="7" style="fill:color-mix(in srgb, var(--teal,#0d9488) 45%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:1.5"/>
+  <circle cx="638" cy="300" r="7" style="fill:color-mix(in srgb, var(--teal,#0d9488) 45%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:1.5"/>
+  <circle cx="654" cy="200" r="7" style="fill:color-mix(in srgb, var(--teal,#0d9488) 45%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:1.5"/>
+  <circle cx="654" cy="300" r="7" style="fill:color-mix(in srgb, var(--teal,#0d9488) 45%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:1.5"/>
+  <circle cx="670" cy="200" r="7" style="fill:color-mix(in srgb, var(--teal,#0d9488) 45%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:1.5"/>
+  <circle cx="670" cy="300" r="7" style="fill:color-mix(in srgb, var(--teal,#0d9488) 45%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:1.5"/>
+  <circle cx="686" cy="200" r="7" style="fill:color-mix(in srgb, var(--teal,#0d9488) 45%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:1.5"/>
+  <circle cx="686" cy="300" r="7" style="fill:color-mix(in srgb, var(--teal,#0d9488) 45%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:1.5"/>
+  <circle cx="702" cy="200" r="7" style="fill:color-mix(in srgb, var(--teal,#0d9488) 45%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:1.5"/>
+  <circle cx="702" cy="300" r="7" style="fill:color-mix(in srgb, var(--teal,#0d9488) 45%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:1.5"/>
+  <circle cx="718" cy="200" r="7" style="fill:color-mix(in srgb, var(--teal,#0d9488) 45%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:1.5"/>
+  <circle cx="718" cy="300" r="7" style="fill:color-mix(in srgb, var(--teal,#0d9488) 45%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:1.5"/>
+  <circle cx="734" cy="200" r="7" style="fill:color-mix(in srgb, var(--teal,#0d9488) 45%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:1.5"/>
+  <circle cx="734" cy="300" r="7" style="fill:color-mix(in srgb, var(--teal,#0d9488) 45%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:1.5"/>
+  <circle cx="750" cy="200" r="7" style="fill:color-mix(in srgb, var(--teal,#0d9488) 45%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:1.5"/>
+  <circle cx="750" cy="300" r="7" style="fill:color-mix(in srgb, var(--teal,#0d9488) 45%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:1.5"/>
+  </g>
+  <!-- glycoprotein -->
+  <g>
+  <path d="M 140 312 C 128 270 132 214 150 188 C 160 182 178 186 184 196 C 192 240 188 280 176 312 Z" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 40%, var(--surface,#ffffff));stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:2"/>
+  <line x1="164" y1="186" x2="164" y2="160" style="stroke:var(--green,#10b981);stroke-width:2"/>
+  <line x1="164" y1="160" x2="152" y2="140" style="stroke:var(--green,#10b981);stroke-width:2"/>
+  <line x1="164" y1="160" x2="176" y2="140" style="stroke:var(--green,#10b981);stroke-width:2"/>
+  <polygon points="169.2,163 164,166 158.8,163 158.8,157 164,154 169.2,157" style="fill:color-mix(in srgb, var(--green,#10b981) 50%, var(--surface,#ffffff));stroke:var(--green,#10b981);stroke-width:1.5"/>
+  <polygon points="157.2,143 152,146 146.8,143 146.8,137 152,134 157.2,137" style="fill:color-mix(in srgb, var(--green,#10b981) 50%, var(--surface,#ffffff));stroke:var(--green,#10b981);stroke-width:1.5"/>
+  <polygon points="181.2,143 176,146 170.8,143 170.8,137 176,134 181.2,137" style="fill:color-mix(in srgb, var(--green,#10b981) 50%, var(--surface,#ffffff));stroke:var(--green,#10b981);stroke-width:1.5"/>
+  <polygon points="169.2,177 164,180 158.8,177 158.8,171 164,168 169.2,171" style="fill:color-mix(in srgb, var(--green,#10b981) 50%, var(--surface,#ffffff));stroke:var(--green,#10b981);stroke-width:1.5"/>
+  </g>
+  <!-- channel protein -->
+  <g>
+  <rect x="298" y="178" width="26" height="144" rx="12" style="fill:color-mix(in srgb, var(--coral,#ef4444) 40%, var(--surface,#ffffff));stroke:var(--coral,#ef4444);stroke-width:2"/>
+  <rect x="332" y="178" width="26" height="144" rx="12" style="fill:color-mix(in srgb, var(--coral,#ef4444) 40%, var(--surface,#ffffff));stroke:var(--coral,#ef4444);stroke-width:2"/>
+  <circle cx="328" cy="230" r="3" style="fill:color-mix(in srgb, var(--navy,#1a2744) 55%, var(--text,#0f172a))"/>
+  <circle cx="328" cy="252" r="3" style="fill:color-mix(in srgb, var(--navy,#1a2744) 55%, var(--text,#0f172a))"/>
+  <circle cx="328" cy="274" r="3" style="fill:color-mix(in srgb, var(--navy,#1a2744) 55%, var(--text,#0f172a))"/>
+  </g>
+  <!-- integral protein -->
+  <g>
+  <path d="M 504 316 C 494 262 496 220 512 184 C 528 176 548 196 546 230 C 546 266 552 290 538 316 Z" style="fill:color-mix(in srgb, var(--green,#10b981) 40%, var(--surface,#ffffff));stroke:var(--green,#10b981);stroke-width:2"/>
+  </g>
+  <!-- peripheral protein (inner face) -->
+  <g>
+  <ellipse cx="618" cy="322" rx="26" ry="14" style="fill:color-mix(in srgb, var(--navy,#1a2744) 40%, var(--surface,#ffffff));stroke:color-mix(in srgb, var(--navy,#1a2744) 55%, var(--text,#0f172a));stroke-width:2"/>
+  </g>
+  <!-- glycolipid (sugar chain on a lipid) -->
+  <g>
+  <line x1="670" y1="193" x2="670" y2="176" style="stroke:var(--green,#10b981);stroke-width:2"/>
+  <line x1="670" y1="176" x2="680" y2="160" style="stroke:var(--green,#10b981);stroke-width:2"/>
+  <polygon points="675.2,179 670,182 664.8,179 664.8,173 670,170 675.2,173" style="fill:color-mix(in srgb, var(--green,#10b981) 50%, var(--surface,#ffffff));stroke:var(--green,#10b981);stroke-width:1.5"/>
+  <polygon points="685.2,163 680,166 674.8,163 674.8,157 680,154 685.2,157" style="fill:color-mix(in srgb, var(--green,#10b981) 50%, var(--surface,#ffffff));stroke:var(--green,#10b981);stroke-width:1.5"/>
+  </g>
+  <!-- labels + leaders -->
+  <g>
+  <circle cx="164" cy="132" r="3" style="fill:var(--text,#0f172a)"/>
+  <line x1="164" y1="132" x2="164" y2="96" stroke-dasharray="3 3" style="stroke:var(--text-muted,#64748b);stroke-width:1.2"/>
+  <text x="164" y="70" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--text,#0f172a)">Glycoprotein</text>
+  <text x="164" y="86" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">sugar chain = cell ID</text>
+  <circle cx="328" cy="176" r="3" style="fill:var(--text,#0f172a)"/>
+  <line x1="328" y1="176" x2="328" y2="112" stroke-dasharray="3 3" style="stroke:var(--text-muted,#64748b);stroke-width:1.2"/>
+  <text x="328" y="86" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--text,#0f172a)">Channel protein</text>
+  <text x="328" y="102" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">lets ions through</text>
+  <circle cx="680" cy="152" r="3" style="fill:var(--text,#0f172a)"/>
+  <line x1="680" y1="152" x2="680" y2="96" stroke-dasharray="3 3" style="stroke:var(--text-muted,#64748b);stroke-width:1.2"/>
+  <text x="680" y="70" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--text,#0f172a)">Glycolipid</text>
+  <text x="680" y="86" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">lipid + sugar chain</text>
+  <circle cx="432" cy="240" r="3" style="fill:var(--text,#0f172a)"/>
+  <line x1="432" y1="240" x2="380" y2="386" stroke-dasharray="3 3" style="stroke:var(--text-muted,#64748b);stroke-width:1.2"/>
+  <text x="380" y="404" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--text,#0f172a)">Cholesterol</text>
+  <text x="380" y="420" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">tunes fluidity</text>
+  <circle cx="524" cy="316" r="3" style="fill:var(--text,#0f172a)"/>
+  <line x1="524" y1="316" x2="545" y2="386" stroke-dasharray="3 3" style="stroke:var(--text-muted,#64748b);stroke-width:1.2"/>
+  <text x="545" y="404" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--text,#0f172a)">Integral protein</text>
+  <text x="545" y="420" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">spans the bilayer</text>
+  <circle cx="618" cy="336" r="3" style="fill:var(--text,#0f172a)"/>
+  <line x1="618" y1="336" x2="700" y2="386" stroke-dasharray="3 3" style="stroke:var(--text-muted,#64748b);stroke-width:1.2"/>
+  <text x="700" y="404" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--text,#0f172a)">Peripheral protein</text>
+  <text x="700" y="420" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">sits on one face</text>
+  <path d="M 30 192 H 24 V 308 H 30" fill="none" style="stroke:var(--text-muted,#64748b);stroke-width:1.5"/>
+  <text x="18" y="250" text-anchor="middle" transform="rotate(-90 18 250)" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">Phospholipid bilayer</text>
+  </g>
+</svg>

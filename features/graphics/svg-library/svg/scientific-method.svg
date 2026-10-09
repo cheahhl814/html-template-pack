@@ -1,0 +1,67 @@
+<!--
+html-template-pack · svg-library · scientific-method
+  Six-step scientific-method cycle: numbered nodes on a ring joined by
+  clockwise arc arrows around a central flask, labels outside the ring.
+  Tokens: teal deep-blue amber coral green navy text text-muted surface border font-head font-sans.
+  Edit: 6 labels + captions. Node i at angle -90 + 60*i on radius 130 around
+  (400, 222); labels sit 44 px beyond the node.
+  No ids/markers, safe to paste multiples.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-label="Scientific method cycle: observe, question, hypothesise, experiment, analyse, conclude, around a flask" style="width:100%;height:auto">
+  <title>Scientific method cycle</title>
+  <!-- arc arrows -->
+  <g>
+  <path d="M 433.6 96.4 A 130 130 0 0 1 488.7 126.9" fill="none" stroke-linecap="round" style="stroke:var(--text-muted,#64748b);stroke-width:2.5"/>
+  <polygon points="495.1,133.3 483.6,129 491.6,121.5" style="fill:var(--text-muted,#64748b)"/>
+  <path d="M 525.6 188.4 A 130 130 0 0 1 526.7 251.2" fill="none" stroke-linecap="round" style="stroke:var(--text-muted,#64748b);stroke-width:2.5"/>
+  <polygon points="524.3,260 522.3,247.9 532.8,251.1" style="fill:var(--text-muted,#64748b)"/>
+  <path d="M 491.9 313.9 A 130 130 0 0 1 438 346.3" fill="none" stroke-linecap="round" style="stroke:var(--text-muted,#64748b);stroke-width:2.5"/>
+  <polygon points="429.2,348.7 438.7,340.8 441.2,351.6" style="fill:var(--text-muted,#64748b)"/>
+  <path d="M 366.4 347.6 A 130 130 0 0 1 311.3 317.1" fill="none" stroke-linecap="round" style="stroke:var(--text-muted,#64748b);stroke-width:2.5"/>
+  <polygon points="304.9,310.7 316.4,315 308.4,322.5" style="fill:var(--text-muted,#64748b)"/>
+  <path d="M 274.4 255.6 A 130 130 0 0 1 273.3 192.8" fill="none" stroke-linecap="round" style="stroke:var(--text-muted,#64748b);stroke-width:2.5"/>
+  <polygon points="275.7,184 277.7,196.1 267.2,192.9" style="fill:var(--text-muted,#64748b)"/>
+  <path d="M 308.1 130.1 A 130 130 0 0 1 362 97.7" fill="none" stroke-linecap="round" style="stroke:var(--text-muted,#64748b);stroke-width:2.5"/>
+  <polygon points="370.8,95.3 361.3,103.2 358.8,92.4" style="fill:var(--text-muted,#64748b)"/>
+  </g>
+  <!-- flask hub -->
+  <g>
+  <circle cx="400" cy="222" r="62" style="fill:color-mix(in srgb, var(--teal,#0d9488) 8%, var(--surface,#ffffff));stroke:var(--border,#e2e8f0);stroke-width:1.5"/>
+  <path d="M 382 224 L 418 224 L 430 252 Q 432 256 427 256 H 373 Q 368 256 370 252 Z" style="fill:color-mix(in srgb, var(--teal,#0d9488) 50%, var(--surface,#ffffff))"/>
+  <path d="M 393 192 V 212 L 370 252 Q 368 256 373 256 H 427 Q 432 256 430 252 L 407 212 V 192" fill="none" stroke-linejoin="round" style="stroke:var(--text,#0f172a);stroke-width:2"/>
+  <line x1="389" y1="192" x2="411" y2="192" stroke-linecap="round" style="stroke:var(--text,#0f172a);stroke-width:2"/>
+  </g>
+  <!-- nodes + labels -->
+  <g>
+  <circle cx="400" cy="92" r="22" transform="translate(3 4)" style="fill:color-mix(in srgb, var(--teal,#0d9488) 22%, transparent);stroke:color-mix(in srgb, var(--teal,#0d9488) 45%, transparent);stroke-width:1.5"/>
+  <circle cx="400" cy="92" r="22" style="fill:var(--teal,#0d9488);stroke:var(--surface,#ffffff);stroke-width:3"/>
+  <text x="400" y="97" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--surface,#ffffff)">1</text>
+  <text x="400" y="38" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">Observe</text>
+  <text x="400" y="55" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">notice a pattern</text>
+  <circle cx="512.6" cy="157" r="22" transform="translate(3 4)" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 22%, transparent);stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 45%, transparent);stroke-width:1.5"/>
+  <circle cx="512.6" cy="157" r="22" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke:var(--surface,#ffffff);stroke-width:3"/>
+  <text x="512.6" y="162" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--surface,#ffffff)">2</text>
+  <text x="547.2" y="137" text-anchor="start" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">Question</text>
+  <text x="547.2" y="154" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">ask what and why</text>
+  <circle cx="512.6" cy="287" r="22" transform="translate(3 4)" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 22%, transparent);stroke:color-mix(in srgb, var(--amber,#f59e0b) 45%, transparent);stroke-width:1.5"/>
+  <circle cx="512.6" cy="287" r="22" style="fill:var(--amber,#f59e0b);stroke:var(--surface,#ffffff);stroke-width:3"/>
+  <text x="512.6" y="292" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--surface,#ffffff)">3</text>
+  <text x="547.2" y="307" text-anchor="start" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">Hypothesise</text>
+  <text x="547.2" y="324" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">make a testable claim</text>
+  <circle cx="400" cy="352" r="22" transform="translate(3 4)" style="fill:color-mix(in srgb, var(--coral,#ef4444) 22%, transparent);stroke:color-mix(in srgb, var(--coral,#ef4444) 45%, transparent);stroke-width:1.5"/>
+  <circle cx="400" cy="352" r="22" style="fill:var(--coral,#ef4444);stroke:var(--surface,#ffffff);stroke-width:3"/>
+  <text x="400" y="357" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--surface,#ffffff)">4</text>
+  <text x="400" y="406" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">Experiment</text>
+  <text x="400" y="423" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">control the variables</text>
+  <circle cx="287.4" cy="287" r="22" transform="translate(3 4)" style="fill:color-mix(in srgb, var(--green,#10b981) 22%, transparent);stroke:color-mix(in srgb, var(--green,#10b981) 45%, transparent);stroke-width:1.5"/>
+  <circle cx="287.4" cy="287" r="22" style="fill:var(--green,#10b981);stroke:var(--surface,#ffffff);stroke-width:3"/>
+  <text x="287.4" y="292" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--surface,#ffffff)">5</text>
+  <text x="252.8" y="307" text-anchor="end" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">Analyse</text>
+  <text x="252.8" y="324" text-anchor="end" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">look at the data</text>
+  <circle cx="287.4" cy="157" r="22" transform="translate(3 4)" style="fill:color-mix(in srgb, var(--navy,#1a2744) 22%, transparent);stroke:color-mix(in srgb, var(--navy,#1a2744) 45%, transparent);stroke-width:1.5"/>
+  <circle cx="287.4" cy="157" r="22" style="fill:color-mix(in srgb, var(--navy,#1a2744) 55%, var(--text,#0f172a));stroke:var(--surface,#ffffff);stroke-width:3"/>
+  <text x="287.4" y="162" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--surface,#ffffff)">6</text>
+  <text x="252.8" y="137" text-anchor="end" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">Conclude</text>
+  <text x="252.8" y="154" text-anchor="end" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">accept, reject, share</text>
+  </g>
+</svg>

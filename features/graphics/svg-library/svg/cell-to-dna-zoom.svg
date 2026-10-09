@@ -1,0 +1,105 @@
+<!--
+html-template-pack · svg-library · cell-to-dna-zoom
+  Zoom sequence through four lenses: cell, nucleus, chromosome, DNA double
+  helix, each lens linked to the region it magnifies by dashed zoom lines.
+  Tokens: teal deep-blue amber coral green navy text text-muted surface border font-head font-sans.
+  Edit: labels + scale captions. Lens centres at x = 110, 300, 490, 680 (r 70).
+  Scales are typical orders of magnitude, not exact sizes.
+  No ids/markers, safe to paste multiples.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-label="Zoom from a cell to its nucleus, to a chromosome, to the DNA double helix" style="width:100%;height:auto">
+  <title>Cell to DNA zoom</title>
+  <!-- zoom lines -->
+  <g>
+  <line x1="162" y1="180" x2="300" y2="130" stroke-dasharray="4 4" style="stroke:var(--text-muted,#64748b);stroke-width:1.2"/>
+  <line x1="162" y1="210" x2="300" y2="270" stroke-dasharray="4 4" style="stroke:var(--text-muted,#64748b);stroke-width:1.2"/>
+  <line x1="332" y1="196" x2="490" y2="130" stroke-dasharray="4 4" style="stroke:var(--text-muted,#64748b);stroke-width:1.2"/>
+  <line x1="332" y1="226" x2="490" y2="270" stroke-dasharray="4 4" style="stroke:var(--text-muted,#64748b);stroke-width:1.2"/>
+  <line x1="518" y1="160" x2="680" y2="130" stroke-dasharray="4 4" style="stroke:var(--text-muted,#64748b);stroke-width:1.2"/>
+  <line x1="518" y1="186" x2="680" y2="270" stroke-dasharray="4 4" style="stroke:var(--text-muted,#64748b);stroke-width:1.2"/>
+  </g>
+  <!-- lenses -->
+  <g>
+  <circle cx="110" cy="200" r="70" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--teal,#0d9488) 22%, transparent);stroke:color-mix(in srgb, var(--teal,#0d9488) 45%, transparent);stroke-width:1.5"/>
+  <circle cx="110" cy="200" r="70" style="fill:color-mix(in srgb, var(--teal,#0d9488) 8%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:2"/>
+  <circle cx="300" cy="200" r="70" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--teal,#0d9488) 22%, transparent);stroke:color-mix(in srgb, var(--teal,#0d9488) 45%, transparent);stroke-width:1.5"/>
+  <circle cx="300" cy="200" r="70" style="fill:color-mix(in srgb, var(--teal,#0d9488) 8%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:2"/>
+  <circle cx="490" cy="200" r="70" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--teal,#0d9488) 22%, transparent);stroke:color-mix(in srgb, var(--teal,#0d9488) 45%, transparent);stroke-width:1.5"/>
+  <circle cx="490" cy="200" r="70" style="fill:color-mix(in srgb, var(--teal,#0d9488) 8%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:2"/>
+  <circle cx="680" cy="200" r="70" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--teal,#0d9488) 22%, transparent);stroke:color-mix(in srgb, var(--teal,#0d9488) 45%, transparent);stroke-width:1.5"/>
+  <circle cx="680" cy="200" r="70" style="fill:color-mix(in srgb, var(--teal,#0d9488) 8%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:2"/>
+  </g>
+  <!-- cell -->
+  <g>
+  <ellipse cx="110" cy="200" rx="56" ry="48" style="fill:color-mix(in srgb, var(--green,#10b981) 26%, var(--surface,#ffffff));stroke:var(--green,#10b981);stroke-width:2"/>
+  <circle cx="146" cy="196" r="18" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 30%, var(--surface,#ffffff));stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:2"/>
+  <ellipse cx="80" cy="180" rx="12" ry="6" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 45%, var(--surface,#ffffff));stroke:var(--amber,#f59e0b);stroke-width:1.2"/>
+  <ellipse cx="90" cy="226" rx="10" ry="5" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 45%, var(--surface,#ffffff));stroke:var(--amber,#f59e0b);stroke-width:1.2"/>
+  <ellipse cx="124" cy="232" rx="8" ry="4" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 45%, var(--surface,#ffffff));stroke:var(--amber,#f59e0b);stroke-width:1.2"/>
+  </g>
+  <!-- nucleus -->
+  <g>
+  <circle cx="300" cy="200" r="54" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 24%, var(--surface,#ffffff));stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:2"/>
+  <path d="M 268 186 q 10 -14 20 0 t 20 0 t 20 0 M 262 214 q 10 12 20 0 t 20 0 t 20 0" fill="none" style="stroke:color-mix(in srgb, var(--navy,#1a2744) 55%, var(--text,#0f172a));stroke-width:2"/>
+  <circle cx="290" cy="228" r="9" style="fill:color-mix(in srgb, var(--navy,#1a2744) 40%, var(--surface,#ffffff))"/>
+  <rect x="315" y="199" width="8" height="24" rx="4" transform="rotate(-22 319 211)" style="fill:color-mix(in srgb, var(--coral,#ef4444) 40%, var(--surface,#ffffff));stroke:var(--coral,#ef4444);stroke-width:1.5"/>
+  <rect x="315" y="199" width="8" height="24" rx="4" transform="rotate(22 319 211)" style="fill:color-mix(in srgb, var(--coral,#ef4444) 40%, var(--surface,#ffffff));stroke:var(--coral,#ef4444);stroke-width:1.5"/>
+  </g>
+  <!-- chromosome -->
+  <g>
+  <rect x="478" y="150" width="24" height="100" rx="12" transform="rotate(-22 490 200)" style="fill:color-mix(in srgb, var(--coral,#ef4444) 40%, var(--surface,#ffffff));stroke:var(--coral,#ef4444);stroke-width:2"/>
+  <rect x="478" y="150" width="24" height="100" rx="12" transform="rotate(22 490 200)" style="fill:color-mix(in srgb, var(--coral,#ef4444) 40%, var(--surface,#ffffff));stroke:var(--coral,#ef4444);stroke-width:2"/>
+  <circle cx="490" cy="200" r="5" style="fill:var(--coral,#ef4444)"/>
+  </g>
+  <!-- DNA -->
+  <g>
+  <path d="M 646 222 L 648 221.4 L 650 220.2 L 652 218.4 L 654 215.9 L 656 212.9 L 658 209.5 L 660 205.9 L 662 202 L 664 198 L 666 194.1 L 668 190.5 L 670 187.1 L 672 184.1 L 674 181.6 L 676 179.8 L 678 178.6 L 680 178" fill="none" stroke-linecap="round" style="stroke:color-mix(in srgb, color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a)) 55%, var(--surface,#ffffff));stroke-width:4"/>
+  <path d="M 716 222 L 718 221.4 L 720 220.2 L 722 218.4 L 724 215.9 L 726 212.9 L 728 209.5 L 730 205.9 L 732 202" fill="none" stroke-linecap="round" style="stroke:color-mix(in srgb, color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a)) 55%, var(--surface,#ffffff));stroke-width:4"/>
+  <path d="M 628 200 L 630 196.1 L 632 192.3 L 634 188.7 L 636 185.5 L 638 182.8 L 640 180.6 L 642 179.1 L 644 178.2" fill="none" stroke-linecap="round" style="stroke:color-mix(in srgb, var(--teal,#0d9488) 55%, var(--surface,#ffffff));stroke-width:4"/>
+  <path d="M 682 221.8 L 684 220.9 L 686 219.4 L 688 217.2 L 690 214.5 L 692 211.3 L 694 207.7 L 696 203.9 L 698 200 L 700 196.1 L 702 192.3 L 704 188.7 L 706 185.5 L 708 182.8 L 710 180.6 L 712 179.1 L 714 178.2" fill="none" stroke-linecap="round" style="stroke:color-mix(in srgb, var(--teal,#0d9488) 55%, var(--surface,#ffffff));stroke-width:4"/>
+  <line x1="632.5" y1="208.6" x2="632.5" y2="200" style="stroke:var(--teal,#0d9488);stroke-width:3"/>
+  <line x1="632.5" y1="200" x2="632.5" y2="191.4" style="stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:3"/>
+  <line x1="641.5" y1="220.6" x2="641.5" y2="200" style="stroke:var(--amber,#f59e0b);stroke-width:3"/>
+  <line x1="641.5" y1="200" x2="641.5" y2="179.4" style="stroke:var(--coral,#ef4444);stroke-width:3"/>
+  <line x1="650.5" y1="219.8" x2="650.5" y2="200" style="stroke:var(--coral,#ef4444);stroke-width:3"/>
+  <line x1="650.5" y1="200" x2="650.5" y2="180.2" style="stroke:var(--amber,#f59e0b);stroke-width:3"/>
+  <line x1="659.5" y1="206.8" x2="659.5" y2="200" style="stroke:var(--coral,#ef4444);stroke-width:3"/>
+  <line x1="659.5" y1="200" x2="659.5" y2="193.2" style="stroke:var(--amber,#f59e0b);stroke-width:3"/>
+  <line x1="668.5" y1="189.6" x2="668.5" y2="200" style="stroke:var(--amber,#f59e0b);stroke-width:3"/>
+  <line x1="668.5" y1="200" x2="668.5" y2="210.4" style="stroke:var(--coral,#ef4444);stroke-width:3"/>
+  <line x1="677.5" y1="178.8" x2="677.5" y2="200" style="stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:3"/>
+  <line x1="677.5" y1="200" x2="677.5" y2="221.2" style="stroke:var(--teal,#0d9488);stroke-width:3"/>
+  <line x1="686.5" y1="181.1" x2="686.5" y2="200" style="stroke:var(--amber,#f59e0b);stroke-width:3"/>
+  <line x1="686.5" y1="200" x2="686.5" y2="218.9" style="stroke:var(--coral,#ef4444);stroke-width:3"/>
+  <line x1="695.5" y1="195.1" x2="695.5" y2="200" style="stroke:var(--teal,#0d9488);stroke-width:3"/>
+  <line x1="695.5" y1="200" x2="695.5" y2="204.9" style="stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:3"/>
+  <line x1="704.5" y1="212.1" x2="704.5" y2="200" style="stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:3"/>
+  <line x1="704.5" y1="200" x2="704.5" y2="187.9" style="stroke:var(--teal,#0d9488);stroke-width:3"/>
+  <line x1="713.5" y1="221.6" x2="713.5" y2="200" style="stroke:var(--coral,#ef4444);stroke-width:3"/>
+  <line x1="713.5" y1="200" x2="713.5" y2="178.4" style="stroke:var(--amber,#f59e0b);stroke-width:3"/>
+  <line x1="722.5" y1="217.8" x2="722.5" y2="200" style="stroke:var(--teal,#0d9488);stroke-width:3"/>
+  <line x1="722.5" y1="200" x2="722.5" y2="182.2" style="stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:3"/>
+  <path d="M 628 200 L 630 203.9 L 632 207.7 L 634 211.3 L 636 214.5 L 638 217.2 L 640 219.4 L 642 220.9 L 644 221.8" fill="none" stroke-linecap="round" style="stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:4"/>
+  <path d="M 682 178.2 L 684 179.1 L 686 180.6 L 688 182.8 L 690 185.5 L 692 188.7 L 694 192.3 L 696 196.1 L 698 200 L 700 203.9 L 702 207.7 L 704 211.3 L 706 214.5 L 708 217.2 L 710 219.4 L 712 220.9 L 714 221.8" fill="none" stroke-linecap="round" style="stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:4"/>
+  <path d="M 646 178 L 648 178.6 L 650 179.8 L 652 181.6 L 654 184.1 L 656 187.1 L 658 190.5 L 660 194.1 L 662 198 L 664 202 L 666 205.9 L 668 209.5 L 670 212.9 L 672 215.9 L 674 218.4 L 676 220.2 L 678 221.4 L 680 222" fill="none" stroke-linecap="round" style="stroke:var(--teal,#0d9488);stroke-width:4"/>
+  <path d="M 716 178 L 718 178.6 L 720 179.8 L 722 181.6 L 724 184.1 L 726 187.1 L 728 190.5 L 730 194.1 L 732 198" fill="none" stroke-linecap="round" style="stroke:var(--teal,#0d9488);stroke-width:4"/>
+  </g>
+  <!-- highlight boxes -->
+  <g>
+  <rect x="132" y="180" width="30" height="30" rx="3" style="fill:none;stroke:var(--text,#0f172a);stroke-width:1.5"/>
+  <rect x="306" y="196" width="26" height="30" rx="3" style="fill:none;stroke:var(--text,#0f172a);stroke-width:1.5"/>
+  <rect x="496" y="160" width="22" height="26" rx="3" style="fill:none;stroke:var(--text,#0f172a);stroke-width:1.5"/>
+  </g>
+  <!-- labels -->
+  <g>
+  <text x="110" y="302" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">Cell</text>
+  <text x="110" y="320" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">~10–100 µm</text>
+  <text x="300" y="302" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">Nucleus</text>
+  <text x="300" y="320" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">~6 µm across</text>
+  <text x="490" y="302" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">Chromosome</text>
+  <text x="490" y="320" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">condensed DNA + protein</text>
+  <text x="680" y="302" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">DNA</text>
+  <text x="680" y="320" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">helix ~2 nm wide</text>
+  <text x="40" y="400" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:13px;font-weight:400;fill:var(--text,#0f172a)">Each lens magnifies the boxed region of the one before it.</text>
+  </g>
+</svg>

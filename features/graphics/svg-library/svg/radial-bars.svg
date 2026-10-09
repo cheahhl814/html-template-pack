@@ -1,0 +1,48 @@
+<!--
+html-template-pack · svg-library · radial-bars
+  Four concentric progress arcs (270-degree track, clockwise from 12 o'clock)
+  with labels + values in the open quadrant and a takeaway card.
+  Tokens: teal deep-blue amber coral text text-muted surface border font-head font-sans.
+  Edit: VALUES (0-100), labels, card text. Arc end angle = -90 + v*2.7.
+  Concept-level; real data belongs in chartz.
+  No ids/markers, safe to paste multiples.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-label="Radial progress bars for four funnel stages at 92, 74, 51 and 28 percent, with a takeaway" style="width:100%;height:auto">
+  <title>Radial progress bars</title>
+  <!-- tracks -->
+  <g>
+  <path d="M 300 70 A 165 165 0 1 1 135 235" fill="none" stroke-linecap="round" style="stroke:color-mix(in srgb, var(--teal,#0d9488) 18%, var(--surface,#ffffff));stroke-width:24"/>
+  <path d="M 300 107 A 128 128 0 1 1 172 235" fill="none" stroke-linecap="round" style="stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 18%, var(--surface,#ffffff));stroke-width:24"/>
+  <path d="M 300 144 A 91 91 0 1 1 209 235" fill="none" stroke-linecap="round" style="stroke:color-mix(in srgb, var(--amber,#f59e0b) 18%, var(--surface,#ffffff));stroke-width:24"/>
+  <path d="M 300 181 A 54 54 0 1 1 246 235" fill="none" stroke-linecap="round" style="stroke:color-mix(in srgb, var(--coral,#ef4444) 18%, var(--surface,#ffffff));stroke-width:24"/>
+  </g>
+  <!-- values -->
+  <g>
+  <path d="M 300 70 A 165 165 0 1 1 146.6 295.7" fill="none" stroke-linecap="round" style="stroke:var(--teal,#0d9488);stroke-width:24"/>
+  <path d="M 300 107 A 128 128 0 1 1 256.6 355.4" fill="none" stroke-linecap="round" style="stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:24"/>
+  <path d="M 300 144 A 91 91 0 0 1 361.2 302.3" fill="none" stroke-linecap="round" style="stroke:var(--amber,#f59e0b);stroke-width:24"/>
+  <path d="M 300 181 A 54 54 0 0 1 352.3 221.6" fill="none" stroke-linecap="round" style="stroke:var(--coral,#ef4444);stroke-width:24"/>
+  </g>
+  <!-- labels in the open quadrant -->
+  <g>
+  <text x="282" y="75" text-anchor="end" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--teal,#0d9488)">92%</text>
+  <text x="242" y="75" text-anchor="end" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:13px;font-weight:400;fill:var(--text,#0f172a)">Awareness</text>
+  <text x="282" y="112" text-anchor="end" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a))">74%</text>
+  <text x="242" y="112" text-anchor="end" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:13px;font-weight:400;fill:var(--text,#0f172a)">Interest</text>
+  <text x="282" y="149" text-anchor="end" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--amber,#f59e0b)">51%</text>
+  <text x="242" y="149" text-anchor="end" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:13px;font-weight:400;fill:var(--text,#0f172a)">Trial</text>
+  <text x="282" y="186" text-anchor="end" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--coral,#ef4444)">28%</text>
+  <text x="242" y="186" text-anchor="end" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:13px;font-weight:400;fill:var(--text,#0f172a)">Purchase</text>
+  </g>
+  <!-- takeaway card -->
+  <g>
+  <rect x="530" y="150" width="240" height="170" rx="14" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 22%, transparent);stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 45%, transparent);stroke-width:1.5"/>
+  <rect x="530" y="150" width="240" height="170" rx="14" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 10%, var(--surface,#ffffff));stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:2"/>
+  <text x="552" y="182" text-anchor="start" letter-spacing="1.2" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:11px;font-weight:700;fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a))">TAKEAWAY</text>
+  <text x="552" y="210" text-anchor="start" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">Trial is the leak</text>
+  <text x="552" y="238" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:13px;font-weight:400;fill:var(--text-muted,#64748b)">Only half of interested</text>
+  <text x="552" y="256" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:13px;font-weight:400;fill:var(--text-muted,#64748b)">visitors start a trial.</text>
+  <text x="552" y="284" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:13px;font-weight:400;fill:var(--text-muted,#64748b)">Fix onboarding first,</text>
+  <text x="552" y="302" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:13px;font-weight:400;fill:var(--text-muted,#64748b)">then pricing.</text>
+  </g>
+</svg>

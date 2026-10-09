@@ -1,0 +1,102 @@
+<!--
+html-template-pack · svg-library · lab-glassware-steps
+  Five numbered protocol steps, each drawn as lab equipment on one bench line:
+  test-tube rack, Erlenmeyer flask, graduated cylinder, Petri dish, microscope.
+  Tokens: teal deep-blue amber coral green text text-muted surface border font-head font-sans.
+  Edit: step labels + captions. Items centre on x = 100 + i*150 and stand on
+  y = 330; liquids are separate shapes, recolour them per step.
+  No ids/markers, safe to paste multiples.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-label="Five lab protocol steps drawn as glassware and a microscope on a bench" style="width:100%;height:auto">
+  <title>Lab protocol steps</title>
+  <!-- bench -->
+  <g>
+  <rect x="30" y="330" width="740" height="10" rx="3" style="fill:color-mix(in srgb, var(--text-muted,#64748b) 18%, var(--surface,#ffffff));stroke:var(--text-muted,#64748b);stroke-width:1.5"/>
+  </g>
+  <!-- 1 test-tube rack -->
+  <g>
+  <path d="M 68 268 V 300 A 8 8 0 0 0 84 300 V 268 Z" style="fill:color-mix(in srgb, var(--coral,#ef4444) 55%, var(--surface,#ffffff))"/>
+  <path d="M 68 232 V 300 A 8 8 0 0 0 84 300 V 232" fill="none" style="stroke:var(--text,#0f172a);stroke-width:2"/>
+  <path d="M 92 268 V 300 A 8 8 0 0 0 108 300 V 268 Z" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 55%, var(--surface,#ffffff))"/>
+  <path d="M 92 232 V 300 A 8 8 0 0 0 108 300 V 232" fill="none" style="stroke:var(--text,#0f172a);stroke-width:2"/>
+  <path d="M 116 268 V 300 A 8 8 0 0 0 132 300 V 268 Z" style="fill:color-mix(in srgb, var(--teal,#0d9488) 55%, var(--surface,#ffffff))"/>
+  <path d="M 116 232 V 300 A 8 8 0 0 0 132 300 V 232" fill="none" style="stroke:var(--text,#0f172a);stroke-width:2"/>
+  <rect x="58" y="278" width="84" height="10" rx="2" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 30%, var(--surface,#ffffff));stroke:var(--text,#0f172a);stroke-width:2"/>
+  <rect x="62" y="288" width="4" height="42" style="fill:var(--text,#0f172a)"/>
+  <rect x="134" y="288" width="4" height="42" style="fill:var(--text,#0f172a)"/>
+  </g>
+  <!-- 2 Erlenmeyer flask -->
+  <g>
+  <path d="M 228 300 L 272 300 L 294 326 Q 296 330 290 330 H 210 Q 204 330 206 326 Z" style="fill:color-mix(in srgb, var(--green,#10b981) 55%, var(--surface,#ffffff))"/>
+  <path d="M 240 216 V 258 L 206 326 Q 204 330 210 330 H 290 Q 296 330 294 326 L 260 258 V 216" stroke-linejoin="round" style="fill:color-mix(in srgb, var(--teal,#0d9488) 6%, var(--surface,#ffffff));stroke:var(--text,#0f172a);stroke-width:2"/>
+  <rect x="237" y="210" width="26" height="8" rx="2" style="fill:none;stroke:var(--text,#0f172a);stroke-width:2"/>
+  <circle cx="242" cy="312" r="4" style="fill:var(--surface,#ffffff);stroke:var(--green,#10b981);stroke-width:1"/>
+  <circle cx="260" cy="306" r="3" style="fill:var(--surface,#ffffff);stroke:var(--green,#10b981);stroke-width:1"/>
+  <circle cx="252" cy="318" r="2.5" style="fill:var(--surface,#ffffff);stroke:var(--green,#10b981);stroke-width:1"/>
+  </g>
+  <!-- 3 graduated cylinder -->
+  <g>
+  <rect x="384" y="262" width="32" height="58" style="fill:color-mix(in srgb, color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a)) 55%, var(--surface,#ffffff))"/>
+  <path d="M 384 196 V 320 H 416 V 196 M 384 196 l -6 -6 M 416 196 l 4 -4" fill="none" stroke-linejoin="round" style="stroke:var(--text,#0f172a);stroke-width:2"/>
+  <rect x="372" y="320" width="56" height="10" rx="2" style="fill:var(--text,#0f172a)"/>
+  <line x1="404" y1="210" x2="416" y2="210" style="stroke:var(--text,#0f172a);stroke-width:1.2"/>
+  <line x1="404" y1="224" x2="416" y2="224" style="stroke:var(--text,#0f172a);stroke-width:1.2"/>
+  <line x1="404" y1="238" x2="416" y2="238" style="stroke:var(--text,#0f172a);stroke-width:1.2"/>
+  <line x1="404" y1="252" x2="416" y2="252" style="stroke:var(--text,#0f172a);stroke-width:1.2"/>
+  <line x1="404" y1="266" x2="416" y2="266" style="stroke:var(--text,#0f172a);stroke-width:1.2"/>
+  <line x1="404" y1="280" x2="416" y2="280" style="stroke:var(--text,#0f172a);stroke-width:1.2"/>
+  <line x1="404" y1="294" x2="416" y2="294" style="stroke:var(--text,#0f172a);stroke-width:1.2"/>
+  <line x1="404" y1="308" x2="416" y2="308" style="stroke:var(--text,#0f172a);stroke-width:1.2"/>
+  </g>
+  <!-- 4 Petri dish -->
+  <g>
+  <ellipse cx="550" cy="318" rx="56" ry="14" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 28%, var(--surface,#ffffff));stroke:var(--text,#0f172a);stroke-width:2"/>
+  <path d="M 494 318 V 300 A 56 14 0 0 1 606 300 V 318" style="fill:color-mix(in srgb, var(--teal,#0d9488) 6%, var(--surface,#ffffff));stroke:var(--text,#0f172a);stroke-width:2"/>
+  <ellipse cx="550" cy="300" rx="56" ry="14" style="fill:none;stroke:var(--text,#0f172a);stroke-width:1.5"/>
+  <circle cx="526" cy="316" r="5" style="fill:var(--coral,#ef4444)"/>
+  <circle cx="556" cy="320" r="6" style="fill:var(--coral,#ef4444)"/>
+  <circle cx="578" cy="314" r="4" style="fill:var(--coral,#ef4444)"/>
+  <circle cx="544" cy="312" r="3.5" style="fill:var(--coral,#ef4444)"/>
+  </g>
+  <!-- 5 microscope -->
+  <g>
+  <rect x="660" y="318" width="80" height="12" rx="4" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 30%, var(--surface,#ffffff));stroke:var(--text,#0f172a);stroke-width:2"/>
+  <path d="M 718 318 V 286 Q 734 266 722 236 L 710 240 Q 718 264 706 286 V 318 Z" stroke-linejoin="round" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 30%, var(--surface,#ffffff));stroke:var(--text,#0f172a);stroke-width:2"/>
+  <rect x="666" y="280" width="50" height="8" rx="2" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 30%, var(--surface,#ffffff));stroke:var(--text,#0f172a);stroke-width:2"/>
+  <rect x="680" y="214" width="18" height="48" rx="3" transform="rotate(-20 689 238)" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 30%, var(--surface,#ffffff));stroke:var(--text,#0f172a);stroke-width:2"/>
+  <rect x="672" y="196" width="14" height="22" rx="2" transform="rotate(-20 679 207)" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 30%, var(--surface,#ffffff));stroke:var(--text,#0f172a);stroke-width:2"/>
+  <rect x="690" y="262" width="8" height="12" rx="1" style="fill:var(--text,#0f172a)"/>
+  <circle cx="714" cy="262" r="7" style="fill:var(--surface,#ffffff);stroke:var(--text,#0f172a);stroke-width:2"/>
+  </g>
+  <!-- badges + labels -->
+  <g>
+  <circle cx="100" cy="150" r="17" style="fill:var(--coral,#ef4444);stroke:var(--surface,#ffffff);stroke-width:3"/>
+  <text x="100" y="155" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--surface,#ffffff)">1</text>
+  <text x="100" y="372" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">Collect</text>
+  <text x="100" y="391" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">label + store samples</text>
+  <line x1="126" y1="150" x2="212" y2="150" stroke-dasharray="5 5" style="stroke:var(--text-muted,#64748b);stroke-width:2"/>
+  <polygon points="224,150 213,155.5 213,144.5" style="fill:var(--text-muted,#64748b)"/>
+  <circle cx="250" cy="150" r="17" style="fill:var(--green,#10b981);stroke:var(--surface,#ffffff);stroke-width:3"/>
+  <text x="250" y="155" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--surface,#ffffff)">2</text>
+  <text x="250" y="372" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">Extract</text>
+  <text x="250" y="391" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">lyse and purify</text>
+  <line x1="276" y1="150" x2="362" y2="150" stroke-dasharray="5 5" style="stroke:var(--text-muted,#64748b);stroke-width:2"/>
+  <polygon points="374,150 363,155.5 363,144.5" style="fill:var(--text-muted,#64748b)"/>
+  <circle cx="400" cy="150" r="17" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke:var(--surface,#ffffff);stroke-width:3"/>
+  <text x="400" y="155" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--surface,#ffffff)">3</text>
+  <text x="400" y="372" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">Measure</text>
+  <text x="400" y="391" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">quantify volumes</text>
+  <line x1="426" y1="150" x2="512" y2="150" stroke-dasharray="5 5" style="stroke:var(--text-muted,#64748b);stroke-width:2"/>
+  <polygon points="524,150 513,155.5 513,144.5" style="fill:var(--text-muted,#64748b)"/>
+  <circle cx="550" cy="150" r="17" style="fill:var(--amber,#f59e0b);stroke:var(--surface,#ffffff);stroke-width:3"/>
+  <text x="550" y="155" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--surface,#ffffff)">4</text>
+  <text x="550" y="372" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">Culture</text>
+  <text x="550" y="391" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">incubate plates</text>
+  <line x1="576" y1="150" x2="662" y2="150" stroke-dasharray="5 5" style="stroke:var(--text-muted,#64748b);stroke-width:2"/>
+  <polygon points="674,150 663,155.5 663,144.5" style="fill:var(--text-muted,#64748b)"/>
+  <circle cx="700" cy="150" r="17" style="fill:var(--teal,#0d9488);stroke:var(--surface,#ffffff);stroke-width:3"/>
+  <text x="700" y="155" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--surface,#ffffff)">5</text>
+  <text x="700" y="372" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">Observe</text>
+  <text x="700" y="391" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">image + record</text>
+  </g>
+</svg>

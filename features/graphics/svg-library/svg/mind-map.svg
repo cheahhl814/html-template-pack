@@ -1,0 +1,80 @@
+<!--
+html-template-pack · svg-library · mind-map
+  Central idea with four curved main branches to tinted topic pills, each
+  fanning into three sub-topics on thin twigs.
+  Tokens: accent teal deep-blue amber coral text text-muted surface font-head font-sans.
+  Edit: centre text, 4 topic labels, 12 sub-topic texts. Sub-topics are
+  right-aligned at x=140 (left) / left-aligned at x=660 (right).
+  No ids/markers, safe to paste multiples.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-label="Mind map with a central idea branching into four topics, each with three sub-topics" style="width:100%;height:auto">
+  <title>Mind map</title>
+  <!-- main branches -->
+  <g>
+  <path d="M 330 225 C 277.5 225 277.5 110 225 110" fill="none" stroke-linecap="round" style="stroke:var(--teal,#0d9488);stroke-width:6"/>
+  <path d="M 330 225 C 277.5 225 277.5 340 225 340" fill="none" stroke-linecap="round" style="stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:6"/>
+  <path d="M 470 225 C 522.5 225 522.5 110 575 110" fill="none" stroke-linecap="round" style="stroke:var(--amber,#f59e0b);stroke-width:6"/>
+  <path d="M 470 225 C 522.5 225 522.5 340 575 340" fill="none" stroke-linecap="round" style="stroke:var(--coral,#ef4444);stroke-width:6"/>
+  </g>
+  <!-- twigs + sub-topics -->
+  <g>
+  <path d="M 160 110 C 155 110 155 68 150 68" fill="none" stroke-linecap="round" style="stroke:var(--teal,#0d9488);stroke-width:2"/>
+  <circle cx="150" cy="68" r="3.5" style="fill:var(--teal,#0d9488)"/>
+  <text x="140" y="73" text-anchor="end" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:13px;font-weight:400;fill:var(--text,#0f172a)">Interviews</text>
+  <path d="M 160 110 C 155 110 155 110 150 110" fill="none" stroke-linecap="round" style="stroke:var(--teal,#0d9488);stroke-width:2"/>
+  <circle cx="150" cy="110" r="3.5" style="fill:var(--teal,#0d9488)"/>
+  <text x="140" y="115" text-anchor="end" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:13px;font-weight:400;fill:var(--text,#0f172a)">Personas</text>
+  <path d="M 160 110 C 155 110 155 152 150 152" fill="none" stroke-linecap="round" style="stroke:var(--teal,#0d9488);stroke-width:2"/>
+  <circle cx="150" cy="152" r="3.5" style="fill:var(--teal,#0d9488)"/>
+  <text x="140" y="157" text-anchor="end" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:13px;font-weight:400;fill:var(--text,#0f172a)">Pain points</text>
+  <path d="M 160 340 C 155 340 155 298 150 298" fill="none" stroke-linecap="round" style="stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:2"/>
+  <circle cx="150" cy="298" r="3.5" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a))"/>
+  <text x="140" y="303" text-anchor="end" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:13px;font-weight:400;fill:var(--text,#0f172a)">Competitors</text>
+  <path d="M 160 340 C 155 340 155 340 150 340" fill="none" stroke-linecap="round" style="stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:2"/>
+  <circle cx="150" cy="340" r="3.5" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a))"/>
+  <text x="140" y="345" text-anchor="end" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:13px;font-weight:400;fill:var(--text,#0f172a)">Pricing</text>
+  <path d="M 160 340 C 155 340 155 382 150 382" fill="none" stroke-linecap="round" style="stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:2"/>
+  <circle cx="150" cy="382" r="3.5" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a))"/>
+  <text x="140" y="387" text-anchor="end" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:13px;font-weight:400;fill:var(--text,#0f172a)">Trends</text>
+  <path d="M 640 110 C 645 110 645 68 650 68" fill="none" stroke-linecap="round" style="stroke:var(--amber,#f59e0b);stroke-width:2"/>
+  <circle cx="650" cy="68" r="3.5" style="fill:var(--amber,#f59e0b)"/>
+  <text x="660" y="73" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:13px;font-weight:400;fill:var(--text,#0f172a)">Core features</text>
+  <path d="M 640 110 C 645 110 645 110 650 110" fill="none" stroke-linecap="round" style="stroke:var(--amber,#f59e0b);stroke-width:2"/>
+  <circle cx="650" cy="110" r="3.5" style="fill:var(--amber,#f59e0b)"/>
+  <text x="660" y="115" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:13px;font-weight:400;fill:var(--text,#0f172a)">Roadmap</text>
+  <path d="M 640 110 C 645 110 645 152 650 152" fill="none" stroke-linecap="round" style="stroke:var(--amber,#f59e0b);stroke-width:2"/>
+  <circle cx="650" cy="152" r="3.5" style="fill:var(--amber,#f59e0b)"/>
+  <text x="660" y="157" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:13px;font-weight:400;fill:var(--text,#0f172a)">Tech stack</text>
+  <path d="M 640 340 C 645 340 645 298 650 298" fill="none" stroke-linecap="round" style="stroke:var(--coral,#ef4444);stroke-width:2"/>
+  <circle cx="650" cy="298" r="3.5" style="fill:var(--coral,#ef4444)"/>
+  <text x="660" y="303" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:13px;font-weight:400;fill:var(--text,#0f172a)">Channels</text>
+  <path d="M 640 340 C 645 340 645 340 650 340" fill="none" stroke-linecap="round" style="stroke:var(--coral,#ef4444);stroke-width:2"/>
+  <circle cx="650" cy="340" r="3.5" style="fill:var(--coral,#ef4444)"/>
+  <text x="660" y="345" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:13px;font-weight:400;fill:var(--text,#0f172a)">Partnerships</text>
+  <path d="M 640 340 C 645 340 645 382 650 382" fill="none" stroke-linecap="round" style="stroke:var(--coral,#ef4444);stroke-width:2"/>
+  <circle cx="650" cy="382" r="3.5" style="fill:var(--coral,#ef4444)"/>
+  <text x="660" y="387" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:13px;font-weight:400;fill:var(--text,#0f172a)">Retention</text>
+  </g>
+  <!-- topic pills -->
+  <g>
+  <rect x="160" y="90" width="130" height="40" rx="20" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--teal,#0d9488) 22%, transparent);stroke:color-mix(in srgb, var(--teal,#0d9488) 45%, transparent);stroke-width:1.5"/>
+  <rect x="160" y="90" width="130" height="40" rx="20" style="fill:color-mix(in srgb, var(--teal,#0d9488) 20%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:2"/>
+  <text x="225" y="116" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">Users</text>
+  <rect x="160" y="320" width="130" height="40" rx="20" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 22%, transparent);stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 45%, transparent);stroke-width:1.5"/>
+  <rect x="160" y="320" width="130" height="40" rx="20" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 20%, var(--surface,#ffffff));stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:2"/>
+  <text x="225" y="346" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">Market</text>
+  <rect x="510" y="90" width="130" height="40" rx="20" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 22%, transparent);stroke:color-mix(in srgb, var(--amber,#f59e0b) 45%, transparent);stroke-width:1.5"/>
+  <rect x="510" y="90" width="130" height="40" rx="20" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 20%, var(--surface,#ffffff));stroke:var(--amber,#f59e0b);stroke-width:2"/>
+  <text x="575" y="116" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">Product</text>
+  <rect x="510" y="320" width="130" height="40" rx="20" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--coral,#ef4444) 22%, transparent);stroke:color-mix(in srgb, var(--coral,#ef4444) 45%, transparent);stroke-width:1.5"/>
+  <rect x="510" y="320" width="130" height="40" rx="20" style="fill:color-mix(in srgb, var(--coral,#ef4444) 20%, var(--surface,#ffffff));stroke:var(--coral,#ef4444);stroke-width:2"/>
+  <text x="575" y="346" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">Growth</text>
+  </g>
+  <!-- central idea -->
+  <g>
+  <rect x="315" y="190" width="170" height="70" rx="35" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--accent,#0d9488) 22%, transparent);stroke:color-mix(in srgb, var(--accent,#0d9488) 45%, transparent);stroke-width:1.5"/>
+  <rect x="315" y="190" width="170" height="70" rx="35" style="fill:var(--accent,#0d9488);stroke:color-mix(in srgb, var(--accent,#0d9488) 70%, var(--text,#0f172a));stroke-width:2"/>
+  <text x="400" y="222" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:20px;font-weight:700;fill:var(--surface,#ffffff)">New product</text>
+  <text x="400" y="242" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:13px;font-weight:400;fill:var(--surface,#ffffff)">launch plan</text>
+  </g>
+</svg>

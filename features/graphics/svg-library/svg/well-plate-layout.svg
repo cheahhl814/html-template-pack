@@ -1,0 +1,167 @@
+<!--
+html-template-pack · svg-library · well-plate-layout
+  96-well plate map (rows A to H, columns 1 to 12): standard curve in
+  duplicate, samples in duplicate, blanks and positive/negative controls,
+  with a legend. Typical ELISA / qPCR plate layout.
+  Tokens: teal deep-blue green coral text text-muted surface border font-head font-sans.
+  Well (row r, col c) centre: x = 90 + c*30, y = 112 + r*30 (0-based).
+  Re-assign wells by moving them between the category groups.
+  No ids/markers, safe to paste multiples.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-label="Ninety-six well plate layout with standards in columns 1 and 2, samples in duplicate, blanks and controls in columns 11 and 12" style="width:100%;height:auto">
+  <title>96-well plate layout</title>
+  <polygon points="64,82 450,82 450,340 46,340 46,100" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 22%, transparent);stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 45%, transparent);stroke-width:1.5"/>
+  <polygon points="64,82 450,82 450,340 46,340 46,100" stroke-linejoin="round" style="fill:color-mix(in srgb, var(--text-muted,#64748b) 8%, var(--surface,#ffffff));stroke:var(--text,#0f172a);stroke-width:2"/>
+  <!-- row/column labels -->
+  <g>
+  <text x="90" y="98" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">1</text>
+  <text x="120" y="98" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">2</text>
+  <text x="150" y="98" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">3</text>
+  <text x="180" y="98" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">4</text>
+  <text x="210" y="98" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">5</text>
+  <text x="240" y="98" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">6</text>
+  <text x="270" y="98" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">7</text>
+  <text x="300" y="98" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">8</text>
+  <text x="330" y="98" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">9</text>
+  <text x="360" y="98" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">10</text>
+  <text x="390" y="98" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">11</text>
+  <text x="420" y="98" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">12</text>
+  <text x="66" y="116" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">A</text>
+  <text x="66" y="146" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">B</text>
+  <text x="66" y="176" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">C</text>
+  <text x="66" y="206" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">D</text>
+  <text x="66" y="236" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">E</text>
+  <text x="66" y="266" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">F</text>
+  <text x="66" y="296" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">G</text>
+  <text x="66" y="326" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">H</text>
+  </g>
+  <!-- standards (cols 1-2), high to low -->
+  <g>
+  <circle cx="90" cy="112" r="11" style="fill:color-mix(in srgb, color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a)) 85%, var(--surface,#ffffff));stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:1.2"/>
+  <circle cx="120" cy="112" r="11" style="fill:color-mix(in srgb, color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a)) 85%, var(--surface,#ffffff));stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:1.2"/>
+  <circle cx="90" cy="142" r="11" style="fill:color-mix(in srgb, color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a)) 75%, var(--surface,#ffffff));stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:1.2"/>
+  <circle cx="120" cy="142" r="11" style="fill:color-mix(in srgb, color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a)) 75%, var(--surface,#ffffff));stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:1.2"/>
+  <circle cx="90" cy="172" r="11" style="fill:color-mix(in srgb, color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a)) 65%, var(--surface,#ffffff));stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:1.2"/>
+  <circle cx="120" cy="172" r="11" style="fill:color-mix(in srgb, color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a)) 65%, var(--surface,#ffffff));stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:1.2"/>
+  <circle cx="90" cy="202" r="11" style="fill:color-mix(in srgb, color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a)) 55%, var(--surface,#ffffff));stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:1.2"/>
+  <circle cx="120" cy="202" r="11" style="fill:color-mix(in srgb, color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a)) 55%, var(--surface,#ffffff));stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:1.2"/>
+  <circle cx="90" cy="232" r="11" style="fill:color-mix(in srgb, color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a)) 45%, var(--surface,#ffffff));stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:1.2"/>
+  <circle cx="120" cy="232" r="11" style="fill:color-mix(in srgb, color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a)) 45%, var(--surface,#ffffff));stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:1.2"/>
+  <circle cx="90" cy="262" r="11" style="fill:color-mix(in srgb, color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a)) 35%, var(--surface,#ffffff));stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:1.2"/>
+  <circle cx="120" cy="262" r="11" style="fill:color-mix(in srgb, color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a)) 35%, var(--surface,#ffffff));stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:1.2"/>
+  <circle cx="90" cy="292" r="11" style="fill:color-mix(in srgb, color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a)) 25%, var(--surface,#ffffff));stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:1.2"/>
+  <circle cx="120" cy="292" r="11" style="fill:color-mix(in srgb, color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a)) 25%, var(--surface,#ffffff));stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:1.2"/>
+  <circle cx="90" cy="322" r="11" style="fill:color-mix(in srgb, color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a)) 15%, var(--surface,#ffffff));stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:1.2"/>
+  <circle cx="120" cy="322" r="11" style="fill:color-mix(in srgb, color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a)) 15%, var(--surface,#ffffff));stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:1.2"/>
+  </g>
+  <!-- samples in duplicate (cols 3-10) -->
+  <g>
+  <circle cx="150" cy="112" r="11" style="fill:color-mix(in srgb, var(--teal,#0d9488) 28%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:1.2"/>
+  <circle cx="180" cy="112" r="11" style="fill:color-mix(in srgb, var(--teal,#0d9488) 28%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:1.2"/>
+  <circle cx="210" cy="112" r="11" style="fill:color-mix(in srgb, var(--teal,#0d9488) 45%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:1.2"/>
+  <circle cx="240" cy="112" r="11" style="fill:color-mix(in srgb, var(--teal,#0d9488) 45%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:1.2"/>
+  <circle cx="270" cy="112" r="11" style="fill:color-mix(in srgb, var(--teal,#0d9488) 28%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:1.2"/>
+  <circle cx="300" cy="112" r="11" style="fill:color-mix(in srgb, var(--teal,#0d9488) 28%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:1.2"/>
+  <circle cx="330" cy="112" r="11" style="fill:color-mix(in srgb, var(--teal,#0d9488) 45%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:1.2"/>
+  <circle cx="360" cy="112" r="11" style="fill:color-mix(in srgb, var(--teal,#0d9488) 45%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:1.2"/>
+  <circle cx="150" cy="142" r="11" style="fill:color-mix(in srgb, var(--teal,#0d9488) 28%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:1.2"/>
+  <circle cx="180" cy="142" r="11" style="fill:color-mix(in srgb, var(--teal,#0d9488) 28%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:1.2"/>
+  <circle cx="210" cy="142" r="11" style="fill:color-mix(in srgb, var(--teal,#0d9488) 45%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:1.2"/>
+  <circle cx="240" cy="142" r="11" style="fill:color-mix(in srgb, var(--teal,#0d9488) 45%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:1.2"/>
+  <circle cx="270" cy="142" r="11" style="fill:color-mix(in srgb, var(--teal,#0d9488) 28%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:1.2"/>
+  <circle cx="300" cy="142" r="11" style="fill:color-mix(in srgb, var(--teal,#0d9488) 28%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:1.2"/>
+  <circle cx="330" cy="142" r="11" style="fill:color-mix(in srgb, var(--teal,#0d9488) 45%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:1.2"/>
+  <circle cx="360" cy="142" r="11" style="fill:color-mix(in srgb, var(--teal,#0d9488) 45%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:1.2"/>
+  <circle cx="150" cy="172" r="11" style="fill:color-mix(in srgb, var(--teal,#0d9488) 28%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:1.2"/>
+  <circle cx="180" cy="172" r="11" style="fill:color-mix(in srgb, var(--teal,#0d9488) 28%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:1.2"/>
+  <circle cx="210" cy="172" r="11" style="fill:color-mix(in srgb, var(--teal,#0d9488) 45%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:1.2"/>
+  <circle cx="240" cy="172" r="11" style="fill:color-mix(in srgb, var(--teal,#0d9488) 45%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:1.2"/>
+  <circle cx="270" cy="172" r="11" style="fill:color-mix(in srgb, var(--teal,#0d9488) 28%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:1.2"/>
+  <circle cx="300" cy="172" r="11" style="fill:color-mix(in srgb, var(--teal,#0d9488) 28%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:1.2"/>
+  <circle cx="330" cy="172" r="11" style="fill:color-mix(in srgb, var(--teal,#0d9488) 45%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:1.2"/>
+  <circle cx="360" cy="172" r="11" style="fill:color-mix(in srgb, var(--teal,#0d9488) 45%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:1.2"/>
+  <circle cx="150" cy="202" r="11" style="fill:color-mix(in srgb, var(--teal,#0d9488) 28%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:1.2"/>
+  <circle cx="180" cy="202" r="11" style="fill:color-mix(in srgb, var(--teal,#0d9488) 28%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:1.2"/>
+  <circle cx="210" cy="202" r="11" style="fill:color-mix(in srgb, var(--teal,#0d9488) 45%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:1.2"/>
+  <circle cx="240" cy="202" r="11" style="fill:color-mix(in srgb, var(--teal,#0d9488) 45%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:1.2"/>
+  <circle cx="270" cy="202" r="11" style="fill:color-mix(in srgb, var(--teal,#0d9488) 28%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:1.2"/>
+  <circle cx="300" cy="202" r="11" style="fill:color-mix(in srgb, var(--teal,#0d9488) 28%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:1.2"/>
+  <circle cx="330" cy="202" r="11" style="fill:color-mix(in srgb, var(--teal,#0d9488) 45%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:1.2"/>
+  <circle cx="360" cy="202" r="11" style="fill:color-mix(in srgb, var(--teal,#0d9488) 45%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:1.2"/>
+  <circle cx="150" cy="232" r="11" style="fill:color-mix(in srgb, var(--teal,#0d9488) 28%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:1.2"/>
+  <circle cx="180" cy="232" r="11" style="fill:color-mix(in srgb, var(--teal,#0d9488) 28%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:1.2"/>
+  <circle cx="210" cy="232" r="11" style="fill:color-mix(in srgb, var(--teal,#0d9488) 45%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:1.2"/>
+  <circle cx="240" cy="232" r="11" style="fill:color-mix(in srgb, var(--teal,#0d9488) 45%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:1.2"/>
+  <circle cx="270" cy="232" r="11" style="fill:color-mix(in srgb, var(--teal,#0d9488) 28%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:1.2"/>
+  <circle cx="300" cy="232" r="11" style="fill:color-mix(in srgb, var(--teal,#0d9488) 28%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:1.2"/>
+  <circle cx="330" cy="232" r="11" style="fill:color-mix(in srgb, var(--teal,#0d9488) 45%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:1.2"/>
+  <circle cx="360" cy="232" r="11" style="fill:color-mix(in srgb, var(--teal,#0d9488) 45%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:1.2"/>
+  <circle cx="150" cy="262" r="11" style="fill:color-mix(in srgb, var(--teal,#0d9488) 28%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:1.2"/>
+  <circle cx="180" cy="262" r="11" style="fill:color-mix(in srgb, var(--teal,#0d9488) 28%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:1.2"/>
+  <circle cx="210" cy="262" r="11" style="fill:color-mix(in srgb, var(--teal,#0d9488) 45%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:1.2"/>
+  <circle cx="240" cy="262" r="11" style="fill:color-mix(in srgb, var(--teal,#0d9488) 45%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:1.2"/>
+  <circle cx="270" cy="262" r="11" style="fill:color-mix(in srgb, var(--teal,#0d9488) 28%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:1.2"/>
+  <circle cx="300" cy="262" r="11" style="fill:color-mix(in srgb, var(--teal,#0d9488) 28%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:1.2"/>
+  <circle cx="330" cy="262" r="11" style="fill:color-mix(in srgb, var(--teal,#0d9488) 45%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:1.2"/>
+  <circle cx="360" cy="262" r="11" style="fill:color-mix(in srgb, var(--teal,#0d9488) 45%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:1.2"/>
+  <circle cx="150" cy="292" r="11" style="fill:color-mix(in srgb, var(--teal,#0d9488) 28%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:1.2"/>
+  <circle cx="180" cy="292" r="11" style="fill:color-mix(in srgb, var(--teal,#0d9488) 28%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:1.2"/>
+  <circle cx="210" cy="292" r="11" style="fill:color-mix(in srgb, var(--teal,#0d9488) 45%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:1.2"/>
+  <circle cx="240" cy="292" r="11" style="fill:color-mix(in srgb, var(--teal,#0d9488) 45%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:1.2"/>
+  <circle cx="270" cy="292" r="11" style="fill:color-mix(in srgb, var(--teal,#0d9488) 28%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:1.2"/>
+  <circle cx="300" cy="292" r="11" style="fill:color-mix(in srgb, var(--teal,#0d9488) 28%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:1.2"/>
+  <circle cx="330" cy="292" r="11" style="fill:color-mix(in srgb, var(--teal,#0d9488) 45%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:1.2"/>
+  <circle cx="360" cy="292" r="11" style="fill:color-mix(in srgb, var(--teal,#0d9488) 45%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:1.2"/>
+  <circle cx="150" cy="322" r="11" style="fill:color-mix(in srgb, var(--teal,#0d9488) 28%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:1.2"/>
+  <circle cx="180" cy="322" r="11" style="fill:color-mix(in srgb, var(--teal,#0d9488) 28%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:1.2"/>
+  <circle cx="210" cy="322" r="11" style="fill:color-mix(in srgb, var(--teal,#0d9488) 45%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:1.2"/>
+  <circle cx="240" cy="322" r="11" style="fill:color-mix(in srgb, var(--teal,#0d9488) 45%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:1.2"/>
+  <circle cx="270" cy="322" r="11" style="fill:color-mix(in srgb, var(--teal,#0d9488) 28%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:1.2"/>
+  <circle cx="300" cy="322" r="11" style="fill:color-mix(in srgb, var(--teal,#0d9488) 28%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:1.2"/>
+  <circle cx="330" cy="322" r="11" style="fill:color-mix(in srgb, var(--teal,#0d9488) 45%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:1.2"/>
+  <circle cx="360" cy="322" r="11" style="fill:color-mix(in srgb, var(--teal,#0d9488) 45%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:1.2"/>
+  </g>
+  <!-- blanks (col 11) -->
+  <g>
+  <circle cx="390" cy="112" r="11" style="fill:var(--surface,#ffffff);stroke:var(--text-muted,#64748b);stroke-width:1.5"/>
+  <circle cx="390" cy="142" r="11" style="fill:var(--surface,#ffffff);stroke:var(--text-muted,#64748b);stroke-width:1.5"/>
+  <circle cx="390" cy="172" r="11" style="fill:var(--surface,#ffffff);stroke:var(--text-muted,#64748b);stroke-width:1.5"/>
+  <circle cx="390" cy="202" r="11" style="fill:var(--surface,#ffffff);stroke:var(--text-muted,#64748b);stroke-width:1.5"/>
+  <circle cx="390" cy="232" r="11" style="fill:var(--surface,#ffffff);stroke:var(--text-muted,#64748b);stroke-width:1.5"/>
+  <circle cx="390" cy="262" r="11" style="fill:var(--surface,#ffffff);stroke:var(--text-muted,#64748b);stroke-width:1.5"/>
+  <circle cx="390" cy="292" r="11" style="fill:var(--surface,#ffffff);stroke:var(--text-muted,#64748b);stroke-width:1.5"/>
+  <circle cx="390" cy="322" r="11" style="fill:var(--surface,#ffffff);stroke:var(--text-muted,#64748b);stroke-width:1.5"/>
+  </g>
+  <!-- controls (col 12) -->
+  <g>
+  <circle cx="420" cy="112" r="11" style="fill:var(--green,#10b981);stroke:var(--green,#10b981);stroke-width:1.2"/>
+  <circle cx="420" cy="142" r="11" style="fill:var(--green,#10b981);stroke:var(--green,#10b981);stroke-width:1.2"/>
+  <circle cx="420" cy="172" r="11" style="fill:var(--green,#10b981);stroke:var(--green,#10b981);stroke-width:1.2"/>
+  <circle cx="420" cy="202" r="11" style="fill:var(--green,#10b981);stroke:var(--green,#10b981);stroke-width:1.2"/>
+  <circle cx="420" cy="232" r="11" style="fill:var(--coral,#ef4444);stroke:var(--coral,#ef4444);stroke-width:1.2"/>
+  <circle cx="420" cy="262" r="11" style="fill:var(--coral,#ef4444);stroke:var(--coral,#ef4444);stroke-width:1.2"/>
+  <circle cx="420" cy="292" r="11" style="fill:var(--coral,#ef4444);stroke:var(--coral,#ef4444);stroke-width:1.2"/>
+  <circle cx="420" cy="322" r="11" style="fill:var(--coral,#ef4444);stroke:var(--coral,#ef4444);stroke-width:1.2"/>
+  </g>
+  <!-- legend -->
+  <g>
+  <text x="490" y="100" text-anchor="start" letter-spacing="1.2" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:11px;font-weight:700;fill:var(--text-muted,#64748b)">PLATE MAP</text>
+  <text x="490" y="126" text-anchor="start" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:20px;font-weight:700;fill:var(--text,#0f172a)">ELISA, run 1</text>
+  <circle cx="502" cy="166" r="11" style="fill:color-mix(in srgb, color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a)) 70%, var(--surface,#ffffff));stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:1.5"/>
+  <text x="524" y="167" text-anchor="start" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--text,#0f172a)">Standards S1 to S8</text>
+  <text x="524" y="184" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">cols 1–2, high → low</text>
+  <circle cx="502" cy="212" r="11" style="fill:color-mix(in srgb, var(--teal,#0d9488) 45%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:1.5"/>
+  <text x="524" y="213" text-anchor="start" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--text,#0f172a)">Samples, in duplicate</text>
+  <text x="524" y="230" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">cols 3–10, 32 samples</text>
+  <circle cx="502" cy="258" r="11" style="fill:var(--surface,#ffffff);stroke:var(--text-muted,#64748b);stroke-width:1.5"/>
+  <text x="524" y="259" text-anchor="start" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--text,#0f172a)">Blank</text>
+  <text x="524" y="276" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">col 11, buffer only</text>
+  <circle cx="502" cy="304" r="11" style="fill:var(--green,#10b981);stroke:var(--green,#10b981);stroke-width:1.5"/>
+  <text x="524" y="305" text-anchor="start" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--text,#0f172a)">Positive control</text>
+  <text x="524" y="322" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">col 12, rows A–D</text>
+  <circle cx="502" cy="350" r="11" style="fill:var(--coral,#ef4444);stroke:var(--coral,#ef4444);stroke-width:1.5"/>
+  <text x="524" y="351" text-anchor="start" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--text,#0f172a)">Negative control</text>
+  <text x="524" y="368" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">col 12, rows E–H</text>
+  </g>
+  <text x="46" y="380" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">Duplicates sit side by side (3+4, 5+6 …); alternating tints mark each pair.</text>
+</svg>

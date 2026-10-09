@@ -1,0 +1,89 @@
+<!--
+html-template-pack · svg-library · energy-mix-icons
+  Five low-carbon sources as hand-drawn icons in badges (solar, wind, hydro,
+  bioenergy, nuclear), each above a vertical share bar with its % and label.
+  Tokens: amber teal deep-blue green navy text text-muted surface border font-head font-sans.
+  SHARES ARE PLACEHOLDERS. Bar fill height = share * 1.6 (track 160 tall,
+  base y = 360). Columns at x = 120 + i*140.
+  No ids/markers, safe to paste multiples.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-label="Five low-carbon energy sources with icons and share bars: solar, wind, hydro, bioenergy and nuclear (placeholder values)" style="width:100%;height:auto">
+  <title>Energy mix with icons</title>
+  <!-- badges -->
+  <g>
+  <circle cx="120" cy="100" r="44" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 22%, transparent);stroke:color-mix(in srgb, var(--amber,#f59e0b) 45%, transparent);stroke-width:1.5"/>
+  <circle cx="120" cy="100" r="44" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 16%, var(--surface,#ffffff));stroke:var(--amber,#f59e0b);stroke-width:2"/>
+  <circle cx="260" cy="100" r="44" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--teal,#0d9488) 22%, transparent);stroke:color-mix(in srgb, var(--teal,#0d9488) 45%, transparent);stroke-width:1.5"/>
+  <circle cx="260" cy="100" r="44" style="fill:color-mix(in srgb, var(--teal,#0d9488) 16%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:2"/>
+  <circle cx="400" cy="100" r="44" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 22%, transparent);stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 45%, transparent);stroke-width:1.5"/>
+  <circle cx="400" cy="100" r="44" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 16%, var(--surface,#ffffff));stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:2"/>
+  <circle cx="540" cy="100" r="44" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--green,#10b981) 22%, transparent);stroke:color-mix(in srgb, var(--green,#10b981) 45%, transparent);stroke-width:1.5"/>
+  <circle cx="540" cy="100" r="44" style="fill:color-mix(in srgb, var(--green,#10b981) 16%, var(--surface,#ffffff));stroke:var(--green,#10b981);stroke-width:2"/>
+  <circle cx="680" cy="100" r="44" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--navy,#1a2744) 22%, transparent);stroke:color-mix(in srgb, var(--navy,#1a2744) 45%, transparent);stroke-width:1.5"/>
+  <circle cx="680" cy="100" r="44" style="fill:color-mix(in srgb, var(--navy,#1a2744) 16%, var(--surface,#ffffff));stroke:color-mix(in srgb, var(--navy,#1a2744) 55%, var(--text,#0f172a));stroke-width:2"/>
+  </g>
+  <!-- icon: solar -->
+  <g>
+  <circle cx="134" cy="82" r="8" style="fill:var(--amber,#f59e0b)"/>
+  <line x1="145" y1="82" x2="149" y2="82" stroke-linecap="round" style="stroke:var(--amber,#f59e0b);stroke-width:2"/>
+  <line x1="141.8" y1="89.8" x2="144.6" y2="92.6" stroke-linecap="round" style="stroke:var(--amber,#f59e0b);stroke-width:2"/>
+  <line x1="134" y1="93" x2="134" y2="97" stroke-linecap="round" style="stroke:var(--amber,#f59e0b);stroke-width:2"/>
+  <line x1="126.2" y1="89.8" x2="123.4" y2="92.6" stroke-linecap="round" style="stroke:var(--amber,#f59e0b);stroke-width:2"/>
+  <line x1="123" y1="82" x2="119" y2="82" stroke-linecap="round" style="stroke:var(--amber,#f59e0b);stroke-width:2"/>
+  <line x1="126.2" y1="74.2" x2="123.4" y2="71.4" stroke-linecap="round" style="stroke:var(--amber,#f59e0b);stroke-width:2"/>
+  <line x1="134" y1="71" x2="134" y2="67" stroke-linecap="round" style="stroke:var(--amber,#f59e0b);stroke-width:2"/>
+  <line x1="141.8" y1="74.2" x2="144.6" y2="71.4" stroke-linecap="round" style="stroke:var(--amber,#f59e0b);stroke-width:2"/>
+  <polygon points="94,102 132,102 142,122 104,122" stroke-linejoin="round" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 45%, var(--surface,#ffffff));stroke:var(--amber,#f59e0b);stroke-width:2"/>
+  <path d="M 99 112 H 137 M 107 102 L 114 122 M 120 102 L 127 122" fill="none" style="stroke:var(--amber,#f59e0b);stroke-width:1.2"/>
+  <line x1="120" y1="122" x2="120" y2="130" style="stroke:var(--amber,#f59e0b);stroke-width:2"/>
+  </g>
+  <!-- icon: wind -->
+  <g>
+  <line x1="260" y1="90" x2="260" y2="132" stroke-linecap="round" style="stroke:var(--teal,#0d9488);stroke-width:3"/>
+  <path d="M 0 0 Q 5 -12 0 -28 Q -4 -12 0 0 Z" transform="translate(260 88) rotate(0)" style="fill:color-mix(in srgb, var(--teal,#0d9488) 45%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:2"/>
+  <path d="M 0 0 Q 5 -12 0 -28 Q -4 -12 0 0 Z" transform="translate(260 88) rotate(120)" style="fill:color-mix(in srgb, var(--teal,#0d9488) 45%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:2"/>
+  <path d="M 0 0 Q 5 -12 0 -28 Q -4 -12 0 0 Z" transform="translate(260 88) rotate(240)" style="fill:color-mix(in srgb, var(--teal,#0d9488) 45%, var(--surface,#ffffff));stroke:var(--teal,#0d9488);stroke-width:2"/>
+  <circle cx="260" cy="88" r="3.5" style="fill:var(--surface,#ffffff);stroke:var(--teal,#0d9488);stroke-width:2"/>
+  </g>
+  <!-- icon: hydro -->
+  <g>
+  <path d="M 400 72 C 418 94 418 122 400 122 C 382 122 382 94 400 72 Z" style="fill:color-mix(in srgb, color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a)) 45%, var(--surface,#ffffff));stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:2"/>
+  <path d="M 390 106 q 5 -4 10 0 t 10 0" fill="none" style="stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:2"/>
+  </g>
+  <!-- icon: bioenergy -->
+  <g>
+  <path d="M 522 120 C 518 88 542 76 562 76 C 562 100 548 120 522 120 Z" style="fill:color-mix(in srgb, var(--green,#10b981) 45%, var(--surface,#ffffff));stroke:var(--green,#10b981);stroke-width:2"/>
+  <path d="M 522 120 L 552 88" fill="none" style="stroke:var(--green,#10b981);stroke-width:2"/>
+  </g>
+  <!-- icon: nuclear -->
+  <g>
+  <ellipse cx="680" cy="100" rx="24" ry="8" transform="rotate(0 680 100)" style="fill:none;stroke:color-mix(in srgb, var(--navy,#1a2744) 55%, var(--text,#0f172a));stroke-width:2"/>
+  <ellipse cx="680" cy="100" rx="24" ry="8" transform="rotate(60 680 100)" style="fill:none;stroke:color-mix(in srgb, var(--navy,#1a2744) 55%, var(--text,#0f172a));stroke-width:2"/>
+  <ellipse cx="680" cy="100" rx="24" ry="8" transform="rotate(120 680 100)" style="fill:none;stroke:color-mix(in srgb, var(--navy,#1a2744) 55%, var(--text,#0f172a));stroke-width:2"/>
+  <circle cx="680" cy="100" r="5" style="fill:color-mix(in srgb, var(--navy,#1a2744) 55%, var(--text,#0f172a))"/>
+  </g>
+  <!-- share bars -->
+  <g>
+  <rect x="102" y="200" width="36" height="160" rx="8" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 14%, var(--surface,#ffffff));stroke:var(--border,#e2e8f0);stroke-width:1.5"/>
+  <rect x="102" y="299.2" width="36" height="60.8" rx="8" style="fill:var(--amber,#f59e0b)"/>
+  <text x="120" y="392" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:20px;font-weight:700;fill:var(--amber,#f59e0b)">38%</text>
+  <text x="120" y="414" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">Solar</text>
+  <rect x="242" y="200" width="36" height="160" rx="8" style="fill:color-mix(in srgb, var(--teal,#0d9488) 14%, var(--surface,#ffffff));stroke:var(--border,#e2e8f0);stroke-width:1.5"/>
+  <rect x="242" y="276.8" width="36" height="83.2" rx="8" style="fill:var(--teal,#0d9488)"/>
+  <text x="260" y="392" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:20px;font-weight:700;fill:var(--teal,#0d9488)">52%</text>
+  <text x="260" y="414" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">Wind</text>
+  <rect x="382" y="200" width="36" height="160" rx="8" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 14%, var(--surface,#ffffff));stroke:var(--border,#e2e8f0);stroke-width:1.5"/>
+  <rect x="382" y="241.6" width="36" height="118.4" rx="8" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a))"/>
+  <text x="400" y="392" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:20px;font-weight:700;fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a))">74%</text>
+  <text x="400" y="414" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">Hydro</text>
+  <rect x="522" y="200" width="36" height="160" rx="8" style="fill:color-mix(in srgb, var(--green,#10b981) 14%, var(--surface,#ffffff));stroke:var(--border,#e2e8f0);stroke-width:1.5"/>
+  <rect x="522" y="324.8" width="36" height="35.2" rx="8" style="fill:var(--green,#10b981)"/>
+  <text x="540" y="392" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:20px;font-weight:700;fill:var(--green,#10b981)">22%</text>
+  <text x="540" y="414" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">Bioenergy</text>
+  <rect x="662" y="200" width="36" height="160" rx="8" style="fill:color-mix(in srgb, var(--navy,#1a2744) 14%, var(--surface,#ffffff));stroke:var(--border,#e2e8f0);stroke-width:1.5"/>
+  <rect x="662" y="286.4" width="36" height="73.6" rx="8" style="fill:color-mix(in srgb, var(--navy,#1a2744) 55%, var(--text,#0f172a))"/>
+  <text x="680" y="392" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:20px;font-weight:700;fill:color-mix(in srgb, var(--navy,#1a2744) 55%, var(--text,#0f172a))">46%</text>
+  <text x="680" y="414" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">Nuclear</text>
+  </g>
+  <text x="400" y="176" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">share of new capacity (placeholder values)</text>
+</svg>

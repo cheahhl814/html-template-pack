@@ -1,0 +1,46 @@
+<!--
+html-template-pack · svg-library · semicircle-segments
+  Half-donut split into three proportional segments with outside % callouts,
+  a total in the hub and a legend under the baseline. Concept-level:
+  real data belongs in chartz.
+  Tokens: deep-blue teal coral text text-muted surface font-head font-sans.
+  Edit: SHARES (degrees = share * 1.8), %, legend labels, hub text.
+  No ids/markers, safe to paste multiples.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-label="Half donut divided into three shares of 48, 36 and 16 percent with a legend" style="width:100%;height:auto">
+  <title>Semicircle share breakdown</title>
+  <!-- segments (left to right) -->
+  <g>
+  <polygon points="185,330 185.3,318.4 186.2,306.9 187.8,295.4 190,284 192.7,272.8 196.1,261.7 200.1,250.9 204.6,240.2 209.8,229.8 215.4,219.7 221.6,210 228.4,200.5 235.6,191.5 243.3,182.8 251.4,174.6 260,166.8 269,159.5 278.4,152.7 288.1,146.4 298.1,140.7 308.5,135.5 319.1,130.8 329.9,126.7 340.9,123.3 352.2,120.4 363.5,118.1 375,116.5 386.5,115.4 392,202.3 385.1,202.9 378.3,203.9 371.5,205.2 364.8,206.9 358.3,209 351.8,211.4 345.5,214.2 339.3,217.3 333.4,220.7 327.6,224.5 322,228.5 316.7,232.9 311.5,237.5 306.7,242.4 302.1,247.5 297.8,252.9 293.8,258.5 290.1,264.3 286.7,270.4 283.7,276.5 281,282.9 278.6,289.4 276.6,295.9 275,302.6 273.7,309.4 272.7,316.2 272.2,323.1 272,330" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 22%, transparent);stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 45%, transparent);stroke-width:1.5"/>
+  <polygon points="386.5,115.4 398.1,115 409.6,115.2 421.2,116 432.7,117.5 444.1,119.6 455.3,122.2 466.4,125.5 477.3,129.4 488,133.9 498.5,138.9 508.6,144.5 518.4,150.6 527.9,157.2 537,164.3 545.8,172 554.1,180 561.9,188.5 569.3,197.5 576.2,206.8 582.6,216.4 588.4,226.4 512.2,268.3 508.7,262.4 504.9,256.6 500.8,251.1 496.4,245.8 491.7,240.7 486.8,235.9 481.6,231.4 476.2,227.1 470.5,223.2 464.7,219.5 458.6,216.2 452.4,213.2 446,210.6 439.6,208.3 432.9,206.3 426.2,204.7 419.5,203.5 412.6,202.6 405.7,202.1 398.9,202 392,202.3" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--teal,#0d9488) 22%, transparent);stroke:color-mix(in srgb, var(--teal,#0d9488) 45%, transparent);stroke-width:1.5"/>
+  <polygon points="588.4,226.4 593.9,237.1 598.8,248.1 603,259.3 606.7,270.7 609.7,282.4 612,294.1 613.7,306 614.7,318 615,330 528,330 527.8,322.9 527.2,315.7 526.2,308.7 524.8,301.6 523,294.7 520.9,287.9 518.3,281.2 515.4,274.7 512.2,268.3" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--coral,#ef4444) 22%, transparent);stroke:color-mix(in srgb, var(--coral,#ef4444) 45%, transparent);stroke-width:1.5"/>
+  <polygon points="185,330 185.3,318.4 186.2,306.9 187.8,295.4 190,284 192.7,272.8 196.1,261.7 200.1,250.9 204.6,240.2 209.8,229.8 215.4,219.7 221.6,210 228.4,200.5 235.6,191.5 243.3,182.8 251.4,174.6 260,166.8 269,159.5 278.4,152.7 288.1,146.4 298.1,140.7 308.5,135.5 319.1,130.8 329.9,126.7 340.9,123.3 352.2,120.4 363.5,118.1 375,116.5 386.5,115.4 392,202.3 385.1,202.9 378.3,203.9 371.5,205.2 364.8,206.9 358.3,209 351.8,211.4 345.5,214.2 339.3,217.3 333.4,220.7 327.6,224.5 322,228.5 316.7,232.9 311.5,237.5 306.7,242.4 302.1,247.5 297.8,252.9 293.8,258.5 290.1,264.3 286.7,270.4 283.7,276.5 281,282.9 278.6,289.4 276.6,295.9 275,302.6 273.7,309.4 272.7,316.2 272.2,323.1 272,330" stroke-linejoin="round" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke:var(--surface,#ffffff);stroke-width:3"/>
+  <polygon points="386.5,115.4 398.1,115 409.6,115.2 421.2,116 432.7,117.5 444.1,119.6 455.3,122.2 466.4,125.5 477.3,129.4 488,133.9 498.5,138.9 508.6,144.5 518.4,150.6 527.9,157.2 537,164.3 545.8,172 554.1,180 561.9,188.5 569.3,197.5 576.2,206.8 582.6,216.4 588.4,226.4 512.2,268.3 508.7,262.4 504.9,256.6 500.8,251.1 496.4,245.8 491.7,240.7 486.8,235.9 481.6,231.4 476.2,227.1 470.5,223.2 464.7,219.5 458.6,216.2 452.4,213.2 446,210.6 439.6,208.3 432.9,206.3 426.2,204.7 419.5,203.5 412.6,202.6 405.7,202.1 398.9,202 392,202.3" stroke-linejoin="round" style="fill:var(--teal,#0d9488);stroke:var(--surface,#ffffff);stroke-width:3"/>
+  <polygon points="588.4,226.4 593.9,237.1 598.8,248.1 603,259.3 606.7,270.7 609.7,282.4 612,294.1 613.7,306 614.7,318 615,330 528,330 527.8,322.9 527.2,315.7 526.2,308.7 524.8,301.6 523,294.7 520.9,287.9 518.3,281.2 515.4,274.7 512.2,268.3" stroke-linejoin="round" style="fill:var(--coral,#ef4444);stroke:var(--surface,#ffffff);stroke-width:3"/>
+  </g>
+  <!-- callouts -->
+  <g>
+  <circle cx="238.9" cy="178.7" r="3.5" style="fill:var(--text-muted,#64748b)"/>
+  <line x1="238.9" y1="178.7" x2="224.3" y2="165" style="stroke:var(--text-muted,#64748b);stroke-width:1.5"/>
+  <text x="218.3" y="172" text-anchor="end" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:20px;font-weight:700;fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a))">48%</text>
+  <circle cx="506.5" cy="136.3" r="3.5" style="fill:var(--text-muted,#64748b)"/>
+  <line x1="506.5" y1="136.3" x2="516.1" y2="118.8" style="stroke:var(--text-muted,#64748b);stroke-width:1.5"/>
+  <text x="522.1" y="125.8" text-anchor="start" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:20px;font-weight:700;fill:var(--teal,#0d9488)">36%</text>
+  <circle cx="614.1" cy="275" r="3.5" style="fill:var(--text-muted,#64748b)"/>
+  <line x1="614.1" y1="275" x2="633.4" y2="270.1" style="stroke:var(--text-muted,#64748b);stroke-width:1.5"/>
+  <text x="639.4" y="277.1" text-anchor="start" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:20px;font-weight:700;fill:var(--coral,#ef4444)">16%</text>
+  </g>
+  <!-- hub + baseline + legend -->
+  <g>
+  <line x1="150" y1="331" x2="650" y2="331" stroke-linecap="round" style="stroke:var(--text-muted,#64748b);stroke-width:1.5"/>
+  <text x="400" y="284" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:20px;font-weight:700;fill:var(--text,#0f172a)">1,240</text>
+  <text x="400" y="304" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:13px;font-weight:400;fill:var(--text-muted,#64748b)">survey responses</text>
+  <text x="400" y="254" text-anchor="middle" letter-spacing="1.2" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:11px;font-weight:700;fill:var(--text-muted,#64748b)">SATISFACTION</text>
+  <rect x="215" y="362" width="14" height="14" rx="3" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a))"/>
+  <text x="237" y="374" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:13px;font-weight:400;fill:var(--text,#0f172a)">Very satisfied</text>
+  <rect x="365" y="362" width="14" height="14" rx="3" style="fill:var(--teal,#0d9488)"/>
+  <text x="387" y="374" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:13px;font-weight:400;fill:var(--text,#0f172a)">Satisfied</text>
+  <rect x="505" y="362" width="14" height="14" rx="3" style="fill:var(--coral,#ef4444)"/>
+  <text x="527" y="374" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:13px;font-weight:400;fill:var(--text,#0f172a)">Not satisfied</text>
+  </g>
+</svg>

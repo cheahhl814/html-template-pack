@@ -1,0 +1,163 @@
+<!--
+html-template-pack · svg-library · mutation-types
+  Point mutations on one 12-base coding sequence: original, substitution
+  (missense), insertion and deletion (frameshifts). Bases are colour-coded
+  tiles grouped in codons with the amino acids beneath; the changed base is
+  ringed.
+  Tokens: amber coral teal deep-blue text text-muted surface border font-head font-sans.
+  Sequences are real and translated correctly (standard code): ATG GCT TCA
+  GAA = Met Ala Ser Glu. If you edit a row, re-translate its codons.
+  No ids/markers, safe to paste multiples.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-label="Mutation types on a DNA sequence: substitution changes Ala to Val, an insertion and a deletion shift the reading frame" style="width:100%;height:auto">
+  <title>Point mutation types</title>
+  <!-- row: Original -->
+  <g>
+  <text x="40" y="66" text-anchor="start" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">Original</text>
+  <text x="40" y="84" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">reference sequence</text>
+  <rect x="250" y="52" width="28" height="28" rx="5" style="fill:var(--amber,#f59e0b)"/>
+  <text x="264" y="71" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--surface,#ffffff)">A</text>
+  <rect x="281" y="52" width="28" height="28" rx="5" style="fill:var(--coral,#ef4444)"/>
+  <text x="295" y="71" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--surface,#ffffff)">T</text>
+  <rect x="312" y="52" width="28" height="28" rx="5" style="fill:var(--teal,#0d9488)"/>
+  <text x="326" y="71" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--surface,#ffffff)">G</text>
+  <rect x="353" y="52" width="28" height="28" rx="5" style="fill:var(--teal,#0d9488)"/>
+  <text x="367" y="71" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--surface,#ffffff)">G</text>
+  <rect x="384" y="52" width="28" height="28" rx="5" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a))"/>
+  <text x="398" y="71" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--surface,#ffffff)">C</text>
+  <rect x="415" y="52" width="28" height="28" rx="5" style="fill:var(--coral,#ef4444)"/>
+  <text x="429" y="71" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--surface,#ffffff)">T</text>
+  <rect x="456" y="52" width="28" height="28" rx="5" style="fill:var(--coral,#ef4444)"/>
+  <text x="470" y="71" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--surface,#ffffff)">T</text>
+  <rect x="487" y="52" width="28" height="28" rx="5" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a))"/>
+  <text x="501" y="71" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--surface,#ffffff)">C</text>
+  <rect x="518" y="52" width="28" height="28" rx="5" style="fill:var(--amber,#f59e0b)"/>
+  <text x="532" y="71" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--surface,#ffffff)">A</text>
+  <rect x="559" y="52" width="28" height="28" rx="5" style="fill:var(--teal,#0d9488)"/>
+  <text x="573" y="71" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--surface,#ffffff)">G</text>
+  <rect x="590" y="52" width="28" height="28" rx="5" style="fill:var(--amber,#f59e0b)"/>
+  <text x="604" y="71" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--surface,#ffffff)">A</text>
+  <rect x="621" y="52" width="28" height="28" rx="5" style="fill:var(--amber,#f59e0b)"/>
+  <text x="635" y="71" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--surface,#ffffff)">A</text>
+  <text x="295" y="98" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text,#0f172a)">Met</text>
+  <text x="398" y="98" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text,#0f172a)">Ala</text>
+  <text x="501" y="98" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text,#0f172a)">Ser</text>
+  <text x="604" y="98" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text,#0f172a)">Glu</text>
+  </g>
+  <!-- row: Substitution -->
+  <g>
+  <text x="40" y="156" text-anchor="start" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">Substitution</text>
+  <text x="40" y="174" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">C → T: Ala → Val (missense)</text>
+  <rect x="250" y="142" width="28" height="28" rx="5" style="fill:var(--amber,#f59e0b)"/>
+  <text x="264" y="161" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--surface,#ffffff)">A</text>
+  <rect x="281" y="142" width="28" height="28" rx="5" style="fill:var(--coral,#ef4444)"/>
+  <text x="295" y="161" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--surface,#ffffff)">T</text>
+  <rect x="312" y="142" width="28" height="28" rx="5" style="fill:var(--teal,#0d9488)"/>
+  <text x="326" y="161" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--surface,#ffffff)">G</text>
+  <rect x="353" y="142" width="28" height="28" rx="5" style="fill:var(--teal,#0d9488)"/>
+  <text x="367" y="161" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--surface,#ffffff)">G</text>
+  <rect x="384" y="142" width="28" height="28" rx="5" style="fill:var(--coral,#ef4444)"/>
+  <text x="398" y="161" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--surface,#ffffff)">T</text>
+  <rect x="381" y="139" width="34" height="34" rx="7" style="fill:none;stroke:var(--text,#0f172a);stroke-width:2.5"/>
+  <rect x="415" y="142" width="28" height="28" rx="5" style="fill:var(--coral,#ef4444)"/>
+  <text x="429" y="161" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--surface,#ffffff)">T</text>
+  <rect x="456" y="142" width="28" height="28" rx="5" style="fill:var(--coral,#ef4444)"/>
+  <text x="470" y="161" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--surface,#ffffff)">T</text>
+  <rect x="487" y="142" width="28" height="28" rx="5" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a))"/>
+  <text x="501" y="161" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--surface,#ffffff)">C</text>
+  <rect x="518" y="142" width="28" height="28" rx="5" style="fill:var(--amber,#f59e0b)"/>
+  <text x="532" y="161" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--surface,#ffffff)">A</text>
+  <rect x="559" y="142" width="28" height="28" rx="5" style="fill:var(--teal,#0d9488)"/>
+  <text x="573" y="161" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--surface,#ffffff)">G</text>
+  <rect x="590" y="142" width="28" height="28" rx="5" style="fill:var(--amber,#f59e0b)"/>
+  <text x="604" y="161" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--surface,#ffffff)">A</text>
+  <rect x="621" y="142" width="28" height="28" rx="5" style="fill:var(--amber,#f59e0b)"/>
+  <text x="635" y="161" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--surface,#ffffff)">A</text>
+  <text x="295" y="188" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text,#0f172a)">Met</text>
+  <text x="398" y="188" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text,#0f172a)">Val</text>
+  <text x="501" y="188" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text,#0f172a)">Ser</text>
+  <text x="604" y="188" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text,#0f172a)">Glu</text>
+  </g>
+  <!-- row: Insertion -->
+  <g>
+  <text x="40" y="246" text-anchor="start" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">Insertion</text>
+  <text x="40" y="264" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">+A shifts the reading frame</text>
+  <rect x="250" y="232" width="28" height="28" rx="5" style="fill:var(--amber,#f59e0b)"/>
+  <text x="264" y="251" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--surface,#ffffff)">A</text>
+  <rect x="281" y="232" width="28" height="28" rx="5" style="fill:var(--coral,#ef4444)"/>
+  <text x="295" y="251" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--surface,#ffffff)">T</text>
+  <rect x="312" y="232" width="28" height="28" rx="5" style="fill:var(--teal,#0d9488)"/>
+  <text x="326" y="251" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--surface,#ffffff)">G</text>
+  <rect x="353" y="232" width="28" height="28" rx="5" style="fill:var(--teal,#0d9488)"/>
+  <text x="367" y="251" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--surface,#ffffff)">G</text>
+  <rect x="384" y="232" width="28" height="28" rx="5" style="fill:var(--amber,#f59e0b)"/>
+  <text x="398" y="251" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--surface,#ffffff)">A</text>
+  <rect x="381" y="229" width="34" height="34" rx="7" style="fill:none;stroke:var(--text,#0f172a);stroke-width:2.5"/>
+  <rect x="415" y="232" width="28" height="28" rx="5" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a))"/>
+  <text x="429" y="251" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--surface,#ffffff)">C</text>
+  <rect x="456" y="232" width="28" height="28" rx="5" style="fill:var(--coral,#ef4444)"/>
+  <text x="470" y="251" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--surface,#ffffff)">T</text>
+  <rect x="487" y="232" width="28" height="28" rx="5" style="fill:var(--coral,#ef4444)"/>
+  <text x="501" y="251" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--surface,#ffffff)">T</text>
+  <rect x="518" y="232" width="28" height="28" rx="5" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a))"/>
+  <text x="532" y="251" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--surface,#ffffff)">C</text>
+  <rect x="559" y="232" width="28" height="28" rx="5" style="fill:var(--amber,#f59e0b)"/>
+  <text x="573" y="251" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--surface,#ffffff)">A</text>
+  <rect x="590" y="232" width="28" height="28" rx="5" style="fill:var(--teal,#0d9488)"/>
+  <text x="604" y="251" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--surface,#ffffff)">G</text>
+  <rect x="621" y="232" width="28" height="28" rx="5" style="fill:var(--amber,#f59e0b)"/>
+  <text x="635" y="251" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--surface,#ffffff)">A</text>
+  <rect x="662" y="232" width="28" height="28" rx="5" style="fill:var(--amber,#f59e0b)"/>
+  <text x="676" y="251" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--surface,#ffffff)">A</text>
+  <text x="295" y="278" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text,#0f172a)">Met</text>
+  <text x="398" y="278" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text,#0f172a)">Asp</text>
+  <text x="501" y="278" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text,#0f172a)">Phe</text>
+  <text x="604" y="278" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text,#0f172a)">Arg</text>
+  <text x="676" y="278" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">+A</text>
+  </g>
+  <!-- row: Deletion -->
+  <g>
+  <text x="40" y="336" text-anchor="start" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">Deletion</text>
+  <text x="40" y="354" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">−C shifts the reading frame</text>
+  <rect x="250" y="322" width="28" height="28" rx="5" style="fill:var(--amber,#f59e0b)"/>
+  <text x="264" y="341" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--surface,#ffffff)">A</text>
+  <rect x="281" y="322" width="28" height="28" rx="5" style="fill:var(--coral,#ef4444)"/>
+  <text x="295" y="341" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--surface,#ffffff)">T</text>
+  <rect x="312" y="322" width="28" height="28" rx="5" style="fill:var(--teal,#0d9488)"/>
+  <text x="326" y="341" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--surface,#ffffff)">G</text>
+  <rect x="353" y="322" width="28" height="28" rx="5" style="fill:var(--teal,#0d9488)"/>
+  <text x="367" y="341" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--surface,#ffffff)">G</text>
+  <rect x="384" y="322" width="28" height="28" rx="5" stroke-dasharray="3 3" style="fill:none;stroke:var(--text-muted,#64748b);stroke-width:1.5"/>
+  <rect x="381" y="319" width="34" height="34" rx="7" style="fill:none;stroke:var(--text,#0f172a);stroke-width:2.5"/>
+  <rect x="415" y="322" width="28" height="28" rx="5" style="fill:var(--coral,#ef4444)"/>
+  <text x="429" y="341" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--surface,#ffffff)">T</text>
+  <rect x="446" y="322" width="28" height="28" rx="5" style="fill:var(--coral,#ef4444)"/>
+  <text x="460" y="341" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--surface,#ffffff)">T</text>
+  <rect x="487" y="322" width="28" height="28" rx="5" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a))"/>
+  <text x="501" y="341" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--surface,#ffffff)">C</text>
+  <rect x="518" y="322" width="28" height="28" rx="5" style="fill:var(--amber,#f59e0b)"/>
+  <text x="532" y="341" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--surface,#ffffff)">A</text>
+  <rect x="549" y="322" width="28" height="28" rx="5" style="fill:var(--teal,#0d9488)"/>
+  <text x="563" y="341" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--surface,#ffffff)">G</text>
+  <rect x="590" y="322" width="28" height="28" rx="5" style="fill:var(--amber,#f59e0b)"/>
+  <text x="604" y="341" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--surface,#ffffff)">A</text>
+  <rect x="621" y="322" width="28" height="28" rx="5" style="fill:var(--amber,#f59e0b)"/>
+  <text x="635" y="341" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--surface,#ffffff)">A</text>
+  <text x="295" y="368" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text,#0f172a)">Met</text>
+  <text x="398" y="368" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text,#0f172a)">Val</text>
+  <text x="532" y="368" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text,#0f172a)">Gln</text>
+  <text x="619.5" y="368" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">+AA</text>
+  </g>
+  <!-- base key -->
+  <g>
+  <rect x="250" y="408" width="18" height="18" rx="4" style="fill:var(--amber,#f59e0b)"/>
+  <text x="276" y="422" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text,#0f172a)">adenine</text>
+  <rect x="354" y="408" width="18" height="18" rx="4" style="fill:var(--coral,#ef4444)"/>
+  <text x="380" y="422" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text,#0f172a)">thymine</text>
+  <rect x="458" y="408" width="18" height="18" rx="4" style="fill:var(--teal,#0d9488)"/>
+  <text x="484" y="422" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text,#0f172a)">guanine</text>
+  <rect x="562" y="408" width="18" height="18" rx="4" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a))"/>
+  <text x="588" y="422" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text,#0f172a)">cytosine</text>
+  <text x="40" y="422" text-anchor="start" letter-spacing="1.2" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:11px;font-weight:700;fill:var(--text-muted,#64748b)">BASES</text>
+  </g>
+</svg>

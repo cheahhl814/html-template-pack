@@ -1,0 +1,147 @@
+<!--
+html-template-pack · svg-library · europe-tile-grid
+  Tile-grid map of Europe: one equal square per country (ISO alpha-2), placed
+  roughly where it sits, filled by category, plus legend and takeaway.
+  Equal tiles keep small states visible and draw no borders; layout follows
+  the EU data-visualisation guide's Europe tile grid.
+  Tokens: teal amber deep-blue text text-muted surface border font-head font-sans.
+  Edit: a tile's class = its category (move it between the category groups),
+  legend counts, takeaway. Tile (c, r) sits at x = 40 + c*44, y = 32 + r*44.
+  Add/remove a country by adding/removing its rect + text pair.
+  No ids/markers, safe to paste multiples.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-label="Tile grid map of Europe with countries coloured by rollout status: twelve live, seven in pilot, eight planned" style="width:100%;height:auto">
+  <title>Europe tile-grid map</title>
+  <!-- tiles: no rollout -->
+  <g>
+  <rect x="40" y="32" width="40" height="40" rx="6" style="fill:color-mix(in srgb, var(--text-muted,#64748b) 12%, var(--surface,#ffffff));stroke:var(--border,#e2e8f0);stroke-width:1.5"/>
+  <text x="60" y="57" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">IS</text>
+  <rect x="304" y="164" width="40" height="40" rx="6" style="fill:color-mix(in srgb, var(--text-muted,#64748b) 12%, var(--surface,#ffffff));stroke:var(--border,#e2e8f0);stroke-width:1.5"/>
+  <text x="324" y="189" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">BY</text>
+  <rect x="348" y="164" width="40" height="40" rx="6" style="fill:color-mix(in srgb, var(--text-muted,#64748b) 12%, var(--surface,#ffffff));stroke:var(--border,#e2e8f0);stroke-width:1.5"/>
+  <text x="368" y="189" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">RU</text>
+  <rect x="304" y="208" width="40" height="40" rx="6" style="fill:color-mix(in srgb, var(--text-muted,#64748b) 12%, var(--surface,#ffffff));stroke:var(--border,#e2e8f0);stroke-width:1.5"/>
+  <text x="324" y="233" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">UA</text>
+  <rect x="348" y="252" width="40" height="40" rx="6" style="fill:color-mix(in srgb, var(--text-muted,#64748b) 12%, var(--surface,#ffffff));stroke:var(--border,#e2e8f0);stroke-width:1.5"/>
+  <text x="368" y="277" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">MD</text>
+  <rect x="260" y="296" width="40" height="40" rx="6" style="fill:color-mix(in srgb, var(--text-muted,#64748b) 12%, var(--surface,#ffffff));stroke:var(--border,#e2e8f0);stroke-width:1.5"/>
+  <text x="280" y="321" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">BA</text>
+  <rect x="304" y="296" width="40" height="40" rx="6" style="fill:color-mix(in srgb, var(--text-muted,#64748b) 12%, var(--surface,#ffffff));stroke:var(--border,#e2e8f0);stroke-width:1.5"/>
+  <text x="324" y="321" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">RS</text>
+  <rect x="348" y="296" width="40" height="40" rx="6" style="fill:color-mix(in srgb, var(--text-muted,#64748b) 12%, var(--surface,#ffffff));stroke:var(--border,#e2e8f0);stroke-width:1.5"/>
+  <text x="368" y="321" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">BG</text>
+  <rect x="392" y="296" width="40" height="40" rx="6" style="fill:color-mix(in srgb, var(--text-muted,#64748b) 12%, var(--surface,#ffffff));stroke:var(--border,#e2e8f0);stroke-width:1.5"/>
+  <text x="412" y="321" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">TR</text>
+  <rect x="84" y="340" width="40" height="40" rx="6" style="fill:color-mix(in srgb, var(--text-muted,#64748b) 12%, var(--surface,#ffffff));stroke:var(--border,#e2e8f0);stroke-width:1.5"/>
+  <text x="104" y="365" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">MT</text>
+  <rect x="260" y="340" width="40" height="40" rx="6" style="fill:color-mix(in srgb, var(--text-muted,#64748b) 12%, var(--surface,#ffffff));stroke:var(--border,#e2e8f0);stroke-width:1.5"/>
+  <text x="280" y="365" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">ME</text>
+  <rect x="304" y="340" width="40" height="40" rx="6" style="fill:color-mix(in srgb, var(--text-muted,#64748b) 12%, var(--surface,#ffffff));stroke:var(--border,#e2e8f0);stroke-width:1.5"/>
+  <text x="324" y="365" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">XK</text>
+  <rect x="348" y="340" width="40" height="40" rx="6" style="fill:color-mix(in srgb, var(--text-muted,#64748b) 12%, var(--surface,#ffffff));stroke:var(--border,#e2e8f0);stroke-width:1.5"/>
+  <text x="368" y="365" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">MK</text>
+  <rect x="392" y="340" width="40" height="40" rx="6" style="fill:color-mix(in srgb, var(--text-muted,#64748b) 12%, var(--surface,#ffffff));stroke:var(--border,#e2e8f0);stroke-width:1.5"/>
+  <text x="412" y="365" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">CY</text>
+  <rect x="260" y="384" width="40" height="40" rx="6" style="fill:color-mix(in srgb, var(--text-muted,#64748b) 12%, var(--surface,#ffffff));stroke:var(--border,#e2e8f0);stroke-width:1.5"/>
+  <text x="280" y="409" text-anchor="middle" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">AL</text>
+  </g>
+  <!-- tiles: planned -->
+  <g>
+  <rect x="304" y="120" width="40" height="40" rx="6" stroke-dasharray="4 3" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 34%, var(--surface,#ffffff));stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:1.5"/>
+  <text x="324" y="145" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a))">LT</text>
+  <rect x="348" y="120" width="40" height="40" rx="6" stroke-dasharray="4 3" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 34%, var(--surface,#ffffff));stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:1.5"/>
+  <text x="368" y="145" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a))">LV</text>
+  <rect x="260" y="208" width="40" height="40" rx="6" stroke-dasharray="4 3" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 34%, var(--surface,#ffffff));stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:1.5"/>
+  <text x="280" y="233" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a))">SK</text>
+  <rect x="260" y="252" width="40" height="40" rx="6" stroke-dasharray="4 3" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 34%, var(--surface,#ffffff));stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:1.5"/>
+  <text x="280" y="277" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a))">HU</text>
+  <rect x="304" y="252" width="40" height="40" rx="6" stroke-dasharray="4 3" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 34%, var(--surface,#ffffff));stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:1.5"/>
+  <text x="324" y="277" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a))">RO</text>
+  <rect x="172" y="296" width="40" height="40" rx="6" stroke-dasharray="4 3" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 34%, var(--surface,#ffffff));stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:1.5"/>
+  <text x="192" y="321" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a))">SI</text>
+  <rect x="216" y="296" width="40" height="40" rx="6" stroke-dasharray="4 3" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 34%, var(--surface,#ffffff));stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:1.5"/>
+  <text x="236" y="321" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a))">HR</text>
+  <rect x="304" y="384" width="40" height="40" rx="6" stroke-dasharray="4 3" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 34%, var(--surface,#ffffff));stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:1.5"/>
+  <text x="324" y="409" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a))">GR</text>
+  </g>
+  <!-- tiles: pilot -->
+  <g>
+  <rect x="216" y="32" width="40" height="40" rx="6" transform="translate(3 4)" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 22%, transparent);stroke:color-mix(in srgb, var(--amber,#f59e0b) 45%, transparent);stroke-width:1.5"/>
+  <rect x="216" y="32" width="40" height="40" rx="6" style="fill:var(--amber,#f59e0b);stroke:color-mix(in srgb, var(--amber,#f59e0b) 70%, var(--text,#0f172a));stroke-width:1.5"/>
+  <text x="236" y="57" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--surface,#ffffff)">NO</text>
+  <rect x="304" y="76" width="40" height="40" rx="6" transform="translate(3 4)" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 22%, transparent);stroke:color-mix(in srgb, var(--amber,#f59e0b) 45%, transparent);stroke-width:1.5"/>
+  <rect x="304" y="76" width="40" height="40" rx="6" style="fill:var(--amber,#f59e0b);stroke:color-mix(in srgb, var(--amber,#f59e0b) 70%, var(--text,#0f172a));stroke-width:1.5"/>
+  <text x="324" y="101" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--surface,#ffffff)">EE</text>
+  <rect x="128" y="164" width="40" height="40" rx="6" transform="translate(3 4)" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 22%, transparent);stroke:color-mix(in srgb, var(--amber,#f59e0b) 45%, transparent);stroke-width:1.5"/>
+  <rect x="128" y="164" width="40" height="40" rx="6" style="fill:var(--amber,#f59e0b);stroke:color-mix(in srgb, var(--amber,#f59e0b) 70%, var(--text,#0f172a));stroke-width:1.5"/>
+  <text x="148" y="189" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--surface,#ffffff)">BE</text>
+  <rect x="260" y="164" width="40" height="40" rx="6" transform="translate(3 4)" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 22%, transparent);stroke:color-mix(in srgb, var(--amber,#f59e0b) 45%, transparent);stroke-width:1.5"/>
+  <rect x="260" y="164" width="40" height="40" rx="6" style="fill:var(--amber,#f59e0b);stroke:color-mix(in srgb, var(--amber,#f59e0b) 70%, var(--text,#0f172a));stroke-width:1.5"/>
+  <text x="280" y="189" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--surface,#ffffff)">PL</text>
+  <rect x="128" y="208" width="40" height="40" rx="6" transform="translate(3 4)" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 22%, transparent);stroke:color-mix(in srgb, var(--amber,#f59e0b) 45%, transparent);stroke-width:1.5"/>
+  <rect x="128" y="208" width="40" height="40" rx="6" style="fill:var(--amber,#f59e0b);stroke:color-mix(in srgb, var(--amber,#f59e0b) 70%, var(--text,#0f172a));stroke-width:1.5"/>
+  <text x="148" y="233" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--surface,#ffffff)">LU</text>
+  <rect x="172" y="208" width="40" height="40" rx="6" transform="translate(3 4)" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 22%, transparent);stroke:color-mix(in srgb, var(--amber,#f59e0b) 45%, transparent);stroke-width:1.5"/>
+  <rect x="172" y="208" width="40" height="40" rx="6" style="fill:var(--amber,#f59e0b);stroke:color-mix(in srgb, var(--amber,#f59e0b) 70%, var(--text,#0f172a));stroke-width:1.5"/>
+  <text x="192" y="233" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--surface,#ffffff)">CH</text>
+  <rect x="216" y="208" width="40" height="40" rx="6" transform="translate(3 4)" style="fill:color-mix(in srgb, var(--amber,#f59e0b) 22%, transparent);stroke:color-mix(in srgb, var(--amber,#f59e0b) 45%, transparent);stroke-width:1.5"/>
+  <rect x="216" y="208" width="40" height="40" rx="6" style="fill:var(--amber,#f59e0b);stroke:color-mix(in srgb, var(--amber,#f59e0b) 70%, var(--text,#0f172a));stroke-width:1.5"/>
+  <text x="236" y="233" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--surface,#ffffff)">CZ</text>
+  </g>
+  <!-- tiles: live -->
+  <g>
+  <rect x="260" y="32" width="40" height="40" rx="6" transform="translate(3 4)" style="fill:color-mix(in srgb, var(--teal,#0d9488) 22%, transparent);stroke:color-mix(in srgb, var(--teal,#0d9488) 45%, transparent);stroke-width:1.5"/>
+  <rect x="260" y="32" width="40" height="40" rx="6" style="fill:var(--teal,#0d9488);stroke:color-mix(in srgb, var(--teal,#0d9488) 70%, var(--text,#0f172a));stroke-width:1.5"/>
+  <text x="280" y="57" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--surface,#ffffff)">SE</text>
+  <rect x="304" y="32" width="40" height="40" rx="6" transform="translate(3 4)" style="fill:color-mix(in srgb, var(--teal,#0d9488) 22%, transparent);stroke:color-mix(in srgb, var(--teal,#0d9488) 45%, transparent);stroke-width:1.5"/>
+  <rect x="304" y="32" width="40" height="40" rx="6" style="fill:var(--teal,#0d9488);stroke:color-mix(in srgb, var(--teal,#0d9488) 70%, var(--text,#0f172a));stroke-width:1.5"/>
+  <text x="324" y="57" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--surface,#ffffff)">FI</text>
+  <rect x="40" y="120" width="40" height="40" rx="6" transform="translate(3 4)" style="fill:color-mix(in srgb, var(--teal,#0d9488) 22%, transparent);stroke:color-mix(in srgb, var(--teal,#0d9488) 45%, transparent);stroke-width:1.5"/>
+  <rect x="40" y="120" width="40" height="40" rx="6" style="fill:var(--teal,#0d9488);stroke:color-mix(in srgb, var(--teal,#0d9488) 70%, var(--text,#0f172a));stroke-width:1.5"/>
+  <text x="60" y="145" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--surface,#ffffff)">IE</text>
+  <rect x="84" y="120" width="40" height="40" rx="6" transform="translate(3 4)" style="fill:color-mix(in srgb, var(--teal,#0d9488) 22%, transparent);stroke:color-mix(in srgb, var(--teal,#0d9488) 45%, transparent);stroke-width:1.5"/>
+  <rect x="84" y="120" width="40" height="40" rx="6" style="fill:var(--teal,#0d9488);stroke:color-mix(in srgb, var(--teal,#0d9488) 70%, var(--text,#0f172a));stroke-width:1.5"/>
+  <text x="104" y="145" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--surface,#ffffff)">GB</text>
+  <rect x="216" y="120" width="40" height="40" rx="6" transform="translate(3 4)" style="fill:color-mix(in srgb, var(--teal,#0d9488) 22%, transparent);stroke:color-mix(in srgb, var(--teal,#0d9488) 45%, transparent);stroke-width:1.5"/>
+  <rect x="216" y="120" width="40" height="40" rx="6" style="fill:var(--teal,#0d9488);stroke:color-mix(in srgb, var(--teal,#0d9488) 70%, var(--text,#0f172a));stroke-width:1.5"/>
+  <text x="236" y="145" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--surface,#ffffff)">DK</text>
+  <rect x="172" y="164" width="40" height="40" rx="6" transform="translate(3 4)" style="fill:color-mix(in srgb, var(--teal,#0d9488) 22%, transparent);stroke:color-mix(in srgb, var(--teal,#0d9488) 45%, transparent);stroke-width:1.5"/>
+  <rect x="172" y="164" width="40" height="40" rx="6" style="fill:var(--teal,#0d9488);stroke:color-mix(in srgb, var(--teal,#0d9488) 70%, var(--text,#0f172a));stroke-width:1.5"/>
+  <text x="192" y="189" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--surface,#ffffff)">NL</text>
+  <rect x="216" y="164" width="40" height="40" rx="6" transform="translate(3 4)" style="fill:color-mix(in srgb, var(--teal,#0d9488) 22%, transparent);stroke:color-mix(in srgb, var(--teal,#0d9488) 45%, transparent);stroke-width:1.5"/>
+  <rect x="216" y="164" width="40" height="40" rx="6" style="fill:var(--teal,#0d9488);stroke:color-mix(in srgb, var(--teal,#0d9488) 70%, var(--text,#0f172a));stroke-width:1.5"/>
+  <text x="236" y="189" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--surface,#ffffff)">DE</text>
+  <rect x="84" y="208" width="40" height="40" rx="6" transform="translate(3 4)" style="fill:color-mix(in srgb, var(--teal,#0d9488) 22%, transparent);stroke:color-mix(in srgb, var(--teal,#0d9488) 45%, transparent);stroke-width:1.5"/>
+  <rect x="84" y="208" width="40" height="40" rx="6" style="fill:var(--teal,#0d9488);stroke:color-mix(in srgb, var(--teal,#0d9488) 70%, var(--text,#0f172a));stroke-width:1.5"/>
+  <text x="104" y="233" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--surface,#ffffff)">FR</text>
+  <rect x="40" y="252" width="40" height="40" rx="6" transform="translate(3 4)" style="fill:color-mix(in srgb, var(--teal,#0d9488) 22%, transparent);stroke:color-mix(in srgb, var(--teal,#0d9488) 45%, transparent);stroke-width:1.5"/>
+  <rect x="40" y="252" width="40" height="40" rx="6" style="fill:var(--teal,#0d9488);stroke:color-mix(in srgb, var(--teal,#0d9488) 70%, var(--text,#0f172a));stroke-width:1.5"/>
+  <text x="60" y="277" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--surface,#ffffff)">PT</text>
+  <rect x="84" y="252" width="40" height="40" rx="6" transform="translate(3 4)" style="fill:color-mix(in srgb, var(--teal,#0d9488) 22%, transparent);stroke:color-mix(in srgb, var(--teal,#0d9488) 45%, transparent);stroke-width:1.5"/>
+  <rect x="84" y="252" width="40" height="40" rx="6" style="fill:var(--teal,#0d9488);stroke:color-mix(in srgb, var(--teal,#0d9488) 70%, var(--text,#0f172a));stroke-width:1.5"/>
+  <text x="104" y="277" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--surface,#ffffff)">ES</text>
+  <rect x="172" y="252" width="40" height="40" rx="6" transform="translate(3 4)" style="fill:color-mix(in srgb, var(--teal,#0d9488) 22%, transparent);stroke:color-mix(in srgb, var(--teal,#0d9488) 45%, transparent);stroke-width:1.5"/>
+  <rect x="172" y="252" width="40" height="40" rx="6" style="fill:var(--teal,#0d9488);stroke:color-mix(in srgb, var(--teal,#0d9488) 70%, var(--text,#0f172a));stroke-width:1.5"/>
+  <text x="192" y="277" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--surface,#ffffff)">IT</text>
+  <rect x="216" y="252" width="40" height="40" rx="6" transform="translate(3 4)" style="fill:color-mix(in srgb, var(--teal,#0d9488) 22%, transparent);stroke:color-mix(in srgb, var(--teal,#0d9488) 45%, transparent);stroke-width:1.5"/>
+  <rect x="216" y="252" width="40" height="40" rx="6" style="fill:var(--teal,#0d9488);stroke:color-mix(in srgb, var(--teal,#0d9488) 70%, var(--text,#0f172a));stroke-width:1.5"/>
+  <text x="236" y="277" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--surface,#ffffff)">AT</text>
+  </g>
+  <!-- legend + takeaway -->
+  <g>
+  <text x="470" y="70" text-anchor="start" letter-spacing="1.2" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:11px;font-weight:700;fill:var(--text-muted,#64748b)">ROLLOUT STATUS</text>
+  <text x="470" y="100" text-anchor="start" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:20px;font-weight:700;fill:var(--text,#0f172a)">Live in 12 markets</text>
+  <text x="470" y="124" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:13px;font-weight:400;fill:var(--text-muted,#64748b)">Western Europe first; pilots now in</text>
+  <text x="470" y="142" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:13px;font-weight:400;fill:var(--text-muted,#64748b)">Benelux, the Alps and Poland.</text>
+  <rect x="470" y="180" width="22" height="22" rx="4" style="fill:var(--teal,#0d9488)"/>
+  <text x="504" y="196" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:13px;font-weight:400;fill:var(--text,#0f172a)">live (12)</text>
+  <rect x="470" y="216" width="22" height="22" rx="4" style="fill:var(--amber,#f59e0b)"/>
+  <text x="504" y="232" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:13px;font-weight:400;fill:var(--text,#0f172a)">pilot (7)</text>
+  <rect x="470" y="252" width="22" height="22" rx="4" stroke-dasharray="4 3" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 34%, var(--surface,#ffffff));stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:1.5"/>
+  <text x="504" y="268" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:13px;font-weight:400;fill:var(--text,#0f172a)">planned (8)</text>
+  <rect x="470" y="288" width="22" height="22" rx="4" style="fill:color-mix(in srgb, var(--text-muted,#64748b) 12%, var(--surface,#ffffff));stroke:var(--border,#e2e8f0);stroke-width:1.5"/>
+  <text x="504" y="304" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:13px;font-weight:400;fill:var(--text,#0f172a)">no rollout</text>
+  <text x="470" y="350" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">One tile per country, equal size:</text>
+  <text x="470" y="366" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">position is approximate, not to scale.</text>
+  </g>
+</svg>
