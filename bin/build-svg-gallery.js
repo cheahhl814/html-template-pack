@@ -93,6 +93,12 @@ const META = {
   "gel-electrophoresis": { desc: "Agarose gel with wells, size ladder, five sample lanes and − / + electrodes; bands placed by log10(size)", use: "PCR checks, methods figures, teaching how gels separate DNA" },
   "well-plate-layout": { desc: "96-well plate map: standards and samples in duplicate, blanks, positive/negative controls, legend", use: "ELISA/qPCR plate layouts, protocol planning" },
   "scientific-method": { desc: "Six-step scientific-method cycle around a flask: observe, question, hypothesise, experiment, analyse, conclude", use: "Teaching the scientific method, research-process overviews" },
+  "cladogram-ladder": { desc: "Diagonal trait-ladder cladogram: shark, frog, lizard, kangaroo, human branch off a spine; numbered ticks mark vertebrae, four limbs, amniotic egg, hair & milk glands, placenta", use: "Teaching shared derived traits, evolution lessons, classification overviews" },
+  "cladogram-anatomy": { desc: "Rectangular cladogram with labelled parts: root, node, branch, clade bracket (sister taxa A + B), outgroup, branch colours keyed to unique vs shared history", use: "Teaching how to read a tree, glossary figures for phylogeny sections" },
+  "cladogram-matrix": { desc: "Character matrix (5 land plants × 4 traits, filled dot = present) beside the cladogram it implies, numbered trait badges on the branches", use: "Showing how a tree is built from traits, methods figures, plant evolution" },
+  "nested-clades": { desc: "Nested trait sets (jointed legs ⊃ mandibles & antennae ⊃ six legs ⊃ complete metamorphosis) beside the matching slanted cladogram with colour-matched ticks", use: "Explaining clades as nested groups, the Venn-to-tree link" },
+  "circular-cladogram": { desc: "Circular (fan) cladogram of 16 vertebrates, radial labels, amphibians / mammals / reptiles-incl.-birds coloured as clades, fishes as a grade", use: "Big-picture trees of life, many-taxa overviews (real trees from data → chartz PhyloTree)" },
+  "cladogram-styles": { desc: "One primate tree drawn three ways: diagonal, rectangular, and rotated at two nodes, chimp + human clade highlighted in each", use: "Teaching that branch shape and tip order carry no meaning, reading tree diagrams" },
   'orbit-satellites': { desc: 'Core with three dashed orbits of labelled satellites and a distance legend', use: 'Stakeholder proximity, engagement tiers, spheres of influence' },
 };
 

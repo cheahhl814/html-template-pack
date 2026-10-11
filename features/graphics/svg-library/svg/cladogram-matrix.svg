@@ -1,0 +1,108 @@
+<!--
+html-template-pack · svg-library · cladogram-matrix
+Character matrix to cladogram: a taxon x trait table (filled dot =
+  trait present) beside the rectangular cladogram it implies, with the
+  same numbered trait badges marking where each trait first appears.
+  Tokens: deep-blue teal amber coral text text-muted surface font-head font-sans.
+  Edit: taxa and traits. Keep the matrix and the badge positions in step.
+  Science: green alga (outgroup), moss, fern, pine, flowering plant with
+  embryo (land plants), vascular tissue, seeds, flowers is the standard
+  land-plant sequence.
+  No ids/markers, safe to paste multiples.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-label="Character matrix of green alga, moss, fern, pine and flowering plant scored for protected embryo, vascular tissue, seeds and flowers, beside the cladogram it implies" style="width:100%;height:auto">
+  <title>Character matrix to cladogram: land plants</title>
+  <!-- matrix -->
+  <g>
+  <text x="30.0" y="52.0" text-anchor="start" letter-spacing="1.2" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:11px;font-weight:700;fill:var(--text-muted,#64748b)">CHARACTER MATRIX</text>
+  <rect x="30" y="74" width="360" height="256" rx="14" transform="translate(4 5)" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 22%, transparent);stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 45%, transparent);stroke-width:1.5"/>
+  <rect x="30" y="74" width="360" height="256" rx="14" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 5%, var(--surface,#ffffff));stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:2"/>
+  <circle cx="195.0" cy="96.0" r="11" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke:var(--surface,#ffffff);stroke-width:2"/>
+  <text x="195.0" y="100.5" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--surface,#ffffff)">1</text>
+  <circle cx="249.0" cy="96.0" r="11" style="fill:var(--teal,#0d9488);stroke:var(--surface,#ffffff);stroke-width:2"/>
+  <text x="249.0" y="100.5" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--surface,#ffffff)">2</text>
+  <circle cx="303.0" cy="96.0" r="11" style="fill:var(--amber,#f59e0b);stroke:var(--surface,#ffffff);stroke-width:2"/>
+  <text x="303.0" y="100.5" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--surface,#ffffff)">3</text>
+  <circle cx="357.0" cy="96.0" r="11" style="fill:var(--coral,#ef4444);stroke:var(--surface,#ffffff);stroke-width:2"/>
+  <text x="357.0" y="100.5" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--surface,#ffffff)">4</text>
+  <rect x="38" y="110" width="344" height="40" rx="8" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 9%, var(--surface,#ffffff))"/>
+  <text x="46.0" y="135.5" text-anchor="start" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">Green alga</text>
+  <circle cx="195" cy="130" r="4" style="fill:none;stroke:var(--text-muted,#64748b);stroke-width:1.5"/>
+  <circle cx="249" cy="130" r="4" style="fill:none;stroke:var(--text-muted,#64748b);stroke-width:1.5"/>
+  <circle cx="303" cy="130" r="4" style="fill:none;stroke:var(--text-muted,#64748b);stroke-width:1.5"/>
+  <circle cx="357" cy="130" r="4" style="fill:none;stroke:var(--text-muted,#64748b);stroke-width:1.5"/>
+  <text x="46.0" y="179.5" text-anchor="start" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">Moss</text>
+  <circle cx="195.0" cy="174.0" r="8" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke:var(--surface,#ffffff);stroke-width:0"/>
+  <circle cx="249" cy="174" r="4" style="fill:none;stroke:var(--text-muted,#64748b);stroke-width:1.5"/>
+  <circle cx="303" cy="174" r="4" style="fill:none;stroke:var(--text-muted,#64748b);stroke-width:1.5"/>
+  <circle cx="357" cy="174" r="4" style="fill:none;stroke:var(--text-muted,#64748b);stroke-width:1.5"/>
+  <rect x="38" y="198" width="344" height="40" rx="8" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 9%, var(--surface,#ffffff))"/>
+  <text x="46.0" y="223.5" text-anchor="start" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">Fern</text>
+  <circle cx="195.0" cy="218.0" r="8" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke:var(--surface,#ffffff);stroke-width:0"/>
+  <circle cx="249.0" cy="218.0" r="8" style="fill:var(--teal,#0d9488);stroke:var(--surface,#ffffff);stroke-width:0"/>
+  <circle cx="303" cy="218" r="4" style="fill:none;stroke:var(--text-muted,#64748b);stroke-width:1.5"/>
+  <circle cx="357" cy="218" r="4" style="fill:none;stroke:var(--text-muted,#64748b);stroke-width:1.5"/>
+  <text x="46.0" y="267.5" text-anchor="start" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">Pine</text>
+  <circle cx="195.0" cy="262.0" r="8" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke:var(--surface,#ffffff);stroke-width:0"/>
+  <circle cx="249.0" cy="262.0" r="8" style="fill:var(--teal,#0d9488);stroke:var(--surface,#ffffff);stroke-width:0"/>
+  <circle cx="303.0" cy="262.0" r="8" style="fill:var(--amber,#f59e0b);stroke:var(--surface,#ffffff);stroke-width:0"/>
+  <circle cx="357" cy="262" r="4" style="fill:none;stroke:var(--text-muted,#64748b);stroke-width:1.5"/>
+  <rect x="38" y="286" width="344" height="40" rx="8" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 9%, var(--surface,#ffffff))"/>
+  <text x="46.0" y="311.5" text-anchor="start" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">Flowering plant</text>
+  <circle cx="195.0" cy="306.0" r="8" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke:var(--surface,#ffffff);stroke-width:0"/>
+  <circle cx="249.0" cy="306.0" r="8" style="fill:var(--teal,#0d9488);stroke:var(--surface,#ffffff);stroke-width:0"/>
+  <circle cx="303.0" cy="306.0" r="8" style="fill:var(--amber,#f59e0b);stroke:var(--surface,#ffffff);stroke-width:0"/>
+  <circle cx="357.0" cy="306.0" r="8" style="fill:var(--coral,#ef4444);stroke:var(--surface,#ffffff);stroke-width:0"/>
+  </g>
+  <!-- legend -->
+  <g>
+  <circle cx="50.0" cy="359.5" r="10" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke:var(--surface,#ffffff);stroke-width:2"/>
+  <text x="50.0" y="364.0" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--surface,#ffffff)">1</text>
+  <text x="68.0" y="364.0" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:13px;font-weight:400;fill:var(--text-muted,#64748b)">Protected embryo</text>
+  <circle cx="50.0" cy="385.5" r="10" style="fill:var(--teal,#0d9488);stroke:var(--surface,#ffffff);stroke-width:2"/>
+  <text x="50.0" y="390.0" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--surface,#ffffff)">2</text>
+  <text x="68.0" y="390.0" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:13px;font-weight:400;fill:var(--text-muted,#64748b)">Vascular tissue</text>
+  <circle cx="230.0" cy="359.5" r="10" style="fill:var(--amber,#f59e0b);stroke:var(--surface,#ffffff);stroke-width:2"/>
+  <text x="230.0" y="364.0" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--surface,#ffffff)">3</text>
+  <text x="248.0" y="364.0" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:13px;font-weight:400;fill:var(--text-muted,#64748b)">Seeds</text>
+  <circle cx="230.0" cy="385.5" r="10" style="fill:var(--coral,#ef4444);stroke:var(--surface,#ffffff);stroke-width:2"/>
+  <text x="230.0" y="390.0" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--surface,#ffffff)">4</text>
+  <text x="248.0" y="390.0" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:13px;font-weight:400;fill:var(--text-muted,#64748b)">Flowers</text>
+  <text x="30.0" y="430.0" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">More shared derived traits = more recent common ancestor.</text>
+  <path d="M398.0 218.0 L418.0 218.0" style="fill:none;stroke:var(--text-muted,#64748b);stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round"/>
+  <polygon points="418,211.5 431,218 418,224.5" style="fill:var(--text-muted,#64748b)"/>
+  </g>
+  <!-- cladogram -->
+  <g>
+  <text x="440.0" y="52.0" text-anchor="start" letter-spacing="1.2" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:11px;font-weight:700;fill:var(--text-muted,#64748b)">CLADOGRAM</text>
+  <path d="M440 171.25 L455 171.25" style="fill:none;stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:3;stroke-linecap:round;stroke-linejoin:round"/>
+  <path d="M455 171.25 L455 130 L640 130" style="fill:none;stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:3;stroke-linecap:round;stroke-linejoin:round"/>
+  <path d="M455 171.25 L455 212.5 L500 212.5" style="fill:none;stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:3;stroke-linecap:round;stroke-linejoin:round"/>
+  <path d="M500 212.5 L500 174 L640 174" style="fill:none;stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:3;stroke-linecap:round;stroke-linejoin:round"/>
+  <path d="M500 212.5 L500 251.0 L545 251.0" style="fill:none;stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:3;stroke-linecap:round;stroke-linejoin:round"/>
+  <path d="M545 251.0 L545 218 L640 218" style="fill:none;stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:3;stroke-linecap:round;stroke-linejoin:round"/>
+  <path d="M545 251.0 L545 284.0 L590 284.0" style="fill:none;stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:3;stroke-linecap:round;stroke-linejoin:round"/>
+  <path d="M590 284.0 L590 262 L640 262" style="fill:none;stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:3;stroke-linecap:round;stroke-linejoin:round"/>
+  <path d="M590 284.0 L590 306 L640 306" style="fill:none;stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:3;stroke-linecap:round;stroke-linejoin:round"/>
+  <circle cx="455.0" cy="171.2" r="5" style="fill:var(--surface,#ffffff);stroke:var(--text,#0f172a);stroke-width:2"/>
+  <circle cx="500.0" cy="212.5" r="5" style="fill:var(--surface,#ffffff);stroke:var(--text,#0f172a);stroke-width:2"/>
+  <circle cx="545.0" cy="251.0" r="5" style="fill:var(--surface,#ffffff);stroke:var(--text,#0f172a);stroke-width:2"/>
+  <circle cx="590.0" cy="284.0" r="5" style="fill:var(--surface,#ffffff);stroke:var(--text,#0f172a);stroke-width:2"/>
+  <text x="652.0" y="135.5" text-anchor="start" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">Green alga</text>
+  <text x="652.0" y="179.5" text-anchor="start" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">Moss</text>
+  <text x="652.0" y="223.5" text-anchor="start" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">Fern</text>
+  <text x="652.0" y="267.5" text-anchor="start" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">Pine</text>
+  <text x="652.0" y="311.5" text-anchor="start" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:16px;font-weight:600;fill:var(--text,#0f172a)">Flowering plant</text>
+  <circle cx="477.5" cy="212.5" r="10" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke:var(--surface,#ffffff);stroke-width:2"/>
+  <text x="477.5" y="217.0" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--surface,#ffffff)">1</text>
+  <circle cx="522.5" cy="251.0" r="10" style="fill:var(--teal,#0d9488);stroke:var(--surface,#ffffff);stroke-width:2"/>
+  <text x="522.5" y="255.5" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--surface,#ffffff)">2</text>
+  <circle cx="567.5" cy="284.0" r="10" style="fill:var(--amber,#f59e0b);stroke:var(--surface,#ffffff);stroke-width:2"/>
+  <text x="567.5" y="288.5" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--surface,#ffffff)">3</text>
+  <circle cx="615.0" cy="306.0" r="10" style="fill:var(--coral,#ef4444);stroke:var(--surface,#ffffff);stroke-width:2"/>
+  <text x="615.0" y="310.5" text-anchor="middle" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:13px;font-weight:700;fill:var(--surface,#ffffff)">4</text>
+  <text x="440.0" y="364.0" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">Numbered marks: where each trait</text>
+  <text x="440.0" y="380.0" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">first appears; every taxon above it</text>
+  <text x="440.0" y="396.0" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">in the matrix lacks it.</text>
+  </g>
+</svg>

@@ -1,6 +1,6 @@
-# svg-library — hand-drawn SVG diagram templates (html-template-pack v0.14.0)
+# svg-library — hand-drawn SVG diagram templates (html-template-pack v0.15.0)
 
-Seventy-one agent-drawable, copy-paste-ready **inline SVG diagram/infographic templates** for
+Seventy-seven agent-drawable, copy-paste-ready **inline SVG diagram/infographic templates** for
 explanatory and summary visuals — the complement to the pure-CSS graphics pack
 (`features/graphics/graphics.css`). Where the CSS pack covers charts built from real
 data (donut, gauge, heatmap, bars), the SVG library covers **concept diagrams**:
@@ -101,6 +101,12 @@ Each figure card has a collapsible **source (.svg)** block copy-paste-ready.
 | 69 | `gel-electrophoresis.svg` | Agarose gel with wells, size ladder, five sample lanes and − / + electrodes; bands placed by log10(size) | PCR checks, methods figures, teaching how gels separate DNA |
 | 70 | `well-plate-layout.svg` | 96-well plate map: standards and samples in duplicate, blanks, positive/negative controls, legend | ELISA/qPCR plate layouts, protocol planning |
 | 71 | `scientific-method.svg` | Six-step scientific-method cycle around a flask: observe, question, hypothesise, experiment, analyse, conclude | Teaching the scientific method, research-process overviews |
+| 72 | `cladogram-ladder.svg` | Diagonal trait-ladder cladogram: shark, frog, lizard, kangaroo, human branch off a spine; numbered ticks mark vertebrae, four limbs, amniotic egg, hair & milk glands, placenta | Teaching shared derived traits, evolution lessons, classification overviews |
+| 73 | `cladogram-anatomy.svg` | Rectangular cladogram with labelled parts: root, node, branch, clade bracket (sister taxa A + B), outgroup, branch colours keyed to unique vs shared history | Teaching how to read a tree, glossary figures for phylogeny sections |
+| 74 | `cladogram-matrix.svg` | Character matrix (5 land plants × 4 traits, filled dot = present) beside the cladogram it implies, numbered trait badges on the branches | Showing how a tree is built from traits, methods figures, plant evolution |
+| 75 | `nested-clades.svg` | Nested trait sets (jointed legs ⊃ mandibles & antennae ⊃ six legs ⊃ complete metamorphosis) beside the matching slanted cladogram with colour-matched ticks | Explaining clades as nested groups, the Venn-to-tree link |
+| 76 | `circular-cladogram.svg` | Circular (fan) cladogram of 16 vertebrates, radial labels, amphibians / mammals / reptiles-incl.-birds coloured as clades, fishes as a grade | Big-picture trees of life, many-taxa overviews (real trees from data → chartz PhyloTree) |
+| 77 | `cladogram-styles.svg` | One primate tree drawn three ways: diagonal, rectangular, and rotated at two nodes, chimp + human clade highlighted in each | Teaching that branch shape and tip order carry no meaning, reading tree diagrams |
 
 **When to use which graphics system:**
 
@@ -198,6 +204,21 @@ and the membrane drawn with heads out, tails in, sugar chains on the extracellul
 sequence, re-translate it; if you edit a gel, recompute band positions (formula in the file header).
 Gel bands, plate assignments and workflow labels are illustrative.
 
+## Phylogeny & cladograms
+
+Six components (72 to 77) cover cladograms, inspired by the Venngage, Creately, Pinterest and
+Microbe Notes cladogram examples. Like the lab set, their **topologies are meant to be correct as
+drawn**: shark as the vertebrate outgroup and the kangaroo's placenta qualified as short-lived
+(`cladogram-ladder`); the embryo → vascular tissue → seeds → flowers sequence of land plants
+(`cladogram-matrix`); spiders outside the mandibulates, with crabs closer to insects
+(`nested-clades`); lungfish closest to tetrapods, turtles sister to crocodiles + birds, and "fishes"
+left uncoloured because they are a grade, not a clade (`circular-cladogram`); tarsiers sister to
+monkeys and apes (`cladogram-styles`). Cladograms are unscaled: branch lengths mean nothing, so do not
+read time or distance off them. If you change the taxa, re-check the topology, and move every trait
+tick so it sits between the node before and the node after the taxa that share the trait. For trees
+inferred from real data (Newick, with branch lengths or support values) use the `chartz` skill's
+PhyloTree engine.
+
 ## Standalone use (no HTML page)
 
 For a diagram going into PowerPoint, Word, Keynote, Figma, Inkscape/Illustrator, a poster or a
@@ -222,7 +243,7 @@ fails if any `var()` or `color-mix()` would survive. Want PNG? Render the **expo
    SVG is the point of the library; treat the shipped files as style reference
    (rounded rx=12 cards — 8 for bars, 4–6 for slabs, 14 for large panels; 2px primary
    strokes, 1.5px shadows/leaders, 2.5px connectors, 3px spines; dashed 1.5px leaders
-   start at a 3.5px dot). **Type scale (shared by all 71):** hero 20/700 (one central
+   start at a 3.5px dot). **Type scale (shared by all 77):** hero 20/700 (one central
    subject or headline) · label 16/600 · annotation 13/400 muted · caption 12/400 muted ·
    eyebrow 11/700 caps with `letter-spacing="1.2"` · badge number 13/700.
    **Arrowheads:** 13×13 on connectors, 11×11 on small cue arrows, 16×16 on thick spines

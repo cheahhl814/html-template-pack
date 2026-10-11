@@ -1,0 +1,114 @@
+<!--
+html-template-pack · svg-library · circular-cladogram
+Circular (fan) cladogram of 16 vertebrates: arcs and radial branches
+  from a central root, tips on the outer rim with radial labels, branches
+  coloured by clade.
+  Tokens: deep-blue teal coral amber text text-muted surface font-head font-sans.
+  Edit: taxon labels in place; to change the topology, recompute the arcs
+  (tips evenly spaced over 170 to 10 degrees, node radius by depth).
+  Science: lamprey outgroup to jawed vertebrates; lungfish closest to
+  tetrapods; turtles sister to crocodiles + birds; birds nested in
+  reptiles. "Fishes" stays uncoloured: it is a grade (paraphyletic).
+  No ids/markers, safe to paste multiples.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-label="Circular cladogram of sixteen vertebrates from lamprey to human, with amphibians, mammals and reptiles including birds coloured as clades and fishes shown as a grade" style="width:100%;height:auto">
+  <title>Circular cladogram: vertebrates</title>
+  <!-- branches -->
+  <g>
+  <path d="M335.4 289.3 A144.0 144.0 0 0 1 360.3 279.6" style="fill:none;stroke:color-mix(in srgb, var(--teal,#0d9488) 70%, var(--text,#0f172a));stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round"/>
+  <path d="M335.4 289.3 L297.7 214.3" style="fill:none;stroke:color-mix(in srgb, var(--teal,#0d9488) 70%, var(--text,#0f172a));stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round"/>
+  <path d="M360.3 279.6 L337.2 198.8" style="fill:none;stroke:color-mix(in srgb, var(--teal,#0d9488) 70%, var(--text,#0f172a));stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round"/>
+  <path d="M457.1 219.0 A207.0 207.0 0 0 1 492.9 233.0" style="fill:none;stroke:color-mix(in srgb, var(--coral,#ef4444) 70%, var(--text,#0f172a));stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round"/>
+  <path d="M457.1 219.0 L462.8 198.8" style="fill:none;stroke:color-mix(in srgb, var(--coral,#ef4444) 70%, var(--text,#0f172a));stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round"/>
+  <path d="M492.9 233.0 L502.3 214.3" style="fill:none;stroke:color-mix(in srgb, var(--coral,#ef4444) 70%, var(--text,#0f172a));stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round"/>
+  <path d="M417.3 232.8 A186.0 186.0 0 0 1 467.7 244.7" style="fill:none;stroke:color-mix(in srgb, var(--coral,#ef4444) 70%, var(--text,#0f172a));stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round"/>
+  <path d="M417.3 232.8 L421.2 191.0" style="fill:none;stroke:color-mix(in srgb, var(--coral,#ef4444) 70%, var(--text,#0f172a));stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round"/>
+  <path d="M467.7 244.7 L475.3 225.2" style="fill:none;stroke:color-mix(in srgb, var(--coral,#ef4444) 70%, var(--text,#0f172a));stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round"/>
+  <path d="M384.7 253.7 A165.0 165.0 0 0 1 438.1 257.4" style="fill:none;stroke:color-mix(in srgb, var(--coral,#ef4444) 70%, var(--text,#0f172a));stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round"/>
+  <path d="M384.7 253.7 L378.8 191.0" style="fill:none;stroke:color-mix(in srgb, var(--coral,#ef4444) 70%, var(--text,#0f172a));stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round"/>
+  <path d="M438.1 257.4 L442.9 237.0" style="fill:none;stroke:color-mix(in srgb, var(--coral,#ef4444) 70%, var(--text,#0f172a));stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round"/>
+  <path d="M512.8 270.1 A186.0 186.0 0 0 1 538.2 293.5" style="fill:none;stroke:color-mix(in srgb, var(--amber,#f59e0b) 70%, var(--text,#0f172a));stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round"/>
+  <path d="M512.8 270.1 L538.3 236.7" style="fill:none;stroke:color-mix(in srgb, var(--amber,#f59e0b) 70%, var(--text,#0f172a));stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round"/>
+  <path d="M538.2 293.5 L569.4 265.4" style="fill:none;stroke:color-mix(in srgb, var(--amber,#f59e0b) 70%, var(--text,#0f172a));stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round"/>
+  <path d="M593.7 344.9 A207.0 207.0 0 0 1 603.9 382.1" style="fill:none;stroke:color-mix(in srgb, var(--amber,#f59e0b) 70%, var(--text,#0f172a));stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round"/>
+  <path d="M593.7 344.9 L613.3 337.5" style="fill:none;stroke:color-mix(in srgb, var(--amber,#f59e0b) 70%, var(--text,#0f172a));stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round"/>
+  <path d="M603.9 382.1 L624.5 378.4" style="fill:none;stroke:color-mix(in srgb, var(--amber,#f59e0b) 70%, var(--text,#0f172a));stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round"/>
+  <path d="M558.9 321.3 A186.0 186.0 0 0 1 579.4 368.8" style="fill:none;stroke:color-mix(in srgb, var(--amber,#f59e0b) 70%, var(--text,#0f172a));stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round"/>
+  <path d="M558.9 321.3 L594.7 299.4" style="fill:none;stroke:color-mix(in srgb, var(--amber,#f59e0b) 70%, var(--text,#0f172a));stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round"/>
+  <path d="M579.4 368.8 L599.6 363.3" style="fill:none;stroke:color-mix(in srgb, var(--amber,#f59e0b) 70%, var(--text,#0f172a));stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round"/>
+  <path d="M511.8 296.7 A165.0 165.0 0 0 1 551.5 352.6" style="fill:none;stroke:color-mix(in srgb, var(--amber,#f59e0b) 70%, var(--text,#0f172a));stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round"/>
+  <path d="M511.8 296.7 L526.1 281.2" style="fill:none;stroke:color-mix(in srgb, var(--amber,#f59e0b) 70%, var(--text,#0f172a));stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round"/>
+  <path d="M551.5 352.6 L570.8 344.3" style="fill:none;stroke:color-mix(in srgb, var(--amber,#f59e0b) 70%, var(--text,#0f172a));stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round"/>
+  <path d="M410.0 274.4 A144.0 144.0 0 0 1 517.5 334.7" style="fill:none;stroke:var(--text-muted,#64748b);stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round"/>
+  <path d="M410.0 274.4 L411.5 253.4" style="fill:none;stroke:color-mix(in srgb, var(--coral,#ef4444) 70%, var(--text,#0f172a));stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round"/>
+  <path d="M517.5 334.7 L534.6 322.6" style="fill:none;stroke:color-mix(in srgb, var(--amber,#f59e0b) 70%, var(--text,#0f172a));stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round"/>
+  <path d="M355.3 303.4 A123.0 123.0 0 0 1 460.3 310.8" style="fill:none;stroke:var(--text-muted,#64748b);stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round"/>
+  <path d="M355.3 303.4 L347.6 283.9" style="fill:none;stroke:color-mix(in srgb, var(--teal,#0d9488) 70%, var(--text,#0f172a));stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round"/>
+  <path d="M460.3 310.8 L470.5 292.5" style="fill:none;stroke:var(--text-muted,#64748b);stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round"/>
+  <path d="M338.1 336.9 A102.0 102.0 0 0 1 407.1 316.2" style="fill:none;stroke:var(--text-muted,#64748b);stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round"/>
+  <path d="M338.1 336.9 L261.7 236.7" style="fill:none;stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round"/>
+  <path d="M407.1 316.2 L408.6 295.3" style="fill:none;stroke:var(--text-muted,#64748b);stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round"/>
+  <path d="M339.8 363.8 A81.0 81.0 0 0 1 376.8 340.4" style="fill:none;stroke:var(--text-muted,#64748b);stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round"/>
+  <path d="M339.8 363.8 L230.6 265.4" style="fill:none;stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round"/>
+  <path d="M376.8 340.4 L370.7 320.3" style="fill:none;stroke:var(--text-muted,#64748b);stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round"/>
+  <path d="M348.8 386.8 A60.0 60.0 0 0 1 367.9 367.3" style="fill:none;stroke:var(--text-muted,#64748b);stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round"/>
+  <path d="M348.8 386.8 L205.3 299.4" style="fill:none;stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round"/>
+  <path d="M367.9 367.3 L356.7 349.6" style="fill:none;stroke:var(--text-muted,#64748b);stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round"/>
+  <path d="M363.5 404.2 A39.0 39.0 0 0 1 372.2 390.7" style="fill:none;stroke:var(--text-muted,#64748b);stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round"/>
+  <path d="M363.5 404.2 L186.7 337.5" style="fill:none;stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round"/>
+  <path d="M372.2 390.7 L357.2 375.9" style="fill:none;stroke:var(--text-muted,#64748b);stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round"/>
+  <path d="M382.3 414.9 A18.0 18.0 0 0 1 384.8 408.3" style="fill:none;stroke:var(--text-muted,#64748b);stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round"/>
+  <path d="M382.3 414.9 L175.5 378.4" style="fill:none;stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round"/>
+  <path d="M384.8 408.3 L367.1 397.0" style="fill:none;stroke:var(--text-muted,#64748b);stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round"/>
+  <path d="M400 418 L383.2 411.5" style="fill:none;stroke:var(--text-muted,#64748b);stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round"/>
+  <circle cx="400.0" cy="418.0" r="5" style="fill:var(--surface,#ffffff);stroke:var(--text,#0f172a);stroke-width:2"/>
+  </g>
+  <!-- tips and labels -->
+  <g>
+  <circle cx="175.5" cy="378.4" r="5" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke:var(--surface,#ffffff);stroke-width:1.5"/>
+  <text x="163.6" y="380.8" text-anchor="end" transform="rotate(10.0 163.6 380.8)" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:13px;font-weight:400;fill:var(--text,#0f172a)">Lamprey</text>
+  <circle cx="186.7" cy="337.5" r="5" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke:var(--surface,#ffffff);stroke-width:1.5"/>
+  <text x="175.4" y="337.8" text-anchor="end" transform="rotate(20.7 175.4 337.8)" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:13px;font-weight:400;fill:var(--text,#0f172a)">Shark</text>
+  <circle cx="205.3" cy="299.4" r="5" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke:var(--surface,#ffffff);stroke-width:1.5"/>
+  <text x="195.0" y="297.7" text-anchor="end" transform="rotate(31.3 195.0 297.7)" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:13px;font-weight:400;fill:var(--text,#0f172a)">Ray-finned fish</text>
+  <circle cx="230.6" cy="265.4" r="5" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke:var(--surface,#ffffff);stroke-width:1.5"/>
+  <text x="221.6" y="261.9" text-anchor="end" transform="rotate(42.0 221.6 261.9)" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:13px;font-weight:400;fill:var(--text,#0f172a)">Coelacanth</text>
+  <circle cx="261.7" cy="236.7" r="5" style="fill:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke:var(--surface,#ffffff);stroke-width:1.5"/>
+  <text x="254.5" y="231.7" text-anchor="end" transform="rotate(52.7 254.5 231.7)" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:13px;font-weight:400;fill:var(--text,#0f172a)">Lungfish</text>
+  <circle cx="297.7" cy="214.3" r="5" style="fill:var(--teal,#0d9488);stroke:var(--surface,#ffffff);stroke-width:1.5"/>
+  <text x="292.3" y="208.0" text-anchor="end" transform="rotate(63.3 292.3 208.0)" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:13px;font-weight:400;fill:var(--text,#0f172a)">Frog</text>
+  <circle cx="337.2" cy="198.8" r="5" style="fill:var(--teal,#0d9488);stroke:var(--surface,#ffffff);stroke-width:1.5"/>
+  <text x="333.8" y="191.8" text-anchor="end" transform="rotate(74.0 333.8 191.8)" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:13px;font-weight:400;fill:var(--text,#0f172a)">Salamander</text>
+  <circle cx="378.8" cy="191.0" r="5" style="fill:var(--coral,#ef4444);stroke:var(--surface,#ffffff);stroke-width:1.5"/>
+  <text x="377.7" y="183.5" text-anchor="end" transform="rotate(84.7 377.7 183.5)" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:13px;font-weight:400;fill:var(--text,#0f172a)">Platypus</text>
+  <circle cx="421.2" cy="191.0" r="5" style="fill:var(--coral,#ef4444);stroke:var(--surface,#ffffff);stroke-width:1.5"/>
+  <text x="422.3" y="183.5" text-anchor="start" transform="rotate(-84.7 422.3 183.5)" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:13px;font-weight:400;fill:var(--text,#0f172a)">Kangaroo</text>
+  <circle cx="462.8" cy="198.8" r="5" style="fill:var(--coral,#ef4444);stroke:var(--surface,#ffffff);stroke-width:1.5"/>
+  <text x="466.2" y="191.8" text-anchor="start" transform="rotate(-74.0 466.2 191.8)" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:13px;font-weight:400;fill:var(--text,#0f172a)">Mouse</text>
+  <circle cx="502.3" cy="214.3" r="5" style="fill:var(--coral,#ef4444);stroke:var(--surface,#ffffff);stroke-width:1.5"/>
+  <text x="507.7" y="208.0" text-anchor="start" transform="rotate(-63.3 507.7 208.0)" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:13px;font-weight:400;fill:var(--text,#0f172a)">Human</text>
+  <circle cx="538.3" cy="236.7" r="5" style="fill:var(--amber,#f59e0b);stroke:var(--surface,#ffffff);stroke-width:1.5"/>
+  <text x="545.5" y="231.7" text-anchor="start" transform="rotate(-52.7 545.5 231.7)" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:13px;font-weight:400;fill:var(--text,#0f172a)">Lizard</text>
+  <circle cx="569.4" cy="265.4" r="5" style="fill:var(--amber,#f59e0b);stroke:var(--surface,#ffffff);stroke-width:1.5"/>
+  <text x="578.4" y="261.9" text-anchor="start" transform="rotate(-42.0 578.4 261.9)" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:13px;font-weight:400;fill:var(--text,#0f172a)">Snake</text>
+  <circle cx="594.7" cy="299.4" r="5" style="fill:var(--amber,#f59e0b);stroke:var(--surface,#ffffff);stroke-width:1.5"/>
+  <text x="605.0" y="297.7" text-anchor="start" transform="rotate(-31.3 605.0 297.7)" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:13px;font-weight:400;fill:var(--text,#0f172a)">Turtle</text>
+  <circle cx="613.3" cy="337.5" r="5" style="fill:var(--amber,#f59e0b);stroke:var(--surface,#ffffff);stroke-width:1.5"/>
+  <text x="624.6" y="337.8" text-anchor="start" transform="rotate(-20.7 624.6 337.8)" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:13px;font-weight:400;fill:var(--text,#0f172a)">Crocodile</text>
+  <circle cx="624.5" cy="378.4" r="5" style="fill:var(--amber,#f59e0b);stroke:var(--surface,#ffffff);stroke-width:1.5"/>
+  <text x="636.4" y="380.8" text-anchor="start" transform="rotate(-10.0 636.4 380.8)" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:13px;font-weight:400;fill:var(--text,#0f172a)">Bird</text>
+  <text x="30.0" y="36.0" text-anchor="start" letter-spacing="1.2" style="font-family:var(--font-head,ui-sans-serif,system-ui);font-size:11px;font-weight:700;fill:var(--text-muted,#64748b)">VERTEBRATE CLADOGRAM</text>
+  <text x="30.0" y="54.0" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:12px;font-weight:400;fill:var(--text-muted,#64748b)">circular (fan) layout · root at the centre</text>
+  </g>
+  <!-- legend -->
+  <g>
+  <path d="M30.0 396.0 L52.0 396.0" style="fill:none;stroke:color-mix(in srgb, var(--deep-blue,#2c4a7c) 55%, var(--text,#0f172a));stroke-width:3;stroke-linecap:round;stroke-linejoin:round"/>
+  <text x="60.0" y="400.0" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:13px;font-weight:400;fill:var(--text-muted,#64748b)">Fishes: a grade, not a clade</text>
+  <path d="M30.0 418.0 L52.0 418.0" style="fill:none;stroke:color-mix(in srgb, var(--teal,#0d9488) 70%, var(--text,#0f172a));stroke-width:3;stroke-linecap:round;stroke-linejoin:round"/>
+  <text x="60.0" y="422.0" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:13px;font-weight:400;fill:var(--text-muted,#64748b)">Amphibians</text>
+  <path d="M612.0 396.0 L634.0 396.0" style="fill:none;stroke:color-mix(in srgb, var(--coral,#ef4444) 70%, var(--text,#0f172a));stroke-width:3;stroke-linecap:round;stroke-linejoin:round"/>
+  <text x="642.0" y="400.0" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:13px;font-weight:400;fill:var(--text-muted,#64748b)">Mammals</text>
+  <path d="M612.0 418.0 L634.0 418.0" style="fill:none;stroke:color-mix(in srgb, var(--amber,#f59e0b) 70%, var(--text,#0f172a));stroke-width:3;stroke-linecap:round;stroke-linejoin:round"/>
+  <text x="642.0" y="422.0" text-anchor="start" style="font-family:var(--font-sans,ui-sans-serif,system-ui);font-size:13px;font-weight:400;fill:var(--text-muted,#64748b)">Reptiles, incl. birds</text>
+  </g>
+</svg>
